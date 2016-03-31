@@ -32,6 +32,7 @@ setup_data <- function() {
     transmute(word = X1, sentiment = NA, score = X2, lexicon = "AFINN")
 
   sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon)
+  devtools::use_data(sentiments, overwrite = TRUE)
 
   SMART <- data_frame(word = tm::stopwords("SMART"), lexicon = "SMART")
   snowball <- data_frame(word = tm::stopwords("en"), lexicon = "snowball")
@@ -44,5 +45,5 @@ setup_data <- function() {
   # parts of speech
   moby_file <- system.file("extdata", "mobyposi.i", package = "tidytext")
   mobypos <- readr::read_delim(moby_file, delim = "\xd7", ) %>%
-    tidyr::unnest(pos = str_split(AN, ""))
+    tidyr::unnest(pos = stringr::str_split(AN, ""))
 }
