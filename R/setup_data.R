@@ -66,6 +66,7 @@ Nominative,o
     tidyr::unnest(code = str_split(code, "")) %>%
     inner_join(parts_of_speech, by = "code") %>%
     mutate(word = str_to_lower(word)) %>%
+    select(-code) %>%
     distinct()
 
   devtools::use_data(partsofspeech, overwrite = TRUE)
