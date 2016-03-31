@@ -32,6 +32,7 @@ setup_data <- function() {
     transmute(word = X1, sentiment = NA, score = X2, lexicon = "AFINN")
 
   sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon)
+  devtools::use_data(sentiments, overwrite = TRUE)
 
   SMART <- data_frame(word = tm::stopwords("SMART"), lexicon = "SMART")
   snowball <- data_frame(word = tm::stopwords("en"), lexicon = "snowball")
