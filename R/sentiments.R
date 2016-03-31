@@ -1,0 +1,4 @@
+#' Sentiments
+dummyfunc <- function() {
+
+}
