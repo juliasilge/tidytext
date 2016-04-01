@@ -17,6 +17,7 @@ Jane Austen's novels can be so tidy.
 
 ```{r}
 library(janeaustenr)
+library(dplyr)
 originalbooks <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
