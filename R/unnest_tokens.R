@@ -14,6 +14,8 @@
 #' @details If the method for tokenizing is sentences, lines, paragraphs, or
 #' regex, the entire text will be collapsed together before tokenizing.
 #'
+#' @import dplyr
+#'
 #' @name unnest_tokens
 #'
 #' @export

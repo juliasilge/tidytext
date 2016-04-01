@@ -2,6 +2,7 @@
 #'
 #' @param x A dictionary object
 #' @param regex Whether to turn dictionary items from a glob to a regex
+#' @param ... Extra arguments, not used
 #'
 #' @return A data frame with two columns: category and word.
 #'

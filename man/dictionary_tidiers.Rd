@@ -11,6 +11,8 @@ tidy.dictionary(x, regex = FALSE, ...)
 \item{x}{A dictionary object}
 
 \item{regex}{Whether to turn dictionary items from a glob to a regex}
+
+\item{...}{Extra arguments, not used}
 }
 \value{
 A data frame with two columns: category and word.
