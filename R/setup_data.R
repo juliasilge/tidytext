@@ -3,7 +3,7 @@
 #' This is run by package authors to set up all the datasets in data/.
 setup_data <- function() {
   nrc_lexicon <- readr::read_tsv(system.file("extdata",
-                                             "NRC-emotion-lexicon-wordlevel-alphabetized-v0.92.txt",
+                                             "NRC-emotion-lexicon-wordlevel-alphabetized-v0.92.txt.zip",
                                              package = "tidytext"),
                                  col_names = FALSE, skip = 46)
   nrc_lexicon <- nrc_lexicon %>% filter(X3 == 1) %>%
@@ -60,7 +60,7 @@ Nominative,o
 ", col_names = c("pos", "code"))
 
   # parts of speech
-  moby_file <- system.file("extdata", "mobyposi.i", package = "tidytext")
+  moby_file <- system.file("extdata", "mobyposi.i.zip", package = "tidytext")
   partsofspeech <- readr::read_delim(moby_file, delim = "\xd7",
                                col_names = c("word", "code")) %>%
     tidyr::unnest(code = stringr::str_split(code, "")) %>%
