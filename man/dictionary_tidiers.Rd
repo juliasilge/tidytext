@@ -5,7 +5,7 @@
 \alias{tidy.dictionary}
 \title{Tidy dictionary objects from the quanteda package}
 \usage{
-tidy.dictionary(x, regex = FALSE, ...)
+\method{tidy}{dictionary}(x, regex = FALSE, ...)
 }
 \arguments{
 \item{x}{A dictionary object}

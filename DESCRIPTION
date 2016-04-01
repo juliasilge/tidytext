@@ -17,9 +17,11 @@ Depends: R (>= 2.10)
 Imports: dplyr,
     stringr,
     tidyr,
-    plyr
+    plyr,
+    broom
 Suggests: readr,
     tm,
     qdapDictionaries,
     devtools,
-    tokenizers
+    tokenizers,
+    wordcloud
