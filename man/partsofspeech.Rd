@@ -18,8 +18,8 @@ partsofspeech
 }
 \description{
 Parts of speech for English words from the Moby Project by Grady Ward.
-Items with a space have been removed. The raw data is in
-\code{inst/extdata}.
+Words with non-ASCII characters and items with a space have been removed.
+The raw data is in \code{inst/extdata}.
 }
 \examples{
 
