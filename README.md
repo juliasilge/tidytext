@@ -145,13 +145,14 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
        subtitle = "Tidy text analysis makes handling text easier for many tasks",
        y = "Sentiment Score",
        caption = "Texts sourced from Project Gutenberg") +
-  theme(axis.title.x=element_blank()) +
-  theme(axis.text.x=element_blank()) +
-  theme(axis.ticks.x=element_blank()) +
-  theme(legend.position="none")
+  theme(axis.title.x = element_blank()) +
+  theme(axis.text.x = element_blank()) +
+  theme(axis.ticks.x = element_blank()) +
+  theme(legend.position = "none")
 ```
 
 ![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png) 
+
 
 
 ### Combining With a Dictionary
@@ -193,7 +194,7 @@ secondary
 #> Error in eval(expr, envir, enclos): object 'secondary' not found
 ```
 
-Now we can use the [fuzzyjoin](TODO) package to join these with the Emma:
+Now we can use the [fuzzyjoin](http://github.com/dgrtwo/fuzzyjoin) package to join these with the Emma:
 
 
 ```r
