@@ -31,14 +31,17 @@ setup_data <- function() {
   AFINN_lexicon <- AFINN_lexicon %>%
     transmute(word = X1, sentiment = NA, score = X2, lexicon = "AFINN")
 
-  sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon)
+  sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon) %>%
+    filter(!str_detect(word, "[^[:ascii:]]"))
+
   devtools::use_data(sentiments, overwrite = TRUE)
 
   SMART <- data_frame(word = tm::stopwords("SMART"), lexicon = "SMART")
   snowball <- data_frame(word = tm::stopwords("en"), lexicon = "snowball")
   onix <- data_frame(word = qdapDictionaries::OnixTxtRetToolkitSWL1, lexicon = "onix")
 
-  stopwords <- bind_rows(SMART, snowball, onix)
+  stopwords <- bind_rows(SMART, snowball, onix) %>%
+    filter(!str_detect(word, "[^[:ascii:]]"))
 
   devtools::use_data(stopwords, overwrite = TRUE)
 
@@ -68,7 +71,8 @@ Nominative,o
     filter(!stringr::str_detect(word, " ")) %>%
     mutate(word = stringr::str_to_lower(word)) %>%
     select(-code) %>%
-    distinct()
+    distinct() %>%
+    filter(!str_detect(word, "[^[:ascii:]]"))
 
   devtools::use_data(partsofspeech, overwrite = TRUE)
 }
