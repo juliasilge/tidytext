@@ -63,9 +63,10 @@ Nominative,o
   moby_file <- system.file("extdata", "mobyposi.i", package = "tidytext")
   partsofspeech <- readr::read_delim(moby_file, delim = "\xd7",
                                col_names = c("word", "code")) %>%
-    tidyr::unnest(code = str_split(code, "")) %>%
+    tidyr::unnest(code = stringr::str_split(code, "")) %>%
     inner_join(parts_of_speech, by = "code") %>%
-    mutate(word = str_to_lower(word)) %>%
+    filter(!stringr::str_detect(word, " ")) %>%
+    mutate(word = stringr::str_to_lower(word)) %>%
     select(-code) %>%
     distinct()
 

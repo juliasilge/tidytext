@@ -1,14 +1,24 @@
-#' Parts of speech for English words from TODO source
+#' Parts of speech for English words from the Moby Project
 #'
-#' TODO
+#' Parts of speech for English words from the Moby Project by Grady Ward.
+#' Items with a space have been removed. The raw data is in
+#' \code{inst/extdata}.
 #'
-#' @format A data frame with 243,545 rows and 3 variables:
+#' @format A data frame with 206,977 rows and 2 variables:
 #' \describe{
 #'  \item{word}{An English word}
-#'  \item{code}{A one-character code representing the part of speech}
-#'  \item{pos}{The part of speech of the word. One of 13 options.}
-#'  }
+#'  \item{pos}{The part of speech of the word. One of 13 options, such as
+#'             "Noun", "Adverb", "Adjective"}
+#' }
 #'
-#' @source \url{TODO}
-#' \url{TODO}
+#' @examples
+#'
+#' library(dplyr)
+#'
+#' partsofspeech
+#'
+#' partsofspeech %>%
+#'   count(pos, sort = TRUE)
+#'
+#' @source \url{http://icon.shef.ac.uk/Moby/mpos.html}
 "partsofspeech"

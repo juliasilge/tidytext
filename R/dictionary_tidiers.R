@@ -1,5 +1,10 @@
 #' Tidy dictionary objects from the quanteda package
 #'
+#' @param x A dictionary object
+#' @param regex Whether to turn dictionary items from a glob to a regex
+#'
+#' @value A data frame with two columns: category and word.
+#'
 #' @name dictionary_tidiers
 #'
 #' @export

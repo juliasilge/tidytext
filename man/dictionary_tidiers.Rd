@@ -7,6 +7,11 @@
 \usage{
 tidy.dictionary(x, regex = FALSE, ...)
 }
+\arguments{
+\item{x}{A dictionary object}
+
+\item{regex}{Whether to turn dictionary items from a glob to a regex}
+}
 \description{
 Tidy dictionary objects from the quanteda package
 }
