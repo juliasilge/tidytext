@@ -5,7 +5,7 @@
 #' the sentiment lexicon from Bing Liu and collaborators, and the lexicon of
 #' Finn Arup Nielsen.
 #'
-#' @format A data frame with 23,167 rows and 4 variables:
+#' @format A data frame with 23,165 rows and 4 variables:
 #' \describe{
 #'  \item{word}{An English word}
 #'  \item{sentiment}{One of either positive, negative, anger, anticipation,

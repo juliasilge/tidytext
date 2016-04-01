@@ -19,7 +19,8 @@ stopwords
 }
 \description{
 English stop words from three lexicons, as a data frame.
-The onix and SMART sets are pulled from the tm package.
+The onix and SMART sets are pulled from the tm package. Note
+that words with non-ASCII have been removed.
 }
 \seealso{
 \code{\link{setup_data}}

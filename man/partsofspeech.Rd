@@ -4,7 +4,7 @@
 \name{partsofspeech}
 \alias{partsofspeech}
 \title{Parts of speech for English words from the Moby Project}
-\format{A data frame with 206,977 rows and 2 variables:
+\format{A data frame with 205,985 rows and 2 variables:
 \describe{
  \item{word}{An English word}
  \item{pos}{The part of speech of the word. One of 13 options, such as

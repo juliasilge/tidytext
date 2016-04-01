@@ -4,7 +4,7 @@
 \name{sentiments}
 \alias{sentiments}
 \title{Sentiment lexicons from three sources}
-\format{A data frame with 23,167 rows and 4 variables:
+\format{A data frame with 23,165 rows and 4 variables:
 \describe{
  \item{word}{An English word}
  \item{sentiment}{One of either positive, negative, anger, anticipation,

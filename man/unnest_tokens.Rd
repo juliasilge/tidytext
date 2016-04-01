@@ -28,6 +28,10 @@ Default is "words".}
 \item{drop}{Whether original text column should get dropped}
 
 \item{...}{Extra arguments passed on to the tokenizer}
+
+\item{token}{Token column to be created as bare name}
+
+\item{text}{Text column that gets split as bare name}
 }
 \description{
 Split a column into tokens using either the tokenizer package or str_split
