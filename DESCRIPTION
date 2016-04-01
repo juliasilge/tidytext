@@ -14,3 +14,6 @@ URL: http://github.com/juliasilge/tidytext
 VignetteBuilder: knitr
 BugReports: http://github.com/juliasilge/tidytext/issues
 RoxygenNote: 5.0.1
+Imports: dplyr,
+    stringr
+Suggests: readr
