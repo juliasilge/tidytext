@@ -14,7 +14,7 @@
 #'
 #' @export
 tidy.dgTMatrix <- function(x, ...) {
-  tidy_triplet(x, Matrix(summary(x)))
+  tidy_triplet(x, Matrix::summary(x))
 }
 
 

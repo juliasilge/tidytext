@@ -2,6 +2,8 @@
 % Please edit documentation in R/sparse_tidiers.R
 \name{sparse_tidiers}
 \alias{sparse_tidiers}
+\alias{tidy.DocumentTermMatrix}
+\alias{tidy.TermDocumentMatrix}
 \alias{tidy.dgCMatrix}
 \alias{tidy.dgTMatrix}
 \alias{tidy.sparseMatrix}
@@ -12,6 +14,10 @@
 \method{tidy}{dgCMatrix}(x, ...)
 
 \method{tidy}{sparseMatrix}(x, ...)
+
+\method{tidy}{DocumentTermMatrix}(x, ...)
+
+\method{tidy}{TermDocumentMatrix}(x, ...)
 }
 \arguments{
 \item{x}{A Matrix object}

@@ -18,7 +18,8 @@ Imports: dplyr,
     stringr,
     tidyr,
     plyr,
-    broom
+    broom,
+    Matrix
 Suggests: readr,
     tm,
     qdapDictionaries,
