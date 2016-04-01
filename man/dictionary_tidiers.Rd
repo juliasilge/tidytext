@@ -12,6 +12,9 @@ tidy.dictionary(x, regex = FALSE, ...)
 
 \item{regex}{Whether to turn dictionary items from a glob to a regex}
 }
+\value{
+A data frame with two columns: category and word.
+}
 \description{
 Tidy dictionary objects from the quanteda package
 }

@@ -3,7 +3,7 @@
 #' @param x A dictionary object
 #' @param regex Whether to turn dictionary items from a glob to a regex
 #'
-#' @value A data frame with two columns: category and word.
+#' @return A data frame with two columns: category and word.
 #'
 #' @name dictionary_tidiers
 #'
