@@ -92,32 +92,32 @@ books %>% count(word, sort = TRUE)
 #> ..    ...   ...
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at negative words from the Bing lexicon. What are the most common negative words in *Mansfield Park*?
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words associated with sadness from the NRC lexicon. What are the most common sadness words in *Mansfield Park*?
 
 
 ```r
-negativebing <- filter(sentiments, lexicon == "bing" & sentiment == "negative")
+nrcsadness <- filter(sentiments, lexicon == "nrc" & sentiment == "sadness")
 books %>% filter(book == "Mansfield Park") %>% 
-  inner_join(negativebing) %>% count(word, sort = TRUE)
+  inner_join(nrcsadness) %>% count(word, sort = TRUE)
 #> Joining by: "word"
-#> Source: local data frame [978 x 2]
+#> Source: local data frame [387 x 2]
 #> 
 #>          word     n
 #>         (chr) (int)
-#> 1        miss   432
-#> 2        poor    96
-#> 3  impossible    57
-#> 4      object    55
-#> 5         bad    49
-#> 6        evil    48
-#> 7       doubt    46
-#> 8     anxious    42
+#> 1      mother    89
+#> 2     feeling    75
+#> 3         ill    63
+#> 4  impossible    57
+#> 5       leave    56
+#> 6         bad    49
+#> 7        evil    48
+#> 8       doubt    46
 #> 9    scarcely    42
-#> 10     temper    41
+#> 10      worse    40
 #> ..        ...   ...
 ```
 
-Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word, then count the number of positive and negative words in defined sections of each novel.
+Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 
 ```r

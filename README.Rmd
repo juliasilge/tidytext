@@ -63,15 +63,15 @@ Now, let's see what are the most common words in all the books as a whole.
 books %>% count(word, sort = TRUE) 
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at negative words from the Bing lexicon. What are the most common negative words in *Mansfield Park*?
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words associated with sadness from the NRC lexicon. What are the most common sadness words in *Mansfield Park*?
 
 ```{r}
-negativebing <- filter(sentiments, lexicon == "bing" & sentiment == "negative")
+nrcsadness <- filter(sentiments, lexicon == "nrc" & sentiment == "sadness")
 books %>% filter(book == "Mansfield Park") %>% 
-  inner_join(negativebing) %>% count(word, sort = TRUE)
+  inner_join(nrcsadness) %>% count(word, sort = TRUE)
 ```
 
-Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word, then count the number of positive and negative words in defined sections of each novel.
+Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 ```{r}
 bing <- filter(sentiments, lexicon == "bing")
@@ -83,7 +83,7 @@ janeaustensentiment <- books %>% inner_join(bing) %>%
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r, fig.width=12, fig.height=16}
+```{r, fig.width=8, fig.height=10}
 library(ggplot2)
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   geom_bar(stat = "identity") +
