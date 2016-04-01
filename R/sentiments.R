@@ -3,7 +3,7 @@
 #' Three lexicons for sentiment analysis are combined here in a tidy data frame.
 #' The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
 #' the sentiment lexicon from Bing Liu and collaborators, and the lexicon of
-#' Finn Årup Nielsen.
+#' Finn Arup Nielsen.
 #'
 #' @format A data frame with 23,167 rows and 4 variables:
 #' \describe{
