@@ -7,7 +7,7 @@ In progress at ROpenSci Unconf 2016.
 
 
 
-Jane Austen's novels can be so tidy.
+### Jane Austen's Novels Can Be So Tidy
 
 
 ```r
@@ -40,26 +40,26 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 
 
 ```r
+library(tidytext)
 library(tokenizers)
 books <- originalbooks %>%
   unnest_tokens(word, text)
-#> Error in function_list[[k]](value): could not find function "unnest_tokens"
 
 books
-#> Source: local data frame [217,565 x 4]
+#> Source: local data frame [724,971 x 4]
 #> 
 #>                   book linenumber chapter        word
 #>                 (fctr)      (int)   (int)       (chr)
 #> 1  Sense & Sensibility          1       0       sense
-#> 2  Sense & Sensibility          1       0 sensibility
-#> 3  Sense & Sensibility          2       0        jane
-#> 4  Sense & Sensibility          2       0      austen
-#> 5  Sense & Sensibility          3       0        1811
-#> 6  Sense & Sensibility          4       1     chapter
-#> 7  Sense & Sensibility          4       1           1
-#> 8  Sense & Sensibility          5       1      family
-#> 9  Sense & Sensibility          5       1    dashwood
-#> 10 Sense & Sensibility          5       1     settled
+#> 2  Sense & Sensibility          1       0         and
+#> 3  Sense & Sensibility          1       0 sensibility
+#> 4  Sense & Sensibility          2       0          by
+#> 5  Sense & Sensibility          2       0        jane
+#> 6  Sense & Sensibility          2       0      austen
+#> 7  Sense & Sensibility          3       0        1811
+#> 8  Sense & Sensibility          4       1     chapter
+#> 9  Sense & Sensibility          4       1           1
+#> 10 Sense & Sensibility          5       1         the
 #> ..                 ...        ...     ...         ...
 ```
 
@@ -93,7 +93,7 @@ books %>% count(word, sort = TRUE)
 #> ..    ...   ...
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words associated with sadness from the NRC lexicon. What are the most common sadness words in *Mansfield Park*?
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words with a sadness score from the NRC lexicon. What are the most common sadness words in *Mansfield Park*?
 
 
 ```r
@@ -122,13 +122,13 @@ Or instead we could examine how sentiment changes changes during each novel. Let
 
 
 ```r
+library(tidyr)
 bing <- filter(sentiments, lexicon == "bing")
 janeaustensentiment <- books %>% inner_join(bing) %>% 
   count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
 #> Joining by: "word"
-#> Error in function_list[[i]](value): could not find function "spread"
 ```
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
@@ -147,14 +147,12 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   theme(axis.text.x=element_blank()) +
   theme(axis.ticks.x=element_blank()) +
   theme(legend.position="none")
-#> Warning: Stacking not well defined when ymin != 0
 ```
 
 ![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
 
 
-
-### Combining with a dictionary
+### Combining With a Dictionary
 
 Download a psych dictionary:
 
