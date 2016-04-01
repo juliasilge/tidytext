@@ -13,6 +13,14 @@ Jane Austen's novels can be so tidy.
 ```r
 library(janeaustenr)
 library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 originalbooks <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
@@ -43,22 +51,23 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 library(tokenizers)
 books <- originalbooks %>%
   unnest_tokens(word, text)
+#> Error in function_list[[k]](value): could not find function "unnest_tokens"
 
 books
-#> Source: local data frame [724,971 x 4]
+#> Source: local data frame [217,565 x 4]
 #> 
 #>                   book linenumber chapter        word
 #>                 (fctr)      (int)   (int)       (chr)
 #> 1  Sense & Sensibility          1       0       sense
-#> 2  Sense & Sensibility          1       0         and
-#> 3  Sense & Sensibility          1       0 sensibility
-#> 4  Sense & Sensibility          2       0          by
-#> 5  Sense & Sensibility          2       0        jane
-#> 6  Sense & Sensibility          2       0      austen
-#> 7  Sense & Sensibility          3       0        1811
-#> 8  Sense & Sensibility          4       1     chapter
-#> 9  Sense & Sensibility          4       1           1
-#> 10 Sense & Sensibility          5       1         the
+#> 2  Sense & Sensibility          1       0 sensibility
+#> 3  Sense & Sensibility          2       0        jane
+#> 4  Sense & Sensibility          2       0      austen
+#> 5  Sense & Sensibility          3       0        1811
+#> 6  Sense & Sensibility          4       1     chapter
+#> 7  Sense & Sensibility          4       1           1
+#> 8  Sense & Sensibility          5       1      family
+#> 9  Sense & Sensibility          5       1    dashwood
+#> 10 Sense & Sensibility          5       1     settled
 #> ..                 ...        ...     ...         ...
 ```
 
@@ -127,6 +136,7 @@ janeaustensentiment <- books %>% inner_join(bing) %>%
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
 #> Joining by: "word"
+#> Error in function_list[[i]](value): could not find function "spread"
 ```
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
