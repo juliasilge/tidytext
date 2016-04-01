@@ -55,6 +55,20 @@ books <- books %>%
   filter(!(word %in% stopwords$word))
 ```
 
+Now, let's see what are the most common words in all the books as a whole.
+
+```{r}
+books %>% count(word, sort = TRUE) 
+```
+
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at negative words from the Bing lexicon. What are the most common negative words in *Mansfield Park*?
+
+```{r}
+negativebing <- filter(sentiments, lexicon == "bing" & sentiment == "negative")
+books %>% filter(book == "Mansfield Park") %>% 
+  inner_join(negativebing) %>% count(word, sort = TRUE)
+```
+
 
 
 ### Combining with a dictionary

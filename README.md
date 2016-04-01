@@ -41,50 +41,81 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 library(tokenizers)
 books <- books %>%
   unnest_tokens(word, text)
-#> Error in get(method, as.environment("package:tokenizers")): object 'tokenize_' not found
 
 books
-#> Source: local data frame [62,271 x 3]
+#> Source: local data frame [724,971 x 3]
 #> 
-#>                                                                     text
-#>                                                                    (chr)
-#> 1                                                  SENSE AND SENSIBILITY
-#> 2                                                         by Jane Austen
-#> 3                                                                 (1811)
-#> 4                                                              CHAPTER 1
-#> 5  The family of Dashwood had long been settled in Sussex.  Their estate
-#> 6   was large, and their residence was at Norland Park, in the centre of
-#> 7      their property, where, for many generations, they had lived in so
-#> 8    respectable a manner as to engage the general good opinion of their
-#> 9  surrounding acquaintance.  The late owner of this estate was a single
-#> 10  man, who lived to a very advanced age, and who for many years of his
-#> ..                                                                   ...
-#> Variables not shown: book (chr), chapter (int)
+#>                   book chapter        word
+#>                  (chr)   (int)       (chr)
+#> 1  Sense & Sensibility       0       sense
+#> 2  Sense & Sensibility       0         and
+#> 3  Sense & Sensibility       0 sensibility
+#> 4  Sense & Sensibility       0          by
+#> 5  Sense & Sensibility       0        jane
+#> 6  Sense & Sensibility       0      austen
+#> 7  Sense & Sensibility       0        1811
+#> 8  Sense & Sensibility       1     chapter
+#> 9  Sense & Sensibility       1           1
+#> 10 Sense & Sensibility       1         the
+#> ..                 ...     ...         ...
 ```
 
-### Create word-per-row data frame
+We can remove stop words in the `tidytext` package.
 
 
 ```r
-library(dplyr)
-library(tidyr)
-library(stringr)
-library(janeaustenr)
-
-emma_words <- data_frame(word = emma) %>%
-  mutate(line = row_number()) %>%
-  unnest(word = str_split(str_to_lower(emma), "[^a-z']")) %>%
-  filter(word != "")
-```
-
-We can remove stop words:
-
-
-```r
-emma_words <- emma_words %>%
+books <- books %>%
   filter(!(word %in% stopwords$word))
-#> Error in eval(expr, envir, enclos): object of type 'closure' is not subsettable
 ```
+
+Now, let's see what are the most common words in all the books as a whole.
+
+
+```r
+books %>% count(word, sort = TRUE) 
+#> Source: local data frame [13,896 x 2]
+#> 
+#>      word     n
+#>     (chr) (int)
+#> 1    miss  1854
+#> 2    time  1337
+#> 3   fanny   862
+#> 4    dear   822
+#> 5    lady   817
+#> 6     sir   806
+#> 7     day   797
+#> 8    emma   787
+#> 9  sister   727
+#> 10  house   699
+#> ..    ...   ...
+```
+
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at negative words from the Bing lexicon. What are the most common negative words in *Mansfield Park*?
+
+
+```r
+negativebing <- filter(sentiments, lexicon == "bing" & sentiment == "negative")
+books %>% filter(book == "Mansfield Park") %>% 
+  inner_join(negativebing) %>% count(word, sort = TRUE)
+#> Joining by: "word"
+#> Source: local data frame [978 x 2]
+#> 
+#>          word     n
+#>         (chr) (int)
+#> 1        miss   432
+#> 2        poor    96
+#> 3  impossible    57
+#> 4      object    55
+#> 5         bad    49
+#> 6        evil    48
+#> 7       doubt    46
+#> 8     anxious    42
+#> 9    scarcely    42
+#> 10     temper    41
+#> ..        ...   ...
+```
+
+
 
 ### Combining with a dictionary
 
@@ -95,6 +126,7 @@ Download a psych dictionary:
 RIDzipfile <- download.file("http://provalisresearch.com/Download/RID.ZIP", "RID.zip")
 unzip("RID.zip")
 RIDdict <- dictionary(file = "RID.CAT", format = "wordstat")
+#> Error in eval(expr, envir, enclos): could not find function "dictionary"
 file.remove("RID.zip", "RID.CAT", "RID.exc")
 #> [1] TRUE TRUE TRUE
 ```

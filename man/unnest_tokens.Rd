@@ -5,10 +5,10 @@
 \alias{unnest_tokens_}
 \title{Split a column into tokens using either the tokenizer package or str_split}
 \usage{
-unnest_tokens_(tbl, token_col, text_col, method = NULL, to_lower = TRUE,
+unnest_tokens_(tbl, token_col, text_col, method = "words", to_lower = TRUE,
   drop = TRUE, ...)
 
-unnest_tokens(tbl, token, text, method = NULL, to_lower = TRUE,
+unnest_tokens(tbl, token, text, method = "words", to_lower = TRUE,
   drop = TRUE, ...)
 }
 \arguments{
