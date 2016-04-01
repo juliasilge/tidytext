@@ -9,6 +9,7 @@ In progress at ROpenSci Unconf 2016.
 
 
 ```r
+library(janeaustenr)
 books <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
@@ -17,20 +18,18 @@ books <- bind_rows(
   data_frame(text = northangerabbey, book = "Northanger Abbey"),
   data_frame(text = persuasion, book = "Persuasion")
 )
-#> Error in eval(expr, envir, enclos): could not find function "bind_rows"
 ```
 
 Book analysis
 
 
 ```r
+library(stringr)
 books <- books %>%
   group_by(book) %>%
-  mutate(text = str_to_lower(text),
-         line = row_number(),
-         chapter = cumsum(str_detect(text, "^chapter [\\divxlc]"))) %>%
+  mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", ignore_case = TRUE)))) %>%
   ungroup()
-#> Error in eval(expr, envir, enclos): could not find function "%>%"
 ```
 
 Split by word:
@@ -40,7 +39,22 @@ Split by word:
 books %>%
   unnest(word = str_split(text, "[^a-z']")) %>%
   filter(word != "")
-#> Error in eval(expr, envir, enclos): could not find function "%>%"
+#> Source: local data frame [711,883 x 5]
+#> 
+#>                                                                     text
+#>                                                                    (chr)
+#> 1                                                         by Jane Austen
+#> 2                                                         by Jane Austen
+#> 3                                                         by Jane Austen
+#> 4  The family of Dashwood had long been settled in Sussex.  Their estate
+#> 5  The family of Dashwood had long been settled in Sussex.  Their estate
+#> 6  The family of Dashwood had long been settled in Sussex.  Their estate
+#> 7  The family of Dashwood had long been settled in Sussex.  Their estate
+#> 8  The family of Dashwood had long been settled in Sussex.  Their estate
+#> 9  The family of Dashwood had long been settled in Sussex.  Their estate
+#> 10 The family of Dashwood had long been settled in Sussex.  Their estate
+#> ..                                                                   ...
+#> Variables not shown: book (chr), line (int), chapter (int), word (chr)
 ```
 
 ### Create word-per-row data frame
@@ -48,16 +62,6 @@ books %>%
 
 ```r
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> 
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> 
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 library(tidyr)
 library(stringr)
 library(janeaustenr)
@@ -74,7 +78,6 @@ We can remove stop words using `anti_join`:
 ```r
 emma_words <- emma_words %>%
   filter(!(word %in% stopwords$word))
-#> Error in eval(expr, envir, enclos): object 'stopwords' not found
 ```
 
 ### Combining with a dictionary
@@ -86,7 +89,6 @@ Download a psych dictionary:
 RIDzipfile <- download.file("http://provalisresearch.com/Download/RID.ZIP", "RID.zip")
 unzip("RID.zip")
 RIDdict <- dictionary(file = "RID.CAT", format = "wordstat")
-#> Error in eval(expr, envir, enclos): could not find function "dictionary"
 file.remove("RID.zip", "RID.CAT", "RID.exc")
 #> [1] TRUE TRUE TRUE
 ```

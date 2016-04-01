@@ -19,8 +19,17 @@ unnest_tokens_ <- function(tbl, token_col, text_col, method = NULL,
     col <- stringr::str_to_lower(col)
   }
 
-  # I don't have tokenizer so TODO on Julia's computer
-  tbl[[token_col]] <- stringr::str_split(col, "[^A-Za-z']+")
+  if (!is.null(method) && stringr::str_detect(method, "^tokenize_")) {
+    requireNamespace("tokenizers")
+    tokenfunc <- get(method, as.environment("package:tokenizers"))
+    if (method == "tokenize_characters" || method == "tokenize_words") {
+      tbl[[token_col]] <- tokenfunc(col, lowercase = FALSE, ...)
+    } else {
+      tbl[[token_col]] <- tokenfunc(col, ...)
+    }
+  } else {
+    tbl[[token_col]] <- stringr::str_split(col, "[^A-Za-z']+")
+  }
 
   if (drop) {
     tbl[[text_col]] <- NULL
