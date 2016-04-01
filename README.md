@@ -12,7 +12,7 @@ Jane Austen's novels can be so tidy.
 
 ```r
 library(janeaustenr)
-books <- bind_rows(
+originalbooks <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
   data_frame(text = mansfieldpark, book = "Mansfield Park"),
@@ -20,6 +20,7 @@ books <- bind_rows(
   data_frame(text = northangerabbey, book = "Northanger Abbey"),
   data_frame(text = persuasion, book = "Persuasion")
 )
+#> Error in eval(expr, envir, enclos): could not find function "bind_rows"
 ```
 
 Where are the chapters?
@@ -27,11 +28,12 @@ Where are the chapters?
 
 ```r
 library(stringr)
-books <- books %>%
+originalbooks <- originalbooks %>%
   group_by(book) %>%
   mutate(chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
                                                  ignore_case = TRUE)))) %>%
   ungroup()
+#> Error in eval(expr, envir, enclos): object 'originalbooks' not found
 ```
 
 Now we can use our new function for unnest and tokenizing. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
@@ -39,33 +41,21 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 
 ```r
 library(tokenizers)
-books <- books %>%
+books <- originalbooks %>%
   unnest_tokens(word, text)
+#> Error in eval(expr, envir, enclos): object 'originalbooks' not found
 
 books
-#> Source: local data frame [724,971 x 3]
-#> 
-#>                   book chapter        word
-#>                  (chr)   (int)       (chr)
-#> 1  Sense & Sensibility       0       sense
-#> 2  Sense & Sensibility       0         and
-#> 3  Sense & Sensibility       0 sensibility
-#> 4  Sense & Sensibility       0          by
-#> 5  Sense & Sensibility       0        jane
-#> 6  Sense & Sensibility       0      austen
-#> 7  Sense & Sensibility       0        1811
-#> 8  Sense & Sensibility       1     chapter
-#> 9  Sense & Sensibility       1           1
-#> 10 Sense & Sensibility       1         the
-#> ..                 ...     ...         ...
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
-We can remove stop words in the `tidytext` package.
+We can remove stop words kept in a tidy data set in the `tidytext` package.
 
 
 ```r
 books <- books %>%
   filter(!(word %in% stopwords$word))
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
 Now, let's see what are the most common words in all the books as a whole.
@@ -73,21 +63,7 @@ Now, let's see what are the most common words in all the books as a whole.
 
 ```r
 books %>% count(word, sort = TRUE) 
-#> Source: local data frame [13,896 x 2]
-#> 
-#>      word     n
-#>     (chr) (int)
-#> 1    miss  1854
-#> 2    time  1337
-#> 3   fanny   862
-#> 4    dear   822
-#> 5    lady   817
-#> 6     sir   806
-#> 7     day   797
-#> 8    emma   787
-#> 9  sister   727
-#> 10  house   699
-#> ..    ...   ...
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at negative words from the Bing lexicon. What are the most common negative words in *Mansfield Park*?
@@ -95,25 +71,21 @@ Sentiment analysis can be done as an inner join. Three sentiment lexicons are in
 
 ```r
 negativebing <- filter(sentiments, lexicon == "bing" & sentiment == "negative")
+#> Warning in data.matrix(data): NAs introduced by coercion
+
+#> Warning in data.matrix(data): NAs introduced by coercion
+
+#> Warning in data.matrix(data): NAs introduced by coercion
+#> Error in filter(sentiments, lexicon == "bing" & sentiment == "negative"): object 'lexicon' not found
 books %>% filter(book == "Mansfield Park") %>% 
   inner_join(negativebing) %>% count(word, sort = TRUE)
-#> Joining by: "word"
-#> Source: local data frame [978 x 2]
-#> 
-#>          word     n
-#>         (chr) (int)
-#> 1        miss   432
-#> 2        poor    96
-#> 3  impossible    57
-#> 4      object    55
-#> 5         bad    49
-#> 6        evil    48
-#> 7       doubt    46
-#> 8     anxious    42
-#> 9    scarcely    42
-#> 10     temper    41
-#> ..        ...   ...
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
+
+Or instead we could examine how sentiment changes changes during the novel.
+
+
+
 
 
 
@@ -164,5 +136,5 @@ library(fuzzyjoin)
 
 secondary_emma <- emma_words %>%
   regex_inner_join(secondary, by = c(word = "regex"))
-#> Error in FUN(X[[i]], ...): object 'secondary' not found
+#> Error in eval(expr, envir, enclos): object 'emma_words' not found
 ```

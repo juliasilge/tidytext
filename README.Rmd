@@ -17,7 +17,7 @@ Jane Austen's novels can be so tidy.
 
 ```{r}
 library(janeaustenr)
-books <- bind_rows(
+originalbooks <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
   data_frame(text = mansfieldpark, book = "Mansfield Park"),
@@ -31,7 +31,7 @@ Where are the chapters?
 
 ```{r}
 library(stringr)
-books <- books %>%
+originalbooks <- originalbooks %>%
   group_by(book) %>%
   mutate(chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
                                                  ignore_case = TRUE)))) %>%
@@ -42,13 +42,13 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 
 ```{r}
 library(tokenizers)
-books <- books %>%
+books <- originalbooks %>%
   unnest_tokens(word, text)
 
 books
 ```
 
-We can remove stop words in the `tidytext` package.
+We can remove stop words kept in a tidy data set in the `tidytext` package.
 
 ```{r}
 books <- books %>%
@@ -68,6 +68,13 @@ negativebing <- filter(sentiments, lexicon == "bing" & sentiment == "negative")
 books %>% filter(book == "Mansfield Park") %>% 
   inner_join(negativebing) %>% count(word, sort = TRUE)
 ```
+
+Or instead we could examine how sentiment changes changes during the novel.
+
+```{r}
+
+```
+
 
 
 
