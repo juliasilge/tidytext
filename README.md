@@ -12,6 +12,7 @@ Jane Austen's novels can be so tidy.
 
 ```r
 library(janeaustenr)
+library(dplyr)
 originalbooks <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
@@ -19,8 +20,7 @@ originalbooks <- bind_rows(
   data_frame(text = emma, book = "Emma"),
   data_frame(text = northangerabbey, book = "Northanger Abbey"),
   data_frame(text = persuasion, book = "Persuasion")
-)
-#> Error in eval(expr, envir, enclos): could not find function "bind_rows"
+) %>% mutate(book = factor(book, levels = unique(book)))
 ```
 
 Where are the chapters?
@@ -30,10 +30,10 @@ Where are the chapters?
 library(stringr)
 originalbooks <- originalbooks %>%
   group_by(book) %>%
-  mutate(chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
+  mutate(linenumber = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
                                                  ignore_case = TRUE)))) %>%
   ungroup()
-#> Error in eval(expr, envir, enclos): object 'originalbooks' not found
 ```
 
 Now we can use our new function for unnest and tokenizing. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
@@ -43,10 +43,23 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 library(tokenizers)
 books <- originalbooks %>%
   unnest_tokens(word, text)
-#> Error in eval(expr, envir, enclos): object 'originalbooks' not found
 
 books
-#> Error in eval(expr, envir, enclos): object 'books' not found
+#> Source: local data frame [724,971 x 4]
+#> 
+#>                   book linenumber chapter        word
+#>                 (fctr)      (int)   (int)       (chr)
+#> 1  Sense & Sensibility          1       0       sense
+#> 2  Sense & Sensibility          1       0         and
+#> 3  Sense & Sensibility          1       0 sensibility
+#> 4  Sense & Sensibility          2       0          by
+#> 5  Sense & Sensibility          2       0        jane
+#> 6  Sense & Sensibility          2       0      austen
+#> 7  Sense & Sensibility          3       0        1811
+#> 8  Sense & Sensibility          4       1     chapter
+#> 9  Sense & Sensibility          4       1           1
+#> 10 Sense & Sensibility          5       1         the
+#> ..                 ...        ...     ...         ...
 ```
 
 We can remove stop words kept in a tidy data set in the `tidytext` package.
@@ -55,7 +68,6 @@ We can remove stop words kept in a tidy data set in the `tidytext` package.
 ```r
 books <- books %>%
   filter(!(word %in% stopwords$word))
-#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
 Now, let's see what are the most common words in all the books as a whole.
@@ -63,7 +75,21 @@ Now, let's see what are the most common words in all the books as a whole.
 
 ```r
 books %>% count(word, sort = TRUE) 
-#> Error in eval(expr, envir, enclos): object 'books' not found
+#> Source: local data frame [13,896 x 2]
+#> 
+#>      word     n
+#>     (chr) (int)
+#> 1    miss  1854
+#> 2    time  1337
+#> 3   fanny   862
+#> 4    dear   822
+#> 5    lady   817
+#> 6     sir   806
+#> 7     day   797
+#> 8    emma   787
+#> 9  sister   727
+#> 10  house   699
+#> ..    ...   ...
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at negative words from the Bing lexicon. What are the most common negative words in *Mansfield Park*?
@@ -71,21 +97,58 @@ Sentiment analysis can be done as an inner join. Three sentiment lexicons are in
 
 ```r
 negativebing <- filter(sentiments, lexicon == "bing" & sentiment == "negative")
-#> Warning in data.matrix(data): NAs introduced by coercion
-
-#> Warning in data.matrix(data): NAs introduced by coercion
-
-#> Warning in data.matrix(data): NAs introduced by coercion
-#> Error in filter(sentiments, lexicon == "bing" & sentiment == "negative"): object 'lexicon' not found
 books %>% filter(book == "Mansfield Park") %>% 
   inner_join(negativebing) %>% count(word, sort = TRUE)
-#> Error in eval(expr, envir, enclos): object 'books' not found
+#> Joining by: "word"
+#> Source: local data frame [978 x 2]
+#> 
+#>          word     n
+#>         (chr) (int)
+#> 1        miss   432
+#> 2        poor    96
+#> 3  impossible    57
+#> 4      object    55
+#> 5         bad    49
+#> 6        evil    48
+#> 7       doubt    46
+#> 8     anxious    42
+#> 9    scarcely    42
+#> 10     temper    41
+#> ..        ...   ...
 ```
 
-Or instead we could examine how sentiment changes changes during the novel.
+Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word, then count the number of positive and negative words in defined sections of each novel.
 
 
+```r
+bing <- filter(sentiments, lexicon == "bing")
+janeaustensentiment <- books %>% inner_join(bing) %>% 
+  count(book, index = linenumber %/% 80, sentiment) %>% 
+  spread(sentiment, n, fill = 0) %>% 
+  mutate(sentiment = positive - negative)
+#> Joining by: "word"
+```
 
+Now we can plot these sentiment scores across the plot trajectory of each novel.
+
+
+```r
+library(ggplot2)
+ggplot(janeaustensentiment, aes(index, sentiment, color = book)) +
+  geom_line() +
+  geom_smooth() +
+  facet_wrap(~book, ncol = 2, scales = "free_x") +
+  labs(title = "Sentiment in Jane Austen's Novels",
+       subtitle = "Tidy text analysis makes handling text easier for many tasks",
+       y = "Sentiment Score",
+       caption = "Texts sourced from Project Gutenberg") +
+  theme(axis.title.x=element_blank()) +
+  theme(axis.text.x=element_blank()) +
+  theme(axis.ticks.x=element_blank()) +
+  theme(legend.position="none")
+```
+
+![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
 
 
 

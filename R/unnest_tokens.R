@@ -11,11 +11,21 @@
 #' @param drop Whether original text column should get dropped
 #' @param ... Extra arguments passed on to the tokenizer
 #'
+#' @details If the method for tokenizing is sentences, lines, paragraphs, or
+#' regex, the entire text will be collapsed together before tokenizing.
+#'
 #' @name unnest_tokens
 #'
 #' @export
 unnest_tokens_ <- function(tbl, token_col, text_col, method = "words",
                           to_lower = TRUE, drop = TRUE, ...) {
+  if (method %in% c("sentences", "lines", "paragraphs", "regex")) {
+    exps <- list(substitute(stringr::str_c(colname, collapse = "\n"),
+                            list(colname = as.name(text_col))))
+    names(exps) <- text_col
+    tbl <- group_by_(tbl, .dots = setdiff(colnames(tbl), text_col)) %>%
+      summarise_(.dots = exps)
+  }
   col <- tbl[[text_col]]
   if (to_lower) {
     col <- stringr::str_to_lower(col)
@@ -27,6 +37,7 @@ unnest_tokens_ <- function(tbl, token_col, text_col, method = "words",
     if (method == "tokenize_characters" || method == "tokenize_words") {
       tbl[[token_col]] <- tokenfunc(col, lowercase = FALSE, ...)
     } else { # mash the whole character string together here for other tokenizer functions
+
       tbl[[token_col]] <- tokenfunc(col, ...)
     }
   } else {

@@ -32,4 +32,8 @@ Default is "words".}
 \description{
 Split a column into tokens using either the tokenizer package or str_split
 }
+\details{
+If the method for tokenizing is sentences, lines, paragraphs, or
+regex, the entire text will be collapsed together before tokenizing.
+}
 
