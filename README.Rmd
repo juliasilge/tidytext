@@ -83,7 +83,7 @@ janeaustensentiment <- books %>% inner_join(bing) %>%
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r, fig.width=7, fig.height=7}
+```{r, fig.width=8, fig.height=8}
 library(ggplot2)
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   geom_bar(stat = "identity") +
