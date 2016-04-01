@@ -83,11 +83,10 @@ janeaustensentiment <- books %>% inner_join(bing) %>%
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r, fig.width=8, fig.height=10}
+```{r, fig.width=12, fig.height=16}
 library(ggplot2)
-ggplot(janeaustensentiment, aes(index, sentiment, color = book)) +
-  geom_line() +
-  geom_smooth() +
+ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
+  geom_bar(stat = "identity") +
   facet_wrap(~book, ncol = 2, scales = "free_x") +
   labs(title = "Sentiment in Jane Austen's Novels",
        subtitle = "Tidy text analysis makes handling text easier for many tasks",

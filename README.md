@@ -134,9 +134,8 @@ Now we can plot these sentiment scores across the plot trajectory of each novel.
 
 ```r
 library(ggplot2)
-ggplot(janeaustensentiment, aes(index, sentiment, color = book)) +
-  geom_line() +
-  geom_smooth() +
+ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
+  geom_bar(stat = "identity") +
   facet_wrap(~book, ncol = 2, scales = "free_x") +
   labs(title = "Sentiment in Jane Austen's Novels",
        subtitle = "Tidy text analysis makes handling text easier for many tasks",
@@ -146,6 +145,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, color = book)) +
   theme(axis.text.x=element_blank()) +
   theme(axis.ticks.x=element_blank()) +
   theme(legend.position="none")
+#> Warning: Stacking not well defined when ymin != 0
 ```
 
 ![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
