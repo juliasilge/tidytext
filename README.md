@@ -1,4 +1,5 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+[![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
 
 tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 ---------------
@@ -42,13 +43,11 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 ```r
 library(tidytext)
 library(tokenizers)
-#> Error in library(tokenizers): there is no package called 'tokenizers'
 books <- originalbooks %>%
   unnest_tokens(word, text)
-#> Tokenizer package not installed; using str_split instead.
 
 books
-#> Source: local data frame [725,008 x 4]
+#> Source: local data frame [724,971 x 4]
 #> 
 #>                   book linenumber chapter        word
 #>                 (fctr)      (int)   (int)       (chr)
@@ -58,10 +57,10 @@ books
 #> 4  Sense & Sensibility          2       0          by
 #> 5  Sense & Sensibility          2       0        jane
 #> 6  Sense & Sensibility          2       0      austen
-#> 7  Sense & Sensibility          4       1     chapter
-#> 8  Sense & Sensibility          5       1         the
-#> 9  Sense & Sensibility          5       1      family
-#> 10 Sense & Sensibility          5       1          of
+#> 7  Sense & Sensibility          3       0        1811
+#> 8  Sense & Sensibility          4       1     chapter
+#> 9  Sense & Sensibility          4       1           1
+#> 10 Sense & Sensibility          5       1         the
 #> ..                 ...        ...     ...         ...
 ```
 
@@ -78,18 +77,18 @@ Now, let's see what are the most common words in all the books as a whole.
 
 ```r
 books %>% count(word, sort = TRUE) 
-#> Source: local data frame [13,625 x 2]
+#> Source: local data frame [13,896 x 2]
 #> 
 #>      word     n
 #>     (chr) (int)
-#> 1    miss  1856
-#> 2    time  1339
-#> 3   fanny   859
-#> 4    dear   820
+#> 1    miss  1854
+#> 2    time  1337
+#> 3   fanny   862
+#> 4    dear   822
 #> 5    lady   817
-#> 6     sir   805
+#> 6     sir   806
 #> 7     day   797
-#> 8    emma   786
+#> 8    emma   787
 #> 9  sister   727
 #> 10  house   699
 #> ..    ...   ...
@@ -151,7 +150,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   theme(legend.position = "none")
 ```
 
-![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png) 
+![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
 
 
 
