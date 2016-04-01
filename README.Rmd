@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 ```{r}
+library(janeaustenr)
 books <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
@@ -27,11 +28,11 @@ books <- bind_rows(
 Book analysis
 
 ```{r}
+library(stringr)
 books <- books %>%
   group_by(book) %>%
-  mutate(text = str_to_lower(text),
-         line = row_number(),
-         chapter = cumsum(str_detect(text, "^chapter [\\divxlc]"))) %>%
+  mutate(line = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", ignore_case = TRUE)))) %>%
   ungroup()
 ```
 
