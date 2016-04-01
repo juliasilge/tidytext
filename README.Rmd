@@ -48,26 +48,14 @@ books <- books %>%
 books
 ```
 
-### Create word-per-row data frame
+We can remove stop words in the `tidytext` package.
 
 ```{r}
-library(dplyr)
-library(tidyr)
-library(stringr)
-library(janeaustenr)
-
-emma_words <- data_frame(word = emma) %>%
-  mutate(line = row_number()) %>%
-  unnest(word = str_split(str_to_lower(emma), "[^a-z']")) %>%
-  filter(word != "")
-```
-
-We can remove stop words:
-
-```{r}
-emma_words <- emma_words %>%
+books <- books %>%
   filter(!(word %in% stopwords$word))
 ```
+
+
 
 ### Combining with a dictionary
 

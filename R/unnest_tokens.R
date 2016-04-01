@@ -14,7 +14,7 @@
 #' @name unnest_tokens
 #'
 #' @export
-unnest_tokens_ <- function(tbl, token_col, text_col, method = NULL,
+unnest_tokens_ <- function(tbl, token_col, text_col, method = "words",
                           to_lower = TRUE, drop = TRUE, ...) {
   col <- tbl[[text_col]]
   if (to_lower) {
@@ -48,7 +48,7 @@ unnest_tokens_ <- function(tbl, token_col, text_col, method = NULL,
 
 #' @rdname unnest_tokens
 #' @export
-unnest_tokens <- function(tbl, token, text, method = NULL,
+unnest_tokens <- function(tbl, token, text, method = "words",
                            to_lower = TRUE, drop = TRUE, ...) {
   token_col <- col_name(substitute(token))
   text_col <- col_name(substitute(text))
