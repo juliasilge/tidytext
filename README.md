@@ -7,6 +7,8 @@ In progress at ROpenSci Unconf 2016.
 
 
 
+Jane Austen's novels can be so tidy.
+
 
 ```r
 library(janeaustenr)
@@ -20,41 +22,44 @@ books <- bind_rows(
 )
 ```
 
-Book analysis
+Where are the chapters?
 
 
 ```r
 library(stringr)
 books <- books %>%
   group_by(book) %>%
-  mutate(line = row_number(),
-         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", ignore_case = TRUE)))) %>%
+  mutate(chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
+                                                 ignore_case = TRUE)))) %>%
   ungroup()
 ```
 
-Split by word:
+Now we can use our new function for unnest and tokenizing. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
 
 
 ```r
-books %>%
-  unnest(word = str_split(text, "[^a-z']")) %>%
-  filter(word != "")
-#> Source: local data frame [711,883 x 5]
+library(tokenizers)
+books <- books %>%
+  unnest_tokens(word, text)
+#> Error in get(method, as.environment("package:tokenizers")): object 'tokenize_' not found
+
+books
+#> Source: local data frame [62,271 x 3]
 #> 
 #>                                                                     text
 #>                                                                    (chr)
-#> 1                                                         by Jane Austen
+#> 1                                                  SENSE AND SENSIBILITY
 #> 2                                                         by Jane Austen
-#> 3                                                         by Jane Austen
-#> 4  The family of Dashwood had long been settled in Sussex.  Their estate
+#> 3                                                                 (1811)
+#> 4                                                              CHAPTER 1
 #> 5  The family of Dashwood had long been settled in Sussex.  Their estate
-#> 6  The family of Dashwood had long been settled in Sussex.  Their estate
-#> 7  The family of Dashwood had long been settled in Sussex.  Their estate
-#> 8  The family of Dashwood had long been settled in Sussex.  Their estate
-#> 9  The family of Dashwood had long been settled in Sussex.  Their estate
-#> 10 The family of Dashwood had long been settled in Sussex.  Their estate
+#> 6   was large, and their residence was at Norland Park, in the centre of
+#> 7      their property, where, for many generations, they had lived in so
+#> 8    respectable a manner as to engage the general good opinion of their
+#> 9  surrounding acquaintance.  The late owner of this estate was a single
+#> 10  man, who lived to a very advanced age, and who for many years of his
 #> ..                                                                   ...
-#> Variables not shown: book (chr), line (int), chapter (int), word (chr)
+#> Variables not shown: book (chr), chapter (int)
 ```
 
 ### Create word-per-row data frame
@@ -72,12 +77,13 @@ emma_words <- data_frame(word = emma) %>%
   filter(word != "")
 ```
 
-We can remove stop words using `anti_join`:
+We can remove stop words:
 
 
 ```r
 emma_words <- emma_words %>%
   filter(!(word %in% stopwords$word))
+#> Error in eval(expr, envir, enclos): object of type 'closure' is not subsettable
 ```
 
 ### Combining with a dictionary

@@ -1,10 +1,12 @@
-#' Split a column into tokens
+#' Split a column into tokens using either the tokenizer package or str_split
 #'
 #' @param tbl Data frame
 #' @param token_col Token column to be created
 #' @param text_col Text column that gets split
 #' @param method Method for tokenizing. If tokenizer package
-#' is installed, use tokenize. Otherwise, use str_split.
+#' is installed, options are "characters", "words", "sentences", "lines",
+#' "paragraphs", and "regex". Otherwise, using str_split the option is "words".
+#' Default is "words".
 #' @param to_lower Whether to turn column lowercase
 #' @param drop Whether original text column should get dropped
 #' @param ... Extra arguments passed on to the tokenizer
@@ -19,15 +21,16 @@ unnest_tokens_ <- function(tbl, token_col, text_col, method = NULL,
     col <- stringr::str_to_lower(col)
   }
 
-  if (!is.null(method) && stringr::str_detect(method, "^tokenize_")) {
-    requireNamespace("tokenizers")
+  if (requireNamespace("tokenizers", quietly = TRUE)) {
+    method <- paste0("tokenize_", method)
     tokenfunc <- get(method, as.environment("package:tokenizers"))
     if (method == "tokenize_characters" || method == "tokenize_words") {
       tbl[[token_col]] <- tokenfunc(col, lowercase = FALSE, ...)
-    } else {
+    } else { # mash the whole character string together here for other tokenizer functions
       tbl[[token_col]] <- tokenfunc(col, ...)
     }
   } else {
+    message("Tokenizer package not installed; using str_split instead.")
     tbl[[token_col]] <- stringr::str_split(col, "[^A-Za-z']+")
   }
 
@@ -43,6 +46,7 @@ unnest_tokens_ <- function(tbl, token_col, text_col, method = NULL,
 }
 
 
+#' @rdname unnest_tokens
 #' @export
 unnest_tokens <- function(tbl, token, text, method = NULL,
                            to_lower = TRUE, drop = TRUE, ...) {

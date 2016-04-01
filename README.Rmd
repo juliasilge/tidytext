@@ -13,6 +13,8 @@ knitr::opts_chunk$set(
 )
 ```
 
+Jane Austen's novels can be so tidy.
+
 ```{r}
 library(janeaustenr)
 books <- bind_rows(
@@ -25,23 +27,25 @@ books <- bind_rows(
 )
 ```
 
-Book analysis
+Where are the chapters?
 
 ```{r}
 library(stringr)
 books <- books %>%
   group_by(book) %>%
-  mutate(line = row_number(),
-         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", ignore_case = TRUE)))) %>%
+  mutate(chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
+                                                 ignore_case = TRUE)))) %>%
   ungroup()
 ```
 
-Split by word:
+Now we can use our new function for unnest and tokenizing. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
 
 ```{r}
-books %>%
-  unnest(word = str_split(text, "[^a-z']")) %>%
-  filter(word != "")
+library(tokenizers)
+books <- books %>%
+  unnest_tokens(word, text)
+
+books
 ```
 
 ### Create word-per-row data frame
@@ -58,7 +62,7 @@ emma_words <- data_frame(word = emma) %>%
   filter(word != "")
 ```
 
-We can remove stop words using `anti_join`:
+We can remove stop words:
 
 ```{r}
 emma_words <- emma_words %>%
