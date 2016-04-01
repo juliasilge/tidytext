@@ -1,3 +1,4 @@
 language: r
 cache: packages
-r_github_packages: "lmullen/tokenizers"
+r_github_packages:
+ - lmullen/tokenizers
