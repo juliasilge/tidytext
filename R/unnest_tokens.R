@@ -9,6 +9,8 @@
 #' Default is "words".
 #' @param to_lower Whether to turn column lowercase
 #' @param drop Whether original text column should get dropped
+#' @param token Token column to be created as bare name
+#' @param text Text column that gets split as bare name
 #' @param ... Extra arguments passed on to the tokenizer
 #'
 #' @details If the method for tokenizing is sentences, lines, paragraphs, or
