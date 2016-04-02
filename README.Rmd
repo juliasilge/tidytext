@@ -208,3 +208,25 @@ ap_sentiments %>%
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Contribution to positivity/negativity")
 ```
+
+We can finally join the Austen and AP datasets and compare the frequencies of each word:
+
+```{r}
+comparison <- tidy(AssociatedPress) %>%
+  count(word = term) %>%
+  rename(AP = n) %>%
+  inner_join(count(books, word)) %>%
+  rename(Austen = n) %>%
+  mutate(AP = AP / sum(AP),
+         Austen = Austen / sum(Austen))
+
+comparison
+
+ggplot(comparison, aes(AP, Austen)) +
+  geom_point() +
+  geom_text(aes(label = word), check_overlap = TRUE,
+            vjust = 1, hjust = 1) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  geom_abline(color = "red")
+```

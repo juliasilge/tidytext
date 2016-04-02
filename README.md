@@ -349,3 +349,44 @@ ap_sentiments %>%
 ```
 
 ![plot of chunk unnamed-chunk-17](README-unnamed-chunk-17-1.png) 
+
+We can finally join the Austen and AP datasets and compare the frequencies of each word:
+
+
+```r
+comparison <- tidy(AssociatedPress) %>%
+  count(word = term) %>%
+  rename(AP = n) %>%
+  inner_join(count(books, word)) %>%
+  rename(Austen = n) %>%
+  mutate(AP = AP / sum(AP),
+         Austen = Austen / sum(Austen))
+#> Joining by: "word"
+
+comparison
+#> Source: local data frame [4,431 x 3]
+#> 
+#>          word           AP       Austen
+#>         (chr)        (dbl)        (dbl)
+#> 1   abandoned 2.101635e-04 7.094916e-06
+#> 2       abide 3.602803e-05 2.837966e-05
+#> 3   abilities 3.602803e-05 2.057526e-04
+#> 4     ability 2.942289e-04 2.128475e-05
+#> 5      abroad 2.401869e-04 2.554170e-04
+#> 6      abrupt 3.602803e-05 3.547458e-05
+#> 7     absence 9.607475e-05 7.875357e-04
+#> 8      absent 5.404204e-05 3.547458e-04
+#> 9    absolute 6.605139e-05 1.844678e-04
+#> 10 absolutely 2.101635e-04 6.740170e-04
+#> ..        ...          ...          ...
+
+ggplot(comparison, aes(AP, Austen)) +
+  geom_point() +
+  geom_text(aes(label = word), check_overlap = TRUE,
+            vjust = 1, hjust = 1) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  geom_abline(color = "red")
+```
+
+![plot of chunk unnamed-chunk-18](README-unnamed-chunk-18-1.png) 
