@@ -309,7 +309,7 @@ We could find the most negative documents:
 
 ```r
 ap_sentiments %>%
-  count(document, sentiment) %>%
+  count(document, sentiment, wt = count) %>%
   ungroup() %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
@@ -318,16 +318,16 @@ ap_sentiments %>%
 #> 
 #>    document negative positive sentiment
 #>       (int)    (dbl)    (dbl)     (dbl)
-#> 1        43       35       10       -25
-#> 2      2241       28        5       -23
-#> 3       531       31        9       -22
-#> 4      1263       29        7       -22
-#> 5        96       29        8       -21
-#> 6      1664       26        5       -21
-#> 7       234       28        8       -20
-#> 8       560       28        8       -20
-#> 9       102       24        5       -19
-#> 10      438       27        8       -19
+#> 1      1251       54        6       -48
+#> 2      1380       53        5       -48
+#> 3       531       51        9       -42
+#> 4        43       45       11       -34
+#> 5      1263       44       10       -34
+#> 6      2178       40        6       -34
+#> 7       334       45       12       -33
+#> 8      1664       38        5       -33
+#> 9      2147       47       14       -33
+#> 10      516       38        6       -32
 #> ..      ...      ...      ...       ...
 ```
 

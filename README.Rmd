@@ -187,7 +187,7 @@ We could find the most negative documents:
 
 ```{r}
 ap_sentiments %>%
-  count(document, sentiment) %>%
+  count(document, sentiment, wt = count) %>%
   ungroup() %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
