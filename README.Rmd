@@ -53,30 +53,41 @@ books
 We can remove stop words kept in a tidy data set in the `tidytext` package.
 
 ```{r}
+data("stopwords")
+
 books <- books %>%
-  filter(!(word %in% stopwords$word))
+  anti_join(stopwords)
 ```
 
 Now, let's see what are the most common words in all the books as a whole.
 
 ```{r}
-books %>% count(word, sort = TRUE) 
+books %>%
+  count(word, sort = TRUE) 
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words with a sadness score from the NRC lexicon. What are the most common sadness words in *Mansfield Park*?
 
 ```{r}
-nrcsadness <- filter(sentiments, lexicon == "nrc" & sentiment == "sadness")
-books %>% filter(book == "Mansfield Park") %>% 
-  inner_join(nrcsadness) %>% count(word, sort = TRUE)
+nrcsadness <- sentiments %>%
+  filter(lexicon == "nrc", sentiment == "sadness")
+
+books %>%
+  filter(book == "Mansfield Park") %>% 
+  semi_join(nrcsadness) %>%
+  count(word, sort = TRUE)
 ```
 
 Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 ```{r}
 library(tidyr)
-bing <- filter(sentiments, lexicon == "bing")
-janeaustensentiment <- books %>% inner_join(bing) %>% 
+bing <- sentiments %>%
+  filter(lexicon == "bing") %>%
+  select(-score)
+
+janeaustensentiment <- books %>%
+  inner_join(bing) %>% 
   count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
@@ -94,16 +105,19 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
 
 ### Most common positive and negative words
 
-One advantage of having 
+One advantage of having the table with both sentiment and word is that you can analyze word counts that contribute to each sentiment:
 
 ```{r}
 bing_word_counts <- books %>%
   inner_join(bing) %>%
   count(word, sentiment, sort = TRUE) %>%
-  ungroup()
+  ungroup() %>%
+  select(-score)
 
 bing_word_counts
 ```
+
+This can be shown in a graph:
 
 ```{r}
 bing_word_counts %>%
@@ -145,41 +159,52 @@ books %>%
                    max.words = 75)
 ```
 
-### Combining With a Dictionary
+### Tidying document term matrices
 
-Download a psych dictionary:
-
-```{r}
-RIDzipfile <- download.file("http://provalisresearch.com/Download/RID.ZIP", "RID.zip")
-unzip("RID.zip")
-RIDdict <- quanteda::dictionary(file = "RID.CAT", format = "wordstat")
-file.remove("RID.zip", "RID.CAT", "RID.exc")
-```
-
-And tidy it:
+Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset:
 
 ```{r}
-rid <- tidy(RIDdict, regex = TRUE) %>%
-  rename(regex = word) %>%
-  tbl_df()
-
-rid
+data("AssociatedPress", package = "topicmodels")
+AssociatedPress
 ```
 
-For now let's focus on the "secondary needs" type:
+If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. topicmodels provides a `tidy` function to do this:
 
 ```{r}
-secondary <- rid %>%
-  filter(str_detect(category, "SECONDARY"))
-
-secondary
+tidy(AssociatedPress)
 ```
 
-Now we can use the [fuzzyjoin](http://github.com/dgrtwo/fuzzyjoin) package to join these with the Emma:
+(For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)). You can then perform sentiment analysis on these newspaper articles:
 
-```{r. eval }
-library(fuzzyjoin)
+```{r}
+ap_sentiments <- tidy(AssociatedPress) %>%
+  inner_join(bing, by = c(term = "word"))
 
-secondary_emma <- emma_words %>%
-  regex_inner_join(secondary, by = c(word = "regex"))
+ap_sentiments
+```
+
+We could find the most negative documents:
+
+```{r}
+ap_sentiments %>%
+  count(document, sentiment) %>%
+  ungroup() %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(sentiment = positive - negative) %>%
+  arrange(sentiment)
+```
+
+Or see which words contributed to positivity/negativity:
+
+```{r}
+ap_sentiments %>%
+  count(sentiment, term) %>%
+  ungroup() %>%
+  filter(n >= 100) %>%
+  mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
+  mutate(term = reorder(term, n)) %>%
+  ggplot(aes(term, n, fill = sentiment)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ylab("Contribution to positivity/negativity")
 ```
