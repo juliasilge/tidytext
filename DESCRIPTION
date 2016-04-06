@@ -19,10 +19,10 @@ Imports: dplyr,
     tidyr,
     plyr,
     broom,
-    Matrix
+    Matrix,
+    tokenizers
 Suggests: readr,
     tm,
     qdapDictionaries,
     devtools,
-    tokenizers,
     wordcloud

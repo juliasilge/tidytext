@@ -40,4 +40,19 @@ Split a column into tokens using either the tokenizer package or str_split
 If the method for tokenizing is sentences, lines, paragraphs, or
 regex, the entire text will be collapsed together before tokenizing.
 }
+\examples{
+
+library(dplyr)
+library(janeaustenr)
+
+d <- data_frame(txt = prideprejudice)
+d
+
+d \%>\%
+  unnest_tokens(word, txt)
+
+d \%>\%
+  unnest_tokens(word, txt, method = "sentences")
+
+}
 

@@ -8,7 +8,8 @@
 #' "paragraphs", and "regex". Otherwise, using str_split the option is "words".
 #' Default is "words".
 #' @param to_lower Whether to turn column lowercase
-#' @param drop Whether original text column should get dropped
+#' @param drop Whether original text column should get dropped. Ignored
+#' if the original text and new token column have the same name.
 #' @param token Token column to be created as bare name
 #' @param text Text column that gets split as bare name
 #' @param ... Extra arguments passed on to the tokenizer
@@ -17,8 +18,23 @@
 #' regex, the entire text will be collapsed together before tokenizing.
 #'
 #' @import dplyr
+#' @import tokenizers
 #'
 #' @name unnest_tokens
+#'
+#' @examples
+#'
+#' library(dplyr)
+#' library(janeaustenr)
+#'
+#' d <- data_frame(txt = prideprejudice)
+#' d
+#'
+#' d %>%
+#'   unnest_tokens(word, txt)
+#'
+#' d %>%
+#'   unnest_tokens(word, txt, method = "sentences")
 #'
 #' @export
 unnest_tokens_ <- function(tbl, token_col, text_col, method = "words",
@@ -35,21 +51,15 @@ unnest_tokens_ <- function(tbl, token_col, text_col, method = "words",
     col <- stringr::str_to_lower(col)
   }
 
-  if (requireNamespace("tokenizers", quietly = TRUE)) {
-    method <- paste0("tokenize_", method)
-    tokenfunc <- get(method, as.environment("package:tokenizers"))
-    if (method == "tokenize_characters" || method == "tokenize_words") {
-      tbl[[token_col]] <- tokenfunc(col, lowercase = FALSE, ...)
-    } else { # mash the whole character string together here for other tokenizer functions
-
-      tbl[[token_col]] <- tokenfunc(col, ...)
-    }
-  } else {
-    message("Tokenizer package not installed; using str_split instead.")
-    tbl[[token_col]] <- stringr::str_split(col, "[^A-Za-z']+")
+  method <- paste0("tokenize_", method)
+  tokenfunc <- get(method, as.environment("package:tokenizers"))
+  if (method == "tokenize_characters" || method == "tokenize_words") {
+    tbl[[token_col]] <- tokenfunc(col, lowercase = FALSE, ...)
+  } else { # mash the whole character string together here for other tokenizer functions
+    tbl[[token_col]] <- tokenfunc(col, ...)
   }
 
-  if (drop) {
+  if (drop && text_col != token_col) {
     tbl[[text_col]] <- NULL
   }
 
