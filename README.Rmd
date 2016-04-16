@@ -183,9 +183,10 @@ data("AssociatedPress", package = "topicmodels")
 AssociatedPress
 ```
 
-If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. topicmodels provides a `tidy` function to do this:
+If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. The broom provides a `tidy` function to do this:
 
 ```{r}
+library(broom)
 tidy(AssociatedPress)
 ```
 
