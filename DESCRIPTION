@@ -25,4 +25,7 @@ Suggests: readr,
     tm,
     qdapDictionaries,
     devtools,
-    wordcloud
+    wordcloud,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
