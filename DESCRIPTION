@@ -20,7 +20,8 @@ Imports: dplyr,
     plyr,
     broom,
     Matrix,
-    tokenizers
+    tokenizers,
+    janeaustenr
 Suggests: readr,
     tm,
     qdapDictionaries,

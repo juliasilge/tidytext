@@ -19,6 +19,7 @@
 #'
 #' @import dplyr
 #' @import tokenizers
+#' @import janeaustenr
 #'
 #' @name unnest_tokens
 #'
