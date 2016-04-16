@@ -247,9 +247,8 @@ Many existing text mining datasets are in the form of a DocumentTermMatrix class
 
 ```r
 data("AssociatedPress", package = "topicmodels")
-#> Error in find.package(package, lib.loc, verbose = verbose): there is no package called 'topicmodels'
 AssociatedPress
-#> Error in eval(expr, envir, enclos): object 'AssociatedPress' not found
+#> A 2246x10473 simple triplet matrix.
 ```
 
 If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. topicmodels provides a `tidy` function to do this:
