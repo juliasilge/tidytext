@@ -379,6 +379,7 @@ comparison
 #> 10 absolutely 2.101799e-04 6.740457e-04
 #> ..        ...          ...          ...
 
+library(scales)
 ggplot(comparison, aes(AP, Austen)) +
   geom_point() +
   geom_text(aes(label = word), check_overlap = TRUE,
@@ -386,8 +387,9 @@ ggplot(comparison, aes(AP, Austen)) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
-#> Error in check_breaks_labels(breaks, labels): could not find function "percent_format"
 ```
+
+![plot of chunk unnamed-chunk-19](README-unnamed-chunk-19-1.png)
 
 ### Code of Conduct
 

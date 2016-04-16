@@ -238,6 +238,7 @@ comparison <- tidy(AssociatedPress) %>%
 
 comparison
 
+library(scales)
 ggplot(comparison, aes(AP, Austen)) +
   geom_point() +
   geom_text(aes(label = word), check_overlap = TRUE,
