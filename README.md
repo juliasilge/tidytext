@@ -3,8 +3,8 @@
 tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 ---------------
 
-**Authors:** [David Robinson](http://varianceexplained.org/), [Julia Silge](http://juliasilge.com/)
-**License:** [MIT](https://opensource.org/licenses/MIT)
+**Authors:** [David Robinson](http://varianceexplained.org/), [Julia Silge](http://juliasilge.com/)<br>
+**License:** [MIT](https://opensource.org/licenses/MIT)<br>
 
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
@@ -19,36 +19,15 @@ To install this package from Github, use `devtools`:
 ```r
 library(devtools)
 install_github("juliasilge/tidytext")
-#> Downloading GitHub repo juliasilge/tidytext@master
-#> from URL https://api.github.com/repos/juliasilge/tidytext/zipball/master
-#> Installing tidytext
-#> Installing 1 package: tokenizers
-#> 
-#> The downloaded binary packages are in
-#> 	/var/folders/qm/z0t23pj56qd_tfbjz4f66bj40000gp/T//RtmpbBwbsA/downloaded_packages
-#> '/Library/Frameworks/R.framework/Resources/bin/R' --no-site-file  \
-#>   --no-environ --no-save --no-restore --quiet CMD INSTALL  \
-#>   '/private/var/folders/qm/z0t23pj56qd_tfbjz4f66bj40000gp/T/RtmpbBwbsA/devtools3dfe1c119791/juliasilge-tidytext-a0d053e'  \
-#>   --library='/Library/Frameworks/R.framework/Versions/3.2/Resources/library'  \
-#>   --install-tests
-#> 
-library(tidytext)
 ```
 
 ### Jane Austen's Novels Can Be So Tidy
 
 
 ```r
+library(tidytext)
 library(janeaustenr)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 originalbooks <- bind_rows(
   data_frame(text = sensesensibility, book = "Sense & Sensibility"),
   data_frame(text = prideprejudice, book = "Pride & Prejudice"),
@@ -78,7 +57,6 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 ```r
 library(tidytext)
 library(tokenizers)
-#> Warning: package 'tokenizers' was built under R version 3.2.5
 books <- originalbooks %>%
   unnest_tokens(word, text)
 
@@ -90,13 +68,13 @@ books
 #> 1  Sense & Sensibility          1       0       sense
 #> 2  Sense & Sensibility          1       0         and
 #> 3  Sense & Sensibility          1       0 sensibility
-#> 4  Sense & Sensibility          2       0          by
-#> 5  Sense & Sensibility          2       0        jane
-#> 6  Sense & Sensibility          2       0      austen
-#> 7  Sense & Sensibility          3       0        1811
-#> 8  Sense & Sensibility          4       1     chapter
-#> 9  Sense & Sensibility          4       1           1
-#> 10 Sense & Sensibility          5       1         the
+#> 4  Sense & Sensibility          3       0          by
+#> 5  Sense & Sensibility          3       0        jane
+#> 6  Sense & Sensibility          3       0      austen
+#> 7  Sense & Sensibility          5       0        1811
+#> 8  Sense & Sensibility         10       1     chapter
+#> 9  Sense & Sensibility         10       1           1
+#> 10 Sense & Sensibility         13       1         the
 #> ..                 ...        ...     ...         ...
 ```
 
@@ -237,7 +215,6 @@ For example, consider the wordcloud package.
 
 ```r
 library(wordcloud)
-#> Loading required package: RColorBrewer
 
 books %>%
   count(word) %>%
