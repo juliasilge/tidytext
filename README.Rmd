@@ -1,8 +1,13 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
 
 tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 ---------------
+
+**Authors:** [David Robinson](http://varianceexplained.org/), [Julia Silge](http://juliasilge.com/)<br>
+**License:** [MIT](https://opensource.org/licenses/MIT)<br>
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
+[![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
@@ -12,9 +17,19 @@ knitr::opts_chunk$set(
 )
 ```
 
+### Installation
+
+To install this package from Github, use `devtools`:
+
+```{r, eval=FALSE}
+library(devtools)
+install_github("juliasilge/tidytext")
+```
+
 ### Jane Austen's Novels Can Be So Tidy
 
 ```{r}
+library(tidytext)
 library(janeaustenr)
 library(dplyr)
 originalbooks <- bind_rows(
@@ -168,9 +183,10 @@ data("AssociatedPress", package = "topicmodels")
 AssociatedPress
 ```
 
-If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. topicmodels provides a `tidy` function to do this:
+If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. The broom provides a `tidy` function to do this:
 
 ```{r}
+library(broom)
 tidy(AssociatedPress)
 ```
 
@@ -222,6 +238,7 @@ comparison <- tidy(AssociatedPress) %>%
 
 comparison
 
+library(scales)
 ggplot(comparison, aes(AP, Austen)) +
   geom_point() +
   geom_text(aes(label = word), check_overlap = TRUE,
@@ -230,3 +247,7 @@ ggplot(comparison, aes(AP, Austen)) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
 ```
+
+### Code of Conduct
+
+This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

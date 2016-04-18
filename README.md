@@ -1,15 +1,31 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-[![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
 
 tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 ---------------
 
+**Authors:** [David Robinson](http://varianceexplained.org/), [Julia Silge](http://juliasilge.com/)<br>
+**License:** [MIT](https://opensource.org/licenses/MIT)<br>
 
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
+[![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
+
+
+
+### Installation
+
+To install this package from Github, use `devtools`:
+
+
+```r
+library(devtools)
+install_github("juliasilge/tidytext")
+```
 
 ### Jane Austen's Novels Can Be So Tidy
 
 
 ```r
+library(tidytext)
 library(janeaustenr)
 library(dplyr)
 originalbooks <- bind_rows(
@@ -41,26 +57,24 @@ Now we can use our new function for unnest and tokenizing. We can use the `token
 ```r
 library(tidytext)
 library(tokenizers)
-#> Error in library(tokenizers): there is no package called 'tokenizers'
 books <- originalbooks %>%
   unnest_tokens(word, text)
-#> Tokenizer package not installed; using str_split instead.
 
 books
-#> Source: local data frame [725,008 x 4]
+#> Source: local data frame [724,971 x 4]
 #> 
 #>                   book linenumber chapter        word
 #>                 (fctr)      (int)   (int)       (chr)
 #> 1  Sense & Sensibility          1       0       sense
 #> 2  Sense & Sensibility          1       0         and
 #> 3  Sense & Sensibility          1       0 sensibility
-#> 4  Sense & Sensibility          2       0          by
-#> 5  Sense & Sensibility          2       0        jane
-#> 6  Sense & Sensibility          2       0      austen
-#> 7  Sense & Sensibility          4       1     chapter
-#> 8  Sense & Sensibility          5       1         the
-#> 9  Sense & Sensibility          5       1      family
-#> 10 Sense & Sensibility          5       1          of
+#> 4  Sense & Sensibility          3       0          by
+#> 5  Sense & Sensibility          3       0        jane
+#> 6  Sense & Sensibility          3       0      austen
+#> 7  Sense & Sensibility          5       0        1811
+#> 8  Sense & Sensibility         10       1     chapter
+#> 9  Sense & Sensibility         10       1           1
+#> 10 Sense & Sensibility         13       1         the
 #> ..                 ...        ...     ...         ...
 ```
 
@@ -81,18 +95,18 @@ Now, let's see what are the most common words in all the books as a whole.
 ```r
 books %>%
   count(word, sort = TRUE) 
-#> Source: local data frame [13,625 x 2]
+#> Source: local data frame [13,896 x 2]
 #> 
 #>      word     n
 #>     (chr) (int)
-#> 1    miss  1856
-#> 2    time  1339
-#> 3   fanny   859
-#> 4    dear   820
+#> 1    miss  1854
+#> 2    time  1337
+#> 3   fanny   862
+#> 4    dear   822
 #> 5    lady   817
-#> 6     sir   805
+#> 6     sir   806
 #> 7     day   797
-#> 8    emma   786
+#> 8    emma   787
 #> 9  sister   727
 #> 10  house   699
 #> ..    ...   ...
@@ -155,7 +169,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png) 
+![plot of chunk unnamed-chunk-10](README-unnamed-chunk-10-1.png)
 
 ### Most common positive and negative words
 
@@ -172,21 +186,7 @@ bing_word_counts <- books %>%
 #> Error in eval(expr, envir, enclos): object 'score' not found
 
 bing_word_counts
-#> Source: local data frame [2,586 x 3]
-#> 
-#>          word sentiment     n
-#>         (chr)     (chr) (int)
-#> 1  abominable  negative    17
-#> 2  abominably  negative     7
-#> 3   abominate  negative     3
-#> 4      abound  positive     1
-#> 5      abrupt  negative     5
-#> 6    abruptly  negative    12
-#> 7     absence  negative   111
-#> 8      absurd  negative    19
-#> 9   absurdity  negative    12
-#> 10  abundance  positive    14
-#> ..        ...       ...   ...
+#> Error in eval(expr, envir, enclos): object 'bing_word_counts' not found
 ```
 
 This can be shown in a graph:
@@ -201,10 +201,8 @@ bing_word_counts %>%
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Contribution to positivity/negativity")
-#> Warning: Stacking not well defined when ymin != 0
+#> Error in eval(expr, envir, enclos): object 'bing_word_counts' not found
 ```
-
-![plot of chunk unnamed-chunk-11](README-unnamed-chunk-11-1.png) 
 
 This lets us spot an anomaly in the sentiment analysis- that the word "miss" is coded as negative.
 
@@ -223,7 +221,7 @@ books %>%
   with(wordcloud(word, n, max.words = 50))
 ```
 
-![plot of chunk unnamed-chunk-12](README-unnamed-chunk-12-1.png) 
+![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
 
 In other functions, such as `comparison.cloud`, you may need to turn it into a matrix with reshape2's acast:
 
@@ -240,7 +238,7 @@ books %>%
 #> Joining by: "word"
 ```
 
-![plot of chunk wordcloud](README-wordcloud-1.png) 
+![plot of chunk wordcloud](README-wordcloud-1.png)
 
 ### Tidying document term matrices
 
@@ -257,10 +255,11 @@ AssociatedPress
 #> Weighting          : term frequency (tf)
 ```
 
-If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. topicmodels provides a `tidy` function to do this:
+If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. The broom provides a `tidy` function to do this:
 
 
 ```r
+library(broom)
 tidy(AssociatedPress)
 #> Source: local data frame [302,031 x 3]
 #> 
@@ -348,7 +347,7 @@ ap_sentiments %>%
 #> Warning: Stacking not well defined when ymin != 0
 ```
 
-![plot of chunk unnamed-chunk-17](README-unnamed-chunk-17-1.png) 
+![plot of chunk unnamed-chunk-18](README-unnamed-chunk-18-1.png)
 
 We can finally join the Austen and AP datasets and compare the frequencies of each word:
 
@@ -364,22 +363,23 @@ comparison <- tidy(AssociatedPress) %>%
 #> Joining by: "word"
 
 comparison
-#> Source: local data frame [4,431 x 3]
+#> Source: local data frame [4,430 x 3]
 #> 
 #>          word           AP       Austen
 #>         (chr)        (dbl)        (dbl)
-#> 1   abandoned 2.101635e-04 7.094916e-06
-#> 2       abide 3.602803e-05 2.837966e-05
-#> 3   abilities 3.602803e-05 2.057526e-04
-#> 4     ability 2.942289e-04 2.128475e-05
-#> 5      abroad 2.401869e-04 2.554170e-04
-#> 6      abrupt 3.602803e-05 3.547458e-05
-#> 7     absence 9.607475e-05 7.875357e-04
-#> 8      absent 5.404204e-05 3.547458e-04
-#> 9    absolute 6.605139e-05 1.844678e-04
-#> 10 absolutely 2.101635e-04 6.740170e-04
+#> 1   abandoned 2.101799e-04 7.095218e-06
+#> 2       abide 3.603084e-05 2.838087e-05
+#> 3   abilities 3.603084e-05 2.057613e-04
+#> 4     ability 2.942519e-04 2.128565e-05
+#> 5      abroad 2.402056e-04 2.554278e-04
+#> 6      abrupt 3.603084e-05 3.547609e-05
+#> 7     absence 9.608225e-05 7.875692e-04
+#> 8      absent 5.404626e-05 3.547609e-04
+#> 9    absolute 6.605654e-05 1.844757e-04
+#> 10 absolutely 2.101799e-04 6.740457e-04
 #> ..        ...          ...          ...
 
+library(scales)
 ggplot(comparison, aes(AP, Austen)) +
   geom_point() +
   geom_text(aes(label = word), check_overlap = TRUE,
@@ -389,4 +389,8 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-18](README-unnamed-chunk-18-1.png) 
+![plot of chunk unnamed-chunk-19](README-unnamed-chunk-19-1.png)
+
+### Code of Conduct
+
+This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.

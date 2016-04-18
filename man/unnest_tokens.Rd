@@ -25,7 +25,8 @@ Default is "words".}
 
 \item{to_lower}{Whether to turn column lowercase}
 
-\item{drop}{Whether original text column should get dropped}
+\item{drop}{Whether original text column should get dropped. Ignored
+if the original text and new token column have the same name.}
 
 \item{...}{Extra arguments passed on to the tokenizer}
 
