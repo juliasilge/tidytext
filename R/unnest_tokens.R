@@ -52,7 +52,7 @@ unnest_tokens_ <- function(tbl, token_col, text_col, method = "words",
   }
 
   method <- paste0("tokenize_", method)
-  tokenfunc <- get(method, as.environment("package:tokenizers"))
+  tokenfunc <- get(method)
   if (method == "tokenize_characters" || method == "tokenize_words") {
     tbl[[token_col]] <- tokenfunc(col, lowercase = FALSE, ...)
   } else { # mash the whole character string together here for other tokenizer functions
