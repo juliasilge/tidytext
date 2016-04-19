@@ -24,11 +24,11 @@ Imports: dplyr,
     janeaustenr
 Suggests: readr,
     tm,
+    topicmodels,
     qdapDictionaries,
     devtools,
     wordcloud,
     knitr,
     rmarkdown,
-    ggplot2,
-    topicmodels
+    ggplot2
 VignetteBuilder: knitr
