@@ -29,5 +29,6 @@ Suggests: readr,
     wordcloud,
     knitr,
     rmarkdown,
-    ggplot2
+    ggplot2,
+    topicmodels
 VignetteBuilder: knitr
