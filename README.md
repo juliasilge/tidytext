@@ -11,6 +11,8 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 
 
 
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like `dplyr`, `broom`, and `ggplot2`; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
+
 ### Installation
 
 To install this package from Github, use `devtools`:
@@ -21,72 +23,39 @@ library(devtools)
 install_github("juliasilge/tidytext")
 ```
 
-### Jane Austen's Novels Can Be So Tidy
+### Tidy text mining examples
+
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the `janeaustenr` package and our function to unnest and tokenize. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
 
 
 ```r
 library(tidytext)
 library(janeaustenr)
-library(dplyr)
-originalbooks <- bind_rows(
-  data_frame(text = sensesensibility, book = "Sense & Sensibility"),
-  data_frame(text = prideprejudice, book = "Pride & Prejudice"),
-  data_frame(text = mansfieldpark, book = "Mansfield Park"),
-  data_frame(text = emma, book = "Emma"),
-  data_frame(text = northangerabbey, book = "Northanger Abbey"),
-  data_frame(text = persuasion, book = "Persuasion")
-) %>% mutate(book = factor(book, levels = unique(book)))
-```
-
-Where are the chapters?
-
-
-```r
-library(stringr)
-originalbooks <- originalbooks %>%
-  group_by(book) %>%
-  mutate(linenumber = row_number(),
-         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]", 
-                                                 ignore_case = TRUE)))) %>%
-  ungroup()
-```
-
-Now we can use our new function for unnest and tokenizing. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
-
-
-```r
-library(tidytext)
-library(tokenizers)
-books <- originalbooks %>%
+books <- austen_books %>%
   unnest_tokens(word, text)
+#> Error in eval(expr, envir, enclos): could not find function "%>%"
 
 books
-#> Source: local data frame [724,971 x 4]
-#> 
-#>                   book linenumber chapter        word
-#>                 (fctr)      (int)   (int)       (chr)
-#> 1  Sense & Sensibility          1       0       sense
-#> 2  Sense & Sensibility          1       0         and
-#> 3  Sense & Sensibility          1       0 sensibility
-#> 4  Sense & Sensibility          3       0          by
-#> 5  Sense & Sensibility          3       0        jane
-#> 6  Sense & Sensibility          3       0      austen
-#> 7  Sense & Sensibility          5       0        1811
-#> 8  Sense & Sensibility         10       1     chapter
-#> 9  Sense & Sensibility         10       1           1
-#> 10 Sense & Sensibility         13       1         the
-#> ..                 ...        ...     ...         ...
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
-We can remove stop words kept in a tidy data set in the `tidytext` package.
+We can remove stop words kept in a tidy data set in the `tidytext` package with an antijoin.
 
 
 ```r
+library(dplyr)
+#> 
+#> Attaching package: 'dplyr'
+#> The following objects are masked from 'package:stats':
+#> 
+#>     filter, lag
+#> The following objects are masked from 'package:base':
+#> 
+#>     intersect, setdiff, setequal, union
 data("stopwords")
-
 books <- books %>%
   anti_join(stopwords)
-#> Joining by: "word"
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
 Now, let's see what are the most common words in all the books as a whole.
@@ -95,53 +64,10 @@ Now, let's see what are the most common words in all the books as a whole.
 ```r
 books %>%
   count(word, sort = TRUE) 
-#> Source: local data frame [13,896 x 2]
-#> 
-#>      word     n
-#>     (chr) (int)
-#> 1    miss  1854
-#> 2    time  1337
-#> 3   fanny   862
-#> 4    dear   822
-#> 5    lady   817
-#> 6     sir   806
-#> 7     day   797
-#> 8    emma   787
-#> 9  sister   727
-#> 10  house   699
-#> ..    ...   ...
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words with a sadness score from the NRC lexicon. What are the most common sadness words in *Mansfield Park*?
-
-
-```r
-nrcsadness <- sentiments %>%
-  filter(lexicon == "nrc", sentiment == "sadness")
-
-books %>%
-  filter(book == "Mansfield Park") %>% 
-  semi_join(nrcsadness) %>%
-  count(word, sort = TRUE)
-#> Joining by: "word"
-#> Source: local data frame [387 x 2]
-#> 
-#>          word     n
-#>         (chr) (int)
-#> 1      mother    89
-#> 2     feeling    75
-#> 3         ill    63
-#> 4  impossible    57
-#> 5       leave    56
-#> 6         bad    49
-#> 7        evil    48
-#> 8       doubt    46
-#> 9    scarcely    42
-#> 10      worse    40
-#> ..        ...   ...
-```
-
-Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 
 ```r
@@ -152,10 +78,10 @@ bing <- sentiments %>%
 
 janeaustensentiment <- books %>%
   inner_join(bing) %>% 
-  count(book, index = linenumber %/% 80, sentiment) %>% 
+  count(book, index = row_number() %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
-#> Joining by: "word"
+#> Error in eval(expr, envir, enclos): object 'books' not found
 ```
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
@@ -167,140 +93,42 @@ library(ggplot2)
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   geom_bar(stat = "identity", show.legend = FALSE) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
+#> Error in ggplot(janeaustensentiment, aes(index, sentiment, fill = book)): object 'janeaustensentiment' not found
 ```
 
-![plot of chunk unnamed-chunk-10](README-unnamed-chunk-10-1.png)
-
-### Most common positive and negative words
-
-One advantage of having the table with both sentiment and word is that you can analyze word counts that contribute to each sentiment:
-
-
-```r
-bing_word_counts <- books %>%
-  inner_join(bing) %>%
-  count(word, sentiment, sort = TRUE) %>%
-  ungroup() %>%
-  select(-score)
-#> Joining by: "word"
-#> Error in eval(expr, envir, enclos): object 'score' not found
-
-bing_word_counts
-#> Error in eval(expr, envir, enclos): object 'bing_word_counts' not found
-```
-
-This can be shown in a graph:
-
-
-```r
-bing_word_counts %>%
-  filter(n > 150) %>%
-  mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
-  mutate(word = reorder(word, n)) %>%
-  ggplot(aes(word, n, fill = sentiment)) +
-  geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Contribution to positivity/negativity")
-#> Error in eval(expr, envir, enclos): object 'bing_word_counts' not found
-```
-
-This lets us spot an anomaly in the sentiment analysis- that the word "miss" is coded as negative.
-
-### Wordclouds
-
-We've seen that this works well with ggplot2. But having the words in a tidy format is useful for other plots as well.
-
-For example, consider the wordcloud package.
-
-
-```r
-library(wordcloud)
-
-books %>%
-  count(word) %>%
-  with(wordcloud(word, n, max.words = 50))
-```
-
-![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
-
-In other functions, such as `comparison.cloud`, you may need to turn it into a matrix with reshape2's acast:
-
-
-```r
-library(reshape2)
-
-books %>%
-  inner_join(bing) %>%
-  count(word, sentiment, sort = TRUE) %>%
-  acast(word ~ sentiment, value.var = "n", fill = 0) %>% 
-  comparison.cloud(colors = c("#F8766D", "#00BFC4"),
-                   max.words = 75)
-#> Joining by: "word"
-```
-
-![plot of chunk wordcloud](README-wordcloud-1.png)
+For more examples of text mining using tidy data frames, see the tidytext vignette.
 
 ### Tidying document term matrices
 
-Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset:
+Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the `tm` package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.
 
 
 ```r
 data("AssociatedPress", package = "topicmodels")
+#> Error in find.package(package, lib.loc, verbose = verbose): there is no package called 'topicmodels'
 AssociatedPress
-#> <<DocumentTermMatrix (documents: 2246, terms: 10473)>>
-#> Non-/sparse entries: 302031/23220327
-#> Sparsity           : 99%
-#> Maximal term length: 18
-#> Weighting          : term frequency (tf)
+#> Error in eval(expr, envir, enclos): object 'AssociatedPress' not found
 ```
 
-If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. The broom provides a `tidy` function to do this:
+If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first. The `broom` package provides a `tidy` function to do this. (For more on the tidy verb, [see the `broom` package](https://github.com/dgrtwo/broom)).
 
 
 ```r
 library(broom)
 tidy(AssociatedPress)
-#> Source: local data frame [302,031 x 3]
-#> 
-#>    document       term count
-#>       (int)      (chr) (dbl)
-#> 1         1     adding     1
-#> 2         1      adult     2
-#> 3         1        ago     1
-#> 4         1    alcohol     1
-#> 5         1  allegedly     1
-#> 6         1      allen     1
-#> 7         1 apparently     2
-#> 8         1   appeared     1
-#> 9         1   arrested     1
-#> 10        1    assault     1
-#> ..      ...        ...   ...
+#> Error in tidy(AssociatedPress): object 'AssociatedPress' not found
 ```
 
-(For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)). You can then perform sentiment analysis on these newspaper articles:
+We can perform sentiment analysis on these newspaper articles.
 
 
 ```r
 ap_sentiments <- tidy(AssociatedPress) %>%
   inner_join(bing, by = c(term = "word"))
+#> Error in tidy(AssociatedPress): object 'AssociatedPress' not found
 
 ap_sentiments
-#> Source: local data frame [30,094 x 5]
-#> 
-#>    document    term count sentiment lexicon
-#>       (int)   (chr) (dbl)     (chr)   (chr)
-#> 1         1 assault     1  negative    bing
-#> 2         1 complex     1  negative    bing
-#> 3         1   death     1  negative    bing
-#> 4         1    died     1  negative    bing
-#> 5         1    good     2  positive    bing
-#> 6         1 illness     1  negative    bing
-#> 7         1  killed     2  negative    bing
-#> 8         1    like     2  positive    bing
-#> 9         1   liked     1  positive    bing
-#> 10        1 miracle     1  positive    bing
-#> ..      ...     ...   ...       ...     ...
+#> Error in eval(expr, envir, enclos): object 'ap_sentiments' not found
 ```
 
 We could find the most negative documents:
@@ -313,21 +141,7 @@ ap_sentiments %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(sentiment)
-#> Source: local data frame [2,190 x 4]
-#> 
-#>    document negative positive sentiment
-#>       (int)    (dbl)    (dbl)     (dbl)
-#> 1      1251       54        6       -48
-#> 2      1380       53        5       -48
-#> 3       531       51        9       -42
-#> 4        43       45       11       -34
-#> 5      1263       44       10       -34
-#> 6      2178       40        6       -34
-#> 7       334       45       12       -33
-#> 8      1664       38        5       -33
-#> 9      2147       47       14       -33
-#> 10      516       38        6       -32
-#> ..      ...      ...      ...       ...
+#> Error in eval(expr, envir, enclos): object 'ap_sentiments' not found
 ```
 
 Or see which words contributed to positivity/negativity:
@@ -344,12 +158,10 @@ ap_sentiments %>%
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Contribution to positivity/negativity")
-#> Warning: Stacking not well defined when ymin != 0
+#> Error in eval(expr, envir, enclos): object 'ap_sentiments' not found
 ```
 
-![plot of chunk unnamed-chunk-18](README-unnamed-chunk-18-1.png)
-
-We can finally join the Austen and AP datasets and compare the frequencies of each word:
+We can join the Austen and AP datasets and compare the frequencies of each word:
 
 
 ```r
@@ -360,24 +172,10 @@ comparison <- tidy(AssociatedPress) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))
-#> Joining by: "word"
+#> Error in tidy(AssociatedPress): object 'AssociatedPress' not found
 
 comparison
-#> Source: local data frame [4,430 x 3]
-#> 
-#>          word           AP       Austen
-#>         (chr)        (dbl)        (dbl)
-#> 1   abandoned 2.101799e-04 7.095218e-06
-#> 2       abide 3.603084e-05 2.838087e-05
-#> 3   abilities 3.603084e-05 2.057613e-04
-#> 4     ability 2.942519e-04 2.128565e-05
-#> 5      abroad 2.402056e-04 2.554278e-04
-#> 6      abrupt 3.603084e-05 3.547609e-05
-#> 7     absence 9.608225e-05 7.875692e-04
-#> 8      absent 5.404626e-05 3.547609e-04
-#> 9    absolute 6.605654e-05 1.844757e-04
-#> 10 absolutely 2.101799e-04 6.740457e-04
-#> ..        ...          ...          ...
+#> Error in eval(expr, envir, enclos): object 'comparison' not found
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
@@ -387,9 +185,10 @@ ggplot(comparison, aes(AP, Austen)) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
+#> Error in ggplot(comparison, aes(AP, Austen)): object 'comparison' not found
 ```
 
-![plot of chunk unnamed-chunk-19](README-unnamed-chunk-19-1.png)
+For more examples of working with document term matrices from other packages using tidy data principles, see the TODO vignette.
 
 ### Code of Conduct
 
