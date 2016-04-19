@@ -186,26 +186,7 @@ ap_sentiments %>%
 #> ..      ...      ...      ...       ...
 ```
 
-Or see which words contributed to positive or negative sentiment:
-
-
-```r
-ap_sentiments %>%
-  count(sentiment, term, wt = count) %>%
-  ungroup() %>%
-  filter(n >= 150) %>%
-  mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
-  mutate(term = reorder(term, n)) %>%
-  ggplot(aes(term, n, fill = sentiment)) +
-  geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Contribution to sentiment")
-#> Warning: Stacking not well defined when ymin != 0
-```
-
-![plot of chunk unnamed-chunk-11](README-unnamed-chunk-11-1.png)
-
-We can join the Austen and AP datasets and compare the frequencies of each word:
+Or we can join the Austen and AP datasets and compare the frequencies of each word:
 
 
 ```r
@@ -245,7 +226,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-12](README-unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-11](README-unnamed-chunk-11-1.png)
 
 For more examples of working with document term matrices from other packages using tidy data principles, see the TODO vignette.
 
