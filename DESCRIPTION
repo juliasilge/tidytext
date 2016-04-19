@@ -24,7 +24,6 @@ Imports: dplyr,
     janeaustenr
 Suggests: readr,
     tm,
-    topicmodels,
     qdapDictionaries,
     devtools,
     wordcloud,
