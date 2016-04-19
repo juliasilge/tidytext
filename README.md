@@ -32,10 +32,10 @@ The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 
 library(tidytext)
 library(janeaustenr)
 library(dplyr)
-books <- austen_books() %>%
+originalbooks <- austen_books() %>%
   unnest_tokens(word, text)
 
-books
+originalbooks
 #> Source: local data frame [724,971 x 2]
 #> 
 #>                   book        word
@@ -58,7 +58,7 @@ We can remove stop words kept in a tidy data set in the `tidytext` package with 
 
 ```r
 data("stopwords")
-books <- books %>%
+books <- originalbooks %>%
   anti_join(stopwords)
 #> Joining by: "word"
 ```
@@ -95,7 +95,7 @@ bing <- sentiments %>%
   filter(lexicon == "bing") %>%
   select(-score)
 
-janeaustensentiment <- books %>%
+janeaustensentiment <- originalbooks %>%
   inner_join(bing) %>% 
   count(book, index = row_number() %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
@@ -156,31 +156,6 @@ tidy(AssociatedPress)
 #> ..      ...        ...   ...
 ```
 
-We can perform sentiment analysis on these newspaper articles.
-
-
-```r
-ap_sentiments <- tidy(AssociatedPress) %>%
-  inner_join(bing, by = c(term = "word"))
-
-ap_sentiments
-#> Source: local data frame [30,094 x 5]
-#> 
-#>    document    term count sentiment lexicon
-#>       (int)   (chr) (dbl)     (chr)   (chr)
-#> 1         1 assault     1  negative    bing
-#> 2         1 complex     1  negative    bing
-#> 3         1   death     1  negative    bing
-#> 4         1    died     1  negative    bing
-#> 5         1    good     2  positive    bing
-#> 6         1 illness     1  negative    bing
-#> 7         1  killed     2  negative    bing
-#> 8         1    like     2  positive    bing
-#> 9         1   liked     1  positive    bing
-#> 10        1 miracle     1  positive    bing
-#> ..      ...     ...   ...       ...     ...
-```
-
 We could find the most negative documents:
 
 
@@ -208,7 +183,7 @@ ap_sentiments %>%
 #> ..      ...      ...      ...       ...
 ```
 
-Or see which words contributed to positivity/negativity:
+Or see which words contributed to positive or negative sentiment:
 
 
 ```r
@@ -225,7 +200,7 @@ ap_sentiments %>%
 #> Warning: Stacking not well defined when ymin != 0
 ```
 
-![plot of chunk unnamed-chunk-12](README-unnamed-chunk-12-1.png)
+![plot of chunk unnamed-chunk-11](README-unnamed-chunk-11-1.png)
 
 We can join the Austen and AP datasets and compare the frequencies of each word:
 
@@ -267,7 +242,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-12](README-unnamed-chunk-12-1.png)
 
 For more examples of working with document term matrices from other packages using tidy data principles, see the TODO vignette.
 
