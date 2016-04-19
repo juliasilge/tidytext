@@ -125,9 +125,12 @@ Many existing text mining datasets are in the form of a DocumentTermMatrix class
 
 ```r
 data("AssociatedPress", package = "topicmodels")
-#> Error in find.package(package, lib.loc, verbose = verbose): there is no package called 'topicmodels'
 AssociatedPress
-#> Error in eval(expr, envir, enclos): object 'AssociatedPress' not found
+#> <<DocumentTermMatrix (documents: 2246, terms: 10473)>>
+#> Non-/sparse entries: 302031/23220327
+#> Sparsity           : 99%
+#> Maximal term length: 18
+#> Weighting          : term frequency (tf)
 ```
 
 If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first. The `broom` package provides a `tidy` function to do this. (For more on the tidy verb, [see the `broom` package](https://github.com/dgrtwo/broom)).
@@ -136,7 +139,21 @@ If we want to analyze this with tidy tools, we need to transform it into a one-r
 ```r
 library(broom)
 tidy(AssociatedPress)
-#> Error in tidy(AssociatedPress): object 'AssociatedPress' not found
+#> Source: local data frame [302,031 x 3]
+#> 
+#>    document       term count
+#>       (int)      (chr) (dbl)
+#> 1         1     adding     1
+#> 2         1      adult     2
+#> 3         1        ago     1
+#> 4         1    alcohol     1
+#> 5         1  allegedly     1
+#> 6         1      allen     1
+#> 7         1 apparently     2
+#> 8         1   appeared     1
+#> 9         1   arrested     1
+#> 10        1    assault     1
+#> ..      ...        ...   ...
 ```
 
 We can perform sentiment analysis on these newspaper articles.
@@ -145,10 +162,23 @@ We can perform sentiment analysis on these newspaper articles.
 ```r
 ap_sentiments <- tidy(AssociatedPress) %>%
   inner_join(bing, by = c(term = "word"))
-#> Error in tidy(AssociatedPress): object 'AssociatedPress' not found
 
 ap_sentiments
-#> Error in eval(expr, envir, enclos): object 'ap_sentiments' not found
+#> Source: local data frame [30,094 x 5]
+#> 
+#>    document    term count sentiment lexicon
+#>       (int)   (chr) (dbl)     (chr)   (chr)
+#> 1         1 assault     1  negative    bing
+#> 2         1 complex     1  negative    bing
+#> 3         1   death     1  negative    bing
+#> 4         1    died     1  negative    bing
+#> 5         1    good     2  positive    bing
+#> 6         1 illness     1  negative    bing
+#> 7         1  killed     2  negative    bing
+#> 8         1    like     2  positive    bing
+#> 9         1   liked     1  positive    bing
+#> 10        1 miracle     1  positive    bing
+#> ..      ...     ...   ...       ...     ...
 ```
 
 We could find the most negative documents:
@@ -161,7 +191,21 @@ ap_sentiments %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(sentiment)
-#> Error in eval(expr, envir, enclos): object 'ap_sentiments' not found
+#> Source: local data frame [2,190 x 4]
+#> 
+#>    document negative positive sentiment
+#>       (int)    (dbl)    (dbl)     (dbl)
+#> 1      1251       54        6       -48
+#> 2      1380       53        5       -48
+#> 3       531       51        9       -42
+#> 4        43       45       11       -34
+#> 5      1263       44       10       -34
+#> 6      2178       40        6       -34
+#> 7       334       45       12       -33
+#> 8      1664       38        5       -33
+#> 9      2147       47       14       -33
+#> 10      516       38        6       -32
+#> ..      ...      ...      ...       ...
 ```
 
 Or see which words contributed to positivity/negativity:
@@ -178,8 +222,10 @@ ap_sentiments %>%
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
   ylab("Contribution to positivity/negativity")
-#> Error in eval(expr, envir, enclos): object 'ap_sentiments' not found
+#> Warning: Stacking not well defined when ymin != 0
 ```
+
+![plot of chunk unnamed-chunk-12](README-unnamed-chunk-12-1.png)
 
 We can join the Austen and AP datasets and compare the frequencies of each word:
 
@@ -192,10 +238,24 @@ comparison <- tidy(AssociatedPress) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))
-#> Error in tidy(AssociatedPress): object 'AssociatedPress' not found
+#> Joining by: "word"
 
 comparison
-#> Error in eval(expr, envir, enclos): object 'comparison' not found
+#> Source: local data frame [4,430 x 3]
+#> 
+#>          word           AP       Austen
+#>         (chr)        (dbl)        (dbl)
+#> 1   abandoned 2.101799e-04 7.095218e-06
+#> 2       abide 3.603084e-05 2.838087e-05
+#> 3   abilities 3.603084e-05 2.057613e-04
+#> 4     ability 2.942519e-04 2.128565e-05
+#> 5      abroad 2.402056e-04 2.554278e-04
+#> 6      abrupt 3.603084e-05 3.547609e-05
+#> 7     absence 9.608225e-05 7.875692e-04
+#> 8      absent 5.404626e-05 3.547609e-04
+#> 9    absolute 6.605654e-05 1.844757e-04
+#> 10 absolutely 2.101799e-04 6.740457e-04
+#> ..        ...          ...          ...
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
@@ -205,8 +265,9 @@ ggplot(comparison, aes(AP, Austen)) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
-#> Error in ggplot(comparison, aes(AP, Austen)): object 'comparison' not found
 ```
+
+![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
 
 For more examples of working with document term matrices from other packages using tidy data principles, see the TODO vignette.
 
