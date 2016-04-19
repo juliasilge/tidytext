@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
   fig.path = "README-",
-  dpi = 120
+  dpi = 90
 )
 ```
 
