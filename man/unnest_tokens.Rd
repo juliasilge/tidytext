@@ -5,41 +5,41 @@
 \alias{unnest_tokens_}
 \title{Split a column into tokens using either the tokenizer package or str_split}
 \usage{
-unnest_tokens_(tbl, token_col, text_col, method = "words", to_lower = TRUE,
+unnest_tokens_(tbl, output_col, input_col, token = "words", to_lower = TRUE,
   drop = TRUE, ...)
 
-unnest_tokens(tbl, token, text, method = "words", to_lower = TRUE,
+unnest_tokens(tbl, output, input, token = "words", to_lower = TRUE,
   drop = TRUE, ...)
 }
 \arguments{
 \item{tbl}{Data frame}
 
-\item{token_col}{Token column to be created}
+\item{output_col}{Output column to be created}
 
-\item{text_col}{Text column that gets split}
+\item{input_col}{Input column that gets split}
 
-\item{method}{Method for tokenizing. If tokenizer package
+\item{token}{Unit for tokenizing. If tokenizer package
 is installed, options are "characters", "words", "sentences", "lines",
 "paragraphs", and "regex". Otherwise, using str_split the option is "words".
 Default is "words".}
 
 \item{to_lower}{Whether to turn column lowercase}
 
-\item{drop}{Whether original text column should get dropped. Ignored
-if the original text and new token column have the same name.}
+\item{drop}{Whether original input column should get dropped. Ignored
+if the original input and new output column have the same name.}
 
 \item{...}{Extra arguments passed on to the tokenizer}
 
-\item{token}{Token column to be created as bare name}
+\item{output}{Output column to be created as bare name}
 
-\item{text}{Text column that gets split as bare name}
+\item{input}{Input column that gets split as bare name}
 }
 \description{
 Split a column into tokens using either the tokenizer package or str_split
 }
 \details{
-If the method for tokenizing is sentences, lines, paragraphs, or
-regex, the entire text will be collapsed together before tokenizing.
+If the unit for tokenizing is sentences, lines, paragraphs, or
+regex, the entire input will be collapsed together before tokenizing.
 }
 \examples{
 
@@ -53,7 +53,7 @@ d \%>\%
   unnest_tokens(word, txt)
 
 d \%>\%
-  unnest_tokens(word, txt, method = "sentences")
+  unnest_tokens(word, txt, token = "sentences")
 
 }
 
