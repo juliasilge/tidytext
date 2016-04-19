@@ -1,0 +1,235 @@
+<!--
+%\VignetteBuilder{knitr::knitr}
+%\VignetteEngine{knitr::knitr}
+%\VignetteIndexEntry{Introduction to tidytext}
+-->
+
+```{r setup, echo=FALSE}
+library(knitr)
+opts_chunk$set(warning=FALSE, message=FALSE)
+```
+
+# tidytext
+## The Life-Changing Magic of Tidying Text
+
+### Jane Austen's Novels Can Be So Tidy
+
+```{r}
+library(tidytext)
+library(janeaustenr)
+library(dplyr)
+originalbooks <- bind_rows(
+  data_frame(text = sensesensibility, book = "Sense & Sensibility"),
+  data_frame(text = prideprejudice, book = "Pride & Prejudice"),
+  data_frame(text = mansfieldpark, book = "Mansfield Park"),
+  data_frame(text = emma, book = "Emma"),
+  data_frame(text = northangerabbey, book = "Northanger Abbey"),
+  data_frame(text = persuasion, book = "Persuasion")
+) %>% mutate(book = factor(book, levels = unique(book)))
+```
+
+Where are the chapters?
+
+```{r}
+library(stringr)
+originalbooks <- originalbooks %>%
+  group_by(book) %>%
+  mutate(linenumber = row_number(),
+         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+                                                 ignore_case = TRUE)))) %>%
+  ungroup()
+```
+
+Now we can use our new function for unnest and tokenizing. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+
+```{r}
+library(tidytext)
+library(tokenizers)
+books <- originalbooks %>%
+  unnest_tokens(word, text)
+
+books
+```
+
+We can remove stop words kept in a tidy data set in the `tidytext` package.
+
+```{r}
+data("stopwords")
+
+books <- books %>%
+  anti_join(stopwords)
+```
+
+Now, let's see what are the most common words in all the books as a whole.
+
+```{r}
+books %>%
+count(word, sort = TRUE)
+```
+
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words with a sadness score from the NRC lexicon. What are the most common sadness words in *Mansfield Park*?
+
+```{r}
+nrcsadness <- sentiments %>%
+  filter(lexicon == "nrc", sentiment == "sadness")
+
+books %>%
+  filter(book == "Mansfield Park") %>%
+  semi_join(nrcsadness) %>%
+  count(word, sort = TRUE)
+```
+
+Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+
+```{r}
+library(tidyr)
+bing <- sentiments %>%
+filter(lexicon == "bing") %>%
+select(-score)
+
+janeaustensentiment <- books %>%
+inner_join(bing) %>%
+count(book, index = linenumber %/% 80, sentiment) %>%
+spread(sentiment, n, fill = 0) %>%
+mutate(sentiment = positive - negative)
+```
+
+Now we can plot these sentiment scores across the plot trajectory of each novel.
+
+```{r, fig.width=9, fig.height=9, warning=FALSE}
+library(ggplot2)
+
+ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
+geom_bar(stat = "identity", show.legend = FALSE) +
+facet_wrap(~book, ncol = 2, scales = "free_x")
+```
+
+### Most common positive and negative words
+
+One advantage of having the table with both sentiment and word is that you can analyze word counts that contribute to each sentiment:
+
+```{r}
+bing_word_counts <- books %>%
+inner_join(bing) %>%
+count(word, sentiment, sort = TRUE) %>%
+ungroup() %>%
+select(-score)
+
+bing_word_counts
+```
+
+This can be shown in a graph:
+
+```{r}
+bing_word_counts %>%
+filter(n > 150) %>%
+mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
+mutate(word = reorder(word, n)) %>%
+ggplot(aes(word, n, fill = sentiment)) +
+geom_bar(stat = "identity") +
+theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+ylab("Contribution to positivity/negativity")
+```
+
+This lets us spot an anomaly in the sentiment analysis- that the word "miss" is coded as negative.
+
+### Wordclouds
+
+We've seen that this works well with ggplot2. But having the words in a tidy format is useful for other plots as well.
+
+For example, consider the wordcloud package.
+
+```{r}
+library(wordcloud)
+
+books %>%
+  count(word) %>%
+  with(wordcloud(word, n, max.words = 50))
+```
+
+In other functions, such as `comparison.cloud`, you may need to turn it into a matrix with reshape2's acast:
+
+```{r wordcloud}
+library(reshape2)
+
+books %>%
+inner_join(bing) %>%
+count(word, sentiment, sort = TRUE) %>%
+acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+comparison.cloud(colors = c("#F8766D", "#00BFC4"),
+max.words = 75)
+```
+
+### Tidying document term matrices
+
+Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset:
+
+```{r}
+data("AssociatedPress", package = "topicmodels")
+AssociatedPress
+```
+
+If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. The broom provides a `tidy` function to do this:
+
+  ```{r}
+library(broom)
+tidy(AssociatedPress)
+```
+
+(For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)). You can then perform sentiment analysis on these newspaper articles:
+
+  ```{r}
+ap_sentiments <- tidy(AssociatedPress) %>%
+  inner_join(bing, by = c(term = "word"))
+
+ap_sentiments
+```
+
+We could find the most negative documents:
+
+  ```{r}
+ap_sentiments %>%
+  count(document, sentiment, wt = count) %>%
+  ungroup() %>%
+  spread(sentiment, n, fill = 0) %>%
+  mutate(sentiment = positive - negative) %>%
+  arrange(sentiment)
+```
+
+Or see which words contributed to positivity/negativity:
+
+  ```{r}
+ap_sentiments %>%
+  count(sentiment, term, wt = count) %>%
+  ungroup() %>%
+  filter(n >= 150) %>%
+  mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
+  mutate(term = reorder(term, n)) %>%
+  ggplot(aes(term, n, fill = sentiment)) +
+  geom_bar(stat = "identity") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
+  ylab("Contribution to positivity/negativity")
+```
+
+We can finally join the Austen and AP datasets and compare the frequencies of each word:
+
+  ```{r}
+comparison <- tidy(AssociatedPress) %>%
+  count(word = term) %>%
+  rename(AP = n) %>%
+  inner_join(count(books, word)) %>%
+  rename(Austen = n) %>%
+  mutate(AP = AP / sum(AP),
+         Austen = Austen / sum(Austen))
+
+comparison
+
+library(scales)
+ggplot(comparison, aes(AP, Austen)) +
+  geom_point() +
+  geom_text(aes(label = word), check_overlap = TRUE,
+            vjust = 1, hjust = 1) +
+  scale_x_log10(labels = percent_format()) +
+  scale_y_log10(labels = percent_format()) +
+  geom_abline(color = "red")
+```
