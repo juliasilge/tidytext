@@ -33,24 +33,27 @@ library(tidytext)
 library(janeaustenr)
 library(dplyr)
 originalbooks <- austen_books() %>%
+  group_by(book) %>%
+  mutate(linenumber = row_number()) %>%
+  ungroup() %>%
   unnest_tokens(word, text)
 
 originalbooks
-#> Source: local data frame [724,971 x 2]
+#> Source: local data frame [724,971 x 3]
 #> 
-#>                   book        word
-#>                 (fctr)       (chr)
-#> 1  Sense & Sensibility       sense
-#> 2  Sense & Sensibility         and
-#> 3  Sense & Sensibility sensibility
-#> 4  Sense & Sensibility          by
-#> 5  Sense & Sensibility        jane
-#> 6  Sense & Sensibility      austen
-#> 7  Sense & Sensibility        1811
-#> 8  Sense & Sensibility     chapter
-#> 9  Sense & Sensibility           1
-#> 10 Sense & Sensibility         the
-#> ..                 ...         ...
+#>                   book linenumber        word
+#>                 (fctr)      (int)       (chr)
+#> 1  Sense & Sensibility          1       sense
+#> 2  Sense & Sensibility          1         and
+#> 3  Sense & Sensibility          1 sensibility
+#> 4  Sense & Sensibility          3          by
+#> 5  Sense & Sensibility          3        jane
+#> 6  Sense & Sensibility          3      austen
+#> 7  Sense & Sensibility          5        1811
+#> 8  Sense & Sensibility         10     chapter
+#> 9  Sense & Sensibility         10           1
+#> 10 Sense & Sensibility         13         the
+#> ..                 ...        ...         ...
 ```
 
 We can remove stop words kept in a tidy data set in the `tidytext` package with an antijoin.
@@ -97,7 +100,7 @@ bing <- sentiments %>%
 
 janeaustensentiment <- originalbooks %>%
   inner_join(bing) %>% 
-  count(book, index = row_number() %/% 80, sentiment) %>% 
+  count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
 #> Joining by: "word"
@@ -196,7 +199,7 @@ ap_sentiments %>%
   ggplot(aes(term, n, fill = sentiment)) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Contribution to positivity/negativity")
+  ylab("Contribution to sentiment")
 #> Warning: Stacking not well defined when ymin != 0
 ```
 

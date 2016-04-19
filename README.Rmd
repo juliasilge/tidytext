@@ -13,7 +13,8 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-"
+  fig.path = "README-",
+  dpi = 180
 )
 ```
 
@@ -37,6 +38,9 @@ library(tidytext)
 library(janeaustenr)
 library(dplyr)
 originalbooks <- austen_books() %>%
+  group_by(book) %>%
+  mutate(linenumber = row_number()) %>%
+  ungroup() %>%
   unnest_tokens(word, text)
 
 originalbooks
@@ -67,7 +71,7 @@ bing <- sentiments %>%
 
 janeaustensentiment <- originalbooks %>%
   inner_join(bing) %>% 
-  count(book, index = row_number() %/% 80, sentiment) %>% 
+  count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
 ```
@@ -113,7 +117,7 @@ ap_sentiments %>%
 
 Or see which words contributed to positive or negative sentiment:
 
-```{r, fig.height=4, fig.width=9}
+```{r, fig.height=7, fig.width=9}
 ap_sentiments %>%
   count(sentiment, term, wt = count) %>%
   ungroup() %>%
@@ -123,7 +127,7 @@ ap_sentiments %>%
   ggplot(aes(term, n, fill = sentiment)) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Contribution to positivity/negativity")
+  ylab("Contribution to sentiment")
 ```
 
 We can join the Austen and AP datasets and compare the frequencies of each word:
