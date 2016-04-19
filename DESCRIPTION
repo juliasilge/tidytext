@@ -28,5 +28,6 @@ Suggests: readr,
     devtools,
     wordcloud,
     knitr,
-    rmarkdown
+    rmarkdown,
+    ggplot2
 VignetteBuilder: knitr
