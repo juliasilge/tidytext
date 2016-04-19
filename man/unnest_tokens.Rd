@@ -3,7 +3,7 @@
 \name{unnest_tokens}
 \alias{unnest_tokens}
 \alias{unnest_tokens_}
-\title{Split a column into tokens using either the tokenizer package or str_split}
+\title{Split a column into tokens using the tokenizers package}
 \usage{
 unnest_tokens_(tbl, output_col, input_col, token = "words", to_lower = TRUE,
   drop = TRUE, ...)
@@ -18,10 +18,8 @@ unnest_tokens(tbl, output, input, token = "words", to_lower = TRUE,
 
 \item{input_col}{Input column that gets split}
 
-\item{token}{Unit for tokenizing. If tokenizer package
-is installed, options are "characters", "words", "sentences", "lines",
-"paragraphs", and "regex". Otherwise, using str_split the option is "words".
-Default is "words".}
+\item{token}{Unit for tokenizing. Options are "characters", "words",
+"sentences", "lines", "paragraphs", and "regex". Default is "words".}
 
 \item{to_lower}{Whether to turn column lowercase}
 
@@ -35,7 +33,7 @@ if the original input and new output column have the same name.}
 \item{input}{Input column that gets split as bare name}
 }
 \description{
-Split a column into tokens using either the tokenizer package or str_split
+Split a column into tokens using the tokenizers package
 }
 \details{
 If the unit for tokenizing is sentences, lines, paragraphs, or

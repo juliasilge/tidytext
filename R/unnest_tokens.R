@@ -1,12 +1,10 @@
-#' Split a column into tokens using either the tokenizer package or str_split
+#' Split a column into tokens using the tokenizers package
 #'
 #' @param tbl Data frame
 #' @param output_col Output column to be created
 #' @param input_col Input column that gets split
-#' @param token Unit for tokenizing. If tokenizer package
-#' is installed, options are "characters", "words", "sentences", "lines",
-#' "paragraphs", and "regex". Otherwise, using str_split the option is "words".
-#' Default is "words".
+#' @param token Unit for tokenizing. Options are "characters", "words",
+#' "sentences", "lines", "paragraphs", and "regex". Default is "words".
 #' @param to_lower Whether to turn column lowercase
 #' @param drop Whether original input column should get dropped. Ignored
 #' if the original input and new output column have the same name.
