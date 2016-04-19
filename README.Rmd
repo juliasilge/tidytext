@@ -35,7 +35,8 @@ The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 
 ```{r}
 library(tidytext)
 library(janeaustenr)
-books <- austen_books %>%
+library(dplyr)
+books <- austen_books() %>%
   unnest_tokens(word, text)
 
 books
@@ -44,7 +45,6 @@ books
 We can remove stop words kept in a tidy data set in the `tidytext` package with an antijoin.
 
 ```{r}
-library(dplyr)
 data("stopwords")
 books <- books %>%
   anti_join(stopwords)

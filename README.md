@@ -31,31 +31,36 @@ The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 
 ```r
 library(tidytext)
 library(janeaustenr)
-books <- austen_books %>%
+library(dplyr)
+books <- austen_books() %>%
   unnest_tokens(word, text)
-#> Error in eval(expr, envir, enclos): could not find function "%>%"
 
 books
-#> Error in eval(expr, envir, enclos): object 'books' not found
+#> Source: local data frame [724,971 x 2]
+#> 
+#>                   book        word
+#>                 (fctr)       (chr)
+#> 1  Sense & Sensibility       sense
+#> 2  Sense & Sensibility         and
+#> 3  Sense & Sensibility sensibility
+#> 4  Sense & Sensibility          by
+#> 5  Sense & Sensibility        jane
+#> 6  Sense & Sensibility      austen
+#> 7  Sense & Sensibility        1811
+#> 8  Sense & Sensibility     chapter
+#> 9  Sense & Sensibility           1
+#> 10 Sense & Sensibility         the
+#> ..                 ...         ...
 ```
 
 We can remove stop words kept in a tidy data set in the `tidytext` package with an antijoin.
 
 
 ```r
-library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 data("stopwords")
 books <- books %>%
   anti_join(stopwords)
-#> Error in eval(expr, envir, enclos): object 'books' not found
+#> Joining by: "word"
 ```
 
 Now, let's see what are the most common words in all the books as a whole.
@@ -64,7 +69,21 @@ Now, let's see what are the most common words in all the books as a whole.
 ```r
 books %>%
   count(word, sort = TRUE) 
-#> Error in eval(expr, envir, enclos): object 'books' not found
+#> Source: local data frame [13,896 x 2]
+#> 
+#>      word     n
+#>     (chr) (int)
+#> 1    miss  1854
+#> 2    time  1337
+#> 3   fanny   862
+#> 4    dear   822
+#> 5    lady   817
+#> 6     sir   806
+#> 7     day   797
+#> 8    emma   787
+#> 9  sister   727
+#> 10  house   699
+#> ..    ...   ...
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
@@ -81,7 +100,7 @@ janeaustensentiment <- books %>%
   count(book, index = row_number() %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
-#> Error in eval(expr, envir, enclos): object 'books' not found
+#> Joining by: "word"
 ```
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
@@ -93,8 +112,9 @@ library(ggplot2)
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   geom_bar(stat = "identity", show.legend = FALSE) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
-#> Error in ggplot(janeaustensentiment, aes(index, sentiment, fill = book)): object 'janeaustensentiment' not found
 ```
+
+![plot of chunk unnamed-chunk-7](README-unnamed-chunk-7-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 

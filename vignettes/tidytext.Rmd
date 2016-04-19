@@ -1,12 +1,11 @@
 <!--
-%\VignetteBuilder{knitr::knitr}
 %\VignetteEngine{knitr::knitr}
 %\VignetteIndexEntry{Introduction to tidytext}
 -->
 
 ```{r setup, echo=FALSE}
 library(knitr)
-opts_chunk$set(warning=FALSE, message=FALSE)
+opts_chunk$set(warning=FALSE, comment = "#>", message=FALSE)
 ```
 
 # tidytext
