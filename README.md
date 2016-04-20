@@ -32,14 +32,6 @@ The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 
 library(tidytext)
 library(janeaustenr)
 library(dplyr)
-#> 
-#> Attaching package: 'dplyr'
-#> The following objects are masked from 'package:stats':
-#> 
-#>     filter, lag
-#> The following objects are masked from 'package:base':
-#> 
-#>     intersect, setdiff, setequal, union
 originalbooks <- austen_books() %>%
   group_by(book) %>%
   mutate(linenumber = row_number()) %>%
