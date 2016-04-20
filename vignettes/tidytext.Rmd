@@ -11,11 +11,11 @@ opts_chunk$set(warning=FALSE, comment = "#>", message=FALSE)
 # tidytext
 ## The Life-Changing Magic of Tidying Text
 
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like `dplyr`, `broom`, and `ggplot2`; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like dplyr, broom, and ggplot2; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
 
-### Tidy text mining examples
+### A few first tidy text mining examples
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the `janeaustenr` package to explore some text mining. Let's mark each line number for the books in the original data frame, and find where the chapters are.
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr package](https://github.com/juliasilge/janeaustenr) to explore some text mining. Let's mark each line number for the books in the original data frame, and find where the chapters are.
 
 
 ```{r}
@@ -31,17 +31,16 @@ originalbooks <- austen_books() %>%
   ungroup()
 ```
 
-Now we can use our the `tidytext` function to unnest and tokenize. We use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+Now we can use the tidytext function to unnest and tokenize; this function uses the [tokenizers package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
 
 ```{r}
-library(tidytext)
 originalbooks <- originalbooks %>%
   unnest_tokens(word, text)
 
 originalbooks
 ```
 
-We can remove stop words kept in a tidy data set in the `tidytext` package with an antijoin.
+We can remove stop words kept in a tidy data set in the tidytext package with an antijoin.
 
 ```{r}
 data("stopwords")
@@ -50,14 +49,14 @@ books <- originalbooks %>%
   anti_join(stopwords)
 ```
 
-Now, let's see what are the most common words in all the books as a whole.
+Now, let's see what the most common words are in all six novels as a whole.
 
 ```{r}
 books %>%
   count(word, sort = TRUE)
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiment` dataset. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
 
 ```{r}
 nrcjoy <- sentiments %>%
@@ -69,7 +68,7 @@ books %>%
   count(word, sort = TRUE)
 ```
 
-Or instead we could examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Or instead we could examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 ```{r}
 library(tidyr)
@@ -96,7 +95,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
 
 ### Most common positive and negative words
 
-One advantage of having the table with both sentiment and word is that you can analyze word counts that contribute to each sentiment:
+One advantage of having the data frame with both sentiment and word is that we can analyze word counts that contribute to each sentiment.
 
 ```{r}
 bing_word_counts <- originalbooks %>%
@@ -107,9 +106,9 @@ bing_word_counts <- originalbooks %>%
 bing_word_counts
 ```
 
-This can be shown visually:
+This can be shown visually, and we can pipe straight into ggplot2 because of the way we are consistently using tools built for handling tidy data frames.
 
-```{r}
+```{r, fig.width=7, fig.height=6}
 bing_word_counts %>%
   filter(n > 150) %>%
   mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
@@ -120,25 +119,25 @@ bing_word_counts %>%
   ylab("Contribution to sentiment")
 ```
 
-This lets us spot an anomaly in the sentiment analysis; the word "miss" is coded as negative but it is used as a title in Jane Austen's works.
+This lets us spot an anomaly in the sentiment analysis; the word "miss" is coded as negative but it is used as a title for young, unmarried women in Jane Austen's works. If it were appropriate for our purposes, we could easily add "miss" to a custom stopwords list using `bind_rows`.
 
 ### Wordclouds
 
-We've seen that this works well with `ggplot2`, but having the words in a tidy format is useful for other plots as well.
+We've seen that this tidy text mining approach works well with ggplot2, but having our data in a tidy format is useful for other plots as well.
 
-For example, consider the `wordcloud` package.
+For example, consider the wordcloud package. Let's look at the most common words in Jane Austen's works as a whole again.
 
-```{r}
+```{r, fig.height=6, fig.width=6}
 library(wordcloud)
 
 books %>%
   count(word) %>%
-  with(wordcloud(word, n, max.words = 50))
+  with(wordcloud(word, n, max.words = 100))
 ```
 
-In other functions, such as `comparison.cloud`, you may need to turn it into a matrix with `reshape2`'s acast:
+In other functions, such as `comparison.cloud`, you may need to turn it into a matrix with reshape2's `acast`. Let's do the sentiment analysis to tag positive and negative words using an inner join, then find the most common positive and negative words. Until the step where we need to send the data to `comparison.cloud`, this can all be done with joins, piping, and dplyr because our data is in tidy format.
 
-```{r wordcloud}
+```{r wordcloud, fig.height=5, fig.width=5}
 library(reshape2)
 
 books %>%
@@ -146,10 +145,10 @@ books %>%
   count(word, sentiment, sort = TRUE) %>%
   acast(word ~ sentiment, value.var = "n", fill = 0) %>%
   comparison.cloud(colors = c("#F8766D", "#00BFC4"),
-                   max.words = 75)
+                   max.words = 100)
 ```
 
-### TODO: example with chapters
+### TODO: example with chapters? or sentences?
 
 
 ### TODO: MOVE THIS TO OTHER VIGNETTE
