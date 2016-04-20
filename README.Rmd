@@ -17,11 +17,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like `dplyr`, `broom`, and `ggplot2`; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like dplyr, broom, and ggplot2; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
 
 ### Installation
 
-To install this package from Github, use `devtools`:
+To install this package from Github, use devtools:
 
 ```{r, eval=FALSE}
 library(devtools)
@@ -30,7 +30,7 @@ install_github("juliasilge/tidytext")
 
 ### Tidy text mining examples
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the `janeaustenr` package and our function to unnest and tokenize; this function uses the [`tokenizers` package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the janeaustenr package and our function to unnest and tokenize; this function uses the [tokenizers package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
 
 ```{r}
 library(tidytext)
@@ -45,7 +45,7 @@ originalbooks <- austen_books() %>%
 originalbooks
 ```
 
-We can remove stop words kept in a tidy data set in the `tidytext` package with an antijoin.
+We can remove stop words kept in a tidy data set in the tidytext package with an antijoin.
 
 ```{r}
 data("stopwords")
@@ -60,7 +60,7 @@ books %>%
   count(word, sort = TRUE) 
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the `tidytext` package in the `sentiment` dataset. Let's examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiment` dataset. Let's examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 ```{r}
 library(tidyr)
@@ -89,14 +89,14 @@ For more examples of text mining using tidy data frames, see the tidytext vignet
 
 ### Tidying document term matrices
 
-Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the `tm` package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.
+Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.
 
 ```{r}
 data("AssociatedPress", package = "topicmodels")
 AssociatedPress
 ```
 
-If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first. The `broom` package provides a `tidy` function to do this. (For more on the tidy verb, [see the `broom` package](https://github.com/dgrtwo/broom)).
+If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first. The broom package provides a `tidy` function to do this. (For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
 
 ```{r}
 library(broom)
