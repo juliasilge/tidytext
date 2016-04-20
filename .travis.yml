@@ -1,3 +1,10 @@
 language: r
 cache: packages
 
+# for topicmodels, solution from:
+# https://github.com/cpsievert/LDAvis/blob/master/.travis.yml
+install:
+  - sudo apt-get install libgsl0-dev
+  - sudo apt-get install openjdk-7-*
+  - sudo R CMD javareconf
+  - ./travis-tool.sh install_deps
