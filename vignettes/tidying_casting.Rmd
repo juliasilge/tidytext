@@ -11,7 +11,7 @@ vignette: >
 
 ### Tidying document-term matrices
 
-Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset:
+Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels package:
 
 ```{r}
 library(tm)
@@ -19,7 +19,7 @@ data("AssociatedPress", package = "topicmodels")
 AssociatedPress
 ```
 
-If we want to analyze this with tidy tools, we'd have to turn it into a one-row-per-term data frame first. The `tidy` function does this:
+If we want to analyze this with tidy tools, we'd have to turn it into a one-term-per-document-per-row data frame first. The `tidy` function does this:
 
 ```{r}
 library(dplyr)
@@ -30,9 +30,7 @@ ap_td <- tidy(AssociatedPress)
 
 (For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
 
-This is then in the same one-term-per-document-per-row form as the [examples here](tidytext.html).
-
-Having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles:
+Just as shown in [this vignette](tidytext.html), having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles:
 
 ```{r}
 bing <- sentiments %>%
@@ -104,6 +102,13 @@ ap_td %>%
 # cast into quanteda's dfm
 ap_td %>%
   cast_dfm(term, document, count)
+
+
+# cast into a Matrix object
+m <- ap_td %>%
+  cast_sparse(document, term, count)
+class(m)
+dim(m)
 ```
 
-This allows early filtering and processing to be done using dplyr and other tidy tools, then switched into a document-term matrix for machine learning applications.
+This allows early reading, filtering and processing to be done using dplyr and other tidy tools, then converted into a document-term matrix for machine learning applications.
