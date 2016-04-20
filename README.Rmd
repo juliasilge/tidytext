@@ -30,7 +30,7 @@ install_github("juliasilge/tidytext")
 
 ### Tidy text mining examples
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the `janeaustenr` package and our function to unnest and tokenize. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the `janeaustenr` package and our function to unnest and tokenize; this function uses the [`tokenizers` package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
 
 ```{r}
 library(tidytext)
@@ -106,7 +106,8 @@ tidy(AssociatedPress)
 We could find the most negative documents:
 
 ```{r}
-ap_sentiments %>%
+ap_sentiments <- tidy(AssociatedPress) %>%
+  inner_join(bing, by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
   ungroup() %>%
   spread(sentiment, n, fill = 0) %>%

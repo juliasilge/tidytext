@@ -25,7 +25,7 @@ install_github("juliasilge/tidytext")
 
 ### Tidy text mining examples
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the `janeaustenr` package and our function to unnest and tokenize. We can use the `tokenizers` package if installed, or else stick with `str_split`. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the `janeaustenr` package and our function to unnest and tokenize; this function uses the [`tokenizers` package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
 
 
 ```r
@@ -163,27 +163,13 @@ We could find the most negative documents:
 
 
 ```r
-ap_sentiments %>%
+ap_sentiments <- tidy(AssociatedPress) %>%
+  inner_join(bing, by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
   ungroup() %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(sentiment)
-#> Source: local data frame [2,190 x 4]
-#> 
-#>    document negative positive sentiment
-#>       (int)    (dbl)    (dbl)     (dbl)
-#> 1      1251       54        6       -48
-#> 2      1380       53        5       -48
-#> 3       531       51        9       -42
-#> 4        43       45       11       -34
-#> 5      1263       44       10       -34
-#> 6      2178       40        6       -34
-#> 7       334       45       12       -33
-#> 8      1664       38        5       -33
-#> 9      2147       47       14       -33
-#> 10      516       38        6       -32
-#> ..      ...      ...      ...       ...
 ```
 
 Or we can join the Austen and AP datasets and compare the frequencies of each word:
