@@ -4,6 +4,7 @@
 \alias{tdm_tidiers}
 \alias{tidy.DocumentTermMatrix}
 \alias{tidy.TermDocumentMatrix}
+\alias{tidy.dfmSparse}
 \alias{tidy.simple_triplet_matrix}
 \title{Tidy DocumentTermMatrix, TermDocumentMatrix, and related objects
 from the tm package}
@@ -11,6 +12,8 @@ from the tm package}
 \method{tidy}{DocumentTermMatrix}(x, ...)
 
 \method{tidy}{TermDocumentMatrix}(x, ...)
+
+\method{tidy}{dfmSparse}(x, ...)
 
 \method{tidy}{simple_triplet_matrix}(x, row_names = NULL, col_names = NULL,
   ...)

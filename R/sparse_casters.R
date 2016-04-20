@@ -85,10 +85,11 @@ cast_sparse <- function(data, row, column, value) {
 
 
 #' Casting a data frame to
-#' a DocumentTermMatrix or a TermDocumentMatrix
+#' a DocumentTermMatrix, TermDocumentMatrix, or dfm
 #'
 #' This turns a "tidy" one-term-per-dopument-per-row data frame into a
-#' DocumentTermMatrix or TermDocumentMatrix from the tm package. Each
+#' DocumentTermMatrix or TermDocumentMatrix from the tm package, or a
+#' dfm from the quanteda package. Each caster
 #' can be called either with non-standard evaluation (bare column names)
 #' or character vectors (for \code{cast_tdm_} and \code{cast_dtm_}).
 #'
@@ -101,18 +102,18 @@ cast_sparse <- function(data, row, column, value) {
 #' @param ... Extra arguments passed on to
 #' \code{\link{sparseMatrix}}
 #'
-#' @rdname cast_tdm
+#' @rdname document_term_casters
 #' @export
-cast_tdm_ <- function(data, term_col, document_col, value_col = 1,
+cast_tdm_ <- function(data, term_col, document_col, value_col,
                       weighting = tm::weightTf, ...) {
   m <- cast_sparse_(data, term_col, document_col, value_col, ...)
   tm::as.TermDocumentMatrix(m, weighting = weighting)
 }
 
 
-#' @rdname cast_tdm
+#' @rdname document_term_casters
 #' @export
-cast_tdm <- function(data, term, document, value = 1,
+cast_tdm <- function(data, term, document, value,
                       weighting = tm::weightTf, ...) {
   cast_tdm_(data,
             col_name(substitute(term)),
@@ -123,22 +124,40 @@ cast_tdm <- function(data, term, document, value = 1,
 
 
 
-#' @rdname cast_tdm
+#' @rdname document_term_casters
 #' @export
-cast_dtm_ <- function(data, document_col, term_col, value_col = 1,
+cast_dtm_ <- function(data, document_col, term_col, value_col,
                       weighting = tm::weightTf, ...) {
   m <- cast_sparse_(data, document_col, term_col, value_col, ...)
   tm::as.DocumentTermMatrix(m, weighting = weighting)
 }
 
 
-#' @rdname cast_tdm
+#' @rdname document_term_casters
 #' @export
-cast_dtm <- function(data, document, term, value = 1,
+cast_dtm <- function(data, document, term, value,
                      weighting = tm::weightTf, ...) {
   cast_dtm_(data,
             col_name(substitute(document)),
             col_name(substitute(term)),
             col_name(substitute(value)),
             weighting = weighting, ...)
+}
+
+
+#' @rdname document_term_casters
+#' @export
+cast_dfm_ <- function(data, document_col, term_col, value_col, ...) {
+  m <- cast_sparse_(data, document_col, term_col, value_col, ...)
+  new("dfmSparse", m)
+}
+
+
+#' @rdname document_term_casters
+#' @export
+cast_dfm <- function(data, document, term, value, ...) {
+  cast_dfm_(data,
+            col_name(substitute(document)),
+            col_name(substitute(term)),
+            col_name(substitute(value)), ...)
 }

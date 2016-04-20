@@ -30,7 +30,9 @@ ap_td <- tidy(AssociatedPress)
 
 (For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
 
-This is then in the same one-term-per-document-per-row form as the [examples here](tidytext.html). You can then perform sentiment analysis on these newspaper articles:
+This is then in the same one-term-per-document-per-row form as the [examples here](tidytext.html).
+
+Having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles:
 
 ```{r}
 bing <- sentiments %>%
@@ -73,6 +75,17 @@ ap_sentiments %>%
   ylab("Contribution to positivity/negativity")
 ```
 
+Note that a tidier is also available for the dfm class from the quanteda package:
+
+```{r}
+data("inaugCorpus", package = "quanteda")
+d <- quanteda::dfm(inaugCorpus)
+
+d
+
+tidy(d)
+```
+
 ### Casting tidy-text data into a DocumentTermMatrix
 
 Many existing text-mining tools work only on sparse Document-Term matrices. Therefore, tidytext provides `cast_` verbs for converting from a tidy form to these matrices.
@@ -87,6 +100,10 @@ ap_td %>%
 # cast into a Term-Document Matrix
 ap_td %>%
   cast_tdm(term, document, count)
+
+# cast into quanteda's dfm
+ap_td %>%
+  cast_dfm(term, document, count)
 ```
 
 This allows early filtering and processing to be done using dplyr and other tidy tools, then switched into a document-term matrix for machine learning applications.

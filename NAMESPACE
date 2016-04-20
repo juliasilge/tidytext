@@ -2,8 +2,11 @@
 
 S3method(tidy,DocumentTermMatrix)
 S3method(tidy,TermDocumentMatrix)
+S3method(tidy,dfmSparse)
 S3method(tidy,dictionary)
 S3method(tidy,simple_triplet_matrix)
+export(cast_dfm)
+export(cast_dfm_)
 export(cast_dtm)
 export(cast_dtm_)
 export(cast_sparse)
