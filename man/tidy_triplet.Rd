@@ -4,12 +4,16 @@
 \alias{tidy_triplet}
 \title{Utility function to tidy a simple triplet matrix}
 \usage{
-tidy_triplet(x, triplets)
+tidy_triplet(x, triplets, row_names = NULL, col_names = NULL)
 }
 \arguments{
 \item{x}{Object with rownames and colnames}
 
 \item{triplets}{A data frame or list of i, j, x}
+
+\item{row_names}{rownames, if not gotten from rownames(x)}
+
+\item{col_names}{colnames, if not gotten from colnames(x)}
 }
 \description{
 Utility function to tidy a simple triplet matrix
