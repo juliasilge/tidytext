@@ -1,13 +1,17 @@
 ---
-title: "Converting to and from Document-Term Matrices"
+title: "Converting to and from Document-Term Matrix and Corpus objects"
 author: "Julia Silge and David Robinson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Converting to and from Document-Term Matrices}
+  %\VignetteIndexEntry{Converting to and from Document-Term Matrices and Corpus objects}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
+
+```{r echo = FALSE}
+knitr::opts_chunk$set(fig.width = 8, fig.height = 8)
+```
 
 ### Tidying document-term matrices
 
@@ -112,3 +116,113 @@ dim(m)
 ```
 
 This allows early reading, filtering and processing to be done using dplyr and other tidy tools, then converted into a document-term matrix for machine learning applications.
+
+### Tidying corpus data
+
+You can also tidy Corpus objects from the tm package. For example, consider a Corpus containing 20 documents, one for each
+
+```{r}
+reut21578 <- system.file("texts", "crude", package = "tm")
+reuters <- VCorpus(DirSource(reut21578),
+                   readerControl = list(reader = readReut21578XMLasPlain))
+
+reuters
+```
+
+The `tidy` verb creates a table with one row per document:
+
+```{r}
+reuters_td <- tidy(reuters)
+reuters_td
+```
+
+Similarly, you can `tidy` a `corpus` object from the quanteda package:
+
+```{r}
+library(quanteda)
+
+data("inaugCorpus")
+
+inaugCorpus
+
+inaug_td <- tidy(inaugCorpus)
+inaug_td
+```
+
+This lets us work with tidy tools like `unnest_tokens` to analyze the text alongside the metadata.
+
+```{r}
+data(stopwords)
+
+inaug_words <- inaug_td %>%
+  unnest_tokens(word, text) %>%
+  anti_join(tidytext::stopwords)
+
+inaug_words
+```
+
+We could then, for example, see how the appearance of a word changes over time:
+
+```{r}
+inaug_freq <- inaug_words %>%
+  count(Year, word) %>%
+  ungroup() %>%
+  complete(Year, word, fill = list(n = 0)) %>%
+  group_by(Year) %>%
+  mutate(year_total = sum(n),
+         percent = n / year_total) %>%
+  ungroup()
+
+inaug_freq
+```
+
+For example, we can use the broom package to perform logistic regression on each word.
+
+```{r}
+models <- inaug_freq %>%
+  group_by(word) %>%
+  filter(sum(n) > 50) %>%
+  do(tidy(glm(cbind(n, year_total - n) ~ Year, .,
+              family = "binomial"))) %>%
+  ungroup() %>%
+  filter(term == "Year")
+
+models
+
+models %>%
+  filter(term == "Year") %>%
+  arrange(desc(abs(estimate)))
+```
+
+You can show these models as a volcano plot, which compares the effect size with the significance:
+
+```{r}
+library(ggplot2)
+theme_set(theme_bw())
+
+models %>%
+  mutate(adjusted.p.value = p.adjust(p.value)) %>%
+  ggplot(aes(estimate, adjusted.p.value)) +
+  geom_point() +
+  scale_y_log10() +
+  geom_text(aes(label = word), vjust = 1, hjust = 1,
+            check_overlap = TRUE) +
+  xlab("Estimated change over time") +
+  ylab("Adjusted p-value")
+```
+
+We can also use the ggplot2 package to display the top 6 terms that have changed in frequency over time.
+
+```{r}
+library(scales)
+
+models %>%
+  top_n(6, abs(estimate)) %>%
+  inner_join(inaug_freq) %>%
+  ggplot(aes(Year, percent)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~ word) +
+  scale_y_continuous(labels = percent_format()) +
+  ylab("Frequency of word in speech")
+```

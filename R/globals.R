@@ -1,1 +1,1 @@
-globalVariables(c("X1", "X2", "X3", "word", "code", "category"))
+globalVariables(c("X1", "X2", "X3", "word", "code", "category", "texts"))

@@ -21,7 +21,8 @@ Imports: dplyr,
     broom,
     Matrix,
     tokenizers,
-    janeaustenr
+    janeaustenr,
+    purrr
 Suggests: readr,
     tm,
     qdapDictionaries,
@@ -32,5 +33,7 @@ Suggests: readr,
     ggplot2,
     reshape2,
     topicmodels,
-    quanteda
+    quanteda,
+    NLP,
+    scales
 VignetteBuilder: knitr
