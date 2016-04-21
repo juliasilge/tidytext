@@ -1,15 +1,21 @@
-<!--
-%\VignetteEngine{knitr::knitr}
-%\VignetteIndexEntry{Introduction to tidytext}
--->
+---
+title: "Introduction to tidytext"
+author: "Julia Silge and David Robinson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Introduction to tidytext}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
 
 ```{r setup, echo=FALSE}
 library(knitr)
-opts_chunk$set(warning=FALSE, comment = "#>", message=FALSE)
+opts_chunk$set(warning=FALSE)
 ```
 
-# tidytext
-## The Life-Changing Magic of Tidying Text
+
+### The Life-Changing Magic of Tidying Text
 
 Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like dplyr, broom, and ggplot2; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
 
@@ -85,7 +91,7 @@ janeaustensentiment <- originalbooks %>%
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r, fig.width=9, fig.height=9, warning=FALSE}
+```{r, fig.width=7, fig.height=7, warning=FALSE}
 library(ggplot2)
 
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +

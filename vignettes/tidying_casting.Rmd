@@ -9,9 +9,14 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
+```{r setup, echo=FALSE}
+library(knitr)
+opts_chunk$set(warning=FALSE)
+```
+
 ### Tidying document-term matrices
 
-Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels package:
+Many existing text mining datasets are in the form of a `DocumentTermMatrix` class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels package:
 
 ```{r}
 library(tm)
@@ -19,7 +24,7 @@ data("AssociatedPress", package = "topicmodels")
 AssociatedPress
 ```
 
-If we want to analyze this with tidy tools, we'd have to turn it into a one-term-per-document-per-row data frame first. The `tidy` function does this:
+If we want to analyze this with tidy tools, we need to turn it into a one-term-per-document-per-row data frame first. The `tidy` function does this. (For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
 
 ```{r}
 library(dplyr)
@@ -28,9 +33,7 @@ library(tidytext)
 ap_td <- tidy(AssociatedPress)
 ```
 
-(For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
-
-Just as shown in [this vignette](tidytext.html), having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles:
+Just as shown in [this vignette](tidytext.html), having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles.
 
 ```{r}
 bing <- sentiments %>%
@@ -43,7 +46,7 @@ ap_sentiments <- ap_td %>%
 ap_sentiments
 ```
 
-We could find the most negative documents:
+We can find the most negative documents:
 
 ```{r}
 library(tidyr)
@@ -56,9 +59,9 @@ ap_sentiments %>%
   arrange(sentiment)
 ```
 
-Or visualize which words contributed to positivity/negativity:
+Or visualize which words contributed to positive and negative sentiment:
 
-```{r fig.width = 8, fig.height = 8}
+```{r fig.width = 8, fig.height = 6}
 library(ggplot2)
 
 ap_sentiments %>%
@@ -70,10 +73,10 @@ ap_sentiments %>%
   ggplot(aes(term, n, fill = sentiment)) +
   geom_bar(stat = "identity") +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Contribution to positivity/negativity")
+  ylab("Contribution to sentiment")
 ```
 
-Note that a tidier is also available for the dfm class from the quanteda package:
+Note that a tidier is also available for the `dfm` class from the quanteda package:
 
 ```{r}
 data("inaugCorpus", package = "quanteda")
@@ -84,9 +87,9 @@ d
 tidy(d)
 ```
 
-### Casting tidy-text data into a DocumentTermMatrix
+### Casting tidy text data into a DocumentTermMatrix
 
-Many existing text-mining tools work only on sparse Document-Term matrices. Therefore, tidytext provides `cast_` verbs for converting from a tidy form to these matrices.
+Some existing text mining tools or algorithms work only on sparse Document-Term matrices. Therefore, tidytext provides `cast_` verbs for converting from a tidy form to these matrices.
 
 ```{r}
 ap_td
@@ -111,4 +114,4 @@ class(m)
 dim(m)
 ```
 
-This allows early reading, filtering and processing to be done using dplyr and other tidy tools, then converted into a document-term matrix for machine learning applications.
+This allows for easy reading, filtering, and processing to be done using dplyr and other tidy tools, after which the data can be converted into a document-term matrix for machine learning applications.
