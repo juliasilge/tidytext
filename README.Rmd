@@ -92,6 +92,7 @@ For more examples of text mining using tidy data frames, see the tidytext vignet
 Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.
 
 ```{r}
+library(tm)
 data("AssociatedPress", package = "topicmodels")
 AssociatedPress
 ```
