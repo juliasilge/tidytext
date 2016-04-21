@@ -136,11 +136,10 @@ AssociatedPress
 #> Weighting          : term frequency (tf)
 ```
 
-If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first. The broom package provides a `tidy` function to do this. (For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
+If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first with a `tidy` function. (For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
 
 
 ```r
-library(broom)
 tidy(AssociatedPress)
 #> Source: local data frame [302,031 x 3]
 #> 
@@ -214,7 +213,7 @@ ggplot(comparison, aes(AP, Austen)) +
 
 ![plot of chunk unnamed-chunk-11](README-unnamed-chunk-11-1.png)
 
-For more examples of working with document term matrices from other packages using tidy data principles, see the TODO vignette.
+For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
 ### Code of Conduct
 
