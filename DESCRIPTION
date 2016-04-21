@@ -35,5 +35,6 @@ Suggests: readr,
     topicmodels,
     quanteda,
     NLP,
-    scales
+    scales,
+    testthat
 VignetteBuilder: knitr
