@@ -2,8 +2,7 @@
 #'
 #' English stop words from three lexicons, as a data frame.
 #' The onix and SMART sets are pulled from the tm package. Note
-#' that words with non-ASCII have been removed. The raw data is in
-#' \code{inst/extdata}.
+#' that words with non-ASCII characters have been removed.
 #'
 #' @format A data frame with 1149 rows and 2 variables:
 #' \describe{
@@ -11,9 +10,7 @@
 #'  \item{lexicon}{The source of the stop word. Either "onix", "SMART", or "snowball"}
 #'  }
 #'
-#' @seealso \code{\link{setup_data}}
-#'
 #' @source \url{http://www.lextek.com/manuals/onix/stopwords1.html}
 #' \url{http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop}
 #' \url{http://snowball.tartarus.org/algorithms/english/stop.txt}
-"stopwords"
+"stop_words"

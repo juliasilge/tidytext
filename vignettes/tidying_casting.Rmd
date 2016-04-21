@@ -9,14 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-<<<<<<< HEAD
 ```{r echo = FALSE}
-knitr::opts_chunk$set(fig.width = 8, fig.height = 8)
-=======
-```{r setup, echo=FALSE}
-library(knitr)
-opts_chunk$set(warning=FALSE)
->>>>>>> c57414eaf4348dfd62f2c05493d23504d804cace
+knitr::opts_chunk$set(fig.width = 8, fig.height = 8, warning = FALSE)
 ```
 
 ### Tidying document-term matrices
@@ -157,11 +151,9 @@ inaug_td
 This lets us work with tidy tools like `unnest_tokens` to analyze the text alongside the metadata.
 
 ```{r}
-data(stopwords)
-
 inaug_words <- inaug_td %>%
   unnest_tokens(word, text) %>%
-  anti_join(tidytext::stopwords)
+  anti_join(stop_words)
 
 inaug_words
 ```

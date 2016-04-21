@@ -4,7 +4,7 @@
 #' The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
 #' the sentiment lexicon from Bing Liu and collaborators, and the lexicon of
 #' Finn Arup Nielsen. Words with non-ASCII characters were removed from the
-#' lexicons; the raw data is in \code{inst/extdata}.
+#' lexicons.
 #'
 #' @format A data frame with 23,165 rows and 4 variables:
 #' \describe{
@@ -19,8 +19,6 @@
 #'  for the Bing and NRC lexicons, and runs between -5 and 5 for the AFINN
 #'  lexicon.}
 #' }
-#'
-#' @seealso \code{\link{setup_data}}
 #'
 #' @source \url{http://saifmohammad.com/WebPages/lexicons.html}
 #' \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}

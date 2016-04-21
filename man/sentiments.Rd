@@ -30,10 +30,7 @@ Three lexicons for sentiment analysis are combined here in a tidy data frame.
 The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
 the sentiment lexicon from Bing Liu and collaborators, and the lexicon of
 Finn Arup Nielsen. Words with non-ASCII characters were removed from the
-lexicons; the raw data is in \code{inst/extdata}.
-}
-\seealso{
-\code{\link{setup_data}}
+lexicons.
 }
 \keyword{datasets}
 

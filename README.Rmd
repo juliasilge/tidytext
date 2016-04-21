@@ -48,9 +48,9 @@ originalbooks
 We can remove stop words kept in a tidy data set in the tidytext package with an antijoin.
 
 ```{r}
-data("stopwords")
+data("stop_words")
 books <- originalbooks %>%
-  anti_join(stopwords)
+  anti_join(stop_words)
 ```
 
 Now, let's see what are the most common words in all the books as a whole.

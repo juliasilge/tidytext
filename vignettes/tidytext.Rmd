@@ -50,7 +50,7 @@ We can remove stop words kept in a tidy data set in the tidytext package with an
 
 ```{r}
 books <- originalbooks %>%
-  anti_join(tidytext::stopwords)
+  anti_join(stop_words)
 ```
 
 Now, let's see what the most common words are in all six novels as a whole.
@@ -123,7 +123,7 @@ bing_word_counts %>%
   ylab("Contribution to sentiment")
 ```
 
-This lets us spot an anomaly in the sentiment analysis; the word "miss" is coded as negative but it is used as a title for young, unmarried women in Jane Austen's works. If it were appropriate for our purposes, we could easily add "miss" to a custom stopwords list using `bind_rows`.
+This lets us spot an anomaly in the sentiment analysis; the word "miss" is coded as negative but it is used as a title for young, unmarried women in Jane Austen's works. If it were appropriate for our purposes, we could easily add "miss" to a custom stop-words list using `bind_rows`.
 
 ### Wordclouds
 
