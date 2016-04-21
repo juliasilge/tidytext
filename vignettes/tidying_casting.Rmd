@@ -10,7 +10,7 @@ vignette: >
 ---
 
 ```{r echo = FALSE}
-knitr::opts_chunk$set(fig.width = 8, fig.height = 8, warning = FALSE)
+knitr::opts_chunk$set(fig.width = 7, fig.height = 7, warning = FALSE)
 ```
 
 ### Tidying document-term matrices
@@ -60,7 +60,7 @@ ap_sentiments %>%
 
 Or visualize which words contributed to positive and negative sentiment:
 
-```{r fig.width = 8, fig.height = 6}
+```{r fig.width = 7, fig.height = 5}
 library(ggplot2)
 
 ap_sentiments %>%
@@ -88,7 +88,7 @@ tidy(d)
 
 ### Casting tidy text data into a DocumentTermMatrix
 
-Some existing text mining tools or algorithms work only on sparse Document-Term matrices. Therefore, tidytext provides `cast_` verbs for converting from a tidy form to these matrices.
+Some existing text mining tools or algorithms work only on sparse document-term matrices. Therefore, tidytext provides `cast_` verbs for converting from a tidy form to these matrices.
 
 ```{r}
 ap_td
@@ -113,8 +113,7 @@ class(m)
 dim(m)
 ```
 
-<<<<<<< HEAD
-This allows early reading, filtering and processing to be done using dplyr and other tidy tools, then converted into a document-term matrix for machine learning applications.
+This allows for easy reading, filtering, and processing to be done using dplyr and other tidy tools, after which the data can be converted into a document-term matrix for machine learning applications.
 
 ### Tidying corpus data
 
@@ -223,6 +222,5 @@ models %>%
   scale_y_continuous(labels = percent_format()) +
   ylab("Frequency of word in speech")
 ```
-=======
-This allows for easy reading, filtering, and processing to be done using dplyr and other tidy tools, after which the data can be converted into a document-term matrix for machine learning applications.
->>>>>>> c57414eaf4348dfd62f2c05493d23504d804cace
+
+
