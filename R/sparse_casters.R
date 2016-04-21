@@ -12,6 +12,7 @@
 #' @export
 cast_sparse_ <- function(data, row_col, column_col, value_col = 1,
                          ...) {
+  data <- distinct_(data, row_col, column_col)
   row_names <- data[[row_col]]
   col_names <- data[[column_col]]
   if (is.numeric(value_col)) {
