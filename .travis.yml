@@ -11,5 +11,6 @@ before_install:
 install:
   - sudo apt-get install libgsl0-dev
   - sudo apt-get install openjdk-7-*
+  - sudo apt-get install r-cran-xml
   - sudo R CMD javareconf
   - ./travis-tool.sh install_deps
