@@ -16,7 +16,8 @@ test_that("tokenizing by word works", {
   d <- d %>% unnest_tokens(word, txt)
   expect_equal(d,
                data_frame(word =
-                            c("because","i","could","not","stop","for","death","he","kindly","stopped","for","me")))
+                            c("because","i","could","not","stop","for",
+                              "death","he","kindly","stopped","for","me")))
 })
 
 test_that("tokenizing by sentence works", {
