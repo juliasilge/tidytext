@@ -32,5 +32,6 @@ Suggests: readr,
     ggplot2,
     reshape2,
     topicmodels,
-    quanteda
+    quanteda,
+    testthat
 VignetteBuilder: knitr
