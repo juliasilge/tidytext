@@ -1,6 +1,9 @@
 language: r
 cache: packages
 
+r_binary_packages:
+- topicmodels
+
 env:
   global:
     - R_CHECK_ARGS="--no-build-vignettes"
