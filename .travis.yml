@@ -1,9 +1,11 @@
 language: r
 cache: packages
 
-
 addons:
   apt:
     packages:
       - libgsl0-dev
       - libxml2-dev
+
+r_binary_packages:
+      - XML
