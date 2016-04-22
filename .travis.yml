@@ -13,3 +13,4 @@ install:
   - sudo apt-get install openjdk-7-*
   - sudo R CMD javareconf
   - ./travis-tool.sh install_deps
+  - ./travis-tool.sh aptget_install r-cran-xml 
