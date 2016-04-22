@@ -68,7 +68,6 @@ pair_count_ <- function(data, group_col, value_col,
   triplets <- Matrix::summary(co)
 
   if (unique_pair) {
-    print("hi")
     triplets <- filter(triplets, i <= j)
   }
   if (!self) {
