@@ -1,15 +1,10 @@
 language: r
 cache: packages
+sudo: required
 
-before_install:
-  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
-  - chmod 755 ./travis-tool.sh
-  - ./travis-tool.sh bootstrap
+apt_packages:
+      - libgsl0-dev # for topicmodels
+      - libxml2-dev # for XML, a dependency of quanteda
 
-# for topicmodels, solution from:
-# https://github.com/cpsievert/LDAvis/blob/master/.travis.yml
-install:
-  - sudo apt-get install libgsl0-dev
-  - sudo apt-get install openjdk-7-*
-  - sudo R CMD javareconf
-  - ./travis-tool.sh install_deps
+r_binary_packages:
+      - XML # not sure why XML is not getting installed without this
