@@ -1,7 +1,9 @@
 language: r
 cache: packages
 
-apt_packages:
-  - libgsl0-dev
-  - openjdk-7-*
-  - r-cran-xml
+
+addons:
+  apt:
+    packages:
+      - libgsl0-dev
+      - openjdk-7-*
