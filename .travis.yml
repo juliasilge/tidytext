@@ -1,7 +1,16 @@
 language: r
 cache: packages
 
-apt_packages:
- - libgsl0-dev
- - gsl-bin
- - r-cran-xml
+before_install:
+  - curl -OL http://raw.github.com/craigcitro/r-travis/master/scripts/travis-tool.sh
+  - chmod 755 ./travis-tool.sh
+  - ./travis-tool.sh bootstrap
+
+# for topicmodels, solution from:
+# https://github.com/cpsievert/LDAvis/blob/master/.travis.yml
+install:
+  - sudo apt-get install libgsl0-dev
+  - sudo apt-get install openjdk-7-*
+  - sudo apt-get install r-cran-xml
+  - sudo R CMD javareconf
+  - ./travis-tool.sh install_deps
