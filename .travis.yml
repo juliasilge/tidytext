@@ -1,11 +1,10 @@
 language: r
 cache: packages
+sudo: required
 
-addons:
-  apt:
-    packages:
-      - libgsl0-dev
-      - libxml2-dev
+apt_packages:
+      - libgsl0-dev # for topicmodels
+      - libxml2-dev # for XML, a dependency of quanteda
 
 r_binary_packages:
-      - XML
+      - XML # not sure why XML is not getting installed without this
