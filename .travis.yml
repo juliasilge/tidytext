@@ -7,3 +7,5 @@ addons:
     packages:
       - libgsl0-dev
       - openjdk-7-*
+      - r-cran-xml
+      - libxml2-dev
