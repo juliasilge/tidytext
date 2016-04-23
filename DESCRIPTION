@@ -1,13 +1,13 @@
 Package: tidytext
 Type: Package
-Title: Text mining using dplyr, ggplot2, and other tidy tools
+Title: 'Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools'
 Version: 0.1
 Date: 2016-03-31
 Authors@R: c(person("Gabriela", "De Queiroz", email = "gabidequeiroz@gmail.com", role = c("ctb")),
              person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut")),
              person("Julia", "Silge", email = "julia.silge@gmail.com", role = c("aut", "cre")))
 Description: Text mining for word processing and sentiment analysis using
-    dplyr, ggplot2, and other tidy tools.
+    'dplyr', 'ggplot2', and other tidy tools.
 License: MIT + file LICENSE
 LazyData: TRUE
 URL: http://github.com/juliasilge/tidytext
