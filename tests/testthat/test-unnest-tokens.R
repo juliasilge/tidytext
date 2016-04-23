@@ -2,6 +2,8 @@
 
 context("function to unnest and tokenize")
 
+suppressPackageStartupMessages(library(dplyr))
+
 test_that("tokenizing by character works", {
   d <- data_frame(txt = "Emily Dickinson")
   d <- d %>% unnest_tokens(char, txt, token = "characters")

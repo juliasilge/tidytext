@@ -2,6 +2,8 @@
 
 context("function to pair and count")
 
+suppressPackageStartupMessages(library(dplyr))
+
 test_that("pairing and counting works", {
   d <- data_frame(txt = c("I felt a funeral in my brain,",
                           "And mourners, to and fro,",
