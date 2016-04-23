@@ -119,6 +119,70 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
 
 ![plot of chunk unnamed-chunk-7](README-unnamed-chunk-7-1.png)
 
+Another function is `pair_count`, which counts pairs of items that occur together within a group. Let's count the words that occur together in the lines of *Pride and Prejudice*.
+
+
+```r
+pride_prejudice_words <- books %>%
+  filter(book == "Pride & Prejudice")
+pride_prejudice_words
+#> Source: local data frame [37,246 x 3]
+#> 
+#>                 book linenumber           word
+#>               (fctr)      (int)          (chr)
+#> 1  Pride & Prejudice      12441      pollution
+#> 2  Pride & Prejudice      12430      liberties
+#> 3  Pride & Prejudice      12425       sportive
+#> 4  Pride & Prejudice      12419     heretofore
+#> 5  Pride & Prejudice      12400       heedless
+#> 6  Pride & Prejudice      12397       expences
+#> 7  Pride & Prejudice      12381 congratulatory
+#> 8  Pride & Prejudice      12376     revolution
+#> 9  Pride & Prejudice      12372       moralize
+#> 10 Pride & Prejudice      12348       relished
+#> ..               ...        ...            ...
+
+word_cooccurences <- pride_prejudice_words %>%
+  pair_count(linenumber, word, sort = TRUE)
+
+word_cooccurences
+#> Source: local data frame [50,550 x 3]
+#> 
+#>       value1  value2     n
+#>        (chr)   (chr) (dbl)
+#> 1  catherine    lady    87
+#> 2    bingley    miss    68
+#> 3     bennet    miss    65
+#> 4      darcy    miss    46
+#> 5    william     sir    35
+#> 6     bourgh      de    32
+#> 7  elizabeth    miss    29
+#> 8  elizabeth    jane    27
+#> 9  elizabeth   cried    24
+#> 10   forster colonel    24
+#> ..       ...     ...   ...
+```
+
+This can be useful, for example, to plot a network of co-occuring words with the [igraph](http://igraph.org/) and [ggraph](https://github.com/thomasp85/ggraph) packages.
+
+
+```r
+library(igraph)
+library(ggraph)
+
+set.seed(2016)
+word_cooccurences %>%
+  filter(n >= 10) %>%
+  graph_from_data_frame() %>%
+  ggraph(layout = "fr") +
+  geom_edge_link(aes(edge_alpha = n, edge_width = n)) +
+  geom_node_point(color = "lightblue", size = 5) +
+  geom_node_text(aes(label = name), vjust = 1.8) +
+  theme_void()
+```
+
+![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
+
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
 ### Tidying document term matrices
@@ -212,7 +276,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-11](README-unnamed-chunk-11-1.png)
+![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
