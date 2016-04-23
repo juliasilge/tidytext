@@ -12,7 +12,9 @@ test_that("pairing and counting works", {
   d <- d %>% mutate(line = row_number()) %>%
     unnest_tokens(char, txt, token = "characters")
   d <- d %>% pair_count(line, char, sort = TRUE)
-  expect_equal(d$value1[1:4], c("e","e","t","e"))
-  expect_equal(d$value2[1:4], c("t","a","a","n"))
-  expect_equal(d$n[1:4], rep(4,4))
+  expect_equal(nrow(d), 164)
+  expect_equal(ncol(d), 3)
+  expect_equal(d$value1[1], "e")
+  expect_equal(d$value2[10], "r")
+  expect_equal(d$n[20], 3)
 })
