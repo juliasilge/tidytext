@@ -45,18 +45,12 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
     tbl <- group_by_(tbl, .dots = setdiff(colnames(tbl), input_col)) %>%
       summarise_(.dots = exps)
   }
+
   col <- tbl[[input_col]]
-  if (to_lower) {
-    col <- stringr::str_to_lower(col)
-  }
 
   token <- paste0("tokenize_", token)
   tokenfunc <- get(token)
-  if (token == "tokenize_characters" || token == "tokenize_words") {
-    tbl[[output_col]] <- tokenfunc(col, lowercase = FALSE, ...)
-  } else { # mash the whole character string together here for other tokenizer functions
-    tbl[[output_col]] <- tokenfunc(col, ...)
-  }
+  tbl[[output_col]] <- tokenfunc(col, lowercase = to_lower, ...)
 
   if (drop && input_col != output_col) {
     tbl[[input_col]] <- NULL
