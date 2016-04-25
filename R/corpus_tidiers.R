@@ -52,12 +52,12 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
       # keep as a list column
       return(m)
     }
-    m <- purrr::map_at(m, which(lengths == 0), ~ NA)
+    m <- purrr::map_at(m, which(lengths == 0), ~NA)
 
     ret <- unname(do.call(c, m))
     ## tbl_df() doesn't support POSIXlt format
     ## https://github.com/hadley/dplyr/issues/1382
-    if (is(ret, "POSIXlt")) {
+    if (inherits(ret, "POSIXlt")) {
       ret <- as.POSIXct(ret)
     }
     ret
@@ -128,7 +128,7 @@ glance.corpus <- function(x, ...) {
   md <- purrr::compact(x$metadata)
 
   # turn vectors into list columns
-  md <- purrr::map_if(md, ~ length(.) > 1, list)
+  md <- purrr::map_if(md, ~length(.) > 1, list)
 
   as_data_frame(md)
 }

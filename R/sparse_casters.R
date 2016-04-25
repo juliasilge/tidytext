@@ -150,7 +150,7 @@ cast_dtm <- function(data, document, term, value,
 #' @export
 cast_dfm_ <- function(data, document_col, term_col, value_col, ...) {
   m <- cast_sparse_(data, document_col, term_col, value_col, ...)
-  new("dfmSparse", m)
+  methods::new("dfmSparse", m)
 }
 
 

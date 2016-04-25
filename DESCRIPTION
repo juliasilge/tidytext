@@ -22,7 +22,8 @@ Imports: dplyr,
     Matrix,
     tokenizers,
     janeaustenr,
-    purrr
+    purrr,
+    methods
 Suggests: readr,
     tm,
     wordcloud,
