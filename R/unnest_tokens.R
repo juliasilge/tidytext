@@ -56,15 +56,15 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
     tbl[[output_col]] <- tokenfunc(col, ...)
   }
 
-  if (to_lower) {
-    col <- stringr::str_to_lower(col)
-  }
-
   if (drop && input_col != output_col) {
     tbl[[input_col]] <- NULL
   }
 
   ret <- tidyr::unnest_(tbl, output_col)
+
+  if (to_lower) {
+    ret[[output_col]] <- stringr::str_to_lower(ret[[output_col]])
+  }
 
   ret <- ret[ret[[output_col]] != "", ]
 
