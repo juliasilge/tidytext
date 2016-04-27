@@ -3,7 +3,7 @@
 tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 ---------------
 
-**Authors:** [David Robinson](http://varianceexplained.org/), [Julia Silge](http://juliasilge.com/)<br>
+**Authors:** [Julia Silge](http://juliasilge.com/), [David Robinson](http://varianceexplained.org/)
 **License:** [MIT](https://opensource.org/licenses/MIT)<br>
 
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like dplyr, broom, and ggplot2; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr) and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide tidying functions and supporting data sets to allow conversion between text datasets and tidy tools.
 
 ### Installation
 
@@ -29,33 +29,44 @@ install_github("juliasilge/tidytext")
 
 ### Tidy text mining examples
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the janeaustenr package and our function to unnest and tokenize; this function uses the [tokenizers package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:
+
+```{r}
+library(janeaustenr)
+library(dplyr)
+
+books <- austen_books() %>%
+  group_by(book) %>%
+  mutate(linenumber = row_number()) %>%
+  ungroup()
+
+books
+```
+
+To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row:
 
 ```{r}
 library(tidytext)
-library(janeaustenr)
-library(dplyr)
-originalbooks <- austen_books() %>%
-  group_by(book) %>%
-  mutate(linenumber = row_number()) %>%
-  ungroup() %>%
+tidy_books <- books %>%
   unnest_tokens(word, text)
 
-originalbooks
+tidy_books
 ```
 
-We can remove stop words kept in a tidy data set in the tidytext package with an antijoin.
+This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, or separation around a regex pattern.
+
+Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (kept in the tidytext dataset `stop_words`) with an `anti_join`.
 
 ```{r}
 data("stop_words")
-books <- originalbooks %>%
+tidy_books <- tidy_books %>%
   anti_join(stop_words)
 ```
 
-Now, let's see what are the most common words in all the books as a whole.
+We can also use `count` to find the most common words in all the books as a whole.
 
 ```{r}
-books %>%
+tidy_books %>%
   count(word, sort = TRUE) 
 ```
 
@@ -67,11 +78,15 @@ bing <- sentiments %>%
   filter(lexicon == "bing") %>%
   select(-score)
 
-janeaustensentiment <- originalbooks %>%
+bing
+
+janeaustensentiment <- tidy_books %>%
   inner_join(bing) %>% 
   count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
+
+janeaustensentiment
 ```
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.

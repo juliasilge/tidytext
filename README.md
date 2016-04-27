@@ -3,14 +3,14 @@
 tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 ---------------
 
-**Authors:** [David Robinson](http://varianceexplained.org/), [Julia Silge](http://juliasilge.com/)<br>
+**Authors:** [Julia Silge](http://juliasilge.com/), [David Robinson](http://varianceexplained.org/)
 **License:** [MIT](https://opensource.org/licenses/MIT)<br>
 
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
 
 
 
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like dplyr, broom, and ggplot2; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr) and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide tidying functions and supporting data sets to allow conversion between text datasets and tidy tools.
 
 ### Installation
 
@@ -24,20 +24,45 @@ install_github("juliasilge/tidytext")
 
 ### Tidy text mining examples
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the janeaustenr package and our function to unnest and tokenize; this function uses the [tokenizers package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:
+
+
+```r
+library(janeaustenr)
+library(dplyr)
+
+books <- austen_books() %>%
+  group_by(book) %>%
+  mutate(linenumber = row_number()) %>%
+  ungroup()
+
+books
+#> Source: local data frame [70,942 x 3]
+#> 
+#>                     text                book linenumber
+#>                    (chr)              (fctr)      (int)
+#> 1  SENSE AND SENSIBILITY Sense & Sensibility          1
+#> 2                        Sense & Sensibility          2
+#> 3         by Jane Austen Sense & Sensibility          3
+#> 4                        Sense & Sensibility          4
+#> 5                 (1811) Sense & Sensibility          5
+#> 6                        Sense & Sensibility          6
+#> 7                        Sense & Sensibility          7
+#> 8                        Sense & Sensibility          8
+#> 9                        Sense & Sensibility          9
+#> 10             CHAPTER 1 Sense & Sensibility         10
+#> ..                   ...                 ...        ...
+```
+
+To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row:
 
 
 ```r
 library(tidytext)
-library(janeaustenr)
-library(dplyr)
-originalbooks <- austen_books() %>%
-  group_by(book) %>%
-  mutate(linenumber = row_number()) %>%
-  ungroup() %>%
+tidy_books <- books %>%
   unnest_tokens(word, text)
 
-originalbooks
+tidy_books
 #> Source: local data frame [724,971 x 3]
 #> 
 #>                   book linenumber        word
@@ -55,21 +80,23 @@ originalbooks
 #> ..                 ...        ...         ...
 ```
 
-We can remove stop words kept in a tidy data set in the tidytext package with an antijoin.
+This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, or separation around a regex pattern.
+
+Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (kept in the tidytext dataset `stop_words`) with an `anti_join`.
 
 
 ```r
 data("stop_words")
-books <- originalbooks %>%
+tidy_books <- tidy_books %>%
   anti_join(stop_words)
 #> Joining by: "word"
 ```
 
-Now, let's see what are the most common words in all the books as a whole.
+We can also use `count` to find the most common words in all the books as a whole.
 
 
 ```r
-books %>%
+tidy_books %>%
   count(word, sort = TRUE) 
 #> Source: local data frame [13,896 x 2]
 #> 
@@ -97,12 +124,47 @@ bing <- sentiments %>%
   filter(lexicon == "bing") %>%
   select(-score)
 
-janeaustensentiment <- originalbooks %>%
+bing
+#> Source: local data frame [6,788 x 3]
+#> 
+#>           word sentiment lexicon
+#>          (chr)     (chr)   (chr)
+#> 1      2-faced  negative    bing
+#> 2      2-faces  negative    bing
+#> 3           a+  positive    bing
+#> 4     abnormal  negative    bing
+#> 5      abolish  negative    bing
+#> 6   abominable  negative    bing
+#> 7   abominably  negative    bing
+#> 8    abominate  negative    bing
+#> 9  abomination  negative    bing
+#> 10       abort  negative    bing
+#> ..         ...       ...     ...
+
+janeaustensentiment <- tidy_books %>%
   inner_join(bing) %>% 
   count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
 #> Joining by: "word"
+
+janeaustensentiment
+#> Source: local data frame [891 x 5]
+#> Groups: book, index [891]
+#> 
+#>                   book index negative positive sentiment
+#>                 (fctr) (dbl)    (dbl)    (dbl)     (dbl)
+#> 1  Sense & Sensibility     0       16       26        10
+#> 2  Sense & Sensibility     1       19       44        25
+#> 3  Sense & Sensibility     2       12       23        11
+#> 4  Sense & Sensibility     3       15       22         7
+#> 5  Sense & Sensibility     4       16       29        13
+#> 6  Sense & Sensibility     5       16       39        23
+#> 7  Sense & Sensibility     6       24       37        13
+#> 8  Sense & Sensibility     7       22       39        17
+#> 9  Sense & Sensibility     8       30       35         5
+#> 10 Sense & Sensibility     9       14       18         4
+#> ..                 ...   ...      ...      ...       ...
 ```
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
@@ -116,7 +178,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-7](README-unnamed-chunk-7-1.png)
+![plot of chunk unnamed-chunk-8](README-unnamed-chunk-8-1.png)
 
 Another function is `pair_count`, which counts pairs of items that occur together within a group. Let's count the words that occur together in the lines of *Pride and Prejudice*.
 
@@ -125,41 +187,29 @@ Another function is `pair_count`, which counts pairs of items that occur togethe
 pride_prejudice_words <- books %>%
   filter(book == "Pride & Prejudice")
 pride_prejudice_words
-#> Source: local data frame [37,246 x 3]
+#> Source: local data frame [12,447 x 3]
 #> 
-#>                 book linenumber           word
-#>               (fctr)      (int)          (chr)
-#> 1  Pride & Prejudice      12441      pollution
-#> 2  Pride & Prejudice      12430      liberties
-#> 3  Pride & Prejudice      12425       sportive
-#> 4  Pride & Prejudice      12419     heretofore
-#> 5  Pride & Prejudice      12400       heedless
-#> 6  Pride & Prejudice      12397       expences
-#> 7  Pride & Prejudice      12381 congratulatory
-#> 8  Pride & Prejudice      12376     revolution
-#> 9  Pride & Prejudice      12372       moralize
-#> 10 Pride & Prejudice      12348       relished
-#> ..               ...        ...            ...
+#>                                                                       text
+#>                                                                      (chr)
+#> 1                                                      PRIDE AND PREJUDICE
+#> 2                                                                         
+#> 3                                                           By Jane Austen
+#> 4                                                                         
+#> 5                                                                         
+#> 6                                                                         
+#> 7                                                                Chapter 1
+#> 8                                                                         
+#> 9                                                                         
+#> 10 It is a truth universally acknowledged, that a single man in possession
+#> ..                                                                     ...
+#> Variables not shown: book (fctr), linenumber (int)
 
 word_cooccurences <- pride_prejudice_words %>%
   pair_count(linenumber, word, sort = TRUE)
+#> Error in `[[<-.data.frame`(`*tmp*`, ".value_indices", value = integer(0)): replacement has 0 rows, data has 12447
 
 word_cooccurences
-#> Source: local data frame [50,550 x 3]
-#> 
-#>       value1  value2     n
-#>        (chr)   (chr) (dbl)
-#> 1  catherine    lady    87
-#> 2    bingley    miss    68
-#> 3     bennet    miss    65
-#> 4      darcy    miss    46
-#> 5    william     sir    35
-#> 6     bourgh      de    32
-#> 7  elizabeth    miss    29
-#> 8  elizabeth    jane    27
-#> 9  elizabeth   cried    24
-#> 10   forster colonel    24
-#> ..       ...     ...   ...
+#> Error in eval(expr, envir, enclos): object 'word_cooccurences' not found
 ```
 
 This can be useful, for example, to plot a network of co-occuring words with the [igraph](http://igraph.org/) and [ggraph](https://github.com/thomasp85/ggraph) packages.
@@ -178,9 +228,8 @@ word_cooccurences %>%
   geom_node_point(color = "lightblue", size = 5) +
   geom_node_text(aes(label = name), vjust = 1.8) +
   theme_void()
+#> Error in eval(expr, envir, enclos): object 'word_cooccurences' not found
 ```
-
-![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
@@ -246,24 +295,10 @@ comparison <- tidy(AssociatedPress) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))
-#> Joining by: "word"
+#> Error in eval(expr, envir, enclos): unknown column 'word'
 
 comparison
-#> Source: local data frame [4,430 x 3]
-#> 
-#>          word           AP       Austen
-#>         (chr)        (dbl)        (dbl)
-#> 1   abandoned 2.101799e-04 7.095218e-06
-#> 2       abide 3.603084e-05 2.838087e-05
-#> 3   abilities 3.603084e-05 2.057613e-04
-#> 4     ability 2.942519e-04 2.128565e-05
-#> 5      abroad 2.402056e-04 2.554278e-04
-#> 6      abrupt 3.603084e-05 3.547609e-05
-#> 7     absence 9.608225e-05 7.875692e-04
-#> 8      absent 5.404626e-05 3.547609e-04
-#> 9    absolute 6.605654e-05 1.844757e-04
-#> 10 absolutely 2.101799e-04 6.740457e-04
-#> ..        ...          ...          ...
+#> Error in eval(expr, envir, enclos): object 'comparison' not found
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
@@ -273,9 +308,8 @@ ggplot(comparison, aes(AP, Austen)) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
+#> Error in ggplot(comparison, aes(AP, Austen)): object 'comparison' not found
 ```
-
-![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
