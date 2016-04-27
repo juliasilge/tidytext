@@ -18,9 +18,11 @@
  lexicon.}
 }}
 \source{
-\url{http://saifmohammad.com/WebPages/lexicons.html}
-\url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
-\url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
+\itemize{
+ \item \url{http://saifmohammad.com/WebPages/lexicons.html}
+ \item \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
+ \item \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
+ }
 }
 \usage{
 sentiments

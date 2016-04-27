@@ -10,9 +10,11 @@
  \item{lexicon}{The source of the stop word. Either "onix", "SMART", or "snowball"}
  }}
 \source{
-\url{http://www.lextek.com/manuals/onix/stopwords1.html}
-\url{http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop}
-\url{http://snowball.tartarus.org/algorithms/english/stop.txt}
+\itemize{
+\item \url{http://www.lextek.com/manuals/onix/stopwords1.html}
+\item \url{http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop}
+\item \url{http://snowball.tartarus.org/algorithms/english/stop.txt}
+}
 }
 \usage{
 stop_words
