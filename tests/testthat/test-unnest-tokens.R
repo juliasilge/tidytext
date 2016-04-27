@@ -1,6 +1,6 @@
 # tests for unnest_tokens function
 
-context("function to unnest and tokenize")
+context("Unnesting tokens")
 
 suppressPackageStartupMessages(library(dplyr))
 
