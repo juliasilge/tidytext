@@ -35,19 +35,19 @@ The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 
 library(janeaustenr)
 library(dplyr)
 
-books <- austen_books() %>%
+original_books <- austen_books() %>%
   group_by(book) %>%
   mutate(linenumber = row_number()) %>%
   ungroup()
 
-books
+original_books
 ```
 
 To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row:
 
 ```{r}
 library(tidytext)
-tidy_books <- books %>%
+tidy_books <- original_books %>%
   unnest_tokens(word, text)
 
 tidy_books
@@ -102,7 +102,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
 Another function is `pair_count`, which counts pairs of items that occur together within a group. Let's count the words that occur together in the lines of *Pride and Prejudice*.
 
 ```{r}
-pride_prejudice_words <- books %>%
+pride_prejudice_words <- tidy_books %>%
   filter(book == "Pride & Prejudice")
 pride_prejudice_words
 
@@ -165,7 +165,7 @@ Or we can join the Austen and AP datasets and compare the frequencies of each wo
 comparison <- tidy(AssociatedPress) %>%
   count(word = term) %>%
   rename(AP = n) %>%
-  inner_join(count(books, word)) %>%
+  inner_join(count(tidy_books, word)) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))

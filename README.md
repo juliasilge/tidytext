@@ -31,12 +31,12 @@ The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 
 library(janeaustenr)
 library(dplyr)
 
-books <- austen_books() %>%
+original_books <- austen_books() %>%
   group_by(book) %>%
   mutate(linenumber = row_number()) %>%
   ungroup()
 
-books
+original_books
 #> Source: local data frame [70,942 x 3]
 #> 
 #>                     text                book linenumber
@@ -59,7 +59,7 @@ To work with this as a tidy dataset, we need to restructure it as **one-token-pe
 
 ```r
 library(tidytext)
-tidy_books <- books %>%
+tidy_books <- original_books %>%
   unnest_tokens(word, text)
 
 tidy_books
@@ -184,32 +184,44 @@ Another function is `pair_count`, which counts pairs of items that occur togethe
 
 
 ```r
-pride_prejudice_words <- books %>%
+pride_prejudice_words <- tidy_books %>%
   filter(book == "Pride & Prejudice")
 pride_prejudice_words
-#> Source: local data frame [12,447 x 3]
+#> Source: local data frame [37,246 x 3]
 #> 
-#>                                                                       text
-#>                                                                      (chr)
-#> 1                                                      PRIDE AND PREJUDICE
-#> 2                                                                         
-#> 3                                                           By Jane Austen
-#> 4                                                                         
-#> 5                                                                         
-#> 6                                                                         
-#> 7                                                                Chapter 1
-#> 8                                                                         
-#> 9                                                                         
-#> 10 It is a truth universally acknowledged, that a single man in possession
-#> ..                                                                     ...
-#> Variables not shown: book (fctr), linenumber (int)
+#>                 book linenumber           word
+#>               (fctr)      (int)          (chr)
+#> 1  Pride & Prejudice      12441      pollution
+#> 2  Pride & Prejudice      12430      liberties
+#> 3  Pride & Prejudice      12425       sportive
+#> 4  Pride & Prejudice      12419     heretofore
+#> 5  Pride & Prejudice      12400       heedless
+#> 6  Pride & Prejudice      12397       expences
+#> 7  Pride & Prejudice      12381 congratulatory
+#> 8  Pride & Prejudice      12376     revolution
+#> 9  Pride & Prejudice      12372       moralize
+#> 10 Pride & Prejudice      12348       relished
+#> ..               ...        ...            ...
 
 word_cooccurences <- pride_prejudice_words %>%
   pair_count(linenumber, word, sort = TRUE)
-#> Error in `[[<-.data.frame`(`*tmp*`, ".value_indices", value = integer(0)): replacement has 0 rows, data has 12447
 
 word_cooccurences
-#> Error in eval(expr, envir, enclos): object 'word_cooccurences' not found
+#> Source: local data frame [50,550 x 3]
+#> 
+#>       value1  value2     n
+#>        (chr)   (chr) (dbl)
+#> 1  catherine    lady    87
+#> 2    bingley    miss    68
+#> 3     bennet    miss    65
+#> 4      darcy    miss    46
+#> 5    william     sir    35
+#> 6     bourgh      de    32
+#> 7  elizabeth    miss    29
+#> 8  elizabeth    jane    27
+#> 9  elizabeth   cried    24
+#> 10   forster colonel    24
+#> ..       ...     ...   ...
 ```
 
 This can be useful, for example, to plot a network of co-occuring words with the [igraph](http://igraph.org/) and [ggraph](https://github.com/thomasp85/ggraph) packages.
@@ -228,8 +240,9 @@ word_cooccurences %>%
   geom_node_point(color = "lightblue", size = 5) +
   geom_node_text(aes(label = name), vjust = 1.8) +
   theme_void()
-#> Error in eval(expr, envir, enclos): object 'word_cooccurences' not found
 ```
+
+![plot of chunk unnamed-chunk-10](README-unnamed-chunk-10-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
@@ -291,14 +304,28 @@ Or we can join the Austen and AP datasets and compare the frequencies of each wo
 comparison <- tidy(AssociatedPress) %>%
   count(word = term) %>%
   rename(AP = n) %>%
-  inner_join(count(books, word)) %>%
+  inner_join(count(tidy_books, word)) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))
-#> Error in eval(expr, envir, enclos): unknown column 'word'
+#> Joining by: "word"
 
 comparison
-#> Error in eval(expr, envir, enclos): object 'comparison' not found
+#> Source: local data frame [4,430 x 3]
+#> 
+#>          word           AP       Austen
+#>         (chr)        (dbl)        (dbl)
+#> 1   abandoned 2.101799e-04 7.095218e-06
+#> 2       abide 3.603084e-05 2.838087e-05
+#> 3   abilities 3.603084e-05 2.057613e-04
+#> 4     ability 2.942519e-04 2.128565e-05
+#> 5      abroad 2.402056e-04 2.554278e-04
+#> 6      abrupt 3.603084e-05 3.547609e-05
+#> 7     absence 9.608225e-05 7.875692e-04
+#> 8      absent 5.404626e-05 3.547609e-04
+#> 9    absolute 6.605654e-05 1.844757e-04
+#> 10 absolutely 2.101799e-04 6.740457e-04
+#> ..        ...          ...          ...
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
@@ -308,8 +335,9 @@ ggplot(comparison, aes(AP, Austen)) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
-#> Error in ggplot(comparison, aes(AP, Austen)): object 'comparison' not found
 ```
+
+![plot of chunk unnamed-chunk-14](README-unnamed-chunk-14-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
