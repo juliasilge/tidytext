@@ -89,7 +89,6 @@ Now that the data is in one-word-per-row format, we can manipulate it with tidy 
 data("stop_words")
 tidy_books <- tidy_books %>%
   anti_join(stop_words)
-#> Joining by: "word"
 ```
 
 We can also use `count` to find the most common words in all the books as a whole.
@@ -146,7 +145,6 @@ janeaustensentiment <- tidy_books %>%
   count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
-#> Joining by: "word"
 
 janeaustensentiment
 #> Source: local data frame [891 x 5]
@@ -308,7 +306,6 @@ comparison <- tidy(AssociatedPress) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))
-#> Joining by: "word"
 
 comparison
 #> Source: local data frame [4,430 x 3]

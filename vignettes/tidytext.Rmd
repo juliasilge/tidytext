@@ -11,53 +11,58 @@ vignette: >
 
 ```{r setup, echo=FALSE}
 library(knitr)
-opts_chunk$set(warning=FALSE)
+opts_chunk$set(warning = FALSE, message = FALSE)
 ```
 
 
 ### The Life-Changing Magic of Tidying Text
 
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and  consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like dplyr, broom, and ggplot2; in this package, we go the rest of the way and provide tidying functions and supporting data sets to make analyzing text tidy.
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr) and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide tidying functions and supporting data sets to allow conversion between text datasets and tidy tools.
 
 ### A few first tidy text mining examples
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr package](https://github.com/juliasilge/janeaustenr) to explore some text mining. Let's mark each line number for the books in the original data frame, and find where the chapters are.
-
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:
 
 ```{r}
-library(tidytext)
 library(janeaustenr)
 library(dplyr)
 library(stringr)
-originalbooks <- austen_books() %>%
+
+original_books <- austen_books() %>%
   group_by(book) %>%
   mutate(linenumber = row_number(),
          chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
                                                  ignore_case = TRUE)))) %>%
   ungroup()
+
+original_books
 ```
 
-Now we can use the tidytext function to unnest and tokenize; this function uses the [tokenizers package](https://github.com/lmullen/tokenizers). The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, and a regex pattern. By default, `unnest_tokens` drops the original text.
+To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row:
 
 ```{r}
-originalbooks <- originalbooks %>%
+library(tidytext)
+tidy_books <- original_books %>%
   unnest_tokens(word, text)
 
-originalbooks
+tidy_books
 ```
 
-We can remove stop words kept in a tidy data set in the tidytext package with an antijoin.
+This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, or separation around a regex pattern.
+
+Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (kept in the tidytext dataset `stop_words`) with an `anti_join`.
 
 ```{r}
-books <- originalbooks %>%
+data("stop_words")
+tidy_books <- tidy_books %>%
   anti_join(stop_words)
 ```
 
-Now, let's see what the most common words are in all six novels as a whole.
+We can also use `count` to find the most common words in all the books as a whole.
 
 ```{r}
-books %>%
-  count(word, sort = TRUE)
+tidy_books %>%
+  count(word, sort = TRUE) 
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiment` dataset. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
@@ -66,7 +71,7 @@ Sentiment analysis can be done as an inner join. Three sentiment lexicons are in
 nrcjoy <- sentiments %>%
   filter(lexicon == "nrc", sentiment == "joy")
 
-books %>%
+tidy_books %>%
   filter(book == "Emma") %>%
   semi_join(nrcjoy) %>%
   count(word, sort = TRUE)
@@ -80,7 +85,7 @@ bing <- sentiments %>%
   filter(lexicon == "bing") %>%
   select(-score)
 
-janeaustensentiment <- originalbooks %>%
+janeaustensentiment <- tidy_books %>%
   inner_join(bing) %>%
   count(book, index = linenumber %/% 80, sentiment) %>%
   spread(sentiment, n, fill = 0) %>%
@@ -102,7 +107,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
 One advantage of having the data frame with both sentiment and word is that we can analyze word counts that contribute to each sentiment.
 
 ```{r}
-bing_word_counts <- originalbooks %>%
+bing_word_counts <- tidy_books %>%
   inner_join(bing) %>%
   count(word, sentiment, sort = TRUE) %>%
   ungroup()
@@ -134,7 +139,7 @@ For example, consider the wordcloud package. Let's look at the most common words
 ```{r, fig.height=6, fig.width=6}
 library(wordcloud)
 
-books %>%
+tidy_books %>%
   count(word) %>%
   with(wordcloud(word, n, max.words = 100))
 ```
@@ -144,7 +149,7 @@ In other functions, such as `comparison.cloud`, you may need to turn it into a m
 ```{r wordcloud, fig.height=5, fig.width=5}
 library(reshape2)
 
-books %>%
+tidy_books %>%
   inner_join(bing) %>%
   count(word, sentiment, sort = TRUE) %>%
   acast(word ~ sentiment, value.var = "n", fill = 0) %>%
@@ -181,11 +186,11 @@ Near the beginning of this vignette, we used a regex to find where all the chapt
 bingnegative <- sentiments %>%
   filter(lexicon == "bing", sentiment == "negative")
 
-wordcounts <- originalbooks %>%
+wordcounts <- tidy_books %>%
   group_by(book, chapter) %>%
   summarize(words = n())
 
-originalbooks %>%
+tidy_books %>%
   semi_join(bingnegative) %>%
   group_by(book, chapter) %>%
   summarize(negativewords = n()) %>%
