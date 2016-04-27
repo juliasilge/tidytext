@@ -22,7 +22,7 @@ library(devtools)
 install_github("juliasilge/tidytext")
 ```
 
-### Tidy text mining example: the unnest_tokens function
+### Tidy text mining example: the `unnest_tokens` function
 
 The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:
 
@@ -177,6 +177,8 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
 ```
 
 ![plot of chunk unnamed-chunk-8](README-unnamed-chunk-8-1.png)
+
+### Another example: the `pair_count` function
 
 Another function is `pair_count`, which counts pairs of items that occur together within a group. Let's count the words that occur together in the lines of *Pride and Prejudice*.
 
