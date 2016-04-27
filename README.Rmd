@@ -3,8 +3,7 @@
 tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 ---------------
 
-**Authors:** [Julia Silge](http://juliasilge.com/), [David Robinson](http://varianceexplained.org/)
-
+**Authors:** [Julia Silge](http://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
 
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
