@@ -25,6 +25,7 @@ Imports: dplyr,
     purrr,
     methods
 Suggests: readr,
+    XML,
     tm,
     wordcloud,
     knitr,
