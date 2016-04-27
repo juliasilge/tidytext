@@ -6,7 +6,6 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 **Authors:** [David Robinson](http://varianceexplained.org/), [Julia Silge](http://juliasilge.com/)<br>
 **License:** [MIT](https://opensource.org/licenses/MIT)<br>
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
 
 
