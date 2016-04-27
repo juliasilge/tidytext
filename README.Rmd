@@ -28,7 +28,7 @@ library(devtools)
 install_github("juliasilge/tidytext")
 ```
 
-### Tidy text mining examples
+### Tidy text mining example: the unnest_tokens function
 
 The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:
 
