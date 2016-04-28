@@ -16,8 +16,6 @@ Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can
 
 ### Installation
 
-To install 
-
 You can install this package from CRAN:
 
 
