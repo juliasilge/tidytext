@@ -7,6 +7,8 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 **License:** [MIT](https://opensource.org/licenses/MIT)
 
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
+
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
