@@ -1,3 +1,9 @@
+## Resubmission
+
+This is a resubsmission. In this version I have
+
+* removed the outer single quotes from the title field in `DESCRIPTION`
+
 ## Release Summary
 
 This is the first attempted CRAN release of tidytext.
