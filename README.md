@@ -16,7 +16,17 @@ Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can
 
 ### Installation
 
-To install this package from Github, use devtools:
+To install 
+
+You can install this package from CRAN:
+
+
+```r
+install.packages("tidytext")
+```
+
+
+Or you can install the development version from Github with [devtools](https://github.com/hadley/devtools):
 
 
 ```r
@@ -65,21 +75,21 @@ tidy_books <- original_books %>%
   unnest_tokens(word, text)
 
 tidy_books
-#> Source: local data frame [70,942 x 3]
+#> Source: local data frame [724,971 x 3]
 #> 
-#>                   book linenumber                             word
-#>                 (fctr)      (int)                            (chr)
-#> 1  Sense & Sensibility          1 c("sense", "and", "sensibility")
-#> 2  Sense & Sensibility          2                     character(0)
-#> 3  Sense & Sensibility          3        c("by", "jane", "austen")
-#> 4  Sense & Sensibility          4                     character(0)
-#> 5  Sense & Sensibility          5                             1811
-#> 6  Sense & Sensibility          6                     character(0)
-#> 7  Sense & Sensibility          7                     character(0)
-#> 8  Sense & Sensibility          8                     character(0)
-#> 9  Sense & Sensibility          9                     character(0)
-#> 10 Sense & Sensibility         10                c("chapter", "1")
-#> ..                 ...        ...                              ...
+#>                   book linenumber        word
+#>                 (fctr)      (int)       (chr)
+#> 1  Sense & Sensibility          1       sense
+#> 2  Sense & Sensibility          1         and
+#> 3  Sense & Sensibility          1 sensibility
+#> 4  Sense & Sensibility          3          by
+#> 5  Sense & Sensibility          3        jane
+#> 6  Sense & Sensibility          3      austen
+#> 7  Sense & Sensibility          5        1811
+#> 8  Sense & Sensibility         10     chapter
+#> 9  Sense & Sensibility         10           1
+#> 10 Sense & Sensibility         13         the
+#> ..                 ...        ...         ...
 ```
 
 This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, sentences, lines, paragraphs, or separation around a regex pattern.
@@ -99,21 +109,21 @@ We can also use `count` to find the most common words in all the books as a whol
 ```r
 tidy_books %>%
   count(word, sort = TRUE) 
-#> Source: local data frame [61,505 x 2]
+#> Source: local data frame [13,896 x 2]
 #> 
-#>                         word     n
-#>                        (chr) (int)
-#> 1               character(0)  8678
-#> 2               acquaintance     7
-#> 3                       life     7
-#> 4                      party     6
-#> 5                    replied     5
-#> 6                      added     4
-#> 7  c("by", "jane", "austen")     4
-#> 8          c("chapter", "1")     4
-#> 9         c("chapter", "10")     4
-#> 10        c("chapter", "11")     4
-#> ..                       ...   ...
+#>      word     n
+#>     (chr) (int)
+#> 1    miss  1854
+#> 2    time  1337
+#> 3   fanny   862
+#> 4    dear   822
+#> 5    lady   817
+#> 6     sir   806
+#> 7     day   797
+#> 8    emma   787
+#> 9  sister   727
+#> 10  house   699
+#> ..    ...   ...
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiment` dataset. Let's examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
@@ -149,21 +159,21 @@ janeaustensentiment <- tidy_books %>%
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
-#> Source: local data frame [133 x 5]
-#> Groups: book, index [133]
+#> Source: local data frame [891 x 5]
+#> Groups: book, index [891]
 #> 
 #>                   book index negative positive sentiment
 #>                 (fctr) (dbl)    (dbl)    (dbl)     (dbl)
-#> 1  Sense & Sensibility     5        0        2         2
-#> 2  Sense & Sensibility    19        1        0        -1
-#> 3  Sense & Sensibility    20        0        1         1
-#> 4  Sense & Sensibility    25        1        0        -1
-#> 5  Sense & Sensibility    26        0        1         1
-#> 6  Sense & Sensibility    30        1        0        -1
-#> 7  Sense & Sensibility    32        0        1         1
-#> 8  Sense & Sensibility    34        0        1         1
-#> 9  Sense & Sensibility    37        0        1         1
-#> 10 Sense & Sensibility    46        1        0        -1
+#> 1  Sense & Sensibility     0       16       26        10
+#> 2  Sense & Sensibility     1       19       44        25
+#> 3  Sense & Sensibility     2       12       23        11
+#> 4  Sense & Sensibility     3       15       22         7
+#> 5  Sense & Sensibility     4       16       29        13
+#> 6  Sense & Sensibility     5       16       39        23
+#> 7  Sense & Sensibility     6       24       37        13
+#> 8  Sense & Sensibility     7       22       39        17
+#> 9  Sense & Sensibility     8       30       35         5
+#> 10 Sense & Sensibility     9       14       18         4
 #> ..                 ...   ...      ...      ...       ...
 ```
 
@@ -178,7 +188,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-8](README-unnamed-chunk-8-1.png)
+![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
 
 ### Another example: the `pair_count` function
 
@@ -189,30 +199,41 @@ Another function is `pair_count`, which counts pairs of items that occur togethe
 pride_prejudice_words <- tidy_books %>%
   filter(book == "Pride & Prejudice")
 pride_prejudice_words
-#> Source: local data frame [12,372 x 3]
+#> Source: local data frame [37,246 x 3]
 #> 
-#>                 book linenumber
-#>               (fctr)      (int)
-#> 1  Pride & Prejudice      10847
-#> 2  Pride & Prejudice       3548
-#> 3  Pride & Prejudice       2236
-#> 4  Pride & Prejudice       3515
-#> 5  Pride & Prejudice       1975
-#> 6  Pride & Prejudice       7147
-#> 7  Pride & Prejudice      10745
-#> 8  Pride & Prejudice        427
-#> 9  Pride & Prejudice       9316
-#> 10 Pride & Prejudice       5691
-#> ..               ...        ...
-#> Variables not shown: word (chr)
+#>                 book linenumber           word
+#>               (fctr)      (int)          (chr)
+#> 1  Pride & Prejudice      12441      pollution
+#> 2  Pride & Prejudice      12430      liberties
+#> 3  Pride & Prejudice      12425       sportive
+#> 4  Pride & Prejudice      12419     heretofore
+#> 5  Pride & Prejudice      12400       heedless
+#> 6  Pride & Prejudice      12397       expences
+#> 7  Pride & Prejudice      12381 congratulatory
+#> 8  Pride & Prejudice      12376     revolution
+#> 9  Pride & Prejudice      12372       moralize
+#> 10 Pride & Prejudice      12348       relished
+#> ..               ...        ...            ...
 
 word_cooccurences <- pride_prejudice_words %>%
   pair_count(linenumber, word, sort = TRUE)
 
 word_cooccurences
-#> Source: local data frame [0 x 3]
+#> Source: local data frame [50,550 x 3]
 #> 
-#> Variables not shown: value1 (chr), value2 (chr), n (dbl)
+#>       value1  value2     n
+#>        (chr)   (chr) (dbl)
+#> 1  catherine    lady    87
+#> 2    bingley    miss    68
+#> 3     bennet    miss    65
+#> 4      darcy    miss    46
+#> 5    william     sir    35
+#> 6     bourgh      de    32
+#> 7  elizabeth    miss    29
+#> 8  elizabeth    jane    27
+#> 9  elizabeth   cried    24
+#> 10   forster colonel    24
+#> ..       ...     ...   ...
 ```
 
 This can be useful, for example, to plot a network of co-occuring words with the [igraph](http://igraph.org/) and [ggraph](https://github.com/thomasp85/ggraph) packages.
@@ -231,8 +252,9 @@ word_cooccurences %>%
   geom_node_point(color = "lightblue", size = 5) +
   geom_node_text(aes(label = name), vjust = 1.8) +
   theme_void()
-#> Error in `$<-.data.frame`(`*tmp*`, "circular", value = FALSE): replacement has 1 row, data has 0
 ```
+
+![plot of chunk unnamed-chunk-11](README-unnamed-chunk-11-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
@@ -300,21 +322,21 @@ comparison <- tidy(AssociatedPress) %>%
          Austen = Austen / sum(Austen))
 
 comparison
-#> Source: local data frame [338 x 3]
+#> Source: local data frame [4,430 x 3]
 #> 
-#>            word           AP      Austen
-#>           (chr)        (dbl)       (dbl)
-#> 1       absence 0.0006713944 0.002197802
-#> 2        absent 0.0003776594 0.002197802
-#> 3   acknowledge 0.0004196215 0.002197802
-#> 4  acknowledged 0.0033150099 0.002197802
-#> 5         added 0.0092316730 0.008791209
-#> 6     advantage 0.0012588645 0.002197802
-#> 7        afraid 0.0010490538 0.002197802
-#> 8     afternoon 0.0037765935 0.002197802
-#> 9           ago 0.0137216231 0.004395604
-#> 10          air 0.0096093324 0.002197802
-#> ..          ...          ...         ...
+#>          word           AP       Austen
+#>         (chr)        (dbl)        (dbl)
+#> 1   abandoned 2.101799e-04 7.095218e-06
+#> 2       abide 3.603084e-05 2.838087e-05
+#> 3   abilities 3.603084e-05 2.057613e-04
+#> 4     ability 2.942519e-04 2.128565e-05
+#> 5      abroad 2.402056e-04 2.554278e-04
+#> 6      abrupt 3.603084e-05 3.547609e-05
+#> 7     absence 9.608225e-05 7.875692e-04
+#> 8      absent 5.404626e-05 3.547609e-04
+#> 9    absolute 6.605654e-05 1.844757e-04
+#> 10 absolutely 2.101799e-04 6.740457e-04
+#> ..        ...          ...          ...
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
@@ -326,7 +348,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-14](README-unnamed-chunk-14-1.png)
+![plot of chunk unnamed-chunk-15](README-unnamed-chunk-15-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 

@@ -23,7 +23,16 @@ Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can
 
 ### Installation
 
-To install this package from Github, use devtools:
+To install 
+
+You can install this package from CRAN:
+
+```{r, eval=FALSE}
+install.packages("tidytext")
+```
+
+
+Or you can install the development version from Github with [devtools](https://github.com/hadley/devtools):
 
 ```{r, eval=FALSE}
 library(devtools)
