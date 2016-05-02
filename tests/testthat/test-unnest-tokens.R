@@ -32,5 +32,32 @@ test_that("tokenizing by sentence works", {
   expect_equal(d$sentence[1], "i'm nobody!")
 })
 
+test_that("tokenizing by ngram works", {
+  d2 <- data_frame(txt = c("Hope is the thing with feathers -",
+                           "That perches in the soul -",
+                           "And sings the tune without the words -",
+                           "And never stops - at all -",
+                           "And sweetest - in the Gale - is heard -",
+                           "And sore must be the storm -",
+                           "That could abash the little Bird",
+                           "That kept so many warm -",
+                           "I’ve heard it in the chillest land -",
+                           "And on the strangest Sea -",
+                           "Yet - never - in Extremity,",
+                           "It asked a crumb - of me."))
+  d <- d2 %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+  expect_equal(nrow(d), 57)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$ngram[1], "hope is")
+  expect_equal(d$ngram[10], "and sings")
+})
+
+test_that("tokenizing by skip ngram works", {
+  d <- d2 %>% unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
+  expect_equal(nrow(d), 36)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$ngram[1], "hope is the thing")
+  expect_equal(d$ngram[10], "tune without the words")
+})
 
 
