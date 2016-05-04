@@ -19,14 +19,16 @@ unnest_tokens(tbl, output, input, token = "words", to_lower = TRUE,
 \item{input_col}{Input column that gets split}
 
 \item{token}{Unit for tokenizing. Options are "characters", "words",
-"sentences", "lines", "paragraphs", and "regex". Default is "words".}
+"ngrams", "skip_ngrams", "sentences", "lines", "paragraphs", and "regex".
+Default is "words".}
 
 \item{to_lower}{Whether to turn column lowercase}
 
 \item{drop}{Whether original input column should get dropped. Ignored
 if the original input and new output column have the same name.}
 
-\item{...}{Extra arguments passed on to the tokenizer}
+\item{...}{Extra arguments passed on to the tokenizer, such as \code{n} and
+\code{k} for "ngrams" and "skip_ngrams"}
 
 \item{output}{Output column to be created as bare name}
 
@@ -51,7 +53,13 @@ d \%>\%
   unnest_tokens(word, txt)
 
 d \%>\%
-  unnest_tokens(word, txt, token = "sentences")
+  unnest_tokens(sentence, txt, token = "sentences")
+
+d \%>\%
+  unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+
+d \%>\%
+  unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
 
 }
 

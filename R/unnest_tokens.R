@@ -4,13 +4,15 @@
 #' @param output_col Output column to be created
 #' @param input_col Input column that gets split
 #' @param token Unit for tokenizing. Options are "characters", "words",
-#' "sentences", "lines", "paragraphs", and "regex". Default is "words".
+#' "ngrams", "skip_ngrams", "sentences", "lines", "paragraphs", and "regex".
+#' Default is "words".
 #' @param to_lower Whether to turn column lowercase
 #' @param drop Whether original input column should get dropped. Ignored
 #' if the original input and new output column have the same name.
 #' @param output Output column to be created as bare name
 #' @param input Input column that gets split as bare name
-#' @param ... Extra arguments passed on to the tokenizer
+#' @param ... Extra arguments passed on to the tokenizer, such as \code{n} and
+#' \code{k} for "ngrams" and "skip_ngrams"
 #'
 #' @details If the unit for tokenizing is sentences, lines, paragraphs, or
 #' regex, the entire input will be collapsed together before tokenizing.
@@ -33,7 +35,13 @@
 #'   unnest_tokens(word, txt)
 #'
 #' d %>%
-#'   unnest_tokens(word, txt, token = "sentences")
+#'   unnest_tokens(sentence, txt, token = "sentences")
+#'
+#' d %>%
+#'   unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+#'
+#' d %>%
+#'   unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
 #'
 #' @export
 unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
