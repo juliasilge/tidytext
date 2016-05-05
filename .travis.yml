@@ -1,4 +1,4 @@
-language: r
+language: R
 cache: packages
 sudo: required
 
@@ -8,9 +8,7 @@ apt_packages:
 
 r_binary_packages:
       - XML # not sure why XML is not getting installed without this
-
-r_packages:
-  - covr
+      - covr
 
 after_success:
   - Rscript -e 'covr::codecov()'
