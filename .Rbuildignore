@@ -6,3 +6,4 @@
 ^CONDUCT\.md$
 ^data-raw$
 ^cran-comments\.md$
+paper\..*
