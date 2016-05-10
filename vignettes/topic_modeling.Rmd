@@ -1,0 +1,259 @@
+---
+title: "Tidy Topic Modeling"
+author: "Julia Silge and David Robinson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Tidy Topic Modeling}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r echo = FALSE}
+library(knitr)
+opts_chunk$set(message = FALSE, warning = FALSE)
+```
+
+### Setup- can we tell the difference between H.G. Wells and Jules Verne?
+
+Suppose a vandal has broken into your study and torn apart four of your books:
+
+* **Great Expectations** by Charles Dickens
+* **The War of the Worlds** by H.G. Wells
+* **Twenty Thousand Leagues Under the Sea** by Jules Verne
+* **Pride and Prejudice** by Jane Austen
+
+They've torn them into individual chapters, and left them in one large pile. How can we re-arrange these books?
+
+```{r}
+library(dplyr)
+library(gutenbergr)
+
+library(topicmodels)
+
+titles <- c("Twenty Thousand Leagues under the Sea", "The War of the Worlds",
+            "Pride and Prejudice", "Great Expectations")
+books <- gutenberg_works(title %in% titles) %>%
+  gutenberg_download(meta_fields = "title")
+
+books
+```
+
+As pre-processing, we divide these into chapters, use tidytext's `unnest_tokens` to separate them into words, then remove `stop_words`. We're treating every chapter as a separate "document", each with a name like `Great Expectations_1` or `Pride and Prejudice_11`.
+
+```{r}
+library(tidytext)
+library(stringr)
+library(tidyr)
+
+by_chapter <- books %>%
+  group_by(title) %>%
+  mutate(chapter = cumsum(str_detect(text, regex("^chapter ", ignore_case = TRUE)))) %>%
+  ungroup() %>%
+  filter(chapter > 0)
+
+by_chapter_word <- by_chapter %>%
+  unite(title_chapter, title, chapter) %>%
+  unnest_tokens(word, text)
+
+word_counts <- by_chapter_word %>%
+  anti_join(stop_words) %>%
+  count(title_chapter, word, sort = TRUE) %>%
+  ungroup()
+
+word_counts
+```
+
+### Latent Dirichlet Allocation with the topicmodels package
+
+Right now this is in a tidy form- one-term-per-document-per-row. However, the topicmodels package requires a DocumentTermMatrix (from the tm package). This is a common situation.
+
+As described in [this vignette](tidying_casting.html), we can cast a one-token-per-row table into a DocumentTermMatrix with tidytext's `cast_dtm`:
+
+```{r}
+chapters_dtm <- word_counts %>%
+  cast_dtm(title_chapter, word, n)
+
+chapters_dtm
+```
+
+Now we are ready to use the topicmodels package to create a four topic LDA model.
+
+```{r}
+library(topicmodels)
+chapters_lda <- LDA(chapters_dtm, k = 4, control = list(seed = 2016))
+chapters_lda
+```
+
+(In this case we know there are four topics because there are four books- in practice we may need to try a few).
+
+Now tidytext gives us the option of *returning* to a tidy analysis, using the `tidy` and `augment` verbs borrowed from the [broom package](https://github.com/dgrtwo/broom). In particular, we start with the `tidy` verb.
+
+```{r}
+chapters_lda_td <- tidy(chapters_lda)
+chapters_lda_td
+```
+
+Notice that this has turned the model into a one-topic-per-term-per-row format. This provides $\beta$, which represents the probability of a word generated from a particular topic.
+
+We could use dplyr's `top_n` to find the top 5 terms within each topic:
+
+```{r}
+top_terms <- chapters_lda_td %>%
+  group_by(topic) %>%
+  top_n(5, beta) %>%
+  ungroup() %>%
+  arrange(topic, -beta)
+
+top_terms
+```
+
+This also lends itself to a visualization:
+
+```{r}
+library(ggplot2)
+theme_set(theme_bw())
+
+top_terms %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ topic, scales = "free") +
+  theme(axis.text.x = element_text(size = 15, angle = 90, hjust = 1))
+```
+
+Some of these topics are pretty clearly associated with one book! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to Twenty Thousand Leagues Under the Sea. On the other hand, we can spot at least one mistake: that "wemmick" (meaning John Wemmick, a character from Great Expectations) was associated with "martians" (from "The War of the Worlds").
+
+#### Per-document classification
+
+Each "chapter" was a document in this analysis.
+
+```{r}
+chapters_lda_gamma <- tidy(chapters_lda, matrix = "gamma")
+chapters_lda_gamma
+```
+
+Now that we have these document classifiations, we can see how well our unsupervised learning did. First we re-separate the document name into title and chapter:
+
+```{r}
+chapters_lda_gamma <- chapters_lda_gamma %>%
+  separate(document, c("title", "chapter"), sep = "_", convert = TRUE)
+chapters_lda_gamma
+```
+
+Then we examine what fraction of chapters we got right for each:
+
+```{r}
+ggplot(chapters_lda_gamma, aes(gamma, fill = factor(topic))) +
+  geom_histogram() +
+  facet_wrap(~ title, nrow = 2)
+```
+
+We notice that chapters from Pride and Prejudice, War of the Worlds, and Twenty Thousand Leagues Under the Sea were all uniquely identified as a single topic each.
+
+```{r}
+chapter_classifications <- chapters_lda_gamma %>%
+  group_by(title, chapter) %>%
+  top_n(1, gamma) %>%
+  ungroup() %>%
+  arrange(gamma)
+
+chapter_classifications
+```
+
+We can determine this by finding the consensus book for each, which we note is correct:
+
+```{r}
+book_topics <- chapter_classifications %>%
+  count(title, topic) %>%
+  top_n(1, n) %>%
+  ungroup() %>%
+  transmute(consensus = title, topic)
+
+book_topics
+```
+
+Then we see which chapters were mis-identified:
+
+```{r}
+chapter_classifications %>%
+  inner_join(book_topics, by = "topic") %>%
+  count(title, consensus)
+```
+
+We see that one chapter was mis-classified as War of the Worlds. Still, not bad!
+
+#### By word assignments: augment
+
+One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight will go on that document-topic classification.
+
+We may want to take the original document-word pairs and find which words in each document were assigned to which topic. This is the job of the `augment` verb.
+
+```{r}
+assignments <- augment(chapters_lda, data = chapters_dtm)
+```
+
+We can combine this with the consensus book titles to find which words were incorrectly classified.
+
+```{r}
+assignments <- assignments %>%
+  separate(document, c("title", "chapter"), sep = "_", convert = TRUE) %>%
+  inner_join(book_topics, by = c(".topic" = "topic"))
+
+assignments
+```
+
+We can, for example, create a "confusion matrix" using dplyr's `count` and tidyr's `spread`:
+
+```{r}
+assignments %>%
+  count(title, consensus, wt = count) %>%
+  spread(consensus, n, fill = 0)
+```
+
+We notice that all Pride and Prejudice words were assigned correctly, and almost all Twenty Thousand Leagues Under the Sea. But War of the Worlds had its share of mis-assignments, and Great Expectations especially did.
+
+What were the most commonly mistaken words?
+
+```{r}
+wrong_words <- assignments %>%
+  filter(title != consensus)
+
+wrong_words
+
+wrong_words %>%
+  count(title, consensus, term, wt = count) %>%
+  ungroup() %>%
+  arrange(desc(n))
+```
+
+We recall that "Wemmick" was incorrectly placed into the "War of the Worlds" topic, and now we can tell that "Jagger's" and "Skiffins" (other Great Expectations characters) were as well.
+
+This doesn't mean those words appeared in the War of the Worlds! Indeed, we can confirm they appear only in Great Expectations:
+
+```{r}
+word_counts %>%
+  filter(word == "skiffins")
+```
+
+However, the algorithm is stochastic and iterative, and it can land on a topic that spans multiple books.
+
+### Topics within a work
+
+```{r}
+great_expectations_lda <- word_counts %>%
+  filter(str_detect(title_chapter, "Great")) %>%
+  cast_dtm(title_chapter, word, n) %>%
+  LDA(k = 4, control = list(seed = 4))
+```
+
+```{r fig.width = 8, fig.height = 8}
+tidy(great_expectations_lda) %>%
+  group_by(topic) %>%
+  top_n(5, beta) %>%
+  ungroup() %>%
+  mutate(term = reorder(term, beta)) %>%
+  ggplot(aes(term, beta)) +
+  geom_bar(stat = "identity") +
+  facet_wrap(~ topic, scales = "free")
+```
