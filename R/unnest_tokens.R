@@ -51,7 +51,8 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
                             list(colname = as.name(input_col))))
     names(exps) <- input_col
     tbl <- group_by_(tbl, .dots = setdiff(colnames(tbl), input_col)) %>%
-      summarise_(.dots = exps)
+      summarise_(.dots = exps) %>%
+      ungroup()
   }
 
   col <- tbl[[input_col]]

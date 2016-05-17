@@ -22,13 +22,20 @@ test_that("tokenizing by word works", {
 })
 
 test_that("tokenizing by sentence works", {
-  d <- data_frame(txt = c("I'm Nobody! Who are you?",
-                          "Are you - Nobody - too?",
-                          "Then there’s a pair of us!",
-                          "Don’t tell! they’d advertise - you know!"))
-  d <- d %>% unnest_tokens(sentence, txt, token = "sentences")
+  orig <- data_frame(txt = c("I'm Nobody! Who are you?",
+                             "Are you - Nobody - too?",
+                             "Then there’s a pair of us!",
+                             "Don’t tell! they’d advertise - you know!"))
+  d <- orig %>% unnest_tokens(sentence, txt, token = "sentences")
   expect_equal(nrow(d), 6)
   expect_equal(ncol(d), 1)
+  expect_equal(d$sentence[1], "i'm nobody!")
+
+  # check it works when there are multiple columns
+  orig$line <- c(1, 1, 2, 2)
+  orig$other_line <- c("a", "a", "b", "b")
+  d <- orig %>% unnest_tokens(sentence, txt, token = "sentences")
+  expect_is(d$sentence, "character")
   expect_equal(d$sentence[1], "i'm nobody!")
 })
 
