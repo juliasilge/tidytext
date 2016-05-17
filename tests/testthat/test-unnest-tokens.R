@@ -69,3 +69,20 @@ test_that("tokenizing by ngram and skip ngram works", {
 
 })
 
+test_that("tokenizing with a custom function works", {
+  orig <- data_frame(txt = c("I'm Nobody! Who are you?",
+                             "Are you - Nobody - too?",
+                             "Then there’s a pair of us!",
+                             "Don’t tell! they’d advertise - you know!"))
+  d <- orig %>%
+    unnest_tokens(unit, txt, token = stringr::str_split, pattern = " - ")
+  expect_equal(nrow(d), 7)
+  expect_equal(d$unit[3], "nobody")
+  expect_equal(d$unit[4], "too?")
+
+  d2 <- orig %>%
+    unnest_tokens(unit, txt, token = stringr::str_split, pattern = " - ", collapse = TRUE)
+  expect_equal(nrow(d2), 4)
+  expect_equal(d2$unit[2], "nobody")
+  expect_equal(d2$unit[4], "you know!")
+})
