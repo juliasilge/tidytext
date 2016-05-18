@@ -31,6 +31,8 @@ A data frame with three columns: \code{value1}, \code{value2},
 and \code{n}.
 }
 \description{
+This function has been deprecated. Work on this and similar functions
+is now going on in the widyr package (\url{https://github.com/dgrtwo/widyr}).
 Count the number of times pairs of items cooccur within a group.
 This returns a table with one row for each word-word pair that
 occurs within a group, along with \code{n}, the number of groups

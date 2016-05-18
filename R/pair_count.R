@@ -1,5 +1,7 @@
 #' Count pairs of items that cooccur within a group
 #'
+#' This function has been deprecated. Work on this and similar functions
+#' is now going on in the widyr package (\url{https://github.com/dgrtwo/widyr}).
 #' Count the number of times pairs of items cooccur within a group.
 #' This returns a table with one row for each word-word pair that
 #' occurs within a group, along with \code{n}, the number of groups
@@ -54,6 +56,9 @@ pair_count_ <- function(data, group_col, value_col,
                         unique_pair = TRUE,
                         self = FALSE,
                         sort = FALSE) {
+  warning("pair_count is deprecated, see pairwise_count in the widyr ",
+          "package instead: https://github.com/dgrtwo/widyr")
+
   requireNamespace("Matrix")
 
   value_vals <- unique(data[[value_col]])
