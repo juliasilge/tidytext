@@ -25,7 +25,7 @@ test_that("Can tidy DocumentTermMatrices and TermDocumentMatrices", {
 
 test_that("Can tidy dfm from quanteda", {
   if (requireNamespace("quanteda", quietly = TRUE)) {
-    capture.output(dfm_obj <- quanteda::dfm(inaugCorpus))
+    capture.output(dfm_obj <- quanteda::dfm(quanteda::inaugCorpus))
 
     dfm_obj_td <- tidy(dfm_obj)
 
