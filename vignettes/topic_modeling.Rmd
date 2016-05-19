@@ -14,21 +14,22 @@ library(knitr)
 opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
-### Setup- can we tell the difference between H.G. Wells and Jules Verne?
+Topic modeling is a way of discovering what a document is about based on which words appear more and less frequently compared to other documents. We can use tidy data principles to approach topic modeling, using consistent, effective tools.
+
+### Can we tell the difference between H.G. Wells and Jules Verne?
 
 Suppose a vandal has broken into your study and torn apart four of your books:
 
-* **Great Expectations** by Charles Dickens
-* **The War of the Worlds** by H.G. Wells
-* **Twenty Thousand Leagues Under the Sea** by Jules Verne
-* **Pride and Prejudice** by Jane Austen
+* *Great Expectations* by Charles Dickens
+* *The War of the Worlds* by H.G. Wells
+* *Twenty Thousand Leagues Under the Sea* by Jules Verne
+* *Pride and Prejudice* by Jane Austen
 
-They've torn them into individual chapters, and left them in one large pile. How can we re-arrange these books?
+This vandal has torn the books into individual chapters, and left them in one large pile. How can we restore these disorganized chapters to their original books?
 
 ```{r}
 library(dplyr)
 library(gutenbergr)
-
 library(topicmodels)
 
 titles <- c("Twenty Thousand Leagues under the Sea", "The War of the Worlds",
@@ -66,9 +67,9 @@ word_counts
 
 ### Latent Dirichlet Allocation with the topicmodels package
 
-Right now this is in a tidy form- one-term-per-document-per-row. However, the topicmodels package requires a DocumentTermMatrix (from the tm package). This is a common situation.
+Right now this data frame is in a tidy form, with one-term-per-document-per-row. However, the topicmodels package requires a `DocumentTermMatrix` (from the tm package). This is a common situation.
 
-As described in [this vignette](tidying_casting.html), we can cast a one-token-per-row table into a DocumentTermMatrix with tidytext's `cast_dtm`:
+As described in [this vignette](tidying_casting.html), we can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext's `cast_dtm`:
 
 ```{r}
 chapters_dtm <- word_counts %>%
@@ -85,7 +86,7 @@ chapters_lda <- LDA(chapters_dtm, k = 4, control = list(seed = 2016))
 chapters_lda
 ```
 
-(In this case we know there are four topics because there are four books- in practice we may need to try a few).
+(In this case we know there are four topics because there are four books; in practice we may need to try a few).
 
 Now tidytext gives us the option of *returning* to a tidy analysis, using the `tidy` and `augment` verbs borrowed from the [broom package](https://github.com/dgrtwo/broom). In particular, we start with the `tidy` verb.
 
@@ -122,7 +123,7 @@ top_terms %>%
   theme(axis.text.x = element_text(size = 15, angle = 90, hjust = 1))
 ```
 
-Some of these topics are pretty clearly associated with one book! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to Twenty Thousand Leagues Under the Sea. On the other hand, we can spot at least one mistake: that "wemmick" (meaning John Wemmick, a character from Great Expectations) was associated with "martians" (from "The War of the Worlds").
+Some of these topics are pretty clearly associated with one book! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to *Twenty Thousand Leagues Under the Sea*. On the other hand, we can spot at least one mistake: that "wemmick" (meaning John Wemmick, a character from *Great Expectations*) was associated with "martians" (from *The War of the Worlds*).
 
 #### Per-document classification
 
@@ -149,7 +150,7 @@ ggplot(chapters_lda_gamma, aes(gamma, fill = factor(topic))) +
   facet_wrap(~ title, nrow = 2)
 ```
 
-We notice that chapters from Pride and Prejudice, War of the Worlds, and Twenty Thousand Leagues Under the Sea were all uniquely identified as a single topic each.
+We notice that chapters from *Pride and Prejudice*, *War of the Worlds*, and *Twenty Thousand Leagues Under the Sea* were all uniquely identified as a single topic each.
 
 ```{r}
 chapter_classifications <- chapters_lda_gamma %>%
@@ -173,7 +174,7 @@ book_topics <- chapter_classifications %>%
 book_topics
 ```
 
-Then we see which chapters were mis-identified:
+Then we see which chapters were misidentified:
 
 ```{r}
 chapter_classifications %>%
@@ -181,9 +182,9 @@ chapter_classifications %>%
   count(title, consensus)
 ```
 
-We see that one chapter was mis-classified as War of the Worlds. Still, not bad!
+We see that one chapter was misclassified as *War of the Worlds*. Still, not bad!
 
-#### By word assignments: augment
+#### By word assignments: `augment`
 
 One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight will go on that document-topic classification.
 
@@ -211,7 +212,7 @@ assignments %>%
   spread(consensus, n, fill = 0)
 ```
 
-We notice that all Pride and Prejudice words were assigned correctly, and almost all Twenty Thousand Leagues Under the Sea. But War of the Worlds had its share of mis-assignments, and Great Expectations especially did.
+We notice that all *Pride and Prejudice* words were assigned correctly, and almost all words for *Twenty Thousand Leagues Under the Sea*. However, *War of the Worlds* had its share of misassignments, and *Great Expectations* especially did.
 
 What were the most commonly mistaken words?
 
@@ -227,9 +228,9 @@ wrong_words %>%
   arrange(desc(n))
 ```
 
-We recall that "Wemmick" was incorrectly placed into the "War of the Worlds" topic, and now we can tell that "Jagger's" and "Skiffins" (other Great Expectations characters) were as well.
+We recall that "Wemmick" was incorrectly placed into the *War of the Worlds* topic, and now we can tell that "Jagger's" and "Skiffins" (other *Great Expectations* characters) were as well.
 
-This doesn't mean those words appeared in the War of the Worlds! Indeed, we can confirm they appear only in Great Expectations:
+This doesn't mean those words appeared in *War of the Worlds*! Indeed, we can confirm they appear only in *Great Expectations*:
 
 ```{r}
 word_counts %>%
