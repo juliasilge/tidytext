@@ -30,10 +30,11 @@ if the original input and new output column have the same name.}
 
 \item{collapse}{Whether to combine text with newlines first in case tokens
 (such as sentences or paragraphs) span multiple lines. If NULL, collapses
-when token method is "sentences", "lines", "paragraphs", or "regexes"}
+when token method is "ngrams", "skip_ngrams", "sentences", "lines",
+"paragraphs", or "regex"}
 
 \item{...}{Extra arguments passed on to the tokenizer, such as \code{n} and
-\code{k} for "ngrams" and "skip_ngrams"}
+\code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex"}
 
 \item{output}{Output column to be created as bare name}
 
@@ -43,8 +44,9 @@ when token method is "sentences", "lines", "paragraphs", or "regexes"}
 Split a column into tokens using the tokenizers package
 }
 \details{
-If the unit for tokenizing is sentences, lines, paragraphs, or
-regex, the entire input will be collapsed together before tokenizing.
+If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
+paragraphs, or regex, the entire input will be collapsed together before
+tokenizing.
 }
 \examples{
 
@@ -65,6 +67,9 @@ d \%>\%
 
 d \%>\%
   unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
+
+d \%>\%
+  unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\\\d]")
 
 # custom function
 d \%>\%

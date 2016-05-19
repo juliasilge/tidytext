@@ -14,12 +14,14 @@
 #' @param input Input column that gets split as bare name
 #' @param collapse Whether to combine text with newlines first in case tokens
 #' (such as sentences or paragraphs) span multiple lines. If NULL, collapses
-#' when token method is "sentences", "lines", "paragraphs", or "regexes"
+#' when token method is "ngrams", "skip_ngrams", "sentences", "lines",
+#' "paragraphs", or "regex"
 #' @param ... Extra arguments passed on to the tokenizer, such as \code{n} and
-#' \code{k} for "ngrams" and "skip_ngrams"
+#' \code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex"
 #'
-#' @details If the unit for tokenizing is sentences, lines, paragraphs, or
-#' regex, the entire input will be collapsed together before tokenizing.
+#' @details If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
+#' paragraphs, or regex, the entire input will be collapsed together before
+#' tokenizing.
 #'
 #' @import dplyr
 #' @import tokenizers
@@ -47,6 +49,9 @@
 #' d %>%
 #'   unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
 #'
+#' d %>%
+#'   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\d]")
+#'
 #' # custom function
 #' d %>%
 #'   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
@@ -57,7 +62,8 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
   if (is.function(token)) {
     tokenfunc <- token
   } else {
-    if (is.null(collapse) && token %in% c("sentences", "lines", "paragraphs", "regex")) {
+    if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
+                                          "lines", "paragraphs", "regex")) {
       collapse <- TRUE
     }
 
