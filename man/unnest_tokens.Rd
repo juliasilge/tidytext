@@ -68,6 +68,9 @@ d \%>\%
 d \%>\%
   unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
 
+d \%>\%
+  unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\\\d]")
+
 # custom function
 d \%>\%
   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
