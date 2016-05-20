@@ -27,11 +27,6 @@ if (require("topicmodels", quietly = TRUE) || TRUE) {
       count(topic, wt = beta)
     expect_lt(max(abs(summ$n - 1)), .000001)
 
-    # most common word in this dataset is "percent"
-    s <- td %>%
-      count(term, wt = beta, sort = TRUE)
-    expect_equal(s$term[1], "percent")
-
     td_log <- tidy(lda, matrix = "beta", log = TRUE)
     expect_true(all(td_log$beta < 0))
   })
