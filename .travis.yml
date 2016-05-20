@@ -1,14 +1,15 @@
 language: R
 cache: packages
-sudo: required
+sudo: false
 
-apt_packages:
+addons:
+  apt:
+    packages:
       - libgsl0-dev # for topicmodels
       - libxml2-dev # for XML, a dependency of quanteda
 
-r_binary_packages:
-      - XML # not sure why XML is not getting installed without this
-      - covr
+r_packages:
+  - covr
 
 after_success:
   - Rscript -e 'covr::codecov()'
