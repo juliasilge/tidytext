@@ -26,6 +26,6 @@ Tidy data sets are easier to work with, and this is no less true when one starts
 
 We define the tidy text format as being one-token-per-document-per-row and provide functionality to tokenize by commonly used units of text including words, ngrams, and sentences. At the same time, the tidytext package doesn't expect a user to keep text data in a tidy form at all times during an analysis. The package includes functions to `tidy` objects (for more on the `tidy` verb, see the broom package[@R-broom]) from popular text mining R packages. This allows, for example, a workflow with easy reading, filtering, and processing to be done using dplyr and other tidy tools, after which the data can be converted into a document-term matrix for machine learning applications.
 
--![Sentiment in Jane Austen's Novels](README-unnamed-chunk-9-1.png)
+![Sentiment in Jane Austen's Novels](README-unnamed-chunk-9-1.png)
 
 # References
