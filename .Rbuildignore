@@ -7,3 +7,4 @@
 ^data-raw$
 ^cran-comments\.md$
 paper\..*
+^appveyor\.yml$
