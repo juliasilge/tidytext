@@ -16,6 +16,40 @@ opts_chunk$set(warning = FALSE, message = FALSE)
 
 A central question in text mining and natural language processing is how to quantify what a document is about. Can we do this by looking at the words that make up the document? One measure of how important a word may be is its *term frequency* (tf), how frequently a word occurs in a document. There are words in a document, however, that occur many times but may not be important; in English, these are probably words like "the", "is", "of", and so forth. We might take the approach of adding words like these to a list of stop words and removing them before analysis, but it is possible that some of these words might be more important in some documents than others. A list of stop words is not a sophisticated approach to adjusting term frequency for commonly used words.
 
-Another measure of how important a word may be is its *inverse document frequency* (idf), which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. This can be combined with term frequency to calculate a term's *tf-idf*, the frequency of a term adjusted for how rarely it is used. It is intended to measure how important a word is to a document in a collection (or corpus) of documents, but it is a rule-of-thumb or heuristic quantity. It has proved useful in text mining, in search engines, etc., but its theoretical foundations are considered less than firm by information theory experts.
+Another approach is to look at a term's *inverse document frequency* (idf), which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. This can be combined with term frequency to calculate a term's *tf-idf*, the frequency of a term adjusted for how rarely it is used. It is intended to measure how important a word is to a document in a collection (or corpus) of documents, but it is a rule-of-thumb or heuristic quantity. It has proved useful in text mining, search engines, etc., but its theoretical foundations are considered less than firm by information theory experts.
 
 We can use tidy data principles, as described in [the main vignette](tidytext.html), to approach tf-idf analysis and use consistent, effective tools to quantify how important various terms are in a document that is part of a collection.
+
+
+
+
+```{r}
+library(dplyr)
+library(janeaustenr)
+library(tidytext)
+book_words <- austen_books() %>%
+  unnest_tokens(word, text) %>%
+  count(book, word, sort = TRUE) %>%
+  ungroup()
+
+total_words <- book_words %>% group_by(book) %>% summarize(total = sum(n))
+book_words <- left_join(book_words, total_words)
+book_words
+```
+
+```{r, fig.height=6, fig.width=8}
+library(ggplot2)
+ggplot(book_words, aes(n/total, fill = book)) +
+  geom_histogram(show.legend = FALSE) +
+  xlim(NA, 0.001) +
+  facet_wrap(~book, ncol = 2, scales = "free_y")
+```
+
+
+
+```{r}
+book_words %>%
+  calculate_tf_idf(word, book, n) %>%
+  arrange(desc(tf_idf))
+```
+

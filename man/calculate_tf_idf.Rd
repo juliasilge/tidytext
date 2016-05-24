@@ -26,13 +26,13 @@ values are added as columns.
 }
 \details{
 \code{tf_idf} is given bare names, while \code{tf_idf_}
-is given strings and is therefore suitable to programming with.
+is given strings and is therefore suitable for programming with.
 
 If the dataset is grouped, the groups are ignored but are
 retained.
 
 Note that the dataset does not necessarily need exactly one row per
-document-term combination- the per-document term frequency will sum
+document-term combination; the per-document term frequency will sum
 \code{n_col} across rows if necessary.
 }
 \examples{
