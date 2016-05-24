@@ -14,7 +14,7 @@ library(knitr)
 opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
-Topic modeling is a way of discovering what a document is about based on which words appear more and less frequently compared to other documents. We can use tidy data principles to approach topic modeling, using consistent, effective tools.
+Topic modeling is a way of discovering what a document is about based on which words appear more and less frequently compared to other documents. We can use tidy data principles, as described in [the main vignette](tidytext.html), to approach topic modeling, using consistent, effective tools.
 
 ### Can we tell the difference between H.G. Wells and Jules Verne?
 
