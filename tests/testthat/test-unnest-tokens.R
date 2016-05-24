@@ -40,18 +40,18 @@ test_that("tokenizing by sentence works", {
 })
 
 test_that("tokenizing by ngram and skip ngram works", {
-  d2 <- data_frame(txt = c("Hope is the thing with feathers -",
-                           "That perches in the soul -",
-                           "And sings the tune without the words -",
-                           "And never stops - at all -",
-                           "And sweetest - in the Gale - is heard -",
-                           "And sore must be the storm -",
+  d2 <- data_frame(txt = c("Hope is the thing with feathers",
+                           "That perches in the soul",
+                           "And sings the tune without the words",
+                           "And never stops at all ",
+                           "And sweetest in the Gale is heard ",
+                           "And sore must be the storm ",
                            "That could abash the little Bird",
-                           "That kept so many warm -",
-                           "I’ve heard it in the chillest land -",
-                           "And on the strangest Sea -",
-                           "Yet - never - in Extremity,",
-                           "It asked a crumb - of me."))
+                           "That kept so many warm ",
+                           "I’ve heard it in the chillest land ",
+                           "And on the strangest Sea ",
+                           "Yet never in Extremity,",
+                           "It asked a crumb of me."))
 
   # tokenize by ngram
   d <- d2 %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2)
