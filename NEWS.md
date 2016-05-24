@@ -1,7 +1,7 @@
 # tidytext 0.1.1
 
 * Added documentation for n-grams, skip n-grams, and regex
-* Added codecov
+* Added codecov and appveyor
 * Added tidiers for LDA objects from topicmodels
 * Fixed a bug when tidying by line/sentence/paragraph/regex and there are multiple non-text columns
 * Fixed a bug when unnesting using n-grams and skip n-grams (entire text was not being collapsed)
