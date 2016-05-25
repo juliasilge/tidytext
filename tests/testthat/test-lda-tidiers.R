@@ -9,7 +9,7 @@ if (require("topicmodels", quietly = TRUE) || TRUE) {
   lda <- LDA(ap, control = list(alpha = 0.1), k = 4)
 
   test_that("can tidy beta matrix", {
-    td <- tidy(lda, matrix = "beta")
+    td <- tidy.LDA(lda, matrix = "beta")
     expect_is(td, "tbl_df")
 
     expect_equal(colnames(td), c("topic", "term", "beta"))
@@ -32,7 +32,7 @@ if (require("topicmodels", quietly = TRUE) || TRUE) {
   })
 
   test_that("can tidy gamma matrix", {
-    td <- tidy(lda, matrix = "gamma")
+    td <- tidy.LDA(lda, matrix = "gamma")
     expect_is(td, "tbl_df")
 
     expect_equal(colnames(td), c("document", "topic", "gamma"))
@@ -54,7 +54,7 @@ if (require("topicmodels", quietly = TRUE) || TRUE) {
   })
 
   test_that("can augment an LDA output", {
-    au <- augment(lda)
+    au <- augment.LDA(lda)
     expect_is(au, "tbl_df")
     expect_equal(colnames(au), c("document", "term", ".topic"))
     expect_equal(sort(unique(au$.topic)), 1:4)
@@ -71,21 +71,21 @@ if (require("topicmodels", quietly = TRUE) || TRUE) {
     # can include extra columns
     ap_tidied2 <- ap_tidied %>%
       mutate(starts_a = stringr::str_detect(term, "^a"))
-    au2 <- augment(lda, data = ap_tidied2)
+    au2 <- augment.LDA(lda, data = ap_tidied2)
     expect_equal(au$document, au2$document)
     expect_equal(au$term, au2$term)
     expect_is(au2$starts_a, "logical")
     expect_equal(stringr::str_detect(au2$term, "^a"), au2$starts_a)
 
     # can give document term matrix
-    au3 <- augment(lda, data = ap)
+    au3 <- augment.LDA(lda, data = ap)
     expect_equal(au$document, au3$document)
     expect_equal(au$term, au3$term)
     expect_equal(au$.topic, au3$.topic)
   })
 
   test_that("can glance an LDA output", {
-    g <- glance(lda)
+    g <- glance.LDA(lda)
     expect_is(g, "tbl_df")
     expect_equal(nrow(g), 1)
     expect_equal(g$terms, 19253)
