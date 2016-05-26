@@ -8,7 +8,7 @@ authors:
    orcid: 0000-0002-3671-836X
    affiliation: Datassist
  - name: David Robinson
-   orcid: 0000-0002-3671-836X
+   orcid: 0000-0001-8466-088X
    affiliation: Stack Overflow
 date: 23 May 2016
 bibliography: paper.bib
@@ -16,7 +16,7 @@ bibliography: paper.bib
 
 # Summary
 
-The tidytext package(DON'T FORGET LINK TO ZENODO ARCHIVE) is an R package[@R-base] for text mining using tidy data principles. As described by Hadley Wickham[@tidydata], tidy data has a specific structure:
+The tidytext package(DON'T FORGET REF TO ZENODO ARCHIVE) is an R package[@R-base] for text mining using tidy data principles. As described by Hadley Wickham[@tidydata], tidy data has a specific structure:
 
 * each variable is a column,
 * each observation is a row, and
