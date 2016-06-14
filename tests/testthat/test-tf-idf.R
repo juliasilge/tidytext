@@ -27,7 +27,7 @@ test_that("Can calculate TF-IDF", {
     group_by(document) %>%
     calculate_tf_idf(word, document, frequency)
 
-  expect_equal(result, result2)
+  expect_equal(result, ungroup(result2))
   expect_equal(length(groups(result2)), 1)
   expect_equal(as.character(groups(result2)[[1]]), "document")
 })
