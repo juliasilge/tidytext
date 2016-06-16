@@ -18,7 +18,7 @@ A central question in text mining and natural language processing is how to quan
 
 Another approach is to look at a term's *inverse document frequency* (idf), which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. This can be combined with term frequency to calculate a term's *tf-idf*, the frequency of a term adjusted for how rarely it is used. It is intended to measure how important a word is to a document in a collection (or corpus) of documents. It is a rule-of-thumb or heuristic quantity; while it has proved useful in text mining, search engines, etc., its theoretical foundations are considered less than firm by information theory experts. The inverse document frequency for any given term is defined as
 
-$$idf(\text{term}) = \ln{\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}}$$
+$$idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}$$
 
 We can use tidy data principles, as described in [the main vignette](tidytext.html), to approach tf-idf analysis and use consistent, effective tools to quantify how important various terms are in a document that is part of a collection.
 
