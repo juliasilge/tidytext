@@ -166,6 +166,6 @@ ggplot(comparison, aes(AP, Austen)) +
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
-### Code of Conduct
+### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Code contributions, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).

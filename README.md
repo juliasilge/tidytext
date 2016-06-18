@@ -52,7 +52,7 @@ original_books
 #> Source: local data frame [70,942 x 3]
 #> 
 #>                     text                book linenumber
-#>                    (chr)              (fctr)      (int)
+#>                    <chr>              <fctr>      <int>
 #> 1  SENSE AND SENSIBILITY Sense & Sensibility          1
 #> 2                        Sense & Sensibility          2
 #> 3         by Jane Austen Sense & Sensibility          3
@@ -78,7 +78,7 @@ tidy_books
 #> Source: local data frame [724,971 x 3]
 #> 
 #>                   book linenumber        word
-#>                 (fctr)      (int)       (chr)
+#>                 <fctr>      <int>       <chr>
 #> 1  Sense & Sensibility          1       sense
 #> 2  Sense & Sensibility          1         and
 #> 3  Sense & Sensibility          1 sensibility
@@ -112,7 +112,7 @@ tidy_books %>%
 #> Source: local data frame [13,896 x 2]
 #> 
 #>      word     n
-#>     (chr) (int)
+#>     <chr> <int>
 #> 1    miss  1854
 #> 2    time  1337
 #> 3   fanny   862
@@ -139,7 +139,7 @@ bing
 #> Source: local data frame [6,788 x 3]
 #> 
 #>           word sentiment lexicon
-#>          (chr)     (chr)   (chr)
+#>          <chr>     <chr>   <chr>
 #> 1      2-faced  negative    bing
 #> 2      2-faces  negative    bing
 #> 3           a+  positive    bing
@@ -163,7 +163,7 @@ janeaustensentiment
 #> Groups: book, index [891]
 #> 
 #>                   book index negative positive sentiment
-#>                 (fctr) (dbl)    (dbl)    (dbl)     (dbl)
+#>                 <fctr> <dbl>    <dbl>    <dbl>     <dbl>
 #> 1  Sense & Sensibility     0       16       26        10
 #> 2  Sense & Sensibility     1       19       44        25
 #> 3  Sense & Sensibility     2       12       23        11
@@ -216,7 +216,7 @@ tidy(AssociatedPress)
 #> Source: local data frame [302,031 x 3]
 #> 
 #>    document       term count
-#>       (int)      (chr) (dbl)
+#>       <int>      <chr> <dbl>
 #> 1         1     adding     1
 #> 2         1      adult     2
 #> 3         1        ago     1
@@ -259,7 +259,7 @@ comparison
 #> Source: local data frame [4,430 x 3]
 #> 
 #>          word           AP       Austen
-#>         (chr)        (dbl)        (dbl)
+#>         <chr>        <dbl>        <dbl>
 #> 1   abandoned 2.101799e-04 7.095218e-06
 #> 2       abide 3.603084e-05 2.838087e-05
 #> 3   abilities 3.603084e-05 2.057613e-04
@@ -286,6 +286,6 @@ ggplot(comparison, aes(AP, Austen)) +
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
-### Code of Conduct
+### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Code contributions, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
