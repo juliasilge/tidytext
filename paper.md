@@ -16,7 +16,7 @@ bibliography: paper.bib
 
 # Summary
 
-The tidytext package(DON'T FORGET REF TO ZENODO ARCHIVE) is an R package[@R-base] for text mining using tidy data principles. As described by Hadley Wickham[@tidydata], tidy data has a specific structure:
+The tidytext package is an R package[@R-base] for text mining using tidy data principles. As described by Hadley Wickham[@tidydata], tidy data has a specific structure:
 
 * each variable is a column,
 * each observation is a row, and
