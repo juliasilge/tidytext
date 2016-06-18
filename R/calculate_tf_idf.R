@@ -54,20 +54,36 @@ calculate_tf_idf_ <- function(tbl, term_col, document_col, n_col) {
   total_documents <- n_distinct(tbl[[document_col]])
 
   by_doc_dots <- list(.document_total = substitute(sum(x), list(x = as.name(n_col))))
-  by_term_dots <- list(.nterm = substitute(sum(x), list(x = as.name(n_col))),
+  # by_term_dots <- list(.nterm = substitute(sum(x), list(x = as.name(n_col))),
+  #                      .ndocs = substitute(n_distinct(x), list(x = as.name(document_col))))
+  by_term_dots <- list(.nterm = substitute(x, list(x = as.name(n_col))),
                        .ndocs = substitute(n_distinct(x), list(x = as.name(document_col))))
   ungrouped_dots <- list(tf = substitute(.nterm / .document_total),
                          idf = substitute(log(total_documents / .ndocs)))
 
-  ret <- tbl %>%
-    group_by_(document_col) %>%
-    mutate_(.dots = by_doc_dots) %>%
-    group_by_(term_col) %>%
+
+  # Julia's new version -- does this work right?
+
+  total_terms <- tbl %>% group_by_(document_col) %>%
+    summarize_(.dots = by_doc_dots)
+  ret <- left_join(tbl, total_terms) %>%
     mutate_(.dots = by_term_dots) %>%
     ungroup() %>%
     mutate_(.dots = ungrouped_dots) %>%
     mutate(tf_idf = tf * idf) %>%
     select(-.ndocs, -.nterm, -.document_total)
+
+
+  # Dave's old version -- is this wrong? or right?
+  # ret <- tbl %>%
+  #   group_by_(document_col) %>%
+  #   mutate_(.dots = by_doc_dots) %>%
+  #   group_by_(term_col) %>%
+  #   mutate_(.dots = by_term_dots) %>%
+  #   ungroup() %>%
+  #   mutate_(.dots = ungrouped_dots) %>%
+  #   mutate(tf_idf = tf * idf) %>%
+  #   select(-.ndocs, -.nterm, -.document_total)
 
   if (!is.null(g)) {
     ret <- group_by_(ret, .dots = g)
