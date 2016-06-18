@@ -2,7 +2,8 @@
 
 * Added documentation for n-grams, skip n-grams, and regex
 * Added codecov and appveyor
-* Added tidiers for LDA objects from topicmodels
+* Added tidiers for LDA objects from topicmodels and a vignette on topic modeling
+* Added function to calculate tf-idf of a tidy text dataset and a tf-idf vignette 
 * Fixed a bug when tidying by line/sentence/paragraph/regex and there are multiple non-text columns
 * Fixed a bug when unnesting using n-grams and skip n-grams (entire text was not being collapsed)
 * Added ability to pass a (custom tokenizing) function to token. Also added a collapse argument that makes the choice whether to combine lines before tokenizing explicit.
