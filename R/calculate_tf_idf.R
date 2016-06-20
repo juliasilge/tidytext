@@ -39,6 +39,17 @@
 #'
 #' @export
 calculate_tf_idf <- function(tbl, term_col, document_col, n_col) {
+
+  ############# beginning of matrix math for new version tf-idf
+  dtm <- cast_sparse_(tbl,
+                     col_name(substitute(document_col)),
+                     col_name(substitute(term_col)),
+                     col_name(substitute(n_col)))
+  tf <- dtm/Matrix::rowSums(dtm)
+  idf <- log(nrow(dtm)/Matrix::colSums(abs(sign(dtm))))
+  tfidf <- tf*idf
+  ############# end of new version draft
+
   calculate_tf_idf_(tbl,
                     col_name(substitute(term_col)),
                     col_name(substitute(document_col)),
