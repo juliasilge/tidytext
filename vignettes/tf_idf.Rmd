@@ -75,27 +75,3 @@ book_words %>%
 ```
 
 These words are, as measured by tf-idf, the most important to *Pride and Prejudice* and most readers would likely agree.
-
-
-
-## DEBUGGING WITH DAVE
-
-The value for tf returned by `bind_tf_idf` is not the same as what I get just using dplyr for many of the words.
-
-```{r}
-book_words %>%
-  mutate(tf_dplyr = n/total, diff = tf - tf_dplyr) %>%
-  select(-idf, -tf_idf)
-```
-
-
-There are some words where the two tf calculations agree:
-
-```{r}
-book_words %>%
-  mutate(tf_dplyr = n/total, diff = tf - tf_dplyr) %>%
-  select(-idf, -tf_idf) %>%
-  filter(diff == 0)
-```
-
-Those are rare words, words with high tf-idf?!?!?
