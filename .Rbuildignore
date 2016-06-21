@@ -8,3 +8,4 @@
 ^cran-comments\.md$
 paper\..*
 ^appveyor\.yml$
+^revdep$
