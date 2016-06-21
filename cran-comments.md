@@ -1,16 +1,10 @@
-## Resubmission
-
-This is a resubsmission. In this version I have
-
-* removed the outer single quotes from the title field in `DESCRIPTION`
-
 ## Release Summary
 
-This is the first attempted CRAN release of tidytext.
+This is the second CRAN release of tidytext. In this release, we fixed some bugs, added more documentation and better testing/CI, added a tidier for LDA objects, added an implementation of tf-idf, changed `unnest_tokens` so that the user can pass a custom tokenizing function to `token`, and deprecated the `pair_count` function (which has been moved to the widyr package at https://github.com/dgrtwo/widyr).
 
 ## Test environments
-* Local OS X install, R 3.2.4
-* Ubuntu 12.04 (on Travis-CI), R 3.2.4
+* Local OS X install, R 3.3.0
+* Ubuntu 12.04 (on Travis-CI), R 3.3.0
 * Win-builder (devel and release)
 
 ## R CMD check results
