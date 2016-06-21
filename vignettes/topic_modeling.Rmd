@@ -14,9 +14,11 @@ library(knitr)
 opts_chunk$set(message = FALSE, warning = FALSE)
 ```
 
-Topic modeling is a way of discovering what a document is about based on which words appear more and less frequently compared to other documents. We can use tidy data principles, as described in [the main vignette](tidytext.html), to approach topic modeling, using consistent, effective tools.
+Topic modeling is a method for unsupervised classification of documents, by modeling each document as a mixture of topics and each topic as a mixture of words. [Latent Dirichlet allocation](https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation) is a particularly popular method for fitting a topic model.
 
-### Can we tell the difference between H.G. Wells and Jules Verne?
+We can use tidy text principles, as described in [the main vignette](tidytext.html), to approach topic modeling using consistent and effective tools. In particular, we'll be using tidying functions for LDA objects from the [topicmodels package](https://cran.r-project.org/package=topicmodels).
+
+### Can we tell the difference between Dickens, Wells, Verne and Austen?
 
 Suppose a vandal has broken into your study and torn apart four of your books:
 
@@ -27,10 +29,11 @@ Suppose a vandal has broken into your study and torn apart four of your books:
 
 This vandal has torn the books into individual chapters, and left them in one large pile. How can we restore these disorganized chapters to their original books?
 
-```{r}
+#### Setup
+
+```{r books}
 library(dplyr)
 library(gutenbergr)
-library(topicmodels)
 
 titles <- c("Twenty Thousand Leagues under the Sea", "The War of the Worlds",
             "Pride and Prejudice", "Great Expectations")
@@ -42,7 +45,7 @@ books
 
 As pre-processing, we divide these into chapters, use tidytext's `unnest_tokens` to separate them into words, then remove `stop_words`. We're treating every chapter as a separate "document", each with a name like `Great Expectations_1` or `Pride and Prejudice_11`.
 
-```{r}
+```{r word_counts}
 library(tidytext)
 library(stringr)
 library(tidyr)
@@ -67,39 +70,37 @@ word_counts
 
 ### Latent Dirichlet Allocation with the topicmodels package
 
-Right now this data frame is in a tidy form, with one-term-per-document-per-row. However, the topicmodels package requires a `DocumentTermMatrix` (from the tm package). This is a common situation.
+Right now this data frame is in a tidy form, with one-term-per-document-per-row. However, the topicmodels package requires a `DocumentTermMatrix` (from the tm package). As described in [this vignette](tidying_casting.html), we can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext's `cast_dtm`:
 
-As described in [this vignette](tidying_casting.html), we can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext's `cast_dtm`:
-
-```{r}
+```{r chapters_dtm}
 chapters_dtm <- word_counts %>%
   cast_dtm(title_chapter, word, n)
 
 chapters_dtm
 ```
 
-Now we are ready to use the topicmodels package to create a four topic LDA model.
+Now we are ready to use the [topicmodels](https://cran.r-project.org/package=topicmodels) package to create a four topic LDA model.
 
-```{r}
+```{r chapters_lda}
 library(topicmodels)
 chapters_lda <- LDA(chapters_dtm, k = 4, control = list(seed = 2016))
 chapters_lda
 ```
 
-(In this case we know there are four topics because there are four books; in practice we may need to try a few).
+(In this case we know there are four topics because there are four books; in practice we may need to try a few different values of `k`).
 
 Now tidytext gives us the option of *returning* to a tidy analysis, using the `tidy` and `augment` verbs borrowed from the [broom package](https://github.com/dgrtwo/broom). In particular, we start with the `tidy` verb.
 
-```{r}
+```{r chapters_lda_td}
 chapters_lda_td <- tidy(chapters_lda)
 chapters_lda_td
 ```
 
-Notice that this has turned the model into a one-topic-per-term-per-row format. This provides $\beta$, which represents the probability of a word generated from a particular topic.
+Notice that this has turned the model into a one-topic-per-term-per-row format. For each combination the model has $\beta$, the probability of that term being generated from that topic.
 
 We could use dplyr's `top_n` to find the top 5 terms within each topic:
 
-```{r}
+```{r top_terms}
 top_terms <- chapters_lda_td %>%
   group_by(topic) %>%
   top_n(5, beta) %>%
@@ -109,9 +110,9 @@ top_terms <- chapters_lda_td %>%
 top_terms
 ```
 
-This also lends itself to a visualization:
+This model lends itself to a visualization:
 
-```{r}
+```{r top_terms_plot}
 library(ggplot2)
 theme_set(theme_bw())
 
@@ -123,20 +124,20 @@ top_terms %>%
   theme(axis.text.x = element_text(size = 15, angle = 90, hjust = 1))
 ```
 
-Some of these topics are pretty clearly associated with one book! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to *Twenty Thousand Leagues Under the Sea*. On the other hand, we can spot at least one mistake: that "wemmick" (meaning John Wemmick, a character from *Great Expectations*) was associated with "martians" (from *The War of the Worlds*).
+Some of these topics are pretty clearly associated with one book! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to *Twenty Thousand Leagues Under the Sea*, and that "jane", "darcy", and "elizabeth" belongs to Pride and Prejudice. On the other hand, we can spot at least one mistake: that "wemmick" (meaning John Wemmick, a character from *Great Expectations*) was associated with "martians" (from *The War of the Worlds*).
 
 #### Per-document classification
 
-Each "chapter" was a document in this analysis.
+Each "chapter" was a document in this analysis. Thus, we may want to know which topics describe each document.
 
-```{r}
+```{r chapters_lda_gamma_raw}
 chapters_lda_gamma <- tidy(chapters_lda, matrix = "gamma")
 chapters_lda_gamma
 ```
 
-Now that we have these document classifiations, we can see how well our unsupervised learning did. First we re-separate the document name into title and chapter:
+Setting `matrix = "gamma"` returns a tidied version with one-document-per-topic-per-row. Now that we have these document classifiations, we can see how well our unsupervised learning did at distinguishing the four books. First we re-separate the document name into title and chapter:
 
-```{r}
+```{r chapters_lda_gamma}
 chapters_lda_gamma <- chapters_lda_gamma %>%
   separate(document, c("title", "chapter"), sep = "_", convert = TRUE)
 chapters_lda_gamma
@@ -144,7 +145,7 @@ chapters_lda_gamma
 
 Then we examine what fraction of chapters we got right for each:
 
-```{r}
+```{r chapters_lda_gamma_plot}
 ggplot(chapters_lda_gamma, aes(gamma, fill = factor(topic))) +
   geom_histogram() +
   facet_wrap(~ title, nrow = 2)
@@ -152,7 +153,7 @@ ggplot(chapters_lda_gamma, aes(gamma, fill = factor(topic))) +
 
 We notice that chapters from *Pride and Prejudice*, *War of the Worlds*, and *Twenty Thousand Leagues Under the Sea* were all uniquely identified as a single topic each.
 
-```{r}
+```{r chapter_classifications}
 chapter_classifications <- chapters_lda_gamma %>%
   group_by(title, chapter) %>%
   top_n(1, gamma) %>%
@@ -162,9 +163,9 @@ chapter_classifications <- chapters_lda_gamma %>%
 chapter_classifications
 ```
 
-We can determine this by finding the consensus book for each, which we note is correct:
+We can determine this by finding the consensus book for each, which we note is correct based on our earlier visualization:
 
-```{r}
+```{r book_topics}
 book_topics <- chapter_classifications %>%
   count(title, topic) %>%
   top_n(1, n) %>%
@@ -182,15 +183,15 @@ chapter_classifications %>%
   count(title, consensus)
 ```
 
-We see that one chapter was misclassified as *War of the Worlds*. Still, not bad!
+We see that one chapter from Great Expectations was misclassified as *War of the Worlds*. Still, not bad for unsupervised clustering!
 
 #### By word assignments: `augment`
 
-One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight will go on that document-topic classification.
+One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight (`gamma`) will go on that document-topic classification.
 
 We may want to take the original document-word pairs and find which words in each document were assigned to which topic. This is the job of the `augment` verb.
 
-```{r}
+```{r assignments}
 assignments <- augment(chapters_lda, data = chapters_dtm)
 ```
 
@@ -230,31 +231,11 @@ wrong_words %>%
 
 We recall that "Wemmick" was incorrectly placed into the *War of the Worlds* topic, and now we can tell that "Jagger's" and "Skiffins" (other *Great Expectations* characters) were as well.
 
-This doesn't mean those words appeared in *War of the Worlds*! Indeed, we can confirm they appear only in *Great Expectations*:
+This doesn't mean those words necessarily appeared in *War of the Worlds*! Indeed, we can confirm they appear only in *Great Expectations*:
 
 ```{r}
 word_counts %>%
   filter(word == "skiffins")
 ```
 
-However, the algorithm is stochastic and iterative, and it can land on a topic that spans multiple books.
-
-### Topics within a work
-
-```{r}
-great_expectations_lda <- word_counts %>%
-  filter(str_detect(title_chapter, "Great")) %>%
-  cast_dtm(title_chapter, word, n) %>%
-  LDA(k = 4, control = list(seed = 4))
-```
-
-```{r fig.width = 8, fig.height = 8}
-tidy(great_expectations_lda) %>%
-  group_by(topic) %>%
-  top_n(5, beta) %>%
-  ungroup() %>%
-  mutate(term = reorder(term, beta)) %>%
-  ggplot(aes(term, beta)) +
-  geom_bar(stat = "identity") +
-  facet_wrap(~ topic, scales = "free")
-```
+However, the algorithm is stochastic and iterative, and it can accidentally land on a topic that spans multiple books.
