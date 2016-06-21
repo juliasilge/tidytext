@@ -31,9 +31,8 @@ is given strings and is therefore suitable for programming with.
 If the dataset is grouped, the groups are ignored but are
 retained.
 
-Note that the dataset does not necessarily need exactly one row per
-document-term combination; the per-document term frequency will sum
-\code{n_col} across rows if necessary.
+The dataset must have exactly one row per document-term combination
+for this to work.
 }
 \examples{
 
