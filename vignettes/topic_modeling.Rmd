@@ -18,7 +18,7 @@ Topic modeling is a method for unsupervised classification of documents, by mode
 
 We can use tidy text principles, as described in [the main vignette](tidytext.html), to approach topic modeling using consistent and effective tools. In particular, we'll be using tidying functions for LDA objects from the [topicmodels package](https://cran.r-project.org/package=topicmodels).
 
-### Can we tell the difference between Dickens, Wells, Verne and Austen?
+### Can we tell the difference between Dickens, Wells, Verne, and Austen?
 
 Suppose a vandal has broken into your study and torn apart four of your books:
 
@@ -83,7 +83,7 @@ Now we are ready to use the [topicmodels](https://cran.r-project.org/package=top
 
 ```{r chapters_lda}
 library(topicmodels)
-chapters_lda <- LDA(chapters_dtm, k = 4, control = list(seed = 2016))
+chapters_lda <- LDA(chapters_dtm, k = 4, control = list(seed = 1234))
 chapters_lda
 ```
 
@@ -112,7 +112,7 @@ top_terms
 
 This model lends itself to a visualization:
 
-```{r top_terms_plot}
+```{r top_terms_plot, fig.height=7, fig.width=7}
 library(ggplot2)
 theme_set(theme_bw())
 
@@ -124,11 +124,11 @@ top_terms %>%
   theme(axis.text.x = element_text(size = 15, angle = 90, hjust = 1))
 ```
 
-Some of these topics are pretty clearly associated with one book! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to *Twenty Thousand Leagues Under the Sea*, and that "jane", "darcy", and "elizabeth" belongs to Pride and Prejudice. On the other hand, we can spot at least one mistake: that "wemmick" (meaning John Wemmick, a character from *Great Expectations*) was associated with "martians" (from *The War of the Worlds*).
+These topics are pretty clearly associated with the four books! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to *Twenty Thousand Leagues Under the Sea*, and that "jane", "darcy", and "elizabeth" belongs to *Pride and Prejudice*. We see "pip" and "joe" from *Great Expectations* and "martians", "black", and "night" from *The War of the Worlds*.
 
 #### Per-document classification
 
-Each "chapter" was a document in this analysis. Thus, we may want to know which topics describe each document.
+Each chapter was a "document" in this analysis. Thus, we may want to know which topics are associated with each document. Can we put the chapters back together in the correct books?
 
 ```{r chapters_lda_gamma_raw}
 chapters_lda_gamma <- tidy(chapters_lda, matrix = "gamma")
@@ -145,13 +145,13 @@ chapters_lda_gamma
 
 Then we examine what fraction of chapters we got right for each:
 
-```{r chapters_lda_gamma_plot}
+```{r chapters_lda_gamma_plot, fig.width=7, fig.height=6}
 ggplot(chapters_lda_gamma, aes(gamma, fill = factor(topic))) +
   geom_histogram() +
   facet_wrap(~ title, nrow = 2)
 ```
 
-We notice that chapters from *Pride and Prejudice*, *War of the Worlds*, and *Twenty Thousand Leagues Under the Sea* were all uniquely identified as a single topic each.
+We notice that almost all of the chapters from *Pride and Prejudice*, *War of the Worlds*, and *Twenty Thousand Leagues Under the Sea* were uniquely identified as a single topic each.
 
 ```{r chapter_classifications}
 chapter_classifications <- chapters_lda_gamma %>%
@@ -183,7 +183,7 @@ chapter_classifications %>%
   count(title, consensus)
 ```
 
-We see that one chapter from Great Expectations was misclassified as *War of the Worlds*. Still, not bad for unsupervised clustering!
+We see that only a few chapters from *Great Expectations* were misclassified. Not bad for unsupervised clustering!
 
 #### By word assignments: `augment`
 
@@ -213,7 +213,7 @@ assignments %>%
   spread(consensus, n, fill = 0)
 ```
 
-We notice that all *Pride and Prejudice* words were assigned correctly, and almost all words for *Twenty Thousand Leagues Under the Sea*. However, *War of the Worlds* had its share of misassignments, and *Great Expectations* especially did.
+We notice that almost all the words for *Pride and Prejudice*, *Twenty Thousand Leagues Under the Sea*, and *War of the Worlds* were correctly assigned, while *Great Expectations* had a fair amount of misassignment.
 
 What were the most commonly mistaken words?
 
@@ -229,13 +229,11 @@ wrong_words %>%
   arrange(desc(n))
 ```
 
-We recall that "Wemmick" was incorrectly placed into the *War of the Worlds* topic, and now we can tell that "Jagger's" and "Skiffins" (other *Great Expectations* characters) were as well.
-
-This doesn't mean those words necessarily appeared in *War of the Worlds*! Indeed, we can confirm they appear only in *Great Expectations*:
+Notice the word "flopson" here; these wrong words do not necessarily appear in the novels they were misassigned to. Indeed, we can confirm "flopson" appears only in *Great Expectations*:
 
 ```{r}
 word_counts %>%
-  filter(word == "skiffins")
+  filter(word == "flopson")
 ```
 
-However, the algorithm is stochastic and iterative, and it can accidentally land on a topic that spans multiple books.
+The algorithm is stochastic and iterative, and it can accidentally land on a topic that spans multiple books.
