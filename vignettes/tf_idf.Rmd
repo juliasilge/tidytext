@@ -53,7 +53,7 @@ There are very long tails to the right for these novels (those extremely common 
 
 ```{r}
 book_words <- book_words %>%
-  calculate_tf_idf(word, book, n)
+  bind_tf_idf(word, book, n)
 book_words
 ```
 
@@ -80,7 +80,7 @@ These words are, as measured by tf-idf, the most important to *Pride and Prejudi
 
 ## DEBUGGING WITH DAVE
 
-The value for tf returned by `calculate_tf_idf` is not the same as what I get just using dplyr for many of the words.
+The value for tf returned by `bind_tf_idf` is not the same as what I get just using dplyr for many of the words.
 
 ```{r}
 book_words %>%

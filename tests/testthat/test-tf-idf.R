@@ -8,7 +8,7 @@ w <- data_frame(document = rep(1:2, each = 5),
 
 test_that("Can calculate TF-IDF", {
   result <- w %>%
-    calculate_tf_idf(word, document, frequency)
+    bind_tf_idf(word, document, frequency)
 
   expect_equal(select(w, document, word, frequency),
                select(result, document, word, frequency))
@@ -25,7 +25,7 @@ test_that("Can calculate TF-IDF", {
   # preserves but ignores groups
   result2 <- w %>%
     group_by(document) %>%
-    calculate_tf_idf(word, document, frequency)
+    bind_tf_idf(word, document, frequency)
 
   #expect_equal(result, ungroup(result2))
   expect_equal(length(groups(result2)), 1)

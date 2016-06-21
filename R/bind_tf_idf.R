@@ -1,9 +1,9 @@
-#' Calculate the term-frequency and inverse document frequency
-#' of a tidy text dataset
+#' Bind the term frequency and inverse document frequency of a tidy text
+#' dataset to the dataset
 #'
-#' Calculate the term frequency and inverse document frequency of a
-#' tidy text dataset, along with the product, tf-idf. Each of these
-#' values are added as columns.
+#' Calculate and bind the term frequency and inverse document frequency of a
+#' tidy text dataset, along with the product, tf-idf to the dataset. Each of
+#' these values are added as columns.
 #'
 #' @param tbl A tidy text dataset with one-row-per-term-per-document
 #' @param term_col Column containing terms
@@ -33,21 +33,21 @@
 #'
 #' # find the words most distinctive to each document
 #' book_words %>%
-#'   calculate_tf_idf(word, book, n) %>%
+#'   bind_tf_idf(word, book, n) %>%
 #'   arrange(desc(tf_idf))
 #'
 #' @export
-calculate_tf_idf <- function(tbl, term_col, document_col, n_col) {
-  calculate_tf_idf_(tbl,
+bind_tf_idf <- function(tbl, term_col, document_col, n_col) {
+  bind_tf_idf_(tbl,
                     col_name(substitute(term_col)),
                     col_name(substitute(document_col)),
                     col_name(substitute(n_col)))
 }
 
 
-#' @rdname calculate_tf_idf
+#' @rdname bind_tf_idf
 #' @export
-calculate_tf_idf_ <- function(tbl, term_col, document_col, n_col) {
+bind_tf_idf_ <- function(tbl, term_col, document_col, n_col) {
   terms <- tbl[[term_col]]
   documents <- tbl[[document_col]]
   n <- tbl[[n_col]]
