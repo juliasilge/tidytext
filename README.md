@@ -49,7 +49,7 @@ original_books <- austen_books() %>%
   ungroup()
 
 original_books
-#> Source: local data frame [70,942 x 3]
+#> Source: local data frame [73,422 x 3]
 #> 
 #>                     text                book linenumber
 #>                    <chr>              <fctr>      <int>
@@ -75,7 +75,7 @@ tidy_books <- original_books %>%
   unnest_tokens(word, text)
 
 tidy_books
-#> Source: local data frame [724,971 x 3]
+#> Source: local data frame [725,054 x 3]
 #> 
 #>                   book linenumber        word
 #>                 <fctr>      <int>       <chr>
@@ -109,11 +109,11 @@ We can also use `count` to find the most common words in all the books as a whol
 ```r
 tidy_books %>%
   count(word, sort = TRUE) 
-#> Source: local data frame [13,896 x 2]
+#> Source: local data frame [13,914 x 2]
 #> 
 #>      word     n
 #>     <chr> <int>
-#> 1    miss  1854
+#> 1    miss  1855
 #> 2    time  1337
 #> 3   fanny   862
 #> 4    dear   822
@@ -159,8 +159,8 @@ janeaustensentiment <- tidy_books %>%
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
-#> Source: local data frame [891 x 5]
-#> Groups: book, index [891]
+#> Source: local data frame [920 x 5]
+#> Groups: book, index [920]
 #> 
 #>                   book index negative positive sentiment
 #>                 <fctr> <dbl>    <dbl>    <dbl>     <dbl>
@@ -256,20 +256,20 @@ comparison <- tidy(AssociatedPress) %>%
          Austen = Austen / sum(Austen))
 
 comparison
-#> Source: local data frame [4,430 x 3]
+#> Source: local data frame [4,437 x 3]
 #> 
 #>          word           AP       Austen
 #>         <chr>        <dbl>        <dbl>
-#> 1   abandoned 2.101799e-04 7.095218e-06
-#> 2       abide 3.603084e-05 2.838087e-05
-#> 3   abilities 3.603084e-05 2.057613e-04
-#> 4     ability 2.942519e-04 2.128565e-05
-#> 5      abroad 2.402056e-04 2.554278e-04
-#> 6      abrupt 3.603084e-05 3.547609e-05
-#> 7     absence 9.608225e-05 7.875692e-04
-#> 8      absent 5.404626e-05 3.547609e-04
-#> 9    absolute 6.605654e-05 1.844757e-04
-#> 10 absolutely 2.101799e-04 6.740457e-04
+#> 1   abandoned 2.097944e-04 7.093959e-06
+#> 2       abide 3.596475e-05 2.837584e-05
+#> 3   abilities 3.596475e-05 2.057248e-04
+#> 4     ability 2.937122e-04 2.128188e-05
+#> 5      abroad 2.397650e-04 2.553825e-04
+#> 6      abrupt 3.596475e-05 3.546980e-05
+#> 7     absence 9.590601e-05 7.874295e-04
+#> 8      absent 5.394713e-05 3.546980e-04
+#> 9    absolute 6.593538e-05 1.844429e-04
+#> 10 absolutely 2.097944e-04 6.739262e-04
 #> ..        ...          ...          ...
 
 library(scales)
@@ -288,4 +288,4 @@ For more examples of working with objects from other text mining packages using 
 
 ### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Code contributions, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
+This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
