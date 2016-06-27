@@ -4,7 +4,7 @@ author: "Julia Silge and David Robinson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Term Frequency and Inverse Document Frequency (tf-idf)}
+  %\VignetteIndexEntry{Tidy Term Frequency and Inverse Document Frequency (tf-idf)}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
