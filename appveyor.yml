@@ -14,6 +14,7 @@ install:
 
 build_script:
   - travis-tool.sh install_r DBI
+  - travis-tool.sh install_r assertthat
   - travis-tool.sh install_deps
 
 test_script:
