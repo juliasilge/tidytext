@@ -13,9 +13,7 @@ install:
 # Adapt as necessary starting from here
 
 build_script:
-  - travis-tool.sh install_r DBI
-  - travis-tool.sh install_r assertthat
-  - travis-tool.sh install_r Rcpp
+  - travis-tool.sh install_r dplyr
   - travis-tool.sh install_deps
 
 test_script:
