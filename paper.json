@@ -17,11 +17,11 @@
       "affiliation": "Stack Overflow"
     }
   ],
-  "identifier": "http://dx.doi.org/",
+  "identifier": "http://dx.doi.org/10.5281/zenodo.56714",
   "codeRepository": "https://github.com/juliasilge/tidytext",
-  "datePublished": "2016-06-18",
-  "dateModified": "2016-06-18",
-  "dateCreated": "2016-06-18",
+  "datePublished": "2016-06-30",
+  "dateModified": "2016-06-30",
+  "dateCreated": "2016-06-30",
   "description": "Text Mining and Analysis Using Tidy Data Principles in R",
   "keywords": "text mining, natural language processing",
   "license": "MIT",
