@@ -43,8 +43,6 @@ titles <- c("Twenty Thousand Leagues under the Sea", "The War of the Worlds",
             "Pride and Prejudice", "Great Expectations")
 books <- gutenberg_works(title %in% titles) %>%
   gutenberg_download(meta_fields = "title")
-
-books
 ```
 
 ```{r books, echo = FALSE}
@@ -54,6 +52,10 @@ books
 
 # this is a workaround
 load(system.file("extdata", "books.rda", package = "tidytext"))
+```
+
+```{r}
+books
 ```
 
 As pre-processing, we divide these into chapters, use tidytext's `unnest_tokens` to separate them into words, then remove `stop_words`. We're treating every chapter as a separate "document", each with a name like `Great Expectations_1` or `Pride and Prejudice_11`.
