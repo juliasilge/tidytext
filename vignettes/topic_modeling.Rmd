@@ -33,16 +33,27 @@ This vandal has torn the books into individual chapters, and left them in one la
 
 #### Setup
 
-```{r books}
+```{r packages}
 library(dplyr)
 library(gutenbergr)
+```
 
+```{r books_show, eval = FALSE}
 titles <- c("Twenty Thousand Leagues under the Sea", "The War of the Worlds",
             "Pride and Prejudice", "Great Expectations")
 books <- gutenberg_works(title %in% titles) %>%
   gutenberg_download(meta_fields = "title")
 
 books
+```
+
+```{r books, echo = FALSE}
+# Downloading from Project Gutenberg can sometimes not work on automated servers
+# such as Travis-CI: see
+# https://github.com/ropenscilabs/gutenbergr/issues/6#issuecomment-231596903
+
+# this is a workaround
+load(system.file("extdata", "books.rda", package = "tidytext"))
 ```
 
 As pre-processing, we divide these into chapters, use tidytext's `unnest_tokens` to separate them into words, then remove `stop_words`. We're treating every chapter as a separate "document", each with a name like `Great Expectations_1` or `Pride and Prejudice_11`.
