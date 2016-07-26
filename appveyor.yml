@@ -13,11 +13,7 @@ install:
 # Adapt as necessary starting from here
 
 build_script:
-  - travis-tool.sh install_r dplyr
-  - travis-tool.sh install_r quanteda
-  - travis-tool.sh install_r broom
-  - travis-tool.sh install_r topicmodels
-  - travis-tool.sh install_r ggplot2
+  - travis-tool.sh install_github hadley/devtools
   - travis-tool.sh install_deps
 
 test_script:
