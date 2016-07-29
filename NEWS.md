@@ -1,3 +1,7 @@
+# tidytext 0.1.2
+
+* Updated DESCRIPTION to require purrr >= 0.1.1
+
 # tidytext 0.1.1
 
 * Added documentation for n-grams, skip n-grams, and regex

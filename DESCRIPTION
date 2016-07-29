@@ -1,8 +1,8 @@
 Package: tidytext
 Type: Package
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
-Version: 0.1.1
-Date: 2016-06-24
+Version: 0.1.1.900
+Date: 2016-07-29
 Authors@R: c(person("Gabriela", "De Queiroz", email = "gabidequeiroz@gmail.com", role = c("ctb")),
              person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut")),
              person("Julia", "Silge", email = "julia.silge@gmail.com", role = c("aut", "cre")))
@@ -22,7 +22,7 @@ Imports: dplyr,
     Matrix,
     tokenizers,
     janeaustenr,
-    purrr,
+    purrr (>= 0.1.1),
     methods
 Suggests: readr,
     XML,
