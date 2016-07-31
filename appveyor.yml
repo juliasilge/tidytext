@@ -18,7 +18,6 @@ environment:
     USE_RTOOLS: true
 
 build_script:
-  - travis-tool.sh install_github hadley/devtools
   - travis-tool.sh install_deps
 
 test_script:
