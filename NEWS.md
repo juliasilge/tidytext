@@ -1,6 +1,7 @@
 # tidytext 0.1.2
 
 * Updated DESCRIPTION to require purrr >= 0.1.1
+* Fixed cast_sparse, cast_dtm, and other sparse casters to ignore groups in the input (#19)
 
 # tidytext 0.1.1
 
