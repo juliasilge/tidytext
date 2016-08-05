@@ -45,5 +45,6 @@ DocumentTermMatrix or TermDocumentMatrix from the tm package, or a
 dfm from the quanteda package. Each caster
 can be called either with non-standard evaluation (bare column names)
 or character vectors (for \code{cast_tdm_} and \code{cast_dtm_}).
+It ignores groups.
 }
 

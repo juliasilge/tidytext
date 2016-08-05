@@ -25,6 +25,9 @@ column, and with as many non-zero values as there are rows in \code{data}.
 Create a sparse matrix from row names, column names, and values
 in a table.
 }
+\details{
+Note that cast_sparse ignores groups in a grouped tbl_df.
+}
 \examples{
 
 dat <- data.frame(a = c("row1", "row1", "row2", "row2", "row2"),

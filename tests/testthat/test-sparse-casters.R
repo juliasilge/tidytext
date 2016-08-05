@@ -23,6 +23,13 @@ test_that("Can cast tables into a sparse Matrix", {
   expect_equal(m3["row2", "col3"], 4)
 })
 
+test_that("cast_sparse ignores groups", {
+  m <- cast_sparse(dat, a, b)
+  m2 <- cast_sparse(group_by(dat, a), a, b)
+
+  expect_identical(m, m2)
+})
+
 test_that("Can cast tables into a sparse DocumentTermMatrix", {
   if (require("tm", quietly = TRUE)) {
     d <- cast_dtm(dat, a, b, val)

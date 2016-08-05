@@ -12,6 +12,7 @@
 #' @export
 cast_sparse_ <- function(data, row_col, column_col, value_col = 1,
                          ...) {
+  data <- ungroup(data)
   data <- distinct_(data, row_col, column_col, .keep_all = TRUE)
   row_names <- data[[row_col]]
   col_names <- data[[column_col]]
@@ -57,6 +58,8 @@ cast_sparse_ <- function(data, row_col, column_col, value_col = 1,
 #' the \code{row} column, one column for each unique value in the \code{column}
 #' column, and with as many non-zero values as there are rows in \code{data}.
 #'
+#' @details Note that cast_sparse ignores groups in a grouped tbl_df.
+#'
 #' @examples
 #'
 #' dat <- data.frame(a = c("row1", "row1", "row2", "row2", "row2"),
@@ -93,6 +96,7 @@ cast_sparse <- function(data, row, column, value) {
 #' dfm from the quanteda package. Each caster
 #' can be called either with non-standard evaluation (bare column names)
 #' or character vectors (for \code{cast_tdm_} and \code{cast_dtm_}).
+#' It ignores groups.
 #'
 #' @param data Table with one-term-per-document-per-row
 #' @param term,term_col (Bare) name of a column with terms
