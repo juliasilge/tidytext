@@ -86,3 +86,17 @@ test_that("tokenizing with a custom function works", {
   expect_equal(d2$unit[2], "nobody")
   expect_equal(d2$unit[4], "you know!")
 })
+
+test_that("unnest_tokens raises an error if there is a list column present", {
+  d <- data_frame(a = c("hello world", "goodbye world"), b = list(1:2, 3:4))
+  expect_error(unnest_tokens(d, word, a), "atomic vectors")
+})
+
+test_that("unnest_tokens raises an error if custom tokenizer gives bad output", {
+  d <- data_frame(txt = "Emily Dickinson")
+
+  expect_error(unnest_tokens(d, word, txt, token = function(e) c("a", "b")),
+               "to be a list")
+  expect_error(unnest_tokens(d, word, txt, token = function(e) list("a", "b")),
+               "of length")
+})

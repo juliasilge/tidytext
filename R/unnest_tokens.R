@@ -59,6 +59,10 @@
 #' @export
 unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
                           to_lower = TRUE, drop = TRUE, collapse = NULL, ...) {
+  if (any(!purrr::map_lgl(tbl, is.atomic))) {
+    stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
+  }
+
   if (is.function(token)) {
     tokenfunc <- token
   } else {
@@ -85,13 +89,19 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
   }
 
   col <- tbl[[input_col]]
-  tbl[[output_col]] <- tokenfunc(col, ...)
+  output_lst <- tokenfunc(col, ...)
 
-  if (drop && input_col != output_col) {
+  if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
+    stop("Expected output of tokenizing function to be a list of length ",
+         nrow(tbl))
+  }
+
+  if (drop) {
     tbl[[input_col]] <- NULL
   }
 
-  ret <- tidyr::unnest_(tbl, output_col)
+  ret <- tbl[rep(seq_len(nrow(tbl)), lengths(output_lst)), ]
+  ret[[output_col]] <- unlist(output_lst)
 
   if (to_lower) {
     ret[[output_col]] <- stringr::str_to_lower(ret[[output_col]])
