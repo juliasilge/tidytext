@@ -18,6 +18,6 @@ of text to and from tidy formats, and to switch seamlessly between tidy tools
 and existing text mining packages.
 
 To learn more about tidytext, start with the vignettes:
- \code{browseVignettes(package = "dplyr")}
+ \code{browseVignettes(package = "tidytext")}
 }
 

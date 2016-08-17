@@ -11,7 +11,7 @@
 #' and existing text mining packages.
 #'
 #' To learn more about tidytext, start with the vignettes:
-#'  \code{browseVignettes(package = "dplyr")}
+#'  \code{browseVignettes(package = "tidytext")}
 #' @docType package
 #' @name tidytext
 NULL
