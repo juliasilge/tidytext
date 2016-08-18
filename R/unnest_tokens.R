@@ -7,6 +7,8 @@
 #' options are "words" (default), "characters", "ngrams", "skip_ngrams",
 #' "sentences", "lines", "paragraphs", and "regex". If a function, should take
 #' a character vector and return a list of character vectors of the same length.
+#' @param format Either "text", "man", "latex", "html", or "xml". If not text,
+#' this uses the hunspell tokenizer, and can tokenize only by "word"
 #' @param to_lower Whether to turn column lowercase
 #' @param drop Whether original input column should get dropped. Ignored
 #' if the original input and new output column have the same name.
@@ -22,6 +24,10 @@
 #' @details If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
 #' paragraphs, or regex, the entire input will be collapsed together before
 #' tokenizing.
+#'
+#' If format is anything other than "text", this uses the
+#' \code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.
+#' This does not yet have support for tokenizing by any unit other than words.
 #'
 #' @import dplyr
 #' @import tokenizers
@@ -56,15 +62,30 @@
 #' d %>%
 #'   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
 #'
+#' # tokenize HTML
+#' h <- data_frame(row = 1:2,
+#'                 text = c("<h1>Text <b>is<b>", "<a href='example.com'>here</a>"))
+#'
+#' h %>%
+#'   unnest_tokens(word, text, format = "html")
+#'
 #' @export
 unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
-                          to_lower = TRUE, drop = TRUE, collapse = NULL, ...) {
+                           format = c("text", "man", "latex", "html", "xml"),
+                           to_lower = TRUE, drop = TRUE, collapse = NULL, ...) {
   if (any(!purrr::map_lgl(tbl, is.atomic))) {
     stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
   }
 
+  format <- match.arg(format)
+
   if (is.function(token)) {
     tokenfunc <- token
+  } else if (format != "text") {
+    if (token != "words") {
+      stop("Cannot tokenize by any unit except words when format is not text")
+    }
+    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col, format = format)
   } else {
     if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
                                           "lines", "paragraphs", "regex")) {

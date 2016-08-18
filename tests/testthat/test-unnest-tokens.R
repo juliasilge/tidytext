@@ -100,3 +100,41 @@ test_that("unnest_tokens raises an error if custom tokenizer gives bad output", 
   expect_error(unnest_tokens(d, word, txt, token = function(e) list("a", "b")),
                "of length")
 })
+
+
+test_that("tokenizing HTML works", {
+  h <- data_frame(row = 1:2,
+                  text = c("<h1>Text <b>is<b>", "<a href='example.com'>here</a>"))
+
+  res1 <- unnest_tokens(h, word, text)
+  expect_gt(nrow(res1), 3)
+  expect_equal(res1$word[1], "h1")
+
+  res2 <- unnest_tokens(h, word, text, format = "html")
+  expect_equal(nrow(res2), 3)
+  expect_equal(res2$word, c("text", "is", "here"))
+  expect_equal(res2$row, c(1, 1, 2))
+})
+
+
+test_that("tokenizing LaTeX works", {
+  h <- data_frame(row = 1:4,
+                  text = c("\\textbf{text} \\emph{is}", "\\begin{itemize}",
+                           "\\item here", "\\end{itemize}"))
+
+  res1 <- unnest_tokens(h, word, text)
+  expect_gt(nrow(res1), 3)
+  expect_equal(res1$word[1], "textbf")
+
+  res2 <- unnest_tokens(h, word, text, format = "latex")
+  expect_equal(nrow(res2), 3)
+  expect_equal(res2$word, c("text", "is", "here"))
+  expect_equal(res2$row, c(1, 1, 3))
+})
+
+
+test_that("Trying to tokenize a non-text format with words raises an error", {
+  d <- data_frame(txt = "Emily Dickinson")
+  expect_error(unnest_tokens(d, word, txt, token = "sentences", format = "latex"),
+               "except words")
+})

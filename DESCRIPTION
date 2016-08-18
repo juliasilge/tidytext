@@ -17,6 +17,7 @@ Depends: R (>= 2.10)
 Imports: dplyr,
     stringr,
     plyr,
+    hunspell,
     broom,
     Matrix,
     tokenizers,

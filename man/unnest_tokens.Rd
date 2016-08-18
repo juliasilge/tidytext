@@ -5,7 +5,8 @@
 \alias{unnest_tokens_}
 \title{Split a column into tokens using the tokenizers package}
 \usage{
-unnest_tokens_(tbl, output_col, input_col, token = "words", to_lower = TRUE,
+unnest_tokens_(tbl, output_col, input_col, token = "words",
+  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
   drop = TRUE, collapse = NULL, ...)
 
 unnest_tokens(tbl, output, input, token = "words", to_lower = TRUE,
@@ -22,6 +23,9 @@ unnest_tokens(tbl, output, input, token = "words", to_lower = TRUE,
 options are "words" (default), "characters", "ngrams", "skip_ngrams",
 "sentences", "lines", "paragraphs", and "regex". If a function, should take
 a character vector and return a list of character vectors of the same length.}
+
+\item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
+this uses the hunspell tokenizer, and can tokenize only by "word"}
 
 \item{to_lower}{Whether to turn column lowercase}
 
@@ -47,6 +51,10 @@ Split a column into tokens using the tokenizers package
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
 paragraphs, or regex, the entire input will be collapsed together before
 tokenizing.
+
+If format is anything other than "text", this uses the
+\code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.
+This does not yet have support for tokenizing by any unit other than words.
 }
 \examples{
 
@@ -74,6 +82,13 @@ d \%>\%
 # custom function
 d \%>\%
   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
+
+# tokenize HTML
+h <- data_frame(row = 1:2,
+                text = c("<h1>Text <b>is<b>", "<a href='example.com'>here</a>"))
+
+h \%>\%
+  unnest_tokens(word, text, format = "html")
 
 }
 
