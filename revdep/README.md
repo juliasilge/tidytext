@@ -4,68 +4,60 @@
 
 |setting  |value                        |
 |:--------|:----------------------------|
-|version  |R version 3.3.0 (2016-05-03) |
+|version  |R version 3.3.1 (2016-06-21) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.902)           |
+|ui       |RStudio (0.99.1266)          |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Denver               |
-|date     |2016-06-21                   |
+|date     |2016-10-22                   |
 
 ## Packages
 
-|package  |*  |version    |date       |source        |
-|:--------|:--|:----------|:----------|:-------------|
-|tidytext |   |0.1.0.9000 |2016-06-21 |local (NA/NA) |
+|package  |*  |version |date       |source           |
+|:--------|:--|:-------|:----------|:----------------|
+|tidytext |   |0.1.2   |2016-10-23 |local (NA/NA@NA) |
 
 # Check results
-1 packages
+3 packages
 
-## gutenbergr (0.1.1)
+## gutenbergr (0.1.2)
 Maintainer: David Robinson <admiral.david@gmail.com>  
 Bug reports: http://github.com/ropenscilabs/gutenbergr/issues
 
-2 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 0 notes
+
+## monkeylearn (0.1.1)
+Maintainer: Maëlle Salmon <maelle.salmon@yahoo.se>  
+Bug reports: http://github.com/ropenscilabs/monkeylearn/issues
+
+0 errors | 0 warnings | 0 notes
+
+## statquotes (0.2)
+Maintainer: Michael Friendly <friendly@yorku.ca>  
+Bug reports: https://github.com/friendly/statquotes/issues
+
+1 error  | 0 warnings | 1 note 
 
 ```
 checking examples ... ERROR
-Running examples in ‘gutenbergr-Ex.R’ failed
+Running examples in ‘statquotes-Ex.R’ failed
 The error most likely occurred in:
 
 > base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: gutenberg_strip
-> ### Title: Strip header and footer content from a Project Gutenberg book
-> ### Aliases: gutenberg_strip
+> ### Name: quote_cloud
+> ### Title: Function to generate word cloud based upon quote database
+> ### Aliases: quote_cloud
 > 
 > ### ** Examples
-... 10 lines ...
-
-The following objects are masked from ‘package:base’:
-
-    intersect, setdiff, setequal, union
-
-> book <- gutenberg_works(title == "Pride and Prejudice") %>%
-+   gutenberg_download(strip = FALSE)
-Determining mirror for Project Gutenberg from http://www.gutenberg.org/robot/harvest
-Using mirror http://www.gutenberg.lib.md.us
-Error: Unknown column 'gutenberg_id'
+> 
+> quote_cloud()
+Error in ret[[output_col]] <- unlist(output_lst) : 
+  more elements supplied than there are to replace
+Calls: quote_cloud -> <Anonymous> -> unnest_tokens_
 Execution halted
 
-checking tests ... ERROR
-Running the tests in ‘tests/testthat.R’ failed.
-Last 13 lines of output:
-  6: w_de$language
-  7: `$.tbl_df`(w_de, language)
-  8: stop("Unknown column '", i, "'", call. = FALSE)
-  
-  testthat results ================================================================
-  OK: 31 SKIPPED: 0 FAILED: 4
-  1. Error: Can download books from a data frame with gutenberg_id column (@test-download.R#40) 
-  2. Error: gutenberg_works does appropriate filtering by default (@test-metadata.R#8) 
-  3. Error: gutenberg_works takes filtering conditions (@test-metadata.R#17) 
-  4. Error: gutenberg_works does appropriate filtering by language (@test-metadata.R#23) 
-  
-  Error: testthat unit tests failed
-  Execution halted
+checking Rd cross-references ... NOTE
+Package unavailable to check Rd xrefs: ‘fortunes’
 ```
 
