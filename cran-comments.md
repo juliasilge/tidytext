@@ -1,16 +1,16 @@
-## Resubmission
-
-This is a resubmission. I have changed back to the CRAN template for the MIT license.
-
 ## Release Summary
 
-This is the second CRAN release of tidytext. In this release, we fixed some bugs, added more documentation and better testing/CI, added a tidier for LDA objects, added an implementation of tf-idf, changed `unnest_tokens` so that the user can pass a custom tokenizing function to `token`, and deprecated the `pair_count` function (which has been moved to the widyr package at https://github.com/dgrtwo/widyr).
+This is the third CRAN release of tidytext. In this release, we fixed a bug in `cast_sparse`, `cast_dtm`, and other sparse casters relating to groups, changed `unnest_tokens` so that it no longer uses tidyr's unnest (for increased speed), added a check in `unnest_tokens` for list columns in the input, and added a `format` argument to unnest_tokens so that it can process html, xml, latex or man pages.
 
 ## Test environments
-* Local OS X install, R 3.3.0
-* Ubuntu 12.04 (on Travis-CI), R 3.3.0
+* Local OS X install, R 3.3.1
+* Ubuntu 12.04 (on Travis-CI), R 3.3.1
 * Win-builder (devel and release)
 
 ## R CMD check results
 
 0 errors | 0 warnings | 0 notes
+
+## Downstream dependencies
+
+I ran R CMD check on the 3 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep). I contacted the one downstream package maintainer with a problem last week.
