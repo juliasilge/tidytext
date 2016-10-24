@@ -5,6 +5,7 @@
 * Changed `unnest_tokens` so that it no longer uses tidyr's unnest, but rather a custom version that removes some overhead. In some experiments, this sped up unnest_tokens on large inputs by about 40%. This also moves tidyr from Imports to Suggests for now.
 * `unnest_tokens` now checks that there are no list columns in the input, and raises an error if present (since those cannot be unnested).
 * Added a `format` argument to unnest_tokens so that it can process html, xml, latex or man pages using the hunspell package, though only when `token = "words"`.
+* Added a `get_sentiments` function that takes the name of a lexicon ("nrc", "bing", or "sentiment") and returns just that sentiment data frame (#25)
 
 # tidytext 0.1.1
 
