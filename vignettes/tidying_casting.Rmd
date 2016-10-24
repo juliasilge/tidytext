@@ -35,12 +35,8 @@ ap_td <- tidy(AssociatedPress)
 Just as shown in [this vignette](tidytext.html), having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles.
 
 ```{r}
-bing <- sentiments %>%
-  filter(lexicon == "bing") %>%
-  select(word, sentiment)
-
 ap_sentiments <- ap_td %>%
-  inner_join(bing, by = c(term = "word"))
+  inner_join(get_sentiments("bing"), by = c(term = "word"))
 
 ap_sentiments
 ```

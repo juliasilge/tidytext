@@ -68,8 +68,8 @@ tidy_books %>%
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiments` dataset. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
 
 ```{r}
-nrcjoy <- sentiments %>%
-  filter(lexicon == "nrc", sentiment == "joy")
+nrcjoy <- get_sentiments("nrc") %>%
+  filter(sentiment == "joy")
 
 tidy_books %>%
   filter(book == "Emma") %>%
@@ -81,9 +81,7 @@ Or instead we could examine how sentiment changes during each novel. Let's find 
 
 ```{r}
 library(tidyr)
-bing <- sentiments %>%
-  filter(lexicon == "bing") %>%
-  select(-score)
+bing <- get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
   inner_join(bing) %>%
@@ -193,8 +191,8 @@ We have recovered the correct number of chapters in each novel (plus an "extra" 
 Near the beginning of this vignette, we used a similar regex to find where all the chapters were in Austen's novels for a tidy data frame organized by one-word-per-row. We can use tidy text analysis to ask questions such as what are the most negative chapters in each of Jane Austen's novels? First, let's get the list of negative words from the Bing lexicon. Second, let's make a dataframe of how many words are in each chapter so we can normalize for the length of chapters. Then, let's find the number of negative words in each chapter and divide by the total words in each chapter. Which chapter has the highest proportion of negative words?
 
 ```{r}
-bingnegative <- sentiments %>%
-  filter(lexicon == "bing", sentiment == "negative")
+bingnegative <- get_sentiments("bing") %>%
+  filter(sentiment == "negative")
 
 wordcounts <- tidy_books %>%
   group_by(book, chapter) %>%

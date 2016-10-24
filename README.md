@@ -126,33 +126,29 @@ tidy_books %>%
 #> # ... with 13,904 more rows
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiment` dataset. Let's examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 
 ```r
 library(tidyr)
-bing <- sentiments %>%
-  filter(lexicon == "bing") %>%
-  select(-score)
-
-bing
-#> # A tibble: 6,788 × 3
-#>           word sentiment lexicon
-#>          <chr>     <chr>   <chr>
-#> 1      2-faced  negative    bing
-#> 2      2-faces  negative    bing
-#> 3           a+  positive    bing
-#> 4     abnormal  negative    bing
-#> 5      abolish  negative    bing
-#> 6   abominable  negative    bing
-#> 7   abominably  negative    bing
-#> 8    abominate  negative    bing
-#> 9  abomination  negative    bing
-#> 10       abort  negative    bing
+get_sentiments("bing")
+#> # A tibble: 6,788 × 2
+#>           word sentiment
+#>          <chr>     <chr>
+#> 1      2-faced  negative
+#> 2      2-faces  negative
+#> 3           a+  positive
+#> 4     abnormal  negative
+#> 5      abolish  negative
+#> 6   abominable  negative
+#> 7   abominably  negative
+#> 8    abominate  negative
+#> 9  abomination  negative
+#> 10       abort  negative
 #> # ... with 6,778 more rows
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(bing) %>% 
+  inner_join(get_sentiments("bing"), by = "word") %>% 
   count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
@@ -187,7 +183,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-10](README-unnamed-chunk-10-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
@@ -233,7 +229,7 @@ We could find the most negative documents:
 
 ```r
 ap_sentiments <- tidy(AssociatedPress) %>%
-  inner_join(bing, by = c(term = "word")) %>%
+  inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
   ungroup() %>%
   spread(sentiment, n, fill = 0) %>%
@@ -279,7 +275,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-14](README-unnamed-chunk-14-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
