@@ -52,7 +52,7 @@ original_books <- austen_books() %>%
   ungroup()
 
 original_books
-#> # A tibble: 73,422 x 3
+#> # A tibble: 73,422 × 3
 #>                     text                book linenumber
 #>                    <chr>              <fctr>      <int>
 #> 1  SENSE AND SENSIBILITY Sense & Sensibility          1
@@ -77,7 +77,7 @@ tidy_books <- original_books %>%
   unnest_tokens(word, text)
 
 tidy_books
-#> # A tibble: 725,054 x 3
+#> # A tibble: 725,054 × 3
 #>                   book linenumber        word
 #>                 <fctr>      <int>       <chr>
 #> 1  Sense & Sensibility          1       sense
@@ -110,7 +110,7 @@ We can also use `count` to find the most common words in all the books as a whol
 ```r
 tidy_books %>%
   count(word, sort = TRUE) 
-#> # A tibble: 13,914 x 2
+#> # A tibble: 13,914 × 2
 #>      word     n
 #>     <chr> <int>
 #> 1    miss  1855
@@ -136,7 +136,7 @@ bing <- sentiments %>%
   select(-score)
 
 bing
-#> # A tibble: 6,788 x 3
+#> # A tibble: 6,788 × 3
 #>           word sentiment lexicon
 #>          <chr>     <chr>   <chr>
 #> 1      2-faced  negative    bing
@@ -212,7 +212,7 @@ If we want to analyze this with tidy tools, we need to transform it into a one-r
 
 ```r
 tidy(AssociatedPress)
-#> # A tibble: 302,031 x 3
+#> # A tibble: 302,031 × 3
 #>    document       term count
 #>       <int>      <chr> <dbl>
 #> 1         1     adding     1
@@ -254,7 +254,7 @@ comparison <- tidy(AssociatedPress) %>%
          Austen = Austen / sum(Austen))
 
 comparison
-#> # A tibble: 4,437 x 3
+#> # A tibble: 4,437 × 3
 #>          word           AP       Austen
 #>         <chr>        <dbl>        <dbl>
 #> 1   abandoned 2.097944e-04 7.093959e-06
