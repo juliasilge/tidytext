@@ -36,6 +36,9 @@
 #' but this performs the filtering for a specific lexicon, and removes
 #' columns that are not used in that lexicon.
 #'
+#' @param lexicon The sentiment lexicon to retrieve;
+#' either "afinn", "bing", or "nrc"
+#'
 #' @return A tbl_df with a \code{word} column, and either a \code{sentiment}
 #' column (if \code{lexicon} is "bing" or "nrc") or a numeric \code{score} column
 #' (if \code{lexicon} is "afinn").
