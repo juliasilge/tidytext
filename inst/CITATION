@@ -1,0 +1,12 @@
+bibentry(bibtype = "Article",
+         title = "tidytext: Text Mining and Analysis Using Tidy Data Principles in R",
+         author = c(person("Julia", "Silge"),
+                    person("David", "Robinson")),
+         doi = "10.21105/joss.00037",
+         url = "http://dx.doi.org/10.21105/joss.00037",
+         year = 2016,
+         publisher = "The Open Journal",
+         volume = 1,
+         number = 3,
+         journal = "JOSS"
+)
