@@ -13,4 +13,4 @@ This is the third CRAN release of tidytext. In this release, we fixed a bug in `
 
 ## Downstream dependencies
 
-I ran R CMD check on the 3 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep). I contacted the one downstream package maintainer with a problem last week.
+I ran R CMD check on the 3 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems.
