@@ -121,14 +121,14 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
     tbl[[input_col]] <- NULL
   }
 
-  ret <- tbl[rep(seq_len(nrow(tbl)), lengths(output_lst)), ]
+  ret <- tbl[rep(seq_len(nrow(tbl)), lengths(output_lst)), , drop = FALSE]
   ret[[output_col]] <- unlist(output_lst)
 
   if (to_lower) {
     ret[[output_col]] <- stringr::str_to_lower(ret[[output_col]])
   }
 
-  ret <- ret[ret[[output_col]] != "", ]
+  ret <- ret[ret[[output_col]] != "", , drop = FALSE]
 
   ret
 }
