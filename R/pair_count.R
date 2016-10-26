@@ -22,6 +22,7 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' library(janeaustenr)
 #' library(dplyr)
 #'
@@ -39,6 +40,7 @@
 #' pride_prejudice_words %>%
 #'   pair_count(line, word, sort = TRUE, unique_pair = FALSE) %>%
 #'   filter(value1 == "elizabeth")
+#' }
 #'
 #' @export
 pair_count <- function(data, group, value, unique_pair = TRUE,

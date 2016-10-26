@@ -41,6 +41,7 @@ version that can be programmed with.
 }
 \examples{
 
+\dontrun{
 library(janeaustenr)
 library(dplyr)
 
@@ -58,6 +59,7 @@ pride_prejudice_words \%>\%
 pride_prejudice_words \%>\%
   pair_count(line, word, sort = TRUE, unique_pair = FALSE) \%>\%
   filter(value1 == "elizabeth")
+}
 
 }
 
