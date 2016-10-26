@@ -56,8 +56,8 @@ pair_count_ <- function(data, group_col, value_col,
                         unique_pair = TRUE,
                         self = FALSE,
                         sort = FALSE) {
-  warning("pair_count is deprecated, see pairwise_count in the widyr ",
-          "package instead: https://github.com/dgrtwo/widyr")
+  stop("pair_count is deprecated, see pairwise_count in the widyr ",
+       "package instead: https://github.com/dgrtwo/widyr")
 
   requireNamespace("Matrix")
 
