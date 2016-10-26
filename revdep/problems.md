@@ -6,46 +6,20 @@
 |:--------|:----------------------------|
 |version  |R version 3.3.1 (2016-06-21) |
 |system   |x86_64, darwin13.4.0         |
-|ui       |RStudio (0.99.1266)          |
+|ui       |RStudio (1.0.44)             |
 |language |(EN)                         |
 |collate  |en_US.UTF-8                  |
 |tz       |America/Denver               |
-|date     |2016-10-22                   |
+|date     |2016-10-26                   |
 
 ## Packages
 
-|package  |*  |version |date       |source           |
-|:--------|:--|:-------|:----------|:----------------|
-|tidytext |   |0.1.2   |2016-10-23 |local (NA/NA@NA) |
+|package  |*  |version    |date       |source                          |
+|:--------|:--|:----------|:----------|:-------------------------------|
+|ggplot2  |   |2.1.0.9001 |2016-10-26 |Github (hadley/ggplot2@2b41ba4) |
+|tidytext |   |0.1.2      |2016-10-26 |local (NA/NA@NA)                |
 
 # Check results
-1 packages with problems
+0 packages with problems
 
-## statquotes (0.2)
-Maintainer: Michael Friendly <friendly@yorku.ca>  
-Bug reports: https://github.com/friendly/statquotes/issues
-
-1 error  | 0 warnings | 1 note 
-
-```
-checking examples ... ERROR
-Running examples in ‘statquotes-Ex.R’ failed
-The error most likely occurred in:
-
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: quote_cloud
-> ### Title: Function to generate word cloud based upon quote database
-> ### Aliases: quote_cloud
-> 
-> ### ** Examples
-> 
-> quote_cloud()
-Error in ret[[output_col]] <- unlist(output_lst) : 
-  more elements supplied than there are to replace
-Calls: quote_cloud -> <Anonymous> -> unnest_tokens_
-Execution halted
-
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘fortunes’
-```
 
