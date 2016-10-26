@@ -10,7 +10,9 @@ vignette: >
 ---
 
 ```{r echo = FALSE}
-knitr::opts_chunk$set(fig.width = 7, fig.height = 7, warning = FALSE)
+knitr::opts_chunk$set(fig.width = 7, fig.height = 7, message = FALSE, warning = FALSE)
+library(ggplot2)
+theme_set(theme_bw())
 ```
 
 ### Tidying document-term matrices
@@ -190,7 +192,6 @@ You can show these models as a volcano plot, which compares the effect size with
 
 ```{r}
 library(ggplot2)
-theme_set(theme_bw())
 
 models %>%
   mutate(adjusted.p.value = p.adjust(p.value)) %>%
