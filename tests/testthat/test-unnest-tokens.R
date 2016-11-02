@@ -92,6 +92,21 @@ test_that("unnest_tokens raises an error if there is a list column present", {
   expect_error(unnest_tokens(d, word, a), "atomic vectors")
 })
 
+test_that("tokenizing with to_lower = FALSE works", {
+  orig <- data_frame(txt = c("Because I could not stop for Death -",
+                          "He kindly stopped for me -"))
+  d <- orig %>% unnest_tokens(word, txt, to_lower = FALSE)
+  expect_equal(nrow(d), 12)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$word[1], "Because")
+  d2 <- orig %>% unnest_tokens(ngram, txt, token = "ngrams",
+                           n = 2, to_lower = FALSE)
+  expect_equal(nrow(d2), 11)
+  expect_equal(ncol(d2), 1)
+  expect_equal(d2$ngram[1], "Because I")
+})
+
+
 test_that("unnest_tokens raises an error if custom tokenizer gives bad output", {
   d <- data_frame(txt = "Emily Dickinson")
 
