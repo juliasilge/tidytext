@@ -1,3 +1,7 @@
+# tidytext 0.1.3
+
+* Fixed `to_lower` parameter in `unnest_tokens` to work properly for all tokenizing options.
+
 # tidytext 0.1.2
 
 * Updated DESCRIPTION to require purrr >= 0.1.1.

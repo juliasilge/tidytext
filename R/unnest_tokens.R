@@ -93,7 +93,7 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
     }
 
     tf <- get(paste0("tokenize_", token))
-    if (token %in% c("characters", "words")) {
+    if (token %in% c("characters", "words", "ngrams", "skip_ngrams")) {
       tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
     } else {
       tokenfunc <- tf
