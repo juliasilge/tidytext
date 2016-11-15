@@ -115,17 +115,14 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #'
 #' @export
 tidy.corpus <- function(x, ...) {
-  ret <- tbl_df(x$documents) %>%
-    rename(text = texts)
-
-  ret
+  tbl_df(data.frame(text = texts(x), docvars(x), stringsAsFactors = FALSE))
 }
 
 
 #' @rdname corpus_tidiers
 #' @export
 glance.corpus <- function(x, ...) {
-  md <- purrr::compact(x$metadata)
+  md <- purrr::compact(metacorpus(x))
 
   # turn vectors into list columns
   md <- purrr::map_if(md, ~length(.) > 1, list)
