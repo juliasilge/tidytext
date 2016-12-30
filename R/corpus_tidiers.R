@@ -112,20 +112,19 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #' }
 #'
 #' @name corpus_tidiers
-#'
+#' @importFrom quanteda texts docvars
 #' @export
 tidy.corpus <- function(x, ...) {
-  ret <- tbl_df(x$documents) %>%
-    rename(text = texts)
-
-  ret
+  tbl_df(data.frame(text = quanteda::texts(x), quanteda::docvars(x),
+                    stringsAsFactors = FALSE))
 }
 
 
 #' @rdname corpus_tidiers
+#' @importFrom quanteda metacorpus
 #' @export
 glance.corpus <- function(x, ...) {
-  md <- purrr::compact(x$metadata)
+  md <- purrr::compact(quanteda::metacorpus(x))
 
   # turn vectors into list columns
   md <- purrr::map_if(md, ~length(.) > 1, list)

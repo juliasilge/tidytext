@@ -28,3 +28,40 @@ test_that("Can tidy corpus from quanteda package", {
     expect_true(all(td$text == texts))
   }
 })
+
+test_that("Can tidy corpus from quanteda package using accessor functions", {
+  if (requireNamespace("quanteda", quietly = TRUE)) {
+
+    x <- quanteda::inaugCorpus
+
+    ## old method
+    ret_old <- tbl_df(x$documents) %>%
+      rename(text = texts)
+
+    ## new method
+    ret_new <- tidy(x)
+
+    expect_identical(ret_old, ret_new)
+  }
+})
+
+test_that("Can glance a corpus from quanteda package using accessor functions", {
+  if (requireNamespace("quanteda", quietly = TRUE)) {
+
+    x <- quanteda::inaugCorpus
+
+    ## old method
+    glanceOLD <- function(x, ...) {
+      md <- purrr::compact(x$metadata)
+      # turn vectors into list columns
+      md <- purrr::map_if(md, ~length(.) > 1, list)
+      as_data_frame(md)
+    }
+    ret_old <- glanceOLD(x)
+
+    ## new method
+    ret_new <- glance(x)
+
+    expect_identical(ret_old, ret_new)
+  }
+})
