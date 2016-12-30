@@ -1,6 +1,7 @@
 # tidytext 0.1.3
 
 * Fixed `to_lower` parameter in `unnest_tokens` to work properly for all tokenizing options.
+* Updated `tidy.corpus` and `glance.corpus` for changes to quanteda API 
 
 # tidytext 0.1.2
 
