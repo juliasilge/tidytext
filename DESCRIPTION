@@ -37,5 +37,6 @@ Suggests: readr,
     NLP,
     scales,
     gutenbergr,
-    testthat
+    testthat,
+    mallet
 VignetteBuilder: knitr

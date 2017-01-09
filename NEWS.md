@@ -3,6 +3,7 @@
 * Fixed `to_lower` parameter in `unnest_tokens` to work properly for all tokenizing options.
 * Updated `tidy.corpus` and `glance.corpus` for changes to quanteda API 
 * Removed the deprecated `pair_count` function, which is now in the in-development widyr package
+* Added tidiers for LDA models from the `mallet` package
 
 # tidytext 0.1.2
 
