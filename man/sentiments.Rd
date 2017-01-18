@@ -11,7 +11,7 @@
  The "afinn" lexicon has no sentiment category (all are NA), and each of the
  others can be "positive" or "negative". The NRC lexicon can also be
  "anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise",
- or "trust", and the McDonald lexicon can also be "litigious", "uncertainty",
+ or "trust", and the Loughran lexicon can also be "litigious", "uncertainty",
  "constraining", and "superfluous".}
  \item{lexicon}{The source of the sentiment for the word. One of either
  "nrc", "bing", or "AFINN".}
@@ -34,12 +34,12 @@ sentiments
 Three lexicons for sentiment analysis are combined here in a tidy data frame.
 The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
 the sentiment lexicon from Bing Liu and collaborators, of
-Finn Arup Nielsen, and of Bill McDonald and Tim Loughran.
+Finn Arup Nielsen, and of Tim Loughran and Bill Loughran.
 Words with non-ASCII characters were removed from the
 lexicons.
 }
 \details{
-Note that the McDonald lexicon is best suited for financial text,
+Note that the loughran lexicon is best suited for financial text,
 (e.g. where words like "share" is not necessarily positive, and "liability"
 not necessarily negative).
 }
