@@ -26,7 +26,25 @@ AFINN_lexicon <- readr::read_tsv("data-raw/AFINN-111.txt",
 AFINN_lexicon <- AFINN_lexicon %>%
   transmute(word = X1, sentiment = NA, score = X2, lexicon = "AFINN")
 
-sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon) %>%
+# McDonald lexicon: financial terms
+
+url <- "http://www3.nd.edu/~mcdonald/Word_Lists_files/LoughranMcDonald_MasterDictionary_2014.xlsx"
+tmp <- tempfile(fileext = ".xlsx")
+download.file(url, tmp)
+
+mcdonald_raw <- readxl::read_excel(tmp)
+
+mcdonald_lexicon <- mcdonald_raw %>%
+  select(word = Word, Negative:Superfluous) %>%
+  mutate(word = ifelse(word == "0", "FALSE", word)) %>%
+  tidyr::gather(sentiment, value, -word) %>%
+  filter(value > 0) %>%
+  select(-value) %>%
+  mutate(word = stringr::str_to_lower(word),
+         sentiment = stringr::str_to_lower(sentiment),
+         lexicon = "mcdonald")
+
+sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon, mcdonald_lexicon) %>%
   filter(!stringr::str_detect(word, "[^[:ascii:]]"))
 
 readr::write_csv(sentiments, "data-raw/sentiments.csv")
