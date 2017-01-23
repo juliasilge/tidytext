@@ -35,11 +35,11 @@ with NULL fields removed and turned into a one-row tbl_df.
 \examples{
 
 if (requireNamespace("quanteda", quietly = FALSE)) {
- data("inaugCorpus", package = "quanteda")
+ data("data_corpus_inaugural", package = "quanteda")
 
- inaugCorpus
+ data_corpus_inaugural
 
- tidy(inaugCorpus)
+ tidy(data_corpus_inaugural)
 }
 
 }
