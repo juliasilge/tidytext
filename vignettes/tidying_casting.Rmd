@@ -76,6 +76,8 @@ ap_sentiments %>%
 Note that a tidier is also available for the `dfm` class from the quanteda package:
 
 ```{r}
+library(methods)
+
 data("data_corpus_inaugural", package = "quanteda")
 d <- quanteda::dfm(data_corpus_inaugural)
 

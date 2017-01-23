@@ -53,6 +53,7 @@ test_that("Can cast tables into a sparse TermDocumentMatrix", {
 })
 
 test_that("Can cast tables into a sparse dfm", {
+  library(methods)
   d <- cast_dfm(dat, a, b, val)
   expect_is(d, "dfmSparse")
   expect_equal(dim(d), c(2, 4))
