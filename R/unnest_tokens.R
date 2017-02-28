@@ -69,10 +69,13 @@
 #' h %>%
 #'   unnest_tokens(word, text, format = "html")
 #'
-#' @export
-unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
-                           format = c("text", "man", "latex", "html", "xml"),
-                           to_lower = TRUE, drop = TRUE, collapse = NULL, ...) {
+unnest_tokens.default <- function(tbl, output, input, token = "words",
+                                  format = c("text", "man", "latex", "html", "xml"),
+                                  to_lower = TRUE, drop = TRUE, collapse = NULL, ...) {
+
+  output_col <- col_name(substitute(output))
+  input_col <- col_name(substitute(input))
+
   if (any(!purrr::map_lgl(tbl, is.atomic))) {
     stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
   }
@@ -139,10 +142,5 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
 unnest_tokens <- function(tbl, output, input, token = "words",
                            to_lower = TRUE, drop = TRUE,
                           collapse = NULL, ...) {
-  output_col <- col_name(substitute(output))
-  input_col <- col_name(substitute(input))
-
-  unnest_tokens_(tbl, output_col, input_col, token = token,
-                 to_lower = to_lower, drop = drop,
-                 collapse = collapse, ...)
+  UseMethod("unnest_tokens", tbl)
 }
