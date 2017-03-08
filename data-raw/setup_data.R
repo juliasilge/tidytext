@@ -34,7 +34,7 @@ download.file(url, tmp)
 
 loughran_raw <- readxl::read_excel(tmp)
 
-loughran_lexicon <- mcdonald_raw %>%
+loughran_lexicon <- loughran_raw %>%
   select(word = Word, Negative:Superfluous) %>%
   mutate(word = ifelse(word == "0", "FALSE", word)) %>%
   tidyr::gather(sentiment, value, -word) %>%
@@ -44,12 +44,21 @@ loughran_lexicon <- mcdonald_raw %>%
          sentiment = stringr::str_to_lower(sentiment),
          lexicon = "loughran")
 
-sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon, loughran_lexicon) %>%
+# print("loading labMT")
+labMTenglish_lexicon <- readr::read_tsv("data-raw/labMT/labMT2english.txt") %>%
+# col_names = c("word","rank","happs","stddev","twitter_rank","gbooks_rank","nyt_rank","lyrics_rank")
+# header=TRUE
+  mutate(word = stringr::str_to_lower(word),
+         sentiment = NA,
+         score = happs,
+         lexicon = "labMTenglish") %>%
+  select(word,sentiment,score,lexicon)
+
+sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon, loughran_lexicon, labMTenglish_lexicon) %>%
   filter(!stringr::str_detect(word, "[^[:ascii:]]"))
 
 readr::write_csv(sentiments, "data-raw/sentiments.csv")
 devtools::use_data(sentiments, overwrite = TRUE)
-
 
 # stop_words dataset ------------------------------------------------------
 
