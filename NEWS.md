@@ -1,5 +1,6 @@
-# tidytext 0.1.4
-* `get_sentiments` now works regardless of whether `tidytext` has been loaded or not.
+# tidytext 0.1.4 [WIP]
+* `get_sentiments` now works regardless of whether `tidytext` has been loaded or not (#50).
+* `unnest_tokens` now supports data.table objects (#37).
 
 # tidytext 0.1.3
 
