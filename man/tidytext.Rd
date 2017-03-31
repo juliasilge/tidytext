@@ -20,4 +20,3 @@ and existing text mining packages.
 To learn more about tidytext, start with the vignettes:
  \code{browseVignettes(package = "tidytext")}
 }
-

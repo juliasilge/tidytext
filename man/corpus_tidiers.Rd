@@ -2,8 +2,8 @@
 % Please edit documentation in R/corpus_tidiers.R
 \name{corpus_tidiers}
 \alias{corpus_tidiers}
-\alias{glance.corpus}
 \alias{tidy.corpus}
+\alias{glance.corpus}
 \title{Tidiers for a corpus object from the quanteda package}
 \usage{
 \method{tidy}{corpus}(x, ...)
@@ -43,4 +43,3 @@ if (requireNamespace("quanteda", quietly = FALSE)) {
 }
 
 }
-

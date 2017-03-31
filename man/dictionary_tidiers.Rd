@@ -20,4 +20,3 @@ A data frame with two columns: category and word.
 \description{
 Tidy dictionary objects from the quanteda package
 }
-
