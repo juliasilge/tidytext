@@ -22,4 +22,3 @@ matrix)}
 \description{
 Standard-evaluation version of cast_sparse
 }
-

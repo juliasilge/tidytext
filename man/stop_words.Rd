@@ -25,4 +25,3 @@ The onix and SMART sets are pulled from the tm package. Note
 that words with non-ASCII characters have been removed.
 }
 \keyword{datasets}
-

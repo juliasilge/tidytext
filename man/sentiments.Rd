@@ -44,4 +44,3 @@ Note that the loughran lexicon is best suited for financial text,
 not necessarily negative).
 }
 \keyword{datasets}
-

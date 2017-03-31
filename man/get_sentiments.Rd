@@ -29,4 +29,3 @@ get_sentiments("afinn")
 get_sentiments("bing")
 
 }
-

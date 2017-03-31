@@ -52,4 +52,3 @@ book_words \%>\%
   arrange(desc(tf_idf))
 
 }
-

@@ -18,4 +18,3 @@ tidy_triplet(x, triplets, row_names = NULL, col_names = NULL)
 \description{
 Utility function to tidy a simple triplet matrix
 }
-

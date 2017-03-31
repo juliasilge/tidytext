@@ -42,4 +42,3 @@ if (requireNamespace("topicmodels", quietly = TRUE)) {
 }
 
 }
-
