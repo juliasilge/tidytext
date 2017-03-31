@@ -59,6 +59,7 @@
 #'
 #' @export
 get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran")) {
+  data(list = "sentiments", package = "tidytext")
   lex = match.arg(lexicon)
 
   if (lex == "afinn") {
