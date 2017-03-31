@@ -1,9 +1,7 @@
-# tidytext 0.1.4 [WIP]
+# tidytext 0.1.3 [WIP]
+
 * `get_sentiments` now works regardless of whether `tidytext` has been loaded or not (#50).
 * `unnest_tokens` now supports data.table objects (#37).
-
-# tidytext 0.1.3
-
 * Fixed `to_lower` parameter in `unnest_tokens` to work properly for all tokenizing options.
 * Updated `tidy.corpus` and `glance.corpus` for changes to quanteda API 
 * Removed the deprecated `pair_count` function, which is now in the in-development widyr package
