@@ -1,3 +1,6 @@
+# tidytext 0.1.4
+* `get_sentiments` now works regardless of whether `tidytext` has been loaded or not.
+
 # tidytext 0.1.3
 
 * Fixed `to_lower` parameter in `unnest_tokens` to work properly for all tokenizing options.
