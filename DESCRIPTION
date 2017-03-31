@@ -4,6 +4,7 @@ Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
 Version: 0.1.2.900
 Date: 2016-11-2
 Authors@R: c(person("Gabriela", "De Queiroz", email = "gabidequeiroz@gmail.com", role = c("ctb")),
+           c(person("Oliver", "Keyes", email = "ironholds@gmail.com", role = c("ctb")),
              person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut")),
              person("Julia", "Silge", email = "julia.silge@gmail.com", role = c("aut", "cre")))
 Description: Text mining for word processing and sentiment analysis using
