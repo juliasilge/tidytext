@@ -35,3 +35,13 @@ test_that("get_sentiments works for afinn data", {
                c("happy", "joyful", "sad", "annoyed"))
   expect_equal(sign(afinn_joined$score), c(1, 1, -1, -1))
 })
+
+test_that("get_sentiments works for labMT", {
+  labmt_joined <- test_tokens %>%
+    inner_join(get_sentiments("labMTenglish"), by = "word")
+
+  expect_equal(labmt_joined$word,
+               c("i", "am", "happy", "and", "i", "am", "sad", "and", "annoyed"))
+  expect_equal(labmt_joined$score,
+               c(5.92, 5.38, 8.3, 5.22, 5.92, 5.38, 2.38, 5.22, 2.58))
+})

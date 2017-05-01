@@ -7,6 +7,7 @@
 * Removed the deprecated `pair_count` function, which is now in the in-development widyr package
 * Added tidiers for LDA models from the `mallet` package
 * Added the Loughran and McDonald dictionary of sentiment words specific to financial reports
+* added the labMT sentiment dictionary (#47).
 
 # tidytext 0.1.2
 

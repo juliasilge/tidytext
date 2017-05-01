@@ -14,10 +14,10 @@
  or "trust", and the Loughran lexicon can also be "litigious", "uncertainty",
  "constraining", and "superfluous".}
  \item{lexicon}{The source of the sentiment for the word. One of either
- "nrc", "bing", or "AFINN".}
+ "nrc", "bing", "AFINN", or "labMTenglish".}
  \item{score}{A numerical score for the sentiment. This value is \code{NA}
  for the Bing and NRC lexicons, and runs between -5 and 5 for the AFINN
- lexicon.}
+ lexicon, and between 1 and 9 for labMT.}
 }}
 \source{
 \itemize{
@@ -25,16 +25,18 @@
  \item \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
  \item \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
  \item \url{http://www3.nd.edu/~mcdonald/Word_Lists.html}
+ \item \url{http://compstorylab.org/share/papers/dodds2014c/data.html}
  }
 }
 \usage{
 sentiments
 }
 \description{
-Three lexicons for sentiment analysis are combined here in a tidy data frame.
+Four lexicons for sentiment analysis are combined here in a tidy data frame.
 The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
 the sentiment lexicon from Bing Liu and collaborators, of
-Finn Arup Nielsen, and of Tim Loughran and Bill Loughran.
+Finn Arup Nielsen, and of Tim Loughran and Bill Loughran,
+and the labMT dataset for 10 languages from Dodds et al.
 Words with non-ASCII characters were removed from the
 lexicons.
 }
