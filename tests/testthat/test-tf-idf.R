@@ -31,3 +31,17 @@ test_that("Can calculate TF-IDF", {
   expect_equal(length(groups(result2)), 1)
   expect_equal(as.character(groups(result2)[[1]]), "document")
 })
+
+
+test_that("TF-IDF works when the document ID is a number", {
+  # example thanks to https://github.com/juliasilge/tidytext/issues/31
+  my_corpus <- dplyr::data_frame(
+    id = rep(c(2, 3), each = 3),
+    word = c("an", "interesting", "text", "a", "boring", "text"),
+    n = c(1, 1, 3, 1, 2, 1)
+  )
+
+  tf_idf <- bind_tf_idf(my_corpus, word, id, n)
+  expect_false(any(is.na(tf_idf)))
+  expect_equal(tf_idf$tf_idf[c(3, 6)], c(0, 0))
+})

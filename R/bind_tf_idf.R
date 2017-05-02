@@ -48,8 +48,8 @@ bind_tf_idf <- function(tbl, term_col, document_col, n_col) {
 #' @rdname bind_tf_idf
 #' @export
 bind_tf_idf_ <- function(tbl, term_col, document_col, n_col) {
-  terms <- tbl[[term_col]]
-  documents <- tbl[[document_col]]
+  terms <- as.character(tbl[[term_col]])
+  documents <- as.character(tbl[[document_col]])
   n <- tbl[[n_col]]
   doc_totals <- tapply(n, documents, sum)
   idf <- log(length(doc_totals) / table(terms))
