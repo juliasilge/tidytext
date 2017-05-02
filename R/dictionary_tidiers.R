@@ -10,7 +10,7 @@
 #'
 #' @export
 tidy.dictionary <- function(x, regex = FALSE, ...) {
-  ret <- purrr::map_df(x, function(e) data_frame(word = e, stringsAsFactors = FALSE),
+  ret <- purrr::map_df(unclass(x), function(e) data_frame(word = e, stringsAsFactors = FALSE),
                        .id = "category") %>%
     mutate(category = as.character(category))
 
