@@ -179,6 +179,25 @@ test_that("Trying to tokenize a non-text format with words raises an error", {
                "except words")
 })
 
+test_that("unnest_tokens keeps top-level attributes", {
+  # first check data.frame
+  d <- data.frame(row = 1:2,
+                         txt = c("Call me Ishmael.", "OK, I will."),
+                         stringsAsFactors = FALSE)
+
+  lst <- list(1, 2, 3, 4)
+  attr(d, "custom") <- lst
+  result <- unnest_tokens(d, word, txt)
+  expect_equal(attr(result, "custom"), lst)
+
+  # now tbl_df
+  d2 <- dplyr::tbl_df(d)
+  attr(d2, "custom") <- list(1, 2, 3, 4)
+  result <- unnest_tokens(d2, word, txt)
+  expect_equal(attr(result, "custom"), lst)
+})
+
+
 if (require("data.table", quietly = TRUE)) {
   test_that("Trying to tokenize a data.table works", {
     text <- data.table(txt = "Write till my fingers look like a bouquet of roses",
@@ -198,3 +217,4 @@ if (require("data.table", quietly = TRUE)) {
     expect_equal(output$word[1], "you")
   })
 }
+

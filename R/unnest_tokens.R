@@ -11,6 +11,11 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
     stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
   }
 
+  # retain top-level attributes
+  attrs <- attributes(tbl)
+  custom_attributes <- attrs[setdiff(names(attrs),
+                                    c("class", "dim", "dimnames", "names", "row.names"))]
+
   format <- match.arg(format)
 
   if (is.function(token)) {
@@ -63,6 +68,11 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
   }
 
   ret <- ret[ret[[output_col]] != "", , drop = FALSE]
+
+  # re-assign top-level attributes
+  for (n in names(custom_attributes)) {
+    attr(ret, n) <- custom_attributes[[n]]
+  }
 
   ret
 }
