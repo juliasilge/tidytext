@@ -3,7 +3,7 @@
 * `get_sentiments` now works regardless of whether `tidytext` has been loaded or not (#50).
 * `unnest_tokens` now supports data.table objects (#37).
 * Fixed `to_lower` parameter in `unnest_tokens` to work properly for all tokenizing options.
-* Updated `tidy.corpus` and `glance.corpus` for changes to quanteda API 
+* Updated `tidy.corpus`, `glance.corpus`, tests, and vignette for changes to quanteda API 
 * Removed the deprecated `pair_count` function, which is now in the in-development widyr package
 * Added tidiers for LDA models from the `mallet` package
 * Added the Loughran and McDonald dictionary of sentiment words specific to financial reports
