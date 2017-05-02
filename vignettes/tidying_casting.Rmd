@@ -79,7 +79,7 @@ Note that a tidier is also available for the `dfm` class from the quanteda packa
 library(methods)
 
 data("data_corpus_inaugural", package = "quanteda")
-d <- quanteda::dfm(data_corpus_inaugural)
+d <- quanteda::dfm(data_corpus_inaugural, verbose = FALSE)
 
 d
 
