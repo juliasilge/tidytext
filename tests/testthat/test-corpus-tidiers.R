@@ -18,11 +18,11 @@ test_that("Can tidy corpus from tm package", {
 test_that("Can tidy corpus from quanteda package", {
   if (requireNamespace("quanteda", quietly = TRUE)) {
     #' # tm package examples
-    data("inaugCorpus", package = "quanteda")
+    data("data_corpus_inaugural", package = "quanteda")
 
-    texts <- quanteda::texts(inaugCorpus)
+    texts <- quanteda::texts(data_corpus_inaugural)
 
-    td <- tidy(inaugCorpus)
+    td <- tidy(data_corpus_inaugural)
 
     expect_equal(length(texts), nrow(td))
     expect_true(all(td$text == texts))
@@ -32,7 +32,7 @@ test_that("Can tidy corpus from quanteda package", {
 test_that("Can tidy corpus from quanteda package using accessor functions", {
   if (requireNamespace("quanteda", quietly = TRUE)) {
 
-    x <- quanteda::inaugCorpus
+    x <- quanteda::data_corpus_inaugural
 
     ## old method
     ret_old <- tbl_df(x$documents) %>%
@@ -48,7 +48,7 @@ test_that("Can tidy corpus from quanteda package using accessor functions", {
 test_that("Can glance a corpus from quanteda package using accessor functions", {
   if (requireNamespace("quanteda", quietly = TRUE)) {
 
-    x <- quanteda::inaugCorpus
+    x <- quanteda::data_corpus_inaugural
 
     ## old method
     glanceOLD <- function(x, ...) {

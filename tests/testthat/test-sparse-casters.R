@@ -53,9 +53,16 @@ test_that("Can cast tables into a sparse TermDocumentMatrix", {
 })
 
 test_that("Can cast tables into a sparse dfm", {
-  d <- cast_dfm(dat, a, b, val)
-  expect_is(d, "dfmSparse")
-  expect_equal(dim(d), c(2, 4))
-  expect_equal(as.numeric(d[1, 1]), 1)
-  expect_equal(as.numeric(d[2, 3]), 4)
+  library(methods)
+  if (requireNamespace("quanteda", quietly = TRUE)) {
+    # tm package examples
+    data("data_corpus_inaugural", package = "quanteda")
+
+    d <- cast_dfm(dat, a, b, val)
+    expect_is(d, "dfmSparse")
+    expect_equal(dim(d), c(2, 4))
+    expect_equal(as.numeric(d[1, 1]), 1)
+    expect_equal(as.numeric(d[2, 3]), 4)
+  }
+
 })

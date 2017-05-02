@@ -52,4 +52,3 @@ if (requireNamespace("tm", quietly = TRUE)) {
 }
 
 }
-

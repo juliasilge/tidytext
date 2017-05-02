@@ -76,8 +76,10 @@ ap_sentiments %>%
 Note that a tidier is also available for the `dfm` class from the quanteda package:
 
 ```{r}
-data("inaugCorpus", package = "quanteda")
-d <- quanteda::dfm(inaugCorpus)
+library(methods)
+
+data("data_corpus_inaugural", package = "quanteda")
+d <- quanteda::dfm(data_corpus_inaugural, verbose = FALSE)
 
 d
 
@@ -137,11 +139,11 @@ Similarly, you can `tidy` a `corpus` object from the quanteda package:
 ```{r}
 library(quanteda)
 
-data("inaugCorpus")
+data("data_corpus_inaugural")
 
-inaugCorpus
+data_corpus_inaugural
 
-inaug_td <- tidy(inaugCorpus)
+inaug_td <- tidy(data_corpus_inaugural)
 inaug_td
 ```
 

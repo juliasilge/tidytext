@@ -179,3 +179,22 @@ test_that("Trying to tokenize a non-text format with words raises an error", {
                "except words")
 })
 
+if (require("data.table", quietly = TRUE)) {
+  test_that("Trying to tokenize a data.table works", {
+    text <- data.table(txt = "Write till my fingers look like a bouquet of roses",
+                       author = "Watsky")
+    output <- unnest_tokens(text, word, txt)
+    expect_equal(ncol(output), 2)
+    expect_equal(nrow(output), 10)
+    expect_equal(output$word[1], "write")
+    expect_equal(output$author[1], "Watsky")
+  })
+
+  test_that("Trying to tokenize a data.table work when the input has only one column", {
+    text <- data.table(txt = "You gotta bring yourself your flowers now in showbiz")
+    output <- unnest_tokens(text, word, txt)
+    expect_equal(ncol(output), 1)
+    expect_equal(nrow(output), 9)
+    expect_equal(output$word[1], "you")
+  })
+}

@@ -4,13 +4,15 @@
 \name{sentiments}
 \alias{sentiments}
 \title{Sentiment lexicons from three sources}
-\format{A data frame with 23,165 rows and 4 variables:
+\format{A data frame with 27,314 rows and 4 variables:
 \describe{
  \item{word}{An English word}
- \item{sentiment}{One of either positive, negative, anger, anticipation,
- disgust, fear, joy, sadness, surprise, trust, or \code{NA}. The Bing lexicon
- has positive/negative, the NRC lexicon has all options except \code{NA}, and
- the AFINN lexicon has only \code{NA}.}
+ \item{sentiment}{A sentiment whose possible values depend on the lexicon.
+ The "afinn" lexicon has no sentiment category (all are NA), and each of the
+ others can be "positive" or "negative". The NRC lexicon can also be
+ "anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise",
+ or "trust", and the Loughran lexicon can also be "litigious", "uncertainty",
+ "constraining", and "superfluous".}
  \item{lexicon}{The source of the sentiment for the word. One of either
  "nrc", "bing", or "AFINN".}
  \item{score}{A numerical score for the sentiment. This value is \code{NA}
@@ -22,6 +24,7 @@
  \item \url{http://saifmohammad.com/WebPages/lexicons.html}
  \item \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
  \item \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
+ \item \url{http://www3.nd.edu/~mcdonald/Word_Lists.html}
  }
 }
 \usage{
@@ -30,9 +33,14 @@ sentiments
 \description{
 Three lexicons for sentiment analysis are combined here in a tidy data frame.
 The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
-the sentiment lexicon from Bing Liu and collaborators, and the lexicon of
-Finn Arup Nielsen. Words with non-ASCII characters were removed from the
+the sentiment lexicon from Bing Liu and collaborators, of
+Finn Arup Nielsen, and of Tim Loughran and Bill Loughran.
+Words with non-ASCII characters were removed from the
 lexicons.
 }
+\details{
+Note that the loughran lexicon is best suited for financial text,
+(e.g. where words like "share" is not necessarily positive, and "liability"
+not necessarily negative).
+}
 \keyword{datasets}
-
