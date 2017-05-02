@@ -154,9 +154,7 @@ janeaustensentiment <- tidy_books %>%
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
-#> Source: local data frame [920 x 5]
-#> Groups: book, index [920]
-#> 
+#> # A tibble: 920 × 5
 #>                   book index negative positive sentiment
 #>                 <fctr> <dbl>    <dbl>    <dbl>     <dbl>
 #> 1  Sense & Sensibility     0       16       26        10
@@ -183,7 +181,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-9](README-unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](tools/README-unnamed-chunk-9-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
@@ -275,7 +273,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-13](README-unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-13](tools/README-unnamed-chunk-13-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 

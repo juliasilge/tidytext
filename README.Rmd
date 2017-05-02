@@ -19,7 +19,7 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-",
+  fig.path = "tools/README-",
   message = FALSE
 )
 ```
