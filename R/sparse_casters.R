@@ -91,7 +91,7 @@ cast_sparse <- function(data, row, column, value) {
 #' Casting a data frame to
 #' a DocumentTermMatrix, TermDocumentMatrix, or dfm
 #'
-#' This turns a "tidy" one-term-per-dopument-per-row data frame into a
+#' This turns a "tidy" one-term-per-document-per-row data frame into a
 #' DocumentTermMatrix or TermDocumentMatrix from the tm package, or a
 #' dfm from the quanteda package. Each caster
 #' can be called either with non-standard evaluation (bare column names)
