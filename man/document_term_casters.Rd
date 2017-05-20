@@ -40,7 +40,7 @@ cast_dfm(data, document, term, value, ...)
 \item{value, value_col}{(Bare) name of a column containing values}
 }
 \description{
-This turns a "tidy" one-term-per-dopument-per-row data frame into a
+This turns a "tidy" one-term-per-document-per-row data frame into a
 DocumentTermMatrix or TermDocumentMatrix from the tm package, or a
 dfm from the quanteda package. Each caster
 can be called either with non-standard evaluation (bare column names)

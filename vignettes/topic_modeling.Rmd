@@ -151,7 +151,7 @@ chapters_lda_gamma <- tidy(chapters_lda, matrix = "gamma")
 chapters_lda_gamma
 ```
 
-Setting `matrix = "gamma"` returns a tidied version with one-document-per-topic-per-row. Now that we have these document classifiations, we can see how well our unsupervised learning did at distinguishing the four books. First we re-separate the document name into title and chapter:
+Setting `matrix = "gamma"` returns a tidied version with one-document-per-topic-per-row. Now that we have these document classifications, we can see how well our unsupervised learning did at distinguishing the four books. First we re-separate the document name into title and chapter:
 
 ```{r chapters_lda_gamma}
 chapters_lda_gamma <- chapters_lda_gamma %>%
