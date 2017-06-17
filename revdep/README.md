@@ -26,7 +26,7 @@
 |:---------------|:-------|------:|--------:|-----:|
 |fivethirtyeight |0.2.0   |      0|        0|     1|
 |gutenbergr      |0.1.2   |      1|        0|     0|
-|statquotes      |0.2     |      0|        0|     1|
+|statquotes      |0.2     |      0|        0|     0|
 
 ## fivethirtyeight (0.2.0)
 Maintainer: Albert Y. Kim <albert.ys.kim@gmail.com>  
@@ -73,10 +73,5 @@ Last 13 lines of output:
 Maintainer: Michael Friendly <friendly@yorku.ca>  
 Bug reports: https://github.com/friendly/statquotes/issues
 
-0 errors | 0 warnings | 1 note 
-
-```
-checking Rd cross-references ... NOTE
-Package unavailable to check Rd xrefs: ‘fortunes’
-```
+0 errors | 0 warnings | 0 notes
 
