@@ -81,7 +81,8 @@ test_that("tokenizing with a custom function works", {
   expect_equal(d$unit[4], "too?")
 
   d2 <- orig %>%
-    unnest_tokens(unit, txt, token = stringr::str_split, pattern = " - ", collapse = TRUE)
+    unnest_tokens(unit, txt, token = stringr::str_split,
+                  pattern = " - ", collapse = TRUE)
   expect_equal(nrow(d2), 4)
   expect_equal(d2$unit[2], "nobody")
   expect_equal(d2$unit[4], "you know!")
@@ -175,7 +176,8 @@ test_that("Tokenizing a two-column data.frame with one non-text column works", {
 
 test_that("Trying to tokenize a non-text format with words raises an error", {
   d <- data_frame(txt = "Emily Dickinson")
-  expect_error(unnest_tokens(d, word, txt, token = "sentences", format = "latex"),
+  expect_error(unnest_tokens(d, word, txt, token = "sentences",
+                             format = "latex"),
                "except words")
 })
 

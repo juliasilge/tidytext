@@ -61,7 +61,7 @@
 #' @export
 get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran")) {
   data(list = "sentiments", package = "tidytext", envir = environment())
-  lex = match.arg(lexicon)
+  lex <- match.arg(lexicon)
 
   if (lex == "afinn") {
     # turn uppercase: reverse compatibility issue

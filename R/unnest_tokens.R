@@ -1,6 +1,7 @@
 #'@export
 unnest_tokens.default <- function(tbl, output, input, token = "words",
-                                  format = c("text", "man", "latex", "html", "xml"),
+                                  format = c("text", "man", "latex",
+                                             "html", "xml"),
                                   to_lower = TRUE, drop = TRUE,
                                   collapse = NULL, ...) {
 
@@ -14,7 +15,8 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
   # retain top-level attributes
   attrs <- attributes(tbl)
   custom_attributes <- attrs[setdiff(names(attrs),
-                                    c("class", "dim", "dimnames", "names", "row.names"))]
+                                    c("class", "dim", "dimnames",
+                                      "names", "row.names"))]
 
   format <- match.arg(format)
 
@@ -24,7 +26,8 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
     if (token != "words") {
       stop("Cannot tokenize by any unit except words when format is not text")
     }
-    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col, format = format)
+    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
+                                                             format = format)
   } else {
     if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
                                           "lines", "paragraphs", "regex")) {
@@ -79,7 +82,8 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
 
 #'@export
 unnest_tokens.data.table <- function(tbl, output, input, token = "words",
-                                     format = c("text", "man", "latex", "html", "xml"),
+                                     format = c("text", "man", "latex",
+                                                "html", "xml"),
                                      to_lower = TRUE, drop = TRUE,
                                      collapse = NULL, ...) {
 
@@ -98,7 +102,8 @@ unnest_tokens.data.table <- function(tbl, output, input, token = "words",
     if (token != "words") {
       stop("Cannot tokenize by any unit except words when format is not text")
     }
-    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col, format = format)
+    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
+                                                             format = format)
   } else {
     if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
                                           "lines", "paragraphs", "regex")) {
