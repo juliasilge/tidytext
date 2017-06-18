@@ -39,6 +39,8 @@ test_that("tokenizing by sentence works", {
   expect_equal(d$sentence[1], "i'm nobody!")
 })
 
+
+
 test_that("tokenizing by ngram and skip ngram works", {
   d2 <- data_frame(txt = c("Hope is the thing with feathers",
                            "That perches in the soul",
@@ -86,6 +88,16 @@ test_that("tokenizing with a custom function works", {
   expect_equal(nrow(d2), 4)
   expect_equal(d2$unit[2], "nobody")
   expect_equal(d2$unit[4], "you know!")
+})
+
+test_that("tokenizing with standard evaluation works", {
+  d <- data_frame(txt = c("Because I could not stop for Death -",
+                          "He kindly stopped for me -"))
+  d <- d %>% unnest_tokens_("word", "txt")
+  expect_equal(nrow(d), 12)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$word[1], "because")
+
 })
 
 test_that("unnest_tokens raises an error if there is a list column present", {
@@ -200,7 +212,7 @@ test_that("unnest_tokens keeps top-level attributes", {
 })
 
 
-if (require("data.table", quietly = TRUE)) {
+if (suppressPackageStartupMessages(require("data.table", quietly = TRUE))) {
   test_that("Trying to tokenize a data.table works", {
     text <- data.table(txt = "Write till my fingers look like a bouquet of roses",
                        author = "Watsky")
@@ -217,6 +229,18 @@ if (require("data.table", quietly = TRUE)) {
     expect_equal(ncol(output), 1)
     expect_equal(nrow(output), 9)
     expect_equal(output$word[1], "you")
+  })
+
+  test_that("custom attributes are preserved for a data.table", {
+    text <- data.table(txt = "You gotta bring yourself your flowers now in showbiz")
+    attr(text, "testattr") <- list(1, 2, 3, 4)
+
+    output <- unnest_tokens(text, word, txt)
+
+    expect_equal(ncol(output), 1)
+    expect_equal(nrow(output), 9)
+    expect_equal(output$word[1], "you")
+    expect_equal(attr(output, "testattr"), list(1, 2, 3, 4))
   })
 }
 

@@ -1,13 +1,9 @@
 #'@export
-unnest_tokens.default <- function(tbl, output, input, token = "words",
+unnest_tokens_.default <- function(tbl, output, input, token = "words",
                                   format = c("text", "man", "latex",
                                              "html", "xml"),
                                   to_lower = TRUE, drop = TRUE,
                                   collapse = NULL, ...) {
-
-  output_col <- col_name(substitute(output))
-  input_col <- col_name(substitute(input))
-
   if (any(!purrr::map_lgl(tbl, is.atomic))) {
     stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
   }
@@ -16,7 +12,7 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
   attrs <- attributes(tbl)
   custom_attributes <- attrs[setdiff(names(attrs),
                                     c("class", "dim", "dimnames",
-                                      "names", "row.names"))]
+                                      "names", "row.names", ".internal.selfref"))]
 
   format <- match.arg(format)
 
@@ -44,14 +40,14 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
 
   if (!is.null(collapse) && collapse) {
     exps <- list(substitute(stringr::str_c(colname, collapse = "\n"),
-                            list(colname = as.name(input_col))))
-    names(exps) <- input_col
-    tbl <- group_by_(tbl, .dots = setdiff(colnames(tbl), input_col)) %>%
+                            list(colname = as.name(input))))
+    names(exps) <- input
+    tbl <- group_by_(tbl, .dots = setdiff(colnames(tbl), input)) %>%
       summarise_(.dots = exps) %>%
       ungroup()
   }
 
-  col <- tbl[[input_col]]
+  col <- tbl[[input]]
   output_lst <- tokenfunc(col, ...)
 
   if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
@@ -59,18 +55,21 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
          nrow(tbl))
   }
 
-  if (drop) {
-    tbl[[input_col]] <- NULL
-  }
-
   ret <- tbl[rep(seq_len(nrow(tbl)), lengths(output_lst)), , drop = FALSE]
-  ret[[output_col]] <- unlist(output_lst)
+  ret[[output]] <- unlist(output_lst)
 
   if (to_lower) {
-    ret[[output_col]] <- stringr::str_to_lower(ret[[output_col]])
+    ret[[output]] <- stringr::str_to_lower(ret[[output]])
   }
 
-  ret <- ret[ret[[output_col]] != "", , drop = FALSE]
+  ret <- ret[ret[[output]] != "", , drop = FALSE]
+
+  # For data.tables we want this to hit the result and be after the result
+  # has been assigned, just to make sure that we don't reduce the data.table
+  # to 0 rows before inserting the output.
+  if (drop && (input != output)) {
+    ret[[input]] <- NULL
+  }
 
   # re-assign top-level attributes
   for (n in names(custom_attributes)) {
@@ -81,75 +80,13 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
 }
 
 #'@export
-unnest_tokens.data.table <- function(tbl, output, input, token = "words",
+unnest_tokens_.data.table <- function(tbl, output, input, token = "words",
                                      format = c("text", "man", "latex",
                                                 "html", "xml"),
                                      to_lower = TRUE, drop = TRUE,
                                      collapse = NULL, ...) {
-
-  output_col <- col_name(substitute(output))
-  input_col <- col_name(substitute(input))
-
-  if (any(!purrr::map_lgl(tbl, is.atomic))) {
-    stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
-  }
-
-  format <- match.arg(format)
-
-  if (is.function(token)) {
-    tokenfunc <- token
-  } else if (format != "text") {
-    if (token != "words") {
-      stop("Cannot tokenize by any unit except words when format is not text")
-    }
-    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
-                                                             format = format)
-  } else {
-    if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
-                                          "lines", "paragraphs", "regex")) {
-      collapse <- TRUE
-    }
-
-    tf <- get(paste0("tokenize_", token))
-    if (token %in% c("characters", "words", "ngrams", "skip_ngrams")) {
-      tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
-    } else {
-      tokenfunc <- tf
-    }
-  }
-
-  if (!is.null(collapse) && collapse) {
-    exps <- list(substitute(stringr::str_c(colname, collapse = "\n"),
-                            list(colname = as.name(input_col))))
-    names(exps) <- input_col
-    tbl <- group_by_(tbl, .dots = setdiff(colnames(tbl), input_col)) %>%
-      summarise_(.dots = exps) %>%
-      ungroup()
-  }
-
-  col <- tbl[[input_col]]
-  output_lst <- tokenfunc(col, ...)
-
-  if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
-    stop("Expected output of tokenizing function to be a list of length ",
-         nrow(tbl))
-  }
-
-  ret <- tbl[rep(seq_len(nrow(tbl)), lengths(output_lst)), , drop = FALSE]
-  ret[[output_col]] <- unlist(output_lst)
-
-  if (to_lower) {
-    ret[[output_col]] <- stringr::str_to_lower(ret[[output_col]])
-  }
-
-  ret <- ret[ret[[output_col]] != "", , drop = FALSE]
-
-  # For data.tables we want this to hit the result and be after the result
-  # has been assigned, just to make sure that we don't reduce the data.table
-  # to 0 rows before inserting the output.
-  if (drop) {
-    ret[[input_col]] <- NULL
-  }
+  ret <- unnest_tokens_.default(tbl, output, input, token,
+                                format, to_lower, drop, collapse, ...)
 
   ret
 }
@@ -237,5 +174,20 @@ unnest_tokens <- function(tbl, output, input, token = "words",
                           format = c("text", "man", "latex", "html", "xml"),
                           to_lower = TRUE, drop = TRUE,
                           collapse = NULL, ...) {
-  UseMethod("unnest_tokens", tbl)
+  output_col <- col_name(substitute(output))
+  input_col <- col_name(substitute(input))
+
+  unnest_tokens_(tbl, output_col, input_col, token = token,
+                 format = format, to_lower = to_lower,
+                 drop = drop, collapse = collapse, ...)
 }
+
+#' @rdname unnest_tokens
+#' @export
+unnest_tokens_ <- function(tbl, output, input, token = "words",
+                          format = c("text", "man", "latex", "html", "xml"),
+                          to_lower = TRUE, drop = TRUE,
+                          collapse = NULL, ...) {
+  UseMethod("unnest_tokens_")
+}
+
