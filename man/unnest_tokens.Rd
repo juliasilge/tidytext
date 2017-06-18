@@ -42,7 +42,8 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 \code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".}
 }
 \description{
-Split a column into tokens using the tokenizers package
+Split a column into tokens using the tokenizers package, splitting the table
+into one-token-per-row. \code{unnest_tokens_} is the standard evaluation version.
 }
 \details{
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,

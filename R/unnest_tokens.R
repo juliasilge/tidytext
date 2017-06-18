@@ -93,6 +93,9 @@ unnest_tokens_.data.table <- function(tbl, output, input, token = "words",
 
 #' Split a column into tokens using the tokenizers package
 #'
+#' Split a column into tokens using the tokenizers package, splitting the table
+#' into one-token-per-row. \code{unnest_tokens_} is the standard evaluation version.
+#'
 #' @param tbl Data frame
 #'
 #' @param token Unit for tokenizing, or a custom tokenizing function. Built-in
