@@ -103,7 +103,7 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #'
 #' @examples
 #'
-#' if (requireNamespace("quanteda", quietly = FALSE)) {
+#' if (requireNamespace("quanteda", quietly = TRUE)) {
 #'  data("data_corpus_inaugural", package = "quanteda")
 #'
 #'  data_corpus_inaugural
