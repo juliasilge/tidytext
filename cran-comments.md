@@ -11,8 +11,6 @@ This is the fourth CRAN release of tidytext. In this release, we added tidiers f
 
 0 errors | 0 warnings | 0 notes
 
-I did get a warning about my README codecov badge on `build_win()` but I hear this is a bug in CRAN's pandoc version?
-
 ## Downstream dependencies
 
 I ran R CMD check on the 3 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems related to tidytext.
