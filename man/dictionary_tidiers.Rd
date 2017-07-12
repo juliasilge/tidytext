@@ -2,10 +2,10 @@
 % Please edit documentation in R/dictionary_tidiers.R
 \name{dictionary_tidiers}
 \alias{dictionary_tidiers}
-\alias{tidy.dictionary}
+\alias{tidy.dictionary2}
 \title{Tidy dictionary objects from the quanteda package}
 \usage{
-\method{tidy}{dictionary}(x, regex = FALSE, ...)
+\method{tidy}{dictionary2}(x, regex = FALSE, ...)
 }
 \arguments{
 \item{x}{A dictionary object}

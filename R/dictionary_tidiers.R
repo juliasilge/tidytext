@@ -1,5 +1,7 @@
 #' Tidy dictionary objects from the quanteda package
 #'
+#' @importFrom broom tidy
+#'
 #' @param x A dictionary object
 #' @param regex Whether to turn dictionary items from a glob to a regex
 #' @param ... Extra arguments, not used
@@ -9,7 +11,7 @@
 #' @name dictionary_tidiers
 #'
 #' @export
-tidy.dictionary <- function(x, regex = FALSE, ...) {
+tidy.dictionary2 <- function(x, regex = FALSE, ...) {
   ret <- purrr::map_df(x, function(e) data_frame(word = e),
                        .id = "category") %>%
     mutate(category = as.character(category))

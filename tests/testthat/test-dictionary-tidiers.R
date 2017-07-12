@@ -6,7 +6,7 @@ if (requireNamespace("quanteda", quietly = TRUE)) {
                 economy = c("jobs", "business", "grow", "work"))
     d <- quanteda::dictionary(lst)
 
-    td <- tidy.dictionary(d)
+    td <- tidy(d)
     expect_is(td, "tbl_df")
     expect_is(td$category, "character")
     expect_is(td$word, "character")

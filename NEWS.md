@@ -1,3 +1,7 @@
+# tidytext 0.1.4 [WIP]
+
+* Fix tidier for quanteda dictionary for correct class (#71).
+
 # tidytext 0.1.3
 
 * `get_sentiments` now works regardless of whether `tidytext` has been loaded or not (#50).
