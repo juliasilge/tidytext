@@ -1,7 +1,7 @@
 #' Various lexicons for English stop words
 #'
 #' English stop words from three lexicons, as a data frame.
-#' The onix and SMART sets are pulled from the tm package. Note
+#' The snowball and SMART sets are pulled from the tm package. Note
 #' that words with non-ASCII characters have been removed.
 #'
 #' @format A data frame with 1149 rows and 2 variables:
