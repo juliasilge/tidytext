@@ -52,18 +52,18 @@ original_books <- austen_books() %>%
   ungroup()
 
 original_books
-#> # A tibble: 73,422 × 3
+#> # A tibble: 73,422 x 3
 #>                     text                book linenumber
 #>                    <chr>              <fctr>      <int>
-#> 1  SENSE AND SENSIBILITY Sense & Sensibility          1
-#> 2                        Sense & Sensibility          2
-#> 3         by Jane Austen Sense & Sensibility          3
-#> 4                        Sense & Sensibility          4
-#> 5                 (1811) Sense & Sensibility          5
-#> 6                        Sense & Sensibility          6
-#> 7                        Sense & Sensibility          7
-#> 8                        Sense & Sensibility          8
-#> 9                        Sense & Sensibility          9
+#>  1 SENSE AND SENSIBILITY Sense & Sensibility          1
+#>  2                       Sense & Sensibility          2
+#>  3        by Jane Austen Sense & Sensibility          3
+#>  4                       Sense & Sensibility          4
+#>  5                (1811) Sense & Sensibility          5
+#>  6                       Sense & Sensibility          6
+#>  7                       Sense & Sensibility          7
+#>  8                       Sense & Sensibility          8
+#>  9                       Sense & Sensibility          9
 #> 10             CHAPTER 1 Sense & Sensibility         10
 #> # ... with 73,412 more rows
 ```
@@ -77,20 +77,20 @@ tidy_books <- original_books %>%
   unnest_tokens(word, text)
 
 tidy_books
-#> # A tibble: 725,054 × 3
+#> # A tibble: 725,055 x 3
 #>                   book linenumber        word
 #>                 <fctr>      <int>       <chr>
-#> 1  Sense & Sensibility          1       sense
-#> 2  Sense & Sensibility          1         and
-#> 3  Sense & Sensibility          1 sensibility
-#> 4  Sense & Sensibility          3          by
-#> 5  Sense & Sensibility          3        jane
-#> 6  Sense & Sensibility          3      austen
-#> 7  Sense & Sensibility          5        1811
-#> 8  Sense & Sensibility         10     chapter
-#> 9  Sense & Sensibility         10           1
+#>  1 Sense & Sensibility          1       sense
+#>  2 Sense & Sensibility          1         and
+#>  3 Sense & Sensibility          1 sensibility
+#>  4 Sense & Sensibility          3          by
+#>  5 Sense & Sensibility          3        jane
+#>  6 Sense & Sensibility          3      austen
+#>  7 Sense & Sensibility          5        1811
+#>  8 Sense & Sensibility         10     chapter
+#>  9 Sense & Sensibility         10           1
 #> 10 Sense & Sensibility         13         the
-#> # ... with 725,044 more rows
+#> # ... with 725,045 more rows
 ```
 
 This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.
@@ -110,18 +110,18 @@ We can also use `count` to find the most common words in all the books as a whol
 ```r
 tidy_books %>%
   count(word, sort = TRUE) 
-#> # A tibble: 13,914 × 2
+#> # A tibble: 13,914 x 2
 #>      word     n
 #>     <chr> <int>
-#> 1    miss  1855
-#> 2    time  1337
-#> 3   fanny   862
-#> 4    dear   822
-#> 5    lady   817
-#> 6     sir   806
-#> 7     day   797
-#> 8    emma   787
-#> 9  sister   727
+#>  1   miss  1855
+#>  2   time  1337
+#>  3  fanny   862
+#>  4   dear   822
+#>  5   lady   817
+#>  6    sir   806
+#>  7    day   797
+#>  8   emma   787
+#>  9 sister   727
 #> 10  house   699
 #> # ... with 13,904 more rows
 ```
@@ -132,18 +132,18 @@ Sentiment analysis can be done as an inner join. Three sentiment lexicons are av
 ```r
 library(tidyr)
 get_sentiments("bing")
-#> # A tibble: 6,788 × 2
+#> # A tibble: 6,788 x 2
 #>           word sentiment
 #>          <chr>     <chr>
-#> 1      2-faced  negative
-#> 2      2-faces  negative
-#> 3           a+  positive
-#> 4     abnormal  negative
-#> 5      abolish  negative
-#> 6   abominable  negative
-#> 7   abominably  negative
-#> 8    abominate  negative
-#> 9  abomination  negative
+#>  1     2-faced  negative
+#>  2     2-faces  negative
+#>  3          a+  positive
+#>  4    abnormal  negative
+#>  5     abolish  negative
+#>  6  abominable  negative
+#>  7  abominably  negative
+#>  8   abominate  negative
+#>  9 abomination  negative
 #> 10       abort  negative
 #> # ... with 6,778 more rows
 
@@ -154,18 +154,18 @@ janeaustensentiment <- tidy_books %>%
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
-#> # A tibble: 920 × 5
+#> # A tibble: 920 x 5
 #>                   book index negative positive sentiment
 #>                 <fctr> <dbl>    <dbl>    <dbl>     <dbl>
-#> 1  Sense & Sensibility     0       16       26        10
-#> 2  Sense & Sensibility     1       19       44        25
-#> 3  Sense & Sensibility     2       12       23        11
-#> 4  Sense & Sensibility     3       15       22         7
-#> 5  Sense & Sensibility     4       16       29        13
-#> 6  Sense & Sensibility     5       16       39        23
-#> 7  Sense & Sensibility     6       24       37        13
-#> 8  Sense & Sensibility     7       22       39        17
-#> 9  Sense & Sensibility     8       30       35         5
+#>  1 Sense & Sensibility     0       16       26        10
+#>  2 Sense & Sensibility     1       19       44        25
+#>  3 Sense & Sensibility     2       12       23        11
+#>  4 Sense & Sensibility     3       15       22         7
+#>  5 Sense & Sensibility     4       16       29        13
+#>  6 Sense & Sensibility     5       16       39        23
+#>  7 Sense & Sensibility     6       24       37        13
+#>  8 Sense & Sensibility     7       22       39        17
+#>  9 Sense & Sensibility     8       30       35         5
 #> 10 Sense & Sensibility     9       14       18         4
 #> # ... with 910 more rows
 ```
@@ -206,18 +206,18 @@ If we want to analyze this with tidy tools, we need to transform it into a one-r
 
 ```r
 tidy(AssociatedPress)
-#> # A tibble: 302,031 × 3
+#> # A tibble: 302,031 x 3
 #>    document       term count
 #>       <int>      <chr> <dbl>
-#> 1         1     adding     1
-#> 2         1      adult     2
-#> 3         1        ago     1
-#> 4         1    alcohol     1
-#> 5         1  allegedly     1
-#> 6         1      allen     1
-#> 7         1 apparently     2
-#> 8         1   appeared     1
-#> 9         1   arrested     1
+#>  1        1     adding     1
+#>  2        1      adult     2
+#>  3        1        ago     1
+#>  4        1    alcohol     1
+#>  5        1  allegedly     1
+#>  6        1      allen     1
+#>  7        1 apparently     2
+#>  8        1   appeared     1
+#>  9        1   arrested     1
 #> 10        1    assault     1
 #> # ... with 302,021 more rows
 ```
@@ -248,24 +248,24 @@ comparison <- tidy(AssociatedPress) %>%
          Austen = Austen / sum(Austen))
 
 comparison
-#> # A tibble: 4,437 × 3
+#> # A tibble: 4,437 x 3
 #>          word           AP       Austen
 #>         <chr>        <dbl>        <dbl>
-#> 1   abandoned 2.097944e-04 7.093959e-06
-#> 2       abide 3.596475e-05 2.837584e-05
-#> 3   abilities 3.596475e-05 2.057248e-04
-#> 4     ability 2.937122e-04 2.128188e-05
-#> 5      abroad 2.397650e-04 2.553825e-04
-#> 6      abrupt 3.596475e-05 3.546980e-05
-#> 7     absence 9.590601e-05 7.874295e-04
-#> 8      absent 5.394713e-05 3.546980e-04
-#> 9    absolute 6.593538e-05 1.844429e-04
+#>  1  abandoned 2.097944e-04 7.093959e-06
+#>  2      abide 3.596475e-05 2.837584e-05
+#>  3  abilities 3.596475e-05 2.057248e-04
+#>  4    ability 2.937122e-04 2.128188e-05
+#>  5     abroad 2.397650e-04 2.553825e-04
+#>  6     abrupt 3.596475e-05 3.546980e-05
+#>  7    absence 9.590601e-05 7.874295e-04
+#>  8     absent 5.394713e-05 3.546980e-04
+#>  9   absolute 6.593538e-05 1.844429e-04
 #> 10 absolutely 2.097944e-04 6.739262e-04
 #> # ... with 4,427 more rows
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
-  geom_point() +
+  geom_point(alpha = 0.5) +
   geom_text(aes(label = word), check_overlap = TRUE,
             vjust = 1, hjust = 1) +
   scale_x_log10(labels = percent_format()) +

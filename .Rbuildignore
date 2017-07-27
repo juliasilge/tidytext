@@ -9,3 +9,4 @@
 paper\..*
 ^appveyor\.yml$
 ^revdep$
+^docs$
