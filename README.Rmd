@@ -89,7 +89,7 @@ tidy_books %>%
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
-```{r}
+```{r, fig.width=8, fig.height=10}
 library(tidyr)
 get_sentiments("bing")
 
@@ -104,7 +104,7 @@ janeaustensentiment
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r, fig.width=9, fig.height=9, warning=FALSE}
+```{r, fig.width=7, fig.height=7, warning=FALSE}
 library(ggplot2)
 
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
