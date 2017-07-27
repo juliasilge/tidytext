@@ -1,6 +1,7 @@
 # tidytext 0.1.4 [WIP]
 
 * Fix tidier for quanteda dictionary for correct class (#71).
+* Add a [pkgdown site](https://juliasilge.github.io/tidytext).
 
 # tidytext 0.1.3
 
