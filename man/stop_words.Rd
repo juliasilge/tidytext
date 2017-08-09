@@ -21,7 +21,7 @@ stop_words
 }
 \description{
 English stop words from three lexicons, as a data frame.
-The onix and SMART sets are pulled from the tm package. Note
+The snowball and SMART sets are pulled from the tm package. Note
 that words with non-ASCII characters have been removed.
 }
 \keyword{datasets}
