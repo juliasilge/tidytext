@@ -83,7 +83,7 @@ d \%>\%
 
 # tokenize HTML
 h <- data_frame(row = 1:2,
-                text = c("<h1>Text <b>is<b>", "<a href='example.com'>here</a>"))
+                text = c("<h1>Text <b>is</b>", "<a href='example.com'>here</a>"))
 
 h \%>\%
   unnest_tokens(word, text, format = "html")
