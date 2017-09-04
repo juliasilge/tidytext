@@ -2,6 +2,7 @@
 
 * Fix tidier for quanteda dictionary for correct class (#71).
 * Add a [pkgdown site](https://juliasilge.github.io/tidytext).
+* Convert NSE from underscored function to tidyeval (`unnest_tokens`).
 
 # tidytext 0.1.3
 
