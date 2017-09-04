@@ -2,19 +2,14 @@
 % Please edit documentation in R/unnest_tokens.R
 \name{unnest_tokens}
 \alias{unnest_tokens}
-\alias{unnest_tokens_}
 \title{Split a column into tokens using the tokenizers package}
 \usage{
-unnest_tokens(tbl, output, input, token = "words", format = c("text", "man",
-  "latex", "html", "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL,
-  ...)
-
-unnest_tokens_(tbl, output, input, token = "words", format = c("text",
-  "man", "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
-  collapse = NULL, ...)
+unnest_tokens(tbl, output = "output", input = "input", token = "words",
+  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
+  drop = TRUE, collapse = NULL, ...)
 }
 \arguments{
-\item{tbl}{Data frame}
+\item{tbl}{A data frame}
 
 \item{output}{Output column to be created as bare name.}
 

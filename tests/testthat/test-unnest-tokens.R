@@ -100,6 +100,18 @@ test_that("tokenizing with standard evaluation works", {
 
 })
 
+test_that("tokenizing with tidyeval works", {
+  d <- data_frame(txt = c("Because I could not stop for Death -",
+                          "He kindly stopped for me -"))
+  outputvar <- quo("word")
+  inputvar <- quo("txt")
+  d <- d %>% unnest_tokens(!!outputvar, !!inputvar)
+  expect_equal(nrow(d), 12)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$word[1], "because")
+
+})
+
 test_that("unnest_tokens raises an error if there is a list column present", {
   d <- data_frame(a = c("hello world", "goodbye world"), b = list(1:2, 3:4))
   expect_error(unnest_tokens(d, word, a), "atomic vectors")
