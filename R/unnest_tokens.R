@@ -1,7 +1,8 @@
 #' Split a column into tokens using the tokenizers package
 #'
 #' Split a column into tokens using the tokenizers package, splitting the table
-#' into one-token-per-row. \code{unnest_tokens_} is the standard evaluation version.
+#' into one-token-per-row. This function supports non-standard evaluation through
+#' the tidyeval framework.
 #'
 #' @param tbl A data frame
 #'
@@ -18,9 +19,12 @@
 #' @param drop Whether original input column should get dropped. Ignored
 #' if the original input and new output column have the same name.
 #'
-#' @param output Output column to be created as bare name.
+#' @param output Output column to be created as string or symbol.
 #'
-#' @param input Input column that gets split as bare name.
+#' @param input Input column that gets split as string or symbol.
+#'
+#'   The output/input arguments are passed by expression and support
+#'   \link[rlang]{quasiquotation}; you can unquote strings and symbols.
 #'
 #' @param collapse Whether to combine text with newlines first in case tokens
 #' (such as sentences or paragraphs) span multiple lines. If NULL, collapses
@@ -80,7 +84,7 @@
 #' h %>%
 #'   unnest_tokens(word, text, format = "html")
 #'
-unnest_tokens <- function(tbl, output = "output", input = "input", token = "words",
+unnest_tokens <- function(tbl, output, input, token = "words",
                           format = c("text", "man", "latex",
                                      "html", "xml"),
                           to_lower = TRUE, drop = TRUE,
@@ -88,26 +92,26 @@ unnest_tokens <- function(tbl, output = "output", input = "input", token = "word
   UseMethod("unnest_tokens")
 }
 #' @export
-unnest_tokens.default <- function(tbl, output = "output", input = "input",
-                                  token = "words",
+unnest_tokens.default <- function(tbl, output, input, token = "words",
                                   format = c("text", "man", "latex",
                                              "html", "xml"),
                                   to_lower = TRUE, drop = TRUE,
                                   collapse = NULL, ...) {
-  unnest_tokens_(tbl,
-                 output_col = rlang:::compat_as_lazy(rlang::enquo(output)),
-                 input_col = rlang:::compat_as_lazy(rlang::enquo(input)),
+
+  output <- rlang:::compat_as_lazy(rlang::enquo(output))
+  input <- rlang:::compat_as_lazy(rlang::enquo(input))
+
+  unnest_tokens_(tbl, output, input,
                  token, format, to_lower, drop, collapse, ...)
 }
 #' @export
-unnest_tokens.data.frame <- function(tbl, output = "output", input = "input",
-                                     token = "words",
+unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
                                      format = c("text", "man", "latex",
                                                 "html", "xml"),
                                      to_lower = TRUE, drop = TRUE,
                                      collapse = NULL, ...) {
-  output <- rlang::quo_name(rlang::enexpr(output))
-  input <- rlang::quo_name(rlang::enexpr(input))
+  output <- rlang::quo_name(rlang::enquo(output))
+  input <- rlang::quo_name(rlang::enquo(input))
 
   if (any(!purrr::map_lgl(tbl, is.atomic))) {
     stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
@@ -199,7 +203,7 @@ unnest_tokens.data.table <- function(tbl, output, input, token = "words",
 #' @inheritParams unnest_tokens
 #' @param output_col,input_col Strings giving names of output and input columns.
 #' @export
-unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
+unnest_tokens_ <- function(tbl, output, input, token = "words",
                            format = c("text", "man", "latex", "html", "xml"),
                            to_lower = TRUE, drop = TRUE,
                            collapse = NULL, ...) {
@@ -207,14 +211,13 @@ unnest_tokens_ <- function(tbl, output_col, input_col, token = "words",
 }
 
 #' @export
-unnest_tokens_.data.frame <- function(tbl, output_col, input_col, token = "words",
+unnest_tokens_.data.frame <- function(tbl, output, input, token = "words",
                                       format = c("text", "man", "latex", "html", "xml"),
                                       to_lower = TRUE, drop = TRUE,
                                       collapse = NULL, ...) {
-  output_col <- rlang:::compat_lazy(output_col, rlang::caller_env())
-  input_col <- rlang:::compat_lazy(input_col, rlang::caller_env())
-  unnest_tokens(tbl,
-                output = !! output_col, input = !! input_col,
+  output <- rlang:::compat_lazy(output, rlang::caller_env())
+  input <- rlang:::compat_lazy(input, rlang::caller_env())
+  unnest_tokens(tbl, !! output, !! input,
                 token = token, format = format,
                 to_lower = to_lower, drop = drop, collapse = collapse, ...)
 }

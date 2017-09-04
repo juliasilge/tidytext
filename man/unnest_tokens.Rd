@@ -4,16 +4,19 @@
 \alias{unnest_tokens}
 \title{Split a column into tokens using the tokenizers package}
 \usage{
-unnest_tokens(tbl, output = "output", input = "input", token = "words",
-  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
+unnest_tokens(tbl, output, input, token = "words", format = c("text", "man",
+  "latex", "html", "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL,
+  ...)
 }
 \arguments{
 \item{tbl}{A data frame}
 
-\item{output}{Output column to be created as bare name.}
+\item{output}{Output column to be created as string or symbol.}
 
-\item{input}{Input column that gets split as bare name.}
+\item{input}{Input column that gets split as string or symbol.
+
+  The output/input arguments are passed by expression and support
+  \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
 options are "words" (default), "characters", "ngrams", "skip_ngrams",
@@ -38,7 +41,8 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 }
 \description{
 Split a column into tokens using the tokenizers package, splitting the table
-into one-token-per-row. \code{unnest_tokens_} is the standard evaluation version.
+into one-token-per-row. This function supports non-standard evaluation through
+the tidyeval framework.
 }
 \details{
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
