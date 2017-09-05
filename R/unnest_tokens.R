@@ -46,6 +46,7 @@
 #' @import tokenizers
 #' @import janeaustenr
 #' @importFrom rlang "!!"
+#' @importFrom rlang "!!!"
 #' @export
 #'
 #' @name unnest_tokens
@@ -148,12 +149,21 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   }
 
   if (!is.null(collapse) && collapse) {
-    exps <- list(substitute(stringr::str_c(colname, collapse = "\n"),
-                            list(colname = as.name(input))))
-    names(exps) <- input
-    tbl <- group_by_(tbl, .dots = setdiff(colnames(tbl), input)) %>%
-      summarise_(.dots = exps) %>%
-      ungroup()
+
+    group_vars <- setdiff(names(tbl), input)
+    exps <- substitute(stringr::str_c(colname, collapse = "\n"),
+                       list(colname = as.name(input)))
+
+    if (rlang::is_empty(group_vars)) {
+      tbl <- summarise(tbl, col = !! exps)
+    } else {
+      tbl <- group_by(tbl, !!! rlang::syms(group_vars)) %>%
+        summarise(col = !! exps) %>%
+        ungroup
+    }
+
+    names(tbl)[names(tbl) == "col"] <- input
+
   }
 
   col <- tbl[[input]]
