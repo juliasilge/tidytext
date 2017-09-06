@@ -43,10 +43,9 @@
 #' This does not yet have support for tokenizing by any unit other than words.
 #'
 #' @import dplyr
+#' @import rlang
 #' @import tokenizers
 #' @import janeaustenr
-#' @importFrom rlang "!!"
-#' @importFrom rlang "!!!"
 #' @export
 #'
 #' @name unnest_tokens
@@ -99,8 +98,8 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
                                   to_lower = TRUE, drop = TRUE,
                                   collapse = NULL, ...) {
 
-  output <- rlang:::compat_as_lazy(rlang::enquo(output))
-  input <- rlang:::compat_as_lazy(rlang::enquo(input))
+  output <- compat_as_lazy(rlang::enquo(output))
+  input <- compat_as_lazy(rlang::enquo(input))
 
   unnest_tokens_(tbl, output, input,
                  token, format, to_lower, drop, collapse, ...)
@@ -225,8 +224,8 @@ unnest_tokens_.data.frame <- function(tbl, output, input, token = "words",
                                       format = c("text", "man", "latex", "html", "xml"),
                                       to_lower = TRUE, drop = TRUE,
                                       collapse = NULL, ...) {
-  output <- rlang:::compat_lazy(output, rlang::caller_env())
-  input <- rlang:::compat_lazy(input, rlang::caller_env())
+  output <- compat_lazy(output, rlang::caller_env())
+  input <- compat_lazy(input, rlang::caller_env())
   unnest_tokens(tbl, !! output, !! input,
                 token = token, format = format,
                 to_lower = to_lower, drop = drop, collapse = collapse, ...)
