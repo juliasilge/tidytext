@@ -40,14 +40,13 @@
 #' @examples
 #'
 #' if (requireNamespace("stm", quietly = TRUE) && requireNamespace("quanteda", quietly = TRUE)) {
-#'   set.seed(2016)
 #'   library(dplyr)
 #'   library(ggplot2)
 #'   library(stm)
 #'   library(quanteda)
 #'
 #'   inaug <- dfm(data_corpus_inaugural[30:55,], remove = stopwords("english"), remove_punct = TRUE)
-#'   topic_model <- stm(inaug, K = 3, verbose = FALSE)
+#'   topic_model <- stm(inaug, K = 3, verbose = FALSE, init.type = "Spectral")
 #'
 #'   # tidy the word-topic combinations
 #'   td_beta <- tidy(topic_model)
