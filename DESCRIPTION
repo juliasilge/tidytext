@@ -39,5 +39,6 @@ Suggests: readr,
     scales,
     gutenbergr,
     testthat,
-    mallet
+    mallet,
+    stm
 VignetteBuilder: knitr
