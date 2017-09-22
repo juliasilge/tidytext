@@ -2,31 +2,30 @@
 % Please edit documentation in R/bind_tf_idf.R
 \name{bind_tf_idf}
 \alias{bind_tf_idf}
-\alias{bind_tf_idf_}
 \title{Bind the term frequency and inverse document frequency of a tidy text
 dataset to the dataset}
 \usage{
-bind_tf_idf(tbl, term_col, document_col, n_col)
-
-bind_tf_idf_(tbl, term_col, document_col, n_col)
+bind_tf_idf(tbl, term, document, n)
 }
 \arguments{
 \item{tbl}{A tidy text dataset with one-row-per-term-per-document}
 
-\item{term_col}{Column containing terms}
+\item{term}{Column containing terms as string or symbol}
 
-\item{document_col}{Column containing document IDs}
+\item{document}{Column containing document IDs as string or symbol}
 
-\item{n_col}{Column containing document-term counts}
+\item{n}{Column containing document-term counts as string or symbol}
 }
 \description{
 Calculate and bind the term frequency and inverse document frequency of a
-tidy text dataset, along with the product, tf-idf to the dataset. Each of
-these values are added as columns.
+tidy text dataset, along with the product, tf-idf, to the dataset. Each of
+these values are added as columns. This function supports non-standard
+evaluation through the tidyeval framework.
 }
 \details{
-\code{tf_idf} is given bare names, while \code{tf_idf_}
-is given strings and is therefore suitable for programming with.
+The arguments \code{term}, \code{document}, and \code{n}
+are passed by expression and support \link[rlang]{quasiquotation};
+you can unquote strings and symbols.
 
 If the dataset is grouped, the groups are ignored but are
 retained.

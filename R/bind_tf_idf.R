@@ -2,16 +2,18 @@
 #' dataset to the dataset
 #'
 #' Calculate and bind the term frequency and inverse document frequency of a
-#' tidy text dataset, along with the product, tf-idf to the dataset. Each of
-#' these values are added as columns.
+#' tidy text dataset, along with the product, tf-idf, to the dataset. Each of
+#' these values are added as columns. This function supports non-standard
+#' evaluation through the tidyeval framework.
 #'
 #' @param tbl A tidy text dataset with one-row-per-term-per-document
-#' @param term_col Column containing terms
-#' @param document_col Column containing document IDs
-#' @param n_col Column containing document-term counts
+#' @param term Column containing terms as string or symbol
+#' @param document Column containing document IDs as string or symbol
+#' @param n Column containing document-term counts as string or symbol
 #'
-#' @details \code{tf_idf} is given bare names, while \code{tf_idf_}
-#' is given strings and is therefore suitable for programming with.
+#' @details The arguments \code{term}, \code{document}, and \code{n}
+#' are passed by expression and support \link[rlang]{quasiquotation};
+#' you can unquote strings and symbols.
 #'
 #' If the dataset is grouped, the groups are ignored but are
 #' retained.
@@ -36,20 +38,30 @@
 #'   bind_tf_idf(word, book, n) %>%
 #'   arrange(desc(tf_idf))
 #'
-#' @export
-bind_tf_idf <- function(tbl, term_col, document_col, n_col) {
-  bind_tf_idf_(tbl,
-                    col_name(substitute(term_col)),
-                    col_name(substitute(document_col)),
-                    col_name(substitute(n_col)))
+#'@export
+
+bind_tf_idf <- function(tbl, term, document, n) {
+  UseMethod("bind_tf_idf")
 }
 
-
-#' @rdname bind_tf_idf
 #' @export
-bind_tf_idf_ <- function(tbl, term_col, document_col, n_col) {
-  terms <- as.character(tbl[[term_col]])
-  documents <- as.character(tbl[[document_col]])
+bind_tf_idf.default <- function(tbl, term, document, n) {
+  term <- compat_as_lazy(enquo(term))
+  document <- compat_as_lazy(enquo(document))
+  n <- compat_as_lazy(enquo(n))
+
+  bind_tf_idf_(tbl, term, document, n)
+}
+
+#' @export
+bind_tf_idf.data.frame <- function(tbl, term, document, n) {
+
+  term <- quo_name(enquo(term))
+  document <- quo_name(enquo(document))
+  n_col <- quo_name(enquo(n))
+
+  terms <- as.character(tbl[[term]])
+  documents <- as.character(tbl[[document]])
   n <- tbl[[n_col]]
   doc_totals <- tapply(n, documents, sum)
   idf <- log(length(doc_totals) / table(terms))
@@ -59,4 +71,20 @@ bind_tf_idf_ <- function(tbl, term_col, document_col, n_col) {
   tbl$tf_idf <- tbl$tf * tbl$idf
 
   tbl
+}
+
+#' @rdname deprecated-se
+#' @inheritParams bind_tf_idf
+#' @param term_col,document_col,n_col Strings giving names of term, document, and count columns.
+#' @export
+bind_tf_idf_ <- function(tbl, term, document, n) {
+  UseMethod("bind_tf_idf_")
+}
+
+#' @export
+bind_tf_idf_.data.frame <- function(tbl, term, document, n) {
+  term <- compat_lazy(term, caller_env())
+  document <- compat_lazy(document, caller_env())
+  n <- compat_lazy(n, caller_env())
+  bind_tf_idf(tbl, !! term, !! document, !! n)
 }
