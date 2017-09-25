@@ -39,20 +39,21 @@
 #'
 #' @examples
 #'
+#' \dontrun{
 #' if (requireNamespace("stm", quietly = TRUE) && requireNamespace("quanteda", quietly = TRUE)) {
 #'   library(dplyr)
 #'   library(ggplot2)
 #'   library(stm)
 #'   library(quanteda)
 #'
-#'   inaug <- dfm(data_corpus_inaugural[30:55,], remove = stopwords("english"), remove_punct = TRUE)
+#'   inaug <- dfm(data_corpus_inaugural, remove = stopwords("english"), remove_punct = TRUE)
 #'   topic_model <- stm(inaug, K = 3, verbose = FALSE, init.type = "Spectral")
 #'
 #'   # tidy the word-topic combinations
 #'   td_beta <- tidy(topic_model)
 #'   td_beta
 #'
-#'   # Examine the four topics
+#'   # Examine the three topics
 #'   td_beta %>%
 #'     group_by(topic) %>%
 #'     top_n(10, beta) %>%
@@ -70,6 +71,7 @@
 #'   # find the assignments of each word in each document
 #'   assignments <- augment(topic_model, inaug)
 #'   assignments
+#' }
 #' }
 #'
 #' @name stm_tidiers
