@@ -8,7 +8,7 @@ dat <- data_frame(a = c("row1", "row1", "row2", "row2", "row2"),
 
 test_that("Can cast tables into a sparse Matrix", {
   m <- cast_sparse(dat, a, b)
-  m2 <- cast_sparse_(dat, "a", "b")
+  m2 <- cast_sparse(dat, "a", "b")
 
   expect_is(m, "dgCMatrix")
   expect_equal(m, m2)
@@ -29,6 +29,15 @@ test_that("cast_sparse ignores groups", {
 
   expect_identical(m, m2)
 })
+
+test_that("Can cast_sparse with tidyeval", {
+  m <- cast_sparse(dat, a, b)
+  rowvar <- quo("a")
+  m2 <- cast_sparse(dat, !! rowvar, b)
+
+  expect_identical(m, m2)
+})
+
 
 test_that("Can cast tables into a sparse DocumentTermMatrix", {
   if (require("tm", quietly = TRUE)) {

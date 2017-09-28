@@ -75,7 +75,7 @@ bind_tf_idf.data.frame <- function(tbl, term, document, n) {
 
 #' @rdname deprecated-se
 #' @inheritParams bind_tf_idf
-#' @param term_col,document_col,n_col Strings giving names of term, document, and count columns.
+#' @param term,document,n Strings giving names of term, document, and count columns.
 #' @export
 bind_tf_idf_ <- function(tbl, term, document, n) {
   UseMethod("bind_tf_idf_")
