@@ -5,16 +5,18 @@
 \title{Create a sparse matrix from row names, column names, and values
 in a table.}
 \usage{
-cast_sparse(data, row, column, value)
+cast_sparse(data, row, column, value, ...)
 }
 \arguments{
 \item{data}{A tbl}
 
-\item{row}{A bare column name to use as row names in sparse matrix}
+\item{row}{Column name to use as row names in sparse matrix, as string or symbol}
 
-\item{column}{A bare column name to use as column names in sparse matrix}
+\item{column}{Column name to use as column names in sparse matrix, as string or symbol}
 
-\item{value}{A bare column name to use as sparse matrix values, default 1}
+\item{value}{Column name to use as sparse matrix values (default 1) as string or symbol}
+
+\item{...}{Extra arguments to pass on to \code{\link{sparseMatrix}}}
 }
 \value{
 A sparse Matrix object, with one row for each unique value in
@@ -22,11 +24,12 @@ the \code{row} column, one column for each unique value in the \code{column}
 column, and with as many non-zero values as there are rows in \code{data}.
 }
 \description{
-Create a sparse matrix from row names, column names, and values
-in a table.
+This function supports non-standard evaluation through the tidyeval framework.
 }
 \details{
-Note that cast_sparse ignores groups in a grouped tbl_df.
+Note that cast_sparse ignores groups in a grouped tbl_df. The arguments
+\code{row}, \code{column}, and \code{value} are passed by expression and support
+\link[rlang]{quasiquotation}; you can unquote strings and symbols.
 }
 \examples{
 
