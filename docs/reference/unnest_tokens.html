@@ -109,31 +109,30 @@
 
     
     <p>Split a column into tokens using the tokenizers package, splitting the table
-into one-token-per-row. <code>unnest_tokens_</code> is the standard evaluation version.</p>
+into one-token-per-row. This function supports non-standard evaluation through
+the tidyeval framework.</p>
     
 
     <pre class="usage"><span class='fu'>unnest_tokens</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>,
   <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>)
-
-<span class='fu'>unnest_tokens_</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"text"</span>,
-  <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+  <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>tbl</th>
-      <td><p>Data frame</p></td>
+      <td><p>A data frame</p></td>
     </tr>
     <tr>
       <th>output</th>
-      <td><p>Output column to be created as bare name.</p></td>
+      <td><p>Output column to be created as string or symbol.</p></td>
     </tr>
     <tr>
       <th>input</th>
-      <td><p>Input column that gets split as bare name.</p></td>
+      <td><p>Input column that gets split as string or symbol.</p>
+<p>The output/input arguments are passed by expression and support
+  <a href='http://www.rdocumentation.org/packages/rlang/topics/quasiquotation'>quasiquotation</a>; you can unquote strings and symbols.</p></td>
     </tr>
     <tr>
       <th>token</th>
@@ -293,7 +292,7 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; # ... with 121,557 more rows</div><div class='input'>
 <span class='co'># tokenize HTML</span>
 <span class='no'>h</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>,
-                <span class='kw'>text</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"&lt;h1&gt;Text &lt;b&gt;is&lt;b&gt;"</span>, <span class='st'>"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span>))
+                <span class='kw'>text</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class='st'>"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span>))
 
 <span class='no'>h</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>text</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 2
