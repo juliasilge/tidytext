@@ -22,7 +22,7 @@ knitr::opts_chunk$set(
   fig.path = "tools/README-",
   message = FALSE
 )
-library(ggplot2)
+suppressPackageStartupMessages(library(ggplot2))
 theme_set(theme_light())
 ```
 
