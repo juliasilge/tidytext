@@ -13,4 +13,4 @@ r_packages:
   - covr
 
 after_success:
-  - Rscript -e 'covr::codecov()'
+  - Rscript -e 'covr::codecov(coverage = covr::package_coverage(line_exclusions = list("R/compat_lazyeval.R")))'
