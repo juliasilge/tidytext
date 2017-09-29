@@ -196,20 +196,6 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
 
   ret
 }
-#'@export
-unnest_tokens.data.table <- function(tbl, output, input, token = "words",
-                                     format = c("text", "man", "latex",
-                                                "html", "xml"),
-                                     to_lower = TRUE, drop = TRUE,
-                                     collapse = NULL, ...) {
-
-  output <- quo_name(enquo(output))
-  input <- quo_name(enquo(input))
-  ret <- unnest_tokens.data.frame(tbl, !! output, !! input, token,
-                                  format, to_lower, drop, collapse, ...)
-
-  ret
-}
 
 #' @rdname deprecated-se
 #' @inheritParams unnest_tokens
