@@ -9,6 +9,9 @@ w <- data_frame(document = rep(1:2, each = 5),
 test_that("Can calculate TF-IDF", {
   result <- w %>%
     bind_tf_idf(word, document, frequency)
+  result2 <- w %>%
+    bind_tf_idf_("word", "document", "frequency")
+  expect_equal(result, result2)
 
   expect_equal(select(w, document, word, frequency),
                select(result, document, word, frequency))
