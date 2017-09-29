@@ -1,11 +1,12 @@
 ## Release Summary
 
-This is the fourth CRAN release of tidytext. In this release, we added tidiers for LDA models from mallet, added a financial sentiment lexicon, updated tidiers for changes to the quanteda API, changed `unnest_tokens()` to work with data.table objects, and fixed some bugs.
+This is the fifth CRAN release of tidytext. In this release, we converted non-standard evaluation from underscored functions to use the tidyeval framework, implemented tiders for the stm package, added a [pkgdown site](https://juliasilge.github.io/tidytext), and fixed some bugs.
 
 ## Test environments
-* Local OS X install, R 3.4.0
-* Ubuntu 12.04 (on Travis-CI), R 3.4.0
+* Local OS X install, R 3.4.1
+* Ubuntu 14.04 (on Travis-CI), R 3.4.1
 * Win-builder (devel and release)
+* r-hub using `check_on_windows()`
 
 ## R CMD check results
 
@@ -13,4 +14,4 @@ This is the fourth CRAN release of tidytext. In this release, we added tidiers f
 
 ## Downstream dependencies
 
-I ran R CMD check on the 3 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems related to tidytext.
+I ran R CMD check on the 5 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems related to tidytext.
