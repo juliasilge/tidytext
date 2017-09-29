@@ -202,8 +202,11 @@ unnest_tokens.data.table <- function(tbl, output, input, token = "words",
                                                 "html", "xml"),
                                      to_lower = TRUE, drop = TRUE,
                                      collapse = NULL, ...) {
-  ret <- unnest_tokens.default(tbl, output, input, token,
-                               format, to_lower, drop, collapse, ...)
+
+  output <- quo_name(enquo(output))
+  input <- quo_name(enquo(input))
+  ret <- unnest_tokens.data.frame(tbl, !! output, !! input, token,
+                                  format, to_lower, drop, collapse, ...)
 
   ret
 }
