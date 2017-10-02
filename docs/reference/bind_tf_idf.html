@@ -111,13 +111,12 @@ dataset to the dataset</h1>
 
     
     <p>Calculate and bind the term frequency and inverse document frequency of a
-tidy text dataset, along with the product, tf-idf to the dataset. Each of
-these values are added as columns.</p>
+tidy text dataset, along with the product, tf-idf, to the dataset. Each of
+these values are added as columns. This function supports non-standard
+evaluation through the tidyeval framework.</p>
     
 
-    <pre class="usage"><span class='fu'>bind_tf_idf</span>(<span class='no'>tbl</span>, <span class='no'>term_col</span>, <span class='no'>document_col</span>, <span class='no'>n_col</span>)
-
-<span class='fu'>bind_tf_idf_</span>(<span class='no'>tbl</span>, <span class='no'>term_col</span>, <span class='no'>document_col</span>, <span class='no'>n_col</span>)</pre>
+    <pre class="usage"><span class='fu'>bind_tf_idf</span>(<span class='no'>tbl</span>, <span class='no'>term</span>, <span class='no'>document</span>, <span class='no'>n</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
@@ -127,23 +126,24 @@ these values are added as columns.</p>
       <td><p>A tidy text dataset with one-row-per-term-per-document</p></td>
     </tr>
     <tr>
-      <th>term_col</th>
-      <td><p>Column containing terms</p></td>
+      <th>term</th>
+      <td><p>Column containing terms as string or symbol</p></td>
     </tr>
     <tr>
-      <th>document_col</th>
-      <td><p>Column containing document IDs</p></td>
+      <th>document</th>
+      <td><p>Column containing document IDs as string or symbol</p></td>
     </tr>
     <tr>
-      <th>n_col</th>
-      <td><p>Column containing document-term counts</p></td>
+      <th>n</th>
+      <td><p>Column containing document-term counts as string or symbol</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p><code>tf_idf</code> is given bare names, while <code>tf_idf_</code>
-is given strings and is therefore suitable for programming with.</p>
+    <p>The arguments <code>term</code>, <code>document</code>, and <code>n</code>
+are passed by expression and support <a href='http://www.rdocumentation.org/packages/rlang/topics/quasiquotation'>quasiquotation</a>;
+you can unquote strings and symbols.</p>
 <p>If the dataset is grouped, the groups are ignored but are
 retained.</p>
 <p>The dataset must have exactly one row per document-term combination

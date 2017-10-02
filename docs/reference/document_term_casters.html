@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Casting a data frame to
-a DocumentTermMatrix, TermDocumentMatrix, or dfm — cast_tdm_ • tidytext</title>
+a DocumentTermMatrix, TermDocumentMatrix, or dfm — cast_tdm • tidytext</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -112,23 +112,13 @@ a DocumentTermMatrix, TermDocumentMatrix, or dfm</h1>
     
     <p>This turns a "tidy" one-term-per-document-per-row data frame into a
 DocumentTermMatrix or TermDocumentMatrix from the tm package, or a
-dfm from the quanteda package. Each caster
-can be called either with non-standard evaluation (bare column names)
-or character vectors (for <code>cast_tdm_</code> and <code>cast_dtm_</code>).
-It ignores groups.</p>
+dfm from the quanteda package. These functions support non-standard
+evaluation through the tidyeval framework. Groups are ignored.</p>
     
 
-    <pre class="usage"><span class='fu'>cast_tdm_</span>(<span class='no'>data</span>, <span class='no'>term_col</span>, <span class='no'>document_col</span>, <span class='no'>value_col</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/tm/topics/weightTf'>weightTf</a></span>,
-  <span class='no'>...</span>)
-
-<span class='fu'>cast_tdm</span>(<span class='no'>data</span>, <span class='no'>term</span>, <span class='no'>document</span>, <span class='no'>value</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/tm/topics/weightTf'>weightTf</a></span>, <span class='no'>...</span>)
-
-<span class='fu'>cast_dtm_</span>(<span class='no'>data</span>, <span class='no'>document_col</span>, <span class='no'>term_col</span>, <span class='no'>value_col</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/tm/topics/weightTf'>weightTf</a></span>,
-  <span class='no'>...</span>)
+    <pre class="usage"><span class='fu'>cast_tdm</span>(<span class='no'>data</span>, <span class='no'>term</span>, <span class='no'>document</span>, <span class='no'>value</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/tm/topics/weightTf'>weightTf</a></span>, <span class='no'>...</span>)
 
 <span class='fu'>cast_dtm</span>(<span class='no'>data</span>, <span class='no'>document</span>, <span class='no'>term</span>, <span class='no'>value</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/tm/topics/weightTf'>weightTf</a></span>, <span class='no'>...</span>)
-
-<span class='fu'>cast_dfm_</span>(<span class='no'>data</span>, <span class='no'>document_col</span>, <span class='no'>term_col</span>, <span class='no'>value_col</span>, <span class='no'>...</span>)
 
 <span class='fu'>cast_dfm</span>(<span class='no'>data</span>, <span class='no'>document</span>, <span class='no'>term</span>, <span class='no'>value</span>, <span class='no'>...</span>)</pre>
     
@@ -140,6 +130,18 @@ It ignores groups.</p>
       <td><p>Table with one-term-per-document-per-row</p></td>
     </tr>
     <tr>
+      <th>term</th>
+      <td><p>Column containing terms as string or symbol</p></td>
+    </tr>
+    <tr>
+      <th>document</th>
+      <td><p>Column containing document IDs as string or symbol</p></td>
+    </tr>
+    <tr>
+      <th>value</th>
+      <td><p>Column containing values as string or symbol</p></td>
+    </tr>
+    <tr>
       <th>weighting</th>
       <td><p>The weighting function for the DTM/TDM
 (default is term-frequency, effectively unweighted)</p></td>
@@ -149,19 +151,13 @@ It ignores groups.</p>
       <td><p>Extra arguments passed on to
 <code>sparseMatrix</code></p></td>
     </tr>
-    <tr>
-      <th>term, term_col</th>
-      <td><p>(Bare) name of a column with terms</p></td>
-    </tr>
-    <tr>
-      <th>document, document_col</th>
-      <td><p>(Bare) name of a column with documents</p></td>
-    </tr>
-    <tr>
-      <th>value, value_col</th>
-      <td><p>(Bare) name of a column containing values</p></td>
-    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>The arguments <code>term</code>, <code>document</code>, and <code>value</code>
+are passed by expression and support <a href='http://www.rdocumentation.org/packages/rlang/topics/quasiquotation'>quasiquotation</a>;
+you can unquote strings and symbols.</p>
     
 
   </div>
@@ -169,7 +165,9 @@ It ignores groups.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

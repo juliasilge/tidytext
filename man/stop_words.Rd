@@ -12,7 +12,7 @@
 \source{
 \itemize{
 \item \url{http://www.lextek.com/manuals/onix/stopwords1.html}
-\item \url{http://jmlr.csail.mit.edu/papers/volume5/lewis04a/a11-smart-stop-list/english.stop}
+\item \url{http://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf}
 \item \url{http://snowball.tartarus.org/algorithms/english/stop.txt}
 }
 }
