@@ -47,15 +47,18 @@
 #' @param lexicon The sentiment lexicon to retrieve;
 #' either "afinn", "bing", "nrc", or "loughran"
 #'
-#' @return A tbl_df with a \code{word} column, and either a \code{sentiment}
+#' @return For english sentiments: a tbl_df with a \code{word} column, and either a \code{sentiment}
 #' column (if \code{lexicon} is not "afinn") or a numeric \code{score} column
 #' (if \code{lexicon} is "afinn").
+#' For french sentiments: a tbl_df with a \code{word} column, and either a \code{polarity}
+#' column (if \code{lexicon} is "fr_pl") or a \code{sentiment} column (if \code{lexicon} is "fr_sc").
 #'
 #' @examples
 #'
 #' library(dplyr)
 #' get_sentiments("afinn")
 #' get_sentiments("bing")
+#' get_sentiments("fr_sc")
 #'
 #' @importFrom utils data
 #' @importFrom proustr proust_sentiments
@@ -71,23 +74,18 @@ get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran", "fr_p
   }
 
   if (lex == "fr_pl") {
-    res <- proustr::proust_sentiments(type = "polarity")
+    ret <- proustr::proust_sentiments(type = "polarity")
   } else if (lex == "fr_sc") {
-    res <- proustr::proust_sentiments(type = "score")
+    ret <- proustr::proust_sentiments(type = "score")
   } else {
     ret <- sentiments %>%
       dplyr::filter(lex == lexicon) %>%
       dplyr::select(-lexicon)
-  }
-
-  ret <- sentiments %>%
-    dplyr::filter(lex == lexicon) %>%
-    dplyr::select(-lexicon)
-
-  if (lex == "AFINN") {
-    ret$sentiment <- NULL
-  } else {
-    ret$score <- NULL
+    if (lex == "AFINN") {
+      ret$sentiment <- NULL
+    } else {
+      ret$score <- NULL
+    }
   }
 
   ret
