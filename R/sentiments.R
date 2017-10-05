@@ -58,14 +58,26 @@
 #' get_sentiments("bing")
 #'
 #' @importFrom utils data
+#' @importFrom proustr proust_sentiments
+#'
 #' @export
-get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran")) {
+get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran", "fr_pl", "fr_sc")) {
   data(list = "sentiments", package = "tidytext", envir = environment())
   lex <- match.arg(lexicon)
 
   if (lex == "afinn") {
     # turn uppercase: reverse compatibility issue
     lex <- "AFINN"
+  }
+
+  if (lex == "fr_pl") {
+    res <- proustr::proust_sentiments(type = "polarity")
+  } else if (lex == "fr_sc") {
+    res <- proustr::proust_sentiments(type = "score")
+  } else {
+    ret <- sentiments %>%
+      dplyr::filter(lex == lexicon) %>%
+      dplyr::select(-lexicon)
   }
 
   ret <- sentiments %>%

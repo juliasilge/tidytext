@@ -4,7 +4,8 @@
 \alias{get_sentiments}
 \title{Get a tidy data frame of a single sentiment lexicon}
 \usage{
-get_sentiments(lexicon = c("afinn", "bing", "nrc", "loughran"))
+get_sentiments(lexicon = c("afinn", "bing", "nrc", "loughran", "fr_pl",
+  "fr_sc"))
 }
 \arguments{
 \item{lexicon}{The sentiment lexicon to retrieve;
