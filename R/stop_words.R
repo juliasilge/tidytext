@@ -16,37 +16,3 @@
 #' \item \url{http://snowball.tartarus.org/algorithms/english/stop.txt}
 #' }
 "stop_words"
-
-#' Get a tidy data frame of stopwords
-#'
-#' Get stopwords in a tidy format, with one row per word,
-#' in a form that can be joined with a one-word-per-row dataset.
-#'
-#' @param language The stopwords language;
-#' either "en" for english, or "fr" for french
-#'
-#' @return For english, a tbl_df with a \code{word} column, and a \code{lexicon}
-#' column, which is either "onix", "SMART", or "snowball".
-#'
-#' For french, a tbl_df with a single \code{word} column.
-#'
-#'
-#' @examples
-#'
-#' get_stopwords("en")
-#' get_stopwords("fr")
-#'
-#' @importFrom proustr proust_stopwords
-#'
-#' @export
-get_stopwords <- function(language = c("en", "fr")) {
-  data(list = "stop_words", package = "tidytext", envir = environment())
-  lang <- match.arg(language)
-
-  if (lang == "en") {
-    tidytext::stop_words
-  } else {
-    proustr::proust_stopwords()
-  }
-
-}
