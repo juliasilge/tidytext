@@ -2,6 +2,8 @@
 #'
 #' @param df the data.frame containing the unnested text
 #' @param col the column containing the words. Default is word.
+#' @param language language of the text. Default is english. The list of all supported languages
+#' is available with \{code}(SnowballC::getStemLanguages())
 #'
 #' @importFrom proustr pr_stem_words
 #'
