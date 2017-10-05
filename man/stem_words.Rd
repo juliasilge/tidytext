@@ -10,6 +10,9 @@ stem_words(df, col = word, language = "english")
 \item{df}{the data.frame containing the unnested text}
 
 \item{col}{the column containing the words. Default is word.}
+
+\item{language}{language of the text. Default is english. The list of all supported languages
+is available with \code{\link[SnowballC]{getStemLanguages}}}
 }
 \value{
 a tibble with stemmed words
