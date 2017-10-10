@@ -186,9 +186,9 @@ test_that("Tokenizing a one-column data.frame works", {
 
 test_that("Tokenizing a two-column data.frame with one non-text column works", {
   text <- data.frame(line = 1:2,
-                  txt = c("Because I could not stop for Death -",
-                          "He kindly stopped for me -"),
-                  stringsAsFactors = FALSE)
+                     txt = c("Because I could not stop for Death -",
+                             "He kindly stopped for me -"),
+                     stringsAsFactors = FALSE)
   d <- unnest_tokens(text, word, txt)
 
   expect_is(d, "data.frame")
@@ -197,6 +197,25 @@ test_that("Tokenizing a two-column data.frame with one non-text column works", {
   expect_equal(d$word[1], "because")
   expect_equal(d$line[1], 1)
 })
+
+
+test_that("Tokenizing with NA values in columns behaves as expected", {
+  text <- data_frame(line = c(1:2, NA),
+                     txt = c(NA,
+                             "Because I could not stop for Death -",
+                             "He kindly stopped for me -"))
+  d <- unnest_tokens(text, word, txt)
+
+  expect_is(d, "data.frame")
+  expect_equal(nrow(d), 13)
+  expect_equal(ncol(d), 2)
+  expect_equal(d$word[2], "because")
+  expect_equal(d$line[1], 1)
+  expect_true(is.na(d$line[10]))
+  expect_true(is.na(d$word[1]))
+})
+
+
 
 test_that("Trying to tokenize a non-text format with words raises an error", {
   d <- data_frame(txt = "Emily Dickinson")

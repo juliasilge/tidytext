@@ -1,3 +1,7 @@
+#tidytext 0.1.5 [WIP]
+
+* Change how `NA` values are handled in `unnest_tokens` so they no longer cause other columns to become `NA` (#82).
+
 # tidytext 0.1.4
 
 * Fix tidier for quanteda dictionary for correct class (#71).

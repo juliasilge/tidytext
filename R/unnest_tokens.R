@@ -180,8 +180,6 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
     ret[[output]] <- stringr::str_to_lower(ret[[output]])
   }
 
-  ret <- ret[ret[[output]] != "", , drop = FALSE]
-
   # For data.tables we want this to hit the result and be after the result
   # has been assigned, just to make sure that we don't reduce the data.table
   # to 0 rows before inserting the output.
