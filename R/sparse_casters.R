@@ -165,7 +165,13 @@ cast_dfm <- function(data, document, term, value, ...) {
   term <- quo_name(enquo(term))
   value <- quo_name(enquo(value))
   m <- cast_sparse(data, !! document, !! term, !! value, ...)
-  methods::new("dfmSparse", m)
+  q_version <- unlist(utils::packageVersion("quanteda"))
+  # quanteda versions <= v0.99.12 do not have as.dfm(m) for dgCMatrix
+  if (q_version[1] < 1 && q_version[2] == 99 && q_version[3] < 9000) {
+    methods::new("dfmSparse", m)
+  } else {
+    quanteda::as.dfm(m)
+  }
 }
 
 
