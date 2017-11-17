@@ -43,12 +43,16 @@ tidy.TermDocumentMatrix <- function(x, ...) {
 
 #' @rdname tdm_tidiers
 #' @export
-tidy.dfmSparse <- function(x, ...) {
+tidy.dfm <- tidy.dfmSparse <- function(x, ...) {
   triplets <- Matrix::summary(methods::as(x, "dgTMatrix"))
   ret <- tidy_triplet(x, triplets)
   colnames(ret) <- c("document", "term", "count")
   ret
 }
+
+#' @rdname tdm_tidiers
+#' @export
+tidy.dfmSparse <- tidy.dfm
 
 
 #' @rdname tdm_tidiers

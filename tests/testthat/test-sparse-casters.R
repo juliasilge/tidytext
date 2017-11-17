@@ -74,7 +74,7 @@ test_that("Can cast tables into a sparse dfm", {
   d <- cast_dfm(dat, a, b, val)
   d2 <- cast_dfm_(dat, "a", "b", "val")
   expect_equal(d, d2)
-  expect_is(d, "dfmSparse")
+  expect_true(quanteda::is.dfm(d))
   expect_equal(dim(d), c(2, 4))
   expect_equal(as.numeric(d[1, 1]), 1)
   expect_equal(as.numeric(d[2, 3]), 4)

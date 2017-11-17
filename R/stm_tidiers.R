@@ -127,11 +127,11 @@ augment.STM <- function(x, data, ...) {
       (all(c("document", "term") %in% colnames(data)))) {
     data$value <- 1
     mat <- cast_dfm(data, document, term, value)
-  } else if (inherits(data, "dfmSparse")) {
+  } else if (inherits(data, "dfm")) {
     mat <- data
     data <- tidy(mat)
   } else {
-    stop("data argument must either be a dfmSparse ",
+    stop("data argument must either be a dfm ",
          "(from quanteda) or a table with document and term columns")
   }
 
