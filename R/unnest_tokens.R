@@ -120,8 +120,9 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   # retain top-level attributes
   attrs <- attributes(tbl)
   custom_attributes <- attrs[setdiff(names(attrs),
-                                     c("class", "dim", "dimnames",
-                                       "names", "row.names", ".internal.selfref"))]
+                                     c("dim", "dimnames",
+                                       "names", "row.names",
+                                       ".internal.selfref"))]
 
   format <- match.arg(format)
 

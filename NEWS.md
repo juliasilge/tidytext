@@ -2,6 +2,7 @@
 
 * Change how `NA` values are handled in `unnest_tokens` so they no longer cause other columns to become `NA` (#82).
 * Update tidiers and casters to align with quanteda v1.0 (#87).
+* Handle input/output object classes (such as `data.table`) consistently (#88).
 
 # tidytext 0.1.4
 
