@@ -3,6 +3,7 @@ Type: Package
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
 Version: 0.1.4
 Authors@R: c(person("Gabriela", "De Queiroz", email = "gabidequeiroz@gmail.com", role = c("ctb")),
+             person("Colin", "Fay", email = "contact@colinfay.me", role = c("ctb")),
              person("Oliver", "Keyes", email = "ironholds@gmail.com", role = c("ctb")),
              person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut")),
              person("Julia", "Silge", email = "julia.silge@gmail.com", role = c("aut", "cre")))
@@ -24,7 +25,8 @@ Imports: rlang,
     janeaustenr,
     purrr (>= 0.1.1),
     methods,
-    glue
+    glue,
+    stringi
 Suggests: readr,
     tidyr,
     XML,
@@ -41,5 +43,24 @@ Suggests: readr,
     gutenbergr,
     testthat,
     mallet,
-    stm
+    stm, 
+    proustr
 VignetteBuilder: knitr
+Collate: 
+    'bind_tf_idf.R'
+    'compat_lazyeval.R'
+    'corpus_tidiers.R'
+    'dictionary_tidiers.R'
+    'globals.R'
+    'lda_tidiers.R'
+    'mallet_tidiers.R'
+    'parts_of_speech.R'
+    'sentiments.R'
+    'sparse_casters.R'
+    'sparse_tidiers.R'
+    'stm_tidiers.R'
+    'stop_words.R'
+    'tidytext.R'
+    'utils.R'
+    'tokenizers_foreign.R'
+    'unnest_tokens.R'
