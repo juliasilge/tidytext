@@ -32,7 +32,10 @@
 #' "paragraphs", or "regex".
 #'
 #' @param lang wether to perform the tokenization in english (default) or in other languages.
-#' Run supported_languages() to know the languages supported by the parser.
+#' Run supported_languages() to know the languages supported by the parser. You can also pass
+#' your custom dictionary with lang = "custom" and a dict = "path" param.
+#'
+#' @param dict if lang is "custom", a path to the hunspell dictionary to use.
 #'
 #' @param ... Extra arguments passed on to the tokenizer, such as \code{n} and
 #' \code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".
@@ -93,7 +96,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
                           format = c("text", "man", "latex",
                                      "html", "xml"),
                           to_lower = TRUE, drop = TRUE,
-                          collapse = NULL, lang = c("english","french", "german","italian","spanish"), ...) {
+                          collapse = NULL, lang = supported_languages(), ...) {
   UseMethod("unnest_tokens")
 }
 #' @export
@@ -101,7 +104,8 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
                                   format = c("text", "man", "latex",
                                              "html", "xml"),
                                   to_lower = TRUE, drop = TRUE,
-                                  collapse = NULL, lang = c("english","french", "german","italian","spanish"), ...) {
+                                  collapse = NULL, lang = supported_languages(),
+                                  dict = NULL, ...) {
 
   output <- compat_as_lazy(enquo(output))
   input <- compat_as_lazy(enquo(input))
@@ -115,7 +119,8 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
                                      format = c("text", "man", "latex",
                                                 "html", "xml"),
                                      to_lower = TRUE, drop = TRUE,
-                                     collapse = NULL, lang = c("english","french", "german","italian","spanish"), ...) {
+                                     collapse = NULL, lang = supported_languages(),
+                                     dict = NULL, ...) {
   output <- quo_name(enquo(output))
   input <- quo_name(enquo(input))
 
@@ -140,9 +145,17 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
     }
 
     if (lang != "english"){
-      tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
-                                                               format = format,
-                                                               dic = system.file(glue("extdata/{lang}.dic"), package = "tidytext"))
+      if (lang == "custom") {
+        tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
+                                                                 format = format,
+                                                                 dic = dict)
+
+      } else {
+        tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
+                                                                 format = format,
+                                                                 dic = system.file(glue("extdata/{lang}.aff"), package = "tidytext"))
+
+      }
     } else {
       tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
                                                                format = format)
@@ -163,7 +176,11 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
 
     if (token %in% c("characters", "words", "ngrams", "skip_ngrams")) {
       if (lang != "english") {
-        tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, language = lang, ...)
+        if (lang == "custom") {
+          tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, language = lang, custom = dict, ...)
+        } else {
+          tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, language = lang, ...)
+        }
       } else {
         tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
       }
