@@ -1,0 +1,93 @@
+---
+title: "Parsing non-english languages"
+author: "Colin Fay"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Parsing non-english languages}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Why do we need a specific parser for non-english languages?
+
+Delimitation between words vary from one language to another. For example, French uses the apostrophe as a delimitator between an article and a noun when this noun starts with a vowel. For exemple, "l'ancien" has to be considered as two words in French: "le + ancien" contracted to "l'ancien". 
+
+If we unnest french with an english-based parser, the split is not made on the apostrophe : 
+
+```{r}
+library(dplyr)
+library(tidytext)
+df_fr <- tibble(text = c("l'ancien", "un ancien"))
+unnest_tokens(df_fr, word, text)
+```
+
+Here, we end up with three tokens: "l'ancien", "un" and "ancien", where we should have four tokens. As you can see, this split doesn't allow a precise count of tokens, as "ancien" doesn't appear twice in the unnested data.frame. 
+
+## Using tidytext with other languages 
+
+### With default languages
+
+By default, tidytext supports `r length(supported_languages()) - 2` foreign languages. You can get the list with `supported_languages()`. 
+
+```{r}
+supported_languages()
+```
+
+These languages are supported thanks to `hunspell` dictionaries, available in the `extdata` folder of the tidytext package. 
+
+To unnest a data.frame to one of this language, you can use the `lang` argument in the `unnest_tokens()` function. 
+
+```{r}
+unnest_tokens(df_fr, word, text, lang = "french") 
+```
+
+Here, we can see the split is done with the apostrophe, giving a result with two "ancien" tokens. 
+
+With other languages, you can perform the same usual tokenization as with english: 
+
+```{r}
+library(proustr)
+df_pr <- proust_random(2, collapse = FALSE)
+df_pr
+```
+
+```{r}
+unnest_tokens(df_pr, word, text, lang = "french", token = "ngrams", n = 2) 
+```
+
+You can also unnest other formats, for example HTML :
+
+```{r}
+data_frame(row = 1:2,
+                 text = c("<h1>Du text <b>d'abord</b>", "<a href='example.com'>C'est l'ancien site</a>")) %>%
+   unnest_tokens(word, text, format = "html", lang = "french")
+```
+
+
+### Use your own dictionnary
+
+You can pass to `unnest_tokens` your own hunspell dictionary by specifying `lang = "custom"`, and `dict = "path/to/your/dict`. For example : 
+
+```{r eval=FALSE}
+df_latin <- tibble(text = "Alea Jacta Est.")
+download.file("https://raw.githubusercontent.com/titoBouzout/Dictionaries/master/la.aff", "la.aff")
+unnest_tokens(df_latin, word, text, lang = "custom", dict = "la.aff") 
+```
+
+```
+# A tibble: 3 x 1
+   word
+  <chr>
+1  alea
+2 jacta
+3   est
+```
+
