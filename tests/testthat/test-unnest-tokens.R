@@ -257,12 +257,12 @@ test_that("custom attributes are preserved for a data.table", {
   expect_equal(attr(output, "testattr"), list(1, 2, 3, 4))
 })
 
-test_that("french parser works", {
+test_that("foreign parser works", {
   d <- tibble::tibble(txt = c("C'est l'arriere-cuisine. On s'y trouve."))
   output <- unnest_tokens(d,
                           output = word,
                           input = txt,
-                          lang = "fr")
+                          lang = "french")
   expect_equal(ncol(output), 1)
   expect_equal(nrow(output), 9)
   expect_equal(output$word[1], "c")
