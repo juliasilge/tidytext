@@ -5,14 +5,14 @@
 #'
 #' @include utils.R
 #'
-tokenize_words_foreign <- function (x, lowercase = TRUE, stopwords = NULL, simplify = FALSE, language, custom = NULL)
+tokenize_words_foreign <- function (x, lowercase = TRUE, stopwords = NULL, simplify = FALSE, language, dict = NULL)
 {
   tokenizers_check_input(x)
   named <- names(x)
   if (lowercase)
     x <- stringi::stri_trans_tolower(x)
-  if (!is.null(custom)) {
-    out <- hunspell::hunspell_parse(x, dict = custom)
+  if (language == "custom") {
+    out <- hunspell::hunspell_parse(x, dict = dict)
   } else {
     out <- hunspell::hunspell_parse(x, dict = system.file(glue("extdata/{language}.aff"), package = "tidytext"))
   }
