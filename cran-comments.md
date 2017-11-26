@@ -1,10 +1,10 @@
 ## Release Summary
 
-This is the fifth CRAN release of tidytext. In this release, we converted non-standard evaluation from underscored functions to use the tidyeval framework, implemented tiders for the stm package, added a [pkgdown site](https://juliasilge.github.io/tidytext), and fixed some bugs.
+This is the sixth CRAN release of tidytext. In this release, I updated tidiers and casters to align with the quanteda v1.0 API and fixed bugs related to consistency in input/output classes and `NA` value handling.
 
 ## Test environments
-* Local OS X install, R 3.4.1
-* Ubuntu 14.04 (on Travis-CI), R 3.4.1
+* Local OS X install, R 3.4.2
+* Ubuntu 14.04 (on Travis-CI), R 3.4.2
 * Win-builder (devel and release)
 * r-hub using `check_on_windows()`
 
@@ -14,4 +14,4 @@ This is the fifth CRAN release of tidytext. In this release, we converted non-st
 
 ## Downstream dependencies
 
-I ran R CMD check on the 5 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems related to tidytext.
+I ran R CMD check on the 6 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems.

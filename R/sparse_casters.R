@@ -165,7 +165,7 @@ cast_dfm <- function(data, document, term, value, ...) {
   term <- quo_name(enquo(term))
   value <- quo_name(enquo(value))
   m <- cast_sparse(data, !! document, !! term, !! value, ...)
-  methods::new("dfmSparse", m)
+  quanteda::as.dfm(m)
 }
 
 

@@ -84,7 +84,7 @@
       <h1>Tidy Topic Modeling</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2017-09-29</h4>
+            <h4 class="date">2017-11-17</h4>
           </div>
 
     
@@ -342,7 +342,7 @@ book_topics</code></pre></div>
 </h4>
 <p>One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight (<code>gamma</code>) will go on that document-topic classification.</p>
 <p>We may want to take the original document-word pairs and find which words in each document were assigned to which topic. This is the job of the <code>augment</code> verb.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">assignments &lt;-<span class="st"> </span><span class="kw">augment</span>(chapters_lda, <span class="dt">data =</span> chapters_dtm)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">assignments &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidytext/topics/reexports">augment</a></span>(chapters_lda, <span class="dt">data =</span> chapters_dtm)</code></pre></div>
 <p>We can combine this with the consensus book titles to find which words were incorrectly classified.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">assignments &lt;-<span class="st"> </span>assignments <span class="op">%&gt;%</span>
 <span class="st">  </span><span class="kw"><a href="http://www.rdocumentation.org/packages/tidyr/topics/separate">separate</a></span>(document, <span class="kw">c</span>(<span class="st">"title"</span>, <span class="st">"chapter"</span>), <span class="dt">sep =</span> <span class="st">"_"</span>, <span class="dt">convert =</span> <span class="ot">TRUE</span>) <span class="op">%&gt;%</span>
