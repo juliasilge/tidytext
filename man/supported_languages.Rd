@@ -7,5 +7,6 @@
 supported_languages()
 }
 \description{
-Get the languages supported by the parser
+Get the languages supported by the parser.
+These dictionaries were downloaded from \url{https://github.com/titoBouzout/Dictionaries}
 }
