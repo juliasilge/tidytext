@@ -42,7 +42,7 @@ tokenize_ngrams_foreign <- function (x, lowercase = TRUE, n = 3L, n_min = n, sto
                                             stopwords = stopwords, ngram_delim = ngram_delim)
   if (!is.null(named))
     names(out) <- named
-  tokenizers:::simplify_list(out, simplify)
+  tokenizers_simplify_list(out, simplify)
 }
 
 tokenize_skip_ngrams_foreign <- function (x, lowercase = TRUE, n = 3, k = 1, simplify = FALSE, language, custom = NULL)
