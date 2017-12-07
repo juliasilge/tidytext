@@ -1,3 +1,7 @@
+#tidytext 0.1.6 [WIP]
+
+* `unnest_tokens` can now unnest a data frame with a list column (which formerly threw the error `unnest_tokens expects all columns of input to be atomic vectors (not lists)`). The unnested result repeats the objects within each list. (It's still not possible when `collapse = TRUE`, in which tokens can span multiple lines).
+
 #tidytext 0.1.5
 
 * Change how `NA` values are handled in `unnest_tokens` so they no longer cause other columns to become `NA` (#82).

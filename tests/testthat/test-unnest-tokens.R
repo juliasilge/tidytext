@@ -112,11 +112,6 @@ test_that("tokenizing with tidyeval works", {
 
 })
 
-test_that("unnest_tokens raises an error if there is a list column present", {
-  d <- data_frame(a = c("hello world", "goodbye world"), b = list(1:2, 3:4))
-  expect_error(unnest_tokens(d, word, a), "atomic vectors")
-})
-
 test_that("tokenizing with to_lower = FALSE works", {
   orig <- data_frame(txt = c("Because I could not stop for Death -",
                           "He kindly stopped for me -"))
@@ -276,4 +271,49 @@ test_that("custom attributes are preserved for a data.table", {
   expect_equal(attr(output, "testattr"), list(1, 2, 3, 4))
 })
 
+test_that("Tokenizing a data frame with list columns works", {
+  df <- data.frame(txt = c("Because I could not stop for Death -",
+                           "He kindly stopped for me -"),
+                   line = 1L:2L,
+                   stringsAsFactors = FALSE)
 
+  df$list_col <- list(1L:3L, c("a", "b"))
+
+  ret <- unnest_tokens(df, word, txt)
+  expect_is(ret, "data.frame")
+  expect_is(ret$line, "integer")
+  expect_is(ret$list_col, "list")
+  expect_is(ret$list_col[[1]], "integer")
+
+  # 7 items of length 3, 5 items of length 2
+  expect_equal(lengths(ret$list_col), rep(c(3, 2), c(7, 5)))
+})
+
+test_that("Tokenizing a tbl_df with list columns works", {
+  df <- data_frame(txt = c("Because I could not stop for Death -",
+                           "He kindly stopped for me -"),
+                   line = 1L:2L,
+                   list_col = list(1L:3L, c("a", "b")))
+
+  ret <- unnest_tokens(df, word, txt)
+  expect_is(ret, "tbl_df")
+  expect_is(ret$line, "integer")
+  expect_is(ret$list_col, "list")
+  expect_is(ret$list_col[[1]], "integer")
+
+  # 7 items of length 3, 5 items of length 2
+  expect_equal(lengths(ret$list_col), rep(c(3, 2), c(7, 5)))
+})
+
+test_that("Can't tokenize with list columns with collapse = TRUE", {
+  df <- data_frame(txt = c("Because I could not stop for Death -",
+                           "He kindly stopped for me -"),
+                   line = 1L:2L,
+                   list_col = list(1L:3L, c("a", "b")))
+
+  expect_error(unnest_tokens(df, word, txt, token = "sentences"), "to be atomic vectors")
+
+  # Can tokenize by sentence without collapsing, though it sort of defeats the purpose
+  ret <- unnest_tokens(df, word, txt, token = "sentences", collapse = FALSE)
+  expect_equal(nrow(ret), 2)
+})

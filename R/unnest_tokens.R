@@ -113,10 +113,6 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   output <- quo_name(enquo(output))
   input <- quo_name(enquo(input))
 
-  if (any(!purrr::map_lgl(tbl, is.atomic))) {
-    stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
-  }
-
   # retain top-level attributes
   attrs <- attributes(tbl)
   custom_attributes <- attrs[setdiff(names(attrs),
@@ -149,6 +145,10 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   }
 
   if (!is.null(collapse) && collapse) {
+    if (any(!purrr::map_lgl(tbl, is.atomic))) {
+      stop("If collapse = TRUE (such as for unnesting by sentence or paragraph), ",
+           "unnest_tokens needs all columns of input to be atomic vectors (not lists)")
+    }
 
     group_vars <- setdiff(names(tbl), input)
     exps <- substitute(stringr::str_c(colname, collapse = "\n"),
