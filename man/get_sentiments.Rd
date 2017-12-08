@@ -4,16 +4,19 @@
 \alias{get_sentiments}
 \title{Get a tidy data frame of a single sentiment lexicon}
 \usage{
-get_sentiments(lexicon = c("afinn", "bing", "nrc", "loughran"))
+get_sentiments(lexicon = c("afinn", "bing", "nrc", "loughran", "fr_pl",
+  "fr_sc"))
 }
 \arguments{
 \item{lexicon}{The sentiment lexicon to retrieve;
 either "afinn", "bing", "nrc", or "loughran"}
 }
 \value{
-A tbl_df with a \code{word} column, and either a \code{sentiment}
+For english sentiments: a tbl_df with a \code{word} column, and either a \code{sentiment}
 column (if \code{lexicon} is not "afinn") or a numeric \code{score} column
 (if \code{lexicon} is "afinn").
+For french sentiments: a tbl_df with a \code{word} column, and either a \code{polarity}
+column (if \code{lexicon} is "fr_pl") or a \code{sentiment} column (if \code{lexicon} is "fr_sc").
 }
 \description{
 Get specific sentiment lexicons in a tidy format, with one row per word,
@@ -27,5 +30,6 @@ columns that are not used in that lexicon.
 library(dplyr)
 get_sentiments("afinn")
 get_sentiments("bing")
+get_sentiments("fr_sc")
 
 }

@@ -35,3 +35,18 @@ test_that("get_sentiments works for afinn data", {
                c("happy", "joyful", "sad", "annoyed"))
   expect_equal(sign(afinn_joined$score), c(1, 1, -1, -1))
 })
+
+test_that("get_sentiments works for french", {
+  polarity <- get_sentiments("fr_pl")
+
+  expect_equal(unique(polarity$polarity),
+               c("positive", "negative"))
+  expect_equal(nrow(polarity), 14127)
+
+  score <- get_sentiments("fr_sc")
+
+  expect_equal(unique(score$sentiment),
+               c("sadness", "fear", "anger", "surprise", "disgust", "joy"))
+  expect_equal(nrow(score), 11530)
+})
+
