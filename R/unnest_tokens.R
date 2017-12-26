@@ -123,15 +123,12 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   output <- quo_name(enquo(output))
   input <- quo_name(enquo(input))
 
-  if (any(!purrr::map_lgl(tbl, is.atomic))) {
-    stop("unnest_tokens expects all columns of input to be atomic vectors (not lists)")
-  }
-
   # retain top-level attributes
   attrs <- attributes(tbl)
   custom_attributes <- attrs[setdiff(names(attrs),
-                                     c("class", "dim", "dimnames",
-                                       "names", "row.names", ".internal.selfref"))]
+                                     c("dim", "dimnames",
+                                       "names", "row.names",
+                                       ".internal.selfref"))]
 
   format <- match.arg(format)
   lang <- match.arg(lang)
@@ -189,6 +186,10 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   }
 
   if (!is.null(collapse) && collapse) {
+    if (any(!purrr::map_lgl(tbl, is.atomic))) {
+      stop("If collapse = TRUE (such as for unnesting by sentence or paragraph), ",
+           "unnest_tokens needs all columns of input to be atomic vectors (not lists)")
+    }
 
     group_vars <- setdiff(names(tbl), input)
     exps <- substitute(stringr::str_c(colname, collapse = "\n"),
@@ -220,8 +221,6 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   if (to_lower) {
     ret[[output]] <- stringr::str_to_lower(ret[[output]])
   }
-
-  ret <- ret[ret[[output]] != "", , drop = FALSE]
 
   # For data.tables we want this to hit the result and be after the result
   # has been assigned, just to make sure that we don't reduce the data.table
