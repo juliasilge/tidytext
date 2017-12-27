@@ -4,6 +4,7 @@ suppressPackageStartupMessages(library(dplyr))
 
 test_that("get_quanteda_stopwords works for multiple languages", {
 
+  skip_if_not_installed("quanteda")
   de <- get_quanteda_stopwords("german")
   ru <- get_quanteda_stopwords("russian")
 
