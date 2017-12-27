@@ -32,6 +32,7 @@
 #'  \item \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
 #'  \item \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
 #'  \item \url{http://www3.nd.edu/~mcdonald/Word_Lists.html}
+#'  \item \url{http://www.wjh.harvard.edu/~inquirer/}
 #'  }
 "sentiments"
 
@@ -45,7 +46,7 @@
 #' columns that are not used in that lexicon.
 #'
 #' @param lexicon The sentiment lexicon to retrieve;
-#' either "afinn", "bing", "nrc", or "loughran"
+#' either "afinn", "bing", "nrc", "loughran", "loughran_mcDonald", "henry", "harvard_four" or "qdap_pol"
 #'
 #' @return A tbl_df with a \code{word} column, and either a \code{sentiment}
 #' column (if \code{lexicon} is not "afinn") or a numeric \code{score} column
@@ -59,24 +60,14 @@
 #'
 #' @importFrom utils data
 #' @export
-get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran")) {
-  data(list = "sentiments", package = "tidytext", envir = environment())
+get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran", "loughran_mcDonald", "henry", "harvard_four", "qdap_pol")) {
+
+  data(list = "sentiments",
+       package = "tidytext",
+       envir = environment())
+
   lex <- match.arg(lexicon)
 
-  if (lex == "afinn") {
-    # turn uppercase: reverse compatibility issue
-    lex <- "AFINN"
-  }
+  sentiments[[lex]]
 
-  ret <- sentiments %>%
-    dplyr::filter(lex == lexicon) %>%
-    dplyr::select(-lexicon)
-
-  if (lex == "AFINN") {
-    ret$sentiment <- NULL
-  } else {
-    ret$score <- NULL
-  }
-
-  ret
 }
