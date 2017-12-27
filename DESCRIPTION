@@ -25,8 +25,7 @@ Imports: rlang,
     janeaustenr,
     purrr (>= 0.1.1),
     methods,
-    glue,
-    stringi
+    glue
 Suggests: readr,
     tidyr,
     XML,

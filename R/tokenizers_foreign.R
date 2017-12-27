@@ -1,7 +1,6 @@
 #' @import hunspell
 #' @import tokenizers
 #' @importFrom glue glue
-#' @importFrom stringi stri_trans_tolower
 #'
 #'
 tokenize_words_foreign <- function (x, lowercase = TRUE, stopwords = NULL, simplify = FALSE, language, dict = NULL)
@@ -9,7 +8,7 @@ tokenize_words_foreign <- function (x, lowercase = TRUE, stopwords = NULL, simpl
   tokenizers_check_input(x)
   named <- names(x)
   if (lowercase)
-    x <- stringi::stri_trans_tolower(x)
+    x <- stringr::str_to_lower(x)
   if (language == "custom") {
     out <- hunspell::hunspell_parse(x, dict = dict)
   } else {
