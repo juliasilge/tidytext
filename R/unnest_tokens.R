@@ -219,7 +219,7 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   ret[[output]] <- unlist(output_lst)
 
   if (to_lower) {
-    ret[[output]] <- stringr::str_to_lower(ret[[output]])
+    ret[[output]] <- stringi::stri_trans_tolower(ret[[output]])
   }
 
   # For data.tables we want this to hit the result and be after the result

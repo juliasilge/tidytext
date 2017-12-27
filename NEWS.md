@@ -1,7 +1,8 @@
 # tidytext 0.1.6 [WIP]
 
 * `unnest_tokens` can now unnest a data frame with a list column (which formerly threw the error `unnest_tokens expects all columns of input to be atomic vectors (not lists)`). The unnested result repeats the objects within each list. (It's still not possible when `collapse = TRUE`, in which tokens can span multiple lines).
-* Added support for tokenizing 17 foreign languages & for custom hunspell dictionaries (#89).
+* Add support for tokenizing 17 non-English languages & for custom hunspell dictionaries (#89).
+* Add `get_quanteda_stopwords()` to obtain stop word lexicons in multiple languages in a tidy format.
 
 # tidytext 0.1.5
 
