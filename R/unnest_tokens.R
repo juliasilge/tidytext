@@ -50,8 +50,6 @@
 #' @import rlang
 #' @import tokenizers
 #' @import janeaustenr
-#' @importFrom glue glue
-#' @importFrom purrr partial
 #' @export
 #'
 #' @name unnest_tokens
@@ -149,7 +147,8 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
       } else {
         tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
                                                                  format = format,
-                                                                 dic = system.file(glue("extdata/{lang}.aff"), package = "tidytext"))
+                                                                 dic = system.file(paste0("extdata/", lang, ".aff"),
+                                                                                   package = "tidytext"))
 
       }
     } else {
@@ -165,7 +164,7 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
     }
 
     if (lang != "english" && token %in% c("words", "ngrams", "skip_ngrams")) {
-      tf <- get(glue("tokenize_{token}_foreign"))
+      tf <- get(paste0("tokenize_", token, "_foreign"))
     } else {
       tf <- get(paste0("tokenize_", token))
     }

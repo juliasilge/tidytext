@@ -24,8 +24,7 @@ Imports: rlang,
     tokenizers,
     janeaustenr,
     purrr (>= 0.1.1),
-    methods,
-    glue
+    methods
 Suggests: readr,
     tidyr,
     XML,

@@ -1,6 +1,5 @@
 #' @import hunspell
 #' @import tokenizers
-#' @importFrom glue glue
 #'
 #'
 tokenize_words_foreign <- function (x, lowercase = TRUE, stopwords = NULL, simplify = FALSE, language, dict = NULL)
@@ -12,7 +11,8 @@ tokenize_words_foreign <- function (x, lowercase = TRUE, stopwords = NULL, simpl
   if (language == "custom") {
     out <- hunspell::hunspell_parse(x, dict = dict)
   } else {
-    out <- hunspell::hunspell_parse(x, dict = system.file(glue("extdata/{language}.aff"), package = "tidytext"))
+    out <- hunspell::hunspell_parse(x, dict = system.file(paste0("extdata/", language, ".aff"),
+                                                          package = "tidytext"))
   }
   if (!is.null(named))
     names(out) <- named
@@ -33,9 +33,11 @@ tokenize_ngrams_foreign <- function (x, lowercase = TRUE, n = 3L, n_min = n, sto
   if (!is.null(custom)) {
     words <- hunspell::hunspell_parse(x, dict = custom)
   } else {
-    words <- hunspell::hunspell_parse(x, dict = system.file(glue("extdata/{language}.aff"), package = "tidytext"))
+    words <- hunspell::hunspell_parse(x, dict = system.file(paste0("extdata/", language, ".aff"),
+                                                            package = "tidytext"))
   }
-  words <- hunspell::hunspell_parse(x, dict = system.file(glue("extdata/{language}.aff"), package = "tidytext"))
+  words <- hunspell::hunspell_parse(x, dict = system.file(paste0("extdata/", language, ".aff"),
+                                                          package = "tidytext"))
   out <- tokenizers_generate_ngrams_batch(words, ngram_min = n_min, ngram_max = n,
                                             stopwords = stopwords, ngram_delim = ngram_delim)
   if (!is.null(named))
@@ -50,7 +52,8 @@ tokenize_skip_ngrams_foreign <- function (x, lowercase = TRUE, n = 3, k = 1, sim
   if (!is.null(custom)) {
     words <- hunspell::hunspell_parse(x, dict = custom)
   } else {
-    words <- hunspell::hunspell_parse(x, dict = system.file(glue("extdata/{language}.aff"), package = "tidytext"))
+    words <- hunspell::hunspell_parse(x, dict = system.file(paste0("extdata/", language, ".aff"),
+                                                            package = "tidytext"))
   }
   out <- lapply(words, tokenizers_skip_ngrams, n = n, k = k)
   if (!is.null(named))
