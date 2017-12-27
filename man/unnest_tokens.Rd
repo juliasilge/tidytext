@@ -36,9 +36,9 @@ if the original input and new output column have the same name.}
 when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".}
 
-\item{lang}{wether to perform the tokenization in english (default) or in other languages.
-Run supported_languages() to know the languages supported by the parser. You can also pass
-your custom dictionary with lang = "custom" and a dict = "path" param.}
+\item{lang}{Whether to perform the tokenization in English (default) or in other languages.
+Run supported_languages() to see the languages supported by the parser. You can also pass
+a custom dictionary with lang = "custom" and dict = "path".}
 
 \item{...}{Extra arguments passed on to the tokenizer, such as \code{n} and
 \code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".}

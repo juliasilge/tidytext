@@ -3,7 +3,6 @@
 #' @importFrom glue glue
 #' @importFrom stringi stri_trans_tolower
 #'
-#' @include utils.R
 #'
 tokenize_words_foreign <- function (x, lowercase = TRUE, stopwords = NULL, simplify = FALSE, language, dict = NULL)
 {

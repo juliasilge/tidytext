@@ -1,8 +1,9 @@
-#tidytext 0.1.6 [WIP]
+# tidytext 0.1.6 [WIP]
 
 * `unnest_tokens` can now unnest a data frame with a list column (which formerly threw the error `unnest_tokens expects all columns of input to be atomic vectors (not lists)`). The unnested result repeats the objects within each list. (It's still not possible when `collapse = TRUE`, in which tokens can span multiple lines).
+* Added support for tokenizing 17 foreign languages & for custom hunspell dictionaries (#89).
 
-#tidytext 0.1.5
+# tidytext 0.1.5
 
 * Change how `NA` values are handled in `unnest_tokens` so they no longer cause other columns to become `NA` (#82).
 * Update tidiers and casters to align with quanteda v1.0 (#87).
@@ -47,9 +48,9 @@
 * Changed tidy.dictionary to return a tbl_df rather than a data.frame
 * Updated `cast_sparse` to work with dplyr 0.5.0
 * Deprecated the `pair_count` function, which has been moved to `pairwise_count` in the [widyr package](https://github.com/dgrtwo/widyr). This will be removed entirely in a future version.
-
+ 
 # tidytext 0.1.0
-
+ 
 * Initial release for text mining using tidy tools
 
 

@@ -307,7 +307,7 @@ test_that("foreign parser works", {
   expect_equal(nrow(output), 8)
   expect_equal(output$word[1], "du")
 })
-  
+
 test_that("Tokenizing a data frame with list columns works", {
   df <- data.frame(txt = c("Because I could not stop for Death -",
                            "He kindly stopped for me -"),
