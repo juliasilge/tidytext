@@ -31,11 +31,6 @@
 #' when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 #' "paragraphs", or "regex".
 #'
-#' @param dict A hunspell dictionary to use for parsing text (instead of default
-#' tokenizing) such as \code{"french"}. Can only be used to tokenize by "word".
-#' Use supported_dictionaries() to see the dictionaries supported natively or
-#' pass a path to your own custom hunspell dictionary.
-#'
 #' @param ... Extra arguments passed on to the tokenizer, such as \code{n} and
 #' \code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".
 #'
@@ -93,8 +88,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
                           format = c("text", "man", "latex",
                                      "html", "xml"),
                           to_lower = TRUE, drop = TRUE,
-                          collapse = NULL, dict = NULL,
-                          ...) {
+                          collapse = NULL, ...) {
   UseMethod("unnest_tokens")
 }
 #' @export
@@ -102,23 +96,20 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
                                   format = c("text", "man", "latex",
                                              "html", "xml"),
                                   to_lower = TRUE, drop = TRUE,
-                                  collapse = NULL, dict = NULL,
-                                  ...) {
+                                  collapse = NULL, ...) {
 
   output <- compat_as_lazy(enquo(output))
   input <- compat_as_lazy(enquo(input))
 
   unnest_tokens_(tbl, output, input,
-                 token, format, to_lower, drop, collapse, dict, ...)
+                 token, format, to_lower, drop, collapse, ...)
 }
 #' @export
-
 unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
                                      format = c("text", "man", "latex",
                                                 "html", "xml"),
                                      to_lower = TRUE, drop = TRUE,
-                                     collapse = NULL, dict = NULL,
-                                    ...) {
+                                     collapse = NULL, ...) {
   output <- quo_name(enquo(output))
   input <- quo_name(enquo(input))
 
@@ -133,22 +124,12 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
 
   if (is.function(token)) {
     tokenfunc <- token
-  } else if (format != "text" || !is.null(dict)) {
+  } else if (format != "text") {
     if (token != "words") {
-      stop("Cannot tokenize by any unit except words with non-text format or hunspell dictionary")
+      stop("Cannot tokenize by any unit except words when format is not text")
     }
-    if (!is.null(dict)) {
-      if (dict %in% supported_dictionaries()){
-        dict <- system.file(paste0("extdata/", dict, ".aff"),
-                            package = "tidytext")
-      }
-      tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
-                                                               format = format,
-                                                               dict = dict)
-    } else {
-      tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
-                                                               format = format)
-    }
+    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
+                                                             format = format)
   } else {
     if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
                                           "lines", "paragraphs", "regex")) {
