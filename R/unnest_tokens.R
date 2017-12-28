@@ -31,9 +31,10 @@
 #' when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 #' "paragraphs", or "regex".
 #'
-#' @param lang Whether to perform the tokenization in English (default) or in other languages.
-#' Run supported_languages() to see the languages supported by the parser. You can also pass
-#' a custom dictionary with lang = "custom" and dict = "path".
+#' @param dict A hunspell dictionary to use for parsing text (instead of default
+#' tokenizing) such as \code{"french"}. Can only be used to tokenize by "word".
+#' Use supported_dictionaries() to see the dictionaries supported natively or
+#' pass a path to your own custom hunspell dictionary.
 #'
 #' @param ... Extra arguments passed on to the tokenizer, such as \code{n} and
 #' \code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".
@@ -92,7 +93,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
                           format = c("text", "man", "latex",
                                      "html", "xml"),
                           to_lower = TRUE, drop = TRUE,
-                          collapse = NULL, lang = supported_languages(),
+                          collapse = NULL, dict = NULL,
                           ...) {
   UseMethod("unnest_tokens")
 }
@@ -101,14 +102,14 @@ unnest_tokens.default <- function(tbl, output, input, token = "words",
                                   format = c("text", "man", "latex",
                                              "html", "xml"),
                                   to_lower = TRUE, drop = TRUE,
-                                  collapse = NULL, lang = supported_languages(),
+                                  collapse = NULL, dict = NULL,
                                   ...) {
 
   output <- compat_as_lazy(enquo(output))
   input <- compat_as_lazy(enquo(input))
 
   unnest_tokens_(tbl, output, input,
-                 token, format, to_lower, drop, collapse, lang, ...)
+                 token, format, to_lower, drop, collapse, dict, ...)
 }
 #' @export
 
@@ -116,7 +117,7 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
                                      format = c("text", "man", "latex",
                                                 "html", "xml"),
                                      to_lower = TRUE, drop = TRUE,
-                                     collapse = NULL, lang = supported_languages(),
+                                     collapse = NULL, dict = NULL,
                                     ...) {
   output <- quo_name(enquo(output))
   input <- quo_name(enquo(input))
@@ -129,56 +130,34 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
                                        ".internal.selfref"))]
 
   format <- match.arg(format)
-  lang <- match.arg(lang)
 
   if (is.function(token)) {
     tokenfunc <- token
-  } else if (format != "text") {
+  } else if (format != "text" || !is.null(dict)) {
     if (token != "words") {
-      stop("Cannot tokenize by any unit except words when format is not text")
+      stop("Cannot tokenize by any unit except words with non-text format or hunspell dictionary")
     }
-
-    if (lang != "english"){
-      if (lang == "custom") {
-        tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
-                                                                 format = format,
-                                                                 dic = dict)
-
-      } else {
-        tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
-                                                                 format = format,
-                                                                 dic = system.file(paste0("extdata/", lang, ".aff"),
-                                                                                   package = "tidytext"))
-
+    if (!is.null(dict)) {
+      if (dict %in% supported_dictionaries()){
+        dict <- system.file(paste0("extdata/", dict, ".aff"),
+                            package = "tidytext")
       }
+      tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
+                                                               format = format,
+                                                               dict = dict)
     } else {
       tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
                                                                format = format)
     }
-
-
   } else {
     if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
                                           "lines", "paragraphs", "regex")) {
       collapse <- TRUE
     }
 
-    if (lang != "english" && token %in% c("words", "ngrams", "skip_ngrams")) {
-      tf <- get(paste0("tokenize_", token, "_foreign"))
-    } else {
-      tf <- get(paste0("tokenize_", token))
-    }
-
+    tf <- get(paste0("tokenize_", token))
     if (token %in% c("characters", "words", "ngrams", "skip_ngrams")) {
-      if (lang != "english") {
-        if (lang == "custom") {
-          tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, language = lang, ...)
-        } else {
-          tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, language = lang, ...)
-        }
-      } else {
-        tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
-      }
+      tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
     } else {
       tokenfunc <- tf
     }

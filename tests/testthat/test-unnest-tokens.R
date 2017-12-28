@@ -271,38 +271,20 @@ test_that("custom attributes are preserved for a data.table", {
   expect_equal(attr(output, "testattr"), list(1, 2, 3, 4))
 })
 
-test_that("non-English parser works", {
+test_that("hunspell dictionary parser works", {
   d <- tibble::tibble(txt = c("C'est l'arriere-cuisine. On s'y trouve."))
   output <- unnest_tokens(d,
                           output = word,
                           input = txt,
-                          lang = "french")
+                          dict = "french")
   expect_equal(ncol(output), 1)
   expect_equal(nrow(output), 9)
   expect_equal(output$word[1], "c")
-  output <- unnest_tokens(d,
-                          output = word,
-                          input = txt,
-                          token = "ngrams",
-                          n = 2,
-                          lang = "fr")
-  expect_equal(ncol(output), 1)
-  expect_equal(nrow(output), 8)
-  expect_equal(output$word[1], "c est")
-  output <- unnest_tokens(d,
-                          output = word,
-                          input = txt,
-                          token = "skip_ngrams",
-                          n = 4,
-                          k = 2,
-                          lang = "fr")
-  expect_equal(ncol(output), 1)
-  expect_equal(nrow(output), 9)
-  expect_equal(output$word[1], "c l cuisine s")
+  expect_equal(output$word[2], "est")
   h <- tibble::tibble(row = 1:2,
                   text = c("<h1>Du text <b>ici</b>", "<a href='example.com'>C'est l'ancien site</a>"))
   output <- h %>%
-    unnest_tokens(word, text, format = "html", lang = "fr")
+    unnest_tokens(word, text, format = "html", dict = "french")
   expect_equal(ncol(output), 2)
   expect_equal(nrow(output), 8)
   expect_equal(output$word[1], "du")
