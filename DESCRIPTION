@@ -41,6 +41,5 @@ Suggests: readr,
     gutenbergr,
     testthat,
     mallet,
-    stm, 
-    proustr
+    stm
 VignetteBuilder: knitr
