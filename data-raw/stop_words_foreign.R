@@ -30,19 +30,3 @@ unnest_tokens(df, word, text) %>%
 
 # save data 
 usethis::use_data(stop_words_foreign, overwrite = TRUE)
-
-# Get matching list of name 
-
-library(rvest)
-
-page_1 <- read_html('https://github.com/stopwords-iso?page=1')
-names <- page_1 %>% html_nodes('h3') %>% 
-  html_nodes('a') %>% html_text() %>% gsub("\n        stopwords-(..)", "\\1", .)
-full_names <- page_1 %>% html_nodes('.pr-4') %>% html_text() %>% 
-  gsub("\n          ([a-zA-Z]*) stopwords collection\n        ", "\\1", .)
-
-page_2 <- read_html('https://github.com/stopwords-iso?page=2')
-names2 <- page_2 %>% html_nodes('h3') %>% 
-  html_nodes('a') %>% html_text() %>% gsub("\n        stopwords-(..)", "\\1", .)
-full_names2 <- page_2 %>% html_nodes('.pr-4') %>% html_text() %>% 
-  gsub("\n          ([a-zA-Z]*) stopwords collection\n        ", "\\1", .)
