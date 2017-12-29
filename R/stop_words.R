@@ -17,6 +17,38 @@
 #' }
 "stop_words"
 
+#' Get a tidy data frame of a single stopword lexicon
+#'
+#' Get a specific stop word lexicon via the \pkg{stopwords} packages's
+#' \link[stopwords]{stopwords} function, in a tidy format with one word per row.
+#'
+#' @param language The language of the stopword lexicon specified as a
+#' two-letter ISO code, such as \code{"es"}, \code{"de"}, or \code{"fr"}.
+#' Default is \code{"en"} for English. Use
+#' \link[stopwords]{stopwords_getlanguages} from \pkg{stopwords} to see available
+#' languages.
+#' @param source The source of the stopword lexicon specified. Default is
+#' \code{"snowball"}. Use \link[stopwords]{stopwords_getsources} from
+#' \pkg{stopwords} to see available sources.
+#'
+#' @return A tibble with two columns, \code{word} and \code{lexicon}. The
+#' parameter \code{lexicon} is "quanteda" in this case.
+#'
+#' @examples
+#'
+#' library(dplyr)
+#' get_stopwords()
+#' get_stopwords(source = "smart")
+#' get_stopwords("es", "snowball")
+#' get_stopwords("ru", "snowball")
+#'
+#' @export
+#'
+get_stopwords <- function(language = "en", source = "snowball") {
+  data_frame(word = stopwords::stopwords(language = language, source = source),
+             lexicon = source)
+}
+
 #' Stop words from 56 languages
 #'
 #' This list contains 56 data frames with stop words from various non-english
@@ -25,7 +57,7 @@
 #' stopwords. To find which initial refer to your language, please visit
 #' \url{https://github.com/stopwords-iso}.
 #'
-#' @format A list of 56 data frame with 1 variable each:
+#' @format A list of 56 data frames with 1 variable each:
 #' \describe{
 #'  \item{word}{A stop word}
 #'  }
