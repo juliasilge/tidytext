@@ -40,20 +40,24 @@
 #' @examples
 #'
 #' \dontrun{
-#' if (requireNamespace("stm", quietly = TRUE) && requireNamespace("quanteda", quietly = TRUE)) {
+#' if (requireNamespace("stm", quietly = TRUE)) {
 #'   library(dplyr)
 #'   library(ggplot2)
 #'   library(stm)
-#'   library(quanteda)
+#'   library(janeaustenr)
 #'
-#'   inaug <- dfm(data_corpus_inaugural, remove = stopwords("english"), remove_punct = TRUE)
-#'   topic_model <- stm(inaug, K = 3, verbose = FALSE, init.type = "Spectral")
+#'   austen_sparse <- austen_books() %>%
+#'     unnest_tokens(word, text) %>%
+#'     anti_join(stop_words) %>%
+#'     count(book, word) %>%
+#'     cast_sparse(book, word, n)
+#'   topic_model <- stm(austen_sparse, K = 12, verbose = FALSE, init.type = "Spectral")
 #'
 #'   # tidy the word-topic combinations
 #'   td_beta <- tidy(topic_model)
 #'   td_beta
 #'
-#'   # Examine the three topics
+#'   # Examine the topics
 #'   td_beta %>%
 #'     group_by(topic) %>%
 #'     top_n(10, beta) %>%
@@ -65,12 +69,9 @@
 #'
 #'   # tidy the document-topic combinations, with optional document names
 #'   td_gamma <- tidy(topic_model, matrix = "gamma",
-#'                    document_names = rownames(inaug))
+#'                    document_names = rownames(austen_sparse))
 #'   td_gamma
 #'
-#'   # find the assignments of each word in each document
-#'   assignments <- augment(topic_model, inaug)
-#'   assignments
 #' }
 #' }
 #'
