@@ -128,6 +128,7 @@ augment.STM <- function(x, data, ...) {
       (all(c("document", "term") %in% colnames(data)))) {
     data$value <- 1
     mat <- cast_dfm(data, document, term, value)
+    data$value <- NULL
   } else if (inherits(data, "dfm")) {
     mat <- data
     data <- tidy(mat)
