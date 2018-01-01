@@ -4,9 +4,7 @@ sudo: false
 warnings_are_errors: true
 
 r:
-- oldrel
 - release
-- devel
 
 addons:
   apt:
