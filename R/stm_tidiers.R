@@ -3,7 +3,7 @@
 #' Tidy topic models fit by the stm package. The arguments and return values
 #' are similar to \code{\link{lda_tidiers}}.
 #'
-#' @param x An STM fitted model object, created by \code{\link[stm]{stm}}.
+#' @param x An STM fitted model object from the stm package.
 #' @param matrix Whether to tidy the beta (per-term-per-topic, default)
 #' or gamma/theta (per-document-per-topic) matrix. The stm package calls this
 #' the theta matrix, but other topic modeling packages call this gamma.

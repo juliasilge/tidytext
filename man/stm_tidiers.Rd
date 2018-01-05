@@ -15,7 +15,7 @@
 \method{glance}{STM}(x, ...)
 }
 \arguments{
-\item{x}{An STM fitted model object, created by \code{\link[stm]{stm}}.}
+\item{x}{An STM fitted model object from the stm package.}
 
 \item{matrix}{Whether to tidy the beta (per-term-per-topic, default)
 or gamma/theta (per-document-per-topic) matrix. The stm package calls this
