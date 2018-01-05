@@ -29,14 +29,14 @@ per-document-per-topic tidying}
 \item{...}{Extra arguments, not used}
 
 \item{data}{For \code{augment}, the data given to the stm function, either
-as a \code{\link[quanteda]{dfm}} or as a tidied table with "document" and
+as a \code{dfm} from quanteda or as a tidied table with "document" and
 "term" columns}
 }
 \value{
 \code{tidy} returns a tidied version of either the beta or gamma matrix.
 
 \code{augment} must be provided a data argument, either a
-\code{\link[quanteda]{dfm}} or a table containing one row per original
+\code{dfm} from quanteda or a table containing one row per original
 document-term pair, such as is returned by \link{tdm_tidiers}, containing
 columns \code{document} and \code{term}. It returns that same data as a table
 with an additional column \code{.topic} with the topic assignment for that
@@ -96,7 +96,7 @@ if (requireNamespace("stm", quietly = TRUE)) {
 
 }
 \seealso{
-\code{\link{lda_tidiers}}, \code{\link[stm]{stm}}
+\code{\link{lda_tidiers}}
 
 If \code{matrix == "beta"} (default), returns a table with one row per topic and term,
 with columns

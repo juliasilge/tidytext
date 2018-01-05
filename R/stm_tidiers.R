@@ -8,7 +8,7 @@
 #' or gamma/theta (per-document-per-topic) matrix. The stm package calls this
 #' the theta matrix, but other topic modeling packages call this gamma.
 #' @param data For \code{augment}, the data given to the stm function, either
-#' as a \code{\link[quanteda]{dfm}} or as a tidied table with "document" and
+#' as a \code{dfm} from quanteda or as a tidied table with "document" and
 #' "term" columns
 #' @param log Whether beta/gamma/theta should be on a log scale, default FALSE
 #' @param document_names Optional vector of document names for use with
@@ -17,7 +17,7 @@
 #'
 #' @return \code{tidy} returns a tidied version of either the beta or gamma matrix.
 #'
-#' @seealso \code{\link{lda_tidiers}}, \code{\link[stm]{stm}}
+#' @seealso \code{\link{lda_tidiers}}
 #'
 #' If \code{matrix == "beta"} (default), returns a table with one row per topic and term,
 #' with columns
@@ -109,7 +109,7 @@ tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE, docum
 #' @rdname stm_tidiers
 #'
 #' @return \code{augment} must be provided a data argument, either a
-#' \code{\link[quanteda]{dfm}} or a table containing one row per original
+#' \code{dfm} from quanteda or a table containing one row per original
 #' document-term pair, such as is returned by \link{tdm_tidiers}, containing
 #' columns \code{document} and \code{term}. It returns that same data as a table
 #' with an additional column \code{.topic} with the topic assignment for that
