@@ -11,7 +11,8 @@ vignette: >
 
 ```{r echo = FALSE}
 library(knitr)
-opts_chunk$set(message = FALSE, warning = FALSE)
+opts_chunk$set(message = FALSE, warning = FALSE,
+               eval = requireNamespace("tm", quietly = TRUE))
 options(width = 100, dplyr.width = 150)
 library(ggplot2)
 theme_set(theme_bw())

@@ -11,7 +11,8 @@ vignette: >
 
 ```{r setup, echo=FALSE}
 library(knitr)
-opts_chunk$set(warning = FALSE, message = FALSE)
+opts_chunk$set(warning = FALSE, message = FALSE,
+               eval = requireNamespace("wordcloud", quietly = TRUE))
 library(ggplot2)
 theme_set(theme_light())
 ```
@@ -129,6 +130,33 @@ bing_word_counts %>%
 ```
 
 This lets us spot an anomaly in the sentiment analysis; the word "miss" is coded as negative but it is used as a title for young, unmarried women in Jane Austen's works. If it were appropriate for our purposes, we could easily add "miss" to a custom stop-words list using `bind_rows`.
+
+### Wordclouds
+
+We've seen that this tidy text mining approach works well with ggplot2, but having our data in a tidy format is useful for other plots as well.
+
+For example, consider the wordcloud package. Let's look at the most common words in Jane Austen's works as a whole again.
+
+```{r, fig.height=6, fig.width=6}
+library(wordcloud)
+
+cleaned_books %>%
+  count(word) %>%
+  with(wordcloud(word, n, max.words = 100))
+```
+
+In other functions, such as `comparison.cloud`, you may need to turn it into a matrix with reshape2's `acast`. Let's do the sentiment analysis to tag positive and negative words using an inner join, then find the most common positive and negative words. Until the step where we need to send the data to `comparison.cloud`, this can all be done with joins, piping, and dplyr because our data is in tidy format.
+
+```{r wordcloud, fig.height=5, fig.width=5}
+library(reshape2)
+
+tidy_books %>%
+  inner_join(bing) %>%
+  count(word, sentiment, sort = TRUE) %>%
+  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
+  comparison.cloud(colors = c("#F8766D", "#00BFC4"),
+                   max.words = 100)
+```
 
 ### Looking at units beyond just words
 
