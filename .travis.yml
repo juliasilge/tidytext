@@ -4,8 +4,12 @@ sudo: false
 warnings_are_errors: true
 
 r:
-- oldrel
 - release
+
+matrix:
+  include:
+  - r: oldrel
+    env: _R_CHECK_FORCE_SUGGESTS_=false
 
 addons:
   apt:
