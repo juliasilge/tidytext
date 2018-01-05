@@ -2,7 +2,7 @@ context("LDA tidiers")
 
 suppressPackageStartupMessages(library(dplyr))
 
-if(require("topicmodels", quietly = TRUE) || TRUE) {
+if(require("topicmodels", quietly = TRUE)) {
 
   data(AssociatedPress)
   ap <- AssociatedPress[1:100, ]
