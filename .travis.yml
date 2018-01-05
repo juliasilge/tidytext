@@ -16,6 +16,7 @@ addons:
 r_packages:
   - covr
   - data.table # so data.table tests will get checked
+  - wordcloud  # for vignette
 
 after_success:
   - Rscript -e 'covr::codecov(coverage = covr::package_coverage(line_exclusions = list("R/compat_lazyeval.R")))'
