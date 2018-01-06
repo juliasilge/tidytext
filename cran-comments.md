@@ -1,12 +1,12 @@
 ## Release Summary
 
-This is the sixth CRAN release of tidytext. In this release, I updated tidiers and casters to align with the quanteda v1.0 API and fixed bugs related to consistency in input/output classes and `NA` value handling.
+This is the 7th CRAN release of tidytext. In this release, I updated various vignettes/docs/tests so tidytext can build on R-oldrel, changed how list columns are handled, and added access to datasets of words that affect sentiment analysis as well as stop words for various languages.
 
 ## Test environments
-* Local OS X install, R 3.4.2
-* Ubuntu 14.04 (on Travis-CI), R 3.4.2
+
+* Local OS X install, R 3.4.3
+* Ubuntu 14.04 (on Travis-CI), R 3.4.3 and R 3.3.3
 * Win-builder (devel and release)
-* r-hub using `check_on_windows()`
 
 ## R CMD check results
 

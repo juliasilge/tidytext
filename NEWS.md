@@ -1,9 +1,9 @@
-# tidytext 0.1.6 [WIP]
+# tidytext 0.1.6
 
 * `unnest_tokens` can now unnest a data frame with a list column (which formerly threw the error `unnest_tokens expects all columns of input to be atomic vectors (not lists)`). The unnested result repeats the objects within each list. (It's still not possible when `collapse = TRUE`, in which tokens can span multiple lines).
 * Add `get_tidy_stopwords()` to obtain stopword lexicons in multiple languages in a tidy format.
 * Add a dataset `nma_words` of negators, modals, and adverbs that affect sentiment analysis (#55).
-* Removed vignette on tidying/casting to document-term matrices, etc so package can stay available for older versions of R. (This material is still available in [our book](https://www.tidytextmining.com/).)
+* Updated various vignettes/docs/tests so package can build on R-oldrel.
 
 # tidytext 0.1.5
 
