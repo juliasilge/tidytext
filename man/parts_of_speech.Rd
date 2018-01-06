@@ -11,7 +11,7 @@
             "Noun", "Adverb", "Adjective"}
 }}
 \source{
-\url{http://icon.shef.ac.uk/Moby/mpos.html}
+\url{https://archive.org/details/mobypartofspeech03203gut}
 }
 \usage{
 parts_of_speech
