@@ -138,31 +138,31 @@ column (if <code>lexicon</code> is not "afinn") or a numeric <code>score</code> 
     <pre class="examples"><div class='input'>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 <span class='fu'>get_sentiments</span>(<span class='st'>"afinn"</span>)</div><div class='output co'>#&gt; # A tibble: 2,476 x 2
-#&gt;          word score
-#&gt;         &lt;chr&gt; &lt;int&gt;
-#&gt;  1    abandon    -2
-#&gt;  2  abandoned    -2
-#&gt;  3   abandons    -2
-#&gt;  4   abducted    -2
-#&gt;  5  abduction    -2
+#&gt;    word       score
+#&gt;    &lt;chr&gt;      &lt;int&gt;
+#&gt;  1 abandon       -2
+#&gt;  2 abandoned     -2
+#&gt;  3 abandons      -2
+#&gt;  4 abducted      -2
+#&gt;  5 abduction     -2
 #&gt;  6 abductions    -2
-#&gt;  7      abhor    -3
-#&gt;  8   abhorred    -3
-#&gt;  9  abhorrent    -3
-#&gt; 10     abhors    -3
+#&gt;  7 abhor         -3
+#&gt;  8 abhorred      -3
+#&gt;  9 abhorrent     -3
+#&gt; 10 abhors        -3
 #&gt; # ... with 2,466 more rows</div><div class='input'><span class='fu'>get_sentiments</span>(<span class='st'>"bing"</span>)</div><div class='output co'>#&gt; # A tibble: 6,788 x 2
-#&gt;           word sentiment
-#&gt;          &lt;chr&gt;     &lt;chr&gt;
-#&gt;  1     2-faced  negative
-#&gt;  2     2-faces  negative
-#&gt;  3          a+  positive
-#&gt;  4    abnormal  negative
-#&gt;  5     abolish  negative
-#&gt;  6  abominable  negative
-#&gt;  7  abominably  negative
-#&gt;  8   abominate  negative
-#&gt;  9 abomination  negative
-#&gt; 10       abort  negative
+#&gt;    word        sentiment
+#&gt;    &lt;chr&gt;       &lt;chr&gt;    
+#&gt;  1 2-faced     negative 
+#&gt;  2 2-faces     negative 
+#&gt;  3 a+          positive 
+#&gt;  4 abnormal    negative 
+#&gt;  5 abolish     negative 
+#&gt;  6 abominable  negative 
+#&gt;  7 abominably  negative 
+#&gt;  8 abominate   negative 
+#&gt;  9 abomination negative 
+#&gt; 10 abort       negative 
 #&gt; # ... with 6,778 more rows</div><div class='input'>
 </div></pre>
   </div>

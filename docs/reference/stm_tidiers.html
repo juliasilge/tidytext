@@ -127,7 +127,7 @@ are similar to <code><a href='lda_tidiers.html'>lda_tidiers</a></code>.</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>An STM fitted model object, created by <code><a href='http://www.rdocumentation.org/packages/stm/topics/stm'>stm</a></code>.</p></td>
+      <td><p>An STM fitted model object from the stm package.</p></td>
     </tr>
     <tr>
       <th>matrix</th>
@@ -151,7 +151,7 @@ per-document-per-topic tidying</p></td>
     <tr>
       <th>data</th>
       <td><p>For <code>augment</code>, the data given to the stm function, either
-as a <code><a href='http://www.rdocumentation.org/packages/quanteda/topics/dfm'>dfm</a></code> or as a tidied table with "document" and
+as a <code>dfm</code> from quanteda or as a tidied table with "document" and
 "term" columns</p></td>
     </tr>
     </table>
@@ -161,7 +161,7 @@ as a <code><a href='http://www.rdocumentation.org/packages/quanteda/topics/dfm'>
     <p><code>tidy</code> returns a tidied version of either the beta or gamma matrix.
 
 <code>augment</code> must be provided a data argument, either a
-<code><a href='http://www.rdocumentation.org/packages/quanteda/topics/dfm'>dfm</a></code> or a table containing one row per original
+<code>dfm</code> from quanteda or a table containing one row per original
 document-term pair, such as is returned by <a href='tdm_tidiers.html'>tdm_tidiers</a>, containing
 columns <code>document</code> and <code>term</code>. It returns that same data as a table
 with an additional column <code>.topic</code> with the topic assignment for that
@@ -179,7 +179,7 @@ document-term combination.
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p><code><a href='lda_tidiers.html'>lda_tidiers</a></code>, <code><a href='http://www.rdocumentation.org/packages/stm/topics/stm'>stm</a></code></p>
+    <p><code><a href='lda_tidiers.html'>lda_tidiers</a></code></p>
 <p>If <code>matrix == "beta"</code> (default), returns a table with one row per topic and term,
 with columns</p><dl class='dl-horizontal'>
   <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
@@ -199,20 +199,24 @@ with columns</p><dl class='dl-horizontal'>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 </div><span class='co'># NOT RUN {</span>
-<span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"stm"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>) <span class='kw'>&amp;&amp;</span> <span class='fu'>requireNamespace</span>(<span class='st'>"quanteda"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
+<span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"stm"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
   <span class='fu'>library</span>(<span class='no'>dplyr</span>)
   <span class='fu'>library</span>(<span class='no'>ggplot2</span>)
   <span class='fu'>library</span>(<span class='no'>stm</span>)
-  <span class='fu'>library</span>(<span class='no'>quanteda</span>)
+  <span class='fu'>library</span>(<span class='no'>janeaustenr</span>)
 
-  <span class='no'>inaug</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/quanteda/topics/dfm'>dfm</a></span>(<span class='no'>data_corpus_inaugural</span>, <span class='kw'>remove</span> <span class='kw'>=</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/quanteda/topics/stopwords'>stopwords</a></span>(<span class='st'>"english"</span>), <span class='kw'>remove_punct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
-  <span class='no'>topic_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/stm/topics/stm'>stm</a></span>(<span class='no'>inaug</span>, <span class='kw'>K</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>init.type</span> <span class='kw'>=</span> <span class='st'>"Spectral"</span>)
+  <span class='no'>austen_sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/janeaustenr/topics/austen_books'>austen_books</a></span>() <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='unnest_tokens.html'>unnest_tokens</a></span>(<span class='no'>word</span>, <span class='no'>text</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='http://dplyr.tidyverse.org/reference/join.html'>anti_join</a></span>(<span class='no'>stop_words</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='http://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>book</span>, <span class='no'>word</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='cast_sparse.html'>cast_sparse</a></span>(<span class='no'>book</span>, <span class='no'>word</span>, <span class='no'>n</span>)
+  <span class='no'>topic_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/stm/topics/stm'>stm</a></span>(<span class='no'>austen_sparse</span>, <span class='kw'>K</span> <span class='kw'>=</span> <span class='fl'>12</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>init.type</span> <span class='kw'>=</span> <span class='st'>"Spectral"</span>)
 
   <span class='co'># tidy the word-topic combinations</span>
   <span class='no'>td_beta</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>topic_model</span>)
   <span class='no'>td_beta</span>
 
-  <span class='co'># Examine the three topics</span>
+  <span class='co'># Examine the topics</span>
   <span class='no'>td_beta</span> <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>topic</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='http://dplyr.tidyverse.org/reference/top_n.html'>top_n</a></span>(<span class='fl'>10</span>, <span class='no'>beta</span>) <span class='kw'>%&gt;%</span>
@@ -224,12 +228,9 @@ with columns</p><dl class='dl-horizontal'>
 
   <span class='co'># tidy the document-topic combinations, with optional document names</span>
   <span class='no'>td_gamma</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>topic_model</span>, <span class='kw'>matrix</span> <span class='kw'>=</span> <span class='st'>"gamma"</span>,
-                   <span class='kw'>document_names</span> <span class='kw'>=</span> <span class='fu'>rownames</span>(<span class='no'>inaug</span>))
+                   <span class='kw'>document_names</span> <span class='kw'>=</span> <span class='fu'>rownames</span>(<span class='no'>austen_sparse</span>))
   <span class='no'>td_gamma</span>
 
-  <span class='co'># find the assignments of each word in each document</span>
-  <span class='no'>assignments</span> <span class='kw'>&lt;-</span> <span class='fu'>augment</span>(<span class='no'>topic_model</span>, <span class='no'>inaug</span>)
-  <span class='no'>assignments</span>
 }
 <span class='co'># }</span><div class='input'>
 </div></pre>

@@ -152,8 +152,12 @@ for this to work.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>library</span>(<span class='no'>janeaustenr</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>janeaustenr</span>)
 
 <span class='no'>book_words</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://www.rdocumentation.org/packages/janeaustenr/topics/austen_books'>austen_books</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='unnest_tokens.html'>unnest_tokens</a></span>(<span class='no'>word</span>, <span class='no'>text</span>) <span class='kw'>%&gt;%</span>
@@ -161,35 +165,35 @@ for this to work.</p>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span>()
 
 <span class='no'>book_words</span></div><div class='output co'>#&gt; # A tibble: 40,379 x 3
-#&gt;                 book  word     n
-#&gt;               &lt;fctr&gt; &lt;chr&gt; &lt;int&gt;
-#&gt;  1    Mansfield Park   the  6206
-#&gt;  2    Mansfield Park    to  5475
-#&gt;  3    Mansfield Park   and  5438
-#&gt;  4              Emma    to  5239
-#&gt;  5              Emma   the  5201
-#&gt;  6              Emma   and  4896
-#&gt;  7    Mansfield Park    of  4778
-#&gt;  8 Pride &amp; Prejudice   the  4331
-#&gt;  9              Emma    of  4291
-#&gt; 10 Pride &amp; Prejudice    to  4162
+#&gt;    book              word      n
+#&gt;    &lt;fctr&gt;            &lt;chr&gt; &lt;int&gt;
+#&gt;  1 Mansfield Park    the    6206
+#&gt;  2 Mansfield Park    to     5475
+#&gt;  3 Mansfield Park    and    5438
+#&gt;  4 Emma              to     5239
+#&gt;  5 Emma              the    5201
+#&gt;  6 Emma              and    4896
+#&gt;  7 Mansfield Park    of     4778
+#&gt;  8 Pride &amp; Prejudice the    4331
+#&gt;  9 Emma              of     4291
+#&gt; 10 Pride &amp; Prejudice to     4162
 #&gt; # ... with 40,369 more rows</div><div class='input'>
 <span class='co'># find the words most distinctive to each document</span>
 <span class='no'>book_words</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>bind_tf_idf</span>(<span class='no'>word</span>, <span class='no'>book</span>, <span class='no'>n</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='fu'><a href='http://dplyr.tidyverse.org/reference/desc.html'>desc</a></span>(<span class='no'>tf_idf</span>))</div><div class='output co'>#&gt; # A tibble: 40,379 x 6
-#&gt;                   book      word     n          tf      idf      tf_idf
-#&gt;                 &lt;fctr&gt;     &lt;chr&gt; &lt;int&gt;       &lt;dbl&gt;    &lt;dbl&gt;       &lt;dbl&gt;
-#&gt;  1 Sense &amp; Sensibility    elinor   623 0.005193528 1.791759 0.009305552
-#&gt;  2 Sense &amp; Sensibility  marianne   492 0.004101470 1.791759 0.007348847
-#&gt;  3      Mansfield Park  crawford   493 0.003072417 1.791759 0.005505032
-#&gt;  4   Pride &amp; Prejudice     darcy   373 0.003052273 1.791759 0.005468939
-#&gt;  5          Persuasion    elliot   254 0.003036171 1.791759 0.005440088
-#&gt;  6                Emma      emma   786 0.004882109 1.098612 0.005363545
-#&gt;  7    Northanger Abbey    tilney   196 0.002519928 1.791759 0.004515105
-#&gt;  8                Emma    weston   389 0.002416209 1.791759 0.004329266
-#&gt;  9   Pride &amp; Prejudice    bennet   294 0.002405813 1.791759 0.004310639
-#&gt; 10          Persuasion wentworth   191 0.002283105 1.791759 0.004090775
+#&gt;    book                word          n      tf   idf  tf_idf
+#&gt;    &lt;fctr&gt;              &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;  1 Sense &amp; Sensibility elinor      623 0.00519  1.79 0.00931
+#&gt;  2 Sense &amp; Sensibility marianne    492 0.00410  1.79 0.00735
+#&gt;  3 Mansfield Park      crawford    493 0.00307  1.79 0.00551
+#&gt;  4 Pride &amp; Prejudice   darcy       373 0.00305  1.79 0.00547
+#&gt;  5 Persuasion          elliot      254 0.00304  1.79 0.00544
+#&gt;  6 Emma                emma        786 0.00488  1.10 0.00536
+#&gt;  7 Northanger Abbey    tilney      196 0.00252  1.79 0.00452
+#&gt;  8 Emma                weston      389 0.00242  1.79 0.00433
+#&gt;  9 Pride &amp; Prejudice   bennet      294 0.00241  1.79 0.00431
+#&gt; 10 Persuasion          wentworth   191 0.00228  1.79 0.00409
 #&gt; # ... with 40,369 more rows</div><div class='input'>
 </div></pre>
   </div>

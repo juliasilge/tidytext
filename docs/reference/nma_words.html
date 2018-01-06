@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tidy DocumentTermMatrix, TermDocumentMatrix, and related objects
-from the tm package — tdm_tidiers • tidytext</title>
+<title>English negators, modals, and adverbs — nma_words • tidytext</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -105,84 +104,38 @@ from the tm package — tdm_tidiers • tidytext</title>
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tidy DocumentTermMatrix, TermDocumentMatrix, and related objects
-from the tm package</h1>
+    <h1>English negators, modals, and adverbs</h1>
     </div>
 
     
-    <p>Tidy a DocumentTermMatrix or TermDocumentMatrix into
-a three-column data frame: <code>term{}</code>, and value (with
-zeros missing), with one-row-per-term-per-document.</p>
+    <p>English negators, modals, and adverbs, as a data frame. A few of these
+entries are two-word phrases instead of single words.</p>
     
 
-    <pre class="usage"><span class='co'># S3 method for DocumentTermMatrix</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+    <pre class="usage"><span class='no'>nma_words</span></pre>
+        
+    <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-<span class='co'># S3 method for TermDocumentMatrix</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for dfm</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for dfmSparse</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for simple_triplet_matrix</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='kw'>row_names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col_names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>)</pre>
+    <p>A data frame with 44 rows and 2 variables:</p><dl class='dl-horizontal'>
+ <dt>word</dt><dd><p>An English word or bigram</p></dd>
+ <dt>modifier</dt><dd><p>The modifier type for <code>word</code>, either "negator",
+ "modal", or "adverb"</p></dd>
+ </dl>
     
-    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
-    <table class="ref-arguments">
-    <colgroup><col class="name" /><col class="desc" /></colgroup>
-    <tr>
-      <th>x</th>
-      <td><p>A DocumentTermMatrix or TermDocumentMatrix object</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>Extra arguments, not used</p></td>
-    </tr>
-    <tr>
-      <th>row_names</th>
-      <td><p>Specify row names</p></td>
-    </tr>
-    <tr>
-      <th>col_names</th>
-      <td><p>Specify column names</p></td>
-    </tr>
-    </table>
+    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+
+    <p><a href='http://saifmohammad.com/WebPages/SCL.html#NMA'>http://saifmohammad.com/WebPages/SCL.html#NMA</a></p>
     
 
-    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"topicmodels"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-  <span class='fu'>data</span>(<span class='st'>"AssociatedPress"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"topicmodels"</span>)
-  <span class='no'>AssociatedPress</span>
-
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>AssociatedPress</span>)
-}</div><div class='output co'>#&gt; # A tibble: 302,031 x 3
-#&gt;    document term       count
-#&gt;       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
-#&gt;  1        1 adding      1.00
-#&gt;  2        1 adult       2.00
-#&gt;  3        1 ago         1.00
-#&gt;  4        1 alcohol     1.00
-#&gt;  5        1 allegedly   1.00
-#&gt;  6        1 allen       1.00
-#&gt;  7        1 apparently  2.00
-#&gt;  8        1 appeared    1.00
-#&gt;  9        1 arrested    1.00
-#&gt; 10        1 assault     1.00
-#&gt; # ... with 302,021 more rows</div><div class='input'>
-</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-            
-      <li><a href="#examples">Examples</a></li>
-    </ul>
+      
+      <li><a href="#format">Format</a></li>
+
+      <li><a href="#source">Source</a></li>
+          </ul>
 
   </div>
 </div>

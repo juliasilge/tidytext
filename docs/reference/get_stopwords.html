@@ -6,8 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Tidy DocumentTermMatrix, TermDocumentMatrix, and related objects
-from the tm package — tdm_tidiers • tidytext</title>
+<title>Get a tidy data frame of a single stopword lexicon — get_stopwords • tidytext</title>
 
 <!-- jquery -->
 <script src="https://code.jquery.com/jquery-3.1.0.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
@@ -105,82 +104,106 @@ from the tm package — tdm_tidiers • tidytext</title>
       <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Tidy DocumentTermMatrix, TermDocumentMatrix, and related objects
-from the tm package</h1>
+    <h1>Get a tidy data frame of a single stopword lexicon</h1>
     </div>
 
     
-    <p>Tidy a DocumentTermMatrix or TermDocumentMatrix into
-a three-column data frame: <code>term{}</code>, and value (with
-zeros missing), with one-row-per-term-per-document.</p>
+    <p>Get a specific stop word lexicon via the <span class="pkg">stopwords</span> packages's
+<a href='http://www.rdocumentation.org/packages/stopwords/topics/stopwords'>stopwords</a> function, in a tidy format with one word per row.</p>
     
 
-    <pre class="usage"><span class='co'># S3 method for DocumentTermMatrix</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for TermDocumentMatrix</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for dfm</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for dfmSparse</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for simple_triplet_matrix</span>
-<span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='kw'>row_names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>col_names</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>get_stopwords</span>(<span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"en"</span>, <span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"snowball"</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a> Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>A DocumentTermMatrix or TermDocumentMatrix object</p></td>
+      <th>language</th>
+      <td><p>The language of the stopword lexicon specified as a
+two-letter ISO code, such as <code>"es"</code>, <code>"de"</code>, or <code>"fr"</code>.
+Default is <code>"en"</code> for English. Use
+<a href='http://www.rdocumentation.org/packages/stopwords/topics/stopwords_getlanguages'>stopwords_getlanguages</a> from <span class="pkg">stopwords</span> to see available
+languages.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Extra arguments, not used</p></td>
-    </tr>
-    <tr>
-      <th>row_names</th>
-      <td><p>Specify row names</p></td>
-    </tr>
-    <tr>
-      <th>col_names</th>
-      <td><p>Specify column names</p></td>
+      <th>source</th>
+      <td><p>The source of the stopword lexicon specified. Default is
+<code>"snowball"</code>. Use <a href='http://www.rdocumentation.org/packages/stopwords/topics/stopwords_getsources'>stopwords_getsources</a> from
+<span class="pkg">stopwords</span> to see available sources.</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>A tibble with two columns, <code>word</code> and <code>lexicon</code>. The
+parameter <code>lexicon</code> is "quanteda" in this case.</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fu'>requireNamespace</span>(<span class='st'>"topicmodels"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-  <span class='fu'>data</span>(<span class='st'>"AssociatedPress"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"topicmodels"</span>)
-  <span class='no'>AssociatedPress</span>
-
-  <span class='fu'><a href='http://www.rdocumentation.org/packages/broom/topics/tidy'>tidy</a></span>(<span class='no'>AssociatedPress</span>)
-}</div><div class='output co'>#&gt; # A tibble: 302,031 x 3
-#&gt;    document term       count
-#&gt;       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
-#&gt;  1        1 adding      1.00
-#&gt;  2        1 adult       2.00
-#&gt;  3        1 ago         1.00
-#&gt;  4        1 alcohol     1.00
-#&gt;  5        1 allegedly   1.00
-#&gt;  6        1 allen       1.00
-#&gt;  7        1 apparently  2.00
-#&gt;  8        1 appeared    1.00
-#&gt;  9        1 arrested    1.00
-#&gt; 10        1 assault     1.00
-#&gt; # ... with 302,021 more rows</div><div class='input'>
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)
+<span class='fu'>get_stopwords</span>()</div><div class='output co'>#&gt; # A tibble: 175 x 2
+#&gt;    word      lexicon 
+#&gt;    &lt;chr&gt;     &lt;chr&gt;   
+#&gt;  1 i         snowball
+#&gt;  2 me        snowball
+#&gt;  3 my        snowball
+#&gt;  4 myself    snowball
+#&gt;  5 we        snowball
+#&gt;  6 our       snowball
+#&gt;  7 ours      snowball
+#&gt;  8 ourselves snowball
+#&gt;  9 you       snowball
+#&gt; 10 your      snowball
+#&gt; # ... with 165 more rows</div><div class='input'><span class='fu'>get_stopwords</span>(<span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"smart"</span>)</div><div class='output co'>#&gt; # A tibble: 571 x 2
+#&gt;    word        lexicon
+#&gt;    &lt;chr&gt;       &lt;chr&gt;  
+#&gt;  1 a           smart  
+#&gt;  2 a's         smart  
+#&gt;  3 able        smart  
+#&gt;  4 about       smart  
+#&gt;  5 above       smart  
+#&gt;  6 according   smart  
+#&gt;  7 accordingly smart  
+#&gt;  8 across      smart  
+#&gt;  9 actually    smart  
+#&gt; 10 after       smart  
+#&gt; # ... with 561 more rows</div><div class='input'><span class='fu'>get_stopwords</span>(<span class='st'>"es"</span>, <span class='st'>"snowball"</span>)</div><div class='output co'>#&gt; # A tibble: 308 x 2
+#&gt;    word  lexicon 
+#&gt;    &lt;chr&gt; &lt;chr&gt;   
+#&gt;  1 de    snowball
+#&gt;  2 la    snowball
+#&gt;  3 que   snowball
+#&gt;  4 el    snowball
+#&gt;  5 en    snowball
+#&gt;  6 y     snowball
+#&gt;  7 a     snowball
+#&gt;  8 los   snowball
+#&gt;  9 del   snowball
+#&gt; 10 se    snowball
+#&gt; # ... with 298 more rows</div><div class='input'><span class='fu'>get_stopwords</span>(<span class='st'>"ru"</span>, <span class='st'>"snowball"</span>)</div><div class='output co'>#&gt; # A tibble: 159 x 2
+#&gt;    word  lexicon 
+#&gt;    &lt;chr&gt; &lt;chr&gt;   
+#&gt;  1 и     snowball
+#&gt;  2 в     snowball
+#&gt;  3 во    snowball
+#&gt;  4 не    snowball
+#&gt;  5 что   snowball
+#&gt;  6 он    snowball
+#&gt;  7 на    snowball
+#&gt;  8 я     snowball
+#&gt;  9 с     snowball
+#&gt; 10 со    snowball
+#&gt; # ... with 149 more rows</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-            
+      
+      <li><a href="#value">Value</a></li>
+      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

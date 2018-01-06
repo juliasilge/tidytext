@@ -124,7 +124,7 @@ Words with non-ASCII characters and items with a space have been removed.</p>
     
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
-    <p><a href='http://icon.shef.ac.uk/Moby/mpos.html'>http://icon.shef.ac.uk/Moby/mpos.html</a></p>
+    <p><a href='https://archive.org/details/mobypartofspeech03203gut'>https://archive.org/details/mobypartofspeech03203gut</a></p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
@@ -132,37 +132,37 @@ Words with non-ASCII characters and items with a space have been removed.</p>
 <span class='fu'>library</span>(<span class='no'>dplyr</span>)
 
 <span class='no'>parts_of_speech</span></div><div class='output co'>#&gt; # A tibble: 208,259 x 2
-#&gt;       word       pos
-#&gt;      &lt;chr&gt;     &lt;chr&gt;
-#&gt;  1     3-d Adjective
-#&gt;  2     3-d      Noun
-#&gt;  3     4-f      Noun
-#&gt;  4  4-h'er      Noun
-#&gt;  5     4-h Adjective
-#&gt;  6      a' Adjective
-#&gt;  7     a-1      Noun
-#&gt;  8  a-axis      Noun
-#&gt;  9  a-bomb      Noun
-#&gt; 10 a-frame      Noun
+#&gt;    word    pos      
+#&gt;    &lt;chr&gt;   &lt;chr&gt;    
+#&gt;  1 3-d     Adjective
+#&gt;  2 3-d     Noun     
+#&gt;  3 4-f     Noun     
+#&gt;  4 4-h'er  Noun     
+#&gt;  5 4-h     Adjective
+#&gt;  6 a'      Adjective
+#&gt;  7 a-1     Noun     
+#&gt;  8 a-axis  Noun     
+#&gt;  9 a-bomb  Noun     
+#&gt; 10 a-frame Noun     
 #&gt; # ... with 208,249 more rows</div><div class='input'>
 <span class='no'>parts_of_speech</span> <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>pos</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 14 x 2
-#&gt;                      pos      n
-#&gt;                    &lt;chr&gt;  &lt;int&gt;
-#&gt;  1                  Noun 104542
-#&gt;  2             Adjective  47719
-#&gt;  3     Verb (transitive)  15723
-#&gt;  4                Adverb  13234
+#&gt;    pos                        n
+#&gt;    &lt;chr&gt;                  &lt;int&gt;
+#&gt;  1 Noun                  104542
+#&gt;  2 Adjective              47719
+#&gt;  3 Verb (transitive)      15723
+#&gt;  4 Adverb                 13234
 #&gt;  5 Verb (usu participle)  11402
-#&gt;  6                Plural   7764
-#&gt;  7   Verb (intransitive)   4626
-#&gt;  8                  &lt;NA&gt;   2274
-#&gt;  9          Interjection    395
-#&gt; 10           Preposition    159
-#&gt; 11           Noun Phrase    115
-#&gt; 12               Pronoun    113
-#&gt; 13      Definite Article    103
-#&gt; 14           Conjunction     90</div><div class='input'>
+#&gt;  6 Plural                  7764
+#&gt;  7 Verb (intransitive)     4626
+#&gt;  8 &lt;NA&gt;                    2274
+#&gt;  9 Interjection             395
+#&gt; 10 Preposition              159
+#&gt; 11 Noun Phrase              115
+#&gt; 12 Pronoun                  113
+#&gt; 13 Definite Article         103
+#&gt; 14 Conjunction               90</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">

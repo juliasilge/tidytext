@@ -186,121 +186,121 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
 <span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
-#&gt;                                                                        txt
-#&gt;                                                                      &lt;chr&gt;
-#&gt;  1                                                     PRIDE AND PREJUDICE
-#&gt;  2                                                                        
-#&gt;  3                                                          By Jane Austen
-#&gt;  4                                                                        
-#&gt;  5                                                                        
-#&gt;  6                                                                        
-#&gt;  7                                                               Chapter 1
-#&gt;  8                                                                        
-#&gt;  9                                                                        
+#&gt;    txt                                                                    
+#&gt;    &lt;chr&gt;                                                                  
+#&gt;  1 PRIDE AND PREJUDICE                                                    
+#&gt;  2 ""                                                                     
+#&gt;  3 By Jane Austen                                                         
+#&gt;  4 ""                                                                     
+#&gt;  5 ""                                                                     
+#&gt;  6 ""                                                                     
+#&gt;  7 Chapter 1                                                              
+#&gt;  8 ""                                                                     
+#&gt;  9 ""                                                                     
 #&gt; 10 It is a truth universally acknowledged, that a single man in possession
 #&gt; # ... with 13,020 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 122,204 x 1
-#&gt;         word
-#&gt;        &lt;chr&gt;
-#&gt;  1     pride
-#&gt;  2       and
+#&gt;    word     
+#&gt;    &lt;chr&gt;    
+#&gt;  1 pride    
+#&gt;  2 and      
 #&gt;  3 prejudice
-#&gt;  4        by
-#&gt;  5      jane
-#&gt;  6    austen
-#&gt;  7   chapter
-#&gt;  8         1
-#&gt;  9        it
-#&gt; 10        is
+#&gt;  4 by       
+#&gt;  5 jane     
+#&gt;  6 austen   
+#&gt;  7 chapter  
+#&gt;  8 1        
+#&gt;  9 it       
+#&gt; 10 is       
 #&gt; # ... with 122,194 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>sentence</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"sentences"</span>)</div><div class='output co'>#&gt; # A tibble: 7,066 x 1
-#&gt;                                                                            sentence
-#&gt;                                                                               &lt;chr&gt;
-#&gt;  1 pride and prejudice  by jane austen    chapter 1   it is a truth universally ack
-#&gt;  2 however little known the feelings or views of such a man may be on his first ent
-#&gt;  3                                                                  "\"my dear mr."
-#&gt;  4 "bennet,\" said his lady to him one day, \"have you heard that netherfield park 
-#&gt;  5                                                                              mr.
-#&gt;  6                                                  bennet replied that he had not.
-#&gt;  7                                        "\"but it is,\" returned she; \"for mrs."
-#&gt;  8                       "long has just been here, and she told me all about it.\""
-#&gt;  9                                                                              mr.
-#&gt; 10                                                           bennet made no answer.
+#&gt;    sentence                                                                    
+#&gt;    &lt;chr&gt;                                                                       
+#&gt;  1 pride and prejudice  by jane austen    chapter 1   it is a truth universall…
+#&gt;  2 however little known the feelings or views of such a man may be on his firs…
+#&gt;  3 "\"my dear mr."                                                             
+#&gt;  4 "bennet,\" said his lady to him one day, \"have you heard that netherfield …
+#&gt;  5 mr.                                                                         
+#&gt;  6 bennet replied that he had not.                                             
+#&gt;  7 "\"but it is,\" returned she; \"for mrs."                                   
+#&gt;  8 "long has just been here, and she told me all about it.\""                  
+#&gt;  9 mr.                                                                         
+#&gt; 10 bennet made no answer.                                                      
 #&gt; # ... with 7,056 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>ngram</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"ngrams"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 122,203 x 1
-#&gt;             ngram
-#&gt;             &lt;chr&gt;
-#&gt;  1      pride and
-#&gt;  2  and prejudice
-#&gt;  3   prejudice by
-#&gt;  4        by jane
-#&gt;  5    jane austen
+#&gt;    ngram         
+#&gt;    &lt;chr&gt;         
+#&gt;  1 pride and     
+#&gt;  2 and prejudice 
+#&gt;  3 prejudice by  
+#&gt;  4 by jane       
+#&gt;  5 jane austen   
 #&gt;  6 austen chapter
-#&gt;  7      chapter 1
-#&gt;  8           1 it
-#&gt;  9          it is
-#&gt; 10           is a
+#&gt;  7 chapter 1     
+#&gt;  8 1 it          
+#&gt;  9 it is         
+#&gt; 10 is a          
 #&gt; # ... with 122,193 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>ngram</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"skip_ngrams"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 366,594 x 1
-#&gt;                        ngram
-#&gt;                        &lt;chr&gt;
-#&gt;  1       pride by chapter is
-#&gt;  2              and jane 1 a
+#&gt;    ngram                    
+#&gt;    &lt;chr&gt;                    
+#&gt;  1 pride by chapter is      
+#&gt;  2 and jane 1 a             
 #&gt;  3 prejudice austen it truth
 #&gt;  4 by chapter is universally
-#&gt;  5     jane 1 a acknowledged
-#&gt;  6      austen it truth that
-#&gt;  7  chapter is universally a
-#&gt;  8   1 a acknowledged single
-#&gt;  9         it truth that man
-#&gt; 10       is universally a in
+#&gt;  5 jane 1 a acknowledged    
+#&gt;  6 austen it truth that     
+#&gt;  7 chapter is universally a 
+#&gt;  8 1 a acknowledged single  
+#&gt;  9 it truth that man        
+#&gt; 10 is universally a in      
 #&gt; # ... with 366,584 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>chapter</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"regex"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Chapter [\\d]"</span>)</div><div class='output co'>#&gt; # A tibble: 62 x 1
-#&gt;                                                                             chapter
-#&gt;                                                                               &lt;chr&gt;
-#&gt;  1                                  "pride and prejudice\n\nby jane austen\n\n\n\n"
-#&gt;  2 "\n\n\nit is a truth universally acknowledged, that a single man in possession\n
-#&gt;  3 "\n\n\nmr. bennet was among the earliest of those who waited on mr. bingley. he\
-#&gt;  4 "\n\n\nnot all that mrs. bennet, however, with the assistance of her five\ndaugh
-#&gt;  5 "\n\n\nwhen jane and elizabeth were alone, the former, who had been cautious in\
-#&gt;  6 "\n\n\nwithin a short walk of longbourn lived a family with whom the bennets\nwe
-#&gt;  7 "\n\n\nthe ladies of longbourn soon waited on those of netherfield. the visit\nw
-#&gt;  8 "\n\n\nmr. bennet's property consisted almost entirely in an estate of two\nthou
-#&gt;  9 "\n\n\nat five o'clock the two ladies retired to dress, and at half-past six\nel
-#&gt; 10 "\n\n\nelizabeth passed the chief of the night in her sister's room, and in the\
+#&gt;    chapter                                                                     
+#&gt;    &lt;chr&gt;                                                                       
+#&gt;  1 "pride and prejudice\n\nby jane austen\n\n\n\n"                             
+#&gt;  2 "\n\n\nit is a truth universally acknowledged, that a single man in possess…
+#&gt;  3 "\n\n\nmr. bennet was among the earliest of those who waited on mr. bingley…
+#&gt;  4 "\n\n\nnot all that mrs. bennet, however, with the assistance of her five\n…
+#&gt;  5 "\n\n\nwhen jane and elizabeth were alone, the former, who had been cautiou…
+#&gt;  6 "\n\n\nwithin a short walk of longbourn lived a family with whom the bennet…
+#&gt;  7 "\n\n\nthe ladies of longbourn soon waited on those of netherfield. the vis…
+#&gt;  8 "\n\n\nmr. bennet's property consisted almost entirely in an estate of two\…
+#&gt;  9 "\n\n\nat five o'clock the two ladies retired to dress, and at half-past si…
+#&gt; 10 "\n\n\nelizabeth passed the chief of the night in her sister's room, and in…
 #&gt; # ... with 52 more rows</div><div class='input'>
 <span class='co'># custom function</span>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/stringr/topics/str_split'>str_split</a></span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; # A tibble: 121,567 x 1
-#&gt;         word
-#&gt;        &lt;chr&gt;
-#&gt;  1     pride
-#&gt;  2       and
+  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/stringr/topics/str_split'>str_split</a></span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; # A tibble: 124,032 x 1
+#&gt;    word     
+#&gt;    &lt;chr&gt;    
+#&gt;  1 pride    
+#&gt;  2 and      
 #&gt;  3 prejudice
-#&gt;  4        by
-#&gt;  5      jane
-#&gt;  6    austen
-#&gt;  7   chapter
-#&gt;  8         1
-#&gt;  9        it
-#&gt; 10        is
-#&gt; # ... with 121,557 more rows</div><div class='input'>
+#&gt;  4 ""       
+#&gt;  5 by       
+#&gt;  6 jane     
+#&gt;  7 austen   
+#&gt;  8 ""       
+#&gt;  9 ""       
+#&gt; 10 ""       
+#&gt; # ... with 124,022 more rows</div><div class='input'>
 <span class='co'># tokenize HTML</span>
 <span class='no'>h</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>,
                 <span class='kw'>text</span> <span class='kw'>=</span> <span class='fu'>c</span>(<span class='st'>"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class='st'>"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span>))
 
 <span class='no'>h</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>text</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 2
-#&gt;     row  word
+#&gt;     row word 
 #&gt;   &lt;int&gt; &lt;chr&gt;
-#&gt; 1     1  text
-#&gt; 2     1    is
-#&gt; 3     2  here</div><div class='input'>
+#&gt; 1     1 text 
+#&gt; 2     1 is   
+#&gt; 3     2 here </div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
