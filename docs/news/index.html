@@ -109,6 +109,17 @@
     </div>
 
     <div class="contents">
+    <div id="tidytext-0-1-6" class="section level1">
+<h1 class="hasAnchor">
+<a href="#tidytext-0-1-6" class="anchor"></a>tidytext 0.1.6</h1>
+<ul>
+<li>
+<code>unnest_tokens</code> can now unnest a data frame with a list column (which formerly threw the error <code>unnest_tokens expects all columns of input to be atomic vectors (not lists)</code>). The unnested result repeats the objects within each list. (It’s still not possible when <code>collapse = TRUE</code>, in which tokens can span multiple lines).</li>
+<li>Add <code>get_tidy_stopwords()</code> to obtain stopword lexicons in multiple languages in a tidy format.</li>
+<li>Add a dataset <code>nma_words</code> of negators, modals, and adverbs that affect sentiment analysis (#55).</li>
+<li>Updated various vignettes/docs/tests so package can build on R-oldrel.</li>
+</ul>
+</div>
     <div id="tidytext-0-1-5" class="section level1">
 <h1 class="hasAnchor">
 <a href="#tidytext-0-1-5" class="anchor"></a>tidytext 0.1.5</h1>
@@ -188,6 +199,7 @@
     <div id="tocnav">
       <h2>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
+        <li><a href="#tidytext-0-1-6">0.1.6</a></li>
         <li><a href="#tidytext-0-1-5">0.1.5</a></li>
         <li><a href="#tidytext-0-1-4">0.1.4</a></li>
         <li><a href="#tidytext-0-1-3">0.1.3</a></li>
