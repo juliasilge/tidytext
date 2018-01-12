@@ -10,6 +10,10 @@
 #'             "Noun", "Adverb", "Adjective"}
 #' }
 #'
+#' @details Another dataset of English parts of speech, available only for
+#' non-commercial use, is available as part of SUBTLEXus at
+#' \url{https://www.ugent.be/pp/experimentele-psychologie/en/research/documents/subtlexus/}.
+#'
 #' @examples
 #'
 #' library(dplyr)

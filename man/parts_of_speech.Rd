@@ -20,6 +20,11 @@ parts_of_speech
 Parts of speech for English words from the Moby Project by Grady Ward.
 Words with non-ASCII characters and items with a space have been removed.
 }
+\details{
+Another dataset of English parts of speech, available only for
+non-commercial use, is available as part of SUBTLEXus at
+\url{https://www.ugent.be/pp/experimentele-psychologie/en/research/documents/subtlexus/}.
+}
 \examples{
 
 library(dplyr)
