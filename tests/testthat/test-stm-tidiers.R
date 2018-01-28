@@ -56,6 +56,7 @@ if(require("stm", quietly = TRUE)) {
   })
 
   test_that("can augment an stm output", {
+    skip_if_not_installed("quanteda")
     au <- augment(stm_model, dat)
     expect_is(au, "tbl_df")
     expect_equal(colnames(au), c(colnames(dat), ".topic"))
