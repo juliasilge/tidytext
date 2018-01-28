@@ -67,9 +67,9 @@ test_that("Can cast tables into a sparse TermDocumentMatrix", {
 })
 
 test_that("Can cast tables into a sparse dfm", {
-  library(methods)
   skip_if_not_installed("quanteda")
 
+  library(methods)
   d <- cast_dfm(dat, a, b, val)
   d2 <- cast_dfm_(dat, "a", "b", "val")
   expect_equal(d, d2)
