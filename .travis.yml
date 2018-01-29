@@ -3,11 +3,9 @@ cache: packages
 sudo: false
 warnings_are_errors: true
 
-r:
-- release
-
 matrix:
   include:
+  - r: release
   - r: oldrel
     env: _R_CHECK_FORCE_SUGGESTS_=false
 
