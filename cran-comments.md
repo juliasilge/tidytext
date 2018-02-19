@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 7th CRAN release of tidytext. In this release, I updated various vignettes/docs/tests so tidytext can build on R-oldrel, changed how list columns are handled, and added access to datasets of words that affect sentiment analysis as well as stop words for various languages.
+This is the 8th CRAN release of tidytext. In this release, I updated various docs/tests so tidytext can build on R-oldrel. This is my 2nd attempt to get this to work, and a recent release of [quanteda](https://cran.r-project.org/package=quanteda) (in tidytext's Suggests) should allow tidytext to build on R-oldrel. I *am* testing/passing on Travis on R 3.3.3.
 
 ## Test environments
 

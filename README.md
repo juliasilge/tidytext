@@ -12,7 +12,8 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 [![Coverage Status](https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg)](https://codecov.io/github/juliasilge/tidytext?branch=master)
 [![DOI](https://zenodo.org/badge/22224/juliasilge/tidytext.svg)](https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext)
 [![status](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg)](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f)
-
+[![Downloads](https://cranlogs.r-pkg.org/badges/tidytext)](https://CRAN.R-project.org/package=tidytext)
+[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange)](https://CRAN.R-project.org/package=tidytext)
 
 
 
@@ -54,7 +55,7 @@ original_books <- austen_books() %>%
 original_books
 #> # A tibble: 73,422 x 3
 #>    text                  book                linenumber
-#>    <chr>                 <fctr>                   <int>
+#>    <chr>                 <fct>                    <int>
 #>  1 SENSE AND SENSIBILITY Sense & Sensibility          1
 #>  2 ""                    Sense & Sensibility          2
 #>  3 by Jane Austen        Sense & Sensibility          3
@@ -79,7 +80,7 @@ tidy_books <- original_books %>%
 tidy_books
 #> # A tibble: 725,055 x 3
 #>    book                linenumber word       
-#>    <fctr>                   <int> <chr>      
+#>    <fct>                    <int> <chr>      
 #>  1 Sense & Sensibility          1 sense      
 #>  2 Sense & Sensibility          1 and        
 #>  3 Sense & Sensibility          1 sensibility
@@ -156,7 +157,7 @@ janeaustensentiment <- tidy_books %>%
 janeaustensentiment
 #> # A tibble: 920 x 5
 #>    book                index negative positive sentiment
-#>    <fctr>              <dbl>    <dbl>    <dbl>     <dbl>
+#>    <fct>               <dbl>    <dbl>    <dbl>     <dbl>
 #>  1 Sense & Sensibility  0        16.0     26.0     10.0 
 #>  2 Sense & Sensibility  1.00     19.0     44.0     25.0 
 #>  3 Sense & Sensibility  2.00     12.0     23.0     11.0 
