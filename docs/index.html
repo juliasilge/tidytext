@@ -90,7 +90,7 @@
 <h2 class="hasAnchor">
 <a href="#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools" class="anchor"></a>tidytext: Text mining using dplyr, ggplot2, and other tidy tools</h2>
 <p><strong>Authors:</strong> <a href="http://juliasilge.com/">Julia Silge</a>, <a href="http://varianceexplained.org/">David Robinson</a><br><strong>License:</strong> <a href="https://opensource.org/licenses/MIT">MIT</a></p>
-<p><a href="https://travis-ci.org/juliasilge/tidytext"><img src="https://travis-ci.org/juliasilge/tidytext.svg?branch=master" alt="Build Status"></a> <a href="https://ci.appveyor.com/project/juliasilge/tidytext"><img src="https://ci.appveyor.com/api/projects/status/github/juliasilge/tidytext?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://cran.r-project.org/package=tidytext"><img src="http://www.r-pkg.org/badges/version/tidytext" alt="CRAN_Status_Badge"></a> <a href="https://codecov.io/github/juliasilge/tidytext?branch=master"><img src="https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg" alt="Coverage Status"></a> <a href="https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext"><img src="https://zenodo.org/badge/22224/juliasilge/tidytext.svg" alt="DOI"></a> <a href="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f"><img src="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg" alt="status"></a></p>
+<p><a href="https://travis-ci.org/juliasilge/tidytext"><img src="https://travis-ci.org/juliasilge/tidytext.svg?branch=master" alt="Build Status"></a> <a href="https://ci.appveyor.com/project/juliasilge/tidytext"><img src="https://ci.appveyor.com/api/projects/status/github/juliasilge/tidytext?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://cran.r-project.org/package=tidytext"><img src="http://www.r-pkg.org/badges/version/tidytext" alt="CRAN_Status_Badge"></a> <a href="https://codecov.io/github/juliasilge/tidytext?branch=master"><img src="https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg" alt="Coverage Status"></a> <a href="https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext"><img src="https://zenodo.org/badge/22224/juliasilge/tidytext.svg" alt="DOI"></a> <a href="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f"><img src="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg" alt="status"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/tidytext" alt="Downloads"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange" alt="Total Downloads"></a></p>
 <p>Using <a href="https://www.jstatsoft.org/article/view/v059i10">tidy data principles</a> can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like <a href="https://cran.r-project.org/package=dplyr">dplyr</a>, <a href="https://cran.r-project.org/package=broom">broom</a>, <a href="https://cran.r-project.org/package=tidyr">tidyr</a> and <a href="https://cran.r-project.org/package=ggplot2">ggplot2</a>. In this package, we provide functions and supporting data sets to allow conversion of text to and from tidy formats, and to switch seamlessly between tidy tools and existing text mining packages. Check out <a href="https://www.tidytextmining.com/">our book</a> to learn more about text mining using tidy data principles.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
@@ -116,7 +116,7 @@
 <a class="sourceLine" id="cb3-9" data-line-number="9">original_books</a>
 <a class="sourceLine" id="cb3-10" data-line-number="10"><span class="co">#&gt; # A tibble: 73,422 x 3</span></a>
 <a class="sourceLine" id="cb3-11" data-line-number="11"><span class="co">#&gt;    text                  book                linenumber</span></a>
-<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;    &lt;chr&gt;                 &lt;fctr&gt;                   &lt;int&gt;</span></a>
+<a class="sourceLine" id="cb3-12" data-line-number="12"><span class="co">#&gt;    &lt;chr&gt;                 &lt;fct&gt;                    &lt;int&gt;</span></a>
 <a class="sourceLine" id="cb3-13" data-line-number="13"><span class="co">#&gt;  1 SENSE AND SENSIBILITY Sense &amp; Sensibility          1</span></a>
 <a class="sourceLine" id="cb3-14" data-line-number="14"><span class="co">#&gt;  2 ""                    Sense &amp; Sensibility          2</span></a>
 <a class="sourceLine" id="cb3-15" data-line-number="15"><span class="co">#&gt;  3 by Jane Austen        Sense &amp; Sensibility          3</span></a>
@@ -136,7 +136,7 @@
 <a class="sourceLine" id="cb4-5" data-line-number="5">tidy_books</a>
 <a class="sourceLine" id="cb4-6" data-line-number="6"><span class="co">#&gt; # A tibble: 725,055 x 3</span></a>
 <a class="sourceLine" id="cb4-7" data-line-number="7"><span class="co">#&gt;    book                linenumber word       </span></a>
-<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;    &lt;fctr&gt;                   &lt;int&gt; &lt;chr&gt;      </span></a>
+<a class="sourceLine" id="cb4-8" data-line-number="8"><span class="co">#&gt;    &lt;fct&gt;                    &lt;int&gt; &lt;chr&gt;      </span></a>
 <a class="sourceLine" id="cb4-9" data-line-number="9"><span class="co">#&gt;  1 Sense &amp; Sensibility          1 sense      </span></a>
 <a class="sourceLine" id="cb4-10" data-line-number="10"><span class="co">#&gt;  2 Sense &amp; Sensibility          1 and        </span></a>
 <a class="sourceLine" id="cb4-11" data-line-number="11"><span class="co">#&gt;  3 Sense &amp; Sensibility          1 sensibility</span></a>
@@ -197,7 +197,7 @@
 <a class="sourceLine" id="cb7-24" data-line-number="24">janeaustensentiment</a>
 <a class="sourceLine" id="cb7-25" data-line-number="25"><span class="co">#&gt; # A tibble: 920 x 5</span></a>
 <a class="sourceLine" id="cb7-26" data-line-number="26"><span class="co">#&gt;    book                index negative positive sentiment</span></a>
-<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="co">#&gt;    &lt;fctr&gt;              &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></a>
+<a class="sourceLine" id="cb7-27" data-line-number="27"><span class="co">#&gt;    &lt;fct&gt;               &lt;dbl&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;</span></a>
 <a class="sourceLine" id="cb7-28" data-line-number="28"><span class="co">#&gt;  1 Sense &amp; Sensibility  0        16.0     26.0     10.0 </span></a>
 <a class="sourceLine" id="cb7-29" data-line-number="29"><span class="co">#&gt;  2 Sense &amp; Sensibility  1.00     19.0     44.0     25.0 </span></a>
 <a class="sourceLine" id="cb7-30" data-line-number="30"><span class="co">#&gt;  3 Sense &amp; Sensibility  2.00     12.0     23.0     11.0 </span></a>

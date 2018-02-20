@@ -84,7 +84,7 @@
       <h1>Introduction to tidytext</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2018-01-06</h4>
+            <h4 class="date">2018-02-19</h4>
           </div>
 
     
@@ -113,7 +113,7 @@
 <a class="sourceLine" id="cb1-12" data-line-number="12">original_books</a></code></pre></div>
 <pre><code>## # A tibble: 73,422 x 4
 ##    text                  book                linenumber chapter
-##    &lt;chr&gt;                 &lt;fctr&gt;                   &lt;int&gt;   &lt;int&gt;
+##    &lt;chr&gt;                 &lt;fct&gt;                    &lt;int&gt;   &lt;int&gt;
 ##  1 SENSE AND SENSIBILITY Sense &amp; Sensibility          1       0
 ##  2 ""                    Sense &amp; Sensibility          2       0
 ##  3 by Jane Austen        Sense &amp; Sensibility          3       0
@@ -133,7 +133,7 @@
 <a class="sourceLine" id="cb3-5" data-line-number="5">tidy_books</a></code></pre></div>
 <pre><code>## # A tibble: 725,055 x 4
 ##    book                linenumber chapter word       
-##    &lt;fctr&gt;                   &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
+##    &lt;fct&gt;                    &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
 ##  1 Sense &amp; Sensibility          1       0 sense      
 ##  2 Sense &amp; Sensibility          1       0 and        
 ##  3 Sense &amp; Sensibility          1       0 sensibility
@@ -289,7 +289,7 @@
 <a class="sourceLine" id="cb20-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(<span class="dt">chapters =</span> <span class="kw"><a href="http://dplyr.tidyverse.org/reference/n.html">n</a></span>())</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   book                chapters
-##   &lt;fctr&gt;                 &lt;int&gt;
+##   &lt;fct&gt;                  &lt;int&gt;
 ## 1 Sense &amp; Sensibility       51
 ## 2 Pride &amp; Prejudice         62
 ## 3 Mansfield Park            49
@@ -314,9 +314,9 @@
 <a class="sourceLine" id="cb22-14" data-line-number="14"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(chapter <span class="op">!=</span><span class="st"> </span><span class="dv">0</span>) <span class="op">%&gt;%</span></a>
 <a class="sourceLine" id="cb22-15" data-line-number="15"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## # A tibble: 6 x 5
-## # Groups: book [6]
+## # Groups:   book [6]
 ##   book                chapter negativewords words  ratio
-##   &lt;fctr&gt;                &lt;int&gt;         &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;
+##   &lt;fct&gt;                 &lt;int&gt;         &lt;int&gt; &lt;int&gt;  &lt;dbl&gt;
 ## 1 Sense &amp; Sensibility      43           161  3405 0.0473
 ## 2 Pride &amp; Prejudice        34           111  2104 0.0528
 ## 3 Mansfield Park           46           173  3685 0.0469

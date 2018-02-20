@@ -166,7 +166,7 @@ for this to work.</p>
 
 <span class='no'>book_words</span></div><div class='output co'>#&gt; # A tibble: 40,379 x 3
 #&gt;    book              word      n
-#&gt;    &lt;fctr&gt;            &lt;chr&gt; &lt;int&gt;
+#&gt;    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;
 #&gt;  1 Mansfield Park    the    6206
 #&gt;  2 Mansfield Park    to     5475
 #&gt;  3 Mansfield Park    and    5438
@@ -183,7 +183,7 @@ for this to work.</p>
   <span class='fu'>bind_tf_idf</span>(<span class='no'>word</span>, <span class='no'>book</span>, <span class='no'>n</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='http://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='fu'><a href='http://dplyr.tidyverse.org/reference/desc.html'>desc</a></span>(<span class='no'>tf_idf</span>))</div><div class='output co'>#&gt; # A tibble: 40,379 x 6
 #&gt;    book                word          n      tf   idf  tf_idf
-#&gt;    &lt;fctr&gt;              &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+#&gt;    &lt;fct&gt;               &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
 #&gt;  1 Sense &amp; Sensibility elinor      623 0.00519  1.79 0.00931
 #&gt;  2 Sense &amp; Sensibility marianne    492 0.00410  1.79 0.00735
 #&gt;  3 Mansfield Park      crawford    493 0.00307  1.79 0.00551

@@ -84,7 +84,7 @@
       <h1>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2018-01-06</h4>
+            <h4 class="date">2018-02-19</h4>
           </div>
 
     
@@ -253,31 +253,31 @@
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">reuters_td &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/broom/topics/tidy">tidy</a></span>(reuters)</a>
 <a class="sourceLine" id="cb27-2" data-line-number="2">reuters_td</a></code></pre></div>
 <pre><code>## # A tibble: 20 x 17
-##    author datetimestamp       descr… heading id    lang… orig… topi… lewi…
-##    &lt;chr&gt;  &lt;dttm&gt;              &lt;chr&gt;  &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;
-##  1 &lt;NA&gt;   1987-02-26 10:00:56 ""     DIAMON… 127   en    Reut… YES   TRAIN
-##  2 BY TE… 1987-02-26 10:34:11 ""     OPEC M… 144   en    Reut… YES   TRAIN
-##  3 &lt;NA&gt;   1987-02-26 11:18:00 ""     TEXACO… 191   en    Reut… YES   TRAIN
-##  4 &lt;NA&gt;   1987-02-26 11:21:01 ""     MARATH… 194   en    Reut… YES   TRAIN
-##  5 &lt;NA&gt;   1987-02-26 12:00:57 ""     HOUSTO… 211   en    Reut… YES   TRAIN
-##  6 &lt;NA&gt;   1987-02-28 20:25:46 ""     KUWAIT… 236   en    Reut… YES   TRAIN
-##  7 By Je… 1987-02-28 20:39:14 ""     INDONE… 237   en    Reut… YES   TRAIN
-##  8 &lt;NA&gt;   1987-02-28 22:27:27 ""     SAUDI … 242   en    Reut… YES   TRAIN
-##  9 &lt;NA&gt;   1987-03-01 01:22:30 ""     QATAR … 246   en    Reut… YES   TRAIN
-## 10 &lt;NA&gt;   1987-03-01 11:31:44 ""     SAUDI … 248   en    Reut… YES   TRAIN
-## 11 &lt;NA&gt;   1987-03-01 18:05:49 ""     SAUDI … 273   en    Reut… YES   TRAIN
-## 12 &lt;NA&gt;   1987-03-02 00:39:23 ""     GULF A… 349   en    Reut… YES   TRAIN
-## 13 &lt;NA&gt;   1987-03-02 00:43:22 ""     SAUDI … 352   en    Reut… YES   TRAIN
-## 14 &lt;NA&gt;   1987-03-02 00:43:41 ""     KUWAIT… 353   en    Reut… YES   TRAIN
-## 15 &lt;NA&gt;   1987-03-02 01:25:42 ""     PHILAD… 368   en    Reut… YES   TRAIN
-## 16 &lt;NA&gt;   1987-03-02 04:20:05 ""     STUDY … 489   en    Reut… YES   TRAIN
-## 17 &lt;NA&gt;   1987-03-02 04:28:26 ""     STUDY … 502   en    Reut… YES   TRAIN
-## 18 &lt;NA&gt;   1987-03-02 05:13:46 ""     UNOCAL… 543   en    Reut… YES   TRAIN
-## 19 By BE… 1987-03-02 07:38:34 ""     NYMEX … 704   en    Reut… YES   TRAIN
-## 20 &lt;NA&gt;   1987-03-02 07:49:06 ""     ARGENT… 708   en    Reut… YES   TRAIN
-## # ... with 8 more variables: cgisplit &lt;chr&gt;, oldid &lt;chr&gt;, topics_cat
-## #   &lt;list&gt;, places &lt;list&gt;, people &lt;chr&gt;, orgs &lt;chr&gt;, exchanges &lt;chr&gt;, text
-## #   &lt;chr&gt;</code></pre>
+##    author  datetimestamp       description heading   id    language origin
+##    &lt;chr&gt;   &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; 
+##  1 &lt;NA&gt;    1987-02-26 10:00:56 ""          DIAMOND … 127   en       Reute…
+##  2 BY TED… 1987-02-26 10:34:11 ""          OPEC MAY… 144   en       Reute…
+##  3 &lt;NA&gt;    1987-02-26 11:18:00 ""          TEXACO C… 191   en       Reute…
+##  4 &lt;NA&gt;    1987-02-26 11:21:01 ""          MARATHON… 194   en       Reute…
+##  5 &lt;NA&gt;    1987-02-26 12:00:57 ""          HOUSTON … 211   en       Reute…
+##  6 &lt;NA&gt;    1987-02-28 20:25:46 ""          KUWAIT S… 236   en       Reute…
+##  7 By Jer… 1987-02-28 20:39:14 ""          INDONESI… 237   en       Reute…
+##  8 &lt;NA&gt;    1987-02-28 22:27:27 ""          SAUDI RI… 242   en       Reute…
+##  9 &lt;NA&gt;    1987-03-01 01:22:30 ""          QATAR UN… 246   en       Reute…
+## 10 &lt;NA&gt;    1987-03-01 11:31:44 ""          SAUDI AR… 248   en       Reute…
+## 11 &lt;NA&gt;    1987-03-01 18:05:49 ""          SAUDI FE… 273   en       Reute…
+## 12 &lt;NA&gt;    1987-03-02 00:39:23 ""          GULF ARA… 349   en       Reute…
+## 13 &lt;NA&gt;    1987-03-02 00:43:22 ""          SAUDI AR… 352   en       Reute…
+## 14 &lt;NA&gt;    1987-03-02 00:43:41 ""          KUWAIT M… 353   en       Reute…
+## 15 &lt;NA&gt;    1987-03-02 01:25:42 ""          PHILADEL… 368   en       Reute…
+## 16 &lt;NA&gt;    1987-03-02 04:20:05 ""          STUDY GR… 489   en       Reute…
+## 17 &lt;NA&gt;    1987-03-02 04:28:26 ""          STUDY GR… 502   en       Reute…
+## 18 &lt;NA&gt;    1987-03-02 05:13:46 ""          UNOCAL &lt;… 543   en       Reute…
+## 19 By BER… 1987-03-02 07:38:34 ""          NYMEX WI… 704   en       Reute…
+## 20 &lt;NA&gt;    1987-03-02 07:49:06 ""          ARGENTIN… 708   en       Reute…
+## # ... with 10 more variables: topics &lt;chr&gt;, lewissplit &lt;chr&gt;,
+## #   cgisplit &lt;chr&gt;, oldid &lt;chr&gt;, topics_cat &lt;list&gt;, places &lt;list&gt;,
+## #   people &lt;chr&gt;, orgs &lt;chr&gt;, exchanges &lt;chr&gt;, text &lt;chr&gt;</code></pre>
 <p>Similarly, you can <code>tidy</code> a <code>corpus</code> object from the quanteda package:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw">library</span>(quanteda)</a>
 <a class="sourceLine" id="cb29-2" data-line-number="2"></a>
@@ -288,18 +288,18 @@
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">inaug_td &lt;-<span class="st"> </span><span class="kw"><a href="http://www.rdocumentation.org/packages/broom/topics/tidy">tidy</a></span>(data_corpus_inaugural)</a>
 <a class="sourceLine" id="cb31-2" data-line-number="2">inaug_td</a></code></pre></div>
 <pre><code>## # A tibble: 58 x 4
-##    text                                                   Year Pres… Firs…
-##  * &lt;chr&gt;                                                 &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;
-##  1 "Fellow-Citizens of the Senate and of the House of R…  1789 Wash… Geor…
-##  2 "Fellow citizens, I am again called upon by the voic…  1793 Wash… Geor…
-##  3 "When it was first perceived, in early times, that n…  1797 Adams John 
-##  4 "Friends and Fellow Citizens:\n\nCalled upon to unde…  1801 Jeff… Thom…
-##  5 "Proceeding, fellow citizens, to that qualification …  1805 Jeff… Thom…
-##  6 "Unwilling to depart from examples of the most rever…  1809 Madi… James
-##  7 "About to add the solemnity of an oath to the obliga…  1813 Madi… James
-##  8 "I should be destitute of feeling if I was not deepl…  1817 Monr… James
-##  9 "Fellow citizens, I shall not attempt to describe th…  1821 Monr… James
-## 10 "In compliance with an usage coeval with the existen…  1825 Adams John…
+##    text                                           Year President FirstName
+##  * &lt;chr&gt;                                         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;    
+##  1 "Fellow-Citizens of the Senate and of the Ho…  1789 Washingt… George   
+##  2 "Fellow citizens, I am again called upon by …  1793 Washingt… George   
+##  3 "When it was first perceived, in early times…  1797 Adams     John     
+##  4 "Friends and Fellow Citizens:\n\nCalled upon…  1801 Jefferson Thomas   
+##  5 "Proceeding, fellow citizens, to that qualif…  1805 Jefferson Thomas   
+##  6 "Unwilling to depart from examples of the mo…  1809 Madison   James    
+##  7 "About to add the solemnity of an oath to th…  1813 Madison   James    
+##  8 "I should be destitute of feeling if I was n…  1817 Monroe    James    
+##  9 "Fellow citizens, I shall not attempt to des…  1821 Monroe    James    
+## 10 "In compliance with an usage coeval with the…  1825 Adams     John Qui…
 ## # ... with 48 more rows</code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to analyze the text alongside the metadata.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">inaug_words &lt;-<span class="st"> </span>inaug_td <span class="op">%&gt;%</span></a>

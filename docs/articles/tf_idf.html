@@ -84,7 +84,7 @@
       <h1>Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2018-01-06</h4>
+            <h4 class="date">2018-02-19</h4>
           </div>
 
     
@@ -108,7 +108,7 @@
 <a class="sourceLine" id="cb1-11" data-line-number="11">book_words</a></code></pre></div>
 <pre><code>## # A tibble: 40,379 x 4
 ##    book              word      n  total
-##    &lt;fctr&gt;            &lt;chr&gt; &lt;int&gt;  &lt;int&gt;
+##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;
 ##  1 Mansfield Park    the    6206 160460
 ##  2 Mansfield Park    to     5475 160460
 ##  3 Mansfield Park    and    5438 160460
@@ -133,7 +133,7 @@
 <a class="sourceLine" id="cb4-3" data-line-number="3">book_words</a></code></pre></div>
 <pre><code>## # A tibble: 40,379 x 7
 ##    book              word      n  total     tf   idf tf_idf
-##    &lt;fctr&gt;            &lt;chr&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+##    &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;  &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
 ##  1 Mansfield Park    the    6206 160460 0.0387     0      0
 ##  2 Mansfield Park    to     5475 160460 0.0341     0      0
 ##  3 Mansfield Park    and    5438 160460 0.0339     0      0
@@ -151,7 +151,7 @@
 <a class="sourceLine" id="cb6-3" data-line-number="3"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="http://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(tf_idf))</a></code></pre></div>
 <pre><code>## # A tibble: 40,379 x 6
 ##    book                word          n      tf   idf  tf_idf
-##    &lt;fctr&gt;              &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+##    &lt;fct&gt;               &lt;chr&gt;     &lt;int&gt;   &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
 ##  1 Sense &amp; Sensibility elinor      623 0.00519  1.79 0.00931
 ##  2 Sense &amp; Sensibility marianne    492 0.00410  1.79 0.00735
 ##  3 Mansfield Park      crawford    493 0.00307  1.79 0.00551
@@ -170,7 +170,7 @@
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="http://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw"><a href="http://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(tf_idf))</a></code></pre></div>
 <pre><code>## # A tibble: 6,538 x 6
 ##    book              word          n       tf   idf  tf_idf
-##    &lt;fctr&gt;            &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+##    &lt;fct&gt;             &lt;chr&gt;     &lt;int&gt;    &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
 ##  1 Pride &amp; Prejudice darcy       373 0.00305  1.79  0.00547
 ##  2 Pride &amp; Prejudice bennet      294 0.00241  1.79  0.00431
 ##  3 Pride &amp; Prejudice bingley     257 0.00210  1.79  0.00377
