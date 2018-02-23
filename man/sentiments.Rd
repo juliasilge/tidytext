@@ -34,7 +34,7 @@ sentiments
 Three lexicons for sentiment analysis are combined here in a tidy data frame.
 The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
 the sentiment lexicon from Bing Liu and collaborators, of
-Finn Arup Nielsen, and of Tim Loughran and Bill Loughran.
+Finn Arup Nielsen, and of Tim Loughran and Bill McDonald.
 Words with non-ASCII characters were removed from the
 lexicons.
 }

@@ -1,3 +1,7 @@
+# tidytext 0.1.8 [WIP]
+
+* Updates to documentation (#102).
+
 # tidytext 0.1.7
 
 * Updated more docs/tests so package can build on R-oldrel. (Still trying!)
