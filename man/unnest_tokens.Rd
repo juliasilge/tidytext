@@ -2,28 +2,31 @@
 % Please edit documentation in R/unnest_tokens.R
 \name{unnest_tokens}
 \alias{unnest_tokens}
-\alias{unnest_tokens_}
 \title{Split a column into tokens using the tokenizers package}
 \usage{
-unnest_tokens_(tbl, output_col, input_col, token = "words", to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
-
-unnest_tokens(tbl, output, input, token = "words", to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
+unnest_tokens(tbl, output, input, token = "words", format = c("text", "man",
+  "latex", "html", "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL,
+  ...)
 }
 \arguments{
-\item{tbl}{Data frame}
+\item{tbl}{A data frame}
 
-\item{output_col}{Output column to be created}
+\item{output}{Output column to be created as string or symbol.}
 
-\item{input_col}{Input column that gets split}
+\item{input}{Input column that gets split as string or symbol.
+
+  The output/input arguments are passed by expression and support
+  \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
 options are "words" (default), "characters", "ngrams", "skip_ngrams",
 "sentences", "lines", "paragraphs", and "regex". If a function, should take
 a character vector and return a list of character vectors of the same length.}
 
-\item{to_lower}{Whether to turn column lowercase}
+\item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
+this uses the hunspell tokenizer, and can tokenize only by "word"}
+
+\item{to_lower}{Whether to turn column lowercase.}
 
 \item{drop}{Whether original input column should get dropped. Ignored
 if the original input and new output column have the same name.}
@@ -31,22 +34,24 @@ if the original input and new output column have the same name.}
 \item{collapse}{Whether to combine text with newlines first in case tokens
 (such as sentences or paragraphs) span multiple lines. If NULL, collapses
 when token method is "ngrams", "skip_ngrams", "sentences", "lines",
-"paragraphs", or "regex"}
+"paragraphs", or "regex".}
 
 \item{...}{Extra arguments passed on to the tokenizer, such as \code{n} and
-\code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex"}
-
-\item{output}{Output column to be created as bare name}
-
-\item{input}{Input column that gets split as bare name}
+\code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".}
 }
 \description{
-Split a column into tokens using the tokenizers package
+Split a column into tokens using the tokenizers package, splitting the table
+into one-token-per-row. This function supports non-standard evaluation through
+the tidyeval framework.
 }
 \details{
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
 paragraphs, or regex, the entire input will be collapsed together before
 tokenizing.
+
+If format is anything other than "text", this uses the
+\code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.
+This does not yet have support for tokenizing by any unit other than words.
 }
 \examples{
 
@@ -75,5 +80,11 @@ d \%>\%
 d \%>\%
   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
 
-}
+# tokenize HTML
+h <- data_frame(row = 1:2,
+                text = c("<h1>Text <b>is</b>", "<a href='example.com'>here</a>"))
 
+h \%>\%
+  unnest_tokens(word, text, format = "html")
+
+}

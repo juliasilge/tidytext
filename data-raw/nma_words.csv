@@ -1,0 +1,45 @@
+word,modifier
+cannot,negator
+could not,negator
+did not,negator
+does not,negator
+had no,negator
+have no,negator
+may not,negator
+never,negator
+no,negator
+not,negator
+nothing,negator
+was no,negator
+was not,negator
+will not,negator
+would not,negator
+can,modal
+could,modal
+may,modal
+might,modal
+must,modal
+should,modal
+would,modal
+certainly,adverb
+especially,adverb
+extremely,adverb
+fairly,adverb
+highly,adverb
+increasingly,adverb
+less,adverb
+more,adverb
+most,adverb
+much,adverb
+much more,adverb
+particularly,adverb
+pretty,adverb
+probably,adverb
+quite,adverb
+rather,adverb
+really,adverb
+relatively,adverb
+so,adverb
+too,adverb
+very,adverb
+very very,adverb

@@ -11,13 +11,16 @@ vignette: >
 
 ```{r setup, echo=FALSE}
 library(knitr)
-opts_chunk$set(warning = FALSE, message = FALSE)
+opts_chunk$set(warning = FALSE, message = FALSE,
+               eval = requireNamespace("wordcloud", quietly = TRUE))
+library(ggplot2)
+theme_set(theme_light())
 ```
 
 
 ### The Life-Changing Magic of Tidying Text
 
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr) and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide functions and supporting data sets to allow conversion of text to and from tidy formats, and to switch seamlessly between tidy tools and existing text mining packages.
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr) and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide functions and supporting data sets to allow conversion of text to and from tidy formats, and to switch seamlessly between tidy tools and existing text mining packages. Check out [our book](https://www.tidytextmining.com/) to learn more about text mining using tidy data principles.
 
 ### A few first tidy text mining examples
 
@@ -54,22 +57,22 @@ Now that the data is in one-word-per-row format, we can manipulate it with tidy 
 
 ```{r}
 data("stop_words")
-tidy_books <- tidy_books %>%
+cleaned_books <- tidy_books %>%
   anti_join(stop_words)
 ```
 
 We can also use `count` to find the most common words in all the books as a whole.
 
 ```{r}
-tidy_books %>%
+cleaned_books %>%
   count(word, sort = TRUE) 
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiment` dataset. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiments` dataset. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
 
 ```{r}
-nrcjoy <- sentiments %>%
-  filter(lexicon == "nrc", sentiment == "joy")
+nrcjoy <- get_sentiments("nrc") %>%
+  filter(sentiment == "joy")
 
 tidy_books %>%
   filter(book == "Emma") %>%
@@ -81,9 +84,7 @@ Or instead we could examine how sentiment changes during each novel. Let's find 
 
 ```{r}
 library(tidyr)
-bing <- sentiments %>%
-  filter(lexicon == "bing") %>%
-  select(-score)
+bing <- get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
   inner_join(bing) %>%
@@ -139,7 +140,7 @@ For example, consider the wordcloud package. Let's look at the most common words
 ```{r, fig.height=6, fig.width=6}
 library(wordcloud)
 
-tidy_books %>%
+cleaned_books %>%
   count(word) %>%
   with(wordcloud(word, n, max.words = 100))
 ```
@@ -163,19 +164,17 @@ Lots of useful work can be done by tokenizing at the word level, but sometimes i
 
 > I am not having a good day.
 
-is a sad sentence, not a happy one, because of negation. The [Stanford CoreNLP](http://stanfordnlp.github.io/CoreNLP/) tools and the [sentimentr R package](https://github.com/trinker/sentimentr) (currently available on Github but not CRAN) are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.
+is a sad sentence, not a happy one, because of negation. The [Stanford CoreNLP](http://stanfordnlp.github.io/CoreNLP/) tools and the [sentimentr R package](https://cran.r-project.org/package=sentimentr) are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.
 
 ```{r}
-austen_sentences <- austen_books() %>% 
-  group_by(book) %>% 
-  unnest_tokens(sentence, text, token = "sentences") %>% 
-  ungroup()
+PandP_sentences <- data_frame(text = prideprejudice) %>% 
+  unnest_tokens(sentence, text, token = "sentences")
 ```
 
 Let's look at just one.
 
 ```{r}
-austen_sentences$sentence[39]
+PandP_sentences$sentence[2]
 ```
 
 The sentence tokenizing does seem to have a bit of trouble with UTF-8 encoded text, especially with sections of dialogue; it does much better with punctuation in ASCII.
@@ -187,7 +186,10 @@ austen_chapters <- austen_books() %>%
   group_by(book) %>%
   unnest_tokens(chapter, text, token = "regex", pattern = "Chapter|CHAPTER [\\dIVXLC]") %>%
   ungroup()
-austen_chapters %>% group_by(book) %>% summarise(chapters = n())
+
+austen_chapters %>% 
+  group_by(book) %>% 
+  summarise(chapters = n())
 ```
 
 We have recovered the correct number of chapters in each novel (plus an "extra" row for each novel title). In this data frame, each row corresponds to one chapter.
@@ -195,8 +197,8 @@ We have recovered the correct number of chapters in each novel (plus an "extra" 
 Near the beginning of this vignette, we used a similar regex to find where all the chapters were in Austen's novels for a tidy data frame organized by one-word-per-row. We can use tidy text analysis to ask questions such as what are the most negative chapters in each of Jane Austen's novels? First, let's get the list of negative words from the Bing lexicon. Second, let's make a dataframe of how many words are in each chapter so we can normalize for the length of chapters. Then, let's find the number of negative words in each chapter and divide by the total words in each chapter. Which chapter has the highest proportion of negative words?
 
 ```{r}
-bingnegative <- sentiments %>%
-  filter(lexicon == "bing", sentiment == "negative")
+bingnegative <- get_sentiments("bing") %>%
+  filter(sentiment == "negative")
 
 wordcounts <- tidy_books %>%
   group_by(book, chapter) %>%
@@ -212,4 +214,4 @@ tidy_books %>%
   top_n(1)
 ```
 
-These are the chapters with the most negative words in each book, normalized for number of words in the chapter. What is happening in these chapters? In Chapter 29 of *Sense and Sensibility* Marianne finds out what an awful person Willoughby is by letter, and in Chapter 34 of *Pride and Prejudice* Mr. Darcy proposes for the first time (so badly!). Chapter 45 of *Mansfield Park* is almost the end, when Tom is sick with consumption and Mary is revealed as mercenary and uncaring, Chapter 15 of *Emma* is when horrifying Mr. Elton proposes, and Chapter 27 of *Northanger Abbey* is a short chapter where Catherine gets a terrible letter from her inconstant friend Isabella. Chapter 21 of *Persuasion* is when Anne’s friend tells her all about Mr. Elliott’s immoral past.
+These are the chapters with the most negative words in each book, normalized for number of words in the chapter. What is happening in these chapters? In Chapter 43 of *Sense and Sensibility* Marianne is seriously ill, near death, and in Chapter 34 of *Pride and Prejudice* Mr. Darcy proposes for the first time (so badly!). Chapter 46 of *Mansfield Park* is almost the end, when everyone learns of Henry's scandalous adultery, Chapter 15 of *Emma* is when horrifying Mr. Elton proposes, and in Chapter 21 of *Northanger Abbey* Catherine is deep in her Gothic faux fantasy of murder, etc. Chapter 4 of *Persuasion* is when the reader gets the full flashback of Anne refusing Captain Wentworth and how sad she was and what a terrible mistake she realized it to be.

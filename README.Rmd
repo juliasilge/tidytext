@@ -7,20 +7,27 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 **License:** [MIT](https://opensource.org/licenses/MIT)
 
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
+[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/juliasilge/tidytext?branch=master&svg=true)](https://ci.appveyor.com/project/juliasilge/tidytext)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
 [![Coverage Status](https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg)](https://codecov.io/github/juliasilge/tidytext?branch=master)
+[![DOI](https://zenodo.org/badge/22224/juliasilge/tidytext.svg)](https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext)
+[![status](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg)](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f)
+[![Downloads](https://cranlogs.r-pkg.org/badges/tidytext)](https://CRAN.R-project.org/package=tidytext)
+[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange)](https://CRAN.R-project.org/package=tidytext)
 
 
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "README-",
+  fig.path = "tools/README-",
   message = FALSE
 )
+suppressPackageStartupMessages(library(ggplot2))
+theme_set(theme_light())
 ```
 
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr) and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide functions and supporting data sets to allow conversion of text to and from tidy formats, and to switch seamlessly between tidy tools and existing text mining packages.
+Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr) and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide functions and supporting data sets to allow conversion of text to and from tidy formats, and to switch seamlessly between tidy tools and existing text mining packages. Check out [our book](https://www.tidytextmining.com/) to learn more about text mining using tidy data principles.
 
 ### Installation
 
@@ -64,7 +71,7 @@ tidy_books <- original_books %>%
 tidy_books
 ```
 
-This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.
+This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.
 
 Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (kept in the tidytext dataset `stop_words`) with an `anti_join`.
 
@@ -81,18 +88,14 @@ tidy_books %>%
   count(word, sort = TRUE) 
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiment` dataset. Let's examine how sentiment changes changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
-```{r}
+```{r, fig.width=8, fig.height=10}
 library(tidyr)
-bing <- sentiments %>%
-  filter(lexicon == "bing") %>%
-  select(-score)
-
-bing
+get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(bing) %>% 
+  inner_join(get_sentiments("bing"), by = "word") %>% 
   count(book, index = linenumber %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
@@ -102,7 +105,7 @@ janeaustensentiment
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r, fig.width=9, fig.height=9, warning=FALSE}
+```{r, fig.width=7, fig.height=7, warning=FALSE}
 library(ggplot2)
 
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
@@ -132,7 +135,7 @@ We could find the most negative documents:
 
 ```{r}
 ap_sentiments <- tidy(AssociatedPress) %>%
-  inner_join(bing, by = c(term = "word")) %>%
+  inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
   ungroup() %>%
   spread(sentiment, n, fill = 0) %>%
@@ -142,7 +145,7 @@ ap_sentiments <- tidy(AssociatedPress) %>%
 
 Or we can join the Austen and AP datasets and compare the frequencies of each word:
 
-```{r}
+```{r, fig.height=8, fig.width=8}
 comparison <- tidy(AssociatedPress) %>%
   count(word = term) %>%
   rename(AP = n) %>%
@@ -155,7 +158,7 @@ comparison
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
-  geom_point() +
+  geom_point(alpha = 0.5) +
   geom_text(aes(label = word), check_overlap = TRUE,
             vjust = 1, hjust = 1) +
   scale_x_log10(labels = percent_format()) +
@@ -165,6 +168,6 @@ ggplot(comparison, aes(AP, Austen)) +
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
-### Code of Conduct
+### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms.
+This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).

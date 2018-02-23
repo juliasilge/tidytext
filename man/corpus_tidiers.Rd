@@ -2,8 +2,8 @@
 % Please edit documentation in R/corpus_tidiers.R
 \name{corpus_tidiers}
 \alias{corpus_tidiers}
-\alias{glance.corpus}
 \alias{tidy.corpus}
+\alias{glance.corpus}
 \title{Tidiers for a corpus object from the quanteda package}
 \usage{
 \method{tidy}{corpus}(x, ...)
@@ -34,13 +34,12 @@ with NULL fields removed and turned into a one-row tbl_df.
 }
 \examples{
 
-if (requireNamespace("quanteda", quietly = FALSE)) {
- data("inaugCorpus", package = "quanteda")
+if (requireNamespace("quanteda", quietly = TRUE)) {
+ data("data_corpus_inaugural", package = "quanteda")
 
- inaugCorpus
+ data_corpus_inaugural
 
- tidy(inaugCorpus)
+ tidy(data_corpus_inaugural)
 }
 
 }
-

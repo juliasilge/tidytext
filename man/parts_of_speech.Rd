@@ -11,7 +11,7 @@
             "Noun", "Adverb", "Adjective"}
 }}
 \source{
-\url{http://icon.shef.ac.uk/Moby/mpos.html}
+\url{https://archive.org/details/mobypartofspeech03203gut}
 }
 \usage{
 parts_of_speech
@@ -19,6 +19,11 @@ parts_of_speech
 \description{
 Parts of speech for English words from the Moby Project by Grady Ward.
 Words with non-ASCII characters and items with a space have been removed.
+}
+\details{
+Another dataset of English parts of speech, available only for
+non-commercial use, is available as part of SUBTLEXus at
+\url{https://www.ugent.be/pp/experimentele-psychologie/en/research/documents/subtlexus/}.
 }
 \examples{
 
@@ -31,4 +36,3 @@ parts_of_speech \%>\%
 
 }
 \keyword{datasets}
-

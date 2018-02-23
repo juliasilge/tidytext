@@ -1,0 +1,30 @@
+{
+  "@context": "https://raw.githubusercontent.com/mbjones/codemeta/master/codemeta.jsonld",
+  "@type": "Code",
+  "author": [
+    {
+      "@id": "http://orcid.org/0000-0002-3671-836X",
+      "@type": "Person",
+      "email": "julia.silge@gmail.com",
+      "name": "Julia Silge",
+      "affiliation": "Datassist"
+    },
+    {
+      "@id": "http://orcid.org/0000-0001-8466-088X",
+      "@type": "Person",
+      "email": "admiral.david@gmail.com",
+      "name": "David Robinson",
+      "affiliation": "Stack Overflow"
+    }
+  ],
+  "identifier": "http://dx.doi.org/10.5281/zenodo.56714",
+  "codeRepository": "https://github.com/juliasilge/tidytext",
+  "datePublished": "2016-06-30",
+  "dateModified": "2016-06-30",
+  "dateCreated": "2016-06-30",
+  "description": "Text Mining and Analysis Using Tidy Data Principles in R",
+  "keywords": "text mining, natural language processing",
+  "license": "MIT",
+  "title": "tidytext",
+  "version": "v0.1.1"
+}

@@ -103,29 +103,28 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #'
 #' @examples
 #'
-#' if (requireNamespace("quanteda", quietly = FALSE)) {
-#'  data("inaugCorpus", package = "quanteda")
+#' if (requireNamespace("quanteda", quietly = TRUE)) {
+#'  data("data_corpus_inaugural", package = "quanteda")
 #'
-#'  inaugCorpus
+#'  data_corpus_inaugural
 #'
-#'  tidy(inaugCorpus)
+#'  tidy(data_corpus_inaugural)
 #' }
 #'
 #' @name corpus_tidiers
 #'
 #' @export
 tidy.corpus <- function(x, ...) {
-  ret <- tbl_df(x$documents) %>%
-    rename(text = texts)
-
-  ret
+  dplyr::tbl_df(data.frame(text = quanteda::texts(x),
+                           quanteda::docvars(x),
+                           stringsAsFactors = FALSE))
 }
 
 
 #' @rdname corpus_tidiers
 #' @export
 glance.corpus <- function(x, ...) {
-  md <- purrr::compact(x$metadata)
+  md <- purrr::compact(quanteda::metacorpus(x))
 
   # turn vectors into list columns
   md <- purrr::map_if(md, ~length(.) > 1, list)

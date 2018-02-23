@@ -10,6 +10,10 @@
 #'             "Noun", "Adverb", "Adjective"}
 #' }
 #'
+#' @details Another dataset of English parts of speech, available only for
+#' non-commercial use, is available as part of SUBTLEXus at
+#' \url{https://www.ugent.be/pp/experimentele-psychologie/en/research/documents/subtlexus/}.
+#'
 #' @examples
 #'
 #' library(dplyr)
@@ -19,5 +23,5 @@
 #' parts_of_speech %>%
 #'   count(pos, sort = TRUE)
 #'
-#' @source \url{http://icon.shef.ac.uk/Moby/mpos.html}
+#' @source \url{https://archive.org/details/mobypartofspeech03203gut}
 "parts_of_speech"
