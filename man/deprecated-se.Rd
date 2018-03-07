@@ -46,7 +46,7 @@ unnest_tokens_(tbl, output, input, token = "words", format = c("text",
 \item{output, input}{Name of columns.}
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
-options are "words" (default), "characters", "ngrams", "skip_ngrams",
+options are "words" (default), "characters", "character_shingles", "ngrams", "skip_ngrams",
 "sentences", "lines", "paragraphs", and "regex". If a function, should take
 a character vector and return a list of character vectors of the same length.}
 
