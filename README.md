@@ -49,23 +49,23 @@ library(dplyr)
 
 original_books <- austen_books() %>%
   group_by(book) %>%
-  mutate(linenumber = row_number()) %>%
+  mutate(line = row_number()) %>%
   ungroup()
 
 original_books
 #> # A tibble: 73,422 x 3
-#>    text                  book                linenumber
-#>    <chr>                 <fct>                    <int>
-#>  1 SENSE AND SENSIBILITY Sense & Sensibility          1
-#>  2 ""                    Sense & Sensibility          2
-#>  3 by Jane Austen        Sense & Sensibility          3
-#>  4 ""                    Sense & Sensibility          4
-#>  5 (1811)                Sense & Sensibility          5
-#>  6 ""                    Sense & Sensibility          6
-#>  7 ""                    Sense & Sensibility          7
-#>  8 ""                    Sense & Sensibility          8
-#>  9 ""                    Sense & Sensibility          9
-#> 10 CHAPTER 1             Sense & Sensibility         10
+#>    text                  book                 line
+#>    <chr>                 <fct>               <int>
+#>  1 SENSE AND SENSIBILITY Sense & Sensibility     1
+#>  2 ""                    Sense & Sensibility     2
+#>  3 by Jane Austen        Sense & Sensibility     3
+#>  4 ""                    Sense & Sensibility     4
+#>  5 (1811)                Sense & Sensibility     5
+#>  6 ""                    Sense & Sensibility     6
+#>  7 ""                    Sense & Sensibility     7
+#>  8 ""                    Sense & Sensibility     8
+#>  9 ""                    Sense & Sensibility     9
+#> 10 CHAPTER 1             Sense & Sensibility    10
 #> # ... with 73,412 more rows
 ```
 
@@ -79,18 +79,18 @@ tidy_books <- original_books %>%
 
 tidy_books
 #> # A tibble: 725,055 x 3
-#>    book                linenumber word       
-#>    <fct>                    <int> <chr>      
-#>  1 Sense & Sensibility          1 sense      
-#>  2 Sense & Sensibility          1 and        
-#>  3 Sense & Sensibility          1 sensibility
-#>  4 Sense & Sensibility          3 by         
-#>  5 Sense & Sensibility          3 jane       
-#>  6 Sense & Sensibility          3 austen     
-#>  7 Sense & Sensibility          5 1811       
-#>  8 Sense & Sensibility         10 chapter    
-#>  9 Sense & Sensibility         10 1          
-#> 10 Sense & Sensibility         13 the        
+#>    book                 line word       
+#>    <fct>               <int> <chr>      
+#>  1 Sense & Sensibility     1 sense      
+#>  2 Sense & Sensibility     1 and        
+#>  3 Sense & Sensibility     1 sensibility
+#>  4 Sense & Sensibility     3 by         
+#>  5 Sense & Sensibility     3 jane       
+#>  6 Sense & Sensibility     3 austen     
+#>  7 Sense & Sensibility     5 1811       
+#>  8 Sense & Sensibility    10 chapter    
+#>  9 Sense & Sensibility    10 1          
+#> 10 Sense & Sensibility    13 the        
 #> # ... with 725,045 more rows
 ```
 
@@ -150,7 +150,7 @@ get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
   inner_join(get_sentiments("bing"), by = "word") %>% 
-  count(book, index = linenumber %/% 80, sentiment) %>% 
+  count(book, index = line %/% 80, sentiment) %>% 
   spread(sentiment, n, fill = 0) %>% 
   mutate(sentiment = positive - negative)
 

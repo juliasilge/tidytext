@@ -33,7 +33,7 @@ library(stringr)
 
 original_books <- austen_books() %>%
   group_by(book) %>%
-  mutate(linenumber = row_number(),
+  mutate(line = row_number(),
          chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
                                                  ignore_case = TRUE)))) %>%
   ungroup()
@@ -53,12 +53,11 @@ tidy_books
 
 This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.
 
-Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (kept in the tidytext dataset `stop_words`) with an `anti_join`.
+Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (accessible in a tidy form with the function `get_stopwords()`) with an `anti_join`.
 
 ```{r}
-data("stop_words")
 cleaned_books <- tidy_books %>%
-  anti_join(stop_words)
+  anti_join(get_stopwords())
 ```
 
 We can also use `count` to find the most common words in all the books as a whole.
@@ -68,7 +67,7 @@ cleaned_books %>%
   count(word, sort = TRUE) 
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are in the tidytext package in the `sentiments` dataset. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
+Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
 
 ```{r}
 nrcjoy <- get_sentiments("nrc") %>%
@@ -88,7 +87,7 @@ bing <- get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
   inner_join(bing) %>%
-  count(book, index = linenumber %/% 80, sentiment) %>%
+  count(book, index = line %/% 80, sentiment) %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative)
 ```
@@ -124,9 +123,9 @@ bing_word_counts %>%
   mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
   mutate(word = reorder(word, n)) %>%
   ggplot(aes(word, n, fill = sentiment)) +
-  geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Contribution to sentiment")
+  geom_col() +
+  coord_flip() +
+  labs(y = "Contribution to sentiment")
 ```
 
 This lets us spot an anomaly in the sentiment analysis; the word "miss" is coded as negative but it is used as a title for young, unmarried women in Jane Austen's works. If it were appropriate for our purposes, we could easily add "miss" to a custom stop-words list using `bind_rows`.

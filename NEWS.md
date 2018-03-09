@@ -1,6 +1,6 @@
 # tidytext 0.1.8 [WIP]
 
-* Updates to documentation (#102).
+* Updates to documentation (#102), README, and vignettes.
 
 # tidytext 0.1.7
 
