@@ -19,7 +19,7 @@ unnest_tokens(tbl, output, input, token = "words", format = c("text", "man",
   \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
-options are "words" (default), "characters", "ngrams", "skip_ngrams",
+options are "words" (default), "characters", "character_shingles", "ngrams", "skip_ngrams",
 "sentences", "lines", "paragraphs", and "regex". If a function, should take
 a character vector and return a list of character vectors of the same length.}
 
@@ -75,6 +75,9 @@ d \%>\%
 
 d \%>\%
   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\\\d]")
+
+d \%>\%
+  unnest_tokens(chapter, txt, token = "character_shingles")
 
 # custom function
 d \%>\%

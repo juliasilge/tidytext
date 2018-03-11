@@ -7,7 +7,7 @@
 #' @param tbl A data frame
 #'
 #' @param token Unit for tokenizing, or a custom tokenizing function. Built-in
-#' options are "words" (default), "characters", "ngrams", "skip_ngrams",
+#' options are "words" (default), "characters", "character_shingles", "ngrams", "skip_ngrams",
 #' "sentences", "lines", "paragraphs", and "regex". If a function, should take
 #' a character vector and return a list of character vectors of the same length.
 #'
@@ -73,6 +73,9 @@
 #' d %>%
 #'   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\d]")
 #'
+#'d %>%
+#'   unnest_tokens(chapter, txt, token = "character_shingles")
+#'
 #' # custom function
 #' d %>%
 #'   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
@@ -132,10 +135,9 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
                                                              format = format)
   } else {
     if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
-                                          "lines", "paragraphs", "regex")) {
+                                          "lines", "paragraphs", "regex", "character_shingles")) {
       collapse <- TRUE
     }
-
     tf <- get(paste0("tokenize_", token))
     if (token %in% c("characters", "words", "ngrams", "skip_ngrams")) {
       tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)

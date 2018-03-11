@@ -12,6 +12,22 @@ test_that("tokenizing by character works", {
   expect_equal(d$char[1], "e")
 })
 
+test_that("tokenizing by character shingles works", {
+  d <- data_frame(txt = "tidytext is the best")
+  d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles")
+  expect_equal(nrow(d), 15)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$char_ngram[1], "tid")
+})
+
+test_that("tokenizing by character shingles works with an option to include whitespaces and punctuation", {
+  d <- data_frame(txt = "tidytext is the best!")
+  d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles", strip_non_alphanum = F)
+  expect_equal(nrow(d), 19)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$char_ngram[1], "tid")
+})
+
 test_that("tokenizing by word works", {
   d <- data_frame(txt = c("Because I could not stop for Death -",
                           "He kindly stopped for me -"))
@@ -317,3 +333,4 @@ test_that("Can't tokenize with list columns with collapse = TRUE", {
   ret <- unnest_tokens(df, word, txt, token = "sentences", collapse = FALSE)
   expect_equal(nrow(ret), 2)
 })
+
