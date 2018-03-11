@@ -74,7 +74,7 @@
 #'   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\d]")
 #'
 #'d %>%
-#'   unnest_tokens(chapter, txt, token = "character_shingles")
+#'   unnest_tokens(chapter, txt, token = "character_shingles", n = 4)
 #'
 #' # custom function
 #' d %>%
