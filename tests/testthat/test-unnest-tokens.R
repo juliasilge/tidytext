@@ -14,15 +14,16 @@ test_that("tokenizing by character works", {
 
 test_that("tokenizing by character shingles works", {
   d <- data_frame(txt = "tidytext is the best")
-  d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles")
-  expect_equal(nrow(d), 15)
+  d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles", n = 4)
+  expect_equal(nrow(d), 14)
   expect_equal(ncol(d), 1)
-  expect_equal(d$char_ngram[1], "tid")
+  expect_equal(d$char_ngram[1], "tidy")
 })
 
 test_that("tokenizing by character shingles works with an option to include whitespaces and punctuation", {
   d <- data_frame(txt = "tidytext is the best!")
-  d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles", strip_non_alphanum = F)
+  d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles",
+                           strip_non_alphanum = FALSE)
   expect_equal(nrow(d), 19)
   expect_equal(ncol(d), 1)
   expect_equal(d$char_ngram[1], "tid")
