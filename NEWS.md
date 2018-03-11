@@ -1,6 +1,7 @@
 # tidytext 0.1.8 [WIP]
 
 * Updates to documentation (#102), README, and vignettes.
+* Add tokenizing by character shingles thanks to Kanishka Misra (#105).
 
 # tidytext 0.1.7
 
