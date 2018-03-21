@@ -2,11 +2,18 @@ Package: tidytext
 Type: Package
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
 Version: 0.1.8
-Authors@R: c(person("Gabriela", "De Queiroz", email = "gabidequeiroz@gmail.com", role = c("ctb")),
-             person("Oliver", "Keyes", email = "ironholds@gmail.com", role = c("ctb")),
-             person("Kanishka", "Misra", email = "kmisra@purdue.edu", role = c("ctb")),
-             person("David", "Robinson", email = "admiral.david@gmail.com", role = c("aut")),
-             person("Julia", "Silge", email = "julia.silge@gmail.com", role = c("aut", "cre")))
+Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
+             email = "gabidequeiroz@gmail.com"),
+             person("Os", "Keyes", role = c("ctb"),
+             email = "ironholds@gmail.com",
+             comment = c(ORCID = "0000-0001-5196-609X")),
+             person("Kanishka", "Misra", role = c("ctb"),
+             email = "kmisra@purdue.edu"),
+             person("David", "Robinson", role = c("aut"),
+             email = "admiral.david@gmail.com"),
+             person("Julia", "Silge", role = c("aut", "cre"), 
+             email = "julia.silge@gmail.com", 
+             comment = c(ORCID = "0000-0002-3671-836X")))
 Description: Text mining for word processing and sentiment analysis using
     'dplyr', 'ggplot2', and other tidy tools.
 License: MIT + file LICENSE
