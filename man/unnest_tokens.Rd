@@ -71,9 +71,6 @@ d \%>\%
   unnest_tokens(ngram, txt, token = "ngrams", n = 2)
 
 d \%>\%
-  unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
-
-d \%>\%
   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\\\d]")
 
 d \%>\%
