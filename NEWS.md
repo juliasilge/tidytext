@@ -1,7 +1,8 @@
-# tidytext 0.1.8 [WIP]
+# tidytext 0.1.8
 
 * Updates to documentation (#102), README, and vignettes.
 * Add tokenizing by character shingles thanks to Kanishka Misra (#105).
+* Fix tests for skip grams thanks to Lincoln Mullen (#106).
 
 # tidytext 0.1.7
 
