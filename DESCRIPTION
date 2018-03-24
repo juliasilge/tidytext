@@ -20,7 +20,7 @@ License: MIT + file LICENSE
 LazyData: TRUE
 URL: http://github.com/juliasilge/tidytext
 BugReports: http://github.com/juliasilge/tidytext/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.0.1.9000
 Depends: R (>= 2.10)
 Imports: rlang,
     dplyr,
