@@ -184,6 +184,7 @@ We can determine this by finding the consensus book for each, which we note is c
 ```{r book_topics}
 book_topics <- chapter_classifications %>%
   count(title, topic) %>%
+  group_by(topic) %>%
   top_n(1, n) %>%
   ungroup() %>%
   transmute(consensus = title, topic)
