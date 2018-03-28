@@ -137,7 +137,7 @@ the tidyeval framework.</p>
     <tr>
       <th>token</th>
       <td><p>Unit for tokenizing, or a custom tokenizing function. Built-in
-options are "words" (default), "characters", "ngrams", "skip_ngrams",
+options are "words" (default), "characters", "character_shingles", "ngrams", "skip_ngrams",
 "sentences", "lines", "paragraphs", and "regex". If a function, should take
 a character vector and return a list of character vectors of the same length.</p></td>
     </tr>
@@ -181,8 +181,12 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'>library</span>(<span class='no'>dplyr</span>)
-<span class='fu'>library</span>(<span class='no'>janeaustenr</span>)
+<span class='fu'>library</span>(<span class='no'>dplyr</span>)</div><div class='output co'>#&gt; <span class='message'></span>
+#&gt; <span class='message'>Attaching package: ‘dplyr’</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:stats’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    filter, lag</span></div><div class='output co'>#&gt; <span class='message'>The following objects are masked from ‘package:base’:</span>
+#&gt; <span class='message'></span>
+#&gt; <span class='message'>    intersect, setdiff, setequal, union</span></div><div class='input'><span class='fu'>library</span>(<span class='no'>janeaustenr</span>)
 
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='http://dplyr.tidyverse.org/reference/reexports.html'>data_frame</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
 <span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
@@ -245,21 +249,6 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; 10 is a          
 #&gt; # ... with 122,193 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>ngram</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"skip_ngrams"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 366,594 x 1
-#&gt;    ngram                    
-#&gt;    &lt;chr&gt;                    
-#&gt;  1 pride by chapter is      
-#&gt;  2 and jane 1 a             
-#&gt;  3 prejudice austen it truth
-#&gt;  4 by chapter is universally
-#&gt;  5 jane 1 a acknowledged    
-#&gt;  6 austen it truth that     
-#&gt;  7 chapter is universally a 
-#&gt;  8 1 a acknowledged single  
-#&gt;  9 it truth that man        
-#&gt; 10 is universally a in      
-#&gt; # ... with 366,584 more rows</div><div class='input'>
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>chapter</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"regex"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Chapter [\\d]"</span>)</div><div class='output co'>#&gt; # A tibble: 62 x 1
 #&gt;    chapter                                                                     
 #&gt;    &lt;chr&gt;                                                                       
@@ -274,6 +263,21 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt;  9 "\n\n\nat five o'clock the two ladies retired to dress, and at half-past si…
 #&gt; 10 "\n\n\nelizabeth passed the chief of the night in her sister's room, and in…
 #&gt; # ... with 52 more rows</div><div class='input'>
+<span class='no'>d</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>unnest_tokens</span>(<span class='no'>shingle</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"character_shingles"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; # A tibble: 536,526 x 1
+#&gt;    shingle
+#&gt;    &lt;chr&gt;  
+#&gt;  1 prid   
+#&gt;  2 ride   
+#&gt;  3 idea   
+#&gt;  4 dean   
+#&gt;  5 eand   
+#&gt;  6 andp   
+#&gt;  7 ndpr   
+#&gt;  8 dpre   
+#&gt;  9 prej   
+#&gt; 10 reju   
+#&gt; # ... with 536,516 more rows</div><div class='input'>
 <span class='co'># custom function</span>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='http://www.rdocumentation.org/packages/stringr/topics/str_split'>str_split</a></span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; # A tibble: 124,032 x 1
