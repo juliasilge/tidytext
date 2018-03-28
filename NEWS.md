@@ -1,3 +1,7 @@
+# tidytext 0.1.9 [WIP]
+
+* Updates to documentation (#109) thanks to Emil Hvitfeldt.
+
 # tidytext 0.1.8
 
 * Updates to documentation (#102), README, and vignettes.
