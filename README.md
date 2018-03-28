@@ -230,7 +230,6 @@ We could find the most negative documents:
 ap_sentiments <- tidy(AssociatedPress) %>%
   inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
-  ungroup() %>%
   spread(sentiment, n, fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(sentiment)

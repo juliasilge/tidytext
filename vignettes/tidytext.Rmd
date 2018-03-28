@@ -109,8 +109,7 @@ One advantage of having the data frame with both sentiment and word is that we c
 ```{r}
 bing_word_counts <- tidy_books %>%
   inner_join(bing) %>%
-  count(word, sentiment, sort = TRUE) %>%
-  ungroup()
+  count(word, sentiment, sort = TRUE)
 
 bing_word_counts
 ```
