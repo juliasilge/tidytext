@@ -1,15 +1,17 @@
 #' Split a column into tokens using the tokenizers package
 #'
 #' Split a column into tokens using the tokenizers package, splitting the table
-#' into one-token-per-row. This function supports non-standard evaluation through
-#' the tidyeval framework.
+#' into one-token-per-row. This function supports non-standard evaluation
+#' through the tidyeval framework.
 #'
 #' @param tbl A data frame
 #'
 #' @param token Unit for tokenizing, or a custom tokenizing function. Built-in
-#' options are "words" (default), "characters", "character_shingles", "ngrams", "skip_ngrams",
-#' "sentences", "lines", "paragraphs", and "regex". If a function, should take
-#' a character vector and return a list of character vectors of the same length.
+#' options are "words" (default), "characters", "character_shingles", "ngrams",
+#' "skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets"
+#' (tokenization by word that preserves usernames, hashtags, and URLS ), and
+#' "ptb" (Penn Treebank). If a function, should take a character vector and
+#' return a list of character vectors of the same length.
 #'
 #' @param format Either "text", "man", "latex", "html", or "xml". If not text,
 #' this uses the hunspell tokenizer, and can tokenize only by "word"
@@ -31,8 +33,10 @@
 #' when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 #' "paragraphs", or "regex".
 #'
-#' @param ... Extra arguments passed on to the tokenizer, such as \code{n} and
-#' \code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".
+#' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}, such
+#' as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
+#' "ngrams" and "skip_ngrams", \code{strip_url} for "tweets", and
+#' \code{pattern} for "regex".
 #'
 #' @details If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
 #' paragraphs, or regex, the entire input will be collapsed together before
@@ -124,6 +128,12 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
 
   if (is.function(token)) {
     tokenfunc <- token
+  } else if (token %in% c("word", "character",
+                          "character_shingle", "ngram",
+                          "skip_ngram", "sentence", "line",
+                          "paragraph", "tweet")) {
+    stop(paste0("Error: Token must be a supported type, or a function that takes a character vector as input\nDid you mean token = ",
+                token, "s?"))
   } else if (format != "text") {
     if (token != "words") {
       stop("Cannot tokenize by any unit except words when format is not text")
@@ -136,7 +146,7 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
       collapse <- TRUE
     }
     tf <- get(paste0("tokenize_", token))
-    if (token %in% c("characters", "words", "ngrams", "skip_ngrams")) {
+    if (token %in% c("characters", "words", "ngrams", "skip_ngrams", "tweets", "ptb")) {
       tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
     } else {
       tokenfunc <- tf

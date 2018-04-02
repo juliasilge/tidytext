@@ -38,6 +38,13 @@ test_that("tokenizing by word works", {
   expect_equal(d$word[1], "because")
 })
 
+test_that("tokenizing errors with appropriate message", {
+  d <- data_frame(txt = c("Because I could not stop for Death -",
+                          "He kindly stopped for me -"))
+  expect_error(d %>% unnest_tokens(word, txt, token = "word"),
+               "Error: Token must be a supported type, or a function that takes a character vector as input\nDid you mean token = words?")
+})
+
 test_that("tokenizing by sentence works", {
   orig <- data_frame(txt = c("I'm Nobody! Who are you?",
                              "Are you - Nobody - too?",
@@ -131,13 +138,13 @@ test_that("tokenizing with tidyeval works", {
 
 test_that("tokenizing with to_lower = FALSE works", {
   orig <- data_frame(txt = c("Because I could not stop for Death -",
-                          "He kindly stopped for me -"))
+                             "He kindly stopped for me -"))
   d <- orig %>% unnest_tokens(word, txt, to_lower = FALSE)
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
   expect_equal(d$word[1], "Because")
   d2 <- orig %>% unnest_tokens(ngram, txt, token = "ngrams",
-                           n = 2, to_lower = FALSE)
+                               n = 2, to_lower = FALSE)
   expect_equal(nrow(d2), 11)
   expect_equal(ncol(d2), 1)
   expect_equal(d2$ngram[1], "Because I")
@@ -239,8 +246,8 @@ test_that("Trying to tokenize a non-text format with words raises an error", {
 test_that("unnest_tokens keeps top-level attributes", {
   # first check data.frame
   d <- data.frame(row = 1:2,
-                         txt = c("Call me Ishmael.", "OK, I will."),
-                         stringsAsFactors = FALSE)
+                  txt = c("Call me Ishmael.", "OK, I will."),
+                  stringsAsFactors = FALSE)
 
   lst <- list(1, 2, 3, 4)
   attr(d, "custom") <- lst
@@ -258,7 +265,7 @@ test_that("unnest_tokens keeps top-level attributes", {
 test_that("Trying to tokenize a data.table works", {
   skip_if_not_installed("data.table")
   text <- data.table::data.table(txt = "Write till my fingers look like a bouquet of roses",
-                     author = "Watsky")
+                                 author = "Watsky")
   output <- unnest_tokens(text, word, txt)
   expect_equal(ncol(output), 2)
   expect_equal(nrow(output), 10)

@@ -19,9 +19,11 @@ unnest_tokens(tbl, output, input, token = "words", format = c("text", "man",
   \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
-options are "words" (default), "characters", "character_shingles", "ngrams", "skip_ngrams",
-"sentences", "lines", "paragraphs", and "regex". If a function, should take
-a character vector and return a list of character vectors of the same length.}
+options are "words" (default), "characters", "character_shingles", "ngrams",
+"skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets"
+(tokenization by word that preserves usernames, hashtags, and URLS ), and
+"ptb" (Penn Treebank). If a function, should take a character vector and
+return a list of character vectors of the same length.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
 this uses the hunspell tokenizer, and can tokenize only by "word"}
@@ -36,13 +38,15 @@ if the original input and new output column have the same name.}
 when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".}
 
-\item{...}{Extra arguments passed on to the tokenizer, such as \code{n} and
-\code{k} for "ngrams" and "skip_ngrams" or \code{pattern} for "regex".}
+\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}, such
+as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
+"ngrams" and "skip_ngrams", \code{strip_url} for "tweets", and
+\code{pattern} for "regex".}
 }
 \description{
 Split a column into tokens using the tokenizers package, splitting the table
-into one-token-per-row. This function supports non-standard evaluation through
-the tidyeval framework.
+into one-token-per-row. This function supports non-standard evaluation
+through the tidyeval framework.
 }
 \details{
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
