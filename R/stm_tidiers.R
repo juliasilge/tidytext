@@ -120,7 +120,6 @@ tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE,
 #'
 #' @export
 augment.STM <- function(x, data, ...) {
-
   if (missing(data)) {
     stop("data argument must be provided in order to augment a stm model")
   }
@@ -134,8 +133,10 @@ augment.STM <- function(x, data, ...) {
     mat <- data
     data <- tidy(mat)
   } else {
-    stop("data argument must either be a dfm ",
-         "(from quanteda) or a table with document and term columns")
+    stop(
+      "data argument must either be a dfm ",
+      "(from quanteda) or a table with document and term columns"
+    )
   }
 
   beta <- t(as.matrix(x$beta$logbeta[[1]]))
@@ -167,11 +168,13 @@ augment.STM <- function(x, data, ...) {
 #' @export
 
 glance.STM <- function(x, ...) {
-  ret <- data_frame(k = as.integer(x$settings$dim$K),
-                    docs = x$settings$dim$N,
-                    terms = x$settings$dim$V,
-                    iter = length(x$convergence$bound),
-                    alpha = x$settings$init$alpha)
+  ret <- data_frame(
+    k = as.integer(x$settings$dim$K),
+    docs = x$settings$dim$N,
+    terms = x$settings$dim$V,
+    iter = length(x$convergence$bound),
+    alpha = x$settings$init$alpha
+  )
 
   ret
 }

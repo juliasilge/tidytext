@@ -134,8 +134,10 @@ augment.LDA <- function(x, data, ...) {
       data <- tidy(data)
     } else if (!inherits(data, "data.frame") &&
                !(all(c("document", "term") %in% colnames(data)))) {
-      stop("data argument must either be a simple_triplet_matrix (such as ",
-           "a DocumentTermMatrix) or a table with document and term columns")
+      stop(
+        "data argument must either be a simple_triplet_matrix (such as ",
+        "a DocumentTermMatrix) or a table with document and term columns"
+      )
     }
     ret <- left_join(data, ret, by = c("document", "term"))
   }

@@ -3,10 +3,11 @@ context("stm tidiers")
 suppressPackageStartupMessages(library(dplyr))
 
 if (require("stm", quietly = TRUE)) {
-
-  dat <- data_frame(document = c("row1", "row1", "row2", "row2", "row2"),
-                    term = c("col1", "col2", "col1", "col3", "col4"),
-                    n = 1:5)
+  dat <- data_frame(
+    document = c("row1", "row1", "row2", "row2", "row2"),
+    term = c("col1", "col2", "col1", "col3", "col4"),
+    n = 1:5
+  )
   m <- cast_sparse(dat, document, term)
   stm_model <- stm(m, seed = 1234, K = 3, verbose = FALSE)
 

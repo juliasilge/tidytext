@@ -65,8 +65,10 @@ cast_sparse <- function(data, row, column, value, ...) {
     j <- match(col_names, col_u)
   }
 
-  ret <- Matrix::sparseMatrix(i = i, j = j, x = values,
-                              dimnames = list(row_u, col_u), ...)
+  ret <- Matrix::sparseMatrix(
+    i = i, j = j, x = values,
+    dimnames = list(row_u, col_u), ...
+  )
 
   ret
 }
@@ -78,10 +80,10 @@ cast_sparse_ <- function(data, row, column, value) {
   row <- compat_lazy(row, caller_env())
   column <- compat_lazy(column, caller_env())
   if (missing(value)) {
-    cast_sparse(data, !! row, !! column)
+    cast_sparse(data, !!row, !!column)
   } else {
     value_col <- compat_lazy(value, caller_env())
-    cast_sparse(data, !! row, !! column, !! value_col)
+    cast_sparse(data, !!row, !!column, !!value_col)
   }
 }
 
@@ -114,7 +116,7 @@ cast_tdm <- function(data, term, document, value,
   term <- quo_name(enquo(term))
   document <- quo_name(enquo(document))
   value <- quo_name(enquo(value))
-  m <- cast_sparse(data, !! term, !! document, !! value, ...)
+  m <- cast_sparse(data, !!term, !!document, !!value, ...)
   tm::as.TermDocumentMatrix(m, weighting = weighting)
 }
 
@@ -127,8 +129,9 @@ cast_tdm_ <- function(data, term, document, value,
   term <- compat_lazy(term, caller_env())
   document <- compat_lazy(document, caller_env())
   value <- compat_lazy(value, caller_env())
-  cast_tdm(data, !! term, !! document, !! value,
-           weighting = weighting, ...)
+  cast_tdm(data, !!term, !!document, !!value,
+           weighting = weighting, ...
+  )
 }
 
 
@@ -136,11 +139,11 @@ cast_tdm_ <- function(data, term, document, value,
 #' @rdname document_term_casters
 #' @export
 cast_dtm <- function(data, document, term, value,
-                      weighting = tm::weightTf, ...) {
+                     weighting = tm::weightTf, ...) {
   document <- quo_name(enquo(document))
   term <- quo_name(enquo(term))
   value <- quo_name(enquo(value))
-  m <- cast_sparse(data, !! document, !! term, !! value, ...)
+  m <- cast_sparse(data, !!document, !!term, !!value, ...)
   tm::as.DocumentTermMatrix(m, weighting = weighting)
 }
 
@@ -149,12 +152,13 @@ cast_dtm <- function(data, document, term, value,
 #' @inheritParams cast_dtm
 #' @export
 cast_dtm_ <- function(data, document, term, value,
-                     weighting = tm::weightTf, ...) {
+                      weighting = tm::weightTf, ...) {
   document <- compat_lazy(document, caller_env())
   term <- compat_lazy(term, caller_env())
   value <- compat_lazy(value, caller_env())
-  cast_dtm(data, !! document, !! term, !! value,
-           weighting = weighting, ...)
+  cast_dtm(data, !!document, !!term, !!value,
+           weighting = weighting, ...
+  )
 }
 
 
@@ -164,7 +168,7 @@ cast_dfm <- function(data, document, term, value, ...) {
   document <- quo_name(enquo(document))
   term <- quo_name(enquo(term))
   value <- quo_name(enquo(value))
-  m <- cast_sparse(data, !! document, !! term, !! value, ...)
+  m <- cast_sparse(data, !!document, !!term, !!value, ...)
   quanteda::as.dfm(m)
 }
 
@@ -176,5 +180,5 @@ cast_dfm_ <- function(data, document, term, value, ...) {
   document <- compat_lazy(document, caller_env())
   term <- compat_lazy(term, caller_env())
   value <- compat_lazy(value, caller_env())
-  cast_dfm(data, !! document, !! term, !! value)
+  cast_dfm(data, !!document, !!term, !!value)
 }

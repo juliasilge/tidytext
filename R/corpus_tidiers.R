@@ -52,7 +52,7 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
       # keep as a list column
       return(m)
     }
-    m <- purrr::map_at(m, which(lengths == 0), ~NA)
+    m <- purrr::map_at(m, which(lengths == 0), ~ NA)
 
     ret <- unname(do.call(c, m))
     ## tbl_df() doesn't support POSIXlt format
@@ -115,9 +115,11 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #'
 #' @export
 tidy.corpus <- function(x, ...) {
-  dplyr::tbl_df(data.frame(text = quanteda::texts(x),
-                           quanteda::docvars(x),
-                           stringsAsFactors = FALSE))
+  dplyr::tbl_df(data.frame(
+    text = quanteda::texts(x),
+    quanteda::docvars(x),
+    stringsAsFactors = FALSE
+  ))
 }
 
 
@@ -127,7 +129,7 @@ glance.corpus <- function(x, ...) {
   md <- purrr::compact(quanteda::metacorpus(x))
 
   # turn vectors into list columns
-  md <- purrr::map_if(md, ~length(.) > 1, list)
+  md <- purrr::map_if(md, ~ length(.) > 1, list)
 
   as_data_frame(md)
 }

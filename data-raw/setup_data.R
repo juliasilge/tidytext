@@ -6,15 +6,19 @@ library(dplyr)
 # sentiments dataset ------------------------------------------------------
 
 nrc_lexicon <- readr::read_tsv("data-raw/NRC-emotion-lexicon-wordlevel-alphabetized-v0.92.txt.zip",
-                               col_names = FALSE, skip = 46)
-nrc_lexicon <- nrc_lexicon %>% filter(X3 == 1) %>%
+                               col_names = FALSE, skip = 46
+)
+nrc_lexicon <- nrc_lexicon %>%
+  filter(X3 == 1) %>%
   select(word = X1, sentiment = X2) %>%
   mutate(lexicon = "nrc")
 
 bing_lexicon1 <- readr::read_lines("data-raw/positive-words.txt",
-                                   skip = 35)
+                                   skip = 35
+)
 bing_lexicon2 <- readr::read_lines("data-raw/negative-words.txt",
-                                   skip = 35)
+                                   skip = 35
+)
 bing_lexicon1 <- data_frame(word = bing_lexicon1) %>%
   mutate(sentiment = "positive", lexicon = "bing")
 bing_lexicon2 <- data_frame(word = bing_lexicon2) %>%
@@ -22,7 +26,8 @@ bing_lexicon2 <- data_frame(word = bing_lexicon2) %>%
 bing_lexicon <- bind_rows(bing_lexicon1, bing_lexicon2) %>% arrange(word)
 
 AFINN_lexicon <- readr::read_tsv("data-raw/AFINN-111.txt",
-                                 col_names = FALSE)
+                                 col_names = FALSE
+)
 AFINN_lexicon <- AFINN_lexicon %>%
   transmute(word = X1, sentiment = NA, score = X2, lexicon = "AFINN")
 
@@ -40,9 +45,11 @@ loughran_lexicon <- mcdonald_raw %>%
   tidyr::gather(sentiment, value, -word) %>%
   filter(value > 0) %>%
   select(-value) %>%
-  mutate(word = stringr::str_to_lower(word),
-         sentiment = stringr::str_to_lower(sentiment),
-         lexicon = "loughran")
+  mutate(
+    word = stringr::str_to_lower(word),
+    sentiment = stringr::str_to_lower(sentiment),
+    lexicon = "loughran"
+  )
 
 sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon, loughran_lexicon) %>%
   filter(!stringr::str_detect(word, "[^[:ascii:]]"))
@@ -84,8 +91,10 @@ parts_of_speech <- readr::read_csv("Noun,N
                                    ", col_names = c("pos", "code"))
 
 # parts of speech
-parts_of_speech <- readr::read_delim("data-raw/mobyposi.i.zip", delim = "\xd7",
-                                   col_names = c("word", "code")) %>%
+parts_of_speech <- readr::read_delim("data-raw/mobyposi.i.zip",
+                                     delim = "\xd7",
+                                     col_names = c("word", "code")
+) %>%
   tidyr::unnest(code = stringr::str_split(code, "")) %>%
   inner_join(parts_of_speech, by = "code") %>%
   filter(!stringr::str_detect(word, " ")) %>%
@@ -113,4 +122,3 @@ nma_words <- readr::read_lines("data-raw/list-English-negators.txt") %>%
 
 readr::write_csv(nma_words, "data-raw/nma_words.csv")
 devtools::use_data(nma_words, overwrite = TRUE)
-
