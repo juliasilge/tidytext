@@ -20,7 +20,7 @@ test_that("tokenizing by character shingles works", {
   expect_equal(d$char_ngram[1], "tidy")
 })
 
-test_that("tokenizing by character shingles works with an option to include whitespaces and punctuation", {
+test_that("tokenizing by character shingles can include whitespace/punctuation", {
   d <- data_frame(txt = "tidytext is the best!")
   d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles",
                            strip_non_alphanum = FALSE)
@@ -273,7 +273,7 @@ test_that("Trying to tokenize a data.table works", {
   expect_equal(output$author[1], "Watsky")
 })
 
-test_that("Trying to tokenize a data.table work when the input has only one column", {
+test_that("Can tokenize a data.table work when the input has only one column", {
   skip_if_not_installed("data.table")
   text <- data.table::data.table(txt = "You gotta bring yourself your flowers now in showbiz")
   output <- unnest_tokens(text, word, txt)
@@ -335,10 +335,11 @@ test_that("Can't tokenize with list columns with collapse = TRUE", {
                    line = 1L:2L,
                    list_col = list(1L:3L, c("a", "b")))
 
-  expect_error(unnest_tokens(df, word, txt, token = "sentences"), "to be atomic vectors")
+  expect_error(unnest_tokens(df, word, txt, token = "sentences"),
+               "to be atomic vectors")
 
-  # Can tokenize by sentence without collapsing, though it sort of defeats the purpose
+  # Can tokenize by sentence without collapsing
+  # though it sort of defeats the purpose
   ret <- unnest_tokens(df, word, txt, token = "sentences", collapse = FALSE)
   expect_equal(nrow(ret), 2)
 })
-

@@ -78,7 +78,8 @@
 #' @name stm_tidiers
 #'
 #' @export
-tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE, document_names = NULL, ...) {
+tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE,
+                     document_names = NULL, ...) {
   matrix <- match.arg(matrix)
   if (matrix == "beta") {
     mat <- x$beta

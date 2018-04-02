@@ -29,7 +29,7 @@ test_that("Can tidy corpus from quanteda package", {
   }
 })
 
-test_that("Can tidy corpus from quanteda package using accessor functions", {
+test_that("Can tidy corpus from quanteda using accessor functions", {
   if (requireNamespace("quanteda", quietly = TRUE)) {
 
     x <- quanteda::data_corpus_inaugural
@@ -45,19 +45,19 @@ test_that("Can tidy corpus from quanteda package using accessor functions", {
   }
 })
 
-test_that("Can glance a corpus from quanteda package using accessor functions", {
+test_that("Can glance a corpus from quanteda using accessor functions", {
   if (requireNamespace("quanteda", quietly = TRUE)) {
 
     x <- quanteda::data_corpus_inaugural
 
     ## old method
-    glanceOLD <- function(x, ...) {
+    glance_old <- function(x, ...) {
       md <- purrr::compact(x$metadata)
       # turn vectors into list columns
       md <- purrr::map_if(md, ~length(.) > 1, list)
       as_data_frame(md)
     }
-    ret_old <- glanceOLD(x)
+    ret_old <- glance_old(x)
 
     ## new method
     ret_new <- glance(x)

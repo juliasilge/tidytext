@@ -65,7 +65,6 @@ tidy.simple_triplet_matrix <- function(x,
   tidy_triplet(x, triplets, row_names, col_names)
 }
 
-
 #' Utility function to tidy a simple triplet matrix
 #'
 #' @param x Object with rownames and colnames
@@ -90,7 +89,5 @@ tidy_triplet <- function(x, triplets, row_names = NULL, col_names = NULL) {
   ret
 }
 
-
 #' @export
 broom::tidy
-

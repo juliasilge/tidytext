@@ -95,11 +95,11 @@ tidy.jobjRef <- function(x, matrix = c("beta", "gamma"), log = FALSE,
   ret <- dplyr::tbl_df(reshape2::melt(m))
 
   if (matrix == "beta") {
-    # per-term-per-topic
+    # per term per topic
     colnames(ret) <- c("topic", "term", "beta")
     ret$term <- x$getVocabulary()[ret$term]
   } else {
-    # per-document-per-topic
+    # per document per topic
     colnames(ret) <- c("document", "topic", "gamma")
     ret$document <- x$getDocumentNames()[ret$document]
   }
@@ -145,4 +145,3 @@ augment.jobjRef <- function(x, data, ...) {
   data$.topic[keep] <- apply(products[keep, ], 1, which.max)
   data
 }
-

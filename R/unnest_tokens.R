@@ -142,11 +142,13 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
                                                              format = format)
   } else {
     if (is.null(collapse) && token %in% c("ngrams", "skip_ngrams", "sentences",
-                                          "lines", "paragraphs", "regex", "character_shingles")) {
+                                          "lines", "paragraphs", "regex",
+                                          "character_shingles")) {
       collapse <- TRUE
     }
     tf <- get(paste0("tokenize_", token))
-    if (token %in% c("characters", "words", "ngrams", "skip_ngrams", "tweets", "ptb")) {
+    if (token %in% c("characters", "words", "ngrams", "skip_ngrams",
+                     "tweets", "ptb")) {
       tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
     } else {
       tokenfunc <- tf
@@ -156,7 +158,7 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   if (!is.null(collapse) && collapse) {
     if (any(!purrr::map_lgl(tbl, is.atomic))) {
       stop("If collapse = TRUE (such as for unnesting by sentence or paragraph), ",
-           "unnest_tokens needs all columns of input to be atomic vectors (not lists)")
+           "unnest_tokens needs all input columns to be atomic vectors (not lists)")
     }
 
     group_vars <- setdiff(names(tbl), input)
@@ -218,7 +220,8 @@ unnest_tokens_ <- function(tbl, output, input, token = "words",
 
 #' @export
 unnest_tokens_.data.frame <- function(tbl, output, input, token = "words",
-                                      format = c("text", "man", "latex", "html", "xml"),
+                                      format = c("text", "man", "latex",
+                                                 "html", "xml"),
                                       to_lower = TRUE, drop = TRUE,
                                       collapse = NULL, ...) {
   output <- compat_lazy(output, caller_env())

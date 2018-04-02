@@ -30,7 +30,6 @@ test_that("Can calculate TF-IDF", {
     group_by(document) %>%
     bind_tf_idf(word, document, frequency)
 
-  #expect_equal(result, ungroup(result2))
   expect_equal(length(groups(result2)), 1)
   expect_equal(as.character(groups(result2)[[1]]), "document")
 })
@@ -76,7 +75,6 @@ test_that("tf-idf with tidyeval works", {
     group_by(document) %>%
     bind_tf_idf(!! termvar, !! documentvar, !! countvar)
 
-  #expect_equal(result, ungroup(result2))
   expect_equal(length(groups(result2)), 1)
   expect_equal(as.character(groups(result2)[[1]]), "document")
 })

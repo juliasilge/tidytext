@@ -81,7 +81,7 @@ cast_sparse_ <- function(data, row, column, value) {
     cast_sparse(data, !! row, !! column)
   } else {
     value_col <- compat_lazy(value, caller_env())
-    cast_sparse(data, !! row, !! column, !! value)
+    cast_sparse(data, !! row, !! column, !! value_col)
   }
 }
 
@@ -178,4 +178,3 @@ cast_dfm_ <- function(data, document, term, value, ...) {
   value <- compat_lazy(value, caller_env())
   cast_dfm(data, !! document, !! term, !! value)
 }
-
