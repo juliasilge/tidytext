@@ -51,5 +51,6 @@ Suggests: readr,
     gutenbergr,
     testthat,
     mallet,
-    stm
+    stm,
+    data.table
 VignetteBuilder: knitr
