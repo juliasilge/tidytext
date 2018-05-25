@@ -51,7 +51,7 @@ through the tidyeval framework.
 \details{
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
 paragraphs, or regex, the entire input will be collapsed together before
-tokenizing.
+tokenizing unless \code{collapse = FALSE}.
 
 If format is anything other than "text", this uses the
 \code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.
