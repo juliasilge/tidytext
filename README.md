@@ -1,7 +1,5 @@
 ---
-output:
-  html_document:
-    df_print: paged
+output: github_document
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -9,8 +7,7 @@ output:
 
 
 
-# tidytext <img src="tools/tidytext.png" align="right" />
-## Text mining using dplyr, ggplot2, and other tidy tools
+# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="tools/tidytext.png" align="right" />
 
 **Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
