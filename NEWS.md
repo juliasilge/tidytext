@@ -1,6 +1,7 @@
 # tidytext 0.2.0 [WIP]
 
 * Improvements to documentation (#117)
+* Fix for NSE thanks to @lepennec (#122).
 
 # tidytext 0.1.9
 
