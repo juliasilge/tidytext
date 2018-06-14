@@ -38,7 +38,7 @@ cast_sparse <- function(data, row, column, value, ...) {
     value_col <- 1
   }
   data <- ungroup(data)
-  data <- distinct(data, row_col, column_col, .keep_all = TRUE)
+  data <- distinct(data, !!sym(row_col), !!sym(column_col), .keep_all = TRUE)
   row_names <- data[[row_col]]
   col_names <- data[[column_col]]
   if (is.numeric(value_col)) {
