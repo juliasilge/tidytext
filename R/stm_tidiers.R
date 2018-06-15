@@ -133,8 +133,8 @@ tidy.estimateEffect <- function(x, ...) {
   s <- summary(x)
   topics <- s$topics
   names(s$tables) <- s$topics
-  ret <- purrr::map_df(s$tables, dplyr::as_tibble,
-                       rownames = "term", .id = "topic")
+  ret <- purrr::map_dfr(s$tables, dplyr::as_tibble,
+                        rownames = "term", .id = "topic")
   ret$topic <- as.integer(ret$topic)
   colnames(ret) <- c("topic", "term", "estimate", "std.error",
                      "statistic", "p.value")

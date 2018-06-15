@@ -2,6 +2,7 @@
 
 * Improvements to documentation (#117)
 * Fix for NSE thanks to @lepennec (#122).
+* Tidier for estimated regressions from **stm** package thanks to @jefferickson (#115).
 
 # tidytext 0.1.9
 
