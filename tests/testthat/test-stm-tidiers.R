@@ -94,7 +94,7 @@ if (require("stm", quietly = TRUE)) {
 
     expect_equal(colnames(td), c("topic", "term", "estimate", "std.error", "statistic", "p.value"))
 
-    expect_is(td$topic, "numeric")
+    expect_is(td$topic, "integer")
     expect_is(td$term, "character")
     expect_is(td$estimate, "numeric")
     expect_is(td$std.error, "numeric")

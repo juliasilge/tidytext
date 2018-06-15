@@ -132,27 +132,12 @@ tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE,
 tidy.estimateEffect <- function(x, ...) {
   s <- summary(x)
   topics <- s$topics
-  tables <- purrr::map(s$tables, dplyr::as_tibble, rownames = "term")
-  n_topics <- length(topics)
-
-  add_topic <- function(x, topic) {
-    x %>%
-      dplyr::mutate(topic = topic) %>%
-      dplyr::select(topic, dplyr::everything())
-  }
-
-  topic_reducer <- function(acc, next_topic, next_table) {
-    rbind(acc, add_topic(next_table, next_topic))
-  }
-
-  ret <- add_topic(tables[[1]], topics[[1]])
-  if (n_topics > 1) {
-    ret <- topics[2:n_topics] %>%
-      purrr::reduce2(tables[2:n_topics], topic_reducer,
-                     .init = ret)
-  }
-
-  colnames(ret) <- c("topic", "term", "estimate", "std.error", "statistic", "p.value")
+  names(s$tables) <- s$topics
+  ret <- purrr::map_df(s$tables, dplyr::as_tibble,
+                       rownames = "term", .id = "topic")
+  ret$topic <- as.integer(ret$topic)
+  colnames(ret) <- c("topic", "term", "estimate", "std.error",
+                     "statistic", "p.value")
   ret
 }
 

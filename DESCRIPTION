@@ -21,6 +21,7 @@ Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
 Description: Text mining for word processing and sentiment analysis using
     'dplyr', 'ggplot2', and other tidy tools.
 License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: TRUE
 URL: http://github.com/juliasilge/tidytext
 BugReports: http://github.com/juliasilge/tidytext/issues
