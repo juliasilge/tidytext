@@ -6,18 +6,26 @@ if (require("topicmodels", quietly = TRUE)) {
   data(AssociatedPress)
   ap <- AssociatedPress[1:100, ]
   lda <- LDA(ap, control = list(alpha = 0.1), k = 4)
+  ctm <- LDA(ap, k = 4)
 
   test_that("can tidy beta matrix", {
     td <- tidy.LDA(lda, matrix = "beta")
+    td2 <- tidy.CTM(ctm, matrix = "beta")
     expect_is(td, "tbl_df")
+    expect_is(td2, "tbl_df")
 
     expect_equal(colnames(td), c("topic", "term", "beta"))
+    expect_equal(colnames(td2), c("topic", "term", "beta"))
 
     expect_is(td$term, "character")
     expect_is(td$beta, "numeric")
     expect_equal(unique(td$topic), 1:4)
+    expect_is(td2$term, "character")
+    expect_is(td2$beta, "numeric")
+    expect_equal(unique(td2$topic), 1:4)
 
     expect_gt(nrow(td), 10000)
+    expect_gt(nrow(td2), 10000)
 
     expect_true(all(c("united", "states", "president") %in% td$term))
 
@@ -28,20 +36,30 @@ if (require("topicmodels", quietly = TRUE)) {
 
     td_log <- tidy(lda, matrix = "beta", log = TRUE)
     expect_true(all(td_log$beta < 0))
+    td_log2 <- tidy(ctm, matrix = "beta", log = TRUE)
+    expect_true(all(td_log2$beta < 0))
   })
 
   test_that("can tidy gamma matrix", {
     td <- tidy.LDA(lda, matrix = "gamma")
     expect_is(td, "tbl_df")
+    td2 <- tidy.CTM(ctm, matrix = "gamma")
+    expect_is(td2, "tbl_df")
 
     expect_equal(colnames(td), c("document", "topic", "gamma"))
+    expect_equal(colnames(td2), c("document", "topic", "gamma"))
 
     expect_is(td$document, "integer")
     expect_is(td$gamma, "numeric")
+    expect_is(td2$document, "integer")
+    expect_is(td2$gamma, "numeric")
 
     expect_equal(nrow(td), 400)
     expect_equal(unique(td$topic), 1:4)
     expect_equal(unique(td$document), 1:100)
+    expect_equal(nrow(td2), 400)
+    expect_equal(unique(td2$topic), 1:4)
+    expect_equal(unique(td2$document), 1:100)
 
     # all gammas sum to 1
     summ <- td %>%
@@ -55,6 +73,8 @@ if (require("topicmodels", quietly = TRUE)) {
   test_that("can augment an LDA output", {
     au <- augment.LDA(lda)
     expect_is(au, "tbl_df")
+    au2 <- augment.CTM(ctm)
+    expect_is(au2, "tbl_df")
     expect_equal(colnames(au), c("document", "term", ".topic"))
     expect_equal(sort(unique(au$.topic)), 1:4)
 
@@ -88,5 +108,7 @@ if (require("topicmodels", quietly = TRUE)) {
     expect_is(g, "tbl_df")
     expect_equal(nrow(g), 1)
     expect_equal(g$terms, 19253)
+    g2 <- glance.CTM(lda)
+    expect_is(g2, "tbl_df")
   })
 }
