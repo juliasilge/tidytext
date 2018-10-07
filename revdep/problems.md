@@ -1,106 +1,179 @@
-# Setup
+# crsra
 
-## Platform
+Version: 0.2.3
 
-|setting  |value                        |
-|:--------|:----------------------------|
-|version  |R version 3.5.0 (2018-04-23) |
-|system   |x86_64, darwin15.6.0         |
-|ui       |RStudio (1.1.447)            |
-|language |(EN)                         |
-|collate  |en_US.UTF-8                  |
-|tz       |America/Sao_Paulo            |
-|date     |2018-05-24                   |
+## In both
 
-## Packages
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 500 marked UTF-8 strings
+    ```
 
-|package  |*  |version |date       |source                         |
-|:--------|:--|:-------|:----------|:------------------------------|
-|dplyr    |*  |0.7.5   |2018-05-19 |cran (@0.7.5)                  |
-|tidyr    |   |0.8.1   |2018-05-18 |cran (@0.8.1)                  |
-|tidytext |*  |0.1.9   |2018-05-24 |local (juliasilge/tidytext@NA) |
+# fivethirtyeight
 
-# Check results
+Version: 0.4.0
 
-3 packages with problems
+## In both
 
-|package   |version | errors| warnings| notes|
-|:---------|:-------|------:|--------:|-----:|
-|available |1.0.0   |      0|        1|     1|
-|polmineR  |0.7.8   |      1|        0|     0|
-|widyr     |0.1.1   |      0|        1|     0|
+*   checking package dependencies ... NOTE
+    ```
+    Package suggested but not available for checking: ‘fivethirtyeight’
+    ```
 
-## available (1.0.0)
-Maintainer: Jim Hester <james.f.hester@gmail.com>  
-Bug reports: https://github.com/ropenscilabs/available/issues
+*   checking installed package size ... NOTE
+    ```
+      installed size is  6.3Mb
+      sub-directories of 1Mb or more:
+        data   5.3Mb
+    ```
 
-0 errors | 1 warning  | 1 note 
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 1616 marked UTF-8 strings
+    ```
 
-```
-checking examples ... WARNING
-Found the following significant warnings:
+# gutenbergr
 
-  Warning: 'glue::collapse' is deprecated.
-Deprecated functions may be defunct as soon as of the next release of
-R.
-See ?Deprecated.
+Version: 0.1.4
 
-checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘BiocInstaller’
-```
+## In both
 
-## polmineR (0.7.8)
-Maintainer: Andreas Blaette <andreas.blaette@uni-due.de>  
-Bug reports: https://github.com/PolMine/polmineR/issues
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 13617 marked UTF-8 strings
+    ```
 
-1 error  | 0 warnings | 0 notes
+# polmineR
 
-```
-checking examples ... ERROR
-Running examples in ‘polmineR-Ex.R’ failed
-The error most likely occurred in:
+Version: 0.7.10
 
-> base::assign(".ptime", proc.time(), pos = "CheckExEnv")
-> ### Name: textstat-class
-> ### Title: S4 textstat class
-> ### Aliases: textstat-class as.data.frame,textstat-method
-> ###   show,textstat-method dim,textstat-method colnames,textstat-method
-> ###   rownames,textstat-method names,textstat-method
-... 15 lines ...
-... get encoding: latin1
-... get cpos and strucs
-... getting counts for p-attribute(s): word
-... using RcppCWB
-> y <- cooccurrences(P, query = "Arbeit")
-> y[1:25]
-Error in get("View", envir = .GlobalEnv)(.Object@stat) : 
-  View() should not be used in examples etc
-Calls: <Anonymous> ... <Anonymous> -> view -> view -> .local -> <Anonymous>
-Execution halted
-** found \donttest examples: check also with --run-donttest
-```
+## In both
 
-## widyr (0.1.1)
-Maintainer: David Robinson <admiral.david@gmail.com>  
-Bug reports: http://github.com/dgrtwo/widyr/issues
+*   checking package dependencies ... ERROR
+    ```
+    Package required but not available: ‘RcppCWB’
+    
+    See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+    manual.
+    ```
 
-0 errors | 1 warning  | 0 notes
+# quanteda
+
+Version: 1.3.4
+
+## In both
+
+*   checking whether package ‘quanteda’ can be installed ... ERROR
+    ```
+    Installation failed.
+    See ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/new/quanteda.Rcheck/00install.out’ for details.
+    ```
+
+## Installation
+
+### Devel
 
 ```
-checking examples ... WARNING
-Found the following significant warnings:
+* installing *source* package ‘quanteda’ ...
+** package ‘quanteda’ successfully unpacked and MD5 sums checked
+** libs
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c ca_mt.cpp -o ca_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c collocations_mt_.cpp -o collocations_mt_.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c dist_mt.cpp -o dist_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c fcm_mt.cpp -o fcm_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c kwic_mt.cpp -o kwic_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_compound_mt.cpp -o tokens_compound_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_lookup_mt.cpp -o tokens_lookup_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_ngrams_mt.cpp -o tokens_ngrams_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_recompile_mt.cpp -o tokens_recompile_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_segment_mt.cpp -o tokens_segment_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_select_mt.cpp -o tokens_select_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c utility.cpp -o utility.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordcloud.cpp -o wordcloud.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordfish_dense.cpp -o wordfish_dense.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordfish_mt.cpp -o wordfish_mt.o
+clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o quanteda.so RcppExports.o ca_mt.o collocations_mt_.o dist_mt.o fcm_mt.o kwic_mt.o tokens_compound_mt.o tokens_lookup_mt.o tokens_ngrams_mt.o tokens_recompile_mt.o tokens_segment_mt.o tokens_select_mt.o utility.o wordcloud.o wordfish_dense.o wordfish_mt.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
+ld: library not found for -lgfortran
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make: *** [quanteda.so] Error 1
+ERROR: compilation failed for package ‘quanteda’
+* removing ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/new/quanteda.Rcheck/quanteda’
 
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-  Warning: 'glue::collapse' is deprecated.
-Deprecated functions may be defunct as soon as of the next release of
-R.
-See ?Deprecated.
 ```
+### CRAN
+
+```
+* installing *source* package ‘quanteda’ ...
+** package ‘quanteda’ successfully unpacked and MD5 sums checked
+** libs
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c RcppExports.cpp -o RcppExports.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c ca_mt.cpp -o ca_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c collocations_mt_.cpp -o collocations_mt_.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c dist_mt.cpp -o dist_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c fcm_mt.cpp -o fcm_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c kwic_mt.cpp -o kwic_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_compound_mt.cpp -o tokens_compound_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_lookup_mt.cpp -o tokens_lookup_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_ngrams_mt.cpp -o tokens_ngrams_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_recompile_mt.cpp -o tokens_recompile_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_segment_mt.cpp -o tokens_segment_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c tokens_select_mt.cpp -o tokens_select_mt.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c utility.cpp -o utility.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordcloud.cpp -o wordcloud.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordfish_dense.cpp -o wordfish_dense.o
+clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordfish_mt.cpp -o wordfish_mt.o
+clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o quanteda.so RcppExports.o ca_mt.o collocations_mt_.o dist_mt.o fcm_mt.o kwic_mt.o tokens_compound_mt.o tokens_lookup_mt.o tokens_ngrams_mt.o tokens_recompile_mt.o tokens_segment_mt.o tokens_select_mt.o utility.o wordcloud.o wordfish_dense.o wordfish_mt.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
+ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
+ld: library not found for -lgfortran
+clang: error: linker command failed with exit code 1 (use -v to see invocation)
+make: *** [quanteda.so] Error 1
+ERROR: compilation failed for package ‘quanteda’
+* removing ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/quanteda’
+
+```
+# rzeit2
+
+Version: 0.1.0
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespace in Imports field not imported from: ‘ggplot2’
+      All declared Imports should be used.
+    ```
+
+*   checking data for non-ASCII characters ... NOTE
+    ```
+      Note: found 841 marked UTF-8 strings
+    ```
+
+# statquotes
+
+Version: 0.2.2
+
+## In both
+
+*   checking Rd cross-references ... NOTE
+    ```
+    Package unavailable to check Rd xrefs: ‘fortunes’
+    ```
+
+# tidymodels
+
+Version: 0.0.1
+
+## In both
+
+*   checking dependencies in R code ... NOTE
+    ```
+    Namespaces in Imports field not imported from:
+      ‘broom’ ‘ggplot2’ ‘infer’ ‘pillar’ ‘recipes’ ‘rsample’
+      ‘tidyposterior’ ‘tidypredict’ ‘tidytext’ ‘yardstick’
+      All declared Imports should be used.
+    ```
 

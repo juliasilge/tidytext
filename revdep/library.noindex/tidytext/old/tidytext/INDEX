@@ -1,0 +1,34 @@
+bind_tf_idf             Bind the term frequency and inverse document
+                        frequency of a tidy text dataset to the dataset
+cast_sparse             Create a sparse matrix from row names, column
+                        names, and values in a table.
+cast_tdm                Casting a data frame to a DocumentTermMatrix,
+                        TermDocumentMatrix, or dfm
+corpus_tidiers          Tidiers for a corpus object from the quanteda
+                        package
+dictionary_tidiers      Tidy dictionary objects from the quanteda
+                        package
+get_sentiments          Get a tidy data frame of a single sentiment
+                        lexicon
+get_stopwords           Get a tidy data frame of a single stopword
+                        lexicon
+lda_tidiers             Tidiers for LDA objects from the topicmodels
+                        package
+mallet_tidiers          Tidiers for Latent Dirichlet Allocation models
+                        from the mallet package
+nma_words               English negators, modals, and adverbs
+parts_of_speech         Parts of speech for English words from the Moby
+                        Project
+sentiments              Sentiment lexicons from three sources
+stm_tidiers             Tidiers for Structural Topic Models from the
+                        stm package
+stop_words              Various lexicons for English stop words
+tdm_tidiers             Tidy DocumentTermMatrix, TermDocumentMatrix,
+                        and related objects from the tm package
+tidy.Corpus             Tidy a Corpus object from the tm package
+tidy_triplet            Utility function to tidy a simple triplet
+                        matrix
+tidytext                tidytext: Text Mining using 'dplyr', 'ggplot2',
+                        and Other Tidy Tools
+unnest_tokens           Split a column into tokens using the tokenizers
+                        package

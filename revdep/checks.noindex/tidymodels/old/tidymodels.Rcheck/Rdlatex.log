@@ -1,0 +1,302 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
+ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3]
+No file Rd2.ind.
+[4] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ ){/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
+exlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (4 pages, 70151 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (8 entries accepted, 0 rejected).
+Sorting entries....done (23 comparisons).
+Generating output file Rd2.ind....done (18 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
+ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3] (./Rd2.ind
+[4]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 7.
+
+[5]) (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ){/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
+exlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (5 pages, 71920 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (8 entries accepted, 0 rejected).
+Sorting entries....done (23 comparisons).
+Generating output file Rd2.ind....done (18 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
+ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3] (./Rd2.ind
+[4]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 7.
+
+[5]) (./Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ){/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
+exlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texl
+ive/2015/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (5 pages, 72223 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘tidymodels-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/0w/prb4hnss2gn1p7y34qb2stw00000gp/T//RtmpB0KreO/Rd2pdf9c347b41f781'

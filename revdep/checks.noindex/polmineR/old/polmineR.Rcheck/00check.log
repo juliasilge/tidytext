@@ -1,0 +1,15 @@
+* using log directory ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/polmineR/old/polmineR.Rcheck’
+* using R version 3.5.1 (2018-07-02)
+* using platform: x86_64-apple-darwin15.6.0 (64-bit)
+* using session charset: UTF-8
+* checking for file ‘polmineR/DESCRIPTION’ ... OK
+* checking extension type ... Package
+* this is package ‘polmineR’ version ‘0.7.10’
+* checking package namespace information ... OK
+* checking package dependencies ... ERROR
+Package required but not available: ‘RcppCWB’
+
+See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
+manual.
+* DONE
+Status: 1 ERROR

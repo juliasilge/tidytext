@@ -1,0 +1,20 @@
+* using log directory ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/new/quanteda.Rcheck’
+* using R version 3.5.1 (2018-07-02)
+* using platform: x86_64-apple-darwin15.6.0 (64-bit)
+* using session charset: UTF-8
+* checking for file ‘quanteda/DESCRIPTION’ ... OK
+* this is package ‘quanteda’ version ‘1.3.4’
+* package encoding: UTF-8
+* checking package namespace information ... OK
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘quanteda’ can be installed ... ERROR
+Installation failed.
+See ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/new/quanteda.Rcheck/00install.out’ for details.
+* DONE
+Status: 1 ERROR

@@ -1,0 +1,775 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "widyr"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('widyr')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("pairwise_cor")
+> ### * pairwise_cor
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pairwise_cor
+> ### Title: Correlations of pairs of items
+> ### Aliases: pairwise_cor pairwise_cor_
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(gapminder)
+> 
+> gapminder %>%
++   pairwise_cor(country, year, lifeExp)
+[90m# A tibble: 20,022 x 3[39m
+   item1      item2       correlation
+   [3m[90m<fct>[39m[23m      [3m[90m<fct>[39m[23m             [3m[90m<dbl>[39m[23m
+[90m 1[39m Albania    Afghanistan       0.966
+[90m 2[39m Algeria    Afghanistan       0.987
+[90m 3[39m Angola     Afghanistan       0.986
+[90m 4[39m Argentina  Afghanistan       0.971
+[90m 5[39m Australia  Afghanistan       0.939
+[90m 6[39m Austria    Afghanistan       0.956
+[90m 7[39m Bahrain    Afghanistan       0.996
+[90m 8[39m Bangladesh Afghanistan       0.947
+[90m 9[39m Belgium    Afghanistan       0.963
+[90m10[39m Benin      Afghanistan       0.997
+[90m# ... with 20,012 more rows[39m
+> 
+> gapminder %>%
++   pairwise_cor(country, year, lifeExp, sort = TRUE)
+[90m# A tibble: 20,022 x 3[39m
+   item1              item2              correlation
+   [3m[90m<fct>[39m[23m              [3m[90m<fct>[39m[23m                    [3m[90m<dbl>[39m[23m
+[90m 1[39m Mauritania         Indonesia                1.000
+[90m 2[39m Indonesia          Mauritania               1.000
+[90m 3[39m Senegal            Morocco                  1.000
+[90m 4[39m Morocco            Senegal                  1.000
+[90m 5[39m West Bank and Gaza Saudi Arabia             1.000
+[90m 6[39m Saudi Arabia       West Bank and Gaza       1.000
+[90m 7[39m France             Brazil                   0.999
+[90m 8[39m Brazil             France                   0.999
+[90m 9[39m Reunion            Bahrain                  0.999
+[90m10[39m Bahrain            Reunion                  0.999
+[90m# ... with 20,012 more rows[39m
+> 
+> # United Nations voting data
+> library(unvotes)
+If you use data from the unvotes package, please cite the following:
+
+Erik Voeten "Data and Analyses of Voting in the UN General Assembly" Routledge Handbook of International Organization, edited by Bob Reinalda (published May 27, 2013)
+> 
+> country_cors <- un_votes %>%
++   mutate(vote = as.numeric(vote)) %>%
++   pairwise_cor(country, rcid, vote, sort = TRUE)
+> 
+> country_cors
+[90m# A tibble: 39,800 x 3[39m
+   item1          item2          correlation
+   [3m[90m<chr>[39m[23m          [3m[90m<chr>[39m[23m                [3m[90m<dbl>[39m[23m
+[90m 1[39m Slovakia       Czech Republic       0.989
+[90m 2[39m Czech Republic Slovakia             0.989
+[90m 3[39m Lithuania      Estonia              0.971
+[90m 4[39m Estonia        Lithuania            0.971
+[90m 5[39m Lithuania      Latvia               0.970
+[90m 6[39m Latvia         Lithuania            0.970
+[90m 7[39m Germany        Liechtenstein        0.968
+[90m 8[39m Liechtenstein  Germany              0.968
+[90m 9[39m Slovakia       Slovenia             0.966
+[90m10[39m Slovenia       Slovakia             0.966
+[90m# ... with 39,790 more rows[39m
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:unvotes’, ‘package:bindrcpp’, ‘package:gapminder’,
+  ‘package:dplyr’
+
+> nameEx("pairwise_count")
+> ### * pairwise_count
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pairwise_count
+> ### Title: Count pairs of items within a group
+> ### Aliases: pairwise_count pairwise_count_
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> dat <- data_frame(group = rep(1:5, each = 2),
++                   letter = c("a", "b",
++                              "a", "c",
++                              "a", "c",
++                              "b", "e",
++                              "b", "f"))
+> 
+> # count the number of times two letters appear together
+> pairwise_count(dat, letter, group)
+[90m# A tibble: 8 x 3[39m
+  item1 item2     n
+  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<dbl>[39m[23m
+[90m1[39m b     a         1
+[90m2[39m c     a         2
+[90m3[39m a     b         1
+[90m4[39m e     b         1
+[90m5[39m f     b         1
+[90m6[39m a     c         2
+[90m7[39m b     e         1
+[90m8[39m b     f         1
+> pairwise_count(dat, letter, group, sort = TRUE)
+[90m# A tibble: 8 x 3[39m
+  item1 item2     n
+  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<dbl>[39m[23m
+[90m1[39m c     a         2
+[90m2[39m a     c         2
+[90m3[39m b     a         1
+[90m4[39m a     b         1
+[90m5[39m e     b         1
+[90m6[39m f     b         1
+[90m7[39m b     e         1
+[90m8[39m b     f         1
+> pairwise_count(dat, letter, group, sort = TRUE, diag = TRUE)
+[90m# A tibble: 13 x 3[39m
+   item1 item2     n
+   [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<dbl>[39m[23m
+[90m 1[39m a     a         3
+[90m 2[39m b     b         3
+[90m 3[39m c     a         2
+[90m 4[39m a     c         2
+[90m 5[39m c     c         2
+[90m 6[39m b     a         1
+[90m 7[39m a     b         1
+[90m 8[39m e     b         1
+[90m 9[39m f     b         1
+[90m10[39m b     e         1
+[90m11[39m e     e         1
+[90m12[39m b     f         1
+[90m13[39m f     f         1
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:dplyr’
+
+> nameEx("pairwise_delta")
+> ### * pairwise_delta
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pairwise_delta
+> ### Title: Delta measure of pairs of documents
+> ### Aliases: pairwise_delta pairwise_delta_
+> 
+> ### ** Examples
+> 
+> 
+> library(janeaustenr)
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(tidytext)
+> 
+> # closest documents in terms of 1000 most frequent words
+> closest <- austen_books() %>%
++   unnest_tokens(word, text) %>%
++   count(book, word) %>%
++   top_n(1000, n) %>%
++   pairwise_delta(book, word, n, method = "burrows") %>%
++   arrange(delta)
+> 
+> closest
+[90m# A tibble: 30 x 3[39m
+   item1               item2               delta
+   [3m[90m<fct>[39m[23m               [3m[90m<fct>[39m[23m               [3m[90m<dbl>[39m[23m
+[90m 1[39m Persuasion          Northanger Abbey    0.408
+[90m 2[39m Northanger Abbey    Persuasion          0.408
+[90m 3[39m Pride & Prejudice   Sense & Sensibility 0.491
+[90m 4[39m Sense & Sensibility Pride & Prejudice   0.491
+[90m 5[39m Persuasion          Pride & Prejudice   0.769
+[90m 6[39m Pride & Prejudice   Persuasion          0.769
+[90m 7[39m Northanger Abbey    Pride & Prejudice   0.779
+[90m 8[39m Pride & Prejudice   Northanger Abbey    0.779
+[90m 9[39m Persuasion          Sense & Sensibility 0.814
+[90m10[39m Sense & Sensibility Persuasion          0.814
+[90m# ... with 20 more rows[39m
+> 
+> closest %>%
++   filter(item1 == "Pride & Prejudice")
+[90m# A tibble: 5 x 3[39m
+  item1             item2               delta
+  [3m[90m<fct>[39m[23m             [3m[90m<fct>[39m[23m               [3m[90m<dbl>[39m[23m
+[90m1[39m Pride & Prejudice Sense & Sensibility 0.491
+[90m2[39m Pride & Prejudice Persuasion          0.769
+[90m3[39m Pride & Prejudice Northanger Abbey    0.779
+[90m4[39m Pride & Prejudice Mansfield Park      1.04 
+[90m5[39m Pride & Prejudice Emma                1.09 
+> 
+> # to remove duplicates, use upper = FALSE
+> closest <- austen_books() %>%
++   unnest_tokens(word, text) %>%
++   count(book, word) %>%
++   top_n(1000, n) %>%
++   pairwise_delta(book, word, n, method = "burrows", upper = FALSE) %>%
++   arrange(delta)
+> 
+> # Can also use Argamon's Linear Delta
+> closest <- austen_books() %>%
++   unnest_tokens(word, text) %>%
++   count(book, word) %>%
++   top_n(1000, n) %>%
++   pairwise_delta(book, word, n, method = "argamon", upper = FALSE) %>%
++   arrange(delta)
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:tidytext’, ‘package:dplyr’, ‘package:janeaustenr’
+
+> nameEx("pairwise_dist")
+> ### * pairwise_dist
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pairwise_dist
+> ### Title: Distances of pairs of items
+> ### Aliases: pairwise_dist pairwise_dist_
+> 
+> ### ** Examples
+> 
+> 
+> library(gapminder)
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> 
+> # closest countries in terms of life expectancy over time
+> closest <- gapminder %>%
++   pairwise_dist(country, year, lifeExp) %>%
++   arrange(distance)
+> 
+> closest
+[90m# A tibble: 20,022 x 3[39m
+   item1          item2          distance
+   [3m[90m<fct>[39m[23m          [3m[90m<fct>[39m[23m             [3m[90m<dbl>[39m[23m
+[90m 1[39m Germany        Belgium            1.08
+[90m 2[39m Belgium        Germany            1.08
+[90m 3[39m United Kingdom New Zealand        1.51
+[90m 4[39m New Zealand    United Kingdom     1.51
+[90m 5[39m Norway         Netherlands        1.56
+[90m 6[39m Netherlands    Norway             1.56
+[90m 7[39m Italy          Israel             1.66
+[90m 8[39m Israel         Italy              1.66
+[90m 9[39m Finland        Austria            1.94
+[90m10[39m Austria        Finland            1.94
+[90m# ... with 20,012 more rows[39m
+> 
+> closest %>%
++   filter(item1 == "United States")
+[90m# A tibble: 141 x 3[39m
+   item1         item2          distance
+   [3m[90m<fct>[39m[23m         [3m[90m<fct>[39m[23m             [3m[90m<dbl>[39m[23m
+[90m 1[39m United States Belgium            2.09
+[90m 2[39m United States Germany            2.48
+[90m 3[39m United States United Kingdom     2.51
+[90m 4[39m United States Ireland            2.99
+[90m 5[39m United States New Zealand        3.69
+[90m 6[39m United States Finland            3.76
+[90m 7[39m United States Austria            4.18
+[90m 8[39m United States Greece             4.30
+[90m 9[39m United States France             4.63
+[90m10[39m United States Denmark            5.26
+[90m# ... with 131 more rows[39m
+> 
+> # to remove duplicates, use upper = FALSE
+> gapminder %>%
++   pairwise_dist(country, year, lifeExp, upper = FALSE) %>%
++   arrange(distance)
+[90m# A tibble: 10,011 x 3[39m
+   item1       item2          distance
+   [3m[90m<fct>[39m[23m       [3m[90m<fct>[39m[23m             [3m[90m<dbl>[39m[23m
+[90m 1[39m Belgium     Germany            1.08
+[90m 2[39m New Zealand United Kingdom     1.51
+[90m 3[39m Netherlands Norway             1.56
+[90m 4[39m Israel      Italy              1.66
+[90m 5[39m Austria     Finland            1.94
+[90m 6[39m Belgium     United Kingdom     1.95
+[90m 7[39m Iceland     Sweden             2.01
+[90m 8[39m Comoros     Mauritania         2.01
+[90m 9[39m Belgium     United States      2.09
+[90m10[39m Germany     Ireland            2.10
+[90m# ... with 10,001 more rows[39m
+> 
+> # Can also use Manhattan distance
+> gapminder %>%
++   pairwise_dist(country, year, lifeExp, method = "manhattan", upper = FALSE) %>%
++   arrange(distance)
+[90m# A tibble: 10,011 x 3[39m
+   item1       item2          distance
+   [3m[90m<fct>[39m[23m       [3m[90m<fct>[39m[23m             [3m[90m<dbl>[39m[23m
+[90m 1[39m Belgium     Germany            3.17
+[90m 2[39m New Zealand United Kingdom     4.40
+[90m 3[39m Netherlands Norway             4.57
+[90m 4[39m Belgium     United Kingdom     4.87
+[90m 5[39m Israel      Italy              5.17
+[90m 6[39m Austria     Finland            5.28
+[90m 7[39m Comoros     Mauritania         5.51
+[90m 8[39m Greece      Italy              5.73
+[90m 9[39m Belgium     United States      5.94
+[90m10[39m France      Italy              6.02
+[90m# ... with 10,001 more rows[39m
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:dplyr’, ‘package:gapminder’
+
+> nameEx("pairwise_pmi")
+> ### * pairwise_pmi
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pairwise_pmi
+> ### Title: Pointwise mutual information of pairs of items
+> ### Aliases: pairwise_pmi pairwise_pmi_
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> 
+> dat <- data_frame(group = rep(1:5, each = 2),
++                   letter = c("a", "b",
++                              "a", "c",
++                              "a", "c",
++                              "b", "e",
++                              "b", "f"))
+> 
+> # how informative is each letter about each other letter
+> pairwise_pmi(dat, letter, group)
+[90m# A tibble: 8 x 3[39m
+  item1 item2    pmi
+  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<dbl>[39m[23m
+[90m1[39m b     a     -[31m0[39m[31m.[39m[31m588[39m
+[90m2[39m c     a      0.511
+[90m3[39m a     b     -[31m0[39m[31m.[39m[31m588[39m
+[90m4[39m e     b      0.511
+[90m5[39m f     b      0.511
+[90m6[39m a     c      0.511
+[90m7[39m b     e      0.511
+[90m8[39m b     f      0.511
+> pairwise_pmi(dat, letter, group, sort = TRUE)
+[90m# A tibble: 8 x 3[39m
+  item1 item2    pmi
+  [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m  [3m[90m<dbl>[39m[23m
+[90m1[39m c     a      0.511
+[90m2[39m e     b      0.511
+[90m3[39m f     b      0.511
+[90m4[39m a     c      0.511
+[90m5[39m b     e      0.511
+[90m6[39m b     f      0.511
+[90m7[39m b     a     -[31m0[39m[31m.[39m[31m588[39m
+[90m8[39m a     b     -[31m0[39m[31m.[39m[31m588[39m
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:dplyr’
+
+> nameEx("pairwise_similarity")
+> ### * pairwise_similarity
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: pairwise_similarity
+> ### Title: Cosine similarity of pairs of items
+> ### Aliases: pairwise_similarity pairwise_similarity_
+> 
+> ### ** Examples
+> 
+> 
+> library(janeaustenr)
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(tidytext)
+> 
+> # Comparing Jane Austen novels
+> austen_words <- austen_books() %>%
++   unnest_tokens(word, text) %>%
++   anti_join(stop_words, by = "word") %>%
++   count(book, word) %>%
++   ungroup()
+> 
+> # closest books to each other
+> closest <- austen_words %>%
++   pairwise_similarity(book, word, n) %>%
++   arrange(desc(similarity))
+> 
+> closest
+[90m# A tibble: 30 x 3[39m
+   item1               item2               similarity
+   [3m[90m<fct>[39m[23m               [3m[90m<fct>[39m[23m                    [3m[90m<dbl>[39m[23m
+[90m 1[39m Northanger Abbey    Pride & Prejudice        0.509
+[90m 2[39m Pride & Prejudice   Northanger Abbey         0.509
+[90m 3[39m Emma                Pride & Prejudice        0.493
+[90m 4[39m Pride & Prejudice   Emma                     0.493
+[90m 5[39m Mansfield Park      Pride & Prejudice        0.483
+[90m 6[39m Pride & Prejudice   Mansfield Park           0.483
+[90m 7[39m Northanger Abbey    Emma                     0.480
+[90m 8[39m Emma                Northanger Abbey         0.480
+[90m 9[39m Pride & Prejudice   Sense & Sensibility      0.479
+[90m10[39m Sense & Sensibility Pride & Prejudice        0.479
+[90m# ... with 20 more rows[39m
+> 
+> closest %>%
++   filter(item1 == "Emma")
+[90m# A tibble: 5 x 3[39m
+  item1 item2               similarity
+  [3m[90m<fct>[39m[23m [3m[90m<fct>[39m[23m                    [3m[90m<dbl>[39m[23m
+[90m1[39m Emma  Pride & Prejudice        0.493
+[90m2[39m Emma  Northanger Abbey         0.480
+[90m3[39m Emma  Mansfield Park           0.473
+[90m4[39m Emma  Sense & Sensibility      0.434
+[90m5[39m Emma  Persuasion               0.410
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:tidytext’, ‘package:dplyr’, ‘package:janeaustenr’
+
+> nameEx("squarely")
+> ### * squarely
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: squarely
+> ### Title: A special case of the widely adverb for creating tidy square
+> ###   matrices
+> ### Aliases: squarely squarely_
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(gapminder)
+> 
+> closest_continent <- gapminder %>%
++   group_by(continent) %>%
++   squarely(dist)(country, year, lifeExp)
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:gapminder’, ‘package:dplyr’
+
+> nameEx("widely")
+> ### * widely
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: widely
+> ### Title: Adverb for functions that operate on matrices in "wide" format
+> ### Aliases: widely widely_
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(gapminder)
+> 
+> gapminder
+[90m# A tibble: 1,704 x 6[39m
+   country     continent  year lifeExp      pop gdpPercap
+   [3m[90m<fct>[39m[23m       [3m[90m<fct>[39m[23m     [3m[90m<int>[39m[23m   [3m[90m<dbl>[39m[23m    [3m[90m<int>[39m[23m     [3m[90m<dbl>[39m[23m
+[90m 1[39m Afghanistan Asia       [4m1[24m952    28.8  8[4m4[24m[4m2[24m[4m5[24m333      779.
+[90m 2[39m Afghanistan Asia       [4m1[24m957    30.3  9[4m2[24m[4m4[24m[4m0[24m934      821.
+[90m 3[39m Afghanistan Asia       [4m1[24m962    32.0 10[4m2[24m[4m6[24m[4m7[24m083      853.
+[90m 4[39m Afghanistan Asia       [4m1[24m967    34.0 11[4m5[24m[4m3[24m[4m7[24m966      836.
+[90m 5[39m Afghanistan Asia       [4m1[24m972    36.1 13[4m0[24m[4m7[24m[4m9[24m460      740.
+[90m 6[39m Afghanistan Asia       [4m1[24m977    38.4 14[4m8[24m[4m8[24m[4m0[24m372      786.
+[90m 7[39m Afghanistan Asia       [4m1[24m982    39.9 12[4m8[24m[4m8[24m[4m1[24m816      978.
+[90m 8[39m Afghanistan Asia       [4m1[24m987    40.8 13[4m8[24m[4m6[24m[4m7[24m957      852.
+[90m 9[39m Afghanistan Asia       [4m1[24m992    41.7 16[4m3[24m[4m1[24m[4m7[24m921      649.
+[90m10[39m Afghanistan Asia       [4m1[24m997    41.8 22[4m2[24m[4m2[24m[4m7[24m415      635.
+[90m# ... with 1,694 more rows[39m
+> 
+> gapminder %>%
++   widely(dist)(country, year, lifeExp)
+[90m# A tibble: 10,011 x 3[39m
+   item1      item2        value
+   [3m[90m<fct>[39m[23m      [3m[90m<fct>[39m[23m        [3m[90m<dbl>[39m[23m
+[90m 1[39m Albania    Afghanistan 107.  
+[90m 2[39m Algeria    Afghanistan  76.8 
+[90m 3[39m Angola     Afghanistan   4.65
+[90m 4[39m Argentina  Afghanistan 110.  
+[90m 5[39m Australia  Afghanistan 129.  
+[90m 6[39m Austria    Afghanistan 124.  
+[90m 7[39m Bahrain    Afghanistan  98.1 
+[90m 8[39m Bangladesh Afghanistan  45.3 
+[90m 9[39m Belgium    Afghanistan 125.  
+[90m10[39m Benin      Afghanistan  39.3 
+[90m# ... with 10,001 more rows[39m
+> 
+> # can perform within groups
+> closest_continent <- gapminder %>%
++   group_by(continent) %>%
++   widely(dist)(country, year, lifeExp)
+Warning in bind_rows_(x, .id) :
+  Unequal factor levels: coercing to character
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  Unequal factor levels: coercing to character
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+Warning in bind_rows_(x, .id) :
+  binding character and factor vector, coercing into character vector
+> closest_continent
+[90m# A tibble: 2,590 x 4[39m
+[90m# Groups:   continent [5][39m
+   continent item1            item2       value
+   [3m[90m<fct>[39m[23m     [3m[90m<chr>[39m[23m            [3m[90m<chr>[39m[23m       [3m[90m<dbl>[39m[23m
+[90m 1[39m Asia      Bahrain          Afghanistan  98.1
+[90m 2[39m Asia      Bangladesh       Afghanistan  45.3
+[90m 3[39m Asia      Cambodia         Afghanistan  41.8
+[90m 4[39m Asia      China            Afghanistan  86.2
+[90m 5[39m Asia      Hong Kong, China Afghanistan 125. 
+[90m 6[39m Asia      India            Afghanistan  56.1
+[90m 7[39m Asia      Indonesia        Afghanistan  62.3
+[90m 8[39m Asia      Iran             Afghanistan  74.5
+[90m 9[39m Asia      Iraq             Afghanistan  66.9
+[90m10[39m Asia      Israel           Afghanistan 125. 
+[90m# ... with 2,580 more rows[39m
+> 
+> # for example, find the closest pair in each
+> closest_continent %>%
++   top_n(1, -value)
+[90m# A tibble: 5 x 4[39m
+[90m# Groups:   continent [5][39m
+  continent item1              item2     value
+  [3m[90m<fct>[39m[23m     [3m[90m<chr>[39m[23m              [3m[90m<chr>[39m[23m     [3m[90m<dbl>[39m[23m
+[90m1[39m Asia      West Bank and Gaza Jordan     2.94
+[90m2[39m Europe    Germany            Belgium    1.08
+[90m3[39m Africa    Mauritania         Comoros    2.01
+[90m4[39m Americas  Peru               Honduras   3.95
+[90m5[39m Oceania   New Zealand        Australia  3.55
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:gapminder’, ‘package:dplyr’
+
+> nameEx("widely_svd")
+> ### * widely_svd
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: widely_svd
+> ### Title: Turn into a wide matrix, perform SVD, return to tidy form
+> ### Aliases: widely_svd widely_svd_
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(gapminder)
+> 
+> # principal components driving change
+> gapminder_svd <- gapminder %>%
++   widely_svd(country, year, lifeExp)
+> 
+> gapminder_svd
+[90m# A tibble: 1,704 x 3[39m
+   country     dimension   value
+   [3m[90m<fct>[39m[23m           [3m[90m<int>[39m[23m   [3m[90m<dbl>[39m[23m
+[90m 1[39m Afghanistan         1 -[31m0[39m[31m.[39m[31m0[39m[31m52[4m2[24m[39m
+[90m 2[39m Albania             1 -[31m0[39m[31m.[39m[31m0[39m[31m94[4m9[24m[39m
+[90m 3[39m Algeria             1 -[31m0[39m[31m.[39m[31m0[39m[31m82[4m4[24m[39m
+[90m 4[39m Angola              1 -[31m0[39m[31m.[39m[31m0[39m[31m52[4m6[24m[39m
+[90m 5[39m Argentina           1 -[31m0[39m[31m.[39m[31m0[39m[31m95[4m5[24m[39m
+[90m 6[39m Australia           1 -[31m0[39m[31m.[39m[31m103[39m 
+[90m 7[39m Austria             1 -[31m0[39m[31m.[39m[31m101[39m 
+[90m 8[39m Bahrain             1 -[31m0[39m[31m.[39m[31m0[39m[31m91[4m3[24m[39m
+[90m 9[39m Bangladesh          1 -[31m0[39m[31m.[39m[31m0[39m[31m69[4m6[24m[39m
+[90m10[39m Belgium             1 -[31m0[39m[31m.[39m[31m102[39m 
+[90m# ... with 1,694 more rows[39m
+> 
+> # compare SVDs, join with other data
+> library(ggplot2)
+> library(tidyr)
+> 
+> gapminder_svd %>%
++   spread(dimension, value) %>%
++   inner_join(distinct(gapminder, country, continent), by = "country") %>%
++   ggplot(aes(`1`, `2`, label = country)) +
++   geom_point(aes(color = continent)) +
++   geom_text(vjust = 1, hjust = 1)
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+
+detaching ‘package:tidyr’, ‘package:ggplot2’, ‘package:gapminder’,
+  ‘package:dplyr’
+
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  5.197 0.314 5.577 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

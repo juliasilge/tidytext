@@ -1,0 +1,411 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "crsra"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('crsra')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("crsra_anonymize")
+> ### * crsra_anonymize
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_anonymize
+> ### Title: Anonymizes ID variables (such as Partner hashed user ids)
+> ###   throughout the data set. The function is based on the function
+> ###   'digest' from the package 'digest'.
+> ### Aliases: crsra_anonymize
+> 
+> ### ** Examples
+> 
+> res = crsra_anonymize(example_course_import,
++ col_to_mask = "jhu_user_id",
++ algorithm = "crc32")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_assessmentskips")
+> ### * crsra_assessmentskips
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_assessmentskips
+> ### Title: Frequencies of skipping an peer-assessed submission
+> ### Aliases: crsra_assessmentskips
+> 
+> ### ** Examples
+> 
+> crsra_assessmentskips(example_course_import)
+[[1]]
+[[1]]$`Fake Course`
+[90m# A tibble: 1 x 3[39m
+  peer_skip_type     n  freq
+  [3m[90m<chr>[39m[23m          [3m[90m<int>[39m[23m [3m[90m<dbl>[39m[23m
+[90m1[39m plagiarism         1     1
+
+
+[[2]]
+[[2]]$`Fake Course`
+[[2]]$`Fake Course`[[1]]
+
+
+|word |   n|
+|:----|---:|
+|text | 818|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+
+
+
+> crsra_assessmentskips(example_course_import, bygender = TRUE, n = 10)
+[[1]]
+[[1]]$`Fake Course`
+[90m# A tibble: 0 x 4[39m
+[90m# Groups:   peer_skip_type [0][39m
+[90m# ... with 4 variables: peer_skip_type [3m[90m<chr>[90m[23m,
+#   reported_or_inferred_gender [3m[90m<chr>[90m[23m, n [3m[90m<int>[90m[23m, freq [3m[90m<dbl>[90m[23m[39m
+
+
+[[2]]
+[[2]]$`Fake Course`
+[[2]]$`Fake Course`[[1]]
+
+
+|word |   n|
+|:----|---:|
+|text | 818|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+|NA   |  NA|
+
+
+
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:bindrcpp’
+
+> nameEx("crsra_delete_user")
+> ### * crsra_delete_user
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_delete_user
+> ### Title: Deletes a specific user from all tables in the data in case
+> ###   Coursera data privacy laws require you to delete a specific (or set
+> ###   of) user(s) from your data.
+> ### Aliases: crsra_delete_user
+> 
+> ### ** Examples
+> 
+> del_user = example_course_import$users$jhu_user_id[1]
+> del_user %in% example_course_import$users$jhu_user_id
+[1] TRUE
+> res = crsra_delete_user(example_course_import, users = del_user)
+> del_user %in% res$users$jhu_user_id
+[1] FALSE
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_gradesummary")
+> ### * crsra_gradesummary
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_gradesummary
+> ### Title: The average course grade across different groups
+> ### Aliases: crsra_gradesummary
+> 
+> ### ** Examples
+> 
+> crsra_gradesummary(example_course_import)
+Note that maximum grade possible is 1.
+$`Fake Course`
+[90m# A tibble: 1 x 1[39m
+  AvgGrade
+     [3m[90m<dbl>[39m[23m
+[90m1[39m      [31mNaN[39m
+
+> crsra_gradesummary(example_course_import, groupby = "education")
+Note that maximum grade possible is 1.
+$`Fake Course`
+[90m# A tibble: 0 x 2[39m
+[90m# ... with 2 variables: y [3m[90m<chr>[90m[23m, AvgGrade [3m[90m<dbl>[90m[23m[39m
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_import")
+> ### * crsra_import
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_import
+> ### Title: Imports all the .csv files into one list consisting of all the
+> ###   courses and all the tables within each course.
+> ### Aliases: crsra_import
+> 
+> ### ** Examples
+> 
+> zip_file = system.file("extdata", "fake_course_7051862327916.zip",
++ package = "crsra")
+> bn = basename(zip_file)
+> bn = sub("[.]zip$", "", bn)
+> res = unzip(zip_file, exdir = tempdir(), overwrite = TRUE)
+> example_import = crsra_import(workdir = tempdir(),
++ check_problems = FALSE)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_import_course")
+> ### * crsra_import_course
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_import_course
+> ### Title: Imports all the .csv files into one list consisting of all the
+> ###   tables within the course.
+> ### Aliases: crsra_import_course
+> 
+> ### ** Examples
+> 
+> zip_file = system.file("extdata", "fake_course_7051862327916.zip",
++ package = "crsra")
+> bn = basename(zip_file)
+> bn = sub("[.]zip$", "", bn)
+> res = unzip(zip_file, exdir = tempdir(), overwrite = TRUE)
+> workdir = file.path(tempdir(), bn)
+> course_tables = crsra_import_course(workdir,
++ check_problems = FALSE)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_membershares")
+> ### * crsra_membershares
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_membershares
+> ### Title: The share of learners in each course based on specific
+> ###   characteristics.
+> ### Aliases: crsra_membershares
+> 
+> ### ** Examples
+> 
+> crsra_membershares(
++ example_course_import,
++ groupby = "country")
+$`Fake Course`
+[90m# A tibble: 69 x 3[39m
+   y     Total Share
+   [3m[90m<chr>[39m[23m [3m[90m<int>[39m[23m [3m[90m<dbl>[39m[23m
+[90m 1[39m US      143  0.31
+[90m 2[39m IN       53  0.12
+[90m 3[39m GB       19  0.04
+[90m 4[39m CN       17  0.04
+[90m 5[39m AU       15  0.03
+[90m 6[39m BR       15  0.03
+[90m 7[39m CA       13  0.03
+[90m 8[39m DE       11  0.02
+[90m 9[39m FR       11  0.02
+[90m10[39m ES       10  0.02
+[90m# ... with 59 more rows[39m
+
+> crsra_membershares(
++ example_course_import,
++ groupby = "roles", remove_missing = FALSE)
+$`Fake Course`
+[90m# A tibble: 4 x 3[39m
+  y                    Total Share
+  [3m[90m<chr>[39m[23m                [3m[90m<int>[39m[23m [3m[90m<dbl>[39m[23m
+[90m1[39m [31mNA[39m                     453  0.98
+[90m2[39m LEARNER                  9  0.02
+[90m3[39m BROWSER                  1  0   
+[90m4[39m PRE_ENROLLED_LEARNER     1  0   
+
+> crsra_membershares(
++ example_course_import,
++ groupby = "roles", remove_missing = TRUE)
+$`Fake Course`
+[90m# A tibble: 3 x 3[39m
+  y                    Total Share
+  [3m[90m<chr>[39m[23m                [3m[90m<int>[39m[23m [3m[90m<dbl>[39m[23m
+[90m1[39m LEARNER                  9  0.82
+[90m2[39m BROWSER                  1  0.09
+[90m3[39m PRE_ENROLLED_LEARNER     1  0.09
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_progress")
+> ### * crsra_progress
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_progress
+> ### Title: Ordered list of course items and the number and share of
+> ###   learners who have completed the item
+> ### Aliases: crsra_progress
+> 
+> ### ** Examples
+> 
+> crsra_progress(example_course_import)
+$`Fake Course`
+[90m# A tibble: 53 x 6[39m
+   item_rank Total Share course_item_name course_lesson_name course_module_name
+       [3m[90m<int>[39m[23m [3m[90m<int>[39m[23m [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m            [3m[90m<chr>[39m[23m              [3m[90m<chr>[39m[23m             
+[90m 1[39m        [31mNA[39m  [4m4[24m204  0.48 [31mNA[39m               [31mNA[39m                 [31mNA[39m                
+[90m 2[39m        12   771  0.09 course item name course lesson name course module name
+[90m 3[39m        32   473  0.05 course item name course lesson name course module name
+[90m 4[39m        26   140  0.02 course item name course lesson name course module name
+[90m 5[39m        31   129  0.01 course item name course lesson name course module name
+[90m 6[39m        22   122  0.01 course item name course lesson name course module name
+[90m 7[39m        18   111  0.01 course item name course lesson name course module name
+[90m 8[39m        13   107  0.01 course item name course lesson name course module name
+[90m 9[39m        51   105  0.01 course item name course lesson name course module name
+[90m10[39m        11   101  0.01 course item name course lesson name course module name
+[90m# ... with 43 more rows[39m
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_tabledesc")
+> ### * crsra_tabledesc
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_tabledesc
+> ### Title: Returns description for a table
+> ### Aliases: crsra_tabledesc
+> 
+> ### ** Examples
+> 
+> crsra_tabledesc("assessments")
+                              assessments 
+"Table of all the assessments / quizzes." 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_timetofinish")
+> ### * crsra_timetofinish
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_timetofinish
+> ### Title: Time that took each learner (in days) to finish a course
+> ### Aliases: crsra_timetofinish
+> 
+> ### ** Examples
+> 
+> crsra_timetofinish(example_course_import)
+Variable timetofinish is in days.
+$`Fake Course`
+[90m# A tibble: 8,744 x 4[39m
+   jhu_user_id maxtime             mintime             timetofinish
+   [3m[90m<chr>[39m[23m       [3m[90m<dttm>[39m[23m              [3m[90m<dttm>[39m[23m                     [3m[90m<dbl>[39m[23m
+[90m 1[39m 10047e9f    2017-05-21 [90m22:17:10[39m 2017-05-21 [90m22:17:10[39m           0 
+[90m 2[39m 100a99c3    2017-03-21 [90m20:55:20[39m 2016-02-03 [90m20:46:05[39m         412.
+[90m 3[39m 1010399e    2017-02-20 [90m21:14:02[39m 2017-02-20 [90m21:14:02[39m           0 
+[90m 4[39m 10138a9b    2017-02-23 [90m02:31:06[39m 2016-05-02 [90m19:40:53[39m         296.
+[90m 5[39m 101b2a5d    2017-01-19 [90m03:55:22[39m 2017-01-19 [90m03:55:22[39m           0 
+[90m 6[39m 1021865f    2016-12-20 [90m15:58:03[39m 2016-02-23 [90m16:10:27[39m         301.
+[90m 7[39m 10242d18    2017-09-05 [90m10:45:48[39m 2016-02-26 [90m08:18:40[39m         557.
+[90m 8[39m 1026d1e     2017-06-11 [90m09:06:52[39m 2016-10-26 [90m22:05:44[39m         227.
+[90m 9[39m 102a44fc    2017-07-19 [90m06:07:35[39m 2015-12-09 [90m15:30:29[39m         588.
+[90m10[39m 102bccb3    2017-07-31 [90m05:19:28[39m 2017-07-31 [90m05:19:28[39m           0 
+[90m# ... with 8,734 more rows[39m
+
+> 
+> 
+> 
+> cleanEx()
+> nameEx("crsra_whichtable")
+> ### * crsra_whichtable
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: crsra_whichtable
+> ### Title: Returns a list of tables a variable appears in
+> ### Aliases: crsra_whichtable
+> 
+> ### ** Examples
+> 
+> crsra_whichtable(example_course_import, "assessment_id")
+$`Fake Course`
+[1] "assessment_actions"               "assessment_assessments_questions"
+[3] "assessment_responses"             "assessments"                     
+[5] "course_branch_item_assessments"   "course_item_assessments"         
+
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  3.16 0.242 3.424 0.002 0.002 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

@@ -1,0 +1,138 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "ggpage"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('ggpage')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("break_help")
+> ### * break_help
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: break_help
+> ### Title: Repeating of indexes
+> ### Aliases: break_help
+> 
+> ### ** Examples
+> 
+> break_help(c(1, 2, 3))
+[1] 1 2 2 3 3 3
+> break_help(c(6, 8, 23, 50))
+ [1] 1 1 1 1 1 1 2 2 2 2 2 2 2 2 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 4
+[39] 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4
+[77] 4 4 4 4 4 4 4 4 4 4 4
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ggpage_build")
+> ### * ggpage_build
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ggpage_build
+> ### Title: Creates a data frame for further analysis and plotting
+> ### Aliases: ggpage_build
+> 
+> ### ** Examples
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ggpage_plot")
+> ### * ggpage_plot
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ggpage_plot
+> ### Title: Creates a visualization from the ggpage_build output
+> ### Aliases: ggpage_plot
+> 
+> ### ** Examples
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("ggpage_quick")
+> ### * ggpage_quick
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ggpage_quick
+> ### Title: Creates a quick visualization of the page layout
+> ### Aliases: ggpage_quick
+> 
+> ### ** Examples
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("paper_shape")
+> ### * paper_shape
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: paper_shape
+> ### Title: Identify the edges of the paper of each page
+> ### Aliases: paper_shape
+> 
+> ### ** Examples
+> 
+> paper_shape(ggpage_build(tinderbox))
+[90m# A tibble: 9 x 5[39m
+   page  xmin  xmax  ymin  ymax
+  [3m[90m<int>[39m[23m [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m [3m[90m<dbl>[39m[23m
+[90m1[39m     1   168    90  -[31m114[39m  -[31m213[39m
+[90m2[39m     2   167    90  -[31m224[39m  -[31m323[39m
+[90m3[39m     3   168    90  -[31m334[39m  -[31m433[39m
+[90m4[39m     4   259   180  -[31m114[39m  -[31m213[39m
+[90m5[39m     5   258   180  -[31m224[39m  -[31m323[39m
+[90m6[39m     6   259   180  -[31m334[39m  -[31m433[39m
+[90m7[39m     7   349   270  -[31m114[39m  -[31m213[39m
+[90m8[39m     8   349   270  -[31m224[39m  -[31m323[39m
+[90m9[39m     9   348   270  -[31m334[39m  -[31m377[39m
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+
+detaching ‘package:bindrcpp’
+
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  1.367 0.099 1.491 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

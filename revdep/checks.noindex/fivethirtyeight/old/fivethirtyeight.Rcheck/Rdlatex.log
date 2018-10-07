@@ -1,0 +1,1972 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
+ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+Overfull \hbox (180.55025pt too wide) in paragraph at lines 60--63
+\T1/ptm/m/n/10 Care Bill" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / why-[]the-[]gop-[]is-[]so-[]hell-[]bent-[]on-[]passing-[]an-[]unp
+opular-[]health-[]care-[]bill$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (203.84042pt too wide) in paragraph at lines 104--107
+\T1/ptm/m/n/10 the Past?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / should-[]travelers-[]avoid-[]flying-[]airlines-[]that-[]have-[]ha
+d-[]crashes-[]in-[]the-[]past/$[][]\T1/ptm/m/n/10 . 
+[2] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (143.26059pt too wide) in paragraph at lines 155--158
+\T1/ptm/m/n/10 ment" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / trump-[]might-[]be-[]the-[]first-[]president-[]to-[]scrap-[]a-[]nation
+al-[]monument/$[][]\T1/ptm/m/n/10 . 
+[3]
+Overfull \hbox (45.23032pt too wide) in paragraph at lines 184--185
+\T1/ptm/m/n/10 Arche-ol-ogy Pro-gram [][]$\T1/zi4/m/n/10 https : / / www . nps 
+. gov / history / archeology / sites / antiquities / MonumentsList .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (15.77046pt too wide) in paragraph at lines 191--194
+\T1/ptm/m/n/10 Build-ing" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / avengers-[]death-[]comics-[]age-[]of-[]ultron/$[][]\T1/ptm/m/n/10
+ . 
+[4] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (261.00873pt too wide) in paragraph at lines 239--244
+\T1/ptm/m/n/10 Fit-ting Neatly Into 'Bach-e-lorette' His-tory" [][]$\T1/zi4/m/n
+/10 https : / / fivethirtyeight . com / features / rachels-[]season-[]is-[]fitt
+ing-[]neatly-[]into-[]bachelorette-[]history/$[][]\T1/ptm/m/n/10 ,
+[5] [6]
+Overfull \hbox (1.20978pt too wide) in paragraph at lines 297--299
+[][][]$\T1/zi4/m/n/10 http : / / bachelor-[]nation . wikia . com / wiki / Bache
+lor _ Nation _ Wikia$[][] \T1/ptm/m/n/10 and then miss-ing sea-sons
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (153.6207pt too wide) in paragraph at lines 342--345
+\T1/ptm/m/n/10 Women" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / the-[]dollar-[]and-[]cents-[]case-[]against-[]hollywoods-[]exclusion-
+[]of-[]women/$[][]\T1/ptm/m/n/10 . 
+[7] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (148.81067pt too wide) in paragraph at lines 389--394
+\T1/ptm/m/n/10 Dudes" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / straight-[]outta-[]compton-[]is-[]the-[]rare-[]biopic-[]not-[]about-[
+]white-[]dudes/$[][]\T1/ptm/m/n/10 .
+[8] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.56743pt too wide) in paragraph at lines 432--437
+[]\T1/ptm/m/n/10 The raw data be-hind the story "A Sta-tis-ti-cal Anal-y-sis of
+ the Work of Bob Ross" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (0.43983pt too wide) in paragraph at lines 432--437
+\T1/zi4/m/n/10 com / features / a-[]statistical-[]analysis-[]of-[]the-[]work-[]
+of-[]bob-[]ross/$[][]\T1/ptm/m/n/10 . An anal-y-sis us-ing this
+[9] [10] [11] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.14838pt too wide) in paragraph at lines 544--546
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Ul-ti-mate Hal-loween Cand
+y Power Rank-ing" [][]$\T1/zi4/m/n/10 http : / / fivethirtyeight .
+[12]
+Overfull \hbox (38.58093pt too wide) in paragraph at lines 585--585
+ []  \T1/zi4/m/n/9 gather(characteristics, present, -c(competitorname, sugarper
+cent, pricepercent, winpercent)) %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.11864pt too wide) in paragraph at lines 634--637
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Who Will Run For Pres-i-dent: 
+Rom-ney Is Out" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[13] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.11864pt too wide) in paragraph at lines 709--712
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Who Will Run For Pres-i-dent: 
+Rom-ney Is Out" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [15]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (25.20857pt too wide) in paragraph at lines 776--779
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Clas-sic Rock Isn't What I
+t Used To Be" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[16] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (25.20857pt too wide) in paragraph at lines 814--817
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Clas-sic Rock Isn't What I
+t Used To Be" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 883--884
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 936--937
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 988--990
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (208.49045pt too wide) in paragraph at lines 1049--1052
+\T1/ptm/m/n/10 ford Comma" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . co
+m / features / elitist-[]superfluous-[]or-[]popular-[]we-[]polled-[]americans-[
+]on-[]the-[]oxford-[]comma/$[][]\T1/ptm/m/n/10 . 
+[21] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (10.78088pt too wide) in paragraph at lines 1089--1092
+\T1/zi4/m/n/10 fivethirtyeight . com / features / both-[]republicans-[]and-[]de
+mocrats-[]have-[]an-[]age-[]problem/$[][]\T1/ptm/m/n/10 . 
+[22] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (11.78088pt too wide) in paragraph at lines 1159--1162
+\T1/zi4/m/n/10 fivethirtyeight . com / features / every-[]guest-[]jon-[]stewart
+-[]ever-[]had-[]on-[]the-[]daily-[]show/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (7.498pt too wide) in paragraph at lines 1175--1176
+[]\T1/ptm/m/n/10 Their oc-cu-pa-tion or of-fice, ac-cord-ing to Google's Knowl-
+edge Graph
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (167.09041pt too wide) in paragraph at lines 1191--1194
+\T1/ptm/m/n/10 Hillary" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com /
+ features / some-[]democrats-[]who-[]could-[]step-[]up-[]if-[]hillary-[]isnt-[]
+ready-[]for-[]hillary/$[][]\T1/ptm/m/n/10 . 
+[24] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (213.94026pt too wide) in paragraph at lines 1221--1224
+\T1/ptm/m/n/10 And Spir-its?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+ com / features / dear-[]mona-[]followup-[]where-[]do-[]people-[]drink-[]the-[]
+most-[]beer-[]wine-[]and-[]spirits/$[][]\T1/ptm/m/n/10 . 
+[25] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 1342--1345
+\T1/zi4/m/n/10 fivethirtyeight . com / features / blatters-[]reign-[]at-[]fifa-
+[]hasnt-[]helped-[]soccers-[]poor/$[][]\T1/ptm/m/n/10 . 
+[27] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (164.20068pt too wide) in paragraph at lines 1377--1384
+\T1/ptm/m/n/10 Runner" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / 
+features / pols-[]and-[]polls-[]say-[]the-[]same-[]thing-[]jeb-[]bush-[]is-[]a-
+[]weak-[]front-[]runner/$[][]\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [28] [29]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [30]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [31]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (153.43079pt too wide) in paragraph at lines 1602--1607
+\T1/ptm/m/n/10 Cup" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fea
+tures / the-[]fivethirtyeight-[]international-[]food-[]associations-[]2014-[]wo
+rld-[]cup/$[][]\T1/ptm/m/n/10 .
+[32] [33] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [34]
+Overfull \hbox (2.12073pt too wide) in paragraph at lines 1731--1732
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / congress-[]generic-[]ballot /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [35]
+Overfull \hbox (2.12073pt too wide) in paragraph at lines 1772--1773
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / congress-[]generic-[]ballot /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 1783--1786
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[36]
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 1817--1820
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [37]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (86.78088pt too wide) in paragraph at lines 1865--1868
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / higher-[]rat
+es-[]of-[]hate-[]crimes-[]are-[]tied-[]to-[]income-[]inequality/$[][]\T1/ptm/m/
+n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (45.29929pt too wide) in paragraph at lines 1904--1907
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Hip-Hop Is Turn-ing On Don-ald
+ Trump" [][]$\T1/zi4/m/n/10 http : / / projects . fivethirtyeight .
+[38] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (16.63837pt too wide) in paragraph at lines 1939--1942
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The NCAA Bracket: Check-ing Ou
+r Work" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[39] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (15.28088pt too wide) in paragraph at lines 1972--1975
+\T1/zi4/m/n/10 fivethirtyeight . com / features / how-[]the-[]fivethirtyeight-[
+]senate-[]forecast-[]model-[]works/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [40]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (222.78033pt too wide) in paragraph at lines 2040--2044
+\T1/ptm/m/n/10 Movie Of Our Time" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeig
+ht . com / features / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a
+-[]baby-[]on-[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 .
+[41] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (292.78033pt too wide) in paragraph at lines 2083--2087
+\T1/ptm/m/n/10 Movie Of Our Time" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeig
+ht . com / features / the-[]definitive-[]analysis-[]of-[]love-[]actually-[]the-
+[]greatest-[]christmas-[]movie-[]of-[]our-[]time/$[][]\T1/ptm/m/n/10 .
+[42] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [43]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [44]
+Overfull \hbox (32.1383pt too wide) in paragraph at lines 2237--2242
+\T1/ptm/m/n/10 12:05 a.m. and 1:15 a.m. EDT us-ing the Twit-ter stream-ing API.
+ [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtyeight /
+
+Overfull \hbox (38.5809pt too wide) in paragraph at lines 2250--2250
+ []   \T1/zi4/m/n/9 "https://raw.githubusercontent.com/fivethirtyeight/data/mas
+ter/mayweather-mcgregor/tweets.csv"[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45]
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2265--2269
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (85.36096pt too wide) in paragraph at lines 2295--2298
+[][][]\T1/zi4/m/n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10
+ mediacloud_online_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_tru
+mp[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/10 ,
+ [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2304--2308
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[46]
+Overfull \hbox (80.36096pt too wide) in paragraph at lines 2331--2334
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trum
+p[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/10 , 
+[][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2340--2344
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (105.36096pt too wide) in paragraph at lines 2369--2372
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_online_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud
+_trump[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/
+10 , [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2378--2382
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[47]
+Overfull \hbox (108.34094pt too wide) in paragraph at lines 2410--2413
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 ,[][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/
+10 , [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [48]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [49]
+Overfull \hbox (8.89687pt too wide) in paragraph at lines 2486--2487
+[]\T1/ptm/m/n/10 Unadjusted pythagorean tal-ent rat-ing; PYTH =(RSPG^1.83)/(RSP
+G^1.83+RAPG^1.83) 
+
+Overfull \hbox (25.17747pt too wide) in paragraph at lines 2489--2490
+[]\T1/ptm/m/n/10 Adjusted pythagorean record; =(SOS*unadj_Pyth)/((2*unadj_Pyth*
+SOS)-SOS-unadj_Pyth+1) 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (31.77846pt too wide) in paragraph at lines 2504--2507
+[]\T1/ptm/m/n/10 The raw data be-hind the sto-ries: "The Com-plete His-tory Of 
+MLB" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+
+Overfull \hbox (8.14938pt too wide) in paragraph at lines 2504--2507
+\T1/zi4/m/n/10 com / complete-[]history-[]of-[]mlb/$[][] \T1/ptm/m/n/10 and "ML
+B Pre-dic-tions" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[50] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [51]
+Overfull \hbox (26.78088pt too wide) in paragraph at lines 2575--2578
+\T1/zi4/m/n/10 fivethirtyeight . com / features / a-[]handful-[]of-[]cities-[]a
+re-[]driving-[]2016s-[]rise-[]in-[]murders/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.78088pt too wide) in paragraph at lines 2607--2610
+\T1/zi4/m/n/10 fivethirtyeight . com / features / a-[]handful-[]of-[]cities-[]a
+re-[]driving-[]2016s-[]rise-[]in-[]murders/$[][]\T1/ptm/m/n/10 . 
+[52] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (38.5289pt too wide) in paragraph at lines 2641--2646
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Com-plete His-tory Of The 
+NBA" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[53]
+Overfull \hbox (2.5809pt too wide) in paragraph at lines 2693--2693
+ []\T1/zi4/m/n/9 nba_carmelo <- read_csv("https://projects.fivethirtyeight.com/
+nba-model/nba_elo.csv") %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (87.28088pt too wide) in paragraph at lines 2709--2714
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / projecting-[
+]the-[]top-[]50-[]players-[]in-[]the-[]2015-[]nba-[]draft-[]class/$[][]\T1/ptm/
+m/n/10 .
+
+Overfull \hbox (101.12073pt too wide) in paragraph at lines 2740--2741
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / projecting-[]the-[]top-[]50-[]players-[]in-[]the-[]2015-[]nba-[]draft-
+[]class/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (151.04051pt too wide) in paragraph at lines 2747--2750
+\T1/ptm/m/n/10 Close" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / accurately-[]counting-[]nba-[]tattoos-[]isnt-[]easy-[]even-[]if-[]you
+re-[]up-[]close/$[][]\T1/ptm/m/n/10 . 
+[54] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [55]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.28088pt too wide) in paragraph at lines 2835--2838
+\T1/zi4/m/n/10 fivethirtyeight . com / features / the-[]football-[]hall-[]of-[]
+fame-[]has-[]a-[]receiver-[]problem/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.28088pt too wide) in paragraph at lines 2865--2868
+\T1/zi4/m/n/10 fivethirtyeight . com / features / the-[]football-[]hall-[]of-[]
+fame-[]has-[]a-[]receiver-[]problem/$[][]\T1/ptm/m/n/10 . 
+[56]
+Overfull \hbox (73.11084pt too wide) in paragraph at lines 2885--2886
+\T1/zi4/m/n/10 sabernomics . com / sabernomics / index . php / 2005 / 02 / rank
+ing-[]the-[]all-[]time-[]great-[]wide-[]receivers/$[][]\T1/ptm/m/n/10 ) 
+
+Overfull \hbox (55.12073pt too wide) in paragraph at lines 2891--2892
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / the-[]football-[]hall-[]of-[]fame-[]has-[]a-[]receiver-[]problem/$[][]
+ 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (31.10886pt too wide) in paragraph at lines 2898--2903
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Com-plete His-tory of the 
+NFL" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[57]
+Overfull \hbox (102.58504pt too wide) in paragraph at lines 2937--2947
+\T1/ptm/m/n/10 dataset, run the fol-low-ing code: li-brary(tidyverse) li-brary(
+janitor) nfl_elo <- read_csv("https://projects.fivethirtyeight.com/nfl-
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.52805pt too wide) in paragraph at lines 2953--2956
+[]\T1/ptm/m/n/10 The raw data be-hind the story "How Ev-ery NFL Team's Fans Lea
+n Po-lit-i-cally" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[58] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.52805pt too wide) in paragraph at lines 3002--3005
+[]\T1/ptm/m/n/10 The raw data be-hind the story "How Ev-ery NFL Team's Fans Lea
+n Po-lit-i-cally" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[59]
+Overfull \hbox (82.12073pt too wide) in paragraph at lines 3047--3048
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / tree / master / nfl-[]fandom / NFL _ fandom _ data-[]surveymonkey
+ .
+[60] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (238.2693pt too wide) in paragraph at lines 3070--3073
+\T1/ptm/m/n/10 A New NFL Team" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight 
+. com / features / the-[]rams-[]are-[]dead-[]to-[]me-[]so-[]i-[]answered-[]3352
+-[]questions-[]to-[]find-[]a-[]new-[]team/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (69.3009pt too wide) in paragraph at lines 3107--3108
+[][][]$\T1/zi4/m/n/10 http : / / www . espn . com / sportsnation / teamrankings
+$[][]\T1/ptm/m/n/10 , [][]$\T1/zi4/m/n/10 http : / / www . allourideas . org / 
+nflteampickingsample$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [61]
+Overfull \hbox (19.3009pt too wide) in paragraph at lines 3141--3142
+[][][]$\T1/zi4/m/n/10 http : / / en . wikipedia . org / wiki / List _ of _ play
+ers _ and _ coaches _ suspended _ by _ the _ NFL$[][]\T1/ptm/m/n/10 , [][]$\T1/
+zi4/m/n/10 http :
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (44.94862pt too wide) in paragraph at lines 3148--3151
+[]\T1/ptm/m/n/10 The raw data be-hind the story "You Can't Trust What You Read 
+About Nu-tri-tion" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (29.62073pt too wide) in paragraph at lines 3171--3172
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / you-[]cant-[]trust-[]what-[]you-[]read-[]about-[]nutrition$[][] 
+[62] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (184.26047pt too wide) in paragraph at lines 3178--3181
+\T1/ptm/m/n/10 His-tory" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com 
+/ features / the-[]dallas-[]shooting-[]was-[]among-[]the-[]deadliest-[]for-[]po
+lice-[]in-[]u-[]s-[]history/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (33.17854pt too wide) in paragraph at lines 3212--3215
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Where Po-lice Have Killed Amer
+-i-cans In 2015" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[63] [64] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (87.78088pt too wide) in paragraph at lines 3333--3336
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / the-[]last-[
+]10-[]weeks-[]of-[]2016-[]campaign-[]stops-[]in-[]one-[]handy-[]gif/$[][]\T1/pt
+m/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (223.32079pt too wide) in paragraph at lines 3365--3368
+\T1/ptm/m/n/10 They Used To" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . 
+com / features / sitting-[]presidents-[]give-[]way-[]more-[]commencement-[]spee
+ches-[]than-[]they-[]used-[]to/$[][]\T1/ptm/m/n/10 . 
+[66] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (35.00818pt too wide) in paragraph at lines 3400--3403
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Do Pulitzers Help News-pa-pers
+ Keep Read-ers?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[67]
+Overfull \hbox (18.62073pt too wide) in paragraph at lines 3427--3428
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / do-[]pulitzers-[]help-[]newspapers-[]keep-[]readers/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (140.43065pt too wide) in paragraph at lines 3434--3437
+\T1/ptm/m/n/10 ings" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / al-[]gores-[]new-[]movie-[]exposes-[]the-[]big-[]flaw-[]in-[]online-[]
+movie-[]ratings/$[][]\T1/ptm/m/n/10 . 
+[68]
+Overfull \hbox (55.69984pt too wide) in paragraph at lines 3481--3483
+[]\T1/ptm/m/n/10 IMBD [][]$\T1/zi4/m/n/10 http : / / www . imdb . com / title /
+ tt6322922 / ratings$[][] \T1/ptm/m/n/10 and see [][]$\T1/zi4/m/n/10 https : / 
+/ github . com / fivethirtyeight /
+
+Overfull \hbox (13.38095pt too wide) in paragraph at lines 3491--3491
+ []  \T1/zi4/m/n/9 gather(votes, count, -c(timestamp, respondents, category, li
+nk, average, mean, median)) %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [69]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (8.8188pt too wide) in paragraph at lines 3554--3558
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Bat-tle For Rid-dler Na-ti
+on, Round 2" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (89.78015pt too wide) in paragraph at lines 3554--3558
+\T1/ptm/m/n/10 tions can be found at: [][]$\T1/zi4/m/n/10 https : / / fivethirt
+yeight . com / features / how-[]much-[]should-[]you-[]bid-[]for-[]that-[]painti
+ng/$[][] 
+[70] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [71] [72]
+Overfull \hbox (66.24948pt too wide) in paragraph at lines 3678--3680
+[]\T1/ptm/m/n/10 Data from NYC Open Data [][]$\T1/zi4/m/n/10 https : / / data .
+ cityofnewyork . us / City-[]Government / 311-[]Call-[]Center-[]Inquiry /
+
+Overfull \hbox (41.38925pt too wide) in paragraph at lines 3678--3680
+\T1/zi4/m/n/10 tdd6-[]3ysr$[][]\T1/ptm/m/n/10 , Agency acronyms from the Data D
+ic-tio-nary. See also [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirty
+eight /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (149.25073pt too wide) in paragraph at lines 3699--3702
+\T1/ptm/m/n/10 One'" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / the-[]rock-[]isnt-[]alone-[]lots-[]of-[]people-[]are-[]worried-[]about
+-[]the-[]big-[]one/$[][]\T1/ptm/m/n/10 . 
+[73] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (51.78088pt too wide) in paragraph at lines 3737--3740
+\T1/zi4/m/n/10 / / fivethirtyeight . com / features / early-[]senate-[]polls-[]
+have-[]plenty-[]to-[]tell-[]us-[]about-[]november/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [74]
+Overfull \hbox (11.25609pt too wide) in paragraph at lines 3790--3791
+[]\T1/ptm/m/n/10 The poster's mem-ber ID from the "Bi-o-graph-i-cal Di-rec-tory
+ of the United States Congress" 
+
+Overfull \hbox (46.68091pt too wide) in paragraph at lines 3814--3814
+ []  \T1/zi4/m/n/9 url <- "https://raw.githubusercontent.com/fivethirtyeight/da
+ta/master/twitter-ratio/senators.csv"[] 
+[75] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.93976pt too wide) in paragraph at lines 3831--3835
+\T1/zi4/m/n/10 com / soccer-[]predictions/$[][] \T1/ptm/m/n/10 and "Global Club
+ Soc-cer Rank-ings" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight 
+.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.93976pt too wide) in paragraph at lines 3870--3873
+\T1/zi4/m/n/10 com / soccer-[]predictions/$[][] \T1/ptm/m/n/10 and "Global Club
+ Soc-cer Rank-ings" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight 
+.
+[76] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [77]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (185.4395pt too wide) in paragraph at lines 3962--3968
+\T1/ptm/m/n/10 A Quentin Tarantino Movie" [][]$\T1/zi4/m/n/10 https : / / fivet
+hirtyeight . com / features / complete-[]catalog-[]curses-[]deaths-[]quentin-[]
+tarantino-[]films/$[][]\T1/ptm/m/n/10 .
+[78] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 3996--3999
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[79] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 4032--4035
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 4065--4068
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[80] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (294.20987pt too wide) in paragraph at lines 4103--4106
+\T1/ptm/m/n/10 er-ate On Im-mi-gra-tion" [][]$\T1/zi4/m/n/10 https : / / fiveth
+irtyeight . com / features / for-[]a-[]trump-[]nominee-[]neil-[]gorsuchs-[]reco
+rd-[]is-[]surprisingly-[]moderate-[]on-[]immigration/$[][]\T1/ptm/m/n/10 . 
+[81] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (119.76pt too wide) in paragraph at lines 4179--4180
+[]\T1/ptm/m/n/10 Pew Re-search Cen-ter [][]$\T1/zi4/m/n/10 http : / / www . pew
+research . org / fact-[]tank / 2017 / 07 / 17 / 9-[]charts-[]on-[]how-[]the-[]w
+orld-[]sees-[]trump/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [82] [83]
+Overfull \hbox (119.76pt too wide) in paragraph at lines 4251--4252
+[]\T1/ptm/m/n/10 Pew Re-search Cen-ter [][]$\T1/zi4/m/n/10 http : / / www . pew
+research . org / fact-[]tank / 2017 / 07 / 17 / 9-[]charts-[]on-[]how-[]the-[]w
+orld-[]sees-[]trump/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (22.2891pt too wide) in paragraph at lines 4271--4274
+[]\T1/ptm/m/n/10 The raw data be-hind the story: "How Pop-u-lar is Don-ald Trum
+p" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[84]
+Overfull \hbox (12.12085pt too wide) in paragraph at lines 4315--4317
+[][][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight . com / trump-[]ap
+proval-[]data / approval _ polllist . csv$[][] \T1/ptm/m/n/10 and
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (22.2891pt too wide) in paragraph at lines 4327--4330
+[]\T1/ptm/m/n/10 The raw data be-hind the story: "How Pop-u-lar is Don-ald Trum
+p" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[85] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [86]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.36894pt too wide) in paragraph at lines 4401--4407
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The World's Fa-vorite Don-ald 
+Trump Tweets" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (14.22758pt too wide) in paragraph at lines 4401--4407
+\T1/ptm/m/n/10 Don-ald Trump (@re-al-Don-aldTrump). An anal-y-sis us-ing this d
+ata was con-tributed by Adam Spannbauer
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [87]
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4434--4438
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4465--4468
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4474--4478
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[88]
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4506--4508
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4514--4518
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4544--4546
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [89]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (39.81879pt too wide) in paragraph at lines 4596--4599
+[]\T1/ptm/m/n/10 The raw data be-hind: "May-weather Is De-fined By The Zero Nex
+t To His Name" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[90] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (126.53062pt too wide) in paragraph at lines 4627--4630
+\T1/ptm/m/n/10 Them?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / there-[]are-[]922-[]unisex-[]names-[]in-[]america-[]is-[]yours-[]one-
+[]of-[]them/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (11.10907pt too wide) in paragraph at lines 4652--4653
+[]\T1/ptm/m/n/10 Social Se-cu-rity Ad-min-is-tra-tion [][]$\T1/zi4/m/n/10 https
+ : / / www . ssa . gov / oact / babynames / limits . html$[][]\T1/ptm/m/n/10 . 
+See [][]$\T1/zi4/m/n/10 https :
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [91]
+Overfull \hbox (162.04076pt too wide) in paragraph at lines 4659--4662
+\T1/ptm/m/n/10 13th" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a-[]baby-[]on-
+[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (162.04076pt too wide) in paragraph at lines 4696--4699
+\T1/ptm/m/n/10 13th" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a-[]baby-[]on-
+[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 . 
+[92] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.6991pt too wide) in paragraph at lines 4733--4736
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Where Peo-ple Go To Check The 
+Weather" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+No file Rd2.ind.
+[93] [94] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2015/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/
+enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/t
+ype1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/t
+imes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (94 pages, 267005 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (316 entries accepted, 0 rejected).
+Sorting entries.....done (2721 comparisons).
+Generating output file Rd2.ind....done (329 lines written, 13 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3]) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (180.55025pt too wide) in paragraph at lines 60--63
+\T1/ptm/m/n/10 Care Bill" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / why-[]the-[]gop-[]is-[]so-[]hell-[]bent-[]on-[]passing-[]an-[]unp
+opular-[]health-[]care-[]bill$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (203.84042pt too wide) in paragraph at lines 104--107
+\T1/ptm/m/n/10 the Past?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / should-[]travelers-[]avoid-[]flying-[]airlines-[]that-[]have-[]ha
+d-[]crashes-[]in-[]the-[]past/$[][]\T1/ptm/m/n/10 . 
+[4] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (143.26059pt too wide) in paragraph at lines 155--158
+\T1/ptm/m/n/10 ment" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / trump-[]might-[]be-[]the-[]first-[]president-[]to-[]scrap-[]a-[]nation
+al-[]monument/$[][]\T1/ptm/m/n/10 . 
+[5]
+Overfull \hbox (45.23032pt too wide) in paragraph at lines 184--185
+\T1/ptm/m/n/10 Arche-ol-ogy Pro-gram [][]$\T1/zi4/m/n/10 https : / / www . nps 
+. gov / history / archeology / sites / antiquities / MonumentsList .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (15.77046pt too wide) in paragraph at lines 191--194
+\T1/ptm/m/n/10 Build-ing" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / avengers-[]death-[]comics-[]age-[]of-[]ultron/$[][]\T1/ptm/m/n/10
+ . 
+[6] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (261.00873pt too wide) in paragraph at lines 239--244
+\T1/ptm/m/n/10 Fit-ting Neatly Into 'Bach-e-lorette' His-tory" [][]$\T1/zi4/m/n
+/10 https : / / fivethirtyeight . com / features / rachels-[]season-[]is-[]fitt
+ing-[]neatly-[]into-[]bachelorette-[]history/$[][]\T1/ptm/m/n/10 ,
+[7] [8]
+Overfull \hbox (1.20978pt too wide) in paragraph at lines 297--299
+[][][]$\T1/zi4/m/n/10 http : / / bachelor-[]nation . wikia . com / wiki / Bache
+lor _ Nation _ Wikia$[][] \T1/ptm/m/n/10 and then miss-ing sea-sons
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (153.6207pt too wide) in paragraph at lines 342--345
+\T1/ptm/m/n/10 Women" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / the-[]dollar-[]and-[]cents-[]case-[]against-[]hollywoods-[]exclusion-
+[]of-[]women/$[][]\T1/ptm/m/n/10 . 
+[9] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (148.81067pt too wide) in paragraph at lines 389--394
+\T1/ptm/m/n/10 Dudes" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / straight-[]outta-[]compton-[]is-[]the-[]rare-[]biopic-[]not-[]about-[
+]white-[]dudes/$[][]\T1/ptm/m/n/10 .
+[10] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.56743pt too wide) in paragraph at lines 432--437
+[]\T1/ptm/m/n/10 The raw data be-hind the story "A Sta-tis-ti-cal Anal-y-sis of
+ the Work of Bob Ross" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (0.43983pt too wide) in paragraph at lines 432--437
+\T1/zi4/m/n/10 com / features / a-[]statistical-[]analysis-[]of-[]the-[]work-[]
+of-[]bob-[]ross/$[][]\T1/ptm/m/n/10 . An anal-y-sis us-ing this
+[11] [12] [13] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.14838pt too wide) in paragraph at lines 544--546
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Ul-ti-mate Hal-loween Cand
+y Power Rank-ing" [][]$\T1/zi4/m/n/10 http : / / fivethirtyeight .
+[14]
+Overfull \hbox (38.58093pt too wide) in paragraph at lines 585--585
+ []  \T1/zi4/m/n/9 gather(characteristics, present, -c(competitorname, sugarper
+cent, pricepercent, winpercent)) %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.11864pt too wide) in paragraph at lines 634--637
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Who Will Run For Pres-i-dent: 
+Rom-ney Is Out" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[15] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [16]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.11864pt too wide) in paragraph at lines 709--712
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Who Will Run For Pres-i-dent: 
+Rom-ney Is Out" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (25.20857pt too wide) in paragraph at lines 776--779
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Clas-sic Rock Isn't What I
+t Used To Be" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[18] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (25.20857pt too wide) in paragraph at lines 814--817
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Clas-sic Rock Isn't What I
+t Used To Be" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 883--884
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 936--937
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [21]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 988--990
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [22]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (208.49045pt too wide) in paragraph at lines 1049--1052
+\T1/ptm/m/n/10 ford Comma" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . co
+m / features / elitist-[]superfluous-[]or-[]popular-[]we-[]polled-[]americans-[
+]on-[]the-[]oxford-[]comma/$[][]\T1/ptm/m/n/10 . 
+[23] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (10.78088pt too wide) in paragraph at lines 1089--1092
+\T1/zi4/m/n/10 fivethirtyeight . com / features / both-[]republicans-[]and-[]de
+mocrats-[]have-[]an-[]age-[]problem/$[][]\T1/ptm/m/n/10 . 
+[24] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [25]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (11.78088pt too wide) in paragraph at lines 1159--1162
+\T1/zi4/m/n/10 fivethirtyeight . com / features / every-[]guest-[]jon-[]stewart
+-[]ever-[]had-[]on-[]the-[]daily-[]show/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (7.498pt too wide) in paragraph at lines 1175--1176
+[]\T1/ptm/m/n/10 Their oc-cu-pa-tion or of-fice, ac-cord-ing to Google's Knowl-
+edge Graph
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (167.09041pt too wide) in paragraph at lines 1191--1194
+\T1/ptm/m/n/10 Hillary" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com /
+ features / some-[]democrats-[]who-[]could-[]step-[]up-[]if-[]hillary-[]isnt-[]
+ready-[]for-[]hillary/$[][]\T1/ptm/m/n/10 . 
+[26] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (213.94026pt too wide) in paragraph at lines 1221--1224
+\T1/ptm/m/n/10 And Spir-its?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+ com / features / dear-[]mona-[]followup-[]where-[]do-[]people-[]drink-[]the-[]
+most-[]beer-[]wine-[]and-[]spirits/$[][]\T1/ptm/m/n/10 . 
+[27] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [28]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 1342--1345
+\T1/zi4/m/n/10 fivethirtyeight . com / features / blatters-[]reign-[]at-[]fifa-
+[]hasnt-[]helped-[]soccers-[]poor/$[][]\T1/ptm/m/n/10 . 
+[29] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (164.20068pt too wide) in paragraph at lines 1377--1384
+\T1/ptm/m/n/10 Runner" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / 
+features / pols-[]and-[]polls-[]say-[]the-[]same-[]thing-[]jeb-[]bush-[]is-[]a-
+[]weak-[]front-[]runner/$[][]\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [30] [31]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (153.43079pt too wide) in paragraph at lines 1602--1607
+\T1/ptm/m/n/10 Cup" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fea
+tures / the-[]fivethirtyeight-[]international-[]food-[]associations-[]2014-[]wo
+rld-[]cup/$[][]\T1/ptm/m/n/10 .
+[34] [35] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [36]
+Overfull \hbox (2.12073pt too wide) in paragraph at lines 1731--1732
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / congress-[]generic-[]ballot /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [37]
+Overfull \hbox (2.12073pt too wide) in paragraph at lines 1772--1773
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / congress-[]generic-[]ballot /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 1783--1786
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[38]
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 1817--1820
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (86.78088pt too wide) in paragraph at lines 1865--1868
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / higher-[]rat
+es-[]of-[]hate-[]crimes-[]are-[]tied-[]to-[]income-[]inequality/$[][]\T1/ptm/m/
+n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (45.29929pt too wide) in paragraph at lines 1904--1907
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Hip-Hop Is Turn-ing On Don-ald
+ Trump" [][]$\T1/zi4/m/n/10 http : / / projects . fivethirtyeight .
+[40] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (16.63837pt too wide) in paragraph at lines 1939--1942
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The NCAA Bracket: Check-ing Ou
+r Work" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[41] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (15.28088pt too wide) in paragraph at lines 1972--1975
+\T1/zi4/m/n/10 fivethirtyeight . com / features / how-[]the-[]fivethirtyeight-[
+]senate-[]forecast-[]model-[]works/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [42]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (222.78033pt too wide) in paragraph at lines 2040--2044
+\T1/ptm/m/n/10 Movie Of Our Time" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeig
+ht . com / features / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a
+-[]baby-[]on-[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 .
+[43] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (292.78033pt too wide) in paragraph at lines 2083--2087
+\T1/ptm/m/n/10 Movie Of Our Time" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeig
+ht . com / features / the-[]definitive-[]analysis-[]of-[]love-[]actually-[]the-
+[]greatest-[]christmas-[]movie-[]of-[]our-[]time/$[][]\T1/ptm/m/n/10 .
+[44] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [46]
+Overfull \hbox (32.1383pt too wide) in paragraph at lines 2237--2242
+\T1/ptm/m/n/10 12:05 a.m. and 1:15 a.m. EDT us-ing the Twit-ter stream-ing API.
+ [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtyeight /
+
+Overfull \hbox (38.5809pt too wide) in paragraph at lines 2250--2250
+ []   \T1/zi4/m/n/9 "https://raw.githubusercontent.com/fivethirtyeight/data/mas
+ter/mayweather-mcgregor/tweets.csv"[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [47]
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2265--2269
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (85.36096pt too wide) in paragraph at lines 2295--2298
+[][][]\T1/zi4/m/n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10
+ mediacloud_online_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_tru
+mp[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/10 ,
+ [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2304--2308
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[48]
+Overfull \hbox (80.36096pt too wide) in paragraph at lines 2331--2334
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trum
+p[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/10 , 
+[][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2340--2344
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (105.36096pt too wide) in paragraph at lines 2369--2372
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_online_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud
+_trump[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/
+10 , [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2378--2382
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[49]
+Overfull \hbox (108.34094pt too wide) in paragraph at lines 2410--2413
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 ,[][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/
+10 , [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [50]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [51]
+Overfull \hbox (8.89687pt too wide) in paragraph at lines 2486--2487
+[]\T1/ptm/m/n/10 Unadjusted pythagorean tal-ent rat-ing; PYTH =(RSPG^1.83)/(RSP
+G^1.83+RAPG^1.83) 
+
+Overfull \hbox (25.17747pt too wide) in paragraph at lines 2489--2490
+[]\T1/ptm/m/n/10 Adjusted pythagorean record; =(SOS*unadj_Pyth)/((2*unadj_Pyth*
+SOS)-SOS-unadj_Pyth+1) 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (31.77846pt too wide) in paragraph at lines 2504--2507
+[]\T1/ptm/m/n/10 The raw data be-hind the sto-ries: "The Com-plete His-tory Of 
+MLB" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+
+Overfull \hbox (8.14938pt too wide) in paragraph at lines 2504--2507
+\T1/zi4/m/n/10 com / complete-[]history-[]of-[]mlb/$[][] \T1/ptm/m/n/10 and "ML
+B Pre-dic-tions" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[52] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [53]
+Overfull \hbox (26.78088pt too wide) in paragraph at lines 2575--2578
+\T1/zi4/m/n/10 fivethirtyeight . com / features / a-[]handful-[]of-[]cities-[]a
+re-[]driving-[]2016s-[]rise-[]in-[]murders/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.78088pt too wide) in paragraph at lines 2607--2610
+\T1/zi4/m/n/10 fivethirtyeight . com / features / a-[]handful-[]of-[]cities-[]a
+re-[]driving-[]2016s-[]rise-[]in-[]murders/$[][]\T1/ptm/m/n/10 . 
+[54] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (38.5289pt too wide) in paragraph at lines 2641--2646
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Com-plete His-tory Of The 
+NBA" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[55]
+Overfull \hbox (2.5809pt too wide) in paragraph at lines 2693--2693
+ []\T1/zi4/m/n/9 nba_carmelo <- read_csv("https://projects.fivethirtyeight.com/
+nba-model/nba_elo.csv") %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (87.28088pt too wide) in paragraph at lines 2709--2714
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / projecting-[
+]the-[]top-[]50-[]players-[]in-[]the-[]2015-[]nba-[]draft-[]class/$[][]\T1/ptm/
+m/n/10 .
+
+Overfull \hbox (101.12073pt too wide) in paragraph at lines 2740--2741
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / projecting-[]the-[]top-[]50-[]players-[]in-[]the-[]2015-[]nba-[]draft-
+[]class/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (151.04051pt too wide) in paragraph at lines 2747--2750
+\T1/ptm/m/n/10 Close" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / accurately-[]counting-[]nba-[]tattoos-[]isnt-[]easy-[]even-[]if-[]you
+re-[]up-[]close/$[][]\T1/ptm/m/n/10 . 
+[56] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.28088pt too wide) in paragraph at lines 2835--2838
+\T1/zi4/m/n/10 fivethirtyeight . com / features / the-[]football-[]hall-[]of-[]
+fame-[]has-[]a-[]receiver-[]problem/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.28088pt too wide) in paragraph at lines 2865--2868
+\T1/zi4/m/n/10 fivethirtyeight . com / features / the-[]football-[]hall-[]of-[]
+fame-[]has-[]a-[]receiver-[]problem/$[][]\T1/ptm/m/n/10 . 
+[58]
+Overfull \hbox (73.11084pt too wide) in paragraph at lines 2885--2886
+\T1/zi4/m/n/10 sabernomics . com / sabernomics / index . php / 2005 / 02 / rank
+ing-[]the-[]all-[]time-[]great-[]wide-[]receivers/$[][]\T1/ptm/m/n/10 ) 
+
+Overfull \hbox (55.12073pt too wide) in paragraph at lines 2891--2892
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / the-[]football-[]hall-[]of-[]fame-[]has-[]a-[]receiver-[]problem/$[][]
+ 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (31.10886pt too wide) in paragraph at lines 2898--2903
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Com-plete His-tory of the 
+NFL" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[59]
+Overfull \hbox (102.58504pt too wide) in paragraph at lines 2937--2947
+\T1/ptm/m/n/10 dataset, run the fol-low-ing code: li-brary(tidyverse) li-brary(
+janitor) nfl_elo <- read_csv("https://projects.fivethirtyeight.com/nfl-
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.52805pt too wide) in paragraph at lines 2953--2956
+[]\T1/ptm/m/n/10 The raw data be-hind the story "How Ev-ery NFL Team's Fans Lea
+n Po-lit-i-cally" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[60] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.52805pt too wide) in paragraph at lines 3002--3005
+[]\T1/ptm/m/n/10 The raw data be-hind the story "How Ev-ery NFL Team's Fans Lea
+n Po-lit-i-cally" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[61]
+Overfull \hbox (82.12073pt too wide) in paragraph at lines 3047--3048
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / tree / master / nfl-[]fandom / NFL _ fandom _ data-[]surveymonkey
+ .
+[62] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (238.2693pt too wide) in paragraph at lines 3070--3073
+\T1/ptm/m/n/10 A New NFL Team" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight 
+. com / features / the-[]rams-[]are-[]dead-[]to-[]me-[]so-[]i-[]answered-[]3352
+-[]questions-[]to-[]find-[]a-[]new-[]team/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (69.3009pt too wide) in paragraph at lines 3107--3108
+[][][]$\T1/zi4/m/n/10 http : / / www . espn . com / sportsnation / teamrankings
+$[][]\T1/ptm/m/n/10 , [][]$\T1/zi4/m/n/10 http : / / www . allourideas . org / 
+nflteampickingsample$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [63]
+Overfull \hbox (19.3009pt too wide) in paragraph at lines 3141--3142
+[][][]$\T1/zi4/m/n/10 http : / / en . wikipedia . org / wiki / List _ of _ play
+ers _ and _ coaches _ suspended _ by _ the _ NFL$[][]\T1/ptm/m/n/10 , [][]$\T1/
+zi4/m/n/10 http :
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (44.94862pt too wide) in paragraph at lines 3148--3151
+[]\T1/ptm/m/n/10 The raw data be-hind the story "You Can't Trust What You Read 
+About Nu-tri-tion" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (29.62073pt too wide) in paragraph at lines 3171--3172
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / you-[]cant-[]trust-[]what-[]you-[]read-[]about-[]nutrition$[][] 
+[64] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (184.26047pt too wide) in paragraph at lines 3178--3181
+\T1/ptm/m/n/10 His-tory" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com 
+/ features / the-[]dallas-[]shooting-[]was-[]among-[]the-[]deadliest-[]for-[]po
+lice-[]in-[]u-[]s-[]history/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (33.17854pt too wide) in paragraph at lines 3212--3215
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Where Po-lice Have Killed Amer
+-i-cans In 2015" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[65] [66] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (87.78088pt too wide) in paragraph at lines 3333--3336
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / the-[]last-[
+]10-[]weeks-[]of-[]2016-[]campaign-[]stops-[]in-[]one-[]handy-[]gif/$[][]\T1/pt
+m/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (223.32079pt too wide) in paragraph at lines 3365--3368
+\T1/ptm/m/n/10 They Used To" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . 
+com / features / sitting-[]presidents-[]give-[]way-[]more-[]commencement-[]spee
+ches-[]than-[]they-[]used-[]to/$[][]\T1/ptm/m/n/10 . 
+[68] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (35.00818pt too wide) in paragraph at lines 3400--3403
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Do Pulitzers Help News-pa-pers
+ Keep Read-ers?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[69]
+Overfull \hbox (18.62073pt too wide) in paragraph at lines 3427--3428
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / do-[]pulitzers-[]help-[]newspapers-[]keep-[]readers/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (140.43065pt too wide) in paragraph at lines 3434--3437
+\T1/ptm/m/n/10 ings" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / al-[]gores-[]new-[]movie-[]exposes-[]the-[]big-[]flaw-[]in-[]online-[]
+movie-[]ratings/$[][]\T1/ptm/m/n/10 . 
+[70]
+Overfull \hbox (55.69984pt too wide) in paragraph at lines 3481--3483
+[]\T1/ptm/m/n/10 IMBD [][]$\T1/zi4/m/n/10 http : / / www . imdb . com / title /
+ tt6322922 / ratings$[][] \T1/ptm/m/n/10 and see [][]$\T1/zi4/m/n/10 https : / 
+/ github . com / fivethirtyeight /
+
+Overfull \hbox (13.38095pt too wide) in paragraph at lines 3491--3491
+ []  \T1/zi4/m/n/9 gather(votes, count, -c(timestamp, respondents, category, li
+nk, average, mean, median)) %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [71]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (8.8188pt too wide) in paragraph at lines 3554--3558
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Bat-tle For Rid-dler Na-ti
+on, Round 2" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (89.78015pt too wide) in paragraph at lines 3554--3558
+\T1/ptm/m/n/10 tions can be found at: [][]$\T1/zi4/m/n/10 https : / / fivethirt
+yeight . com / features / how-[]much-[]should-[]you-[]bid-[]for-[]that-[]painti
+ng/$[][] 
+[72] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [73] [74]
+Overfull \hbox (66.24948pt too wide) in paragraph at lines 3678--3680
+[]\T1/ptm/m/n/10 Data from NYC Open Data [][]$\T1/zi4/m/n/10 https : / / data .
+ cityofnewyork . us / City-[]Government / 311-[]Call-[]Center-[]Inquiry /
+
+Overfull \hbox (41.38925pt too wide) in paragraph at lines 3678--3680
+\T1/zi4/m/n/10 tdd6-[]3ysr$[][]\T1/ptm/m/n/10 , Agency acronyms from the Data D
+ic-tio-nary. See also [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirty
+eight /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (149.25073pt too wide) in paragraph at lines 3699--3702
+\T1/ptm/m/n/10 One'" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / the-[]rock-[]isnt-[]alone-[]lots-[]of-[]people-[]are-[]worried-[]about
+-[]the-[]big-[]one/$[][]\T1/ptm/m/n/10 . 
+[75] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (51.78088pt too wide) in paragraph at lines 3737--3740
+\T1/zi4/m/n/10 / / fivethirtyeight . com / features / early-[]senate-[]polls-[]
+have-[]plenty-[]to-[]tell-[]us-[]about-[]november/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [76]
+Overfull \hbox (11.25609pt too wide) in paragraph at lines 3790--3791
+[]\T1/ptm/m/n/10 The poster's mem-ber ID from the "Bi-o-graph-i-cal Di-rec-tory
+ of the United States Congress" 
+
+Overfull \hbox (46.68091pt too wide) in paragraph at lines 3814--3814
+ []  \T1/zi4/m/n/9 url <- "https://raw.githubusercontent.com/fivethirtyeight/da
+ta/master/twitter-ratio/senators.csv"[] 
+[77] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.93976pt too wide) in paragraph at lines 3831--3835
+\T1/zi4/m/n/10 com / soccer-[]predictions/$[][] \T1/ptm/m/n/10 and "Global Club
+ Soc-cer Rank-ings" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight 
+.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.93976pt too wide) in paragraph at lines 3870--3873
+\T1/zi4/m/n/10 com / soccer-[]predictions/$[][] \T1/ptm/m/n/10 and "Global Club
+ Soc-cer Rank-ings" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight 
+.
+[78] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [79]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (185.4395pt too wide) in paragraph at lines 3962--3968
+\T1/ptm/m/n/10 A Quentin Tarantino Movie" [][]$\T1/zi4/m/n/10 https : / / fivet
+hirtyeight . com / features / complete-[]catalog-[]curses-[]deaths-[]quentin-[]
+tarantino-[]films/$[][]\T1/ptm/m/n/10 .
+[80] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 3996--3999
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[81] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 4032--4035
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 4065--4068
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[82] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (294.20987pt too wide) in paragraph at lines 4103--4106
+\T1/ptm/m/n/10 er-ate On Im-mi-gra-tion" [][]$\T1/zi4/m/n/10 https : / / fiveth
+irtyeight . com / features / for-[]a-[]trump-[]nominee-[]neil-[]gorsuchs-[]reco
+rd-[]is-[]surprisingly-[]moderate-[]on-[]immigration/$[][]\T1/ptm/m/n/10 . 
+[83] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (119.76pt too wide) in paragraph at lines 4179--4180
+[]\T1/ptm/m/n/10 Pew Re-search Cen-ter [][]$\T1/zi4/m/n/10 http : / / www . pew
+research . org / fact-[]tank / 2017 / 07 / 17 / 9-[]charts-[]on-[]how-[]the-[]w
+orld-[]sees-[]trump/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [84] [85]
+Overfull \hbox (119.76pt too wide) in paragraph at lines 4251--4252
+[]\T1/ptm/m/n/10 Pew Re-search Cen-ter [][]$\T1/zi4/m/n/10 http : / / www . pew
+research . org / fact-[]tank / 2017 / 07 / 17 / 9-[]charts-[]on-[]how-[]the-[]w
+orld-[]sees-[]trump/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (22.2891pt too wide) in paragraph at lines 4271--4274
+[]\T1/ptm/m/n/10 The raw data be-hind the story: "How Pop-u-lar is Don-ald Trum
+p" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[86]
+Overfull \hbox (12.12085pt too wide) in paragraph at lines 4315--4317
+[][][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight . com / trump-[]ap
+proval-[]data / approval _ polllist . csv$[][] \T1/ptm/m/n/10 and
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (22.2891pt too wide) in paragraph at lines 4327--4330
+[]\T1/ptm/m/n/10 The raw data be-hind the story: "How Pop-u-lar is Don-ald Trum
+p" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[87] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [88]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.36894pt too wide) in paragraph at lines 4401--4407
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The World's Fa-vorite Don-ald 
+Trump Tweets" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (14.22758pt too wide) in paragraph at lines 4401--4407
+\T1/ptm/m/n/10 Don-ald Trump (@re-al-Don-aldTrump). An anal-y-sis us-ing this d
+ata was con-tributed by Adam Spannbauer
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [89]
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4434--4438
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4465--4468
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4474--4478
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[90]
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4506--4508
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4514--4518
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4544--4546
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [91]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (39.81879pt too wide) in paragraph at lines 4596--4599
+[]\T1/ptm/m/n/10 The raw data be-hind: "May-weather Is De-fined By The Zero Nex
+t To His Name" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[92] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (126.53062pt too wide) in paragraph at lines 4627--4630
+\T1/ptm/m/n/10 Them?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / there-[]are-[]922-[]unisex-[]names-[]in-[]america-[]is-[]yours-[]one-
+[]of-[]them/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (11.10907pt too wide) in paragraph at lines 4652--4653
+[]\T1/ptm/m/n/10 Social Se-cu-rity Ad-min-is-tra-tion [][]$\T1/zi4/m/n/10 https
+ : / / www . ssa . gov / oact / babynames / limits . html$[][]\T1/ptm/m/n/10 . 
+See [][]$\T1/zi4/m/n/10 https :
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [93]
+Overfull \hbox (162.04076pt too wide) in paragraph at lines 4659--4662
+\T1/ptm/m/n/10 13th" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a-[]baby-[]on-
+[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (162.04076pt too wide) in paragraph at lines 4696--4699
+\T1/ptm/m/n/10 13th" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a-[]baby-[]on-
+[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 . 
+[94] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.6991pt too wide) in paragraph at lines 4733--4736
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Where Peo-ple Go To Check The 
+Weather" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(./Rd2.ind [95] [96] [97]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 174.
+
+[98] [99]) (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2015/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/
+enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (99 pages, 302328 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (316 entries accepted, 0 rejected).
+Sorting entries.....done (2721 comparisons).
+Generating output file Rd2.ind....done (329 lines written, 13 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+[2] [3]) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (180.55025pt too wide) in paragraph at lines 60--63
+\T1/ptm/m/n/10 Care Bill" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / why-[]the-[]gop-[]is-[]so-[]hell-[]bent-[]on-[]passing-[]an-[]unp
+opular-[]health-[]care-[]bill$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (203.84042pt too wide) in paragraph at lines 104--107
+\T1/ptm/m/n/10 the Past?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / should-[]travelers-[]avoid-[]flying-[]airlines-[]that-[]have-[]ha
+d-[]crashes-[]in-[]the-[]past/$[][]\T1/ptm/m/n/10 . 
+[4] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (143.26059pt too wide) in paragraph at lines 155--158
+\T1/ptm/m/n/10 ment" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / trump-[]might-[]be-[]the-[]first-[]president-[]to-[]scrap-[]a-[]nation
+al-[]monument/$[][]\T1/ptm/m/n/10 . 
+[5]
+Overfull \hbox (45.23032pt too wide) in paragraph at lines 184--185
+\T1/ptm/m/n/10 Arche-ol-ogy Pro-gram [][]$\T1/zi4/m/n/10 https : / / www . nps 
+. gov / history / archeology / sites / antiquities / MonumentsList .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (15.77046pt too wide) in paragraph at lines 191--194
+\T1/ptm/m/n/10 Build-ing" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / avengers-[]death-[]comics-[]age-[]of-[]ultron/$[][]\T1/ptm/m/n/10
+ . 
+[6] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (261.00873pt too wide) in paragraph at lines 239--244
+\T1/ptm/m/n/10 Fit-ting Neatly Into 'Bach-e-lorette' His-tory" [][]$\T1/zi4/m/n
+/10 https : / / fivethirtyeight . com / features / rachels-[]season-[]is-[]fitt
+ing-[]neatly-[]into-[]bachelorette-[]history/$[][]\T1/ptm/m/n/10 ,
+[7] [8]
+Overfull \hbox (1.20978pt too wide) in paragraph at lines 297--299
+[][][]$\T1/zi4/m/n/10 http : / / bachelor-[]nation . wikia . com / wiki / Bache
+lor _ Nation _ Wikia$[][] \T1/ptm/m/n/10 and then miss-ing sea-sons
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (153.6207pt too wide) in paragraph at lines 342--345
+\T1/ptm/m/n/10 Women" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / the-[]dollar-[]and-[]cents-[]case-[]against-[]hollywoods-[]exclusion-
+[]of-[]women/$[][]\T1/ptm/m/n/10 . 
+[9] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (148.81067pt too wide) in paragraph at lines 389--394
+\T1/ptm/m/n/10 Dudes" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / straight-[]outta-[]compton-[]is-[]the-[]rare-[]biopic-[]not-[]about-[
+]white-[]dudes/$[][]\T1/ptm/m/n/10 .
+[10] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.56743pt too wide) in paragraph at lines 432--437
+[]\T1/ptm/m/n/10 The raw data be-hind the story "A Sta-tis-ti-cal Anal-y-sis of
+ the Work of Bob Ross" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (0.43983pt too wide) in paragraph at lines 432--437
+\T1/zi4/m/n/10 com / features / a-[]statistical-[]analysis-[]of-[]the-[]work-[]
+of-[]bob-[]ross/$[][]\T1/ptm/m/n/10 . An anal-y-sis us-ing this
+[11] [12] [13] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (36.14838pt too wide) in paragraph at lines 544--546
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Ul-ti-mate Hal-loween Cand
+y Power Rank-ing" [][]$\T1/zi4/m/n/10 http : / / fivethirtyeight .
+[14]
+Overfull \hbox (38.58093pt too wide) in paragraph at lines 585--585
+ []  \T1/zi4/m/n/9 gather(characteristics, present, -c(competitorname, sugarper
+cent, pricepercent, winpercent)) %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.11864pt too wide) in paragraph at lines 634--637
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Who Will Run For Pres-i-dent: 
+Rom-ney Is Out" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[15] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [16]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.11864pt too wide) in paragraph at lines 709--712
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Who Will Run For Pres-i-dent: 
+Rom-ney Is Out" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (25.20857pt too wide) in paragraph at lines 776--779
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Clas-sic Rock Isn't What I
+t Used To Be" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[18] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (25.20857pt too wide) in paragraph at lines 814--817
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Clas-sic Rock Isn't What I
+t Used To Be" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 883--884
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 936--937
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [21]
+Overfull \hbox (4.12073pt too wide) in paragraph at lines 988--990
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / college-[]majors / readme . md$[][]\T1/ptm/m/n/10
+ .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [22]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (208.49045pt too wide) in paragraph at lines 1049--1052
+\T1/ptm/m/n/10 ford Comma" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . co
+m / features / elitist-[]superfluous-[]or-[]popular-[]we-[]polled-[]americans-[
+]on-[]the-[]oxford-[]comma/$[][]\T1/ptm/m/n/10 . 
+[23] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (10.78088pt too wide) in paragraph at lines 1089--1092
+\T1/zi4/m/n/10 fivethirtyeight . com / features / both-[]republicans-[]and-[]de
+mocrats-[]have-[]an-[]age-[]problem/$[][]\T1/ptm/m/n/10 . 
+[24] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [25]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (11.78088pt too wide) in paragraph at lines 1159--1162
+\T1/zi4/m/n/10 fivethirtyeight . com / features / every-[]guest-[]jon-[]stewart
+-[]ever-[]had-[]on-[]the-[]daily-[]show/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (7.498pt too wide) in paragraph at lines 1175--1176
+[]\T1/ptm/m/n/10 Their oc-cu-pa-tion or of-fice, ac-cord-ing to Google's Knowl-
+edge Graph
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (167.09041pt too wide) in paragraph at lines 1191--1194
+\T1/ptm/m/n/10 Hillary" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com /
+ features / some-[]democrats-[]who-[]could-[]step-[]up-[]if-[]hillary-[]isnt-[]
+ready-[]for-[]hillary/$[][]\T1/ptm/m/n/10 . 
+[26] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (213.94026pt too wide) in paragraph at lines 1221--1224
+\T1/ptm/m/n/10 And Spir-its?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+ com / features / dear-[]mona-[]followup-[]where-[]do-[]people-[]drink-[]the-[]
+most-[]beer-[]wine-[]and-[]spirits/$[][]\T1/ptm/m/n/10 . 
+[27] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [28]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (0.78088pt too wide) in paragraph at lines 1342--1345
+\T1/zi4/m/n/10 fivethirtyeight . com / features / blatters-[]reign-[]at-[]fifa-
+[]hasnt-[]helped-[]soccers-[]poor/$[][]\T1/ptm/m/n/10 . 
+[29] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (164.20068pt too wide) in paragraph at lines 1377--1384
+\T1/ptm/m/n/10 Runner" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / 
+features / pols-[]and-[]polls-[]say-[]the-[]same-[]thing-[]jeb-[]bush-[]is-[]a-
+[]weak-[]front-[]runner/$[][]\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [30] [31]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (153.43079pt too wide) in paragraph at lines 1602--1607
+\T1/ptm/m/n/10 Cup" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fea
+tures / the-[]fivethirtyeight-[]international-[]food-[]associations-[]2014-[]wo
+rld-[]cup/$[][]\T1/ptm/m/n/10 .
+[34] [35] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [36]
+Overfull \hbox (2.12073pt too wide) in paragraph at lines 1731--1732
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / congress-[]generic-[]ballot /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [37]
+Overfull \hbox (2.12073pt too wide) in paragraph at lines 1772--1773
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / blob / master / congress-[]generic-[]ballot /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 1783--1786
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[38]
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 1817--1820
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (86.78088pt too wide) in paragraph at lines 1865--1868
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / higher-[]rat
+es-[]of-[]hate-[]crimes-[]are-[]tied-[]to-[]income-[]inequality/$[][]\T1/ptm/m/
+n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (45.29929pt too wide) in paragraph at lines 1904--1907
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Hip-Hop Is Turn-ing On Don-ald
+ Trump" [][]$\T1/zi4/m/n/10 http : / / projects . fivethirtyeight .
+[40] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (16.63837pt too wide) in paragraph at lines 1939--1942
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The NCAA Bracket: Check-ing Ou
+r Work" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[41] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (15.28088pt too wide) in paragraph at lines 1972--1975
+\T1/zi4/m/n/10 fivethirtyeight . com / features / how-[]the-[]fivethirtyeight-[
+]senate-[]forecast-[]model-[]works/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [42]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (222.78033pt too wide) in paragraph at lines 2040--2044
+\T1/ptm/m/n/10 Movie Of Our Time" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeig
+ht . com / features / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a
+-[]baby-[]on-[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 .
+[43] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (292.78033pt too wide) in paragraph at lines 2083--2087
+\T1/ptm/m/n/10 Movie Of Our Time" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeig
+ht . com / features / the-[]definitive-[]analysis-[]of-[]love-[]actually-[]the-
+[]greatest-[]christmas-[]movie-[]of-[]our-[]time/$[][]\T1/ptm/m/n/10 .
+[44] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [46]
+Overfull \hbox (32.1383pt too wide) in paragraph at lines 2237--2242
+\T1/ptm/m/n/10 12:05 a.m. and 1:15 a.m. EDT us-ing the Twit-ter stream-ing API.
+ [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtyeight /
+
+Overfull \hbox (38.5809pt too wide) in paragraph at lines 2250--2250
+ []   \T1/zi4/m/n/9 "https://raw.githubusercontent.com/fivethirtyeight/data/mas
+ter/mayweather-mcgregor/tweets.csv"[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [47]
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2265--2269
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (85.36096pt too wide) in paragraph at lines 2295--2298
+[][][]\T1/zi4/m/n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10
+ mediacloud_online_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_tru
+mp[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/10 ,
+ [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2304--2308
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[48]
+Overfull \hbox (80.36096pt too wide) in paragraph at lines 2331--2334
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trum
+p[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/10 , 
+[][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2340--2344
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (105.36096pt too wide) in paragraph at lines 2369--2372
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_online_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud
+_trump[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/
+10 , [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 2378--2382
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[49]
+Overfull \hbox (108.34094pt too wide) in paragraph at lines 2410--2413
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 ,[][]\T1/zi4/m/n/10 tv_hurricanes[][][]\T1/ptm/m/n/
+10 , [][]\T1/zi4/m/n/10 tv_hurricanes_by_network[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [50]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [51]
+Overfull \hbox (8.89687pt too wide) in paragraph at lines 2486--2487
+[]\T1/ptm/m/n/10 Unadjusted pythagorean tal-ent rat-ing; PYTH =(RSPG^1.83)/(RSP
+G^1.83+RAPG^1.83) 
+
+Overfull \hbox (25.17747pt too wide) in paragraph at lines 2489--2490
+[]\T1/ptm/m/n/10 Adjusted pythagorean record; =(SOS*unadj_Pyth)/((2*unadj_Pyth*
+SOS)-SOS-unadj_Pyth+1) 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (31.77846pt too wide) in paragraph at lines 2504--2507
+[]\T1/ptm/m/n/10 The raw data be-hind the sto-ries: "The Com-plete His-tory Of 
+MLB" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+
+Overfull \hbox (8.14938pt too wide) in paragraph at lines 2504--2507
+\T1/zi4/m/n/10 com / complete-[]history-[]of-[]mlb/$[][] \T1/ptm/m/n/10 and "ML
+B Pre-dic-tions" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[52] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [53]
+Overfull \hbox (26.78088pt too wide) in paragraph at lines 2575--2578
+\T1/zi4/m/n/10 fivethirtyeight . com / features / a-[]handful-[]of-[]cities-[]a
+re-[]driving-[]2016s-[]rise-[]in-[]murders/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.78088pt too wide) in paragraph at lines 2607--2610
+\T1/zi4/m/n/10 fivethirtyeight . com / features / a-[]handful-[]of-[]cities-[]a
+re-[]driving-[]2016s-[]rise-[]in-[]murders/$[][]\T1/ptm/m/n/10 . 
+[54] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (38.5289pt too wide) in paragraph at lines 2641--2646
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Com-plete His-tory Of The 
+NBA" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[55]
+Overfull \hbox (2.5809pt too wide) in paragraph at lines 2693--2693
+ []\T1/zi4/m/n/9 nba_carmelo <- read_csv("https://projects.fivethirtyeight.com/
+nba-model/nba_elo.csv") %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (87.28088pt too wide) in paragraph at lines 2709--2714
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / projecting-[
+]the-[]top-[]50-[]players-[]in-[]the-[]2015-[]nba-[]draft-[]class/$[][]\T1/ptm/
+m/n/10 .
+
+Overfull \hbox (101.12073pt too wide) in paragraph at lines 2740--2741
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / projecting-[]the-[]top-[]50-[]players-[]in-[]the-[]2015-[]nba-[]draft-
+[]class/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (151.04051pt too wide) in paragraph at lines 2747--2750
+\T1/ptm/m/n/10 Close" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / accurately-[]counting-[]nba-[]tattoos-[]isnt-[]easy-[]even-[]if-[]you
+re-[]up-[]close/$[][]\T1/ptm/m/n/10 . 
+[56] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.28088pt too wide) in paragraph at lines 2835--2838
+\T1/zi4/m/n/10 fivethirtyeight . com / features / the-[]football-[]hall-[]of-[]
+fame-[]has-[]a-[]receiver-[]problem/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.28088pt too wide) in paragraph at lines 2865--2868
+\T1/zi4/m/n/10 fivethirtyeight . com / features / the-[]football-[]hall-[]of-[]
+fame-[]has-[]a-[]receiver-[]problem/$[][]\T1/ptm/m/n/10 . 
+[58]
+Overfull \hbox (73.11084pt too wide) in paragraph at lines 2885--2886
+\T1/zi4/m/n/10 sabernomics . com / sabernomics / index . php / 2005 / 02 / rank
+ing-[]the-[]all-[]time-[]great-[]wide-[]receivers/$[][]\T1/ptm/m/n/10 ) 
+
+Overfull \hbox (55.12073pt too wide) in paragraph at lines 2891--2892
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / the-[]football-[]hall-[]of-[]fame-[]has-[]a-[]receiver-[]problem/$[][]
+ 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (31.10886pt too wide) in paragraph at lines 2898--2903
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Com-plete His-tory of the 
+NFL" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[59]
+Overfull \hbox (102.58504pt too wide) in paragraph at lines 2937--2947
+\T1/ptm/m/n/10 dataset, run the fol-low-ing code: li-brary(tidyverse) li-brary(
+janitor) nfl_elo <- read_csv("https://projects.fivethirtyeight.com/nfl-
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.52805pt too wide) in paragraph at lines 2953--2956
+[]\T1/ptm/m/n/10 The raw data be-hind the story "How Ev-ery NFL Team's Fans Lea
+n Po-lit-i-cally" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[60] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.52805pt too wide) in paragraph at lines 3002--3005
+[]\T1/ptm/m/n/10 The raw data be-hind the story "How Ev-ery NFL Team's Fans Lea
+n Po-lit-i-cally" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[61]
+Overfull \hbox (82.12073pt too wide) in paragraph at lines 3047--3048
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirtye
+ight / data / tree / master / nfl-[]fandom / NFL _ fandom _ data-[]surveymonkey
+ .
+[62] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (238.2693pt too wide) in paragraph at lines 3070--3073
+\T1/ptm/m/n/10 A New NFL Team" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight 
+. com / features / the-[]rams-[]are-[]dead-[]to-[]me-[]so-[]i-[]answered-[]3352
+-[]questions-[]to-[]find-[]a-[]new-[]team/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (69.3009pt too wide) in paragraph at lines 3107--3108
+[][][]$\T1/zi4/m/n/10 http : / / www . espn . com / sportsnation / teamrankings
+$[][]\T1/ptm/m/n/10 , [][]$\T1/zi4/m/n/10 http : / / www . allourideas . org / 
+nflteampickingsample$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [63]
+Overfull \hbox (19.3009pt too wide) in paragraph at lines 3141--3142
+[][][]$\T1/zi4/m/n/10 http : / / en . wikipedia . org / wiki / List _ of _ play
+ers _ and _ coaches _ suspended _ by _ the _ NFL$[][]\T1/ptm/m/n/10 , [][]$\T1/
+zi4/m/n/10 http :
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (44.94862pt too wide) in paragraph at lines 3148--3151
+[]\T1/ptm/m/n/10 The raw data be-hind the story "You Can't Trust What You Read 
+About Nu-tri-tion" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (29.62073pt too wide) in paragraph at lines 3171--3172
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / you-[]cant-[]trust-[]what-[]you-[]read-[]about-[]nutrition$[][] 
+[64] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (184.26047pt too wide) in paragraph at lines 3178--3181
+\T1/ptm/m/n/10 His-tory" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com 
+/ features / the-[]dallas-[]shooting-[]was-[]among-[]the-[]deadliest-[]for-[]po
+lice-[]in-[]u-[]s-[]history/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (33.17854pt too wide) in paragraph at lines 3212--3215
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Where Po-lice Have Killed Amer
+-i-cans In 2015" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[65] [66] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (87.78088pt too wide) in paragraph at lines 3333--3336
+[][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / features / the-[]last-[
+]10-[]weeks-[]of-[]2016-[]campaign-[]stops-[]in-[]one-[]handy-[]gif/$[][]\T1/pt
+m/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (223.32079pt too wide) in paragraph at lines 3365--3368
+\T1/ptm/m/n/10 They Used To" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . 
+com / features / sitting-[]presidents-[]give-[]way-[]more-[]commencement-[]spee
+ches-[]than-[]they-[]used-[]to/$[][]\T1/ptm/m/n/10 . 
+[68] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (35.00818pt too wide) in paragraph at lines 3400--3403
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Do Pulitzers Help News-pa-pers
+ Keep Read-ers?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[69]
+Overfull \hbox (18.62073pt too wide) in paragraph at lines 3427--3428
+[]\T1/ptm/m/n/10 See [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / do-[]pulitzers-[]help-[]newspapers-[]keep-[]readers/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (140.43065pt too wide) in paragraph at lines 3434--3437
+\T1/ptm/m/n/10 ings" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / al-[]gores-[]new-[]movie-[]exposes-[]the-[]big-[]flaw-[]in-[]online-[]
+movie-[]ratings/$[][]\T1/ptm/m/n/10 . 
+[70]
+Overfull \hbox (55.69984pt too wide) in paragraph at lines 3481--3483
+[]\T1/ptm/m/n/10 IMBD [][]$\T1/zi4/m/n/10 http : / / www . imdb . com / title /
+ tt6322922 / ratings$[][] \T1/ptm/m/n/10 and see [][]$\T1/zi4/m/n/10 https : / 
+/ github . com / fivethirtyeight /
+
+Overfull \hbox (13.38095pt too wide) in paragraph at lines 3491--3491
+ []  \T1/zi4/m/n/9 gather(votes, count, -c(timestamp, respondents, category, li
+nk, average, mean, median)) %>%[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [71]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (8.8188pt too wide) in paragraph at lines 3554--3558
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The Bat-tle For Rid-dler Na-ti
+on, Round 2" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (89.78015pt too wide) in paragraph at lines 3554--3558
+\T1/ptm/m/n/10 tions can be found at: [][]$\T1/zi4/m/n/10 https : / / fivethirt
+yeight . com / features / how-[]much-[]should-[]you-[]bid-[]for-[]that-[]painti
+ng/$[][] 
+[72] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [73] [74]
+Overfull \hbox (66.24948pt too wide) in paragraph at lines 3678--3680
+[]\T1/ptm/m/n/10 Data from NYC Open Data [][]$\T1/zi4/m/n/10 https : / / data .
+ cityofnewyork . us / City-[]Government / 311-[]Call-[]Center-[]Inquiry /
+
+Overfull \hbox (41.38925pt too wide) in paragraph at lines 3678--3680
+\T1/zi4/m/n/10 tdd6-[]3ysr$[][]\T1/ptm/m/n/10 , Agency acronyms from the Data D
+ic-tio-nary. See also [][]$\T1/zi4/m/n/10 https : / / github . com / fivethirty
+eight /
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (149.25073pt too wide) in paragraph at lines 3699--3702
+\T1/ptm/m/n/10 One'" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / the-[]rock-[]isnt-[]alone-[]lots-[]of-[]people-[]are-[]worried-[]about
+-[]the-[]big-[]one/$[][]\T1/ptm/m/n/10 . 
+[75] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (51.78088pt too wide) in paragraph at lines 3737--3740
+\T1/zi4/m/n/10 / / fivethirtyeight . com / features / early-[]senate-[]polls-[]
+have-[]plenty-[]to-[]tell-[]us-[]about-[]november/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [76]
+Overfull \hbox (11.25609pt too wide) in paragraph at lines 3790--3791
+[]\T1/ptm/m/n/10 The poster's mem-ber ID from the "Bi-o-graph-i-cal Di-rec-tory
+ of the United States Congress" 
+
+Overfull \hbox (46.68091pt too wide) in paragraph at lines 3814--3814
+ []  \T1/zi4/m/n/9 url <- "https://raw.githubusercontent.com/fivethirtyeight/da
+ta/master/twitter-ratio/senators.csv"[] 
+[77] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.93976pt too wide) in paragraph at lines 3831--3835
+\T1/zi4/m/n/10 com / soccer-[]predictions/$[][] \T1/ptm/m/n/10 and "Global Club
+ Soc-cer Rank-ings" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight 
+.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (30.93976pt too wide) in paragraph at lines 3870--3873
+\T1/zi4/m/n/10 com / soccer-[]predictions/$[][] \T1/ptm/m/n/10 and "Global Club
+ Soc-cer Rank-ings" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight 
+.
+[78] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [79]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (185.4395pt too wide) in paragraph at lines 3962--3968
+\T1/ptm/m/n/10 A Quentin Tarantino Movie" [][]$\T1/zi4/m/n/10 https : / / fivet
+hirtyeight . com / features / complete-[]catalog-[]curses-[]deaths-[]quentin-[]
+tarantino-[]films/$[][]\T1/ptm/m/n/10 .
+[80] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 3996--3999
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[81] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 4032--4035
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.43906pt too wide) in paragraph at lines 4065--4068
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Why Some Ten-nis Matches Take 
+For-ever" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[82] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (294.20987pt too wide) in paragraph at lines 4103--4106
+\T1/ptm/m/n/10 er-ate On Im-mi-gra-tion" [][]$\T1/zi4/m/n/10 https : / / fiveth
+irtyeight . com / features / for-[]a-[]trump-[]nominee-[]neil-[]gorsuchs-[]reco
+rd-[]is-[]surprisingly-[]moderate-[]on-[]immigration/$[][]\T1/ptm/m/n/10 . 
+[83] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (119.76pt too wide) in paragraph at lines 4179--4180
+[]\T1/ptm/m/n/10 Pew Re-search Cen-ter [][]$\T1/zi4/m/n/10 http : / / www . pew
+research . org / fact-[]tank / 2017 / 07 / 17 / 9-[]charts-[]on-[]how-[]the-[]w
+orld-[]sees-[]trump/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [84] [85]
+Overfull \hbox (119.76pt too wide) in paragraph at lines 4251--4252
+[]\T1/ptm/m/n/10 Pew Re-search Cen-ter [][]$\T1/zi4/m/n/10 http : / / www . pew
+research . org / fact-[]tank / 2017 / 07 / 17 / 9-[]charts-[]on-[]how-[]the-[]w
+orld-[]sees-[]trump/$[][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (22.2891pt too wide) in paragraph at lines 4271--4274
+[]\T1/ptm/m/n/10 The raw data be-hind the story: "How Pop-u-lar is Don-ald Trum
+p" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[86]
+Overfull \hbox (12.12085pt too wide) in paragraph at lines 4315--4317
+[][][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight . com / trump-[]ap
+proval-[]data / approval _ polllist . csv$[][] \T1/ptm/m/n/10 and
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (22.2891pt too wide) in paragraph at lines 4327--4330
+[]\T1/ptm/m/n/10 The raw data be-hind the story: "How Pop-u-lar is Don-ald Trum
+p" [][]$\T1/zi4/m/n/10 https : / / projects . fivethirtyeight .
+[87] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [88]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (26.36894pt too wide) in paragraph at lines 4401--4407
+[]\T1/ptm/m/n/10 The raw data be-hind the story "The World's Fa-vorite Don-ald 
+Trump Tweets" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+
+Overfull \hbox (14.22758pt too wide) in paragraph at lines 4401--4407
+\T1/ptm/m/n/10 Don-ald Trump (@re-al-Don-aldTrump). An anal-y-sis us-ing this d
+ata was con-tributed by Adam Spannbauer
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [89]
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4434--4438
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4465--4468
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4474--4478
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+[90]
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4506--4508
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (207.81049pt too wide) in paragraph at lines 4514--4518
+\T1/ptm/m/n/10 Trump Did" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com
+ / features / the-[]media-[]really-[]started-[]paying-[]attention-[]to-[]puerto
+-[]rico-[]when-[]trump-[]did/$[][]\T1/ptm/m/n/10 :
+
+Overfull \hbox (0.84094pt too wide) in paragraph at lines 4544--4546
+[][][]\T1/zi4/m/n/10 mediacloud_hurricanes[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/
+n/10 mediacloud_states[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_onli
+ne_news[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 mediacloud_trump[][][]\T1/ptm/
+m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [91]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (39.81879pt too wide) in paragraph at lines 4596--4599
+[]\T1/ptm/m/n/10 The raw data be-hind: "May-weather Is De-fined By The Zero Nex
+t To His Name" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+[92] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (126.53062pt too wide) in paragraph at lines 4627--4630
+\T1/ptm/m/n/10 Them?" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / f
+eatures / there-[]are-[]922-[]unisex-[]names-[]in-[]america-[]is-[]yours-[]one-
+[]of-[]them/$[][]\T1/ptm/m/n/10 . 
+
+Overfull \hbox (11.10907pt too wide) in paragraph at lines 4652--4653
+[]\T1/ptm/m/n/10 Social Se-cu-rity Ad-min-is-tra-tion [][]$\T1/zi4/m/n/10 https
+ : / / www . ssa . gov / oact / babynames / limits . html$[][]\T1/ptm/m/n/10 . 
+See [][]$\T1/zi4/m/n/10 https :
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [93]
+Overfull \hbox (162.04076pt too wide) in paragraph at lines 4659--4662
+\T1/ptm/m/n/10 13th" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a-[]baby-[]on-
+[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 . 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (162.04076pt too wide) in paragraph at lines 4696--4699
+\T1/ptm/m/n/10 13th" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight . com / fe
+atures / some-[]people-[]are-[]too-[]superstitious-[]to-[]have-[]a-[]baby-[]on-
+[]friday-[]the-[]13th/$[][]\T1/ptm/m/n/10 . 
+[94] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (14.6991pt too wide) in paragraph at lines 4733--4736
+[]\T1/ptm/m/n/10 The raw data be-hind the story "Where Peo-ple Go To Check The 
+Weather" [][]$\T1/zi4/m/n/10 https : / / fivethirtyeight .
+(./Rd2.ind [95] [96] [97]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 174.
+
+[98] [99]) (./Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2015/te
+xmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/
+enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2015/texmf-dist/fonts/typ
+e1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2015/texmf-dist/
+fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/f
+onts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a
+.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (99 pages, 302456 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘fivethirtyeight-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/0w/prb4hnss2gn1p7y34qb2stw00000gp/T//Rtmp6juOjh/Rd2pdf196c3199be3a'

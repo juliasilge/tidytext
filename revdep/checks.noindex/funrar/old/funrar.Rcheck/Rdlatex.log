@@ -1,0 +1,545 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [1{/usr/local/texl
+ive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3]
+Overfull \hbox (117.44781pt too wide) in paragraph at lines 212--216
+[]\T1/ptm/m/n/10 For speed and mem-ory ef-fi-ciency sparse ma-tri-ces can be us
+ed as in-put of the func-tion us-ing \T1/zi4/m/n/10 as(pres_matrix, "sparseMatr
+ix")
+[4] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (9.5409pt too wide) in paragraph at lines 295--298
+[][][]\T1/zi4/m/n/10 scarcity_com()[][][]\T1/ptm/m/n/10 , \T1/zi4/m/n/10 vignet
+te("rarity_indices", package = "funrar") \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 
+distinctiveness()[][][]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
+Overfull \hbox (52.06091pt too wide) in paragraph at lines 335--338
+[][][]\T1/zi4/m/n/10 uniqueness_dimensions()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/
+m/n/10 distinctiveness()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 distinctivene
+ss_stack()[][][] \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 compute_dist_matrix()[][
+][]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (99.33813pt too wide) in paragraph at lines 359--370
+\T1/ptm/m/n/10 the func-tional rar-ity in-dices vi-gnette in-cluded in the pack
+-age (type \T1/zi4/m/n/10 vignette("rarity_indices", package = "funrar")\T1/ptm
+/m/n/10 ),
+[6]
+Overfull \hbox (0.59073pt too wide) in paragraph at lines 401--405
+[][][]\T1/zi4/m/n/10 scarcity_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 
+uniqueness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 restrictedness_stac
+k()[][][]\T1/ptm/m/n/10 ; [][]\T1/zi4/m/n/10 distinctiveness()[][][] \T1/ptm/m/
+n/10 De-
+[7] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8]
+Overfull \hbox (13.34094pt too wide) in paragraph at lines 543--545
+[][][]\T1/zi4/m/n/10 uniqueness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/1
+0 distinctiveness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 restrictedne
+ss_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 scarcity_stack()[][][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (2.54764pt too wide) in paragraph at lines 563--565
+[]\T1/ptm/m/n/10 abundance or presence-absence ma-trix, with sites in rows and 
+species in columns,
+[9] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [13]
+Overfull \hbox (52.19911pt too wide) in paragraph at lines 839--841
+[]\T1/zi4/m/n/10 vignette("rarity_indices", package = "funrar") \T1/ptm/m/n/10 
+for de-tails on the scarcity met-ric; [][]\T1/zi4/m/n/10 distinctiveness()[][][
+]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14]
+Overfull \hbox (0.60965pt too wide) in paragraph at lines 898--901
+[][][]\T1/zi4/m/n/10 scarcity()[][][] \T1/ptm/m/n/10 and \T1/zi4/m/n/10 vignett
+e("rarity_indices", package = "funrar") \T1/ptm/m/n/10 for de-tails on the scar
+city
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [15]
+Overfull \hbox (0.60965pt too wide) in paragraph at lines 941--944
+[][][]\T1/zi4/m/n/10 scarcity()[][][] \T1/ptm/m/n/10 and \T1/zi4/m/n/10 vignett
+e("rarity_indices", package = "funrar") \T1/ptm/m/n/10 for de-tails on the scar
+city
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [16]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (27.06091pt too wide) in paragraph at lines 1127--1129
+[][][]\T1/zi4/m/n/10 distinctiveness_dimensions()[][][]\T1/ptm/m/n/10 , [][]\T1
+/zi4/m/n/10 uniqueness()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 uniqueness_st
+ack()[][][] \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 compute_dist_matrix()[][][]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+No file Rd2.ind.
+[20] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Rfn.ade4::dist.ktab\(\)} has been referenced but does not exist, replaced by a
+ fixed one
+
+pdfTeX warning (dest): name{Rfn.stats::dist\(\)} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.cluster::daisy\(\)} has been referenced but doe
+s not exist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/us
+r/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
+/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on Rd2.pdf (20 pages, 170693 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (85 entries accepted, 0 rejected).
+Sorting entries....done (564 comparisons).
+Generating output file Rd2.ind....done (106 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [3]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+Overfull \hbox (117.44781pt too wide) in paragraph at lines 212--216
+[]\T1/ptm/m/n/10 For speed and mem-ory ef-fi-ciency sparse ma-tri-ces can be us
+ed as in-put of the func-tion us-ing \T1/zi4/m/n/10 as(pres_matrix, "sparseMatr
+ix")
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
+Overfull \hbox (9.5409pt too wide) in paragraph at lines 295--298
+[][][]\T1/zi4/m/n/10 scarcity_com()[][][]\T1/ptm/m/n/10 , \T1/zi4/m/n/10 vignet
+te("rarity_indices", package = "funrar") \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 
+distinctiveness()[][][]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (52.06091pt too wide) in paragraph at lines 335--338
+[][][]\T1/zi4/m/n/10 uniqueness_dimensions()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/
+m/n/10 distinctiveness()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 distinctivene
+ss_stack()[][][] \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 compute_dist_matrix()[][
+][]
+[6] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (99.33813pt too wide) in paragraph at lines 359--370
+\T1/ptm/m/n/10 the func-tional rar-ity in-dices vi-gnette in-cluded in the pack
+-age (type \T1/zi4/m/n/10 vignette("rarity_indices", package = "funrar")\T1/ptm
+/m/n/10 ),
+
+Overfull \hbox (0.59073pt too wide) in paragraph at lines 401--405
+[][][]\T1/zi4/m/n/10 scarcity_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 
+uniqueness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 restrictedness_stac
+k()[][][]\T1/ptm/m/n/10 ; [][]\T1/zi4/m/n/10 distinctiveness()[][][] \T1/ptm/m/
+n/10 De-
+[7] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (13.34094pt too wide) in paragraph at lines 543--545
+[][][]\T1/zi4/m/n/10 uniqueness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/1
+0 distinctiveness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 restrictedne
+ss_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 scarcity_stack()[][][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [9]
+Overfull \hbox (2.54764pt too wide) in paragraph at lines 563--565
+[]\T1/ptm/m/n/10 abundance or presence-absence ma-trix, with sites in rows and 
+species in columns,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [13]
+Overfull \hbox (52.19911pt too wide) in paragraph at lines 839--841
+[]\T1/zi4/m/n/10 vignette("rarity_indices", package = "funrar") \T1/ptm/m/n/10 
+for de-tails on the scarcity met-ric; [][]\T1/zi4/m/n/10 distinctiveness()[][][
+]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14]
+Overfull \hbox (0.60965pt too wide) in paragraph at lines 898--901
+[][][]\T1/zi4/m/n/10 scarcity()[][][] \T1/ptm/m/n/10 and \T1/zi4/m/n/10 vignett
+e("rarity_indices", package = "funrar") \T1/ptm/m/n/10 for de-tails on the scar
+city
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [15]
+Overfull \hbox (0.60965pt too wide) in paragraph at lines 941--944
+[][][]\T1/zi4/m/n/10 scarcity()[][][] \T1/ptm/m/n/10 and \T1/zi4/m/n/10 vignett
+e("rarity_indices", package = "funrar") \T1/ptm/m/n/10 for de-tails on the scar
+city
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [16]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (27.06091pt too wide) in paragraph at lines 1127--1129
+[][][]\T1/zi4/m/n/10 distinctiveness_dimensions()[][][]\T1/ptm/m/n/10 , [][]\T1
+/zi4/m/n/10 uniqueness()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 uniqueness_st
+ack()[][][] \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 compute_dist_matrix()[][][]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19] (./Rd2.ind
+[20]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 17.
+
+[21]) (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Rfn.ade4::dist.ktab\(\)} has been referenced but does not exist, replaced by a
+ fixed one
+
+pdfTeX warning (dest): name{Rfn.stats::dist\(\)} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.cluster::daisy\(\)} has been referenced but doe
+s not exist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/us
+r/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
+/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on Rd2.pdf (21 pages, 178895 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (85 entries accepted, 0 rejected).
+Sorting entries....done (557 comparisons).
+Generating output file Rd2.ind....done (104 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[1{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}])
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [3]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+Overfull \hbox (117.44781pt too wide) in paragraph at lines 212--216
+[]\T1/ptm/m/n/10 For speed and mem-ory ef-fi-ciency sparse ma-tri-ces can be us
+ed as in-put of the func-tion us-ing \T1/zi4/m/n/10 as(pres_matrix, "sparseMatr
+ix")
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
+Overfull \hbox (9.5409pt too wide) in paragraph at lines 295--298
+[][][]\T1/zi4/m/n/10 scarcity_com()[][][]\T1/ptm/m/n/10 , \T1/zi4/m/n/10 vignet
+te("rarity_indices", package = "funrar") \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 
+distinctiveness()[][][]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (52.06091pt too wide) in paragraph at lines 335--338
+[][][]\T1/zi4/m/n/10 uniqueness_dimensions()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/
+m/n/10 distinctiveness()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 distinctivene
+ss_stack()[][][] \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 compute_dist_matrix()[][
+][]
+[6] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (99.33813pt too wide) in paragraph at lines 359--370
+\T1/ptm/m/n/10 the func-tional rar-ity in-dices vi-gnette in-cluded in the pack
+-age (type \T1/zi4/m/n/10 vignette("rarity_indices", package = "funrar")\T1/ptm
+/m/n/10 ),
+
+Overfull \hbox (0.59073pt too wide) in paragraph at lines 401--405
+[][][]\T1/zi4/m/n/10 scarcity_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 
+uniqueness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 restrictedness_stac
+k()[][][]\T1/ptm/m/n/10 ; [][]\T1/zi4/m/n/10 distinctiveness()[][][] \T1/ptm/m/
+n/10 De-
+[7] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (13.34094pt too wide) in paragraph at lines 543--545
+[][][]\T1/zi4/m/n/10 uniqueness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/1
+0 distinctiveness_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 restrictedne
+ss_stack()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 scarcity_stack()[][][] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [9]
+Overfull \hbox (2.54764pt too wide) in paragraph at lines 563--565
+[]\T1/ptm/m/n/10 abundance or presence-absence ma-trix, with sites in rows and 
+species in columns,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [13]
+Overfull \hbox (52.19911pt too wide) in paragraph at lines 839--841
+[]\T1/zi4/m/n/10 vignette("rarity_indices", package = "funrar") \T1/ptm/m/n/10 
+for de-tails on the scarcity met-ric; [][]\T1/zi4/m/n/10 distinctiveness()[][][
+]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14]
+Overfull \hbox (0.60965pt too wide) in paragraph at lines 898--901
+[][][]\T1/zi4/m/n/10 scarcity()[][][] \T1/ptm/m/n/10 and \T1/zi4/m/n/10 vignett
+e("rarity_indices", package = "funrar") \T1/ptm/m/n/10 for de-tails on the scar
+city
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [15]
+Overfull \hbox (0.60965pt too wide) in paragraph at lines 941--944
+[][][]\T1/zi4/m/n/10 scarcity()[][][] \T1/ptm/m/n/10 and \T1/zi4/m/n/10 vignett
+e("rarity_indices", package = "funrar") \T1/ptm/m/n/10 for de-tails on the scar
+city
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [16]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+Overfull \hbox (27.06091pt too wide) in paragraph at lines 1127--1129
+[][][]\T1/zi4/m/n/10 distinctiveness_dimensions()[][][]\T1/ptm/m/n/10 , [][]\T1
+/zi4/m/n/10 uniqueness()[][][]\T1/ptm/m/n/10 , [][]\T1/zi4/m/n/10 uniqueness_st
+ack()[][][] \T1/ptm/m/n/10 and [][]\T1/zi4/m/n/10 compute_dist_matrix()[][][]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19] (./Rd2.ind
+[20]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 17.
+
+[21]) (./Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Rfn.ade4::dist.ktab\(\)} has been referenced but does not exist, replaced by a
+ fixed one
+
+pdfTeX warning (dest): name{Rfn.stats::dist\(\)} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.cluster::daisy\(\)} has been referenced but doe
+s not exist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/us
+r/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
+/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/201
+5/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-d
+ist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/
+type1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/
+times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr
+i8a.pfb>
+Output written on Rd2.pdf (21 pages, 179255 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘funrar-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/0w/prb4hnss2gn1p7y34qb2stw00000gp/T//RtmpGsXz7O/Rd2pdf282c71c23531'

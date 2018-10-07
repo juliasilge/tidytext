@@ -1,0 +1,182 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "kdtools"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('kdtools')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("convert")
+> ### * convert
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: matrix_to_tuples
+> ### Title: Convert a matrix to a vector of arrays
+> ### Aliases: matrix_to_tuples tuples_to_matrix
+> 
+> ### ** Examples
+> 
+> x = matrix(1:10, 5)
+> y = matrix_to_tuples(x)
+> str(x)
+ int [1:5, 1:2] 1 2 3 4 5 6 7 8 9 10
+> str(y)
+List of 3
+ $ xptr: num 1
+ $ nrow: num 2
+ $ ncol: num 3
+ - attr(*, "class")= chr "arrayvec"
+> y[1:2, ]
+     [,1] [,2]
+[1,]    1    6
+[2,]    2    7
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("kdsort")
+> ### * kdsort
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: kd_sort
+> ### Title: Sort multidimensional data
+> ### Aliases: kd_sort kd_is_sorted
+> 
+> ### ** Examples
+> 
+> x = kd_sort(matrix(runif(200), 100))
+> kd_is_sorted(x)
+[1] TRUE
+> plot(x, type = "o", pch = 19, col = "steelblue", asp = 1)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lexsort")
+> ### * lexsort
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lex_sort
+> ### Title: Sort a matrix into lexicographical order
+> ### Aliases: lex_sort
+> 
+> ### ** Examples
+> 
+> x = lex_sort(matrix(runif(200), 100))
+> plot(x, type = "o", pch = 19, col = "steelblue", asp = 1)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("nneighb")
+> ### * nneighb
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: kd_nearest_neighbors
+> ### Title: Find nearest neighbors
+> ### Aliases: kd_nearest_neighbors kd_nearest_neighbor
+> 
+> ### ** Examples
+> 
+> x = matrix(runif(200), 100)
+> y = matrix_to_tuples(x)
+> kd_sort(y, inplace = TRUE)
+           [,1]      [,2]
+[1,] 0.02333120 0.1751268
+[2,] 0.09946616 0.1808664
+[3,] 0.05893438 0.3889051
+[4,] 0.12555510 0.1734423
+[5,] 0.20269226 0.1891936
+(continues for 95 more rows)
+> y[kd_nearest_neighbor(y, c(1/2, 1/2)),]
+[1] 0.4590657 0.4462353
+> kd_nearest_neighbors(y, c(1/2, 1/2), 3)
+          [,1]      [,2]
+[1,] 0.4112744 0.5076418
+[2,] 0.4820801 0.5748722
+[3,] 0.4590657 0.4462353
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("search")
+> ### * search
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: kd_lower_bound
+> ### Title: Search sorted data
+> ### Aliases: kd_lower_bound kd_upper_bound kd_range_query kd_binary_search
+> 
+> ### ** Examples
+> 
+> x = matrix(runif(200), 100)
+> y = matrix_to_tuples(x)
+> kd_sort(y, inplace = TRUE)
+           [,1]      [,2]
+[1,] 0.02333120 0.1751268
+[2,] 0.09946616 0.1808664
+[3,] 0.05893438 0.3889051
+[4,] 0.12555510 0.1734423
+[5,] 0.20269226 0.1891936
+(continues for 95 more rows)
+> y[kd_lower_bound(y, c(1/2, 1/2)),]
+[1] 0.8612095 0.5571595
+> y[kd_upper_bound(y, c(1/2, 1/2)),]
+[1] 0.8612095 0.5571595
+> kd_binary_search(y, c(1/2, 1/2))
+[1] FALSE
+> kd_range_query(y, c(1/3, 1/3), c(2/3, 2/3))
+          [,1]      [,2]
+[1,] 0.3337749 0.3913593
+[2,] 0.3721239 0.3531973
+[3,] 0.4763512 0.3804939
+[4,] 0.3841037 0.4314737
+[5,] 0.3800352 0.4462843
+(continues for 10 more rows)
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.157 0.012 0.173 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

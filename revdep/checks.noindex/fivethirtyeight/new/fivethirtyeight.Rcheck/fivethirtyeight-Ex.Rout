@@ -1,0 +1,1042 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "fivethirtyeight"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('fivethirtyeight')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("ahca_polls")
+> ### * ahca_polls
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ahca_polls
+> ### Title: American Health Care Act Polls
+> ### Aliases: ahca_polls
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> ahca_polls_tidy <- ahca_polls %>%
++   gather(opinion, count, -c(start, end, pollster, text, url))
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("airline_safety")
+> ### * airline_safety
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: airline_safety
+> ### Title: Should Travelers Avoid Flying Airlines That Have Had Crashes in
+> ###   the Past?
+> ### Aliases: airline_safety
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> airline_safety_tidy <- airline_safety %>%
++   gather(type, count, -c(airline, incl_reg_subsidiaries, avail_seat_km_per_week)) %>%
++   mutate(
++     period = str_sub(type, start=-5),
++     period = str_replace_all(period, "_", "-"),
++     type = str_sub(type, end=-7)
++   )
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:bindrcpp’, ‘package:forcats’, ‘package:stringr’,
+  ‘package:dplyr’, ‘package:purrr’, ‘package:readr’, ‘package:tidyr’,
+  ‘package:tibble’, ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("bob_ross")
+> ### * bob_ross
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: bob_ross
+> ### Title: A Statistical Analysis of the Work of Bob Ross
+> ### Aliases: bob_ross
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> bob_ross_tidy <- bob_ross %>%
++   gather(object, present, -c(episode, season, episode_num, title)) %>%
++   mutate(present = as.logical(present)) %>%
++   arrange(episode, object)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("candy_rankings")
+> ### * candy_rankings
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: candy_rankings
+> ### Title: Candy Power Ranking
+> ### Aliases: candy_rankings
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> candy_rankings_tidy <- candy_rankings %>%
++   gather(characteristics, present, -c(competitorname, sugarpercent, pricepercent, winpercent)) %>%
++   mutate(present = as.logical(present)) %>%
++   arrange(competitorname)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("drinks")
+> ### * drinks
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: drinks
+> ### Title: Dear Mona Followup: Where Do People Drink The Most Beer, Wine
+> ###   And Spirits?
+> ### Aliases: drinks
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> drinks_tidy <- drinks %>%
++   gather(type, servings, -c(country, total_litres_of_pure_alcohol)) %>%
++   mutate(
++     type = str_sub(type, start=1, end=-10)
++   ) %>%
++   arrange(country, type)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("drug_use")
+> ### * drug_use
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: drug_use
+> ### Title: How Baby Boomers Get High
+> ### Aliases: drug_use
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> use <- drug_use %>%
++   select(age, n, ends_with("_use")) %>%
++   gather(drug, use, -c(age, n)) %>%
++   mutate(drug = str_sub(drug, start=1, end=-5))
+> freq <- drug_use %>%
++   select(age, n, ends_with("_freq")) %>%
++   gather(drug, freq, -c(age, n)) %>%
++   mutate(drug = str_sub(drug, start=1, end=-6))
+> drug_use_tidy <- left_join(x=use, y=freq, by = c("age", "n", "drug")) %>%
++   arrange(age)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("fifa_audience")
+> ### * fifa_audience
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: fifa_audience
+> ### Title: How To Break FIFA
+> ### Aliases: fifa_audience
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> fifa_audience_tidy <- fifa_audience %>%
++   gather(type, share, -c(country, confederation)) %>%
++   mutate(type = str_sub(type, start=1, end=-7)) %>%
++   arrange(country)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("fivethirtyeight")
+> ### * fivethirtyeight
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: fivethirtyeight
+> ### Title: fivethirtyeight: Data and Code Behind the Stories and
+> ###   Interactives at 'FiveThirtyEight'
+> ### Aliases: fivethirtyeight fivethirtyeight-package
+> 
+> ### ** Examples
+> 
+> # Example usage:
+> library(fivethirtyeight)
+> head(bechdel)
+[90m# A tibble: 6 x 15[39m
+   year imdb  title test  clean_test binary budget domgross intgross code 
+  [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<ord>[39m[23m      [3m[90m<chr>[39m[23m   [3m[90m<int>[39m[23m    [3m[90m<dbl>[39m[23m    [3m[90m<dbl>[39m[23m [3m[90m<chr>[39m[23m
+[90m1[39m  [4m2[24m013 tt17… 21 &… nota… notalk     FAIL   1.30[90me[39m7 25[4m6[24m[4m8[24m[4m2[24m380   4.22[90me[39m7 2013…
+[90m2[39m  [4m2[24m012 tt13… Dred… ok-d… ok         PASS   4.50[90me[39m7 13[4m4[24m[4m1[24m[4m4[24m714   4.09[90me[39m7 2012…
+[90m3[39m  [4m2[24m013 tt20… 12 Y… nota… notalk     FAIL   2.00[90me[39m7 53[4m1[24m[4m0[24m[4m7[24m035   1.59[90me[39m8 2013…
+[90m4[39m  [4m2[24m013 tt12… 2 Gu… nota… notalk     FAIL   6.10[90me[39m7 75[4m6[24m[4m1[24m[4m2[24m460   1.32[90me[39m8 2013…
+[90m5[39m  [4m2[24m013 tt04… 42    men   men        FAIL   4.00[90me[39m7 95[4m0[24m[4m2[24m[4m0[24m213   9.50[90me[39m7 2013…
+[90m6[39m  [4m2[24m013 tt13… 47 R… men   men        FAIL   2.25[90me[39m8 38[4m3[24m[4m6[24m[4m2[24m475   1.46[90me[39m8 2013…
+[90m# ... with 5 more variables: budget_2013 [3m[90m<int>[90m[23m, domgross_2013 [3m[90m<dbl>[90m[23m,
+#   intgross_2013 [3m[90m<dbl>[90m[23m, period_code [3m[90m<int>[90m[23m, decade_code [3m[90m<int>[90m[23m[39m
+> 
+> # All information about any data set can be found in the help file:
+> ?bechdel
+bechdel            package:fivethirtyeight             R Documentation
+
+_T_h_e _D_o_l_l_a_r-_A_n_d-_C_e_n_t_s _C_a_s_e _A_g_a_i_n_s_t _H_o_l_l_y_w_o_o_d'_s _E_x_c_l_u_s_i_o_n _o_f _W_o_m_e_n
+
+_D_e_s_c_r_i_p_t_i_o_n:
+
+     The raw data behind the story "The Dollar-And-Cents Case Against
+     Hollywood's Exclusion of Women" <URL:
+     https://fivethirtyeight.com/features/the-dollar-and-cents-case-against-hollywoods-exclusion-of-women/>.
+
+_U_s_a_g_e:
+
+     bechdel
+     
+_F_o_r_m_a_t:
+
+     A data frame with 1794 rows representing movies and 15 variables:
+
+     year Year of release
+
+     imdb Text to construct IMDB url. Ex: <URL:
+          http://www.imdb.com/title/tt1711425>
+
+     title Movie test
+
+     test bechdel test result (detailed, with discrepancies indicated)
+
+     clean_test bechdel test result (detailed): ‘ok’ = passes test,
+          ‘dubious’, ‘men’ = women only talk about men, ‘notalk’ =
+          women don't talk to each other, ‘nowomen’ = fewer than two
+          women
+
+     binary Bechdel Test PASS vs FAIL binary
+
+     budget Film budget
+
+     domgross Domestic (US) gross
+
+     intgross Total International (i.e., worldwide) gross
+
+     code Bechdel Code
+
+     budget_2013 Budget in 2013 inflation adjusted dollars
+
+     domgross_2013 Domestic gross (US) in 2013 inflation adjusted
+          dollars
+
+     intgross_2013 Total International (i.e., worldwide) gross in 2013
+          inflation adjusted dollars
+
+     period_code
+
+     decade_code
+
+_D_e_t_a_i_l_s:
+
+     A vignette of an analysis of this dataset using the ‘tidyverse’
+     can be found on CRAN or by running: ‘vignette("bechdel", package =
+     "fivethirtyeight")’
+
+_S_o_u_r_c_e:
+
+     <URL: www.bechdeltest.com> and <URL: www.the-numbers.com>. The
+     original data can be found at <URL:
+     https://github.com/fivethirtyeight/data/tree/master/bechdel>.
+
+
+> 
+> # To view a list of all data sets:
+> data(package = "fivethirtyeight")
+Data sets in package ‘fivethirtyeight’:
+
+US_births_1994_2003     Some People Are Too Superstitious To Have A
+                        Baby On Friday The 13th
+US_births_2000_2014     Some People Are Too Superstitious To Have A
+                        Baby On Friday The 13th
+ahca_polls              American Health Care Act Polls
+airline_safety          Should Travelers Avoid Flying Airlines That
+                        Have Had Crashes in the Past?
+antiquities_act         Trump Might Be The First President To Scrap A
+                        National Monument
+avengers                Joining The Avengers Is As Deadly As Jumping
+                        Off A Four-Story Building
+bachelorette            Bachelorette / Bachelor
+bad_drivers             Dear Mona, Which State Has The Worst Drivers?
+bechdel                 The Dollar-And-Cents Case Against Hollywood's
+                        Exclusion of Women
+biopics                 'Straight Outta Compton' Is The Rare Biopic Not
+                        About White Dudes
+bob_ross                A Statistical Analysis of the Work of Bob Ross
+cand_events_20150114    Looking For Clues: Who Is Going To Run For
+                        President In 2016?
+cand_events_20150130    Who Will Run For President: Romney Is Out
+cand_state_20150114     Looking For Clues: Who Is Going To Run For
+                        President In 2016?
+cand_state_20150130     Who Will Run For President: Romney Is Out
+candy_rankings          Candy Power Ranking
+chess_transfers         Chess Transfers
+classic_rock_raw_data   Why Classic Rock Isn't What It Used To Be
+classic_rock_song_list
+                        Why Classic Rock Isn't What It Used To Be
+college_all_ages        The Economic Guide To Picking A College Major
+college_grad_students   The Economic Guide To Picking A College Major
+college_recent_grads    The Economic Guide To Picking A College Major
+comic_characters        Comic Books Are Still Made By Men, For Men And
+                        About Men
+comma_survey            Elitist, Superfluous, Or Popular? We Polled
+                        Americans on the Oxford Comma
+congress_age            Both Republicans And Democrats Have an Age
+                        Problem
+cousin_marriage         How Many Americans Are Married To Their
+                        Cousins?
+daily_show_guests       Every Guest Jon Stewart Ever Had On 'The Daily
+                        Show'
+democratic_bench        Some Democrats Who Could Step Up If Hillary
+                        Isn't Ready For Hillary
+drinks                  Dear Mona Followup: Where Do People Drink The
+                        Most Beer, Wine And Spirits?
+drug_use                How Baby Boomers Get High
+elo_blatter             Blatter's Reign At FIFA Hasn't Helped Soccer's
+                        Poor
+endorsements            Pols And Polls Say The Same Thing: Jeb Bush Is
+                        A Weak Front-Runner
+fandango                Be Suspicious Of Online Movie Ratings,
+                        Especially Fandango's
+fifa_audience           How To Break FIFA
+flying                  41 Percent Of Fliers Think You're Rude If You
+                        Recline Your Seat
+food_world_cup          The FiveThirtyEight International Food
+                        Association's 2014 World Cup
+generic_polllist        Congress Generic Ballot Polls
+generic_topline         Congress Generic Ballot Polls
+google_trends           The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+goose                   The Save Ruined Relief Pitching. The Goose Egg
+                        Can Fix It.
+hate_crimes             Higher Rates Of Hate Crimes Are Tied To Income
+                        Inequality
+hiphop_cand_lyrics      Hip-Hop Is Turning On Donald Trump
+hist_ncaa_bball_casts   The NCAA Bracket: Checking Our Work
+hist_senate_preds       How The FiveThirtyEight Senate Forecast Model
+                        Works
+librarians              Where Are America's Librarians?
+love_actually_adj       The Definitive Analysis Of 'Love Actually,' The
+                        Greatest Christmas Movie Of Our Time
+love_actually_appearance
+                        The Definitive Analysis Of 'Love Actually,' The
+                        Greatest Christmas Movie Of Our Time
+mad_men                 "Mad Men" Is Ending. What's Next For The Cast?
+male_flight_attend      Dear Mona, How Many Flight Attendants Are Men?
+mayweather_mcgregor_tweets
+                        Mayweather Vs McGregor Tweets
+mediacloud_hurricanes   The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+mediacloud_online_news
+                        The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+mediacloud_states       The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+mediacloud_trump        The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+mlb_as_play_talent      The Best MLB All-Star Teams Ever
+mlb_as_team_talent      The Best MLB All-Star Teams Ever
+mlb_elo                 MLB Elo
+murder_2015_final       A Handful Of Cities Are Driving 2016's Rise In
+                        Murder
+murder_2016_prelim      A Handful Of Cities Are Driving 2016's Rise In
+                        Murder
+nba_carmelo             The Complete History Of The NBA 2017-18 NBA
+                        Predictions
+nba_draft_2015          Projecting The Top 50 Players In The 2015 NBA
+                        Draft Class
+nba_tattoos             Accurately Counting NBA Tattoos Isn't Easy,
+                        Even If You're Up Close
+nfl_elo                 The Complete History Of The NFL 2017 NFL
+                        Predictions
+nfl_fandom_google       How Every NFL Team’s Fans Lean Politically
+nfl_fandom_surveymonkey
+                        How Every NFL Team’s Fans Lean Politically
+nfl_fav_team            The Rams Are Dead To Me, So I Answered 3,352
+                        Questions To Find A New NFL Team
+nfl_suspensions         The NFL's Uneven History Of Punishing Domestic
+                        Violence
+nfltix_div_avgprice     Who Goes To Meaningless NFL Games And Why?
+nfltix_usa_avg          Who Goes To Meaningless NFL Games And Why?
+nflwr_aging_curve       The Football Hall Of Fame Has A Receiver
+                        Problem
+nflwr_hist              The Football Hall Of Fame Has A Receiver
+                        Problem
+nutrition_pvalues       You Can't Trust What You Read About Nutrition
+police_deaths           The Dallas Shooting Was Among The Deadliest For
+                        Police In U.S. History
+police_killings         Where Police Have Killed Americans In 2015
+police_locals           Most Police Don't Live In The Cities They Serve
+pres_2016_trail         The Last 10 Weeks Of 2016 Campaign Stops In One
+                        Handy Gif
+pres_commencement       Sitting Presidents Give Way More Commencement
+                        Speeches Than They Used To
+pulitzer                Do Pulitzers Help Newspapers Keep Readers?
+ratings                 An Inconvenient Sequel
+riddler_castles         Can You Rule Riddler Nation?
+riddler_castles2        The Battle For Riddler Nation, Round 2
+riddler_pick_lowest     Pick A Number, Any Number
+san_andreas             The Rock Isn't Alone: Lots Of People Are
+                        Worried About 'The Big One'
+sandy_311               The (Very) Long Tail Of Hurricane Recovery
+senate_polls            Early Senate Polls Have Plenty to Tell Us About
+                        November
+senators                Senator Dataset
+spi_global_rankings     Current SPI ratings and rankings for men's club
+                        teams
+spi_matches             Match-by-match SPI ratings and forecasts back
+                        to 2016
+steak_survey            How Americans Like Their Steak
+tarantino               A Complete Catalog Of Every Time Someone Cursed
+                        Or Bled Out In A Quentin Tarantino Movie
+tennis_events_time      Why Some Tennis Matches Take Forever
+tennis_players_time     Why Some Tennis Matches Take Forever
+tennis_serve_time       Why Some Tennis Matches Take Forever
+tenth_circuit           For A Trump Nominee, Neil Gorsuch’s Record Is
+                        Surprisingly Moderate On Immigration
+trump_approval_poll     How Popular is Donald Trump
+trump_approval_trend    How Popular is Donald Trump
+trump_news              How Trump Hacked The Media
+trump_twitter           The World's Favorite Donald Trump Tweets
+trumpworld_issues       What the World Thinks of Trump
+trumpworld_polls        What the World Thinks of Trump
+tv_hurricanes           The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+tv_hurricanes_by_network
+                        The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+tv_states               The Media Really Started Paying Attention to
+                        Puerto Rico When Trump Did
+twitter_presidents      The Worst Tweeter in Politics Isn't Trump
+undefeated              Mayweather Is Defined By The Zero Next To His
+                        Name
+unisex_names            The Most Common Unisex Names In America: Is
+                        Yours One Of Them?
+weather_check           Where People Go To Check The Weather
+
+> 
+> # To view a detailed list of all data sets:
+> vignette("fivethirtyeight", package = "fivethirtyeight")
+starting httpd help server ... done
+> 
+> # Some data sets include vignettes with an example analysis:
+> vignette("bechdel", package = "fivethirtyeight")
+> 
+> # To browse all vignettes:
+> browseVignettes(package = "fivethirtyeight")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("love_actually_appearance")
+> ### * love_actually_appearance
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: love_actually_appearance
+> ### Title: The Definitive Analysis Of 'Love Actually,' The Greatest
+> ###   Christmas Movie Of Our Time
+> ### Aliases: love_actually_appearance
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> love_actually_appearance_tidy <- love_actually_appearance %>%
++   gather(actor, appears, -c(scenes)) %>%
++   arrange(scenes)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("mayweather_mcgregor_tweets")
+> ### * mayweather_mcgregor_tweets
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: mayweather_mcgregor_tweets
+> ### Title: Mayweather Vs McGregor Tweets
+> ### Aliases: mayweather_mcgregor_tweets
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To obtain the entire dataset, run the code inside the following if statement:
+> if(FALSE){
++   library(tidyverse)
++   url <-
++    "https://raw.githubusercontent.com/fivethirtyeight/data/master/mayweather-mcgregor/tweets.csv"
++   mayweather_mcgregor_tweets <- read_csv(url) %>%
++     mutate(
++       emojis = as.logical(emojis),
++       retweeted = as.logical(retweeted),
++       id = as.character(id)
++     )
++ }
+> 
+> 
+> 
+> cleanEx()
+> nameEx("mlb_elo")
+> ### * mlb_elo
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: mlb_elo
+> ### Title: MLB Elo
+> ### Aliases: mlb_elo
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To obtain the entire dataset, run the code inside the following if statement:
+> if(FALSE){
++   library(tidyverse)
++   mlb_elo <- read_csv("https://projects.fivethirtyeight.com/mlb-api/mlb_elo.csv") %>%
++     mutate(
++       playoff = as.factor(playoff),
++       playoff = ifelse(playoff == "<NA>", NA, playoff),
++       neutral = as.logical(neutral)
++     )
++ }
+> 
+> 
+> 
+> cleanEx()
+> nameEx("nba_carmelo")
+> ### * nba_carmelo
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: nba_carmelo
+> ### Title: The Complete History Of The NBA 2017-18 NBA Predictions
+> ### Aliases: nba_carmelo
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To obtain the entire dataset, run the following code:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(janitor)
+> nba_carmelo <- read_csv("https://projects.fivethirtyeight.com/nba-model/nba_elo.csv") %>%
++   clean_names() %>%
++   mutate(
++     team1 = as.factor(team1),
++     team2 = as.factor(team2),
++     playoff = ifelse(playoff == "t", TRUE, FALSE),
++     playoff = ifelse(is.na(playoff), FALSE, TRUE),
++     neutral = ifelse(neutral == 1, TRUE, FALSE)
++   )
+Parsed with column specification:
+cols(
+  .default = col_character(),
+  date = col_date(format = ""),
+  season = col_integer(),
+  neutral = col_integer(),
+  elo1_pre = col_double(),
+  elo2_pre = col_double(),
+  elo_prob1 = col_double(),
+  elo_prob2 = col_double(),
+  elo1_post = col_double(),
+  elo2_post = col_double(),
+  score1 = col_integer(),
+  score2 = col_integer()
+)
+See spec(...) for full column specifications.
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:janitor’, ‘package:forcats’, ‘package:stringr’,
+  ‘package:dplyr’, ‘package:purrr’, ‘package:readr’, ‘package:tidyr’,
+  ‘package:tibble’, ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("nfl_fandom_google")
+> ### * nfl_fandom_google
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: nfl_fandom_google
+> ### Title: How Every NFL Team<e2><80><99>s Fans Lean Politically
+> ### Aliases: nfl_fandom_google
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> nfl_fandom_google_tidy <- nfl_fandom_google %>%
++   gather(sport, search_traffic, -c("dma", "trump_2016_vote")) %>%
++   arrange(dma)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("nfl_fandom_surveymonkey")
+> ### * nfl_fandom_surveymonkey
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: nfl_fandom_surveymonkey
+> ### Title: How Every NFL Team<e2><80><99>s Fans Lean Politically
+> ### Aliases: nfl_fandom_surveymonkey
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> nfl_fandom_surveymonkey_tidy <- nfl_fandom_surveymonkey %>%
++   gather(key = race_party, value = percent,
++          -c("team", "total_respondents", "gop_percent", "dem_percent",
++             "ind_percent", "white_percent", "nonwhite_percent")) %>%
++   arrange(team)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("police_locals")
+> ### * police_locals
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: police_locals
+> ### Title: Most Police Don't Live In The Cities They Serve
+> ### Aliases: police_locals
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> police_locals_tidy <- police_locals %>%
++    gather(key = "race", value = "perc_in", all:asian)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("ratings")
+> ### * ratings
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: ratings
+> ### Title: An Inconvenient Sequel
+> ### Aliases: ratings
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> ratings_tidy <- ratings %>%
++   gather(votes, count, -c(timestamp, respondents, category, link, average, mean, median)) %>%
++   arrange(timestamp)
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("riddler_castles")
+> ### * riddler_castles
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: riddler_castles
+> ### Title: Can You Rule Riddler Nation?
+> ### Aliases: riddler_castles
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> riddler_castles_tidy<-riddler_castles %>%
++    gather(key = castle , value = soldiers, castle1:castle10) %>%
++    mutate(castle = as.numeric(str_replace(castle, "castle","")))
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("riddler_castles2")
+> ### * riddler_castles2
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: riddler_castles2
+> ### Title: The Battle For Riddler Nation, Round 2
+> ### Aliases: riddler_castles2
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> library(stringr)
+> riddler_castles_tidy<-riddler_castles2 %>%
++    gather(key = castle , value = soldiers, castle1:castle10) %>%
++    mutate(castle = as.numeric(str_replace(castle, "castle","")))
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("sandy_311")
+> ### * sandy_311
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: sandy_311
+> ### Title: The (Very) Long Tail Of Hurricane Recovery
+> ### Aliases: sandy_311
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> sandy_311_tidy <- sandy_311 %>%
++   gather(agency, num_calls, -c("date", "total")) %>%
++   arrange(date) %>%
++   select(date, agency, num_calls, total) %>%
++   rename(total_calls = total) %>%
++   mutate(agency = as.factor(agency))
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> nameEx("senators")
+> ### * senators
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: senators
+> ### Title: Senator Dataset
+> ### Aliases: senators
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To obtain the entire dataset, run the code inside the following if statement:
+> if(FALSE){
++   library(tidyverse)
++   url <- "https://raw.githubusercontent.com/fivethirtyeight/data/master/twitter-ratio/senators.csv"
++   senators <- read_csv(url) %>%
++     mutate(
++       party = as.factor(party),
++       state = as.factor(state),
++       created_at = as.POSIXct(created_at, tz = "GMT", format = "%m/%d/%Y %H:%M"),
++       text =  gsub("[^\x01-\x7F]", "", text)
++     ) %>%
++     select(created_at, user, everything())
++ }
+> 
+> 
+> 
+> cleanEx()
+> nameEx("trumpworld_polls")
+> ### * trumpworld_polls
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: trumpworld_polls
+> ### Title: What the World Thinks of Trump
+> ### Aliases: trumpworld_polls
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> # To convert data frame to tidy data (long) format, run:
+> library(tidyverse)
+── [1mAttaching packages[22m ─────────────────────────────────────────────────────────────────────────────────────── tidyverse 1.2.1 ──
+[32m✔[39m [34mggplot2[39m 3.0.0     [32m✔[39m [34mpurrr  [39m 0.2.5
+[32m✔[39m [34mtibble [39m 1.4.2     [32m✔[39m [34mdplyr  [39m 0.7.6
+[32m✔[39m [34mtidyr  [39m 0.8.1     [32m✔[39m [34mstringr[39m 1.3.1
+[32m✔[39m [34mreadr  [39m 1.1.1     [32m✔[39m [34mforcats[39m 0.3.0
+── [1mConflicts[22m ────────────────────────────────────────────────────────────────────────────────────────── tidyverse_conflicts() ──
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m masks [34mstats[39m::filter()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m    masks [34mstats[39m::lag()
+> trumpworld_polls_tidy <- trumpworld_polls %>%
++   gather(country, percent_positive, -c("year", "avg", "question"))
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+
+detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
+  ‘package:purrr’, ‘package:readr’, ‘package:tidyr’, ‘package:tibble’,
+  ‘package:ggplot2’, ‘package:tidyverse’
+
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  4.974 0.261 5.96 0.008 0.007 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
