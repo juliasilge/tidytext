@@ -5,12 +5,8 @@
 \name{reexports}
 \alias{reexports}
 \alias{glance}
-\alias{reexports}
 \alias{augment}
-\alias{reexports}
 \alias{tidy}
-\alias{reexports}
-\alias{augment}
 \title{Objects exported from other packages}
 \keyword{internal}
 \description{

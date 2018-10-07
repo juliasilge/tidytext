@@ -25,7 +25,7 @@ Encoding: UTF-8
 LazyData: TRUE
 URL: http://github.com/juliasilge/tidytext
 BugReports: http://github.com/juliasilge/tidytext/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Depends: R (>= 2.10)
 Imports: rlang,
     dplyr,

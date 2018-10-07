@@ -8,8 +8,8 @@
 \alias{glance.STM}
 \title{Tidiers for Structural Topic Models from the stm package}
 \usage{
-\method{tidy}{STM}(x, matrix = c("beta", "gamma", "theta"), log = FALSE,
-  document_names = NULL, ...)
+\method{tidy}{STM}(x, matrix = c("beta", "gamma", "theta"),
+  log = FALSE, document_names = NULL, ...)
 
 \method{tidy}{estimateEffect}(x, ...)
 

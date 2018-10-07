@@ -3,13 +3,10 @@
 \name{lda_tidiers}
 \alias{lda_tidiers}
 \alias{tidy.LDA}
-\alias{lda_tidiers}
 \alias{tidy.CTM}
 \alias{augment.LDA}
-\alias{lda_tidiers}
 \alias{augment.CTM}
 \alias{glance.LDA}
-\alias{lda_tidiers}
 \alias{glance.CTM}
 \title{Tidiers for LDA and CTM objects from the topicmodels package}
 \usage{
