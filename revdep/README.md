@@ -10,7 +10,7 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Denver               |
-|date     |2018-10-07                   |
+|date     |2018-10-08                   |
 
 # Dependencies
 
@@ -26,7 +26,7 @@
 |:----------------------------------------------|:-------|:-----|:-------|:----|
 |available                                      |1.0.1   |      |        |     |
 |[crsra](problems.md#crsra)                     |0.2.3   |      |        |1    |
-|fedregs                                        |0.1.0   |      |        |     |
+|[fedregs](problems.md#fedregs)                 |0.1.0   |1     |        |     |
 |[fivethirtyeight](problems.md#fivethirtyeight) |0.4.0   |      |        |2    |
 |funrar                                         |1.2.2   |      |        |     |
 |ggpage                                         |0.2.2   |      |        |     |
