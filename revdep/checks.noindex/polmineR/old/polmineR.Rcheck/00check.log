@@ -6,10 +6,110 @@
 * checking extension type ... Package
 * this is package ‘polmineR’ version ‘0.7.10’
 * checking package namespace information ... OK
-* checking package dependencies ... ERROR
-Package required but not available: ‘RcppCWB’
+* checking package dependencies ... OK
+* checking if this is a source package ... OK
+* checking if there is a namespace ... OK
+* checking for executable files ... OK
+* checking for hidden files and directories ... OK
+* checking for portable file names ... OK
+* checking for sufficient/correct file permissions ... OK
+* checking whether package ‘polmineR’ can be installed ... OK
+* checking installed package size ... OK
+* checking package directory ... OK
+* checking ‘build’ directory ... OK
+* checking DESCRIPTION meta-information ... OK
+* checking top-level files ... OK
+* checking for left-over files ... OK
+* checking index information ... OK
+* checking package subdirectories ... OK
+* checking R files for non-ASCII characters ... OK
+* checking R files for syntax errors ... OK
+* checking whether the package can be loaded ... OK
+* checking whether the package can be loaded with stated dependencies ... OK
+* checking whether the package can be unloaded cleanly ... OK
+* checking whether the namespace can be loaded with stated dependencies ... OK
+* checking whether the namespace can be unloaded cleanly ... OK
+* checking loading without being on the library search path ... OK
+* checking dependencies in R code ... OK
+* checking S3 generic/method consistency ... OK
+* checking replacement functions ... OK
+* checking foreign function calls ... OK
+* checking R code for possible problems ... OK
+* checking Rd files ... OK
+* checking Rd metadata ... OK
+* checking Rd cross-references ... OK
+* checking for missing documentation entries ... OK
+* checking for code/documentation mismatches ... OK
+* checking Rd \usage sections ... OK
+* checking Rd contents ... OK
+* checking for unstated dependencies in examples ... OK
+* checking line endings in shell scripts ... OK
+* checking installed files from ‘inst/doc’ ... OK
+* checking files in ‘vignettes’ ... OK
+* checking examples ... ERROR
+Running examples in ‘polmineR-Ex.R’ failed
+The error most likely occurred in:
 
-See section ‘The DESCRIPTION file’ in the ‘Writing R Extensions’
-manual.
+> ### Name: polmineR
+> ### Title: polmineR-package
+> ### Aliases: polmineR polmineR-package
+> ### Keywords: package
+> 
+> ### ** Examples
+> 
+> use("polmineR") # activate demo corpora included in the package
+... activating corpus: germaparlmini
+... activating corpus: reuters
+> 
+> # Core methods applied to corpus
+> 
+> count("REUTERS", query = "oil")
+   query count       freq
+1:   oil    78 0.01925926
+> count("REUTERS", query = c("oil", "barrel"))
+    query count        freq
+1:    oil    78 0.019259259
+2: barrel    15 0.003703704
+> count("REUTERS", query = '"Saudi" "Arab.*"', breakdown = TRUE, cqp = TRUE)
+              query          match count share
+1: "Saudi" "Arab.*"   Saudi Arabia     6    50
+2: "Saudi" "Arab.*" Saudi Arabia's     3    25
+3: "Saudi" "Arab.*"  Saudi Arabian     3    25
+> dispersion("REUTERS", query = "oil", s_attribute = "id")
+     id count
+ 1: 127     5
+ 2: 144    12
+ 3: 191     2
+ 4: 194     1
+ 5: 236     6
+ 6: 237     4
+ 7: 242     2
+ 8: 246     5
+ 9: 248     6
+10: 273     5
+11: 349     4
+12: 352     4
+13: 353     4
+14: 368     3
+15: 489     4
+16: 502     5
+17: 543     2
+18: 704     3
+19: 708     1
+> kwic("REUTERS", query = "oil")
+> cooccurrences("REUTERS", query = "oil")
+Warning in get("View", envir = .GlobalEnv)(.Object@stat) :
+  unable to open display
+Error in .External2(C_dataviewer, x, title) : unable to start data viewer
+Calls: <Anonymous> ... <Anonymous> -> view -> view -> .local -> <Anonymous>
+Execution halted
+* checking for unstated dependencies in ‘tests’ ... OK
+* checking tests ... OK
+  Running ‘testthat.R’
+* checking for unstated dependencies in vignettes ... OK
+* checking package vignettes in ‘inst/doc’ ... OK
+* checking running R code from vignettes ... NONE
+* checking re-building of vignette outputs ... OK
+* checking PDF version of manual ... OK
 * DONE
 Status: 1 ERROR

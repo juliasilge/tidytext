@@ -45,8 +45,25 @@
 * checking for unstated dependencies in examples ... OK
 * checking examples ... OK
 * checking for unstated dependencies in ‘tests’ ... OK
-* checking tests ... OK
+* checking tests ... ERROR
   Running ‘testthat.R’
+Running the tests in ‘tests/testthat.R’ failed.
+Last 13 lines of output:
+  4: eval(quote(`_fseq`(`_lhs`)), env, env)
+  5: eval(quote(`_fseq`(`_lhs`)), env, env)
+  6: `_fseq`(`_lhs`)
+  7: freduce(value, `_function_list`)
+  8: function_list[[i]](value)
+  9: tidyr::unnest(.)
+  10: unnest.data.frame(.)
+  11: abort(glue("Each column must either be a list of vectors or a list of ", "data frames [{probs}]"))
+  
+  ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+  OK: 27 SKIPPED: 0 FAILED: 1
+  1. Error: We can go all the way (@test-fedregs.R#145) 
+  
+  Error: testthat unit tests failed
+  Execution halted
 * checking PDF version of manual ... OK
 * DONE
-Status: OK
+Status: 1 ERROR

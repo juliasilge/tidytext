@@ -567,7 +567,7 @@ Prediction is very difficult, especially about the future
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.458 0.139 1.638 0 0 
+Time elapsed:  1.601 0.139 1.848 0 0 
 > grDevices::dev.off()
 null device 
           1 

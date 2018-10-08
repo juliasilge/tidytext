@@ -636,7 +636,7 @@ Corpus consisting of 6 documents:
        LibDem   251    483        14
 
 Source: Concatenation by c.corpus()
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: 
 > 
 > # ways to index corpus elements
@@ -737,7 +737,7 @@ Corpus consisting of 9 documents, showing 5 documents:
        Labour   298    683        29       Labour
 
 Source: /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/* on x86_64 by juliasilge
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: 
 > 
 > corpus(texts(data_corpus_irishbudget2010))
@@ -759,18 +759,18 @@ Corpus consisting of 14 documents and 0 docvars.
 Corpus consisting of 9 documents:
 
   Text Types Tokens Sentences       datetimestamp id language
- text1  1125   3280        88 2018-10-08 02:44:21  1       en
- text2   142    260         4 2018-10-08 02:44:21  2       en
- text3   251    499        15 2018-10-08 02:44:21  3       en
- text4   322    679        21 2018-10-08 02:44:21  4       en
- text5   298    683        29 2018-10-08 02:44:21  5       en
- text6   251    483        14 2018-10-08 02:44:21  6       en
- text7    77    114         5 2018-10-08 02:44:21  7       en
- text8    88    134         4 2018-10-08 02:44:21  8       en
- text9   346    723        27 2018-10-08 02:44:21  9       en
+ text1  1125   3280        88 2018-10-08 21:28:56  1       en
+ text2   142    260         4 2018-10-08 21:28:56  2       en
+ text3   251    499        15 2018-10-08 21:28:56  3       en
+ text4   322    679        21 2018-10-08 21:28:56  4       en
+ text5   298    683        29 2018-10-08 21:28:56  5       en
+ text6   251    483        14 2018-10-08 21:28:56  6       en
+ text7    77    114         5 2018-10-08 21:28:56  7       en
+ text8    88    134         4 2018-10-08 21:28:56  8       en
+ text9   346    723        27 2018-10-08 21:28:56  9       en
 
 Source: Converted from tm Corpus 'tmCorp'
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: 
 > 
 > # construct a corpus from a data.frame
@@ -800,7 +800,7 @@ Corpus consisting of 6 documents:
  fromDf_6     6      6         1             c         6
 
 Source: From a data.frame called mydf.
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: 
 > 
 > # construct a corpus from a kwic object
@@ -839,7 +839,7 @@ Corpus consisting of 28 documents:
  text14.post     5      5         1 1953-Eisenhower 1226 1226 southern    post
 
 Source: Corpus created from kwic(x, keywords = "southern")
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: 
 > # from a kwic
 > kw <- kwic(data_char_sampletext, "econom*")
@@ -859,7 +859,7 @@ Corpus consisting of 10 documents:
  text5.post     5      5         1   text1  504 504 economy    post
 
 Source: Corpus created from kwic(x, keywords = "econom*")
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: 
 > summary(corpus(kw, split_context = FALSE))
 Corpus consisting of 5 documents:
@@ -872,7 +872,7 @@ Corpus consisting of 5 documents:
  text1.L504    10     11         1 economy
 
 Source: Corpus created from kwic(x, keywords = "econom*")
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: 
 > texts(corpus(kw, split_context = FALSE))
                                                                text1.L162 
@@ -915,7 +915,7 @@ Corpus consisting of 2 documents:
   textwo     4      6         2     USA 2000
 
 Source: /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/* on x86_64 by juliasilge
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: Example showing how corpus_reshape() works.
 > summary(corpus_reshape(corp, to = "sentences"), showmeta = TRUE)
 Corpus consisting of 5 documents:
@@ -928,7 +928,7 @@ Corpus consisting of 5 documents:
   textwo.2     3      3         1    textwo      2      2     USA 2000
 
 Source: /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/* on x86_64 by juliasilge
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: corpus_reshape.corpus(corp, to = "sentences")
 > 
 > # example with inaugural corpus speeches
@@ -1144,7 +1144,7 @@ Corpus consisting of 138 documents, showing 100 documents:
  Donald J.
 
 Source: Gerhard Peters and John T. Woolley. The American Presidency Project.
-Created: Sun Oct  7 20:44:21 2018
+Created: Mon Oct  8 15:28:56 2018
 Notes: corpus_reshape.corpus(corp2, to = "paragraphs")
 > ## Note that Bush 2005 is recorded as a single paragraph because that text 
 > ## used a single \n to mark the end of a paragraph.
@@ -1688,7 +1688,7 @@ Corpus consisting of 9 documents:
          UKIP   346    723        27   english         UKIP
 
 Source: /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/* on x86_64 by juliasilge
-Created: Sun Oct  7 20:44:22 2018
+Created: Mon Oct  8 15:28:57 2018
 Notes: 
 > 
 > 
@@ -2065,7 +2065,7 @@ Creating a dfm from a corpus input...
    ... grouping texts
    ... created a 5 x 3,260 sparse dfm
    ... complete. 
-Elapsed time: 0.035 seconds.
+Elapsed time: 0.037 seconds.
 Document-feature matrix of: 5 documents, 3,260 features (64.2% sparse).
 > 
 > # with English stopwords and stemming
@@ -4982,7 +4982,7 @@ Corpus consisting of 9 documents:
          UKIP   346    723        27         UKIP
 
 Source: /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/* on x86_64 by juliasilge
-Created: Sun Oct  7 20:44:29 2018
+Created: Mon Oct  8 15:29:05 2018
 Notes: 
 > mysummary <- summary(mycorpus) # (quietly) assign the results
 > mysummary$Types / mysummary$Tokens # crude type-token ratio
@@ -5756,9 +5756,9 @@ $se.fit
 +     mat <- fcm(txt)
 +     as.igraph(mat, min_freq = 1, omit_isolated = FALSE)
 + }
-IGRAPH 033b38e DN-- 6 31 -- 
+IGRAPH 96d134d DN-- 6 31 -- 
 + attr: name (v/c), frequency (v/n)
-+ edges from 033b38e (vertex names):
++ edges from 96d134d (vertex names):
  [1] a->a a->a a->a a->a a->b a->b a->b a->b a->b a->b b->b a->c a->c a->c a->c
 [16] a->c a->c b->c b->c a->e a->e a->e c->e c->e a->f c->f e->f a->g c->g e->g
 [31] f->g
@@ -25149,7 +25149,7 @@ $Trump
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  22.908 1.849 22.52 0.002 0.002 
+Time elapsed:  23.526 1.581 22.789 0.002 0.002 
 > grDevices::dev.off()
 null device 
           1 

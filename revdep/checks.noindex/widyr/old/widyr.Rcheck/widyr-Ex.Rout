@@ -799,7 +799,7 @@ detaching ‘package:tidyr’, ‘package:ggplot2’, ‘package:gapminder’,
 
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  5.197 0.352 5.679 0 0 
+Time elapsed:  4.93 0.303 5.313 0 0 
 > grDevices::dev.off()
 null device 
           1 

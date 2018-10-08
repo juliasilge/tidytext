@@ -126,7 +126,7 @@ detaching ‘package:bindrcpp’
 
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.548 0.126 1.767 0 0 
+Time elapsed:  1.7 0.124 1.903 0 0 
 > grDevices::dev.off()
 null device 
           1 

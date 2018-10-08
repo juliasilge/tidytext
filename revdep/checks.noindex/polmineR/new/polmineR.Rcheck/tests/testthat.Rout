@@ -16,12 +16,24 @@ Type 'demo()' for some demos, 'help()' for on-line help, or
 Type 'q()' to quit R.
 
 > library(testthat)
-> library(fedregs)
+> library(polmineR)
+polmineR v0.7.10
+session registry:  /private/var/folders/0w/prb4hnss2gn1p7y34qb2stw00000gp/T/Rtmp4W26OI/polmineR_registry
+
+Attaching package: 'polmineR'
+
+The following object is masked from 'package:testthat':
+
+    context
+
+> use("polmineR")
+... activating corpus: germaparlmini
+... activating corpus: reuters
 > 
-> test_check("fedregs")
+> test_check("polmineR")
 ══ testthat results  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
-OK: 29 SKIPPED: 0 FAILED: 0
+OK: 106 SKIPPED: 1 FAILED: 0
 > 
 > proc.time()
    user  system elapsed 
- 24.106   2.708 109.699 
+  5.447   0.720   3.721 

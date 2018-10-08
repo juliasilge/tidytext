@@ -1030,7 +1030,7 @@ detaching ‘package:forcats’, ‘package:stringr’, ‘package:dplyr’,
 
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  4.618 0.376 7.238 0.009 0.009 
+Time elapsed:  4.046 0.341 5.133 0.008 0.008 
 > grDevices::dev.off()
 null device 
           1 

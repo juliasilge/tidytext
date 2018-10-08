@@ -125,7 +125,7 @@ time series: 'timetk', 'tidyquant', 'sweep'
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.05 0.261 3.685 0.003 0.003 
+Time elapsed:  2.585 0.218 2.948 0.002 0.003 
 > grDevices::dev.off()
 null device 
           1 

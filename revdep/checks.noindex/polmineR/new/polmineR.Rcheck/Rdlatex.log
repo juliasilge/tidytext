@@ -1,0 +1,1019 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [2]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [3]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (18.41718pt too wide) in paragraph at lines 228--234
+\T1/ptm/m/n/10 package. There are many text min-ing ap-pli-ca-tions for documen
+t-term ma-tri-ces. A \T1/zi4/m/n/10 DocumentTermMatrix
+[4pdfTeX warning (ext4): destination with the same identifier (name{Rfn.as.Docu
+mentTermMatrix}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.246 ## S4 method for signature 'character'
+                                            ]
+Overfull \hbox (28.95885pt too wide) in paragraph at lines 297--305
+[]\T1/ptm/m/n/10 If \T1/zi4/m/n/10 x \T1/ptm/m/n/10 refers to a cor-pus (i.e. i
+s a length 1 char-ac-ter vec-tor), a \T1/zi4/m/n/10 TermDocumentMatrix\T1/ptm/m
+/n/10 , or \T1/zi4/m/n/10 DocumentTermMatrix
+[5] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8] [9]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [11] [12]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [13]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [15]
+Overfull \hbox (0.36748pt too wide) in paragraph at lines 978--979
+[]\T1/ptm/m/n/10 further pa-ram-e-ters that will be passed into big-ma-trix (ap
+-plies only of big=TRUE) 
+
+Overfull \hbox (31.38095pt too wide) in paragraph at lines 1035--1035
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", interjection = "speech", 
+speaker = ".*Merkel", regex = TRUE)[] 
+[16] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+Overfull \hbox (1.5497pt too wide) in paragraph at lines 1168--1169
+[]\T1/ptm/m/n/10 Initialize a new ob-ject of
+
+Overfull \hbox (18.06027pt too wide) in paragraph at lines 1169--1170
+[]\T1/ptm/m/n/10 Perform counts. 
+[18] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20] [21]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [22]
+Overfull \hbox (34.66882pt too wide) in paragraph at lines 1484--1487
+[]\T1/ptm/m/n/10 a \T1/zi4/m/n/10 "character" \T1/ptm/m/n/10 vec-tor in-di-cat-
+ing a CWB cor-pus, a \T1/zi4/m/n/10 "partition" \T1/ptm/m/n/10 ob-ject, a \T1/z
+i4/m/n/10 "tempcorpus"
+[23] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [24pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.CQI.cqpserver}) has been
+ already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1582 \item[\code{normalise.case}]
+                                    logical]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [25]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [26] [27]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [28]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [29]
+Overfull \hbox (44.05911pt too wide) in paragraph at lines 1893--1899
+\T1/ptm/m/n/10 tion_bundle" (see [][]\T1/zi4/m/n/10 partition_bundle-class[][][
+]\T1/ptm/m/n/10 ), "kwic" (see [][]\T1/zi4/m/n/10 kwic-class[][][]\T1/ptm/m/n/1
+0 ), and "con-text" (see [][]\T1/zi4/m/n/10 context-class[][][]\T1/ptm/m/n/10 )
+.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.91815pt too wide) in paragraph at lines 1908--1911
+[]\T1/ptm/m/n/10 The fea-tures of two ob-jects, usu-ally a \T1/zi4/m/n/10 parti
+tion \T1/ptm/m/n/10 defin-ing a cor-pus of in-ter-est (coi), and a \T1/zi4/m/n/
+10 partition
+[30] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [31]
+Overfull \hbox (4.66864pt too wide) in paragraph at lines 2039--2043
+[]\T1/ptm/m/n/10 A set of \T1/zi4/m/n/10 features \T1/ptm/m/n/10 ob-jects can b
+e com-bined into a \T1/zi4/m/n/10 features_bundle\T1/ptm/m/n/10 . Typ-i-cally, 
+a \T1/zi4/m/n/10 features_bundle
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [35] [36]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [37]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [38]
+Overfull \hbox (12.55846pt too wide) in paragraph at lines 2513--2515
+[]\T1/ptm/m/n/10 maximum num-ber of to-kens to de-code from to-ken stream, pass
+ed into \T1/zi4/m/n/10 as.markdown 
+[39] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [40] [41]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.85748pt too wide) in paragraph at lines 2717--2722
+\T1/ptm/m/n/10 pro-cess kwic class ob-jects (see 'Us-age'). See sec-tion 'De-ta
+ils' for the \T1/zi4/m/n/10 enrich\T1/ptm/m/n/10 , \T1/zi4/m/n/10 view \T1/ptm/
+m/n/10 and \T1/zi4/m/n/10 knit_print
+[42pdfTeX warning (ext4): destination with the same identifier (name{Rfn.[,kwic
+,ANY,ANY,ANY.Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2738 
+       ] [43] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [44]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [46]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [47]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [48]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [49]
+Overfull \hbox (8.8082pt too wide) in paragraph at lines 3218--3220
+[]\T1/ptm/m/n/10 Object slots that will be re-ported columns of \T1/zi4/m/n/10 
+data.frame \T1/ptm/m/n/10 sum-ma-riz-ing \T1/zi4/m/n/10 partition
+
+Overfull \hbox (17.88095pt too wide) in paragraph at lines 3259--3259
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", speaker = ".*Merkel", p_a
+ttribute = "word", regex = TRUE)[] 
+[50] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [51]
+Overfull \hbox (4.38095pt too wide) in paragraph at lines 3365--3365
+ []\T1/zi4/m/n/9 pb <- partition_bundle(bt2009, s_attribute = "date", progress 
+= TRUE, p_attribute = "word")[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [52pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.as.partition.Rul.bundle,
+list.Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3418 ... method for signature 'partition_bundle'
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{Rfn.barplot,partition.Rul.bundle.Rdash.met
+hod}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3418 ... method for signature 'partition_bundle'
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{Rfn.merge,partition.Rul.bundle.Rdash.metho
+d}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3418 ... method for signature 'partition_bundle'
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{Rfn.summary,partition.Rul.bundle.Rdash.met
+hod}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3418 ... method for signature 'partition_bundle'
+                                                  pdfTeX warning (ext4): destin
+ation with the same identifier (name{Rfn.[,partition.Rul.bundle,ANY,ANY,ANY.Rda
+sh.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3418 ... method for signature 'partition_bundle'
+                                                  ] [53]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [54]
+Overfull \hbox (12.50745pt too wide) in paragraph at lines 3609--3611
+[]\T1/ptm/m/n/10 A name to iden-tify the ob-ject (\T1/zi4/m/n/10 character \T1/
+ptm/m/n/10 vec-tor with length 1); use-ful when mul-ti-ple \T1/zi4/m/n/10 parti
+tion
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [55] [56]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (123.57532pt too wide) in paragraph at lines 3771--3772
+[]\T1/ptm/m/n/10 Stefan Ev-ert & The OCWB De-vel-op-ment Team, CQP Query Lan-gu
+age Tu-to-rial, http://cwb.sourceforge.net/files/CQP_Tutorial.pdf. 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57] [58]
+Overfull \hbox (4.38095pt too wide) in paragraph at lines 3885--3885
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", date = "2009-11-10", spea
+ker = "Merkel", regex = TRUE)[] 
+
+Overfull \hbox (0.78094pt too wide) in paragraph at lines 3889--3889
+ []  \T1/zi4/m/n/9 highlight = list(yellow = c("Deutschland", "Bundesrepublik")
+, lightgreen = "Regierung"),[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [59]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [60]
+Overfull \hbox (44.60707pt too wide) in paragraph at lines 4014--4016
+[]\T1/ptm/m/n/10 An ap-pendix to the 'Cor-pus En-cod-ing Tu-to-rial' (http://cw
+b.sourceforge.net/files/CWB_Encoding_Tutorial.pdf)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [61]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [62]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [63]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [64]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [66]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [68pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.round,textstat.Rdash.met
+hod}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4481 p_attributes(.Object)
+                            pdfTeX warning (ext4): destination with the same id
+entifier (name{Rfn.sort,textstat.Rdash.method}) has been already used, duplicat
+e ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4481 p_attributes(.Object)
+                            ] [69]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [70]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [71pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.trim,TermDocumentMatrix.
+Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4693 \item[\code{termsToDrop}]
+                                 ...]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [72]
+Overfull \hbox (6.4981pt too wide) in paragraph at lines 4762--4768
+[]\T1/ptm/m/n/10 The reg-istry files within the pack-age are as-sumed to be in 
+the sub-di-rec-tory \T1/zi4/m/n/10 ./extdata/cwb/registry
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [73] [74]
+No file Rd2.ind.
+[75] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2015/te
+xmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/local/texlive/2015/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/
+dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1
+/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times
+/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pf
+b></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (75 pages, 212364 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (412 entries accepted, 7 rejected).
+Sorting entries......done (3738 comparisons).
+Generating output file Rd2.ind....done (774 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[2]) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [3]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
+Overfull \hbox (18.41718pt too wide) in paragraph at lines 228--234
+\T1/ptm/m/n/10 package. There are many text min-ing ap-pli-ca-tions for documen
+t-term ma-tri-ces. A \T1/zi4/m/n/10 DocumentTermMatrix
+[6pdfTeX warning (ext4): destination with the same identifier (name{Rfn.as.Docu
+mentTermMatrix}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.283 \item[\code{s\_attribute}]
+                                 s-attribute that defines content of columns...
+]
+Overfull \hbox (28.95885pt too wide) in paragraph at lines 297--305
+[]\T1/ptm/m/n/10 If \T1/zi4/m/n/10 x \T1/ptm/m/n/10 refers to a cor-pus (i.e. i
+s a length 1 char-ac-ter vec-tor), a \T1/zi4/m/n/10 TermDocumentMatrix\T1/ptm/m
+/n/10 , or \T1/zi4/m/n/10 DocumentTermMatrix
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [9]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [10] [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12] [13]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14] [15]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [16]
+Overfull \hbox (0.36748pt too wide) in paragraph at lines 978--979
+[]\T1/ptm/m/n/10 further pa-ram-e-ters that will be passed into big-ma-trix (ap
+-plies only of big=TRUE) 
+[17]
+Overfull \hbox (31.38095pt too wide) in paragraph at lines 1035--1035
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", interjection = "speech", 
+speaker = ".*Merkel", regex = TRUE)[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+Overfull \hbox (1.5497pt too wide) in paragraph at lines 1168--1169
+[]\T1/ptm/m/n/10 Initialize a new ob-ject of
+
+Overfull \hbox (18.06027pt too wide) in paragraph at lines 1169--1170
+[]\T1/ptm/m/n/10 Perform counts. 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [21] [22]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.66882pt too wide) in paragraph at lines 1484--1487
+[]\T1/ptm/m/n/10 a \T1/zi4/m/n/10 "character" \T1/ptm/m/n/10 vec-tor in-di-cat-
+ing a CWB cor-pus, a \T1/zi4/m/n/10 "partition" \T1/ptm/m/n/10 ob-ject, a \T1/z
+i4/m/n/10 "tempcorpus"
+[24] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [25pdfTeX war
+ning (ext4): destination with the same identifier (name{Rfn.CQI.cqpserver}) has
+ been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1559 \end{Format}
+                   ]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [27] [28]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [29]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [30]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (44.05911pt too wide) in paragraph at lines 1893--1899
+\T1/ptm/m/n/10 tion_bundle" (see [][]\T1/zi4/m/n/10 partition_bundle-class[][][
+]\T1/ptm/m/n/10 ), "kwic" (see [][]\T1/zi4/m/n/10 kwic-class[][][]\T1/ptm/m/n/1
+0 ), and "con-text" (see [][]\T1/zi4/m/n/10 context-class[][][]\T1/ptm/m/n/10 )
+.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.91815pt too wide) in paragraph at lines 1908--1911
+[]\T1/ptm/m/n/10 The fea-tures of two ob-jects, usu-ally a \T1/zi4/m/n/10 parti
+tion \T1/ptm/m/n/10 defin-ing a cor-pus of in-ter-est (coi), and a \T1/zi4/m/n/
+10 partition
+[31] [32] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.66864pt too wide) in paragraph at lines 2039--2043
+[]\T1/ptm/m/n/10 A set of \T1/zi4/m/n/10 features \T1/ptm/m/n/10 ob-jects can b
+e com-bined into a \T1/zi4/m/n/10 features_bundle\T1/ptm/m/n/10 . Typ-i-cally, 
+a \T1/zi4/m/n/10 features_bundle
+[33] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [35]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [36] [37]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [38]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.55846pt too wide) in paragraph at lines 2513--2515
+[]\T1/ptm/m/n/10 maximum num-ber of to-kens to de-code from to-ken stream, pass
+ed into \T1/zi4/m/n/10 as.markdown 
+[40] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [41] [42]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.85748pt too wide) in paragraph at lines 2717--2722
+\T1/ptm/m/n/10 pro-cess kwic class ob-jects (see 'Us-age'). See sec-tion 'De-ta
+ils' for the \T1/zi4/m/n/10 enrich\T1/ptm/m/n/10 , \T1/zi4/m/n/10 view \T1/ptm/
+m/n/10 and \T1/zi4/m/n/10 knit_print
+[43pdfTeX warning (ext4): destination with the same identifier (name{Rfn.[,kwic
+,ANY,ANY,ANY.Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2726 ## S4 method for signature 'kwic'
+                                        ] [44]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [46]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [47]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [48]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [49]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [50]
+Overfull \hbox (8.8082pt too wide) in paragraph at lines 3218--3220
+[]\T1/ptm/m/n/10 Object slots that will be re-ported columns of \T1/zi4/m/n/10 
+data.frame \T1/ptm/m/n/10 sum-ma-riz-ing \T1/zi4/m/n/10 partition
+[51]
+Overfull \hbox (17.88095pt too wide) in paragraph at lines 3259--3259
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", speaker = ".*Merkel", p_a
+ttribute = "word", regex = TRUE)[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [52] [53]
+Overfull \hbox (4.38095pt too wide) in paragraph at lines 3365--3365
+ []\T1/zi4/m/n/9 pb <- partition_bundle(bt2009, s_attribute = "date", progress 
+= TRUE, p_attribute = "word")[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [54pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.as.partition.Rul.bundle,
+list.Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.barplot,partition.Rul.bundle.Rdash.method}) has been alr
+eady used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.merge,partition.Rul.bundle.Rdash.method}) has been alrea
+dy used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.summary,partition.Rul.bundle.Rdash.method}) has been alr
+eady used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.[,partition.Rul.bundle,ANY,ANY,ANY.Rdash.method}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                ] [55]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [56]
+Overfull \hbox (12.50745pt too wide) in paragraph at lines 3609--3611
+[]\T1/ptm/m/n/10 A name to iden-tify the ob-ject (\T1/zi4/m/n/10 character \T1/
+ptm/m/n/10 vec-tor with length 1); use-ful when mul-ti-ple \T1/zi4/m/n/10 parti
+tion
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57] [58]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (123.57532pt too wide) in paragraph at lines 3771--3772
+[]\T1/ptm/m/n/10 Stefan Ev-ert & The OCWB De-vel-op-ment Team, CQP Query Lan-gu
+age Tu-to-rial, http://cwb.sourceforge.net/files/CQP_Tutorial.pdf. 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [59] [60]
+Overfull \hbox (4.38095pt too wide) in paragraph at lines 3885--3885
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", date = "2009-11-10", spea
+ker = "Merkel", regex = TRUE)[] 
+
+Overfull \hbox (0.78094pt too wide) in paragraph at lines 3889--3889
+ []  \T1/zi4/m/n/9 highlight = list(yellow = c("Deutschland", "Bundesrepublik")
+, lightgreen = "Regierung"),[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [61]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [62]
+Overfull \hbox (44.60707pt too wide) in paragraph at lines 4014--4016
+[]\T1/ptm/m/n/10 An ap-pendix to the 'Cor-pus En-cod-ing Tu-to-rial' (http://cw
+b.sourceforge.net/files/CWB_Encoding_Tutorial.pdf)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [63]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [64]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [66]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [68]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [69]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [70pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.round,textstat.Rdash.met
+hod}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4481 p_attributes(.Object)
+                            pdfTeX warning (ext4): destination with the same id
+entifier (name{Rfn.sort,textstat.Rdash.method}) has been already used, duplicat
+e ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4481 p_attributes(.Object)
+                            ] [71]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [72]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [73pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.trim,TermDocumentMatrix.
+Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4693 \item[\code{termsToDrop}]
+                                 ...]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [74]
+Overfull \hbox (6.4981pt too wide) in paragraph at lines 4762--4768
+[]\T1/ptm/m/n/10 The reg-istry files within the pack-age are as-sumed to be in 
+the sub-di-rec-tory \T1/zi4/m/n/10 ./extdata/cwb/registry
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [75] [76]
+(./Rd2.ind [77]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 11.
+
+
+Overfull \hbox (20.8567pt too wide) in paragraph at lines 19--21
+[]\T1/zi4/m/it/10 +,partition_bundle,partition_bundle-method 
+
+Overfull \hbox (15.8567pt too wide) in paragraph at lines 73--75
+[]\T1/zi4/m/it/10 as.data.frame,cooccurrences_bundle-method 
+
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 93--95
+[]\T1/zi4/m/it/10 as.DocumentTermMatrix,character-method 
+
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 97--99
+[]\T1/zi4/m/it/10 as.DocumentTermMatrix,partition_bundle-method 
+[78]
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 131--133
+[]\T1/zi4/m/it/10 as.sparseMatrix,simple_triplet_matrix-method 
+
+Overfull \hbox (15.8567pt too wide) in paragraph at lines 133--135
+[]\T1/zi4/m/it/10 as.sparseMatrix,TermDocumentMatrix-method 
+
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 139--141
+[]\T1/zi4/m/it/10 as.TermDocumentMatrix,character-method 
+
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 143--145
+[]\T1/zi4/m/it/10 as.TermDocumentMatrix,partition_bundle-method 
+[79] [80] [81]
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 552--554
+[]\T1/zi4/m/it/10 partition_bundle,partition_bundle-method 
+[82] [83]) (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2015/te
+xmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/local/texlive/2015/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/
+dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/
+utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (83 pages, 251897 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (412 entries accepted, 7 rejected).
+Sorting entries......done (3738 comparisons).
+Generating output file Rd2.ind....done (774 lines written, 0 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/latin1.def))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[2]) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [3]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
+Overfull \hbox (18.41718pt too wide) in paragraph at lines 228--234
+\T1/ptm/m/n/10 package. There are many text min-ing ap-pli-ca-tions for documen
+t-term ma-tri-ces. A \T1/zi4/m/n/10 DocumentTermMatrix
+[6pdfTeX warning (ext4): destination with the same identifier (name{Rfn.as.Docu
+mentTermMatrix}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.283 \item[\code{s\_attribute}]
+                                 s-attribute that defines content of columns...
+]
+Overfull \hbox (28.95885pt too wide) in paragraph at lines 297--305
+[]\T1/ptm/m/n/10 If \T1/zi4/m/n/10 x \T1/ptm/m/n/10 refers to a cor-pus (i.e. i
+s a length 1 char-ac-ter vec-tor), a \T1/zi4/m/n/10 TermDocumentMatrix\T1/ptm/m
+/n/10 , or \T1/zi4/m/n/10 DocumentTermMatrix
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [9]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [10] [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12] [13]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14] [15]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [16]
+Overfull \hbox (0.36748pt too wide) in paragraph at lines 978--979
+[]\T1/ptm/m/n/10 further pa-ram-e-ters that will be passed into big-ma-trix (ap
+-plies only of big=TRUE) 
+[17]
+Overfull \hbox (31.38095pt too wide) in paragraph at lines 1035--1035
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", interjection = "speech", 
+speaker = ".*Merkel", regex = TRUE)[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+Overfull \hbox (1.5497pt too wide) in paragraph at lines 1168--1169
+[]\T1/ptm/m/n/10 Initialize a new ob-ject of
+
+Overfull \hbox (18.06027pt too wide) in paragraph at lines 1169--1170
+[]\T1/ptm/m/n/10 Perform counts. 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [21] [22]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (34.66882pt too wide) in paragraph at lines 1484--1487
+[]\T1/ptm/m/n/10 a \T1/zi4/m/n/10 "character" \T1/ptm/m/n/10 vec-tor in-di-cat-
+ing a CWB cor-pus, a \T1/zi4/m/n/10 "partition" \T1/ptm/m/n/10 ob-ject, a \T1/z
+i4/m/n/10 "tempcorpus"
+[24] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [25pdfTeX war
+ning (ext4): destination with the same identifier (name{Rfn.CQI.cqpserver}) has
+ been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.1559 \end{Format}
+                   ]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [27] [28]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [29]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [30]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (44.05911pt too wide) in paragraph at lines 1893--1899
+\T1/ptm/m/n/10 tion_bundle" (see [][]\T1/zi4/m/n/10 partition_bundle-class[][][
+]\T1/ptm/m/n/10 ), "kwic" (see [][]\T1/zi4/m/n/10 kwic-class[][][]\T1/ptm/m/n/1
+0 ), and "con-text" (see [][]\T1/zi4/m/n/10 context-class[][][]\T1/ptm/m/n/10 )
+.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.91815pt too wide) in paragraph at lines 1908--1911
+[]\T1/ptm/m/n/10 The fea-tures of two ob-jects, usu-ally a \T1/zi4/m/n/10 parti
+tion \T1/ptm/m/n/10 defin-ing a cor-pus of in-ter-est (coi), and a \T1/zi4/m/n/
+10 partition
+[31] [32] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.66864pt too wide) in paragraph at lines 2039--2043
+[]\T1/ptm/m/n/10 A set of \T1/zi4/m/n/10 features \T1/ptm/m/n/10 ob-jects can b
+e com-bined into a \T1/zi4/m/n/10 features_bundle\T1/ptm/m/n/10 . Typ-i-cally, 
+a \T1/zi4/m/n/10 features_bundle
+[33] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [35]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [36] [37]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [38]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (12.55846pt too wide) in paragraph at lines 2513--2515
+[]\T1/ptm/m/n/10 maximum num-ber of to-kens to de-code from to-ken stream, pass
+ed into \T1/zi4/m/n/10 as.markdown 
+[40] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [41] [42]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.85748pt too wide) in paragraph at lines 2717--2722
+\T1/ptm/m/n/10 pro-cess kwic class ob-jects (see 'Us-age'). See sec-tion 'De-ta
+ils' for the \T1/zi4/m/n/10 enrich\T1/ptm/m/n/10 , \T1/zi4/m/n/10 view \T1/ptm/
+m/n/10 and \T1/zi4/m/n/10 knit_print
+[43pdfTeX warning (ext4): destination with the same identifier (name{Rfn.[,kwic
+,ANY,ANY,ANY.Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.2726 ## S4 method for signature 'kwic'
+                                        ] [44]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [46]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [47]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [48]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [49]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [50]
+Overfull \hbox (8.8082pt too wide) in paragraph at lines 3218--3220
+[]\T1/ptm/m/n/10 Object slots that will be re-ported columns of \T1/zi4/m/n/10 
+data.frame \T1/ptm/m/n/10 sum-ma-riz-ing \T1/zi4/m/n/10 partition
+[51]
+Overfull \hbox (17.88095pt too wide) in paragraph at lines 3259--3259
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", speaker = ".*Merkel", p_a
+ttribute = "word", regex = TRUE)[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [52] [53]
+Overfull \hbox (4.38095pt too wide) in paragraph at lines 3365--3365
+ []\T1/zi4/m/n/9 pb <- partition_bundle(bt2009, s_attribute = "date", progress 
+= TRUE, p_attribute = "word")[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [54pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.as.partition.Rul.bundle,
+list.Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.barplot,partition.Rul.bundle.Rdash.method}) has been alr
+eady used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.merge,partition.Rul.bundle.Rdash.method}) has been alrea
+dy used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.summary,partition.Rul.bundle.Rdash.method}) has been alr
+eady used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                pdfTeX warning (ext4): destination with the sam
+e identifier (name{Rfn.[,partition.Rul.bundle,ANY,ANY,ANY.Rdash.method}) has be
+en already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.3431 partition_bundle(.Object)
+                                ] [55]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [56]
+Overfull \hbox (12.50745pt too wide) in paragraph at lines 3609--3611
+[]\T1/ptm/m/n/10 A name to iden-tify the ob-ject (\T1/zi4/m/n/10 character \T1/
+ptm/m/n/10 vec-tor with length 1); use-ful when mul-ti-ple \T1/zi4/m/n/10 parti
+tion
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57] [58]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (123.57532pt too wide) in paragraph at lines 3771--3772
+[]\T1/ptm/m/n/10 Stefan Ev-ert & The OCWB De-vel-op-ment Team, CQP Query Lan-gu
+age Tu-to-rial, http://cwb.sourceforge.net/files/CQP_Tutorial.pdf. 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [59] [60]
+Overfull \hbox (4.38095pt too wide) in paragraph at lines 3885--3885
+ []\T1/zi4/m/n/9 merkel <- partition("GERMAPARLMINI", date = "2009-11-10", spea
+ker = "Merkel", regex = TRUE)[] 
+
+Overfull \hbox (0.78094pt too wide) in paragraph at lines 3889--3889
+ []  \T1/zi4/m/n/9 highlight = list(yellow = c("Deutschland", "Bundesrepublik")
+, lightgreen = "Regierung"),[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [61]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [62]
+Overfull \hbox (44.60707pt too wide) in paragraph at lines 4014--4016
+[]\T1/ptm/m/n/10 An ap-pendix to the 'Cor-pus En-cod-ing Tu-to-rial' (http://cw
+b.sourceforge.net/files/CWB_Encoding_Tutorial.pdf)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [63]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [64]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [66]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [68]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [69]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [70pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.round,textstat.Rdash.met
+hod}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4481 p_attributes(.Object)
+                            pdfTeX warning (ext4): destination with the same id
+entifier (name{Rfn.sort,textstat.Rdash.method}) has been already used, duplicat
+e ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4481 p_attributes(.Object)
+                            ] [71]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [72]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [73pdfTeX warning 
+(ext4): destination with the same identifier (name{Rfn.trim,TermDocumentMatrix.
+Rdash.method}) has been already used, duplicate ignored
+
+\AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
+                                                  \fi \fi 
+l.4693 \item[\code{termsToDrop}]
+                                 ...]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [74]
+Overfull \hbox (6.4981pt too wide) in paragraph at lines 4762--4768
+[]\T1/ptm/m/n/10 The reg-istry files within the pack-age are as-sumed to be in 
+the sub-di-rec-tory \T1/zi4/m/n/10 ./extdata/cwb/registry
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [75] [76]
+(./Rd2.ind [77]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 11.
+
+
+Overfull \hbox (20.8567pt too wide) in paragraph at lines 19--21
+[]\T1/zi4/m/it/10 +,partition_bundle,partition_bundle-method 
+
+Overfull \hbox (15.8567pt too wide) in paragraph at lines 73--75
+[]\T1/zi4/m/it/10 as.data.frame,cooccurrences_bundle-method 
+
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 93--95
+[]\T1/zi4/m/it/10 as.DocumentTermMatrix,character-method 
+
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 97--99
+[]\T1/zi4/m/it/10 as.DocumentTermMatrix,partition_bundle-method 
+[78]
+Overfull \hbox (30.8567pt too wide) in paragraph at lines 131--133
+[]\T1/zi4/m/it/10 as.sparseMatrix,simple_triplet_matrix-method 
+
+Overfull \hbox (15.8567pt too wide) in paragraph at lines 133--135
+[]\T1/zi4/m/it/10 as.sparseMatrix,TermDocumentMatrix-method 
+
+Overfull \hbox (0.8567pt too wide) in paragraph at lines 139--141
+[]\T1/zi4/m/it/10 as.TermDocumentMatrix,character-method 
+
+Overfull \hbox (35.8567pt too wide) in paragraph at lines 143--145
+[]\T1/zi4/m/it/10 as.TermDocumentMatrix,partition_bundle-method 
+[79] [80] [81]
+Overfull \hbox (10.8567pt too wide) in paragraph at lines 552--554
+[]\T1/zi4/m/it/10 partition_bundle,partition_bundle-method 
+[82] [83]) (./Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information){/usr/local/texlive/2015/te
+xmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/usr/local/texlive/2015/texmf-
+dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive/2015/texmf-dist/fonts/enc/
+dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/2015/texmf-dist/fonts/type1/p
+ublic/inconsolata/Inconsolata-zi4r.pfb></usr/local/texlive/2015/texmf-dist/font
+s/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/texmf-dist/fonts
+/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/
+urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/
+utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmr8a.pfb
+></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on Rd2.pdf (83 pages, 252907 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘polmineR-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/0w/prb4hnss2gn1p7y34qb2stw00000gp/T//RtmpvHsP2C/Rd2pdfcc3a4513b9d9'
