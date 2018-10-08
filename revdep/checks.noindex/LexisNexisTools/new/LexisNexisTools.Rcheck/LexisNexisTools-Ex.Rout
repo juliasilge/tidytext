@@ -40,22 +40,22 @@ LexisNexisTools Version 0.2.0
 > # Make LNToutput object from sample
 > LNToutput <- lnt_read(lnt_sample())
 Creating LNToutput from input 1 files...
-	...files loaded [0.0013 secs]
-	...articles split [0.0093 secs]
-	...lengths extracted [0.0098 secs]
-	...newspapers extracted [0.01 secs]
-	...dates extracted [0.015 secs]
-	...authors extracted [0.016 secs]
-	...sections extracted [0.016 secs]
-	...editions extracted [0.016 secs]
-	...headlines extracted [0.017 secs]
-	...dates converted [0.024 secs]
-	...metadata extracted [0.026 secs]
-	...article texts extracted [0.029 secs]
-	...paragraphs extracted [0.039 secs]
-	...superfluous whitespace removed from articles [0.041 secs]
-	...superfluous whitespace removed from paragraphs [0.043 secs]
-Elapsed time: 0.044 secs
+	...files loaded [0.0015 secs]
+	...articles split [0.011 secs]
+	...lengths extracted [0.011 secs]
+	...newspapers extracted [0.012 secs]
+	...dates extracted [0.016 secs]
+	...authors extracted [0.017 secs]
+	...sections extracted [0.017 secs]
+	...editions extracted [0.017 secs]
+	...headlines extracted [0.018 secs]
+	...dates converted [0.025 secs]
+	...metadata extracted [0.027 secs]
+	...article texts extracted [0.03 secs]
+	...paragraphs extracted [0.041 secs]
+	...superfluous whitespace removed from articles [0.044 secs]
+	...superfluous whitespace removed from paragraphs [0.046 secs]
+Elapsed time: 0.046 secs
 > 
 > # extract meta and make corrections
 > correction <- LNToutput@meta[grepl("Wikipedia", LNToutput@meta$Headline), ]
@@ -84,20 +84,20 @@ Warning in lnt_sample() :
   Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
 Creating LNToutput from input 1 files...
 	...files loaded [0.0011 secs]
-	...articles split [0.01 secs]
-	...lengths extracted [0.011 secs]
-	...newspapers extracted [0.011 secs]
-	...dates extracted [0.013 secs]
-	...authors extracted [0.015 secs]
-	...sections extracted [0.015 secs]
-	...editions extracted [0.015 secs]
-	...headlines extracted [0.016 secs]
-	...metadata extracted [0.018 secs]
-	...article texts extracted [0.022 secs]
-	...paragraphs extracted [0.027 secs]
-	...superfluous whitespace removed from articles [0.03 secs]
-	...superfluous whitespace removed from paragraphs [0.032 secs]
-Elapsed time: 0.033 secs
+	...articles split [0.0094 secs]
+	...lengths extracted [0.0099 secs]
+	...newspapers extracted [0.01 secs]
+	...dates extracted [0.012 secs]
+	...authors extracted [0.013 secs]
+	...sections extracted [0.013 secs]
+	...editions extracted [0.013 secs]
+	...headlines extracted [0.013 secs]
+	...metadata extracted [0.015 secs]
+	...article texts extracted [0.017 secs]
+	...paragraphs extracted [0.021 secs]
+	...superfluous whitespace removed from articles [0.023 secs]
+	...superfluous whitespace removed from paragraphs [0.026 secs]
+Elapsed time: 0.026 secs
 > d <- lnt_asDate(LNToutput@meta$Date)
 > d
  [1] "2010-01-11" "2010-01-11" "2010-01-11" "2010-01-11" "2010-01-11"
@@ -122,22 +122,22 @@ Elapsed time: 0.033 secs
 Warning in lnt_sample() :
   Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
 Creating LNToutput from input 1 files...
-	...files loaded [0.00072 secs]
-	...articles split [0.009 secs]
-	...lengths extracted [0.0097 secs]
-	...newspapers extracted [0.0099 secs]
+	...files loaded [0.00075 secs]
+	...articles split [0.0094 secs]
+	...lengths extracted [0.01 secs]
+	...newspapers extracted [0.01 secs]
 	...dates extracted [0.012 secs]
 	...authors extracted [0.012 secs]
 	...sections extracted [0.013 secs]
 	...editions extracted [0.013 secs]
 	...headlines extracted [0.013 secs]
-	...dates converted [0.017 secs]
+	...dates converted [0.018 secs]
 	...metadata extracted [0.019 secs]
 	...article texts extracted [0.022 secs]
-	...paragraphs extracted [0.027 secs]
-	...superfluous whitespace removed from articles [0.029 secs]
-	...superfluous whitespace removed from paragraphs [0.032 secs]
-Elapsed time: 0.032 secs
+	...paragraphs extracted [0.025 secs]
+	...superfluous whitespace removed from articles [0.027 secs]
+	...superfluous whitespace removed from paragraphs [0.029 secs]
+Elapsed time: 0.029 secs
 > 
 > docs <- lnt_convert(LNToutput, to = "rDNA")
 > 
@@ -171,25 +171,25 @@ Elapsed time: 0.032 secs
 Warning in lnt_sample() :
   Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
 Creating LNToutput from input 1 files...
-	...files loaded [8e-04 secs]
-	...articles split [0.011 secs]
-	...lengths extracted [0.012 secs]
-	...newspapers extracted [0.012 secs]
-	...dates extracted [0.015 secs]
-	...authors extracted [0.016 secs]
-	...sections extracted [0.016 secs]
-	...editions extracted [0.017 secs]
-	...headlines extracted [0.018 secs]
-	...dates converted [0.023 secs]
-	...metadata extracted [0.024 secs]
-	...article texts extracted [0.029 secs]
-	...paragraphs extracted [0.035 secs]
-	...superfluous whitespace removed from articles [0.038 secs]
-	...superfluous whitespace removed from paragraphs [0.041 secs]
-Elapsed time: 0.041 secs
+	...files loaded [0.00085 secs]
+	...articles split [0.0097 secs]
+	...lengths extracted [0.01 secs]
+	...newspapers extracted [0.011 secs]
+	...dates extracted [0.013 secs]
+	...authors extracted [0.014 secs]
+	...sections extracted [0.015 secs]
+	...editions extracted [0.015 secs]
+	...headlines extracted [0.015 secs]
+	...dates converted [0.019 secs]
+	...metadata extracted [0.02 secs]
+	...article texts extracted [0.024 secs]
+	...paragraphs extracted [0.028 secs]
+	...superfluous whitespace removed from articles [0.03 secs]
+	...superfluous whitespace removed from paragraphs [0.032 secs]
+Elapsed time: 0.032 secs
 Checking similiarity for 10 articles over 4 dates...
-	...quanteda dfm construced for similarity comparison [0.11 secs].	...processing date 2010-01-08: 0 duplicates found [0.11 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.11 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.26 secs]. 			...processing date 2010-01-11: 15 duplicates found [4.20 secs]. 		
-Threshold = 0.95; 4 days processed; 5 duplicates found; in 4.20 secs> 
+	...quanteda dfm construced for similarity comparison [0.083 secs].	...processing date 2010-01-08: 0 duplicates found [0.083 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.083 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.24 secs]. 			...processing date 2010-01-11: 15 duplicates found [4.45 secs]. 		
+Threshold = 0.95; 4 days processed; 5 duplicates found; in 4.45 secs> 
 > lnt_diff(duplicates.df, min = 0.18, max = 0.30)
 > 
 > 
@@ -211,22 +211,22 @@ Threshold = 0.95; 4 days processed; 5 duplicates found; in 4.20 secs>
 Warning in lnt_sample() :
   Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
 Creating LNToutput from input 1 files...
-	...files loaded [0.0052 secs]
-	...articles split [0.013 secs]
-	...lengths extracted [0.014 secs]
-	...newspapers extracted [0.014 secs]
-	...dates extracted [0.015 secs]
-	...authors extracted [0.016 secs]
-	...sections extracted [0.016 secs]
-	...editions extracted [0.017 secs]
-	...headlines extracted [0.017 secs]
-	...dates converted [0.02 secs]
-	...metadata extracted [0.022 secs]
-	...article texts extracted [0.024 secs]
-	...paragraphs extracted [0.028 secs]
-	...superfluous whitespace removed from articles [0.03 secs]
-	...superfluous whitespace removed from paragraphs [0.032 secs]
-Elapsed time: 0.032 secs
+	...files loaded [0.0079 secs]
+	...articles split [0.016 secs]
+	...lengths extracted [0.016 secs]
+	...newspapers extracted [0.017 secs]
+	...dates extracted [0.019 secs]
+	...authors extracted [0.019 secs]
+	...sections extracted [0.02 secs]
+	...editions extracted [0.02 secs]
+	...headlines extracted [0.02 secs]
+	...dates converted [0.024 secs]
+	...metadata extracted [0.025 secs]
+	...article texts extracted [0.027 secs]
+	...paragraphs extracted [0.031 secs]
+	...superfluous whitespace removed from articles [0.034 secs]
+	...superfluous whitespace removed from paragraphs [0.036 secs]
+Elapsed time: 0.036 secs
 > 
 > # Lookup keywords
 > LNToutput@meta$Keyword <- lnt_lookup(LNToutput,
@@ -257,22 +257,22 @@ Elapsed time: 0.032 secs
 Warning in lnt_sample() :
   Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
 Creating LNToutput from input 1 files...
-	...files loaded [0.00068 secs]
-	...articles split [0.0079 secs]
-	...lengths extracted [0.0083 secs]
-	...newspapers extracted [0.0086 secs]
-	...dates extracted [0.01 secs]
-	...authors extracted [0.011 secs]
-	...sections extracted [0.011 secs]
-	...editions extracted [0.012 secs]
-	...headlines extracted [0.012 secs]
-	...dates converted [0.015 secs]
-	...metadata extracted [0.017 secs]
-	...article texts extracted [0.019 secs]
-	...paragraphs extracted [0.024 secs]
-	...superfluous whitespace removed from articles [0.026 secs]
-	...superfluous whitespace removed from paragraphs [0.028 secs]
-Elapsed time: 0.028 secs
+	...files loaded [0.00094 secs]
+	...articles split [0.008 secs]
+	...lengths extracted [0.0084 secs]
+	...newspapers extracted [0.0087 secs]
+	...dates extracted [0.011 secs]
+	...authors extracted [0.012 secs]
+	...sections extracted [0.012 secs]
+	...editions extracted [0.013 secs]
+	...headlines extracted [0.013 secs]
+	...dates converted [0.018 secs]
+	...metadata extracted [0.02 secs]
+	...article texts extracted [0.023 secs]
+	...paragraphs extracted [0.029 secs]
+	...superfluous whitespace removed from articles [0.031 secs]
+	...superfluous whitespace removed from paragraphs [0.034 secs]
+Elapsed time: 0.035 secs
 > meta.df <- LNToutput@meta
 > articles.df <- LNToutput@articles
 > paragraphs.df <- LNToutput@paragraphs
@@ -311,10 +311,10 @@ Warning in lnt_sample() :
 > report.df <- lnt_rename(x = my_files,
 +                         recursive = FALSE,
 +                         report = TRUE)
-in 0.0024 secs [changes were only simulated]> 
+in 0.0016 secs [changes were only simulated]> 
 > # Or provide folder name(s)
 > report.df <- lnt_rename(x = getwd())
-in 0.00096 secs [changes were only simulated]> 
+in 0.00072 secs [changes were only simulated]> 
 > report.df
                                                                                                                                   name_orig
 1 /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck/sample.TXT
@@ -368,30 +368,30 @@ Warning in lnt_sample() :
 Warning in lnt_sample() :
   Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
 Creating LNToutput from input 1 files...
-	...files loaded [0.00065 secs]
-	...articles split [0.0076 secs]
-	...lengths extracted [0.008 secs]
-	...newspapers extracted [0.0083 secs]
-	...dates extracted [0.01 secs]
-	...authors extracted [0.011 secs]
+	...files loaded [0.00084 secs]
+	...articles split [0.0087 secs]
+	...lengths extracted [0.0093 secs]
+	...newspapers extracted [0.0097 secs]
+	...dates extracted [0.011 secs]
+	...authors extracted [0.012 secs]
 	...sections extracted [0.012 secs]
-	...editions extracted [0.012 secs]
+	...editions extracted [0.013 secs]
 	...headlines extracted [0.013 secs]
-	...dates converted [0.016 secs]
+	...dates converted [0.017 secs]
 	...metadata extracted [0.018 secs]
-	...article texts extracted [0.02 secs]
-	...paragraphs extracted [0.025 secs]
-	...superfluous whitespace removed from articles [0.028 secs]
-	...superfluous whitespace removed from paragraphs [0.03 secs]
-Elapsed time: 0.03 secs
+	...article texts extracted [0.021 secs]
+	...paragraphs extracted [0.024 secs]
+	...superfluous whitespace removed from articles [0.027 secs]
+	...superfluous whitespace removed from paragraphs [0.029 secs]
+Elapsed time: 0.029 secs
 > 
 > # Test similarity of articles
 > duplicates.df <- lnt_similarity(texts = LNToutput@articles$Article,
 +                                 dates = LNToutput@meta$Date,
 +                                 IDs = LNToutput@articles$ID)
 Checking similiarity for 10 articles over 4 dates...
-	...quanteda dfm construced for similarity comparison [0.036 secs].	...processing date 2010-01-08: 0 duplicates found [0.037 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.037 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.046 secs]. 			...processing date 2010-01-11: 9 duplicates found [2.98 secs]. 		
-Threshold = 0.99; 4 days processed; 4 duplicates found; in 2.98 secs> 
+	...quanteda dfm construced for similarity comparison [0.037 secs].	...processing date 2010-01-08: 0 duplicates found [0.037 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.037 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.044 secs]. 			...processing date 2010-01-11: 9 duplicates found [3.09 secs]. 		
+Threshold = 0.99; 4 days processed; 4 duplicates found; in 3.09 secs> 
 > # Remove instances with a high relative distance
 > duplicates.df <- duplicates.df[duplicates.df$rel_dist < 0.2]
 > 
@@ -409,7 +409,7 @@ Threshold = 0.99; 4 days processed; 4 duplicates found; in 2.98 secs>
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  8.863 1.836 10.185 0.018 0.018 
+Time elapsed:  9.115 2.025 10.543 0.019 0.02 
 > grDevices::dev.off()
 null device 
           1 

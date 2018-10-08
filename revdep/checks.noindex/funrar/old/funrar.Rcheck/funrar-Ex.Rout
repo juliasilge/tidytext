@@ -854,7 +854,7 @@ Warning in compute_dist_matrix(tra) :
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  1.408 0.125 1.57 0 0 
+Time elapsed:  1.701 0.157 1.954 0 0 
 > grDevices::dev.off()
 null device 
           1 

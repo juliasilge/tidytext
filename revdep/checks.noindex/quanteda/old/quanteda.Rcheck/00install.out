@@ -17,11 +17,16 @@ clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDE
 clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordcloud.cpp -o wordcloud.o
 clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordfish_dense.cpp -o wordfish_dense.o
 clang++ -std=gnu++11 -I"/Library/Frameworks/R.framework/Resources/include" -DNDEBUG -DARMA_DONT_PRINT_OPENMP_WARNING  -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/Rcpp/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppParallel/include" -I"/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/library.noindex/quanteda/RcppArmadillo/include" -I/usr/local/include  -DARMA_64BIT_WORD=1 -fPIC  -Wall -g -O2 -c wordfish_mt.cpp -o wordfish_mt.o
-clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o quanteda.so RcppExports.o ca_mt.o collocations_mt_.o dist_mt.o fcm_mt.o kwic_mt.o tokens_compound_mt.o tokens_lookup_mt.o tokens_ngrams_mt.o tokens_recompile_mt.o tokens_segment_mt.o tokens_select_mt.o utility.o wordcloud.o wordfish_dense.o wordfish_mt.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
-ld: warning: directory not found for option '-L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin15/6.1.0'
-ld: warning: directory not found for option '-L/usr/local/gfortran/lib'
-ld: library not found for -lgfortran
-clang: error: linker command failed with exit code 1 (use -v to see invocation)
-make: *** [quanteda.so] Error 1
-ERROR: compilation failed for package ‘quanteda’
-* removing ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/quanteda’
+clang++ -std=gnu++11 -dynamiclib -Wl,-headerpad_max_install_names -undefined dynamic_lookup -single_module -multiply_defined suppress -L/Library/Frameworks/R.framework/Resources/lib -L/usr/local/lib -o quanteda.so RcppExports.o ca_mt.o collocations_mt_.o dist_mt.o fcm_mt.o kwic_mt.o tokens_compound_mt.o tokens_lookup_mt.o tokens_ngrams_mt.o tokens_recompile_mt.o tokens_segment_mt.o tokens_select_mt.o utility.o wordcloud.o wordfish_dense.o wordfish_mt.o -L/Library/Frameworks/R.framework/Resources/lib -lRlapack -L/Library/Frameworks/R.framework/Resources/lib -lRblas -L/usr/local/gfortran/lib/gcc/x86_64-apple-darwin16/6.3.0 -L/usr/local/gfortran/lib -lgfortran -lquadmath -lm -F/Library/Frameworks/R.framework/.. -framework R -Wl,-framework -Wl,CoreFoundation
+installing to /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/quanteda/old/quanteda.Rcheck/quanteda/libs
+** R
+** data
+*** moving datasets to lazyload DB
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (quanteda)

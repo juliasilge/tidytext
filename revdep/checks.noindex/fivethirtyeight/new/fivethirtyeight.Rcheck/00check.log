@@ -6,8 +6,7 @@
 * this is package ‘fivethirtyeight’ version ‘0.4.0’
 * package encoding: UTF-8
 * checking package namespace information ... OK
-* checking package dependencies ... NOTE
-Package suggested but not available for checking: ‘fivethirtyeight’
+* checking package dependencies ... OK
 * checking if this is a source package ... OK
 * checking if there is a namespace ... OK
 * checking for executable files ... OK
@@ -16,9 +15,9 @@ Package suggested but not available for checking: ‘fivethirtyeight’
 * checking for sufficient/correct file permissions ... OK
 * checking whether package ‘fivethirtyeight’ can be installed ... OK
 * checking installed package size ... NOTE
-  installed size is  6.3Mb
+  installed size is  6.4Mb
   sub-directories of 1Mb or more:
-    data   5.3Mb
+    data   5.5Mb
 * checking package directory ... OK
 * checking ‘build’ directory ... OK
 * checking DESCRIPTION meta-information ... OK
@@ -33,7 +32,6 @@ Package suggested but not available for checking: ‘fivethirtyeight’
 * checking whether the package can be unloaded cleanly ... OK
 * checking whether the namespace can be loaded with stated dependencies ... OK
 * checking whether the namespace can be unloaded cleanly ... OK
-* checking loading without being on the library search path ... OK
 * checking dependencies in R code ... OK
 * checking S3 generic/method consistency ... OK
 * checking replacement functions ... OK
@@ -60,4 +58,4 @@ Package suggested but not available for checking: ‘fivethirtyeight’
 * checking re-building of vignette outputs ... OK
 * checking PDF version of manual ... OK
 * DONE
-Status: 3 NOTEs
+Status: 2 NOTEs

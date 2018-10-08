@@ -1,0 +1,47 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> Sys.setenv("R_TESTS" = "")
+> 
+> library(testthat)
+> library(quanteda)
+Package version: 1.3.4
+Parallel computing: 2 of 8 threads used.
+See https://quanteda.io for tutorials and examples.
+
+Attaching package: 'quanteda'
+
+The following object is masked from 'package:utils':
+
+    View
+
+> 
+> Sys.setenv("_R_CHECK_LENGTH_1_CONDITION_" = TRUE)
+> 
+> ops <- quanteda_options()
+> quanteda_options(reset = TRUE)
+> 
+> test_check("quanteda")
+  |                                                                              |                                                                      |   0%  |                                                                              |======================================================================| 100%
+══ testthat results  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+OK: 2269 SKIPPED: 10 FAILED: 0
+> quanteda_options(ops)
+> 
+> 
+> proc.time()
+   user  system elapsed 
+ 75.974   5.894  78.131 

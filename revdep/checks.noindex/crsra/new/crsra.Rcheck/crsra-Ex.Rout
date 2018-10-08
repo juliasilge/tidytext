@@ -399,7 +399,7 @@ $`Fake Course`
 > cleanEx()
 > options(digits = 7L)
 > base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
-Time elapsed:  3.16 0.242 3.424 0.002 0.002 
+Time elapsed:  3.664 0.313 4.095 0.002 0.002 
 > grDevices::dev.off()
 null device 
           1 
