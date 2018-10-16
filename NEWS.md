@@ -1,4 +1,4 @@
-# tidytext 0.2.0 [WIP]
+# tidytext 0.2.0
 
 * Improvements to documentation (#117)
 * Fix for NSE thanks to @lepennec (#122).
