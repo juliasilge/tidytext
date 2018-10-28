@@ -1,0 +1,11 @@
+* installing *source* package ‘widyr’ ...
+** package ‘widyr’ successfully unpacked and MD5 sums checked
+** R
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (widyr)

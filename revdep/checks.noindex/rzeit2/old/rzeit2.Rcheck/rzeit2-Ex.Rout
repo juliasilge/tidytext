@@ -1,0 +1,140 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "rzeit2"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('rzeit2')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("get_article_text")
+> ### * get_article_text
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: get_article_text
+> ### Title: Get article text
+> ### Aliases: get_article_text
+> 
+> ### ** Examples
+> 
+> url <- paste0("https://www.zeit.de/kultur/film/2018-04/",
++ "tatort-frankfurt-unter-kriegern-obduktionsbericht")
+> get_article_text(url = url)
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           https://www.zeit.de/kultur/film/2018-04/tatort-frankfurt-unter-kriegern-obduktionsbericht 
+"Manchmal ist es aber auch nicht leicht. Wenn man sich zum\nBeispiel die Mühe macht, zu überlegen, was bei dem Frankfurter Tatort: Unter Kriegern (HR-Redaktion: Liane Jessen, Lili Kobbe) schiefgelaufen ist, ob das Drehbuch\n(Volker Einrauch) von der Regie (Hermine Huntgeburth) vielleicht nicht\nverstanden wurde oder, umgekehrt, die Regie aus einem dürftigen Drehbuch das\nBeste zu machen versucht hat – dann findet sich in diesem Internet der Hinweis, dass Einrauch und Huntgeburth seit Jahren zusammenarbeiten. Vor\nzwei Jahren sogar schon einmal bei einem Frankfurter Tatort.  Und so was macht man ja nicht, wenn man sich nicht versteht.\nWas die Sache nur komplizierter erscheinen lässt, weil doch zu spüren ist, dass\ndieser Tatort irgendetwas will. Man\naber an der Frage, was er will, viel länger zu kauen hat als an der im Laufe\ndes Films immer uninteressanter werdenden Mördersuche.  Das hat auch damit zu tun, dass der Film mit Fosco Carridi\n(Bruno Cathomas) beginnt, dem, muss man leider so hart sagen, ziemlich\nunwichtigen Chef von Grand Brix (Wolfram Koch) und Janneke (Margarita Broich).\nDer kriegt auf dem Weg zur Arbeit eine üble Kopfnuss vor den Deetz von einem Zeitgenossen, der im Aggressionsmanagement des Alltagslebens eher\nunterqualifiziert ist. Fosco lässt daraufhin mit einem Top-Phantombild nach dem\nÜbertäter fahnden. Aber spätestens, wenn Janneke ihn zum ersten Mal sieht und\nnicht festnimmt, ahnt man, dass der Tunichtgut für die Rahmenhandlung, also den\nSchluss, aufgehoben wird.  Das ist langweilig, vor allem nimmt es kostbare Zeit vom\nLeichenfund weg, der am Anfang jeder ARD-Sonntagabendkrimi-Ermittlung steht.\nRatzfatz steckt dann ein Junge tot im Heizungskeller eines\nSportleistungszentrums, dessen Rolle der Film mühsam rekonstruieren muss.\nEinfühlung ist sicherlich nicht alles im Film, aber leichter wäre es schon, wüsste man etwas mehr über die Leiche, als dass es sie gibt.  Verdächtig macht sich der Jungdynamo Joachim Voss (Golo Euler), der große Ambitionen (IOC) hat, hauptberuflich in\nHigh-End-Unternehmensführung (\"Immer ein Beweger bleiben\") und\nehrenamtlich in Leistungssport macht. Er wohnt in einem absurd hässlichen Haus\nund lebt in einer komplett unklaren Beziehung mit der sich am Fell des\nPferdehalses geborgen fühlenden Meike (Lina Beckmann) und dem altklügsten Kind\nFelix (Juri Winkler), das die Tatort-Geschichte\nje gesehen hat. Was nach dem überbegabten Kollegen von letzter Woche durchaus eine Kunst ist.  Diesem Treiben ist die Zuschauerin den ganzen Film über\nausgesetzt. Zwischendurch sucht Fanny für Brixi und sich nach einer neuen\nWohnung (beim letzten Mal, dem Horror-Tatort,\nging das traute gemeinsame Heim ja in Flammen auf) und es empfehlen sich\nandere, leider ziemlich fade Kandidaten motivvage für die Tat: der\nResozialisierungshelfer Waldner (Marek Harloff) und der resozialisierte\nHausmeister Brunner (hätte man auch nicht gedacht, dass der nach seinem\nAusstieg als Dortmunder Kommissar so schnell anschlussverpflichtet wird: Stefan Konarske).  Wobei es durchaus unangenehm ist, wie im Film gegenüber der Idee von Resozialisierung ausgeteilt wird – also gegen die Arbeit des Herrn Waldner, die gleichzeitig aber nur so grob beschrieben wird, dass man sich alles mögliche drunter vorstellen kann.  Alles ist grell und gelb, und natürlich gibt es abseits des\nsogenannten Realismus tausend Möglichkeiten, einen Film zu erzählen. Dieser Tatort entscheidet sich für keine; er genügt\nsich in leichter Überdrehtheit, wozu gehört, Figuren mit halbgaren Pathologien auszustatten.  \nWahrscheinlich\nsoll Unter Kriegern (schon im Titel,\nder einem nicht weiterhilft, steckt das ganze Elend dieser Folge) von den Nebenwirkungen\ndes Leistungsdrucks für unser Leben handeln. Aber wie so oft, wenn ein\nFernsehfilm dem Kapitalismus ins Gesicht schauen will, kommen von vornherein\ndepperte Figuren wie Joachim Voss heraus: Managerkarikaturen an der\nRudermaschine. Dabei wäre das ja mal was, ein Film über die Verhältnisse, in\ndenen wir leben. \n\n Ein Satz, der aus Kollegen Freunde macht: \"Dieser Verein ist knallhart leistungsorientiert.\"\nEin Hinweis, mit dem man Mansplainern kommen kann: \"Das ist pädagogisch kontraproduktiv.\"\nEine Auskunft, mit der es sich auf Stehpartys reüssieren lässt: \"Magen-Darm\"\n" 
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("get_client")
+> ### * get_client
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: get_client
+> ### Title: Client status and API usage
+> ### Aliases: get_client
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D get_client()
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("get_content")
+> ### * get_content
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: get_content
+> ### Title: Content endpoint
+> ### Aliases: get_content
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D get_content(query = "Merkel")
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("get_content_all")
+> ### * get_content_all
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: get_content_all
+> ### Title: Content endpoint (all)
+> ### Aliases: get_content_all
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D get_content(query = "Merkel")
+> ##D  
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("set_api_key")
+> ### * set_api_key
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: set_api_key
+> ### Title: Set api key to the .Renviron
+> ### Aliases: set_api_key
+> 
+> ### ** Examples
+> 
+> ## Not run: 
+> ##D # this is not an actual api key
+> ##D api_key <- "5t5yno5qqkufxis5q2vzx26vxq2hqej9"
+> ##D set_api_key(api_key, tempdir())
+> ## End(Not run)
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  0.322 0.034 2.04 0.002 0.003 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

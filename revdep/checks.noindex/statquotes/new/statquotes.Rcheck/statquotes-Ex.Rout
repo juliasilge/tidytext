@@ -1,0 +1,579 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "statquotes"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('statquotes')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("quote_cloud")
+> ### * quote_cloud
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: quote_cloud
+> ### Title: Function to generate word cloud based upon quote database
+> ### Aliases: quote_cloud
+> 
+> ### ** Examples
+> 
+> quote_cloud()
+> quote_cloud(search = "graph")
+> quote_cloud(max.words = 10)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("quote_topics")
+> ### * quote_topics
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: quote_topics
+> ### Title: List the topics of the quotes data base
+> ### Aliases: quote_topics
+> 
+> ### ** Examples
+> 
+> quote_topics()
+[1] "Computing"          "Data"               "Data visualization"
+[4] "History"            "Reviews"            "Science"           
+[7] "Statistics"         "Unclassified"      
+> quote_topics(TRUE)
+                topic        subtopic
+2           Computing       Tidy data
+4                Data        Averages
+5                Data          Counts
+6                Data          Tables
+8  Data visualization          Design
+9  Data visualization        Ellipses
+10 Data visualization        Pictures
+12            History      Milestones
+13            History            Time
+16            Science Generalizations
+18         Statistics      Box quotes
+19         Statistics    Tukey quotes
+> 
+> 
+> 
+> cleanEx()
+> nameEx("search_quotes")
+> ### * search_quotes
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: search_quotes
+> ### Title: Function to search quote database
+> ### Aliases: search_quotes
+> 
+> ### ** Examples
+> 
+> search_quotes("^D") # regex to find all quotes that start with "D"
+You can see a lot, just by looking. 
+--- Yogi Berra 
+
+Did you ever see such a thing as a drawing of a muchness? 
+--- Lewis Carroll, the Dormouse, in Alice in Wonderland 
+
+The critical requirement of an effective graphical display is that it 
+stimulate spontaneous perceptions of *structure* in data. 
+--- S. Smith et al. 1990 
+
+Like good writing, producing an effective graphical display requires an 
+understanding of *purpose*---*what* is to be communicated, and to 
+*whom*. 
+--- Michael Friendly, "Gallery of Data Visualization", 1991 
+
+Have you ever seen voice mail? 
+--- The Hackers Test 
+
+Graphics is the visual means of resolving logical problems. 
+--- Jacques Bertin 
+
+The greatest value of a picture is when it forces us to notice what we 
+never expected to see. 
+--- John W. Tukey 
+
+If one technique of data analysis were to be exalted above all others 
+for its ability to be revealing to the mind in connection with each of 
+many different models, there is little doubt which one would be chosen. 
+The simple graph has brought more information to the data analyst's 
+mind than any other device. It specializes in providing indications of 
+unexpected phenomena. 
+--- John W. Tukey 
+
+Genius seems to consist merely in trueness of sight. 
+--- Ralph Waldo Emerson, 1840 
+
+The eye obeys exactly the action of the mind. 
+--- Ralph Waldo Emerson, 1860 
+
+Vision is the art of seeing things invisible. 
+--- Johnathan Swift, 1711 
+
+When there is no vision, the people perish. 
+--- Proverbs 29:18 
+
+If I can't picture it, I can't understand it. 
+--- Albert Einstein 
+
+And those who have insight will shine brightly like the brightness of 
+the expanse of Heaven. 
+--- Daniel 12:3 
+
+The one thing that marks the true artist is a clear perception and a 
+firm, bold hand, in distinction from that imperfect mental vision and 
+uncertain truth which give up the feeble pictures and the lumpy statues 
+of the mere artisans on canvas or in stone. 
+--- Oliver Wendell Holmes (1860), The Professor at the Breakfast Table 
+Ticknor and Fields, Boston, MA 
+
+I like your motto: One picture is worth 1,000 denials. 
+--- Ronald Reagan to White House News Photographers Assn, 18 May 1983 
+
+With brush you paint the possibilities; with pens you scribe the 
+probabilities; for in pictures we find insight; while in numbers find 
+we strength. 
+--- Forrest W. Young 
+
+A graphic should not only show the leaves; it should show the branches 
+as well as the entire tree. 
+--- Jacques Bertin 
+
+Tables are like cobwebs, like the sieve of Danaides; beautifully 
+reticulated, orderly to look upon, but which will hold no conclusion. 
+Tables are abstractions, and the object a most concrete one, so 
+difficult to read the essence of. 
+--- From Chartism by Thomas Carlyle (1840), Chapter II, Statistics 
+
+A judicious man looks at Statistics, not to get knowledge, but to save 
+himself from having ignorance foisted on him. 
+--- Thomas Carlyle, Chartism Chapter II, Statistics 
+
+Although geometrical representations of propositions in the 
+thermodynamics of fluids are in general use and have done good service 
+in disseminating clear notions in this science, yet they have by no 
+means received the extension in respect to variety and generality of 
+which they are capable. 
+--- J. Willard Gibbs, Graphical Methods in the Thermodynamics of 
+Fluids}, 1873 \citeyear{Gibbs:1873a 
+
+Although we often hear that data speak for themselves, their voices can 
+be soft and sly. 
+--- Mosteller, Fienberg and Rourke, Beginning Statistics with Data 
+Analysis 1983, Reading MA, p. 234 
+
+Nocturne, of Chopin, so beautiful music. But few people will appreciate 
+the music if I just show them the notes. Most of us need to listen to 
+the music to understand how beautiful it is. But often that's how we 
+present statistics; we just show the notes, we don't play the music. 
+--- Hans Rosling, OECD World Forum, Istanbul, June 2007 
+
+The greatest possibilities of visual display lie in vividness and 
+inescapability of the intended message. A visual display can stop your 
+mental flow in its tracks and make you think. A visual display can 
+force you to notice what you never expected to see. 
+--- John W. Tukey 
+
+The purpose of [data] display is comparison (recognition of phenomena), 
+not numbers ... The phenomena are the main actors, numbers are the 
+supporting cast. 
+--- John W. Tukey 
+
+If an editor should print bad English he would lose his position. Many 
+editors are using and printing bad methods of graphic presentation, but 
+they hold their jobs just the same. 
+--- W. C. Brinton, Graphic methods of presenting facts 1914, p. 3 
+
+Around the turn of the century, Karl Pearson, an almost elemental force 
+for more and better statistical thought in all areas of life, including 
+with gusto, matters of social policy, was thinking and lecturing about 
+graphical methods. But later in Pearson's life, and certainly in the 
+careers of R. A. Fisher and the other great statistical minds of the 
+first half of the century, there was a falling away of interest in 
+graphics and an efflorescence of devotion to analytical mathematical 
+methods. Indeed, for many years there was a contagious *snobbery* 
+against so unpopular, vulgar and elementary a topic as graphics among 
+academic statisticians and their students 
+--- William Kruskal 
+
+If statistical graphics, although born just yesterday, extends its 
+reach every day, it is because it replaces long tables of numbers and 
+it allows one not only to embrace at glance the series of phenomena, 
+but also to signal the correspondences or anomalies, to find the 
+causes, to identify the laws. 
+--- Emile Cheysson, c. 1877 
+
+Numbers have an important story to tell. They rely on you to give them 
+a clear and convincing voice 
+--- Stephen Few 
+
+Visualizations act as a campfire around which we gather to tell stories 
+--- Al Shalloway 
+
+The purpose of visualization is insight, not pictures 
+--- Ben Shneiderman 
+
+I love taxonomies, categories, ways of dividing people into groups 
+--- Gretchen Rubin 
+
+Ballerinas are often divided into three categories: jumpers, turners 
+and balancers 
+--- Robert Gottlieb 
+
+Mr. Funkhouser has made an extremely interesting and valuable 
+contribution to the history of statistical method. I wish, however, 
+that he could have added a warning, supported by horrid examples, of 
+the evils of the graphical method unsupported by tables of figures. 
+Both for accurate understanding, and particularly to facilitate the use 
+of the same material by other people, it is essential that graphs 
+should not be published by themselves, but only when supported by the 
+tables which lead up to them. It would be an exceedingly good rule to 
+forbid in any scientific periodical the publication of graphs 
+unsupported by tables. 
+--- John Maynard Keynes, review of Funkhouser for The Economic Journal 
+http://www.jstor.org/stable/2224943 
+
+Without data you are just another person with an opinion 
+--- W. Edwards Deming 
+
+Without a plot you are just a person missing a convincing argument 
+--- Di Cook, 2016 
+
+Whatever relates to extent and quantity may be represented by 
+geometrical figures. Statistical projections which speak to the senses 
+without fatiguing the mind, possess the advantage of fixing the 
+attention on a great number of important facts. 
+--- Alexander von Humboldt, , p. ciii 
+
+Segnius irritant animos demissa per aures, Quam quae sunt oculus 
+subjecta fidelibus (Roughly: What we hear excites the mind less than 
+what we see) 
+--- Horace 
+
+You see, but you do not observe. The distinction is clear. 
+--- Sherlock Holmes, The Adventures of Sherlock Holmes (1890), "A 
+Scandal in Bohemia", p. 162 
+
+Every picture tells a story. 
+--- Rod Stewart, 1971 
+
+A picture is worth a ten thousand words. 
+--- Fred R. Barnard, March 10 1927 in the advertising trade journal 
+Printers Ink 
+
+...But it is not always clear *which* 1000 words. 
+--- John W. Tukey, 1973 
+
+Un croquis vaut mieux qu'un long discours. Tr.: A good sketch is better 
+than a long speech. 
+--- Napoleon Bonaparte 
+
+A picture is worth a thousand numbers. 
+--- Anon 
+
+Show me your flowcharts and conceal your tables, and I shall continue 
+to be mystified. Show me your tables, and I won't usually need your 
+flowcharts; they'll be obvious. 
+--- Fred Brooks, The Mythical Man-Month 
+
+Look here, upon this picture, and on this. 
+--- Shakespeare, Hamlet 
+
+I am only a picture-taster, the way others are wine- or tea-tasters. 
+--- Bernard Berenson, Sunset and Twilight Harcourt, Brace & World, 1963 
+
+Getting information from a table is like extracting sunlight from a 
+cucumber. 
+--- Farquhar & Farquhar, 1891} 
+
+When a law is contained in figures, it is buried like metal in an ore; 
+it is necessary to extract it.  This is the work of graphical 
+representation. It points out the coincidences, the relationships 
+between phenomena, their anomalies, and we have seen what a powerful 
+means of control it puts in the hands of the statistician to verify new 
+data, discover and correct errors with which they have been stained. 
+--- Emile Cheysson, Les m\ethods de la statistique (1890), 34-35. 
+
+[When] you see excellent graphics, find out how they were done. Borrow 
+strength from demonstrated excellence.  The idea for information design 
+is: Don't get it original, get it right. 
+--- Edward Tufte 
+
+Good design is obvious. Great design is transparent. 
+--- Joe Sparano, graphic designer for Oxide Design Co. 
+
+Content precedes design. Design in the absence of content is not 
+design, it's decoration. 
+--- Jeffrey Zeldman, web designer and entrepreneur 
+
+Mankind is not a circle with a single center but an ellipse with two 
+focal points of which facts are one and ideas the other. 
+--- Victor Hugo 
+
+So, Fabricius, I already have this: that the most true path of the 
+planet [Mars] is an ellipse, which Durer also calls an oval, or 
+certainly so close to an ellipse that the difference is insensible 
+--- Johannes Kepler, 1605 
+
+`Data! data!' he cried impatiently.  I can't make bricks without clay. 
+--- Arthur Conan-Doyle, Adventures of Sherlock Holmes "The Copper 
+Beeches" 
+
+I have no data yet. It is a capital mistake to theorize before one has 
+data. 
+--- Arthur Conan-Doyle, Adventures of Sherlock Holmes "A Scandal in 
+Bohemia" 
+
+This was an unexpected piece of luck. My data were coming more quickly 
+than I could have reasonably hoped. 
+--- Arthur Conan-Doyle, Memoirs of Sherlock Holmes, The Musgrave Ritual 
+
+I have not all my facts yet, but I do not think there are any 
+insuperable difficulties. Still, it is an error to argue in front of 
+your data. You find yourself insensibly twisting them round to fit your 
+theories. 
+--- Arthur Conan-Doyle, His Last Bow, Wisteria Lodge 
+
+It is a capital mistake to theorize before one has data. 
+--- Sherlock Homes in Scandal in Bohemia 
+
+The only thing we know for sure about a missing data point is that it 
+is not there, and there is nothing that the magic of statistics can do 
+do change that.  The best that can be managed is to estimate the extent 
+to which missing data have influenced the inferences we wish to draw. 
+--- Howard Wainer, 2009 
+
+Big data can change the way social science is performed, but will not 
+replace statistical common sense. 
+--- Thomas Landsall-Welfare, "Nowcasting the mood of the nation," 
+Significance v. 9(4), August 12, 2012, p. 28 
+
+Baseball is ninety percent mental and the other half is physical. 
+--- Yogi Berra 
+
+Whenever I see an outlier, I never know whether to throw it away or 
+patent it. 
+--- Bert Gunter quoting a colleague, R-Help, 9/14/2015 
+
+In God we trust. All others must bring data. 
+--- W. Edwards Deming 
+
+The combination of some data and an aching desire for an answer does 
+not ensure that a reasonable answer can be extracted from a given body 
+of data. 
+--- John W. Tukey 
+
+The plural of anecdote is not data. 
+--- Roger Brinner 
+
+How do I love thee? Let me count the ways. 
+--- Elizabeth Barrett Browning, Sonnets from the Portuguese 
+
+Not everything that counts can be counted, and not everything that can 
+be counted counts. 
+--- Albert Einstein 
+
+Whenever you can, count. 
+--- Francis Galton, quoted in Newman 
+
+It is difficult to understand why statisticians commonly limit their 
+inquiries to Averages, and do not revel in more comprehensive views. 
+Their souls seem as dull to the charm of variety as that of the native 
+of our flat English counties, whose retrospect of Switzerland was that, 
+if its mountains could be thrown into its lakes, two nuisances would be 
+got rid of at once. 
+--- Francis Galton in Natural Inheritance 
+
+Winwood Reade is good upon the subject. He remarks that, while the 
+individual man is an insoluble puzzle, in the aggregate he becomes a 
+mathematical certainty. You can, for example, never foretell what any 
+one man will do, but you can say with precision what an average number 
+will be up to. Individuals vary, but percentages remain constant. So 
+says the statistician. 
+--- Arthur Conan-Doyle, Sign of the Four 
+
+If you put a buttock on a hot plate and another one on an ice cube, the 
+average is good, but in reality your bottom is in trouble. 
+--- Grigore Moisil 
+
+The graphical method has considerable superiority for the exposition of 
+statistical facts over the tabular. A heavy bank of figures is 
+grievously wearisome to the eye, and the popular mind is as incapable 
+of drawing any useful lessons from it as of extracting sunbeams from 
+cucumbers. 
+--- Arthur B. & Henry Farquhar (1891). Economic and Industrial 
+Delusions 
+
+Let it serve for table-talk. 
+--- William Shakespeare. The Merchant of Venice, Act III, Sc. 5. 
+
+I drink to the general joy o' the whole table. 
+--- William Shakespeare. Macbeth, Act III, Sc. 4. 
+
+Isolated facts, those that can only be obtained by rough estimate and 
+that require development, can only be presented in memoires; but those 
+that can be presented in a body, with details, and on whose accuracy 
+one can rely, may be expounded in tables. 
+--- E. Duvillard, M{e}moire sur le travail du Bureau de statistique 
+1806; cited in 
+> search_quotes("Tukey") #all quotes with "Tukey"
+The greatest value of a picture is when it forces us to notice what we 
+never expected to see. 
+--- John W. Tukey 
+
+If one technique of data analysis were to be exalted above all others 
+for its ability to be revealing to the mind in connection with each of 
+many different models, there is little doubt which one would be chosen. 
+The simple graph has brought more information to the data analyst's 
+mind than any other device. It specializes in providing indications of 
+unexpected phenomena. 
+--- John W. Tukey 
+
+The greatest possibilities of visual display lie in vividness and 
+inescapability of the intended message. A visual display can stop your 
+mental flow in its tracks and make you think. A visual display can 
+force you to notice what you never expected to see. 
+--- John W. Tukey 
+
+The purpose of [data] display is comparison (recognition of phenomena), 
+not numbers ... The phenomena are the main actors, numbers are the 
+supporting cast. 
+--- John W. Tukey 
+
+...But it is not always clear *which* 1000 words. 
+--- John W. Tukey, 1973 
+
+Exploratory data analysis can never be the whole story, but nothing 
+else can serve as the foundation stone -- as the first step. 
+--- John W. Tukey, EDA, 1977, p.3. 
+
+The best thing about being a statistician is that you get to play in 
+everyone's backyard. 
+--- John W. Tukey 
+
+Far better an approximate answer to the right question, which is often 
+vague, than an exact answer to the wrong question, which can always be 
+made precise. 
+--- John W. Tukey, (1962), "The future of data analysis," Annals of 
+Mathematical Statistics 33, 1-67. 
+
+A bad answer to a good question may be far better than a good answer to 
+a bad question. 
+--- A graduate class, paraphrasing Tukeys dictum. 
+
+The worst, i.e., most dangerous, feature of 'accepting the null 
+hypothesis' is the giving up of explicit uncertainty ... Mathematics 
+can sometimes be put in such black-and-white terms, but our knowledge 
+or belief about the external world never can. 
+--- John W. Tukey. (1991). "The Philosophy of Multiple Comparisons," 
+Statistical Science 6, 100--116. 
+
+Better to have an approximate answer to the right question than a 
+precise answer to the wrong question. 
+--- John W. Tukey as quoted by John Chambers 
+
+The combination of some data and an aching desire for an answer does 
+not ensure that a reasonable answer can be extracted from a given body 
+of data. 
+--- John W. Tukey 
+
+The practical power of a statistical test is the product of its' 
+statistical power and the probability of use. 
+--- John W. Tukey, 1959 
+
+The best thing about being a statistician is that you get to play in 
+everyone's backyard. 
+--- John W. Tukey 
+> search_quotes("bad answer", fuzzy = TRUE) # fuzzy match
+A bad answer to a good question may be far better than a good answer to 
+a bad question. 
+--- A graduate class, paraphrasing Tukeys dictum. 
+> 
+> # to a data.frame
+> out <- search_quotes("bad answer", fuzzy = TRUE)
+> as.data.frame(out)
+    qid      topic     subtopic
+115 102 Statistics Tukey quotes
+                                                                                       text
+115 A bad answer to a good question may be far better than a good answer to a bad question.
+                                           source
+115 A graduate class, paraphrasing Tukeys dictum.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("statquote")
+> ### * statquote
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: statquote
+> ### Title: Function to display a randomly chosen statistical quote
+> ### Aliases: statquote print.statquote as.data.frame.statquote
+> 
+> ### ** Examples
+> 
+>  set.seed(1234)
+>  statquote()
+Around the turn of the century, Karl Pearson, an almost elemental force 
+for more and better statistical thought in all areas of life, including 
+with gusto, matters of social policy, was thinking and lecturing about 
+graphical methods. But later in Pearson's life, and certainly in the 
+careers of R. A. Fisher and the other great statistical minds of the 
+first half of the century, there was a falling away of interest in 
+graphics and an efflorescence of devotion to analytical mathematical 
+methods. Indeed, for many years there was a contagious *snobbery* 
+against so unpopular, vulgar and elementary a topic as graphics among 
+academic statisticians and their students 
+--- William Kruskal 
+>  statquote(source="Tukey")
+A bad answer to a good question may be far better than a good answer to 
+a bad question. 
+--- A graduate class, paraphrasing Tukeys dictum. 
+>  statquote(topic="science")
+The best thing about being a statistician is that you get to play in 
+everyone's backyard. 
+--- John W. Tukey 
+>  statquote(topic="history")
+Prediction is very difficult, especially about the future 
+--- Niels Bohr 
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  1.338 0.123 1.502 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

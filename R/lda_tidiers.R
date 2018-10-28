@@ -1,11 +1,11 @@
-#' Tidiers for LDA objects from the topicmodels package
+#' Tidiers for LDA and CTM objects from the topicmodels package
 #'
-#' Tidy the results of a Latent Dirichlet Allocation.
+#' Tidy the results of a Latent Dirichlet Allocation or Correlated Topic Model.
 #'
-#' @param x An LDA (or LDA_VEM) object from the topicmodels package
+#' @param x An LDA or CTM (or LDA_VEM/CTA_VEM) object from the topicmodels package
 #' @param matrix Whether to tidy the beta (per-term-per-topic, default)
 #' or gamma (per-document-per-topic) matrix
-#' @param data For \code{augment}, the data given to the LDA function, either
+#' @param data For \code{augment}, the data given to the LDA or CTM function, either
 #' as a DocumentTermMatrix or as a tidied table with "document" and "term"
 #' columns
 #' @param log Whether beta/gamma should be on a log scale, default FALSE
@@ -77,6 +77,17 @@
 #'
 #' @export
 tidy.LDA <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
+  tidy_topicmodels(x = x, matrix = matrix, log = log, ...)
+}
+
+#' @name lda_tidiers
+#'
+#' @export
+tidy.CTM <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
+  tidy_topicmodels(x = x, matrix = matrix, log = log, ...)
+}
+
+tidy_topicmodels <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
   matrix <- match.arg(matrix)
   if (matrix == "gamma") {
     mat <- x@gamma
@@ -123,6 +134,17 @@ tidy.LDA <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
 #'
 #' @export
 augment.LDA <- function(x, data, ...) {
+  augment_topicmodels(x, data, ...)
+}
+
+#' @name lda_tidiers
+#'
+#' @export
+augment.CTM <- function(x, data, ...) {
+  augment_topicmodels(x, data, ...)
+}
+
+augment_topicmodels <- function(x, data, ...) {
   word_assignments <- x@wordassignments
   rownames(word_assignments) <- x@documents
   colnames(word_assignments) <- x@terms
@@ -145,7 +167,6 @@ augment.LDA <- function(x, data, ...) {
   ret
 }
 
-
 #' @rdname lda_tidiers
 #'
 #' @return \code{glance} always returns a one-row table, with columns
@@ -166,6 +187,13 @@ glance.LDA <- function(x, ...) {
   ret
 }
 
+#' @name lda_tidiers
+#'
+#' @export
+glance.CTM <- function(x, ...) {
+  data_frame(iter = x@iter, terms = x@n)
+
+}
 
 #' @export
 broom::augment

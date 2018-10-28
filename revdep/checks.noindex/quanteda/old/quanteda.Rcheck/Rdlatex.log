@@ -1,0 +1,1736 @@
+Hmm ... looks like a package
+
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+No file Rd2.aux.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [2] [3]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd) [4]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [5]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8] [9]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [10]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12] [13]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [14]
+Overfull \hbox (38.8189pt too wide) in paragraph at lines 873--877
+\T1/ptm/m/n/10 not set, it will use the de-fault se-quence based on \T1/zi4/m/n
+/10 ([][]quanteda_options[][][]("base_docname")\T1/ptm/m/n/10 . 
+[15] [16] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [17]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18] [19]
+Overfull \hbox (6.7086pt too wide) in paragraph at lines 1179--1187
+\T1/ptm/m/n/10 will have a \T1/zi4/m/n/10 NA \T1/ptm/m/n/10 for the ex-tracted 
+\T1/zi4/m/n/10 pattern \T1/ptm/m/n/10 doc-u-ment vari-able (or when \T1/zi4/m/n
+/10 pattern_position = "after"\T1/ptm/m/n/10 ,
+
+Overfull \hbox (30.28752pt too wide) in paragraph at lines 1188--1190
+[]\T1/ptm/m/n/10 To ex-tract syn-tac-ti-cally de-fined sub-document units such 
+as sen-tences and para-graphs, use [][]\T1/zi4/m/n/10 corpus_reshape[][][]
+
+Overfull \hbox (8.88095pt too wide) in paragraph at lines 1237--1237
+ []\T1/zi4/m/n/9 corp2 <- corpus("Mr. Smith: Text.\nMrs. Jones: More text.\nMr.
+ Smith: I\TS1/zi4/m/n/9 '\T1/zi4/m/n/9 m speaking, again.")[] 
+[20] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [21]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [22]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [23]
+Overfull \hbox (45.02087pt too wide) in paragraph at lines 1457--1459
+[][][]$\T1/zi4/m/n/10 https : / / archive . org / details / Inaugural-[]Address
+-[]Corpus-[]1789-[]2009$[][] \T1/ptm/m/n/10 and [][]$\T1/zi4/m/n/10 http : / / 
+www . presidency .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [24]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [25]
+Overfull \hbox (24.41765pt too wide) in paragraph at lines 1585--1587
+[]\T1/ptm/m/n/10 The LSD is avail-able for non-commercial aca-demic pur-poses o
+nly. By us-ing \T1/zi4/m/n/10 data_dictionary_LSD2015\T1/ptm/m/n/10 ,
+[26] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [27] [28]
+Overfull \hbox (13.38098pt too wide) in paragraph at lines 1743--1743
+ []\T1/zi4/m/n/9 test_text <- "The quick brown fox named Seamus jumps over the 
+lazy dog also named Seamus, with[] 
+
+Overfull \hbox (6.18094pt too wide) in paragraph at lines 1749--1749
+ []\T1/zi4/m/n/9 featnames(dfm(test_corpus, ngrams = 2, select = stopwords("eng
+lish"), remove_punct = TRUE))[] 
+
+Overfull \hbox (15.18094pt too wide) in paragraph at lines 1750--1750
+ []\T1/zi4/m/n/9 featnames(dfm(test_corpus, ngrams = 1:2, select = stopwords("e
+nglish"), remove_punct = TRUE))[] 
+
+Overfull \hbox (14.28094pt too wide) in paragraph at lines 1763--1763
+ []\T1/zi4/m/n/9 test_tweets <- c("My homie @justinbieber #justinbieber shoppin
+g in #LA yesterday #beliebers",[] 
+
+Overfull \hbox (2.58102pt too wide) in paragraph at lines 1764--1764
+ []                \T1/zi4/m/n/9 "2all the ha8ers including my bro #justinbiebe
+r #emabiggestfansjustinbieber",[] 
+
+Overfull \hbox (22.38101pt too wide) in paragraph at lines 1765--1765
+ []                \T1/zi4/m/n/9 "Justin Bieber #justinbieber #belieber #fetusj
+ustin #EMABiggestFansJustinBieber")[] 
+
+Overfull \hbox (20.581pt too wide) in paragraph at lines 1772--1772
+ []            \T1/zi4/m/n/9 groups = ifelse(docvars(data_corpus_irishbudget201
+0, "party") %in% c("FF", "Green"),[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [29]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [30]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [31] [32]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [34]
+Overfull \hbox (21.4193pt too wide) in paragraph at lines 2180--2183
+[]\T1/zi4/m/n/10 dfm_remove \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_remove \T1/pt
+m/m/n/10 are sim-ply a con-ve-nience wrap-pers to call-ing \T1/zi4/m/n/10 dfm_s
+elect \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_select
+[35]
+Overfull \hbox (1.4193pt too wide) in paragraph at lines 2184--2187
+[]\T1/zi4/m/n/10 dfm_keep \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_keep \T1/ptm/m/
+n/10 are sim-ply a con-ve-nience wrap-pers to call-ing \T1/zi4/m/n/10 dfm_selec
+t \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_select
+[36] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [37] [38]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [40]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (8.21822pt too wide) in paragraph at lines 2554--2556
+[]\T1/ptm/m/n/10 minimum/maximum val-ues of a fea-ture's doc-u-ment fre-quency,
+ be-low/above which
+[41] [42] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [43]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [44] [45]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [46] [47]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (1.68091pt too wide) in paragraph at lines 2998--2998
+ []\T1/zi4/m/n/9 docnames(data_corpus_inaugural) <- paste("Speech", 1:ndoc(data
+_corpus_inaugural), sep="")[] 
+[48] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (120.38034pt too wide) in paragraph at lines 3041--3048
+\T1/zi4/m/n/10 data_corpus_irishbudget2010[, c("foren","name"]\T1/ptm/m/n/10 ; 
+or, for a sin-gle doc-var, \T1/zi4/m/n/10 data_corpus_irishbudget2010[["name"]]
+\T1/ptm/m/n/10 .
+
+Overfull \hbox (8.6207pt too wide) in paragraph at lines 3041--3048
+\T1/zi4/m/n/10 data_corpus_irishbudget2010[["newvar"]] <-1:ndoc(data_corpus_iri
+shbudget2010)\T1/ptm/m/n/10 . See
+[49] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (13.36841pt too wide) in paragraph at lines 3102--3107
+[]\T1/ptm/m/n/10 the con-text in which to con-sider term co-occurrence: \T1/zi4
+/m/n/10 "document" \T1/ptm/m/n/10 for co-occurrence
+
+Overfull \hbox (9.18869pt too wide) in paragraph at lines 3126--3129
+\T1/ptm/m/n/10 by de-fault; can be a custom-defined vec-tor of the same length 
+as \T1/zi4/m/n/10 length(weights) 
+[50] [51] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [52]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [53]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [54] [55]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [56]
+Overfull \hbox (25.98093pt too wide) in paragraph at lines 3514--3514
+ []\T1/zi4/m/n/9 metacorpus(data_corpus_inaugural, "citation") <- "Presidential
+ Speeches Online Project (2014)."[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [58]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [59]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [60]
+Overfull \hbox (37.86812pt too wide) in paragraph at lines 3783--3788
+\T1/ptm/m/n/10 the freely avail-able CMU pro-nun-ci-a-tion dic-tio-nary at \T1/
+zi4/m/n/10 http://www.speech.cs.cmu.edu/cgi-bin/cmudict\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [61]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [62]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (28.04788pt too wide) in paragraph at lines 3962--3964
+[]\T1/ptm/m/n/10 character; lan-guage op-tion for [][]char_wordstem[][][], [][]
+to-kens_wordstem[][][], and [][]dfm_wordstem[][][] 
+[63] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [64]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [65]
+Overfull \hbox (38.94756pt too wide) in paragraph at lines 4126--4129
+[]\T1/ptm/m/n/10 Perry, Patrick O. and Ken-neth Benoit. (2017) "Scal-ing Text w
+ith the Class Affin-ity Model". [][]arXiv:1710.08963
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [66]
+Overfull \hbox (16.3072pt too wide) in paragraph at lines 4179--4182
+[]\T1/ptm/m/n/10 specifies the thresh-old for the resid-ual ma-trix for cal-cu-
+lat-ing the trun-cated svd.Larger
+
+Overfull \hbox (11.63747pt too wide) in paragraph at lines 4211--4214
+[]\T1/ptm/m/n/10 Nenadic, O. and Greenacre, M. (2007). Cor-re-spon-dence anal-y
+-sis in R, with two- and three-dimensional
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67] [68]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (126.59818pt too wide) in paragraph at lines 4331--4334
+\T1/ptm/m/n/10 nary multi-no-mial" model, first con-vert the dfm to a bi-nary m
+a-trix us-ing [][]\T1/zi4/m/n/10 dfm_weight[][][](x, scheme = "boolean")\T1/ptm
+/m/n/10 . 
+[69]
+Overfull \hbox (2.95987pt too wide) in paragraph at lines 4399--4402
+\T1/ptm/m/n/10 bridge Uni-ver-sity Press. [][]$\T1/zi4/m/n/10 https : / / nlp .
+ stanford . edu / IR-[]book / pdf / irbookonlinereading . pdf$[][] 
+[70] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (2.197pt too wide) in paragraph at lines 4482--4487
+[]\T1/ptm/m/n/10 constraint for the min-i-mal un-der-dis-per-sion mul-ti-plier 
+in the quasi-Poisson model.
+
+Overfull \hbox (7.4178pt too wide) in paragraph at lines 4495--4497
+[]\T1/ptm/m/n/10 uses svd to ini-tial-ize the start-ing val-ues of theta, only 
+ap-plies when \T1/zi4/m/n/10 sparse = TRUE 
+[71] [72]
+Overfull \hbox (11.58096pt too wide) in paragraph at lines 4565--4565
+ []\T1/zi4/m/n/9 plot(wf2a$phi, wf2b$phi, xlab = "Min underdispersion = 0", yla
+b = "Min underdispersion = .5",[] 
+
+Overfull \hbox (11.58096pt too wide) in paragraph at lines 4567--4567
+ []\T1/zi4/m/n/9 plot(wf2a$phi, wf2b$phi, xlab = "Min underdispersion = 0", yla
+b = "Min underdispersion = .5",[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [73]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [74]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [75]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [76] [77]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (20.86891pt too wide) in paragraph at lines 4923--4926
+\T1/ptm/m/n/10 cord-ing to these val-ues from low to high. Only ap-plies when \
+T1/zi4/m/n/10 margin = "documents"\T1/ptm/m/n/10 . 
+
+Overfull \hbox (54.4384pt too wide) in paragraph at lines 4935--4938
+\T1/ptm/m/n/10 parency used to over-plot fea-ture names in a fea-ture plot; onl
+y ap-plies if \T1/zi4/m/n/10 margin = "features" 
+[78] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [79]
+Overfull \hbox (45.11853pt too wide) in paragraph at lines 5062--5064
+[]\T1/ptm/m/n/10 if \T1/zi4/m/n/10 TRUE\T1/ptm/m/n/10 , plot a word-clound that
+ com-pares doc-u-ments in the same way as [][]\T1/zi4/m/n/10 comparison.cloud[]
+[][] 
+[80] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [81]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [82]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [83]
+Overfull \hbox (17.02695pt too wide) in paragraph at lines 5305--5307
+[]\T1/ptm/m/n/10 association mea-sure for de-tect-ing col-lo-ca-tions. Cur-rent
+ly this is lim-ited to \T1/zi4/m/n/10 "lambda"\T1/ptm/m/n/10 .
+
+Overfull \hbox (108.87897pt too wide) in paragraph at lines 5324--5328
+[][]\T1/ptm/m/n/10 to-kens[][][] ob-ject and some to-kens have been re-moved, t
+his should be done us-ing [][]\T1/zi4/m/n/10 tokens_remove[][][](x, pattern, pa
+dding = TRUE)
+[84] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [85]
+Overfull \hbox (12.62997pt too wide) in paragraph at lines 5468--5472
+[]\T1/zi4/m/n/10 textstat_simil \T1/ptm/m/n/10 op-tions are: \T1/zi4/m/n/10 "co
+rrelation" \T1/ptm/m/n/10 (de-fault), \T1/zi4/m/n/10 "cosine"\T1/ptm/m/n/10 , \
+T1/zi4/m/n/10 "jaccard"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "ejaccard"\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 "dice"\T1/ptm/m/n/10 ,
+
+Overfull \hbox (54.21783pt too wide) in paragraph at lines 5493--5498
+\T1/ptm/m/n/10 ful trans-for-ma-tions for or-di-na-tion of species data[][]". \
+T1/ptm/m/it/10 Oe-colo-gia\T1/ptm/m/n/10 , 129(2), 271^^U280. doi.org/10.1007/s
+004420100716 
+[86]
+Overfull \hbox (2.58093pt too wide) in paragraph at lines 5539--5539
+ []\T1/zi4/m/n/9 pres_dfm <- dfm(data_corpus_inaugural, remove_punct = TRUE, re
+move = stopwords("english"))[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [87] [88]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [89]
+Overfull \hbox (0.27893pt too wide) in paragraph at lines 5697--5705
+\T1/ptm/m/n/10 row, and the num-ber of oc-cur-rences for both the tar-get and r
+ef-er-ence groups. For \T1/zi4/m/n/10 measure = "chi2"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [90] [91]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [92]
+Overfull \hbox (5.66785pt too wide) in paragraph at lines 5915--5917
+[]\T1/ptm/m/n/10 For finer-grained con-trol, con-sider fil-ter-ing sen-tences p
+rior first, in-clud-ing through
+[93] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.79776pt too wide) in paragraph at lines 5970--5973
+[]\T1/ptm/m/n/10 (recommended de-fault) smartest, but slow-est, word to-k-eniza
+-tion method;
+
+Overfull \hbox (173.6593pt too wide) in paragraph at lines 5973--5975
+[]\T1/ptm/m/n/10 dumber, but faster, word to-k-eniza-tion method, uses \T1/zi4/
+m/n/10 {[][]stri_split_charclass[][][](x, "\\p{WHITE_SPACE}")} 
+
+Overfull \hbox (81.24863pt too wide) in paragraph at lines 5975--5977
+[]\T1/ptm/m/n/10 dumbest, but fastest, word to-k-eniza-tion method, calls [][]\
+T1/zi4/m/n/10 stri_split_fixed[][][](x, " ") 
+
+Overfull \hbox (25.86937pt too wide) in paragraph at lines 6006--6011
+\T1/ptm/m/n/10 char-ac-ters in be-tween words, e.g. \T1/zi4/m/n/10 "self-storag
+e" \T1/ptm/m/n/10 be-comes \T1/zi4/m/n/10 c("self", "storage")\T1/ptm/m/n/10 .
+[94] [95]
+Overfull \hbox (14.28094pt too wide) in paragraph at lines 6088--6088
+ []\T1/zi4/m/n/9 tokens("quanteda data objects are auto-loading.", remove_punct
+ = TRUE, remove_hyphens = TRUE)[] 
+
+Overfull \hbox (19.68097pt too wide) in paragraph at lines 6111--6111
+ []         \T1/zi4/m/n/9 text2="@kenbenoit working: on #quanteda 2day\t4ever, 
+http://textasdata.com?page=123.")[] 
+[96] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [97]
+Overfull \hbox (42.18094pt too wide) in paragraph at lines 6205--6205
+ []\T1/zi4/m/n/9 myseqs <- list(c("tax"), c("income", "tax"), c("capital", "gai
+ns", "tax"), c("inheritance", "tax"))[] 
+
+Overfull \hbox (28.68094pt too wide) in paragraph at lines 6210--6210
+ []\T1/zi4/m/n/9 mydict1 <- dictionary(list(tax=c("tax", "income tax", "capital
+ gains tax", "inheritance tax*")))[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [98] [99]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [100]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [101]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (83.16989pt too wide) in paragraph at lines 6483--6492
+\T1/zi4/m/n/10 tokens_remove \T1/ptm/m/n/10 and \T1/zi4/m/n/10 tokens_keep \T1/
+ptm/m/n/10 are de-fined as short-cuts for \T1/zi4/m/n/10 tokens_select(x, patte
+rn, selection = "remove")
+[102]
+Overfull \hbox (25.1096pt too wide) in paragraph at lines 6550--6553
+[]\T1/ptm/m/n/10 additional ar-gu-ments passed by \T1/zi4/m/n/10 tokens_remove 
+\T1/ptm/m/n/10 and \T1/zi4/m/n/10 tokens_keep \T1/ptm/m/n/10 to \T1/zi4/m/n/10 
+tokens_select\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [103]
+Overfull \hbox (29.71799pt too wide) in paragraph at lines 6596--6601
+\T1/ptm/m/n/10 tions on doc-vars (document-level vari-ables). \T1/zi4/m/n/10 to
+kens_subset \T1/ptm/m/n/10 func-tions iden-ti-cally to [][]\T1/zi4/m/n/10 subse
+t.data.frame[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [104]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [105]
+Overfull \hbox (11.47006pt too wide) in paragraph at lines 6766--6768
+[][][]$\T1/zi4/m/n/10 http : / / www . iso . org / iso / home / standards / lan
+guage _ codes . htm$[][] \T1/ptm/m/n/10 for the ISO-639 lan-guage codes 
+[106] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [107]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+No file Rd2.ind.
+[108] (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Rfn.getStemLanguages} has been referenced but does not exist, replaced by a fi
+xed one
+
+pdfTeX warning (dest): name{Rfn.wordStem} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.split.Rul.fixed} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.split.Rul.charclass} has been referenc
+ed but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stringi.Rdash.search.Rdash.boundaries} has been
+ referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.corpus.Rul.trim} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dist} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.comparison.cloud} has been referenced but does 
+not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.graph.Rul.from.Rul.adjacency.Rul.matrix} has be
+en referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.network} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.size} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.color} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.influence.predict.textmodel.Rul.affinity} has b
+een referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.plot} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.lm} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.wordscores} has been refe
+renced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.wordfish} has been refere
+nced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.nb} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.lsa} has been referenced 
+but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.coef.textmodel.Rul.lsa} has been referenced but
+ does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.svds} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.ca} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.affinity} has been refere
+nced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.spacy.Rul.parse} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.options} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.opts.Rul.brkiter} has been referenced 
+but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.[.corpus} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dictionary2.Rdash.class} has been referenced bu
+t does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.file} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.iconv} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.quantile} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.tf} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.rbind.dfm} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.cbind.dfm} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dfm.Rdash.class} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.groups} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stopwords} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.subset.data.frame} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.valuetype} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.pattern} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.sample} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.settings} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.corpus.Rdash.class} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.subset} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.SimpleCorpus} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.VCorpus} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.character} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.lda.collapsed.gibbs.sampler} has been reference
+d but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.trans.Rul.tolower} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.toupper} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.tolower} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.unlist} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.as.data.frame.dfm} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.data.frame} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.DocumentTermMatrix} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.TermDocumentMatrix} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.Matrix} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.matrix} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.summary.corpus} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/us
+r/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
+/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on Rd2.pdf (108 pages, 405779 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (645 entries accepted, 0 rejected).
+Sorting entries........done (6532 comparisons).
+Generating output file Rd2.ind....done (568 lines written, 7 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[2] [3]) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+[5] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [9] [10]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [13] [14]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [15]
+Overfull \hbox (38.8189pt too wide) in paragraph at lines 873--877
+\T1/ptm/m/n/10 not set, it will use the de-fault se-quence based on \T1/zi4/m/n
+/10 ([][]quanteda_options[][][]("base_docname")\T1/ptm/m/n/10 . 
+[16] [17] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (6.7086pt too wide) in paragraph at lines 1179--1187
+\T1/ptm/m/n/10 will have a \T1/zi4/m/n/10 NA \T1/ptm/m/n/10 for the ex-tracted 
+\T1/zi4/m/n/10 pattern \T1/ptm/m/n/10 doc-u-ment vari-able (or when \T1/zi4/m/n
+/10 pattern_position = "after"\T1/ptm/m/n/10 ,
+
+Overfull \hbox (30.28752pt too wide) in paragraph at lines 1188--1190
+[]\T1/ptm/m/n/10 To ex-tract syn-tac-ti-cally de-fined sub-document units such 
+as sen-tences and para-graphs, use [][]\T1/zi4/m/n/10 corpus_reshape[][][]
+[21]
+Overfull \hbox (8.88095pt too wide) in paragraph at lines 1237--1237
+ []\T1/zi4/m/n/9 corp2 <- corpus("Mr. Smith: Text.\nMrs. Jones: More text.\nMr.
+ Smith: I\TS1/zi4/m/n/9 '\T1/zi4/m/n/9 m speaking, again.")[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [22]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [24]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (45.02087pt too wide) in paragraph at lines 1457--1459
+[][][]$\T1/zi4/m/n/10 https : / / archive . org / details / Inaugural-[]Address
+-[]Corpus-[]1789-[]2009$[][] \T1/ptm/m/n/10 and [][]$\T1/zi4/m/n/10 http : / / 
+www . presidency .
+[25] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [27]
+Overfull \hbox (24.41765pt too wide) in paragraph at lines 1585--1587
+[]\T1/ptm/m/n/10 The LSD is avail-able for non-commercial aca-demic pur-poses o
+nly. By us-ing \T1/zi4/m/n/10 data_dictionary_LSD2015\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [28] [29]
+Overfull \hbox (13.38098pt too wide) in paragraph at lines 1743--1743
+ []\T1/zi4/m/n/9 test_text <- "The quick brown fox named Seamus jumps over the 
+lazy dog also named Seamus, with[] 
+
+Overfull \hbox (6.18094pt too wide) in paragraph at lines 1749--1749
+ []\T1/zi4/m/n/9 featnames(dfm(test_corpus, ngrams = 2, select = stopwords("eng
+lish"), remove_punct = TRUE))[] 
+
+Overfull \hbox (15.18094pt too wide) in paragraph at lines 1750--1750
+ []\T1/zi4/m/n/9 featnames(dfm(test_corpus, ngrams = 1:2, select = stopwords("e
+nglish"), remove_punct = TRUE))[] 
+
+Overfull \hbox (14.28094pt too wide) in paragraph at lines 1763--1763
+ []\T1/zi4/m/n/9 test_tweets <- c("My homie @justinbieber #justinbieber shoppin
+g in #LA yesterday #beliebers",[] 
+
+Overfull \hbox (2.58102pt too wide) in paragraph at lines 1764--1764
+ []                \T1/zi4/m/n/9 "2all the ha8ers including my bro #justinbiebe
+r #emabiggestfansjustinbieber",[] 
+[30]
+Overfull \hbox (22.38101pt too wide) in paragraph at lines 1765--1765
+ []                \T1/zi4/m/n/9 "Justin Bieber #justinbieber #belieber #fetusj
+ustin #EMABiggestFansJustinBieber")[] 
+
+Overfull \hbox (20.581pt too wide) in paragraph at lines 1772--1772
+ []            \T1/zi4/m/n/9 groups = ifelse(docvars(data_corpus_irishbudget201
+0, "party") %in% c("FF", "Green"),[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [31]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [35]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [36]
+Overfull \hbox (21.4193pt too wide) in paragraph at lines 2180--2183
+[]\T1/zi4/m/n/10 dfm_remove \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_remove \T1/pt
+m/m/n/10 are sim-ply a con-ve-nience wrap-pers to call-ing \T1/zi4/m/n/10 dfm_s
+elect \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_select
+
+Overfull \hbox (1.4193pt too wide) in paragraph at lines 2184--2187
+[]\T1/zi4/m/n/10 dfm_keep \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_keep \T1/ptm/m/
+n/10 are sim-ply a con-ve-nience wrap-pers to call-ing \T1/zi4/m/n/10 dfm_selec
+t \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_select
+[37] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [38]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [40]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [41]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [42]
+Overfull \hbox (8.21822pt too wide) in paragraph at lines 2554--2556
+[]\T1/ptm/m/n/10 minimum/maximum val-ues of a fea-ture's doc-u-ment fre-quency,
+ be-low/above which
+[43] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [44]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45] [46]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [47] [48]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [49]
+Overfull \hbox (1.68091pt too wide) in paragraph at lines 2998--2998
+ []\T1/zi4/m/n/9 docnames(data_corpus_inaugural) <- paste("Speech", 1:ndoc(data
+_corpus_inaugural), sep="")[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (120.38034pt too wide) in paragraph at lines 3041--3048
+\T1/zi4/m/n/10 data_corpus_irishbudget2010[, c("foren","name"]\T1/ptm/m/n/10 ; 
+or, for a sin-gle doc-var, \T1/zi4/m/n/10 data_corpus_irishbudget2010[["name"]]
+\T1/ptm/m/n/10 .
+
+Overfull \hbox (8.6207pt too wide) in paragraph at lines 3041--3048
+\T1/zi4/m/n/10 data_corpus_irishbudget2010[["newvar"]] <-1:ndoc(data_corpus_iri
+shbudget2010)\T1/ptm/m/n/10 . See
+[50] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (13.36841pt too wide) in paragraph at lines 3102--3107
+[]\T1/ptm/m/n/10 the con-text in which to con-sider term co-occurrence: \T1/zi4
+/m/n/10 "document" \T1/ptm/m/n/10 for co-occurrence
+[51]
+Overfull \hbox (9.18869pt too wide) in paragraph at lines 3126--3129
+\T1/ptm/m/n/10 by de-fault; can be a custom-defined vec-tor of the same length 
+as \T1/zi4/m/n/10 length(weights) 
+[52] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [53]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [54]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [55] [56]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57]
+Overfull \hbox (25.98093pt too wide) in paragraph at lines 3514--3514
+ []\T1/zi4/m/n/9 metacorpus(data_corpus_inaugural, "citation") <- "Presidential
+ Speeches Online Project (2014)."[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [58]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [59]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [60]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [61]
+Overfull \hbox (37.86812pt too wide) in paragraph at lines 3783--3788
+\T1/ptm/m/n/10 the freely avail-able CMU pro-nun-ci-a-tion dic-tio-nary at \T1/
+zi4/m/n/10 http://www.speech.cs.cmu.edu/cgi-bin/cmudict\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [62]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [63]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (28.04788pt too wide) in paragraph at lines 3962--3964
+[]\T1/ptm/m/n/10 character; lan-guage op-tion for [][]char_wordstem[][][], [][]
+to-kens_wordstem[][][], and [][]dfm_wordstem[][][] 
+[64] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [66]
+Overfull \hbox (38.94756pt too wide) in paragraph at lines 4126--4129
+[]\T1/ptm/m/n/10 Perry, Patrick O. and Ken-neth Benoit. (2017) "Scal-ing Text w
+ith the Class Affin-ity Model". [][]arXiv:1710.08963
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67]
+Overfull \hbox (16.3072pt too wide) in paragraph at lines 4179--4182
+[]\T1/ptm/m/n/10 specifies the thresh-old for the resid-ual ma-trix for cal-cu-
+lat-ing the trun-cated svd.Larger
+
+Overfull \hbox (11.63747pt too wide) in paragraph at lines 4211--4214
+[]\T1/ptm/m/n/10 Nenadic, O. and Greenacre, M. (2007). Cor-re-spon-dence anal-y
+-sis in R, with two- and three-dimensional
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [68] [69]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (126.59818pt too wide) in paragraph at lines 4331--4334
+\T1/ptm/m/n/10 nary multi-no-mial" model, first con-vert the dfm to a bi-nary m
+a-trix us-ing [][]\T1/zi4/m/n/10 dfm_weight[][][](x, scheme = "boolean")\T1/ptm
+/m/n/10 . 
+[70]
+Overfull \hbox (2.95987pt too wide) in paragraph at lines 4399--4402
+\T1/ptm/m/n/10 bridge Uni-ver-sity Press. [][]$\T1/zi4/m/n/10 https : / / nlp .
+ stanford . edu / IR-[]book / pdf / irbookonlinereading . pdf$[][] 
+[71] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (2.197pt too wide) in paragraph at lines 4482--4487
+[]\T1/ptm/m/n/10 constraint for the min-i-mal un-der-dis-per-sion mul-ti-plier 
+in the quasi-Poisson model.
+
+Overfull \hbox (7.4178pt too wide) in paragraph at lines 4495--4497
+[]\T1/ptm/m/n/10 uses svd to ini-tial-ize the start-ing val-ues of theta, only 
+ap-plies when \T1/zi4/m/n/10 sparse = TRUE 
+[72] [73]
+Overfull \hbox (11.58096pt too wide) in paragraph at lines 4565--4565
+ []\T1/zi4/m/n/9 plot(wf2a$phi, wf2b$phi, xlab = "Min underdispersion = 0", yla
+b = "Min underdispersion = .5",[] 
+
+Overfull \hbox (11.58096pt too wide) in paragraph at lines 4567--4567
+ []\T1/zi4/m/n/9 plot(wf2a$phi, wf2b$phi, xlab = "Min underdispersion = 0", yla
+b = "Min underdispersion = .5",[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [74]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [75]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [76]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [77] [78]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (20.86891pt too wide) in paragraph at lines 4923--4926
+\T1/ptm/m/n/10 cord-ing to these val-ues from low to high. Only ap-plies when \
+T1/zi4/m/n/10 margin = "documents"\T1/ptm/m/n/10 . 
+
+Overfull \hbox (54.4384pt too wide) in paragraph at lines 4935--4938
+\T1/ptm/m/n/10 parency used to over-plot fea-ture names in a fea-ture plot; onl
+y ap-plies if \T1/zi4/m/n/10 margin = "features" 
+[79] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [80]
+Overfull \hbox (45.11853pt too wide) in paragraph at lines 5062--5064
+[]\T1/ptm/m/n/10 if \T1/zi4/m/n/10 TRUE\T1/ptm/m/n/10 , plot a word-clound that
+ com-pares doc-u-ments in the same way as [][]\T1/zi4/m/n/10 comparison.cloud[]
+[][] 
+[81] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [82]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [83]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [84]
+Overfull \hbox (17.02695pt too wide) in paragraph at lines 5305--5307
+[]\T1/ptm/m/n/10 association mea-sure for de-tect-ing col-lo-ca-tions. Cur-rent
+ly this is lim-ited to \T1/zi4/m/n/10 "lambda"\T1/ptm/m/n/10 .
+
+Overfull \hbox (108.87897pt too wide) in paragraph at lines 5324--5328
+[][]\T1/ptm/m/n/10 to-kens[][][] ob-ject and some to-kens have been re-moved, t
+his should be done us-ing [][]\T1/zi4/m/n/10 tokens_remove[][][](x, pattern, pa
+dding = TRUE)
+[85] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [86]
+Overfull \hbox (12.62997pt too wide) in paragraph at lines 5468--5472
+[]\T1/zi4/m/n/10 textstat_simil \T1/ptm/m/n/10 op-tions are: \T1/zi4/m/n/10 "co
+rrelation" \T1/ptm/m/n/10 (de-fault), \T1/zi4/m/n/10 "cosine"\T1/ptm/m/n/10 , \
+T1/zi4/m/n/10 "jaccard"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "ejaccard"\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 "dice"\T1/ptm/m/n/10 ,
+
+Overfull \hbox (54.21783pt too wide) in paragraph at lines 5493--5498
+\T1/ptm/m/n/10 ful trans-for-ma-tions for or-di-na-tion of species data[][]". \
+T1/ptm/m/it/10 Oe-colo-gia\T1/ptm/m/n/10 , 129(2), 271^^U280. doi.org/10.1007/s
+004420100716 
+[87]
+Overfull \hbox (2.58093pt too wide) in paragraph at lines 5539--5539
+ []\T1/zi4/m/n/9 pres_dfm <- dfm(data_corpus_inaugural, remove_punct = TRUE, re
+move = stopwords("english"))[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [88] [89]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [90]
+Overfull \hbox (0.27893pt too wide) in paragraph at lines 5697--5705
+\T1/ptm/m/n/10 row, and the num-ber of oc-cur-rences for both the tar-get and r
+ef-er-ence groups. For \T1/zi4/m/n/10 measure = "chi2"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [91] [92]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [93]
+Overfull \hbox (5.66785pt too wide) in paragraph at lines 5915--5917
+[]\T1/ptm/m/n/10 For finer-grained con-trol, con-sider fil-ter-ing sen-tences p
+rior first, in-clud-ing through
+[94] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.79776pt too wide) in paragraph at lines 5970--5973
+[]\T1/ptm/m/n/10 (recommended de-fault) smartest, but slow-est, word to-k-eniza
+-tion method;
+
+Overfull \hbox (173.6593pt too wide) in paragraph at lines 5973--5975
+[]\T1/ptm/m/n/10 dumber, but faster, word to-k-eniza-tion method, uses \T1/zi4/
+m/n/10 {[][]stri_split_charclass[][][](x, "\\p{WHITE_SPACE}")} 
+
+Overfull \hbox (81.24863pt too wide) in paragraph at lines 5975--5977
+[]\T1/ptm/m/n/10 dumbest, but fastest, word to-k-eniza-tion method, calls [][]\
+T1/zi4/m/n/10 stri_split_fixed[][][](x, " ") 
+
+Overfull \hbox (25.86937pt too wide) in paragraph at lines 6006--6011
+\T1/ptm/m/n/10 char-ac-ters in be-tween words, e.g. \T1/zi4/m/n/10 "self-storag
+e" \T1/ptm/m/n/10 be-comes \T1/zi4/m/n/10 c("self", "storage")\T1/ptm/m/n/10 .
+[95] [96]
+Overfull \hbox (14.28094pt too wide) in paragraph at lines 6088--6088
+ []\T1/zi4/m/n/9 tokens("quanteda data objects are auto-loading.", remove_punct
+ = TRUE, remove_hyphens = TRUE)[] 
+
+Overfull \hbox (19.68097pt too wide) in paragraph at lines 6111--6111
+ []         \T1/zi4/m/n/9 text2="@kenbenoit working: on #quanteda 2day\t4ever, 
+http://textasdata.com?page=123.")[] 
+[97] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [98]
+Overfull \hbox (42.18094pt too wide) in paragraph at lines 6205--6205
+ []\T1/zi4/m/n/9 myseqs <- list(c("tax"), c("income", "tax"), c("capital", "gai
+ns", "tax"), c("inheritance", "tax"))[] 
+
+Overfull \hbox (28.68094pt too wide) in paragraph at lines 6210--6210
+ []\T1/zi4/m/n/9 mydict1 <- dictionary(list(tax=c("tax", "income tax", "capital
+ gains tax", "inheritance tax*")))[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [99] [100]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [101]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [102]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (83.16989pt too wide) in paragraph at lines 6483--6492
+\T1/zi4/m/n/10 tokens_remove \T1/ptm/m/n/10 and \T1/zi4/m/n/10 tokens_keep \T1/
+ptm/m/n/10 are de-fined as short-cuts for \T1/zi4/m/n/10 tokens_select(x, patte
+rn, selection = "remove")
+[103]
+Overfull \hbox (25.1096pt too wide) in paragraph at lines 6550--6553
+[]\T1/ptm/m/n/10 additional ar-gu-ments passed by \T1/zi4/m/n/10 tokens_remove 
+\T1/ptm/m/n/10 and \T1/zi4/m/n/10 tokens_keep \T1/ptm/m/n/10 to \T1/zi4/m/n/10 
+tokens_select\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [104]
+Overfull \hbox (29.71799pt too wide) in paragraph at lines 6596--6601
+\T1/ptm/m/n/10 tions on doc-vars (document-level vari-ables). \T1/zi4/m/n/10 to
+kens_subset \T1/ptm/m/n/10 func-tions iden-ti-cally to [][]\T1/zi4/m/n/10 subse
+t.data.frame[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [105]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [106]
+Overfull \hbox (11.47006pt too wide) in paragraph at lines 6766--6768
+[][][]$\T1/zi4/m/n/10 http : / / www . iso . org / iso / home / standards / lan
+guage _ codes . htm$[][] \T1/ptm/m/n/10 for the ISO-639 lan-guage codes 
+[107] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [108]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) (./Rd2.ind
+[109]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 70.
+
+[110] [111] [112] [113]) (./Rd2.aux)
+
+Package rerunfilecheck Warning: File `Rd2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Rfn.getStemLanguages} has been referenced but does not exist, replaced by a fi
+xed one
+
+pdfTeX warning (dest): name{Rfn.wordStem} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.split.Rul.fixed} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.split.Rul.charclass} has been referenc
+ed but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stringi.Rdash.search.Rdash.boundaries} has been
+ referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.corpus.Rul.trim} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dist} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.comparison.cloud} has been referenced but does 
+not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.graph.Rul.from.Rul.adjacency.Rul.matrix} has be
+en referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.network} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.size} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.color} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.influence.predict.textmodel.Rul.affinity} has b
+een referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.plot} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.lm} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.wordscores} has been refe
+renced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.wordfish} has been refere
+nced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.nb} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.lsa} has been referenced 
+but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.coef.textmodel.Rul.lsa} has been referenced but
+ does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.svds} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.ca} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.affinity} has been refere
+nced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.spacy.Rul.parse} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.options} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.opts.Rul.brkiter} has been referenced 
+but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.[.corpus} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dictionary2.Rdash.class} has been referenced bu
+t does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.file} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.iconv} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.quantile} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.tf} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.rbind.dfm} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.cbind.dfm} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dfm.Rdash.class} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.groups} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stopwords} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.subset.data.frame} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.valuetype} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.pattern} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.sample} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.settings} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.corpus.Rdash.class} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.subset} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.SimpleCorpus} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.VCorpus} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.character} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.lda.collapsed.gibbs.sampler} has been reference
+d but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.trans.Rul.tolower} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.toupper} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.tolower} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.unlist} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.as.data.frame.dfm} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.data.frame} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.DocumentTermMatrix} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.TermDocumentMatrix} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.Matrix} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.matrix} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.summary.corpus} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/us
+r/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
+/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on Rd2.pdf (113 pages, 438364 bytes).
+Transcript written on Rd2.log.
+This is makeindex, version 2.15 [TeX Live 2015] (kpathsea + Thai support).
+Scanning input file Rd2.idx....done (645 entries accepted, 0 rejected).
+Sorting entries........done (6503 comparisons).
+Generating output file Rd2.ind....done (571 lines written, 6 warnings).
+Output written in Rd2.ind.
+Transcript written in Rd2.ilg.
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex)
+ restricted \write18 enabled.
+entering extended mode
+LaTeX2e <2015/01/01>
+Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+(./Rd2.tex
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2014/09/29 v1.4h Standard LaTeX document class
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/bk10.clo))
+(/Library/Frameworks/R.framework/Resources/share/texmf/tex/latex/Rd.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ifthen.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/longtable.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/bm.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/alltt.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/tools/verbatim.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/url/url.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/textcomp.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/fontenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.def))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/times.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/zi4.sty
+`inconsolata-zi4' v1.05, 2014/06/22 Text macros for Inconsolata (msharpe)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/keyval.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/pdftex-def/pdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/infwarerr.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/ltxcmds.sty)))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty))
+(/usr/local/texlive/2015/texmf-dist/tex/generic/ifxetex/ifxetex.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/auxhook.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/kvoptions.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/pd1enc.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/hyperref.cfg))
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/hpdftex.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty))
+
+Package hyperref Warning: Option `hyperindex' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+
+Package hyperref Warning: Option `pagebackref' has already been used,
+(hyperref)                setting the option has no effect on input line 366.
+
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/makeidx.sty)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/inputenc.sty
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/t1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ot1enc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/omsenc.dfu)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1enc.dfu)))
+Writing index file Rd2.idx
+(./Rd2.aux) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/ts1cmr.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1ptm.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+) (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
+(/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty))
+(./Rd2.out) (./Rd2.out)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/t1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/ts1ptm.fd) [1{/usr/local/t
+exlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/psnfss/t1phv.fd) (./Rd2.toc
+[2] [3]) (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [4]
+[5] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/inconsolata/ts1zi4.fd)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [6]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [7]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [8]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [9] [10]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [11]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [12]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [13] [14]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [15]
+Overfull \hbox (38.8189pt too wide) in paragraph at lines 873--877
+\T1/ptm/m/n/10 not set, it will use the de-fault se-quence based on \T1/zi4/m/n
+/10 ([][]quanteda_options[][][]("base_docname")\T1/ptm/m/n/10 . 
+[16] [17] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [18]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [19]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [20]
+Overfull \hbox (6.7086pt too wide) in paragraph at lines 1179--1187
+\T1/ptm/m/n/10 will have a \T1/zi4/m/n/10 NA \T1/ptm/m/n/10 for the ex-tracted 
+\T1/zi4/m/n/10 pattern \T1/ptm/m/n/10 doc-u-ment vari-able (or when \T1/zi4/m/n
+/10 pattern_position = "after"\T1/ptm/m/n/10 ,
+
+Overfull \hbox (30.28752pt too wide) in paragraph at lines 1188--1190
+[]\T1/ptm/m/n/10 To ex-tract syn-tac-ti-cally de-fined sub-document units such 
+as sen-tences and para-graphs, use [][]\T1/zi4/m/n/10 corpus_reshape[][][]
+[21]
+Overfull \hbox (8.88095pt too wide) in paragraph at lines 1237--1237
+ []\T1/zi4/m/n/9 corp2 <- corpus("Mr. Smith: Text.\nMrs. Jones: More text.\nMr.
+ Smith: I\TS1/zi4/m/n/9 '\T1/zi4/m/n/9 m speaking, again.")[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [22]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [23]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [24]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (45.02087pt too wide) in paragraph at lines 1457--1459
+[][][]$\T1/zi4/m/n/10 https : / / archive . org / details / Inaugural-[]Address
+-[]Corpus-[]1789-[]2009$[][] \T1/ptm/m/n/10 and [][]$\T1/zi4/m/n/10 http : / / 
+www . presidency .
+[25] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [26]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [27]
+Overfull \hbox (24.41765pt too wide) in paragraph at lines 1585--1587
+[]\T1/ptm/m/n/10 The LSD is avail-able for non-commercial aca-demic pur-poses o
+nly. By us-ing \T1/zi4/m/n/10 data_dictionary_LSD2015\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [28] [29]
+Overfull \hbox (13.38098pt too wide) in paragraph at lines 1743--1743
+ []\T1/zi4/m/n/9 test_text <- "The quick brown fox named Seamus jumps over the 
+lazy dog also named Seamus, with[] 
+
+Overfull \hbox (6.18094pt too wide) in paragraph at lines 1749--1749
+ []\T1/zi4/m/n/9 featnames(dfm(test_corpus, ngrams = 2, select = stopwords("eng
+lish"), remove_punct = TRUE))[] 
+
+Overfull \hbox (15.18094pt too wide) in paragraph at lines 1750--1750
+ []\T1/zi4/m/n/9 featnames(dfm(test_corpus, ngrams = 1:2, select = stopwords("e
+nglish"), remove_punct = TRUE))[] 
+
+Overfull \hbox (14.28094pt too wide) in paragraph at lines 1763--1763
+ []\T1/zi4/m/n/9 test_tweets <- c("My homie @justinbieber #justinbieber shoppin
+g in #LA yesterday #beliebers",[] 
+
+Overfull \hbox (2.58102pt too wide) in paragraph at lines 1764--1764
+ []                \T1/zi4/m/n/9 "2all the ha8ers including my bro #justinbiebe
+r #emabiggestfansjustinbieber",[] 
+[30]
+Overfull \hbox (22.38101pt too wide) in paragraph at lines 1765--1765
+ []                \T1/zi4/m/n/9 "Justin Bieber #justinbieber #belieber #fetusj
+ustin #EMABiggestFansJustinBieber")[] 
+
+Overfull \hbox (20.581pt too wide) in paragraph at lines 1772--1772
+ []            \T1/zi4/m/n/9 groups = ifelse(docvars(data_corpus_irishbudget201
+0, "party") %in% c("FF", "Green"),[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [31]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [32]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [33]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [34]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [35]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [36]
+Overfull \hbox (21.4193pt too wide) in paragraph at lines 2180--2183
+[]\T1/zi4/m/n/10 dfm_remove \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_remove \T1/pt
+m/m/n/10 are sim-ply a con-ve-nience wrap-pers to call-ing \T1/zi4/m/n/10 dfm_s
+elect \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_select
+
+Overfull \hbox (1.4193pt too wide) in paragraph at lines 2184--2187
+[]\T1/zi4/m/n/10 dfm_keep \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_keep \T1/ptm/m/
+n/10 are sim-ply a con-ve-nience wrap-pers to call-ing \T1/zi4/m/n/10 dfm_selec
+t \T1/ptm/m/n/10 and \T1/zi4/m/n/10 fcm_select
+[37] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [38]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [39]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [40]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [41]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [42]
+Overfull \hbox (8.21822pt too wide) in paragraph at lines 2554--2556
+[]\T1/ptm/m/n/10 minimum/maximum val-ues of a fea-ture's doc-u-ment fre-quency,
+ be-low/above which
+[43] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [44]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [45] [46]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [47] [48]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [49]
+Overfull \hbox (1.68091pt too wide) in paragraph at lines 2998--2998
+ []\T1/zi4/m/n/9 docnames(data_corpus_inaugural) <- paste("Speech", 1:ndoc(data
+_corpus_inaugural), sep="")[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (120.38034pt too wide) in paragraph at lines 3041--3048
+\T1/zi4/m/n/10 data_corpus_irishbudget2010[, c("foren","name"]\T1/ptm/m/n/10 ; 
+or, for a sin-gle doc-var, \T1/zi4/m/n/10 data_corpus_irishbudget2010[["name"]]
+\T1/ptm/m/n/10 .
+
+Overfull \hbox (8.6207pt too wide) in paragraph at lines 3041--3048
+\T1/zi4/m/n/10 data_corpus_irishbudget2010[["newvar"]] <-1:ndoc(data_corpus_iri
+shbudget2010)\T1/ptm/m/n/10 . See
+[50] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (13.36841pt too wide) in paragraph at lines 3102--3107
+[]\T1/ptm/m/n/10 the con-text in which to con-sider term co-occurrence: \T1/zi4
+/m/n/10 "document" \T1/ptm/m/n/10 for co-occurrence
+[51]
+Overfull \hbox (9.18869pt too wide) in paragraph at lines 3126--3129
+\T1/ptm/m/n/10 by de-fault; can be a custom-defined vec-tor of the same length 
+as \T1/zi4/m/n/10 length(weights) 
+[52] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [53]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [54]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [55] [56]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [57]
+Overfull \hbox (25.98093pt too wide) in paragraph at lines 3514--3514
+ []\T1/zi4/m/n/9 metacorpus(data_corpus_inaugural, "citation") <- "Presidential
+ Speeches Online Project (2014)."[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [58]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [59]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [60]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [61]
+Overfull \hbox (37.86812pt too wide) in paragraph at lines 3783--3788
+\T1/ptm/m/n/10 the freely avail-able CMU pro-nun-ci-a-tion dic-tio-nary at \T1/
+zi4/m/n/10 http://www.speech.cs.cmu.edu/cgi-bin/cmudict\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [62]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [63]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (28.04788pt too wide) in paragraph at lines 3962--3964
+[]\T1/ptm/m/n/10 character; lan-guage op-tion for [][]char_wordstem[][][], [][]
+to-kens_wordstem[][][], and [][]dfm_wordstem[][][] 
+[64] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [65]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [66]
+Overfull \hbox (38.94756pt too wide) in paragraph at lines 4126--4129
+[]\T1/ptm/m/n/10 Perry, Patrick O. and Ken-neth Benoit. (2017) "Scal-ing Text w
+ith the Class Affin-ity Model". [][]arXiv:1710.08963
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [67]
+Overfull \hbox (16.3072pt too wide) in paragraph at lines 4179--4182
+[]\T1/ptm/m/n/10 specifies the thresh-old for the resid-ual ma-trix for cal-cu-
+lat-ing the trun-cated svd.Larger
+
+Overfull \hbox (11.63747pt too wide) in paragraph at lines 4211--4214
+[]\T1/ptm/m/n/10 Nenadic, O. and Greenacre, M. (2007). Cor-re-spon-dence anal-y
+-sis in R, with two- and three-dimensional
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [68] [69]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (126.59818pt too wide) in paragraph at lines 4331--4334
+\T1/ptm/m/n/10 nary multi-no-mial" model, first con-vert the dfm to a bi-nary m
+a-trix us-ing [][]\T1/zi4/m/n/10 dfm_weight[][][](x, scheme = "boolean")\T1/ptm
+/m/n/10 . 
+[70]
+Overfull \hbox (2.95987pt too wide) in paragraph at lines 4399--4402
+\T1/ptm/m/n/10 bridge Uni-ver-sity Press. [][]$\T1/zi4/m/n/10 https : / / nlp .
+ stanford . edu / IR-[]book / pdf / irbookonlinereading . pdf$[][] 
+[71] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (2.197pt too wide) in paragraph at lines 4482--4487
+[]\T1/ptm/m/n/10 constraint for the min-i-mal un-der-dis-per-sion mul-ti-plier 
+in the quasi-Poisson model.
+
+Overfull \hbox (7.4178pt too wide) in paragraph at lines 4495--4497
+[]\T1/ptm/m/n/10 uses svd to ini-tial-ize the start-ing val-ues of theta, only 
+ap-plies when \T1/zi4/m/n/10 sparse = TRUE 
+[72] [73]
+Overfull \hbox (11.58096pt too wide) in paragraph at lines 4565--4565
+ []\T1/zi4/m/n/9 plot(wf2a$phi, wf2b$phi, xlab = "Min underdispersion = 0", yla
+b = "Min underdispersion = .5",[] 
+
+Overfull \hbox (11.58096pt too wide) in paragraph at lines 4567--4567
+ []\T1/zi4/m/n/9 plot(wf2a$phi, wf2b$phi, xlab = "Min underdispersion = 0", yla
+b = "Min underdispersion = .5",[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [74]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [75]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [76]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [77] [78]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (20.86891pt too wide) in paragraph at lines 4923--4926
+\T1/ptm/m/n/10 cord-ing to these val-ues from low to high. Only ap-plies when \
+T1/zi4/m/n/10 margin = "documents"\T1/ptm/m/n/10 . 
+
+Overfull \hbox (54.4384pt too wide) in paragraph at lines 4935--4938
+\T1/ptm/m/n/10 parency used to over-plot fea-ture names in a fea-ture plot; onl
+y ap-plies if \T1/zi4/m/n/10 margin = "features" 
+[79] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [80]
+Overfull \hbox (45.11853pt too wide) in paragraph at lines 5062--5064
+[]\T1/ptm/m/n/10 if \T1/zi4/m/n/10 TRUE\T1/ptm/m/n/10 , plot a word-clound that
+ com-pares doc-u-ments in the same way as [][]\T1/zi4/m/n/10 comparison.cloud[]
+[][] 
+[81] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [82]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [83]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [84]
+Overfull \hbox (17.02695pt too wide) in paragraph at lines 5305--5307
+[]\T1/ptm/m/n/10 association mea-sure for de-tect-ing col-lo-ca-tions. Cur-rent
+ly this is lim-ited to \T1/zi4/m/n/10 "lambda"\T1/ptm/m/n/10 .
+
+Overfull \hbox (108.87897pt too wide) in paragraph at lines 5324--5328
+[][]\T1/ptm/m/n/10 to-kens[][][] ob-ject and some to-kens have been re-moved, t
+his should be done us-ing [][]\T1/zi4/m/n/10 tokens_remove[][][](x, pattern, pa
+dding = TRUE)
+[85] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [86]
+Overfull \hbox (12.62997pt too wide) in paragraph at lines 5468--5472
+[]\T1/zi4/m/n/10 textstat_simil \T1/ptm/m/n/10 op-tions are: \T1/zi4/m/n/10 "co
+rrelation" \T1/ptm/m/n/10 (de-fault), \T1/zi4/m/n/10 "cosine"\T1/ptm/m/n/10 , \
+T1/zi4/m/n/10 "jaccard"\T1/ptm/m/n/10 , \T1/zi4/m/n/10 "ejaccard"\T1/ptm/m/n/10
+ , \T1/zi4/m/n/10 "dice"\T1/ptm/m/n/10 ,
+
+Overfull \hbox (54.21783pt too wide) in paragraph at lines 5493--5498
+\T1/ptm/m/n/10 ful trans-for-ma-tions for or-di-na-tion of species data[][]". \
+T1/ptm/m/it/10 Oe-colo-gia\T1/ptm/m/n/10 , 129(2), 271^^U280. doi.org/10.1007/s
+004420100716 
+[87]
+Overfull \hbox (2.58093pt too wide) in paragraph at lines 5539--5539
+ []\T1/zi4/m/n/9 pres_dfm <- dfm(data_corpus_inaugural, remove_punct = TRUE, re
+move = stopwords("english"))[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [88] [89]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [90]
+Overfull \hbox (0.27893pt too wide) in paragraph at lines 5697--5705
+\T1/ptm/m/n/10 row, and the num-ber of oc-cur-rences for both the tar-get and r
+ef-er-ence groups. For \T1/zi4/m/n/10 measure = "chi2"
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [91] [92]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [93]
+Overfull \hbox (5.66785pt too wide) in paragraph at lines 5915--5917
+[]\T1/ptm/m/n/10 For finer-grained con-trol, con-sider fil-ter-ing sen-tences p
+rior first, in-clud-ing through
+[94] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (4.79776pt too wide) in paragraph at lines 5970--5973
+[]\T1/ptm/m/n/10 (recommended de-fault) smartest, but slow-est, word to-k-eniza
+-tion method;
+
+Overfull \hbox (173.6593pt too wide) in paragraph at lines 5973--5975
+[]\T1/ptm/m/n/10 dumber, but faster, word to-k-eniza-tion method, uses \T1/zi4/
+m/n/10 {[][]stri_split_charclass[][][](x, "\\p{WHITE_SPACE}")} 
+
+Overfull \hbox (81.24863pt too wide) in paragraph at lines 5975--5977
+[]\T1/ptm/m/n/10 dumbest, but fastest, word to-k-eniza-tion method, calls [][]\
+T1/zi4/m/n/10 stri_split_fixed[][][](x, " ") 
+
+Overfull \hbox (25.86937pt too wide) in paragraph at lines 6006--6011
+\T1/ptm/m/n/10 char-ac-ters in be-tween words, e.g. \T1/zi4/m/n/10 "self-storag
+e" \T1/ptm/m/n/10 be-comes \T1/zi4/m/n/10 c("self", "storage")\T1/ptm/m/n/10 .
+[95] [96]
+Overfull \hbox (14.28094pt too wide) in paragraph at lines 6088--6088
+ []\T1/zi4/m/n/9 tokens("quanteda data objects are auto-loading.", remove_punct
+ = TRUE, remove_hyphens = TRUE)[] 
+
+Overfull \hbox (19.68097pt too wide) in paragraph at lines 6111--6111
+ []         \T1/zi4/m/n/9 text2="@kenbenoit working: on #quanteda 2day\t4ever, 
+http://textasdata.com?page=123.")[] 
+[97] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [98]
+Overfull \hbox (42.18094pt too wide) in paragraph at lines 6205--6205
+ []\T1/zi4/m/n/9 myseqs <- list(c("tax"), c("income", "tax"), c("capital", "gai
+ns", "tax"), c("inheritance", "tax"))[] 
+
+Overfull \hbox (28.68094pt too wide) in paragraph at lines 6210--6210
+ []\T1/zi4/m/n/9 mydict1 <- dictionary(list(tax=c("tax", "income tax", "capital
+ gains tax", "inheritance tax*")))[] 
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [99] [100]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [101]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [102]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+Overfull \hbox (83.16989pt too wide) in paragraph at lines 6483--6492
+\T1/zi4/m/n/10 tokens_remove \T1/ptm/m/n/10 and \T1/zi4/m/n/10 tokens_keep \T1/
+ptm/m/n/10 are de-fined as short-cuts for \T1/zi4/m/n/10 tokens_select(x, patte
+rn, selection = "remove")
+[103]
+Overfull \hbox (25.1096pt too wide) in paragraph at lines 6550--6553
+[]\T1/ptm/m/n/10 additional ar-gu-ments passed by \T1/zi4/m/n/10 tokens_remove 
+\T1/ptm/m/n/10 and \T1/zi4/m/n/10 tokens_keep \T1/ptm/m/n/10 to \T1/zi4/m/n/10 
+tokens_select\T1/ptm/m/n/10 .
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [104]
+Overfull \hbox (29.71799pt too wide) in paragraph at lines 6596--6601
+\T1/ptm/m/n/10 tions on doc-vars (document-level vari-ables). \T1/zi4/m/n/10 to
+kens_subset \T1/ptm/m/n/10 func-tions iden-ti-cally to [][]\T1/zi4/m/n/10 subse
+t.data.frame[][][]\T1/ptm/m/n/10 ,
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [105]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [106]
+Overfull \hbox (11.47006pt too wide) in paragraph at lines 6766--6768
+[][][]$\T1/zi4/m/n/10 http : / / www . iso . org / iso / home / standards / lan
+guage _ codes . htm$[][] \T1/ptm/m/n/10 for the ISO-639 lan-guage codes 
+[107] (/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) [108]
+(/usr/local/texlive/2015/texmf-dist/tex/latex/base/utf8.def) (./Rd2.ind
+[109]
+
+LaTeX Font Warning: Font shape `T1/zi4/m/it' undefined
+(Font)              using `T1/zi4/m/n' instead on input line 70.
+
+[110] [111] [112] [113]) (./Rd2.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)pdfTeX warning (dest): name
+{Rfn.getStemLanguages} has been referenced but does not exist, replaced by a fi
+xed one
+
+pdfTeX warning (dest): name{Rfn.wordStem} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.split.Rul.fixed} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.split.Rul.charclass} has been referenc
+ed but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stringi.Rdash.search.Rdash.boundaries} has been
+ referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.corpus.Rul.trim} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dist} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.comparison.cloud} has been referenced but does 
+not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.graph.Rul.from.Rul.adjacency.Rul.matrix} has be
+en referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.network} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.size} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.color} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.influence.predict.textmodel.Rul.affinity} has b
+een referenced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.plot} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.lm} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.wordscores} has been refe
+renced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.wordfish} has been refere
+nced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.nb} has been referenced b
+ut does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.lsa} has been referenced 
+but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.coef.textmodel.Rul.lsa} has been referenced but
+ does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.svds} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.ca} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.predict.textmodel.Rul.affinity} has been refere
+nced but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.spacy.Rul.parse} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.options} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.opts.Rul.brkiter} has been referenced 
+but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.[.corpus} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dictionary2.Rdash.class} has been referenced bu
+t does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.file} has been referenced but does not exist, r
+eplaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.iconv} has been referenced but does not exist, 
+replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.quantile} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.tf} has been referenced but does not exist, rep
+laced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.rbind.dfm} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.cbind.dfm} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.dfm.Rdash.class} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.groups} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stopwords} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.subset.data.frame} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.valuetype} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.pattern} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.sample} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.settings} has been referenced but does not exis
+t, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.corpus.Rdash.class} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.subset} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.SimpleCorpus} has been referenced but does not 
+exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.VCorpus} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.character} has been referenced but does not exi
+st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.lda.collapsed.gibbs.sampler} has been reference
+d but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.stri.Rul.trans.Rul.tolower} has been referenced
+ but does not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.toupper} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.tolower} has been referenced but does not exist
+, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.unlist} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.as.data.frame.dfm} has been referenced but does
+ not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.data.frame} has been referenced but does not ex
+ist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.DocumentTermMatrix} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.TermDocumentMatrix} has been referenced but doe
+s not exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.Matrix} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.matrix} has been referenced but does not exist,
+ replaced by a fixed one
+
+pdfTeX warning (dest): name{Rfn.summary.corpus} has been referenced but does no
+t exist, replaced by a fixed one
+
+{/usr/local/texlive/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-ts1.enc}{/us
+r/local/texlive/2015/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/texlive
+/2015/texmf-dist/fonts/enc/dvips/inconsolata/i4-t1-0.enc}</usr/local/texlive/20
+15/texmf-dist/fonts/type1/public/inconsolata/Inconsolata-zi4r.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/te
+xlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/tex
+live/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texli
+ve/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive
+/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2
+015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2015
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2015/
+texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2015/te
+xmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/local/texlive/2015/texmf-dis
+t/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/ty
+pe1/urw/times/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/ti
+mes/utmr8a.pfb></usr/local/texlive/2015/texmf-dist/fonts/type1/urw/times/utmri8
+a.pfb>
+Output written on Rd2.pdf (113 pages, 439029 bytes).
+Transcript written on Rd2.log.
+Saving output to ‘quanteda-manual.pdf’ ...
+Done
+You may want to clean up by 'rm -Rf /var/folders/0w/prb4hnss2gn1p7y34qb2stw00000gp/T//RtmpSiyD9h/Rd2pdfd19c7f1c6561'

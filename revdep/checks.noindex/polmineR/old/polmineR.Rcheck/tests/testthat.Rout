@@ -1,0 +1,39 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(polmineR)
+polmineR v0.7.10
+session registry:  /private/var/folders/0w/prb4hnss2gn1p7y34qb2stw00000gp/T/RtmpQ3w78F/polmineR_registry
+
+Attaching package: 'polmineR'
+
+The following object is masked from 'package:testthat':
+
+    context
+
+> use("polmineR")
+... activating corpus: germaparlmini
+... activating corpus: reuters
+> 
+> test_check("polmineR")
+══ testthat results  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+OK: 106 SKIPPED: 1 FAILED: 0
+> 
+> proc.time()
+   user  system elapsed 
+  5.586   0.708   3.720 

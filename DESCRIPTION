@@ -1,7 +1,7 @@
 Package: tidytext
 Type: Package
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
-Version: 0.1.8.900
+Version: 0.2.0
 Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
              email = "gabidequeiroz@gmail.com"),
              person("Emil", "Hvitfeldt", role = c("ctb"),
@@ -11,6 +11,8 @@ Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
              comment = c(ORCID = "0000-0001-5196-609X")),
              person("Kanishka", "Misra", role = c("ctb"),
              email = "kmisra@purdue.edu"),
+             person("Jeff", "Erickson", role = c("ctb"),
+             email = "jeff@erick.so"),
              person("David", "Robinson", role = c("aut"),
              email = "admiral.david@gmail.com"),
              person("Julia", "Silge", role = c("aut", "cre"), 
@@ -19,10 +21,11 @@ Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
 Description: Text mining for word processing and sentiment analysis using
     'dplyr', 'ggplot2', and other tidy tools.
 License: MIT + file LICENSE
+Encoding: UTF-8
 LazyData: TRUE
 URL: http://github.com/juliasilge/tidytext
 BugReports: http://github.com/juliasilge/tidytext/issues
-RoxygenNote: 6.0.1
+RoxygenNote: 6.1.0
 Depends: R (>= 2.10)
 Imports: rlang,
     dplyr,
@@ -51,5 +54,6 @@ Suggests: readr,
     gutenbergr,
     testthat,
     mallet,
-    stm
+    stm,
+    data.table
 VignetteBuilder: knitr

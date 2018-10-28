@@ -1,9 +1,11 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-tidytext: Text mining using dplyr, ggplot2, and other tidy tools
----------------
 
-**Authors:** [Julia Silge](http://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
+
+
+# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="tools/tidytext.png" align="right" />
+
+**Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
 
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
@@ -14,7 +16,6 @@ tidytext: Text mining using dplyr, ggplot2, and other tidy tools
 [![status](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg)](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f)
 [![Downloads](https://cranlogs.r-pkg.org/badges/tidytext)](https://CRAN.R-project.org/package=tidytext)
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange)](https://CRAN.R-project.org/package=tidytext)
-
 
 
 
@@ -96,13 +97,12 @@ tidy_books
 
 This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.
 
-Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (kept in the tidytext dataset `stop_words`) with an `anti_join`.
+Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function `get_stopwords()`) with an `anti_join`.
 
 
 ```r
-data("stop_words")
 tidy_books <- tidy_books %>%
-  anti_join(stop_words)
+  anti_join(get_stopwords())
 ```
 
 We can also use `count` to find the most common words in all the books as a whole.
@@ -111,20 +111,20 @@ We can also use `count` to find the most common words in all the books as a whol
 ```r
 tidy_books %>%
   count(word, sort = TRUE) 
-#> # A tibble: 13,914 x 2
-#>    word       n
-#>    <chr>  <int>
-#>  1 miss    1855
-#>  2 time    1337
-#>  3 fanny    862
-#>  4 dear     822
-#>  5 lady     817
-#>  6 sir      806
-#>  7 day      797
-#>  8 emma     787
-#>  9 sister   727
-#> 10 house    699
-#> # ... with 13,904 more rows
+#> # A tibble: 14,375 x 2
+#>    word      n
+#>    <chr> <int>
+#>  1 mr     3015
+#>  2 mrs    2446
+#>  3 must   2071
+#>  4 said   2041
+#>  5 much   1935
+#>  6 miss   1855
+#>  7 one    1831
+#>  8 well   1523
+#>  9 every  1456
+#> 10 think  1440
+#> # ... with 14,365 more rows
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
@@ -158,16 +158,16 @@ janeaustensentiment
 #> # A tibble: 920 x 5
 #>    book                index negative positive sentiment
 #>    <fct>               <dbl>    <dbl>    <dbl>     <dbl>
-#>  1 Sense & Sensibility  0        16.0     26.0     10.0 
-#>  2 Sense & Sensibility  1.00     19.0     44.0     25.0 
-#>  3 Sense & Sensibility  2.00     12.0     23.0     11.0 
-#>  4 Sense & Sensibility  3.00     15.0     22.0      7.00
-#>  5 Sense & Sensibility  4.00     16.0     29.0     13.0 
-#>  6 Sense & Sensibility  5.00     16.0     39.0     23.0 
-#>  7 Sense & Sensibility  6.00     24.0     37.0     13.0 
-#>  8 Sense & Sensibility  7.00     22.0     39.0     17.0 
-#>  9 Sense & Sensibility  8.00     30.0     35.0      5.00
-#> 10 Sense & Sensibility  9.00     14.0     18.0      4.00
+#>  1 Sense & Sensibility    0.      16.      32.       16.
+#>  2 Sense & Sensibility    1.      19.      53.       34.
+#>  3 Sense & Sensibility    2.      12.      31.       19.
+#>  4 Sense & Sensibility    3.      15.      31.       16.
+#>  5 Sense & Sensibility    4.      16.      34.       18.
+#>  6 Sense & Sensibility    5.      16.      51.       35.
+#>  7 Sense & Sensibility    6.      24.      40.       16.
+#>  8 Sense & Sensibility    7.      23.      51.       28.
+#>  9 Sense & Sensibility    8.      30.      40.       10.
+#> 10 Sense & Sensibility    9.      15.      19.        4.
 #> # ... with 910 more rows
 ```
 
@@ -210,16 +210,16 @@ tidy(AssociatedPress)
 #> # A tibble: 302,031 x 3
 #>    document term       count
 #>       <int> <chr>      <dbl>
-#>  1        1 adding      1.00
-#>  2        1 adult       2.00
-#>  3        1 ago         1.00
-#>  4        1 alcohol     1.00
-#>  5        1 allegedly   1.00
-#>  6        1 allen       1.00
-#>  7        1 apparently  2.00
-#>  8        1 appeared    1.00
-#>  9        1 arrested    1.00
-#> 10        1 assault     1.00
+#>  1        1 adding        1.
+#>  2        1 adult         2.
+#>  3        1 ago           1.
+#>  4        1 alcohol       1.
+#>  5        1 allegedly     1.
+#>  6        1 allen         1.
+#>  7        1 apparently    2.
+#>  8        1 appeared      1.
+#>  9        1 arrested      1.
+#> 10        1 assault       1.
 #> # ... with 302,021 more rows
 ```
 
@@ -248,20 +248,20 @@ comparison <- tidy(AssociatedPress) %>%
          Austen = Austen / sum(Austen))
 
 comparison
-#> # A tibble: 4,437 x 3
-#>    word              AP     Austen
-#>    <chr>          <dbl>      <dbl>
-#>  1 abandoned  0.000210  0.00000709
-#>  2 abide      0.0000360 0.0000284 
-#>  3 abilities  0.0000360 0.000206  
-#>  4 ability    0.000294  0.0000213 
-#>  5 abroad     0.000240  0.000255  
-#>  6 abrupt     0.0000360 0.0000355 
-#>  7 absence    0.0000959 0.000787  
-#>  8 absent     0.0000539 0.000355  
-#>  9 absolute   0.0000659 0.000184  
-#> 10 absolutely 0.000210  0.000674  
-#> # ... with 4,427 more rows
+#> # A tibble: 4,730 x 3
+#>    word             AP     Austen
+#>    <chr>         <dbl>      <dbl>
+#>  1 abandoned 0.000170  0.00000493
+#>  2 abide     0.0000291 0.0000197 
+#>  3 abilities 0.0000291 0.000143  
+#>  4 ability   0.000238  0.0000148 
+#>  5 able      0.000664  0.00151   
+#>  6 abroad    0.000194  0.000178  
+#>  7 abrupt    0.0000291 0.0000247 
+#>  8 absence   0.0000776 0.000547  
+#>  9 absent    0.0000436 0.000247  
+#> 10 absolute  0.0000533 0.000128  
+#> # ... with 4,720 more rows
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +

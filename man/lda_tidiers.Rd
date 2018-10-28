@@ -3,18 +3,27 @@
 \name{lda_tidiers}
 \alias{lda_tidiers}
 \alias{tidy.LDA}
+\alias{tidy.CTM}
 \alias{augment.LDA}
+\alias{augment.CTM}
 \alias{glance.LDA}
-\title{Tidiers for LDA objects from the topicmodels package}
+\alias{glance.CTM}
+\title{Tidiers for LDA and CTM objects from the topicmodels package}
 \usage{
 \method{tidy}{LDA}(x, matrix = c("beta", "gamma"), log = FALSE, ...)
 
+\method{tidy}{CTM}(x, matrix = c("beta", "gamma"), log = FALSE, ...)
+
 \method{augment}{LDA}(x, data, ...)
 
+\method{augment}{CTM}(x, data, ...)
+
 \method{glance}{LDA}(x, ...)
+
+\method{glance}{CTM}(x, ...)
 }
 \arguments{
-\item{x}{An LDA (or LDA_VEM) object from the topicmodels package}
+\item{x}{An LDA or CTM (or LDA_VEM/CTA_VEM) object from the topicmodels package}
 
 \item{matrix}{Whether to tidy the beta (per-term-per-topic, default)
 or gamma (per-document-per-topic) matrix}
@@ -23,7 +32,7 @@ or gamma (per-document-per-topic) matrix}
 
 \item{...}{Extra arguments, not used}
 
-\item{data}{For \code{augment}, the data given to the LDA function, either
+\item{data}{For \code{augment}, the data given to the LDA or CTM function, either
 as a DocumentTermMatrix or as a tidied table with "document" and "term"
 columns}
 }
@@ -68,7 +77,7 @@ columns.
 }
 }
 \description{
-Tidy the results of a Latent Dirichlet Allocation.
+Tidy the results of a Latent Dirichlet Allocation or Correlated Topic Model.
 }
 \examples{
 

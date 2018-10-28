@@ -86,4 +86,49 @@ if (require("stm", quietly = TRUE)) {
     expect_equal(nrow(g), 1)
     expect_equal(g$terms, 4)
   })
+
+  stm_estimate_one_topic <- estimateEffect(c(1) ~ treatment, gadarianFit, gadarian)
+  test_that("can tidy estimateEffect object with one topic", {
+    td <- tidy(stm_estimate_one_topic)
+    expect_is(td, "tbl_df")
+
+    expect_equal(colnames(td), c("topic", "term", "estimate", "std.error", "statistic", "p.value"))
+
+    expect_is(td$topic, "integer")
+    expect_is(td$term, "character")
+    expect_is(td$estimate, "numeric")
+    expect_is(td$std.error, "numeric")
+    expect_is(td$statistic, "numeric")
+    expect_is(td$p.value, "numeric")
+
+    expect_equal(unique(td$topic), 1)
+
+    expect_equal(nrow(td), 2)
+
+    expect_true(all(c("(Intercept)", "treatment") %in% td$term))
+  })
+
+  stm_estimate_three_topic_interaction <- estimateEffect(c(1:3) ~ treatment*s(pid_rep), gadarianFit, gadarian)
+  test_that("can tidy estimateEffect object with three topics and an interaction term", {
+    td <- tidy(stm_estimate_three_topic_interaction)
+    expect_is(td, "tbl_df")
+
+    expect_equal(colnames(td), c("topic", "term", "estimate", "std.error", "statistic", "p.value"))
+
+    expect_is(td$topic, "integer")
+    expect_is(td$term, "character")
+    expect_is(td$estimate, "numeric")
+    expect_is(td$std.error, "numeric")
+    expect_is(td$statistic, "numeric")
+    expect_is(td$p.value, "numeric")
+
+    expect_equal(unique(td$topic), c(1:3))
+
+    expect_equal(nrow(td), 42)  # 14 term combinations for 3 topics
+
+    expect_true(all(c("(Intercept)", "treatment", "s(pid_rep)1", "s(pid_rep)2", "s(pid_rep)3", "s(pid_rep)4",
+                      "s(pid_rep)5", "s(pid_rep)6", "treatment:s(pid_rep)1", "treatment:s(pid_rep)2",
+                      "treatment:s(pid_rep)3", "treatment:s(pid_rep)4", "treatment:s(pid_rep)5", "treatment:s(pid_rep)6")
+                    %in% td$term))
+  })
 }

@@ -1,0 +1,866 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "funrar"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('funrar')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("compute_dist_matrix")
+> ### * compute_dist_matrix
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: compute_dist_matrix
+> ### Title: Functional Distance Matrix
+> ### Aliases: compute_dist_matrix distance_matrix
+> 
+> ### ** Examples
+> 
+> set.seed(1)  # For reproducibility
+> trait = data.frame(
++    sp = paste("sp", 1:5),
++    trait_1 = runif(5),
++    trait_2 = as.factor(c("A", "A", "A", "B", "B")))
+> 
+> rownames(trait) = trait$sp
+> 
+> dist_mat = compute_dist_matrix(trait[, -1])
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("distinctiveness")
+> ### * distinctiveness
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distinctiveness
+> ### Title: Functional Distinctiveness on site-species matrix
+> ### Aliases: distinctiveness
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> 
+> # Compute relative abundances
+> mat = make_relative(mat)
+> 
+> # Example of trait table
+> tra = aravo$traits[, c("Height", "SLA", "N_mass")]
+> # Distance matrix
+> dist_mat = compute_dist_matrix(tra)
+Warning in compute_dist_matrix(tra) :
+  Only numeric traits provided, consider using euclidean distance.
+> 
+> di = distinctiveness(pres_matrix = mat, dist_matrix = dist_mat)
+> di[1:5, 1:5]
+     Agro.rupe Alop.alpi Anth.nipp Heli.sede Aven.vers
+AR07        NA        NA        NA        NA        NA
+AR71        NA        NA        NA        NA        NA
+AR26 0.1460428        NA 0.2039929        NA 0.1788624
+AR54        NA        NA        NA 0.1786867        NA
+AR60        NA        NA        NA        NA        NA
+> 
+> # Compute distinctiveness for all species in the regional pool
+> # i.e., with all the species in all the communities
+> # Here considering each species present evenly in the regional pool
+> reg_pool = matrix(1, ncol = ncol(mat))
+> colnames(reg_pool) = colnames(mat)
+> row.names(reg_pool) = c("Regional_pool")
+> 
+> reg_di = distinctiveness(reg_pool, dist_mat)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("distinctiveness_dimensions")
+> ### * distinctiveness_dimensions
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distinctiveness_dimensions
+> ### Title: Distinctiveness dimensions
+> ### Aliases: distinctiveness_dimensions
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> rel_mat = make_relative(mat)
+> 
+> # Example of trait table
+> tra = aravo$traits[, c("Height", "SLA", "N_mass")]
+> 
+> di_dim = distinctiveness_dimensions(rel_mat, tra)
+Warning in compute_dist_matrix(traits_table = list(Height = c(6, 5, 15,  :
+  Only numeric traits provided, consider using euclidean distance.
+Warning in compute_dist_matrix(traits_table = list(SLA = c(8.1, 15.1, 18,  :
+  Only numeric traits provided, consider using euclidean distance.
+Warning in compute_dist_matrix(traits_table = list(N_mass = c(218.7, 203.85,  :
+  Only numeric traits provided, consider using euclidean distance.
+Warning in compute_dist_matrix(traits_table, ...) :
+  Only numeric traits provided, consider using euclidean distance.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("distinctiveness_stack")
+> ### * distinctiveness_stack
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: distinctiveness_stack
+> ### Title: Functional Distinctiveness on a stacked data.frame
+> ### Aliases: distinctiveness_stack
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Example of trait table
+> tra = aravo$traits[, c("Height", "SLA", "N_mass")]
+> # Distance matrix
+> dist_mat = compute_dist_matrix(tra)
+Warning in compute_dist_matrix(tra) :
+  Only numeric traits provided, consider using euclidean distance.
+> 
+> # Site-species matrix converted into data.frame
+> mat = as.matrix(aravo$spe)
+> mat = make_relative(mat)
+> dat = matrix_to_stack(mat, "value", "site", "species")
+> dat$site = as.character(dat$site)
+> dat$species = as.character(dat$species)
+> 
+> di_df = distinctiveness_stack(dat, "species", "site", "value", dist_mat)
+> head(di_df)
+    species site   value        Di
+1 Agro.rupe AR01 0.03125 0.1569403
+2 Alop.alpi AR01 0.00000 0.1683473
+3 Anth.nipp AR01 0.00000 0.2097289
+4 Heli.sede AR01 0.06250 0.1924531
+5 Aven.vers AR01 0.00000 0.1863571
+6 Care.rosa AR01 0.00000 0.3432633
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("is_relative")
+> ### * is_relative
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: is_relative
+> ### Title: Tell if matrix or data.frame has relative abundances
+> ### Aliases: is_relative
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> head(mat)[, 1:5]  # Has absolute abundances
+     Agro.rupe Alop.alpi Anth.nipp Heli.sede Aven.vers
+AR07         0         0         0         0         0
+AR71         0         0         0         0         0
+AR26         3         0         1         0         1
+AR54         0         0         0         2         0
+AR60         0         0         0         0         0
+AR70         0         0         0         0         0
+> rel_mat = make_relative(mat)
+> head(rel_mat)  # Relative abundances
+      Agro.rupe Alop.alpi  Anth.nipp  Heli.sede  Aven.vers  Care.rosa Care.foet
+AR07 0.00000000         0 0.00000000 0.00000000 0.00000000 0.06666667         0
+AR71 0.00000000         0 0.00000000 0.00000000 0.00000000 0.08695652         0
+AR26 0.08108108         0 0.02702703 0.00000000 0.02702703 0.05405405         0
+AR54 0.00000000         0 0.00000000 0.08695652 0.00000000 0.08695652         0
+AR60 0.00000000         0 0.00000000 0.00000000 0.00000000 0.00000000         0
+AR70 0.00000000         0 0.00000000 0.00000000 0.00000000 0.09375000         0
+      Care.parv Care.rupe  Care.semp Fest.laev  Fest.quad  Fest.viol  Kobr.myos
+AR07 0.00000000   0.20000 0.00000000         0 0.13333333 0.00000000 0.06666667
+AR71 0.04347826   0.00000 0.00000000         0 0.00000000 0.00000000 0.13043478
+AR26 0.00000000   0.00000 0.02702703         0 0.08108108 0.02702703 0.10810811
+AR54 0.00000000   0.00000 0.00000000         0 0.04347826 0.00000000 0.04347826
+AR60 0.00000000   0.00000 0.00000000         0 0.23076923 0.07692308 0.07692308
+AR70 0.03125000   0.03125 0.00000000         0 0.00000000 0.00000000 0.12500000
+      Luzu.lute   Poa.alpi Poa.supi  Sesl.caer Alch.pent  Alch.glau Alch.vulg
+AR07 0.00000000 0.06666667        0 0.00000000         0 0.00000000         0
+AR71 0.00000000 0.08695652        0 0.00000000         0 0.00000000         0
+AR26 0.02702703 0.00000000        0 0.00000000         0 0.02702703         0
+AR54 0.00000000 0.08695652        0 0.04347826         0 0.00000000         0
+AR60 0.00000000 0.00000000        0 0.07692308         0 0.00000000         0
+AR70 0.00000000 0.06250000        0 0.03125000         0 0.00000000         0
+     Andr.brig  Ante.carp Ante.dioi Arni.mont Aste.alpi  Bart.alpi  Camp.sche
+AR07         0 0.00000000         0         0         0 0.00000000 0.00000000
+AR71         0 0.04347826         0         0         0 0.04347826 0.04347826
+AR26         0 0.02702703         0         0         0 0.00000000 0.02702703
+AR54         0 0.00000000         0         0         0 0.00000000 0.04347826
+AR60         0 0.00000000         0         0         0 0.00000000 0.07692308
+AR70         0 0.03125000         0         0         0 0.03125000 0.03125000
+     Card.alpi Cera.stri Cera.cera Leuc.alpi Cirs.acau  Drab.aizo  Drya.octo
+AR07         0   0.00000         0         0         0 0.00000000 0.00000000
+AR71         0   0.00000         0         0         0 0.00000000 0.04347826
+AR26         0   0.00000         0         0         0 0.00000000 0.00000000
+AR54         0   0.00000         0         0         0 0.04347826 0.00000000
+AR60         0   0.00000         0         0         0 0.00000000 0.00000000
+AR70         0   0.03125         0         0         0 0.00000000 0.03125000
+      Erig.unif Gent.camp  Gent.acau  Gent.vern  Geum.mont Omal.supi  Andr.vita
+AR07 0.00000000         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+AR71 0.00000000         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+AR26 0.02702703         0 0.02702703 0.02702703 0.05405405         0 0.00000000
+AR54 0.04347826         0 0.00000000 0.04347826 0.00000000         0 0.00000000
+AR60 0.00000000         0 0.00000000 0.07692308 0.00000000         0 0.07692308
+AR70 0.00000000         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+     Hier.pili Homo.alpi Leon.pyre  Ligu.muto  Lloy.sero  Minu.sedo  Minu.vern
+AR07         0   0.00000         0 0.00000000 0.00000000 0.06666667 0.06666667
+AR71         0   0.00000         0 0.04347826 0.04347826 0.00000000 0.00000000
+AR26         0   0.00000         0 0.00000000 0.00000000 0.00000000 0.02702703
+AR54         0   0.00000         0 0.04347826 0.00000000 0.00000000 0.04347826
+AR60         0   0.00000         0 0.00000000 0.00000000 0.00000000 0.07692308
+AR70         0   0.03125         0 0.06250000 0.03125000 0.00000000 0.00000000
+     Phyt.orbi Plan.alpi  Poly.vivi  Pote.aure  Pote.cran Pote.gran  Puls.vern
+AR07         0         0 0.06666667 0.00000000 0.00000000         0 0.00000000
+AR71         0         0 0.04347826 0.00000000 0.00000000         0 0.00000000
+AR26         0         0 0.02702703 0.05405405 0.02702703         0 0.05405405
+AR54         0         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+AR60         0         0 0.07692308 0.00000000 0.00000000         0 0.00000000
+AR70         0         0 0.03125000 0.00000000 0.00000000         0 0.00000000
+     Ranu.kuep Sagi.glab Sali.herb  Sali.reti  Sali.retu  Sali.serp  Saxi.pani
+AR07         0         0         0 0.00000000 0.00000000 0.00000000 0.06666667
+AR71         0         0         0 0.04347826 0.08695652 0.04347826 0.00000000
+AR26         0         0         0 0.00000000 0.00000000 0.00000000 0.00000000
+AR54         0         0         0 0.00000000 0.00000000 0.00000000 0.08695652
+AR60         0         0         0 0.00000000 0.00000000 0.00000000 0.07692308
+AR70         0         0         0 0.06250000 0.06250000 0.00000000 0.03125000
+     Sedu.alpe  Semp.mont Sene.inca Sibb.proc  Sile.acau  Thym.poly Vero.alpi
+AR07         0 0.00000000         0         0 0.06666667 0.00000000         0
+AR71         0 0.04347826         0         0 0.04347826 0.00000000         0
+AR26         0 0.02702703         0         0 0.02702703 0.00000000         0
+AR54         0 0.04347826         0         0 0.00000000 0.08695652         0
+AR60         0 0.00000000         0         0 0.00000000 0.00000000         0
+AR70         0 0.03125000         0         0 0.06250000 0.00000000         0
+     Vero.alli  Vero.bell  Myos.alpe Tara.alpi  Scab.luci  Anth.alpe  Oxyt.camp
+AR07         0 0.00000000 0.00000000         0 0.00000000 0.00000000 0.06666667
+AR71         0 0.00000000 0.00000000         0 0.00000000 0.04347826 0.00000000
+AR26         0 0.00000000 0.02702703         0 0.02702703 0.00000000 0.02702703
+AR54         0 0.04347826 0.04347826         0 0.00000000 0.00000000 0.00000000
+AR60         0 0.00000000 0.00000000         0 0.00000000 0.00000000 0.00000000
+AR70         0 0.03125000 0.00000000         0 0.00000000 0.00000000 0.00000000
+      Oxyt.lapp Lotu.alpi Trif.alpi Trif.badi Trif.thal
+AR07 0.06666667         0         0         0         0
+AR71 0.04347826         0         0         0         0
+AR26 0.00000000         0         0         0         0
+AR54 0.04347826         0         0         0         0
+AR60 0.07692308         0         0         0         0
+AR70 0.03125000         0         0         0         0
+> 
+> # Forced to use ':::' becasue function is not exported
+> funrar:::is_relative(mat)      # FALSE
+[1] FALSE
+> funrar:::is_relative(rel_mat)  # TRUE
+[1] TRUE
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("make_relative")
+> ### * make_relative
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: make_relative
+> ### Title: Relative abundance matrix from absolute abundance matrix
+> ### Aliases: make_relative
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> head(mat)[, 1:5]  # Has absolute abundances
+     Agro.rupe Alop.alpi Anth.nipp Heli.sede Aven.vers
+AR07         0         0         0         0         0
+AR71         0         0         0         0         0
+AR26         3         0         1         0         1
+AR54         0         0         0         2         0
+AR60         0         0         0         0         0
+AR70         0         0         0         0         0
+> rel_mat = make_relative(mat)
+> head(rel_mat)  # Relative abundances
+      Agro.rupe Alop.alpi  Anth.nipp  Heli.sede  Aven.vers  Care.rosa Care.foet
+AR07 0.00000000         0 0.00000000 0.00000000 0.00000000 0.06666667         0
+AR71 0.00000000         0 0.00000000 0.00000000 0.00000000 0.08695652         0
+AR26 0.08108108         0 0.02702703 0.00000000 0.02702703 0.05405405         0
+AR54 0.00000000         0 0.00000000 0.08695652 0.00000000 0.08695652         0
+AR60 0.00000000         0 0.00000000 0.00000000 0.00000000 0.00000000         0
+AR70 0.00000000         0 0.00000000 0.00000000 0.00000000 0.09375000         0
+      Care.parv Care.rupe  Care.semp Fest.laev  Fest.quad  Fest.viol  Kobr.myos
+AR07 0.00000000   0.20000 0.00000000         0 0.13333333 0.00000000 0.06666667
+AR71 0.04347826   0.00000 0.00000000         0 0.00000000 0.00000000 0.13043478
+AR26 0.00000000   0.00000 0.02702703         0 0.08108108 0.02702703 0.10810811
+AR54 0.00000000   0.00000 0.00000000         0 0.04347826 0.00000000 0.04347826
+AR60 0.00000000   0.00000 0.00000000         0 0.23076923 0.07692308 0.07692308
+AR70 0.03125000   0.03125 0.00000000         0 0.00000000 0.00000000 0.12500000
+      Luzu.lute   Poa.alpi Poa.supi  Sesl.caer Alch.pent  Alch.glau Alch.vulg
+AR07 0.00000000 0.06666667        0 0.00000000         0 0.00000000         0
+AR71 0.00000000 0.08695652        0 0.00000000         0 0.00000000         0
+AR26 0.02702703 0.00000000        0 0.00000000         0 0.02702703         0
+AR54 0.00000000 0.08695652        0 0.04347826         0 0.00000000         0
+AR60 0.00000000 0.00000000        0 0.07692308         0 0.00000000         0
+AR70 0.00000000 0.06250000        0 0.03125000         0 0.00000000         0
+     Andr.brig  Ante.carp Ante.dioi Arni.mont Aste.alpi  Bart.alpi  Camp.sche
+AR07         0 0.00000000         0         0         0 0.00000000 0.00000000
+AR71         0 0.04347826         0         0         0 0.04347826 0.04347826
+AR26         0 0.02702703         0         0         0 0.00000000 0.02702703
+AR54         0 0.00000000         0         0         0 0.00000000 0.04347826
+AR60         0 0.00000000         0         0         0 0.00000000 0.07692308
+AR70         0 0.03125000         0         0         0 0.03125000 0.03125000
+     Card.alpi Cera.stri Cera.cera Leuc.alpi Cirs.acau  Drab.aizo  Drya.octo
+AR07         0   0.00000         0         0         0 0.00000000 0.00000000
+AR71         0   0.00000         0         0         0 0.00000000 0.04347826
+AR26         0   0.00000         0         0         0 0.00000000 0.00000000
+AR54         0   0.00000         0         0         0 0.04347826 0.00000000
+AR60         0   0.00000         0         0         0 0.00000000 0.00000000
+AR70         0   0.03125         0         0         0 0.00000000 0.03125000
+      Erig.unif Gent.camp  Gent.acau  Gent.vern  Geum.mont Omal.supi  Andr.vita
+AR07 0.00000000         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+AR71 0.00000000         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+AR26 0.02702703         0 0.02702703 0.02702703 0.05405405         0 0.00000000
+AR54 0.04347826         0 0.00000000 0.04347826 0.00000000         0 0.00000000
+AR60 0.00000000         0 0.00000000 0.07692308 0.00000000         0 0.07692308
+AR70 0.00000000         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+     Hier.pili Homo.alpi Leon.pyre  Ligu.muto  Lloy.sero  Minu.sedo  Minu.vern
+AR07         0   0.00000         0 0.00000000 0.00000000 0.06666667 0.06666667
+AR71         0   0.00000         0 0.04347826 0.04347826 0.00000000 0.00000000
+AR26         0   0.00000         0 0.00000000 0.00000000 0.00000000 0.02702703
+AR54         0   0.00000         0 0.04347826 0.00000000 0.00000000 0.04347826
+AR60         0   0.00000         0 0.00000000 0.00000000 0.00000000 0.07692308
+AR70         0   0.03125         0 0.06250000 0.03125000 0.00000000 0.00000000
+     Phyt.orbi Plan.alpi  Poly.vivi  Pote.aure  Pote.cran Pote.gran  Puls.vern
+AR07         0         0 0.06666667 0.00000000 0.00000000         0 0.00000000
+AR71         0         0 0.04347826 0.00000000 0.00000000         0 0.00000000
+AR26         0         0 0.02702703 0.05405405 0.02702703         0 0.05405405
+AR54         0         0 0.00000000 0.00000000 0.00000000         0 0.00000000
+AR60         0         0 0.07692308 0.00000000 0.00000000         0 0.00000000
+AR70         0         0 0.03125000 0.00000000 0.00000000         0 0.00000000
+     Ranu.kuep Sagi.glab Sali.herb  Sali.reti  Sali.retu  Sali.serp  Saxi.pani
+AR07         0         0         0 0.00000000 0.00000000 0.00000000 0.06666667
+AR71         0         0         0 0.04347826 0.08695652 0.04347826 0.00000000
+AR26         0         0         0 0.00000000 0.00000000 0.00000000 0.00000000
+AR54         0         0         0 0.00000000 0.00000000 0.00000000 0.08695652
+AR60         0         0         0 0.00000000 0.00000000 0.00000000 0.07692308
+AR70         0         0         0 0.06250000 0.06250000 0.00000000 0.03125000
+     Sedu.alpe  Semp.mont Sene.inca Sibb.proc  Sile.acau  Thym.poly Vero.alpi
+AR07         0 0.00000000         0         0 0.06666667 0.00000000         0
+AR71         0 0.04347826         0         0 0.04347826 0.00000000         0
+AR26         0 0.02702703         0         0 0.02702703 0.00000000         0
+AR54         0 0.04347826         0         0 0.00000000 0.08695652         0
+AR60         0 0.00000000         0         0 0.00000000 0.00000000         0
+AR70         0 0.03125000         0         0 0.06250000 0.00000000         0
+     Vero.alli  Vero.bell  Myos.alpe Tara.alpi  Scab.luci  Anth.alpe  Oxyt.camp
+AR07         0 0.00000000 0.00000000         0 0.00000000 0.00000000 0.06666667
+AR71         0 0.00000000 0.00000000         0 0.00000000 0.04347826 0.00000000
+AR26         0 0.00000000 0.02702703         0 0.02702703 0.00000000 0.02702703
+AR54         0 0.04347826 0.04347826         0 0.00000000 0.00000000 0.00000000
+AR60         0 0.00000000 0.00000000         0 0.00000000 0.00000000 0.00000000
+AR70         0 0.03125000 0.00000000         0 0.00000000 0.00000000 0.00000000
+      Oxyt.lapp Lotu.alpi Trif.alpi Trif.badi Trif.thal
+AR07 0.06666667         0         0         0         0
+AR71 0.04347826         0         0         0         0
+AR26 0.00000000         0         0         0         0
+AR54 0.04347826         0         0         0         0
+AR60 0.07692308         0         0         0         0
+AR70 0.03125000         0         0         0         0
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("matrix_to_stack")
+> ### * matrix_to_stack
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: matrix_to_stack
+> ### Title: Matrix to stacked (= tidy) data.frame
+> ### Aliases: matrix_to_stack matrix_to_tidy
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix converted into data.frame
+> mat = as.matrix(aravo$spe)
+> dat = matrix_to_stack(mat, "value", "site", "species")
+> str(dat)
+'data.frame':	6150 obs. of  3 variables:
+ $ species: Factor w/ 82 levels "Agro.rupe","Alop.alpi",..: 1 1 1 1 1 1 1 1 1 1 ...
+ $ site   : Factor w/ 75 levels "AR07","AR71",..: 1 2 3 4 5 6 7 8 9 10 ...
+ $ value  : int  0 0 3 0 0 0 2 0 0 3 ...
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("restrictedness")
+> ### * restrictedness
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: restrictedness
+> ### Title: Geographical Restrictedness on site-species matrix
+> ### Aliases: restrictedness
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> ri = restrictedness(mat)
+> head(ri)
+    species        Ri
+1 Agro.rupe 0.6133333
+2 Alop.alpi 0.5066667
+3 Anth.nipp 0.7733333
+4 Heli.sede 0.9466667
+5 Aven.vers 0.8000000
+6 Care.rosa 0.6266667
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("restrictedness_stack")
+> ### * restrictedness_stack
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: restrictedness_stack
+> ### Title: Geographical Restrictedness for stacked data.frame
+> ### Aliases: restrictedness_stack
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix converted into data.frame
+> mat = as.matrix(aravo$spe)
+> dat = matrix_to_stack(mat, "value", "site", "species")
+> dat$site = as.character(dat$site)
+> dat$species = as.character(dat$species)
+> ri_df = restrictedness_stack(dat, "species", "site")
+> head(ri_df)
+    species Ri
+1 Agro.rupe  0
+2 Alch.glau  0
+3 Alch.pent  0
+4 Alch.vulg  0
+5 Alop.alpi  0
+6 Andr.brig  0
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("scarcity")
+> ### * scarcity
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: scarcity
+> ### Title: Scarcity on site-species matrix
+> ### Aliases: scarcity
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> mat = make_relative(mat)
+> 
+> si = scarcity(pres_matrix = mat)
+> si[1:5, 1:5]
+     Agro.rupe Alop.alpi Anth.nipp Heli.sede Aven.vers
+AR07        NA        NA        NA        NA        NA
+AR71        NA        NA        NA        NA        NA
+AR26  0.231951        NA 0.6144201        NA 0.6144201
+AR54        NA        NA        NA 0.3379268        NA
+AR60        NA        NA        NA        NA        NA
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("scarcity_stack")
+> ### * scarcity_stack
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: scarcity_stack
+> ### Title: Scarcity
+> ### Aliases: scarcity_stack
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix converted into data.frame
+> mat = as.matrix(aravo$spe)
+> mat = make_relative(mat)
+> dat = matrix_to_stack(mat, "value", "site", "species")
+> dat$site = as.character(dat$site)
+> dat$species = as.character(dat$species)
+> 
+> si_df = scarcity_stack(dat, "species", "site", "value")
+> head(si_df)
+    species site   value         Si
+1 Agro.rupe AR01 0.03125 0.16928194
+2 Alop.alpi AR01 0.00000 1.00000000
+3 Anth.nipp AR01 0.00000 1.00000000
+4 Heli.sede AR01 0.06250 0.02865638
+5 Aven.vers AR01 0.00000 1.00000000
+6 Care.rosa AR01 0.00000 1.00000000
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("stack_to_matrix")
+> ### * stack_to_matrix
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: stack_to_matrix
+> ### Title: Stacked (= tidy) data.frame to matrix
+> ### Aliases: stack_to_matrix tidy_to_matrix
+> 
+> ### ** Examples
+> 
+> example = data.frame("sites" = c(rep("1", 3), rep("2", 2)),
++  "species" = c("A", "B", "C", "B", "D"),
++   "abundance" = c(0.33, 0.33, 0.33, 0.4, 0.6))
+> 
+> mat = stack_to_matrix(example, "sites", "species", "abundance")
+> mat
+     species
+sites    A    B    C   D
+    1 0.33 0.33 0.33  NA
+    2   NA 0.40   NA 0.6
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("uniqueness")
+> ### * uniqueness
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: uniqueness
+> ### Title: Functional Uniqueness for site-species matrix matrix
+> ### Aliases: uniqueness
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> colnames(mat) = as.character(colnames(mat))
+> 
+> # Example of trait table
+> tra = aravo$traits[, c("Height", "SLA", "N_mass")]
+> # Distance matrix
+> dist_mat = compute_dist_matrix(tra)
+Warning in compute_dist_matrix(tra) :
+  Only numeric traits provided, consider using euclidean distance.
+> 
+> ui = uniqueness(mat, dist_mat)
+> head(ui)
+    species         Ui
+1 Agro.rupe 0.03635369
+2 Alop.alpi 0.03715692
+3 Anth.nipp 0.09414051
+4 Heli.sede 0.02270997
+5 Aven.vers 0.05675178
+6 Care.rosa 0.15922932
+> 
+> # Computing uniqueness for each community
+> com_ui = apply(mat, 1,
++                 function(x, dist_m) {
++                     smaller_com = x[x > 0 & !is.na(x)]
++                     uniqueness(t(as.matrix(smaller_com)), dist_m)
++                 }, dist_m = dist_mat)
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+Distance matrix bigger than site-species matrix
+Taking subset of distance matrix
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("uniqueness_dimensions")
+> ### * uniqueness_dimensions
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: uniqueness_dimensions
+> ### Title: Uniqueness dimensions
+> ### Aliases: uniqueness_dimensions
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix
+> mat = as.matrix(aravo$spe)
+> rel_mat = make_relative(mat)
+> 
+> # Example of trait table
+> tra = aravo$traits[, c("Height", "SLA", "N_mass")]
+> 
+> ui_dim = uniqueness_dimensions(rel_mat, tra)
+Warning in compute_dist_matrix(traits_table = list(Height = c(6, 5, 15,  :
+  Only numeric traits provided, consider using euclidean distance.
+Warning in compute_dist_matrix(traits_table = list(SLA = c(8.1, 15.1, 18,  :
+  Only numeric traits provided, consider using euclidean distance.
+Warning in compute_dist_matrix(traits_table = list(N_mass = c(218.7, 203.85,  :
+  Only numeric traits provided, consider using euclidean distance.
+Warning in compute_dist_matrix(traits_table, ...) :
+  Only numeric traits provided, consider using euclidean distance.
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("uniqueness_stack")
+> ### * uniqueness_stack
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: uniqueness_stack
+> ### Title: Functional Uniqueness on stacked data.frame
+> ### Aliases: uniqueness_stack
+> 
+> ### ** Examples
+> 
+> data("aravo", package = "ade4")
+> 
+> # Site-species matrix converted into data.frame
+> mat = as.matrix(aravo$spe)
+> dat = matrix_to_stack(mat, "value", "site", "species")
+> dat$site = as.character(dat$site)
+> dat$species = as.character(dat$species)
+> 
+> # Example of trait table
+> tra = aravo$traits[, c("Height", "SLA", "N_mass")]
+> # Distance matrix
+> dist_mat = compute_dist_matrix(tra)
+Warning in compute_dist_matrix(tra) :
+  Only numeric traits provided, consider using euclidean distance.
+> 
+> ui_df = uniqueness_stack(dat, "species", dist_mat)
+> head(ui_df)
+    species         Ui
+1 Agro.rupe 0.03635369
+2 Alop.alpi 0.03715692
+3 Anth.nipp 0.09414051
+4 Heli.sede 0.02270997
+5 Aven.vers 0.05675178
+6 Care.rosa 0.15922932
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  1.376 0.139 1.558 0 0 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

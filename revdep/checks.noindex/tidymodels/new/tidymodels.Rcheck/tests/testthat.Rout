@@ -1,0 +1,40 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(tidymodels)
+── [1mAttaching packages[22m ────────────────────────────────────────────────────────────────────────────────────── tidymodels 0.0.1 ──
+[32m✔[39m [34mggplot2  [39m 3.0.0     [32m✔[39m [34mrecipes  [39m 0.1.3
+[32m✔[39m [34mtibble   [39m 1.4.2     [32m✔[39m [34mbroom    [39m 0.5.0
+[32m✔[39m [34mpurrr    [39m 0.2.5     [32m✔[39m [34myardstick[39m 0.0.1
+[32m✔[39m [34mdplyr    [39m 0.7.6     [32m✔[39m [34minfer    [39m 0.3.1
+[32m✔[39m [34mrsample  [39m 0.0.2     
+── [1mConflicts[22m ───────────────────────────────────────────────────────────────────────────────────────── tidymodels_conflicts() ──
+[31m✖[39m [34mrsample[39m::[32mfill()[39m  masks [34mtidyr[39m::fill()
+[31m✖[39m [34mdplyr[39m::[32mfilter()[39m  masks [34mstats[39m::filter()
+[31m✖[39m [34mpurrr[39m::[32mis_null()[39m masks [34mtestthat[39m::is_null()
+[31m✖[39m [34mdplyr[39m::[32mlag()[39m     masks [34mstats[39m::lag()
+[31m✖[39m [34mdplyr[39m::[32mmatches()[39m masks [34mtestthat[39m::matches()
+[31m✖[39m [34mrecipes[39m::[32mstep()[39m  masks [34mstats[39m::step()
+> 
+> test_check("tidymodels")
+══ testthat results  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+OK: 2 SKIPPED: 0 FAILED: 0
+> 
+> proc.time()
+   user  system elapsed 
+  2.695   0.266   3.107 

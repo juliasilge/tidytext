@@ -4,9 +4,9 @@
 \alias{unnest_tokens}
 \title{Split a column into tokens using the tokenizers package}
 \usage{
-unnest_tokens(tbl, output, input, token = "words", format = c("text", "man",
-  "latex", "html", "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL,
-  ...)
+unnest_tokens(tbl, output, input, token = "words", format = c("text",
+  "man", "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
+  collapse = NULL, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -51,7 +51,7 @@ through the tidyeval framework.
 \details{
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
 paragraphs, or regex, the entire input will be collapsed together before
-tokenizing.
+tokenizing unless \code{collapse = FALSE}.
 
 If format is anything other than "text", this uses the
 \code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.

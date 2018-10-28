@@ -1,0 +1,44 @@
+Package: tidytext
+Type: Package
+Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
+Version: 0.1.9
+Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
+             email = "gabidequeiroz@gmail.com"),
+             person("Emil", "Hvitfeldt", role = c("ctb"),
+             email = "emilhhvitfeldt@gmail.com"),
+             person("Os", "Keyes", role = c("ctb"),
+             email = "ironholds@gmail.com",
+             comment = c(ORCID = "0000-0001-5196-609X")),
+             person("Kanishka", "Misra", role = c("ctb"),
+             email = "kmisra@purdue.edu"),
+             person("David", "Robinson", role = c("aut"),
+             email = "admiral.david@gmail.com"),
+             person("Julia", "Silge", role = c("aut", "cre"), 
+             email = "julia.silge@gmail.com", 
+             comment = c(ORCID = "0000-0002-3671-836X")))
+Description: Text mining for word processing and sentiment analysis using
+    'dplyr', 'ggplot2', and other tidy tools.
+License: MIT + file LICENSE
+LazyData: TRUE
+URL: http://github.com/juliasilge/tidytext
+BugReports: http://github.com/juliasilge/tidytext/issues
+RoxygenNote: 6.0.1
+Depends: R (>= 2.10)
+Imports: rlang, dplyr, stringr, hunspell, broom, Matrix, tokenizers,
+        janeaustenr, purrr (>= 0.1.1), methods, stopwords
+Suggests: readr, tidyr, XML, tm, quanteda, knitr, rmarkdown, ggplot2,
+        reshape2, wordcloud, topicmodels, NLP, scales, gutenbergr,
+        testthat, mallet, stm, data.table
+VignetteBuilder: knitr
+NeedsCompilation: no
+Packaged: 2018-05-28 17:58:30 UTC; juliasilge
+Author: Gabriela De Queiroz [ctb],
+  Emil Hvitfeldt [ctb],
+  Os Keyes [ctb] (<https://orcid.org/0000-0001-5196-609X>),
+  Kanishka Misra [ctb],
+  David Robinson [aut],
+  Julia Silge [aut, cre] (<https://orcid.org/0000-0002-3671-836X>)
+Maintainer: Julia Silge <julia.silge@gmail.com>
+Repository: CRAN
+Date/Publication: 2018-05-29 04:59:24 UTC
+Built: R 3.5.0; ; 2018-05-30 11:08:11 UTC; unix
