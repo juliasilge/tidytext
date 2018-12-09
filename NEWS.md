@@ -1,3 +1,7 @@
+# tidytext 0.2.1 [WIP]
+
+* Fix bug in `augment()` function for stm topic model.
+
 # tidytext 0.2.0
 
 * Improvements to documentation (#117)
