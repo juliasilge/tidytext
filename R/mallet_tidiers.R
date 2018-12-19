@@ -119,7 +119,7 @@ tidy.jobjRef <- function(x, matrix = c("beta", "gamma"), log = FALSE,
 #' It returns that same data with an additional column
 #' \code{.topic} with the topic assignment for that document-term combination.
 #'
-#' @importFrom broom augment
+#' @importFrom generics augment
 #'
 #' @export
 augment.jobjRef <- function(x, data, ...) {

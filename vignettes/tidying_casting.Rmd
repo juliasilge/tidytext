@@ -173,6 +173,7 @@ inaug_freq
 For example, we can use the broom package to perform logistic regression on each word.
 
 ```{r}
+library(broom)
 models <- inaug_freq %>%
   group_by(word) %>%
   filter(sum(n) > 50) %>%
