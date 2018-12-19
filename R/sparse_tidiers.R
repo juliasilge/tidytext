@@ -5,7 +5,7 @@
 #' a three-column data frame: \code{term{}}, and value (with
 #' zeros missing), with one-row-per-term-per-document.
 #'
-#' @importFrom broom tidy
+#' @importFrom generics tidy
 #'
 #' @param x A DocumentTermMatrix or TermDocumentMatrix object
 #' @param row_names Specify row names
@@ -90,4 +90,4 @@ tidy_triplet <- function(x, triplets, row_names = NULL, col_names = NULL) {
 }
 
 #' @export
-broom::tidy
+generics::tidy

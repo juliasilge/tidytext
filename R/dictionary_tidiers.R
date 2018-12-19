@@ -1,6 +1,6 @@
 #' Tidy dictionary objects from the quanteda package
 #'
-#' @importFrom broom tidy
+#' @importFrom generics tidy
 #'
 #' @param x A dictionary object
 #' @param regex Whether to turn dictionary items from a glob to a regex

@@ -150,7 +150,7 @@ tidy.estimateEffect <- function(x, ...) {
 #' with an additional column \code{.topic} with the topic assignment for that
 #' document-term combination.
 #'
-#' @importFrom broom augment
+#' @importFrom generics augment
 #'
 #' @export
 augment.STM <- function(x, data, ...) {
@@ -214,4 +214,4 @@ glance.STM <- function(x, ...) {
 }
 
 #' @export
-broom::augment
+generics::augment

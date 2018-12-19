@@ -91,7 +91,7 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #' @param x A Corpus object, such as a VCorpus or PCorpus
 #' @param ... Extra arguments, not used
 #'
-#' @importFrom broom glance
+#' @importFrom generics glance
 #'
 #' @details For the most part, the \code{tidy} output is equivalent to the
 #' "documents" data frame in the corpus object, except that it is converted
@@ -135,4 +135,4 @@ glance.corpus <- function(x, ...) {
 }
 
 #' @export
-broom::glance
+generics::glance
