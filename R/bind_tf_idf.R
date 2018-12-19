@@ -64,9 +64,11 @@ bind_tf_idf.data.frame <- function(tbl, term, document, n) {
   doc_totals <- tapply(n, documents, sum)
   idf <- log(length(doc_totals) / table(terms))
 
-  tbl$tf <- tbl[[n_col]] / as.numeric(doc_totals[documents])
+  tbl$tf <- n / as.numeric(doc_totals[documents])
   tbl$idf <- as.numeric(idf[terms])
   tbl$tf_idf <- tbl$tf * tbl$idf
+
+  if(any(tbl$idf < 0, na.rm = TRUE)) warning("Negative tf_idf calculated: Input but have exactly one row per document-term combination.")
 
   tbl
 }
