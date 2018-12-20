@@ -1,9 +1,9 @@
 #' Reorder an x or y axis within facets
 #'
-#' Reorder a column before plotting with faceting, such that the values are ordered
-#' within each facet. This requires two functions: \code{reorder_within} applied to
-#' the column, then either \code{scale_x_reordered} or \code{scale_y_reordered} added
-#' to the plot.
+#' Reorder a column before plotting with faceting, such that the values are
+#' ordered within each facet. This requires two functions: \code{reorder_within}
+#' applied to the column, then either \code{scale_x_reordered} or
+#' \code{scale_y_reordered} added to the plot.
 #' This is implemented as a bit of a hack: it appends ___ and then the facet
 #' at the end of each string.
 #'
@@ -12,10 +12,10 @@
 #' @param within Vector of the same length that will later be used for faceting
 #' @param fun Function to perform within each subset to determine the resulting
 #' ordering. By default, mean.
-#' @param sep Separator to distinguish the two. You may want to set this manually
-#' if ___ can exist within one of your labels.
-#' @param ... In \code{reorder_within} arguments passed on to \code{\link{reorder}}.
-#' In the scale functions, extra arguments passed on to
+#' @param sep Separator to distinguish the two. You may want to set this
+#' manually if ___ can exist within one of your labels.
+#' @param ... In \code{reorder_within} arguments passed on to
+#' \code{\link{reorder}}. In the scale functions, extra arguments passed on to
 #' \code{\link[ggplot2]{scale_x_discrete}} or \code{\link[ggplot2]{scale_y_discrete}}.
 #'
 #' @source "Ordering categories within ggplot2 Facets" by Tyler Rinker:

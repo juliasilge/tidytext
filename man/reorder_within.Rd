@@ -26,18 +26,18 @@ scale_y_reordered(..., sep = "___")
 \item{fun}{Function to perform within each subset to determine the resulting
 ordering. By default, mean.}
 
-\item{sep}{Separator to distinguish the two. You may want to set this manually
-if ___ can exist within one of your labels.}
+\item{sep}{Separator to distinguish the two. You may want to set this
+manually if ___ can exist within one of your labels.}
 
-\item{...}{In \code{reorder_within} arguments passed on to \code{\link{reorder}}.
-In the scale functions, extra arguments passed on to
+\item{...}{In \code{reorder_within} arguments passed on to
+\code{\link{reorder}}. In the scale functions, extra arguments passed on to
 \code{\link[ggplot2]{scale_x_discrete}} or \code{\link[ggplot2]{scale_y_discrete}}.}
 }
 \description{
-Reorder a column before plotting with faceting, such that the values are ordered
-within each facet. This requires two functions: \code{reorder_within} applied to
-the column, then either \code{scale_x_reordered} or \code{scale_y_reordered} added
-to the plot.
+Reorder a column before plotting with faceting, such that the values are
+ordered within each facet. This requires two functions: \code{reorder_within}
+applied to the column, then either \code{scale_x_reordered} or
+\code{scale_y_reordered} added to the plot.
 This is implemented as a bit of a hack: it appends ___ and then the facet
 at the end of each string.
 }
