@@ -14,6 +14,7 @@ install:
 
 environment:
   global:
+    R_VERSION: stable
     WARNINGS_ARE_ERRORS: 1
     USE_RTOOLS: true
 
