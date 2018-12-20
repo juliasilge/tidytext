@@ -1,0 +1,9 @@
+* installing *source* package ‘fedregs’ ...
+** package ‘fedregs’ successfully unpacked and MD5 sums checked
+** R
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** testing if installed package can be loaded
+* DONE (fedregs)

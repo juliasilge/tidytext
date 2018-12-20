@@ -40,8 +40,7 @@ library(janeaustenr)
 
 book_words <- austen_books() \%>\%
   unnest_tokens(word, text) \%>\%
-  count(book, word, sort = TRUE) \%>\%
-  ungroup()
+  count(book, word, sort = TRUE)
 
 book_words
 

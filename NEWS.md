@@ -1,3 +1,23 @@
+# tidytext 0.2.1 [WIP]
+
+* Fix bug in `augment()` function for stm topic model.
+* Warn when tf-idf is negative, thanks to @EmilHvitfeldt (#112).
+* Switch from importing broom to importing generics, for lighter dependencies (#133).
+
+# tidytext 0.2.0
+
+* Improvements to documentation (#117)
+* Fix for NSE thanks to @lepennec (#122).
+* Tidier for estimated regressions from **stm** package thanks to @jefferickson (#115).
+* Tidier for correlated topic model from **topicmodels** package (#123).
+
+# tidytext 0.1.9
+
+* Updates to documentation (#109) thanks to Emil Hvitfeldt.
+* Add new tokenizers for tweets, Penn Treebank to `unnest_tokens()`.
+* Better error message (#111) and code styling.
+* Declare dependency for tests.
+
 # tidytext 0.1.8
 
 * Updates to documentation (#102), README, and vignettes.

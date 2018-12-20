@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary style="050805" patternengine="substring">
+	<cnode name="A category" desc="">
+		<pnode name="more"/>
+		<pnode name="lamb"/>
+		<pnode name="little"/>
+	</cnode>
+	<cnode name="Another category" desc="">
+		<pnode name="had"/>
+		<pnode name="mary"/>
+	</cnode>
+</dictionary>

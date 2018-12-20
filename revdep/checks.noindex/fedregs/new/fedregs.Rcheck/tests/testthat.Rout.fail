@@ -1,0 +1,42 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> library(testthat)
+> library(fedregs)
+> 
+> test_check("fedregs")
+[31m──[39m [31m1. Error: We can go all the way (@test-fedregs.R#145) [39m [31m──────────────────────────────────────────────────────────────────────[39m
+Each column must either be a list of vectors or a list of data frames [all_cfr]
+1: cfr_text(good_year, good_title_number, good_chapter, good_part) at testthat/test-fedregs.R:145
+2: cfr_part_df %>% tidyr::unnest() %>% dplyr::mutate(min_parts = purrr::map(parts, numextract, "min"), max_parts = purrr::map(parts, 
+       numextract, "max")) %>% dplyr::filter(grepl(sprintf("Chapter %s", chapter), chapters), min_parts <= part, max_parts > part)
+3: withVisible(eval(quote(`_fseq`(`_lhs`)), env, env))
+4: eval(quote(`_fseq`(`_lhs`)), env, env)
+5: eval(quote(`_fseq`(`_lhs`)), env, env)
+6: `_fseq`(`_lhs`)
+7: freduce(value, `_function_list`)
+8: function_list[[i]](value)
+9: tidyr::unnest(.)
+10: unnest.data.frame(.)
+11: abort(glue("Each column must either be a list of vectors or a list of ", "data frames [{probs}]"))
+
+══ testthat results  ═══════════════════════════════════════════════════════════════════════════════════════════════════════════
+OK: 27 SKIPPED: 0 FAILED: 1
+1. Error: We can go all the way (@test-fedregs.R#145) 
+
+Error: testthat unit tests failed
+Execution halted

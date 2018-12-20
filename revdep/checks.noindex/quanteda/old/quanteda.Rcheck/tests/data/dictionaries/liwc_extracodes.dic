@@ -1,0 +1,25 @@
+%
+11	verb
+13	past
+121 whatever
+122	family
+123	friend
+124	humans
+125	affect
+126	posemo
+131	cogmech
+132	insight
+133	cause
+134	discrep
+135	tentat
+140 whatever2
+253	time
+464	filler
+%
+kin	121	122
+kind	<of>131/125	<of>135/126
+kinda	131	135
+light	140
+like	(02 134)125/464	(02 134)126	(02 134)126	253
+likeab*	125	126
+liked	11	13	125	126

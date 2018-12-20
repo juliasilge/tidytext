@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dictionary style="050805" patternengine="substring">
+<cnode name="Dictionary">
+<cnode name="pos">
+<cnode name="A"><pnode name="A word"/></cnode>
+<cnode name="B"><pnode name="B word"/></cnode>
+</cnode>
+</cnode>
+</dictionary>

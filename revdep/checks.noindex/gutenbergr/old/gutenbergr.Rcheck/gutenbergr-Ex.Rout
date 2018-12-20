@@ -1,0 +1,485 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "gutenbergr"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('gutenbergr')
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("gutenberg_authors")
+> ### * gutenberg_authors
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gutenberg_authors
+> ### Title: Metadata about Project Gutenberg authors
+> ### Aliases: gutenberg_authors
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> 
+> # date last updated
+> attr(gutenberg_authors, "date_updated")
+[1] "2016-05-05"
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("gutenberg_download")
+> ### * gutenberg_download
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gutenberg_download
+> ### Title: Download one or more works using a Project Gutenberg ID
+> ### Aliases: gutenberg_download
+> 
+> ### ** Examples
+> 
+> 
+> ## Not run: 
+> ##D library(dplyr)
+> ##D 
+> ##D # download The Count of Monte Cristo
+> ##D gutenberg_download(1184)
+> ##D 
+> ##D # download two books: Wuthering Heights and Jane Eyre
+> ##D books <- gutenberg_download(c(768, 1260), meta_fields = "title")
+> ##D books
+> ##D books %>% count(title)
+> ##D 
+> ##D # download all books from Jane Austen
+> ##D austen <- gutenberg_works(author == "Austen, Jane") %>%
+> ##D   gutenberg_download(meta_fields = "title")
+> ##D 
+> ##D austen
+> ##D austen %>%
+> ##D  count(title)
+> ## End(Not run)
+> 
+> 
+> 
+> 
+> cleanEx()
+> nameEx("gutenberg_metadata")
+> ### * gutenberg_metadata
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gutenberg_metadata
+> ### Title: Gutenberg metadata about each work
+> ### Aliases: gutenberg_metadata
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(stringr)
+> 
+> gutenberg_metadata
+[90m# A tibble: 51,997 x 8[39m
+   gutenberg_id title author gutenberg_autho… language gutenberg_books… rights
+          [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m             [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m            [3m[90m<chr>[39m[23m 
+[90m 1[39m            0 [31mNA[39m    [31mNA[39m                   [31mNA[39m en       [31mNA[39m               Publi…
+[90m 2[39m            1 The … Jeffe…             [4m1[24m638 en       United States L… Publi…
+[90m 3[39m            2 [90m"[39mThe… Unite…                1 en       American Revolu… Publi…
+[90m 4[39m            3 John… Kenne…             [4m1[24m666 en       [31mNA[39m               Publi…
+[90m 5[39m            4 [90m"[39mLin… Linco…                3 en       US Civil War     Publi…
+[90m 6[39m            5 The … Unite…                1 en       American Revolu… Publi…
+[90m 7[39m            6 Give… Henry…                4 en       American Revolu… Publi…
+[90m 8[39m            7 The … [31mNA[39m                   [31mNA[39m en       [31mNA[39m               Publi…
+[90m 9[39m            8 Abra… Linco…                3 en       US Civil War     Publi…
+[90m10[39m            9 Abra… Linco…                3 en       US Civil War     Publi…
+[90m# ... with 51,987 more rows, and 1 more variable: has_text [3m[90m<lgl>[90m[23m[39m
+> 
+> gutenberg_metadata %>%
++   count(author, sort = TRUE)
+[90m# A tibble: 16,190 x 2[39m
+   author                                  n
+   [3m[90m<chr>[39m[23m                               [3m[90m<int>[39m[23m
+[90m 1[39m [31mNA[39m                                   [4m3[24m457
+[90m 2[39m Various                              [4m3[24m199
+[90m 3[39m Anonymous                             724
+[90m 4[39m Shakespeare, William                  317
+[90m 5[39m Lytton, Edward Bulwer Lytton, Baron   219
+[90m 6[39m Twain, Mark                           214
+[90m 7[39m Ebers, Georg                          171
+[90m 8[39m Dickens, Charles                      163
+[90m 9[39m Verne, Jules                          151
+[90m10[39m Unknown                               141
+[90m# ... with 16,180 more rows[39m
+> 
+> # look for Shakespeare, excluding collections (containing "Works") and translations
+> shakespeare_metadata <- gutenberg_metadata %>%
++   filter(author == "Shakespeare, William",
++          language == "en",
++          !str_detect(title, "Works"),
++          has_text,
++          !str_detect(rights, "Copyright")) %>%
++          distinct(title)
+> 
+> ## Not run: 
+> ##D shakespeare_works <- gutenberg_download(shakespeare_metadata$gutenberg_id)
+> ## End(Not run)
+> 
+> # note that the gutenberg_works() function filters for English
+> # non-copyrighted works and does de-duplication by default:
+> 
+> shakespeare_metadata2 <- gutenberg_works(author == "Shakespeare, William",
++                                          !str_detect(title, "Works"))
+> 
+> # date last updated
+> attr(gutenberg_metadata, "date_updated")
+[1] "2016-05-05"
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:bindrcpp’, ‘package:stringr’, ‘package:dplyr’
+
+> nameEx("gutenberg_strip")
+> ### * gutenberg_strip
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gutenberg_strip
+> ### Title: Strip header and footer content from a Project Gutenberg book
+> ### Aliases: gutenberg_strip
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> book <- gutenberg_works(title == "Pride and Prejudice") %>%
++   gutenberg_download(strip = FALSE)
+Determining mirror for Project Gutenberg from http://www.gutenberg.org/robot/harvest
+Using mirror http://aleph.gutenberg.org
+> 
+> head(book$text, 10)
+ [1] "The Project Gutenberg EBook of Pride and Prejudice, by Jane Austen"  
+ [2] ""                                                                    
+ [3] "This eBook is for the use of anyone anywhere at no cost and with"    
+ [4] "almost no restrictions whatsoever.  You may copy it, give it away or"
+ [5] "re-use it under the terms of the Project Gutenberg License included" 
+ [6] "with this eBook or online at www.gutenberg.org"                      
+ [7] ""                                                                    
+ [8] ""                                                                    
+ [9] "Title: Pride and Prejudice"                                          
+[10] ""                                                                    
+> tail(book$text, 10)
+ [1] ""                                                                        
+ [2] ""                                                                        
+ [3] "Most people start at our Web site which has the main PG search facility:"
+ [4] ""                                                                        
+ [5] "     http://www.gutenberg.org"                                           
+ [6] ""                                                                        
+ [7] "This Web site includes information about Project Gutenberg-tm,"          
+ [8] "including how to make donations to the Project Gutenberg Literary"       
+ [9] "Archive Foundation, how to help produce our new eBooks, and how to"      
+[10] "subscribe to our email newsletter to hear about new eBooks."             
+> 
+> text_stripped <- gutenberg_strip(book$text)
+> 
+> head(text_stripped, 10)
+ [1] "PRIDE AND PREJUDICE"                                                    
+ [2] ""                                                                       
+ [3] "By Jane Austen"                                                         
+ [4] ""                                                                       
+ [5] ""                                                                       
+ [6] ""                                                                       
+ [7] "Chapter 1"                                                              
+ [8] ""                                                                       
+ [9] ""                                                                       
+[10] "It is a truth universally acknowledged, that a single man in possession"
+> tail(text_stripped, 10)
+ [1] "resentment gave way, either to her affection for him, or her curiosity" 
+ [2] "to see how his wife conducted herself; and she condescended to wait"    
+ [3] "on them at Pemberley, in spite of that pollution which its woods had"   
+ [4] "received, not merely from the presence of such a mistress, but the"     
+ [5] "visits of her uncle and aunt from the city."                            
+ [6] ""                                                                       
+ [7] "With the Gardiners, they were always on the most intimate terms."       
+ [8] "Darcy, as well as Elizabeth, really loved them; and they were both ever"
+ [9] "sensible of the warmest gratitude towards the persons who, by bringing" 
+[10] "her into Derbyshire, had been the means of uniting them."               
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:dplyr’
+
+> nameEx("gutenberg_subjects")
+> ### * gutenberg_subjects
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gutenberg_subjects
+> ### Title: Gutenberg metadata about the subject of each work
+> ### Aliases: gutenberg_subjects
+> ### Keywords: datasets
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(stringr)
+> 
+> gutenberg_subjects %>%
++   filter(subject_type == "lcsh") %>%
++   count(subject, sort = TRUE)
+[90m# A tibble: 24,488 x 2[39m
+   subject                                  n
+   [3m[90m<chr>[39m[23m                                [3m[90m<int>[39m[23m
+[90m 1[39m Fiction                               [4m1[24m801
+[90m 2[39m Short stories                         [4m1[24m604
+[90m 3[39m Science fiction                       [4m1[24m308
+[90m 4[39m Adventure stories                      727
+[90m 5[39m Poetry                                 640
+[90m 6[39m Love stories                           622
+[90m 7[39m Historical fiction                     607
+[90m 8[39m Conduct of life -- Juvenile fiction    554
+[90m 9[39m English wit and humor -- Periodicals   544
+[90m10[39m Detective and mystery stories          521
+[90m# ... with 24,478 more rows[39m
+> 
+> sherlock_holmes_subjects <- gutenberg_subjects %>%
++   filter(str_detect(subject, "Holmes, Sherlock"))
+> 
+> sherlock_holmes_subjects
+[90m# A tibble: 47 x 3[39m
+   gutenberg_id subject_type subject                                           
+          [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m        [3m[90m<chr>[39m[23m                                             
+[90m 1[39m          108 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 2[39m          221 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 3[39m          244 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 4[39m          834 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 5[39m         [4m1[24m661 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 6[39m         [4m2[24m097 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 7[39m         [4m2[24m343 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 8[39m         [4m2[24m344 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m 9[39m         [4m2[24m345 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m10[39m         [4m2[24m346 lcsh         Holmes, Sherlock (Fictitious character) -- Fiction
+[90m# ... with 37 more rows[39m
+> 
+> sherlock_holmes_metadata <- gutenberg_works() %>%
++   filter(author == "Doyle, Arthur Conan") %>%
++   semi_join(sherlock_holmes_subjects, by = "gutenberg_id")
+> 
+> sherlock_holmes_metadata
+[90m# A tibble: 15 x 8[39m
+   gutenberg_id title author gutenberg_autho… language gutenberg_books… rights
+          [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m             [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m            [3m[90m<chr>[39m[23m 
+[90m 1[39m          108 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m 2[39m          244 A St… Doyle…               69 en       Detective Ficti… Publi…
+[90m 3[39m          834 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m 4[39m         [4m1[24m661 The … Doyle…               69 en       Banned Books fr… Publi…
+[90m 5[39m         [4m2[24m097 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m 6[39m         [4m2[24m343 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m 7[39m         [4m2[24m344 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m 8[39m         [4m2[24m345 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m 9[39m         [4m2[24m346 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m10[39m         [4m2[24m347 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m11[39m         [4m2[24m348 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m12[39m         [4m2[24m349 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m13[39m         [4m2[24m350 His … Doyle…               69 en       Detective Ficti… Publi…
+[90m14[39m         [4m2[24m852 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m15[39m         [4m3[24m289 The … Doyle…               69 en       Detective Ficti… Publi…
+[90m# ... with 1 more variable: has_text [3m[90m<lgl>[90m[23m[39m
+> 
+> ## Not run: 
+> ##D holmes_books <- gutenberg_download(sherlock_holmes_metadata$gutenberg_id)
+> ##D 
+> ##D holmes_books
+> ## End(Not run)
+> 
+> # date last updated
+> attr(gutenberg_subjects, "date_updated")
+[1] "2016-05-05"
+> 
+> 
+> 
+> 
+> cleanEx()
+
+detaching ‘package:stringr’, ‘package:dplyr’
+
+> nameEx("gutenberg_works")
+> ### * gutenberg_works
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: gutenberg_works
+> ### Title: Get a filtered table of Gutenberg work metadata
+> ### Aliases: gutenberg_works
+> 
+> ### ** Examples
+> 
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> 
+> gutenberg_works()
+[90m# A tibble: 40,737 x 8[39m
+   gutenberg_id title author gutenberg_autho… language gutenberg_books… rights
+          [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m             [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m            [3m[90m<chr>[39m[23m 
+[90m 1[39m            0 [31mNA[39m    [31mNA[39m                   [31mNA[39m en       [31mNA[39m               Publi…
+[90m 2[39m            1 The … Jeffe…             [4m1[24m638 en       United States L… Publi…
+[90m 3[39m            2 [90m"[39mThe… Unite…                1 en       American Revolu… Publi…
+[90m 4[39m            3 John… Kenne…             [4m1[24m666 en       [31mNA[39m               Publi…
+[90m 5[39m            4 [90m"[39mLin… Linco…                3 en       US Civil War     Publi…
+[90m 6[39m            5 The … Unite…                1 en       American Revolu… Publi…
+[90m 7[39m            6 Give… Henry…                4 en       American Revolu… Publi…
+[90m 8[39m            7 The … [31mNA[39m                   [31mNA[39m en       [31mNA[39m               Publi…
+[90m 9[39m            8 Abra… Linco…                3 en       US Civil War     Publi…
+[90m10[39m            9 Abra… Linco…                3 en       US Civil War     Publi…
+[90m# ... with 40,727 more rows, and 1 more variable: has_text [3m[90m<lgl>[90m[23m[39m
+> 
+> # filter conditions
+> gutenberg_works(author == "Shakespeare, William")
+[90m# A tibble: 79 x 8[39m
+   gutenberg_id title author gutenberg_autho… language gutenberg_books… rights
+          [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m [3m[90m<chr>[39m[23m             [3m[90m<int>[39m[23m [3m[90m<chr>[39m[23m    [3m[90m<chr>[39m[23m            [3m[90m<chr>[39m[23m 
+[90m 1[39m         [4m1[24m041 Shak… Shake…               65 en       [31mNA[39m               Publi…
+[90m 2[39m         [4m1[24m045 Venu… Shake…               65 en       [31mNA[39m               Publi…
+[90m 3[39m         [4m1[24m500 King… Shake…               65 en       [31mNA[39m               Publi…
+[90m 4[39m         [4m1[24m501 Hist… Shake…               65 en       [31mNA[39m               Publi…
+[90m 5[39m         [4m1[24m502 The … Shake…               65 en       [31mNA[39m               Publi…
+[90m 6[39m         [4m1[24m503 The … Shake…               65 en       [31mNA[39m               Publi…
+[90m 7[39m         [4m1[24m504 The … Shake…               65 en       [31mNA[39m               Publi…
+[90m 8[39m         [4m1[24m505 The … Shake…               65 en       [31mNA[39m               Publi…
+[90m 9[39m         [4m1[24m507 The … Shake…               65 en       [31mNA[39m               Publi…
+[90m10[39m         [4m1[24m508 The … Shake…               65 en       [31mNA[39m               Publi…
+[90m# ... with 69 more rows, and 1 more variable: has_text [3m[90m<lgl>[90m[23m[39m
+> 
+> # language specifications
+> 
+> gutenberg_works(languages = "es") %>%
++   count(language, sort = TRUE)
+[90m# A tibble: 1 x 2[39m
+  language     n
+  [3m[90m<chr>[39m[23m    [3m[90m<int>[39m[23m
+[90m1[39m es         449
+> 
+> gutenberg_works(languages = c("en", "es")) %>%
++   count(language, sort = TRUE)
+[90m# A tibble: 3 x 2[39m
+  language     n
+  [3m[90m<chr>[39m[23m    [3m[90m<int>[39m[23m
+[90m1[39m en       [4m4[24m[4m0[24m736
+[90m2[39m es         447
+[90m3[39m en/es       13
+> 
+> gutenberg_works(languages = c("en", "es"), all_languages = TRUE) %>%
++   count(language, sort = TRUE)
+[90m# A tibble: 1 x 2[39m
+  language     n
+  [3m[90m<chr>[39m[23m    [3m[90m<int>[39m[23m
+[90m1[39m en/es       13
+> 
+> gutenberg_works(languages = c("en", "es"), only_languages = FALSE) %>%
++   count(language, sort = TRUE)
+[90m# A tibble: 30 x 2[39m
+   language     n
+   [3m[90m<chr>[39m[23m    [3m[90m<int>[39m[23m
+[90m 1[39m en       [4m4[24m[4m0[24m736
+[90m 2[39m es         447
+[90m 3[39m en/eo       19
+[90m 4[39m en/la       19
+[90m 5[39m en/es       13
+[90m 6[39m en/fr       13
+[90m 7[39m de/en        7
+[90m 8[39m ang/en       3
+[90m 9[39m cy/en        3
+[90m10[39m en/enm       3
+[90m# ... with 20 more rows[39m
+> 
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+
+detaching ‘package:dplyr’
+
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  4.671 0.208 8.345 0.002 0.002 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')

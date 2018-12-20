@@ -45,7 +45,8 @@
 #' @export
 #'
 get_stopwords <- function(language = "en", source = "snowball") {
-  data_frame(word = stopwords::stopwords(language = language, source = source),
-             lexicon = source)
+  data_frame(
+    word = stopwords::stopwords(language = language, source = source),
+    lexicon = source
+  )
 }
-

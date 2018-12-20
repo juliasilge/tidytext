@@ -3,7 +3,8 @@
 #' Tidy topic models fit by the stm package. The arguments and return values
 #' are similar to \code{\link{lda_tidiers}}.
 #'
-#' @param x An STM fitted model object from the stm package.
+#' @param x An STM fitted model object from either \code{stm} or \code{estimateEffect}
+#' from the stm package.
 #' @param matrix Whether to tidy the beta (per-term-per-topic, default)
 #' or gamma/theta (per-document-per-topic) matrix. The stm package calls this
 #' the theta matrix, but other topic modeling packages call this gamma.
@@ -15,7 +16,9 @@
 #' per-document-per-topic tidying
 #' @param ... Extra arguments, not used
 #'
-#' @return \code{tidy} returns a tidied version of either the beta or gamma matrix.
+#' @return \code{tidy} returns a tidied version of either the beta or gamma matrix if
+#' called on an object from \code{stm} or a tidied version of the estimated regressions
+#' if called on an object from \code{estimateEffect}.
 #'
 #' @seealso \code{\link{lda_tidiers}}
 #'
@@ -35,6 +38,16 @@
 #'   \item{document}{Document name (if given in vector of \code{document_names}) or
 #'   ID as an integer}
 #'   \item{gamma}{Probability of topic given document}
+#' }
+#'
+#' If called on an object from \code{estimateEffect}, returns a table with columns
+#' \describe{
+#'   \item{topic}{Topic, as an integer}
+#'   \item{term}{The term in the model being estimated and tested}
+#'   \item{estimate}{The estimated coefficient}
+#'   \item{std.error}{The standard error from the linear model}
+#'   \item{statistic}{t-statistic}
+#'   \item{p.value}{two-sided p-value}
 #' }
 #'
 #' @examples
@@ -72,13 +85,20 @@
 #'                    document_names = rownames(austen_sparse))
 #'   td_gamma
 #'
+#'   # using stm's gardarianFit, we can tidy the result of a model
+#'   # estimated with covariates
+#'   effects <- estimateEffect(1:3 ~ treatment, gadarianFit, gadarian)
+#'   td_estimate <- tidy(effects)
+#'   td_estimate
+#'
 #' }
 #' }
 #'
 #' @name stm_tidiers
 #'
 #' @export
-tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE, document_names = NULL, ...) {
+tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE,
+                     document_names = NULL, ...) {
   matrix <- match.arg(matrix)
   if (matrix == "beta") {
     mat <- x$beta
@@ -108,6 +128,21 @@ tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE, docum
 
 #' @rdname stm_tidiers
 #'
+#' @export
+tidy.estimateEffect <- function(x, ...) {
+  s <- summary(x)
+  topics <- s$topics
+  names(s$tables) <- s$topics
+  ret <- purrr::map_dfr(s$tables, dplyr::as_tibble,
+                        rownames = "term", .id = "topic")
+  ret$topic <- as.integer(ret$topic)
+  colnames(ret) <- c("topic", "term", "estimate", "std.error",
+                     "statistic", "p.value")
+  ret
+}
+
+#' @rdname stm_tidiers
+#'
 #' @return \code{augment} must be provided a data argument, either a
 #' \code{dfm} from quanteda or a table containing one row per original
 #' document-term pair, such as is returned by \link{tdm_tidiers}, containing
@@ -115,11 +150,10 @@ tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE, docum
 #' with an additional column \code{.topic} with the topic assignment for that
 #' document-term combination.
 #'
-#' @importFrom broom augment
+#' @importFrom generics augment
 #'
 #' @export
 augment.STM <- function(x, data, ...) {
-
   if (missing(data)) {
     stop("data argument must be provided in order to augment a stm model")
   }
@@ -133,8 +167,10 @@ augment.STM <- function(x, data, ...) {
     mat <- data
     data <- tidy(mat)
   } else {
-    stop("data argument must either be a dfm ",
-         "(from quanteda) or a table with document and term columns")
+    stop(
+      "data argument must either be a dfm ",
+      "(from quanteda) or a table with document and term columns"
+    )
   }
 
   beta <- t(as.matrix(x$beta$logbeta[[1]]))
@@ -143,7 +179,7 @@ augment.STM <- function(x, data, ...) {
   term_indices <- match(data$term, x$vocab)
   doc_indices <- match(data$document, rownames(mat))
 
-  products <- beta[term_indices, ] * theta[doc_indices, ]
+  products <- exp(beta[term_indices, ]) * theta[doc_indices, ]
   keep <- !is.na(term_indices) & !is.na(doc_indices)
 
   data$.topic <- NA
@@ -166,14 +202,16 @@ augment.STM <- function(x, data, ...) {
 #' @export
 
 glance.STM <- function(x, ...) {
-  ret <- data_frame(k = as.integer(x$settings$dim$K),
-                    docs = x$settings$dim$N,
-                    terms = x$settings$dim$V,
-                    iter = length(x$convergence$bound),
-                    alpha = x$settings$init$alpha)
+  ret <- data_frame(
+    k = as.integer(x$settings$dim$K),
+    docs = x$settings$dim$N,
+    terms = x$settings$dim$V,
+    iter = length(x$convergence$bound),
+    alpha = x$settings$init$alpha
+  )
 
   ret
 }
 
 #' @export
-broom::augment
+generics::augment

@@ -2,9 +2,11 @@ context("Sparse casters")
 
 library(Matrix)
 
-dat <- data_frame(a = c("row1", "row1", "row2", "row2", "row2"),
-                  b = c("col1", "col2", "col1", "col3", "col4"),
-                  val = 1:5)
+dat <- data_frame(
+  a = c("row1", "row1", "row2", "row2", "row2"),
+  b = c("col1", "col2", "col1", "col3", "col4"),
+  val = 1:5
+)
 
 test_that("Can cast tables into a sparse Matrix", {
   m <- cast_sparse(dat, a, b)
@@ -35,7 +37,7 @@ test_that("cast_sparse ignores groups", {
 test_that("Can cast_sparse with tidyeval", {
   m <- cast_sparse(dat, a, b)
   rowvar <- quo("a")
-  m2 <- cast_sparse(dat, !! rowvar, b)
+  m2 <- cast_sparse(dat, !!rowvar, b)
 
   expect_identical(m, m2)
 })
@@ -63,7 +65,6 @@ test_that("Can cast tables into a sparse TermDocumentMatrix", {
 
   expect_equal(dim(d), c(4, 2))
   expect_equal(sort(tm::Terms(d)), sort(unique(dat$b)))
-
 })
 
 test_that("Can cast tables into a sparse dfm", {
@@ -77,5 +78,4 @@ test_that("Can cast tables into a sparse dfm", {
   expect_equal(dim(d), c(2, 4))
   expect_equal(as.numeric(d[1, 1]), 1)
   expect_equal(as.numeric(d[2, 3]), 4)
-
 })

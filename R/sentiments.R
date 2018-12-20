@@ -1,6 +1,6 @@
-#' Sentiment lexicons from three sources
+#' Sentiment lexicons from four sources
 #'
-#' Three lexicons for sentiment analysis are combined here in a tidy data frame.
+#' Four lexicons for sentiment analysis are combined here in a tidy data frame.
 #' The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
 #' the sentiment lexicon from Bing Liu and collaborators, of
 #' Finn Arup Nielsen, and of Tim Loughran and Bill McDonald.
@@ -17,14 +17,14 @@
 #'  or "trust", and the Loughran lexicon can also be "litigious", "uncertainty",
 #'  "constraining", and "superfluous".}
 #'  \item{lexicon}{The source of the sentiment for the word. One of either
-#'  "nrc", "bing", or "AFINN".}
+#'  "nrc", "bing", "loughran", or "AFINN".}
 #'  \item{score}{A numerical score for the sentiment. This value is \code{NA}
-#'  for the Bing and NRC lexicons, and runs between -5 and 5 for the AFINN
-#'  lexicon.}
+#'  for the Bing, NRC, and Loughran lexicons, and runs between -5 and 5 for the
+#'  AFINN lexicon.}
 #' }
 #'
-#' @details Note that the loughran lexicon is best suited for financial text,
-#' (e.g. where words like "share" is not necessarily positive, and "liability"
+#' @details Note that the Loughran lexicon is best suited for financial text,
+#' (e.g. where "share" is not necessarily positive and "liability"
 #' not necessarily negative).
 #'
 #' @source \itemize{

@@ -95,11 +95,11 @@ tidy.jobjRef <- function(x, matrix = c("beta", "gamma"), log = FALSE,
   ret <- dplyr::tbl_df(reshape2::melt(m))
 
   if (matrix == "beta") {
-    # per-term-per-topic
+    # per term per topic
     colnames(ret) <- c("topic", "term", "beta")
     ret$term <- x$getVocabulary()[ret$term]
   } else {
-    # per-document-per-topic
+    # per document per topic
     colnames(ret) <- c("document", "topic", "gamma")
     ret$document <- x$getDocumentNames()[ret$document]
   }
@@ -119,7 +119,7 @@ tidy.jobjRef <- function(x, matrix = c("beta", "gamma"), log = FALSE,
 #' It returns that same data with an additional column
 #' \code{.topic} with the topic assignment for that document-term combination.
 #'
-#' @importFrom broom augment
+#' @importFrom generics augment
 #'
 #' @export
 augment.jobjRef <- function(x, data, ...) {
@@ -145,4 +145,3 @@ augment.jobjRef <- function(x, data, ...) {
   data$.topic[keep] <- apply(products[keep, ], 1, which.max)
   data
 }
-

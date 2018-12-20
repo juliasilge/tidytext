@@ -28,8 +28,7 @@
 #'
 #' book_words <- austen_books() %>%
 #'   unnest_tokens(word, text) %>%
-#'   count(book, word, sort = TRUE) %>%
-#'   ungroup()
+#'   count(book, word, sort = TRUE)
 #'
 #' book_words
 #'
@@ -38,7 +37,7 @@
 #'   bind_tf_idf(word, book, n) %>%
 #'   arrange(desc(tf_idf))
 #'
-#'@export
+#' @export
 
 bind_tf_idf <- function(tbl, term, document, n) {
   UseMethod("bind_tf_idf")
@@ -55,7 +54,6 @@ bind_tf_idf.default <- function(tbl, term, document, n) {
 
 #' @export
 bind_tf_idf.data.frame <- function(tbl, term, document, n) {
-
   term <- quo_name(enquo(term))
   document <- quo_name(enquo(document))
   n_col <- quo_name(enquo(n))
@@ -66,9 +64,11 @@ bind_tf_idf.data.frame <- function(tbl, term, document, n) {
   doc_totals <- tapply(n, documents, sum)
   idf <- log(length(doc_totals) / table(terms))
 
-  tbl$tf <- tbl[[n_col]] / as.numeric(doc_totals[documents])
+  tbl$tf <- n / as.numeric(doc_totals[documents])
   tbl$idf <- as.numeric(idf[terms])
   tbl$tf_idf <- tbl$tf * tbl$idf
+
+  if(any(tbl$idf < 0, na.rm = TRUE)) warning("A value for tf_idf is negative:\nInput should have exactly one row per document-term combination.")
 
   tbl
 }
@@ -86,5 +86,5 @@ bind_tf_idf_.data.frame <- function(tbl, term, document, n) {
   term <- compat_lazy(term, caller_env())
   document <- compat_lazy(document, caller_env())
   n <- compat_lazy(n, caller_env())
-  bind_tf_idf(tbl, !! term, !! document, !! n)
+  bind_tf_idf(tbl, !!term, !!document, !!n)
 }

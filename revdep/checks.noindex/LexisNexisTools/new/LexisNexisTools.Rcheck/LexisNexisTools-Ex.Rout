@@ -1,0 +1,421 @@
+
+R version 3.5.1 (2018-07-02) -- "Feather Spray"
+Copyright (C) 2018 The R Foundation for Statistical Computing
+Platform: x86_64-apple-darwin15.6.0 (64-bit)
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> pkgname <- "LexisNexisTools"
+> source(file.path(R.home("share"), "R", "examples-header.R"))
+> options(warn = 1)
+> library('LexisNexisTools')
+LexisNexisTools Version 0.2.0
+> 
+> base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+> base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+> cleanEx()
+> nameEx("lnt_add")
+> ### * lnt_add
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_add
+> ### Title: Adds or replaces articles
+> ### Aliases: lnt_add
+> 
+> ### ** Examples
+> 
+> # Make LNToutput object from sample
+> LNToutput <- lnt_read(lnt_sample())
+Creating LNToutput from input 1 files...
+	...files loaded [0.0019 secs]
+	...articles split [0.012 secs]
+	...lengths extracted [0.013 secs]
+	...newspapers extracted [0.013 secs]
+	...dates extracted [0.018 secs]
+	...authors extracted [0.019 secs]
+	...sections extracted [0.019 secs]
+	...editions extracted [0.019 secs]
+	...headlines extracted [0.02 secs]
+	...dates converted [0.027 secs]
+	...metadata extracted [0.03 secs]
+	...article texts extracted [0.033 secs]
+	...paragraphs extracted [0.044 secs]
+	...superfluous whitespace removed from articles [0.046 secs]
+	...superfluous whitespace removed from paragraphs [0.048 secs]
+Elapsed time: 0.048 secs
+> 
+> # extract meta and make corrections
+> correction <- LNToutput@meta[grepl("Wikipedia", LNToutput@meta$Headline), ]
+> correction$Newspaper <- "Wikipedia"
+> 
+> # replace corrected meta information
+> LNToutput <- lnt_add(to = LNToutput, what = correction, where = "meta", replace = TRUE)
+2 entries in meta replaced, 0 newly added.
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_asDate")
+> ### * lnt_asDate
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_asDate
+> ### Title: Convert Strings to dates
+> ### Aliases: lnt_asDate
+> 
+> ### ** Examples
+> 
+> LNToutput <- lnt_read(lnt_sample(), convert_date = FALSE)
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+Creating LNToutput from input 1 files...
+	...files loaded [0.00097 secs]
+	...articles split [0.0089 secs]
+	...lengths extracted [0.0097 secs]
+	...newspapers extracted [0.01 secs]
+	...dates extracted [0.012 secs]
+	...authors extracted [0.013 secs]
+	...sections extracted [0.013 secs]
+	...editions extracted [0.014 secs]
+	...headlines extracted [0.014 secs]
+	...metadata extracted [0.016 secs]
+	...article texts extracted [0.018 secs]
+	...paragraphs extracted [0.023 secs]
+	...superfluous whitespace removed from articles [0.025 secs]
+	...superfluous whitespace removed from paragraphs [0.027 secs]
+Elapsed time: 0.027 secs
+> d <- lnt_asDate(LNToutput@meta$Date)
+> d
+ [1] "2010-01-11" "2010-01-11" "2010-01-11" "2010-01-11" "2010-01-11"
+ [6] "2010-01-11" "2010-01-08" "2010-01-10" "2010-01-10" "2010-01-09"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_convert")
+> ### * lnt_convert
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_convert
+> ### Title: Convert LNToutput to other formats
+> ### Aliases: lnt_convert lnt2rDNA lnt2quanteda lnt2tm lnt2cptools
+> ###   lnt2SQLite
+> 
+> ### ** Examples
+> 
+> LNToutput <- lnt_read(lnt_sample())
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+Creating LNToutput from input 1 files...
+	...files loaded [0.0011 secs]
+	...articles split [0.0097 secs]
+	...lengths extracted [0.01 secs]
+	...newspapers extracted [0.011 secs]
+	...dates extracted [0.013 secs]
+	...authors extracted [0.014 secs]
+	...sections extracted [0.014 secs]
+	...editions extracted [0.014 secs]
+	...headlines extracted [0.015 secs]
+	...dates converted [0.019 secs]
+	...metadata extracted [0.02 secs]
+	...article texts extracted [0.023 secs]
+	...paragraphs extracted [0.027 secs]
+	...superfluous whitespace removed from articles [0.029 secs]
+	...superfluous whitespace removed from paragraphs [0.032 secs]
+Elapsed time: 0.032 secs
+> 
+> docs <- lnt_convert(LNToutput, to = "rDNA")
+> 
+> corpus <- lnt_convert(LNToutput, to = "quanteda")
+> 
+> dbloc <- lnt_convert(LNToutput, to = "lnt2SQLite")
+> 
+> tCorpus <- lnt_convert(LNToutput, to = "corpustools")
+> 
+> tidy <- lnt_convert(LNToutput, to = "tidytext")
+> 
+> Corpus <- lnt_convert(LNToutput, to = "tm")
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_diff")
+> ### * lnt_diff
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_diff
+> ### Title: Display diff of similar articles
+> ### Aliases: lnt_diff
+> 
+> ### ** Examples
+> 
+> # Test similarity of articles
+> duplicates.df <- lnt_similarity(LNToutput = lnt_read(lnt_sample()),
++                                 threshold = 0.95)
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+Creating LNToutput from input 1 files...
+	...files loaded [0.00094 secs]
+	...articles split [0.009 secs]
+	...lengths extracted [0.0096 secs]
+	...newspapers extracted [0.01 secs]
+	...dates extracted [0.012 secs]
+	...authors extracted [0.013 secs]
+	...sections extracted [0.013 secs]
+	...editions extracted [0.014 secs]
+	...headlines extracted [0.014 secs]
+	...dates converted [0.019 secs]
+	...metadata extracted [0.02 secs]
+	...article texts extracted [0.023 secs]
+	...paragraphs extracted [0.028 secs]
+	...superfluous whitespace removed from articles [0.03 secs]
+	...superfluous whitespace removed from paragraphs [0.032 secs]
+Elapsed time: 0.033 secs
+Checking similiarity for 10 articles over 4 dates...
+	...quanteda dfm construced for similarity comparison [0.10 secs].	...processing date 2010-01-08: 0 duplicates found [0.10 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.10 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.28 secs]. 			...processing date 2010-01-11: 15 duplicates found [4.48 secs]. 		
+Threshold = 0.95; 4 days processed; 5 duplicates found; in 4.48 secs> 
+> lnt_diff(duplicates.df, min = 0.18, max = 0.30)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_lookup")
+> ### * lnt_lookup
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_lookup
+> ### Title: Lookup keywords in articles
+> ### Aliases: lnt_lookup
+> 
+> ### ** Examples
+> 
+> # Make LNToutput object from sample
+> LNToutput <- lnt_read(lnt_sample())
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+Creating LNToutput from input 1 files...
+	...files loaded [0.0056 secs]
+	...articles split [0.013 secs]
+	...lengths extracted [0.014 secs]
+	...newspapers extracted [0.014 secs]
+	...dates extracted [0.016 secs]
+	...authors extracted [0.017 secs]
+	...sections extracted [0.017 secs]
+	...editions extracted [0.017 secs]
+	...headlines extracted [0.018 secs]
+	...dates converted [0.022 secs]
+	...metadata extracted [0.024 secs]
+	...article texts extracted [0.026 secs]
+	...paragraphs extracted [0.03 secs]
+	...superfluous whitespace removed from articles [0.032 secs]
+	...superfluous whitespace removed from paragraphs [0.035 secs]
+Elapsed time: 0.035 secs
+> 
+> # Lookup keywords
+> LNToutput@meta$Keyword <- lnt_lookup(LNToutput,
++                                      "statistical computing")
+   |                                                  | 0 % ~calculating     |+++++                                             | 10% ~00s             |++++++++++                                        | 20% ~00s             |+++++++++++++++                                   | 30% ~00s             |++++++++++++++++++++                              | 40% ~00s             |+++++++++++++++++++++++++                         | 50% ~00s             |++++++++++++++++++++++++++++++                    | 60% ~00s             |+++++++++++++++++++++++++++++++++++               | 70% ~00s             |++++++++++++++++++++++++++++++++++++++++         | 80% ~00s             |+++++++++++++++++++++++++++++++++++++++++++++    | 90% ~00s             |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed = 00s
+> 
+> # Keep only articles which mention the keyword
+> LNToutput_stat <- LNToutput[!sapply(LNToutput@meta$Keyword, is.null)]
+> 
+> # Covert list of keywords to string
+> LNToutput@meta$Keyword <- sapply(LNToutput@meta$Keyword, toString)
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_read")
+> ### * lnt_read
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_read
+> ### Title: Read in a LexisNexis TXT file
+> ### Aliases: lnt_read
+> 
+> ### ** Examples
+> 
+> LNToutput <- lnt_read(lnt_sample())
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+Creating LNToutput from input 1 files...
+	...files loaded [0.00079 secs]
+	...articles split [0.0082 secs]
+	...lengths extracted [0.0089 secs]
+	...newspapers extracted [0.0093 secs]
+	...dates extracted [0.011 secs]
+	...authors extracted [0.012 secs]
+	...sections extracted [0.012 secs]
+	...editions extracted [0.013 secs]
+	...headlines extracted [0.013 secs]
+	...dates converted [0.017 secs]
+	...metadata extracted [0.019 secs]
+	...article texts extracted [0.021 secs]
+	...paragraphs extracted [0.026 secs]
+	...superfluous whitespace removed from articles [0.028 secs]
+	...superfluous whitespace removed from paragraphs [0.031 secs]
+Elapsed time: 0.031 secs
+> meta.df <- LNToutput@meta
+> articles.df <- LNToutput@articles
+> paragraphs.df <- LNToutput@paragraphs
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_rename")
+> ### * lnt_rename
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_rename
+> ### Title: Assign proper names to LexisNexis TXT files
+> ### Aliases: lnt_rename
+> ### Keywords: LexisNexis
+> 
+> ### ** Examples
+> 
+> 
+> # Copy sample file to current wd
+> lnt_sample()
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+[1] "/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck/sample.TXT"
+> 
+> # Rename files in current wd and report back if successful
+>  ## Not run: 
+> ##D report.df <- lnt_rename(recursive = FALSE,
+> ##D                         report = TRUE)
+> ## End(Not run)
+> 
+> # Or provide file name(s)
+> my_files<-list.files(pattern = ".txt", full.names = TRUE,
++                      recursive = TRUE, ignore.case = TRUE)
+> report.df <- lnt_rename(x = my_files,
++                         recursive = FALSE,
++                         report = TRUE)
+in 0.0018 secs [changes were only simulated]> 
+> # Or provide folder name(s)
+> report.df <- lnt_rename(x = getwd())
+in 0.00088 secs [changes were only simulated]> 
+> report.df
+                                                                                                                                  name_orig
+1 /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck/sample.TXT
+                                                                                                                                                              name_new
+1 /Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck/SampleFile_20091201-20100511_1-10.txt
+   status
+1 renamed
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_sample")
+> ### * lnt_sample
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_sample
+> ### Title: Provides a small sample TXT file
+> ### Aliases: lnt_sample
+> 
+> ### ** Examples
+> 
+> lnt_sample()
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+[1] "/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck/sample.TXT"
+> 
+> 
+> 
+> cleanEx()
+> nameEx("lnt_similarity")
+> ### * lnt_similarity
+> 
+> flush(stderr()); flush(stdout())
+> 
+> ### Name: lnt_similarity
+> ### Title: Check for highly similar articles.
+> ### Aliases: lnt_similarity
+> ### Keywords: similarity
+> 
+> ### ** Examples
+> 
+> # Copy sample file to current wd
+> lnt_sample()
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+[1] "/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck/sample.TXT"
+> 
+> # Convert raw file to LNToutput object
+> LNToutput <- lnt_read(lnt_sample())
+Warning in lnt_sample() :
+  Sample file exists in wd. Use overwrite = TRUE to create fresh sample file.
+Creating LNToutput from input 1 files...
+	...files loaded [8e-04 secs]
+	...articles split [0.0084 secs]
+	...lengths extracted [0.0089 secs]
+	...newspapers extracted [0.0093 secs]
+	...dates extracted [0.011 secs]
+	...authors extracted [0.012 secs]
+	...sections extracted [0.012 secs]
+	...editions extracted [0.013 secs]
+	...headlines extracted [0.013 secs]
+	...dates converted [0.017 secs]
+	...metadata extracted [0.018 secs]
+	...article texts extracted [0.02 secs]
+	...paragraphs extracted [0.024 secs]
+	...superfluous whitespace removed from articles [0.026 secs]
+	...superfluous whitespace removed from paragraphs [0.029 secs]
+Elapsed time: 0.029 secs
+> 
+> # Test similarity of articles
+> duplicates.df <- lnt_similarity(texts = LNToutput@articles$Article,
++                                 dates = LNToutput@meta$Date,
++                                 IDs = LNToutput@articles$ID)
+Checking similiarity for 10 articles over 4 dates...
+	...quanteda dfm construced for similarity comparison [0.034 secs].	...processing date 2010-01-08: 0 duplicates found [0.034 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.034 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.042 secs]. 			...processing date 2010-01-11: 9 duplicates found [3.16 secs]. 		
+Threshold = 0.99; 4 days processed; 4 duplicates found; in 3.17 secs> 
+> # Remove instances with a high relative distance
+> duplicates.df <- duplicates.df[duplicates.df$rel_dist < 0.2]
+> 
+> # Create three separate data.frames from cleaned LNToutput object
+> LNToutput <- LNToutput[!LNToutput@meta$ID %in%
++                          duplicates.df$ID_duplicate]
+> meta.df <- LNToutput@meta
+> articles.df <- LNToutput@articles
+> paragraphs.df <- LNToutput@paragraphs
+> 
+> 
+> 
+> ### * <FOOTER>
+> ###
+> cleanEx()
+> options(digits = 7L)
+> base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+Time elapsed:  9.743 1.884 10.997 0.019 0.021 
+> grDevices::dev.off()
+null device 
+          1 
+> ###
+> ### Local variables: ***
+> ### mode: outline-minor ***
+> ### outline-regexp: "\\(> \\)?### [*]+" ***
+> ### End: ***
+> quit('no')
