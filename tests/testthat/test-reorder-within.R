@@ -19,5 +19,6 @@ test_that("Can make a plot", {
     facet_wrap(~ cyl, scales = "free_x")
 
   expect_is(p, "ggplot")
+  vdiffr::expect_doppelganger("reordered boxplot", p)
 
 })
