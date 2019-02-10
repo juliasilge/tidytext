@@ -19,9 +19,9 @@ bing_lexicon1 <- readr::read_lines("data-raw/positive-words.txt",
 bing_lexicon2 <- readr::read_lines("data-raw/negative-words.txt",
                                    skip = 35
 )
-bing_lexicon1 <- data_frame(word = bing_lexicon1) %>%
+bing_lexicon1 <- tibble(word = bing_lexicon1) %>%
   mutate(sentiment = "positive", lexicon = "bing")
-bing_lexicon2 <- data_frame(word = bing_lexicon2) %>%
+bing_lexicon2 <- tibble(word = bing_lexicon2) %>%
   mutate(sentiment = "negative", lexicon = "bing")
 bing_lexicon <- bind_rows(bing_lexicon1, bing_lexicon2) %>% arrange(word)
 
@@ -60,9 +60,9 @@ devtools::use_data(sentiments, overwrite = TRUE)
 
 # stop_words dataset ------------------------------------------------------
 
-SMART <- data_frame(word = tm::stopwords("SMART"), lexicon = "SMART")
-snowball <- data_frame(word = tm::stopwords("en"), lexicon = "snowball")
-onix <- data_frame(word = qdapDictionaries::OnixTxtRetToolkitSWL1, lexicon = "onix")
+SMART <- tibble(word = tm::stopwords("SMART"), lexicon = "SMART")
+snowball <- tibble(word = tm::stopwords("en"), lexicon = "snowball")
+onix <- tibble(word = qdapDictionaries::OnixTxtRetToolkitSWL1, lexicon = "onix")
 
 stop_words <- bind_rows(SMART, snowball, onix) %>%
   filter(!stringr::str_detect(word, "[^[:ascii:]]"))

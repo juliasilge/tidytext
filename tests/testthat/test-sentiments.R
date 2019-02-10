@@ -2,7 +2,7 @@ context("sentiments")
 
 suppressPackageStartupMessages(library(dplyr))
 
-test_data <- data_frame(
+test_data <- tibble(
   line = 1:2,
   text = c(
     "I am happy and joyful",

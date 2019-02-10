@@ -63,7 +63,7 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
     ret
   })
 
-  ret <- as_data_frame(columns)
+  ret <- as_tibble(columns)
 
   # most importantly, add text
   text <- purrr::map(as.list(x), as.character)
@@ -131,7 +131,7 @@ glance.corpus <- function(x, ...) {
   # turn vectors into list columns
   md <- purrr::map_if(md, ~ length(.) > 1, list)
 
-  as_data_frame(md)
+  as_tibble(md)
 }
 
 #' @export

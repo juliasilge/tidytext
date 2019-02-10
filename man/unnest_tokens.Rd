@@ -62,7 +62,7 @@ This does not yet have support for tokenizing by any unit other than words.
 library(dplyr)
 library(janeaustenr)
 
-d <- data_frame(txt = prideprejudice)
+d <- tibble(txt = prideprejudice)
 d
 
 d \%>\%
@@ -85,7 +85,7 @@ d \%>\%
   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
 
 # tokenize HTML
-h <- data_frame(row = 1:2,
+h <- tibble(row = 1:2,
                 text = c("<h1>Text <b>is</b>", "<a href='example.com'>here</a>"))
 
 h \%>\%

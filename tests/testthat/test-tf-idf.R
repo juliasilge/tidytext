@@ -1,6 +1,6 @@
 context("tf-idf calculation")
 
-w <- data_frame(
+w <- tibble(
   document = rep(1:2, each = 5),
   word = c(
     "the", "quick", "brown", "fox", "jumped",
@@ -45,7 +45,7 @@ test_that("Can calculate TF-IDF", {
 
 test_that("TF-IDF works when the document ID is a number", {
   # example thanks to https://github.com/juliasilge/tidytext/issues/31
-  my_corpus <- dplyr::data_frame(
+  my_corpus <- dplyr::tibble(
     id = rep(c(2, 3), each = 3),
     word = c("an", "interesting", "text", "a", "boring", "text"),
     n = c(1, 1, 3, 1, 2, 1)
@@ -58,7 +58,7 @@ test_that("TF-IDF works when the document ID is a number", {
 
 
 test_that("tf-idf with tidyeval works", {
-  d <- data_frame(txt = c(
+  d <- tibble(txt = c(
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))

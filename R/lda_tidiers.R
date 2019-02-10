@@ -179,7 +179,7 @@ augment_topicmodels <- function(x, data, ...) {
 #'
 #' @export
 glance.LDA <- function(x, ...) {
-  ret <- data_frame(iter = x@iter, terms = x@n)
+  ret <- tibble(iter = x@iter, terms = x@n)
 
   if (!is.null(x@alpha)) {
     ret$alpha <- x@alpha
@@ -191,7 +191,7 @@ glance.LDA <- function(x, ...) {
 #'
 #' @export
 glance.CTM <- function(x, ...) {
-  data_frame(iter = x@iter, terms = x@n)
+  tibble(iter = x@iter, terms = x@n)
 
 }
 

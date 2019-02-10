@@ -202,7 +202,7 @@ augment.STM <- function(x, data, ...) {
 #' @export
 
 glance.STM <- function(x, ...) {
-  ret <- data_frame(
+  ret <- tibble(
     k = as.integer(x$settings$dim$K),
     docs = x$settings$dim$N,
     terms = x$settings$dim$V,

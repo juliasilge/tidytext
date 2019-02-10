@@ -2,7 +2,7 @@ context("Sparse casters")
 
 library(Matrix)
 
-dat <- data_frame(
+dat <- tibble(
   a = c("row1", "row1", "row2", "row2", "row2"),
   b = c("col1", "col2", "col1", "col3", "col4"),
   val = 1:5
