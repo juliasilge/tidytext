@@ -4,6 +4,7 @@
 * Warn when tf-idf is negative, thanks to @EmilHvitfeldt (#112).
 * Switch from importing broom to importing generics, for lighter dependencies (#133).
 * Add functions for reordering factors (such as for ggplot2 bar plots) thanks to @tmastny (#110).
+* Update to `tibble()` where appropriate, thanks to @luisdza (#136).
 
 # tidytext 0.2.0
 
