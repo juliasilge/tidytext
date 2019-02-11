@@ -85,7 +85,7 @@ tidy_triplet <- function(x, triplets, row_names = NULL, col_names = NULL) {
     col <- colnames(x)[col]
   }
 
-  ret <- data_frame(row = row, column = col, value = triplets$x)
+  ret <- tibble(row = row, column = col, value = triplets$x)
   ret
 }
 

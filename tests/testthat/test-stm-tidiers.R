@@ -3,7 +3,7 @@ context("stm tidiers")
 suppressPackageStartupMessages(library(dplyr))
 
 if (require("stm", quietly = TRUE)) {
-  dat <- data_frame(
+  dat <- tibble(
     document = c("row1", "row1", "row2", "row2", "row2"),
     term = c("col1", "col2", "col1", "col3", "col4"),
     n = 1:5

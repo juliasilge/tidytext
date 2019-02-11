@@ -5,7 +5,7 @@ context("Unnesting tokens")
 suppressPackageStartupMessages(library(dplyr))
 
 test_that("tokenizing by character works", {
-  d <- data_frame(txt = "Emily Dickinson")
+  d <- tibble(txt = "Emily Dickinson")
   d <- d %>% unnest_tokens(char, txt, token = "characters")
   expect_equal(nrow(d), 14)
   expect_equal(ncol(d), 1)
@@ -13,7 +13,7 @@ test_that("tokenizing by character works", {
 })
 
 test_that("tokenizing by character shingles works", {
-  d <- data_frame(txt = "tidytext is the best")
+  d <- tibble(txt = "tidytext is the best")
   d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles", n = 4)
   expect_equal(nrow(d), 14)
   expect_equal(ncol(d), 1)
@@ -21,7 +21,7 @@ test_that("tokenizing by character shingles works", {
 })
 
 test_that("tokenizing by character shingles can include whitespace/punctuation", {
-  d <- data_frame(txt = "tidytext is the best!")
+  d <- tibble(txt = "tidytext is the best!")
   d <- d %>% unnest_tokens(char_ngram, txt,
                            token = "character_shingles",
                            strip_non_alphanum = FALSE
@@ -32,7 +32,7 @@ test_that("tokenizing by character shingles can include whitespace/punctuation",
 })
 
 test_that("tokenizing by word works", {
-  d <- data_frame(txt = c(
+  d <- tibble(txt = c(
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))
@@ -43,7 +43,7 @@ test_that("tokenizing by word works", {
 })
 
 test_that("tokenizing errors with appropriate message", {
-  d <- data_frame(txt = c(
+  d <- tibble(txt = c(
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))
@@ -54,7 +54,7 @@ test_that("tokenizing errors with appropriate message", {
 })
 
 test_that("tokenizing by sentence works", {
-  orig <- data_frame(txt = c(
+  orig <- tibble(txt = c(
     "I'm Nobody! Who are you?",
     "Are you - Nobody - too?",
     "Then there’s a pair of us!",
@@ -76,7 +76,7 @@ test_that("tokenizing by sentence works", {
 
 
 test_that("tokenizing by ngram and skip ngram works", {
-  d2 <- data_frame(txt = c(
+  d2 <- tibble(txt = c(
     "Hope is the thing with feathers",
     "That perches in the soul",
     "And sings the tune without the words",
@@ -107,7 +107,7 @@ test_that("tokenizing by ngram and skip ngram works", {
 })
 
 test_that("tokenizing with a custom function works", {
-  orig <- data_frame(txt = c(
+  orig <- tibble(txt = c(
     "I'm Nobody! Who are you?",
     "Are you - Nobody - too?",
     "Then there’s a pair of us!",
@@ -130,7 +130,7 @@ test_that("tokenizing with a custom function works", {
 })
 
 test_that("tokenizing with standard evaluation works", {
-  d <- data_frame(txt = c(
+  d <- tibble(txt = c(
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))
@@ -141,7 +141,7 @@ test_that("tokenizing with standard evaluation works", {
 })
 
 test_that("tokenizing with tidyeval works", {
-  d <- data_frame(txt = c(
+  d <- tibble(txt = c(
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))
@@ -154,7 +154,7 @@ test_that("tokenizing with tidyeval works", {
 })
 
 test_that("tokenizing with to_lower = FALSE works", {
-  orig <- data_frame(txt = c(
+  orig <- tibble(txt = c(
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))
@@ -173,7 +173,7 @@ test_that("tokenizing with to_lower = FALSE works", {
 
 
 test_that("unnest_tokens raises an error if custom tokenizer gives bad output", {
-  d <- data_frame(txt = "Emily Dickinson")
+  d <- tibble(txt = "Emily Dickinson")
 
   expect_error(
     unnest_tokens(d, word, txt, token = function(e) c("a", "b")),
@@ -187,7 +187,7 @@ test_that("unnest_tokens raises an error if custom tokenizer gives bad output", 
 
 
 test_that("tokenizing HTML works", {
-  h <- data_frame(
+  h <- tibble(
     row = 1:2,
     text = c("<h1>Text <b>is<b>", "<a href='example.com'>here</a>")
   )
@@ -204,7 +204,7 @@ test_that("tokenizing HTML works", {
 
 
 test_that("tokenizing LaTeX works", {
-  h <- data_frame(
+  h <- tibble(
     row = 1:4,
     text = c(
       "\\textbf{text} \\emph{is}", "\\begin{itemize}",
@@ -258,7 +258,7 @@ test_that("Tokenizing a two-column data.frame with one non-text column works", {
 
 
 test_that("Tokenizing with NA values in columns behaves as expected", {
-  text <- data_frame(
+  text <- tibble(
     line = c(1:2, NA),
     txt = c(
       NA,
@@ -280,7 +280,7 @@ test_that("Tokenizing with NA values in columns behaves as expected", {
 
 
 test_that("Trying to tokenize a non-text format with words raises an error", {
-  d <- data_frame(txt = "Emily Dickinson")
+  d <- tibble(txt = "Emily Dickinson")
   expect_error(
     unnest_tokens(d, word, txt,
                   token = "sentences",
@@ -369,7 +369,7 @@ test_that("Tokenizing a data frame with list columns works", {
 })
 
 test_that("Tokenizing a tbl_df with list columns works", {
-  df <- data_frame(
+  df <- tibble(
     txt = c(
       "Because I could not stop for Death -",
       "He kindly stopped for me -"
@@ -389,7 +389,7 @@ test_that("Tokenizing a tbl_df with list columns works", {
 })
 
 test_that("Can't tokenize with list columns with collapse = TRUE", {
-  df <- data_frame(
+  df <- tibble(
     txt = c(
       "Because I could not stop for Death -",
       "He kindly stopped for me -"

@@ -54,7 +54,7 @@ test_that("Can glance a corpus from quanteda using accessor functions", {
       md <- purrr::compact(x$metadata)
       # turn vectors into list columns
       md <- purrr::map_if(md, ~ length(.) > 1, list)
-      as_data_frame(md)
+      as_tibble(md)
     }
     ret_old <- glance_old(x)
 

@@ -165,7 +165,7 @@ Lots of useful work can be done by tokenizing at the word level, but sometimes i
 is a sad sentence, not a happy one, because of negation. The [Stanford CoreNLP](http://stanfordnlp.github.io/CoreNLP/) tools and the [sentimentr R package](https://cran.r-project.org/package=sentimentr) are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.
 
 ```{r}
-PandP_sentences <- data_frame(text = prideprejudice) %>% 
+PandP_sentences <- tibble(text = prideprejudice) %>% 
   unnest_tokens(sentence, text, token = "sentences")
 ```
 
