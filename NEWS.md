@@ -5,6 +5,7 @@
 * Switch from importing broom to importing generics, for lighter dependencies (#133).
 * Add functions for reordering factors (such as for ggplot2 bar plots) thanks to @tmastny (#110).
 * Update to `tibble()` where appropriate, thanks to @luisdza (#136).
+* Clarify documentation about impact of lowercase conversion on URLs (#139).
 
 # tidytext 0.2.0
 
