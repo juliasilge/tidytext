@@ -40,7 +40,8 @@ Imports: rlang,
     purrr (>= 0.1.1),
     methods,
     stopwords
-Suggests: readr,
+Suggests: 
+    readr,
     tidyr,
     XML,
     tm,
@@ -59,5 +60,8 @@ Suggests: readr,
     mallet,
     stm,
     data.table,
-    broom
+    broom,
+    textdata
+Remotes:
+    EmilHvitfeldt/textdata
 VignetteBuilder: knitr

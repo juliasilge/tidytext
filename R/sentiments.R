@@ -1,38 +1,26 @@
-#' Sentiment lexicons from four sources
+#' Sentiment lexicon from Bing Liu and collaborators
 #'
-#' Four lexicons for sentiment analysis are combined here in a tidy data frame.
-#' The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
-#' the sentiment lexicon from Bing Liu and collaborators, of
-#' Finn Arup Nielsen, and of Tim Loughran and Bill McDonald.
-#' Words with non-ASCII characters were removed from the
-#' lexicons.
+#' Lexicon for opinion and sentiment analysis in a tidy data frame. This
+#' dataset is included in this package with permission of the creators, and
+#' may be used in research, commercial, etc. contexts with attribution, using
+#' either the paper or URL below.
 #'
-#' @format A data frame with 27,314 rows and 4 variables:
+#' This lexicon was first published in:
+#'
+#' Minqing Hu and Bing Liu, ``Mining and summarizing customer reviews.'',
+#' Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery
+#' & Data Mining (KDD-2004), Seattle, Washington, USA, Aug 22-25, 2004.
+#'
+#' Words with non-ASCII characters were removed.
+#'
+#' @format A data frame with 6,786 rows and 2 variables:
 #' \describe{
 #'  \item{word}{An English word}
-#'  \item{sentiment}{A sentiment whose possible values depend on the lexicon.
-#'  The "afinn" lexicon has no sentiment category (all are NA), and each of the
-#'  others can be "positive" or "negative". The NRC lexicon can also be
-#'  "anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise",
-#'  or "trust", and the Loughran lexicon can also be "litigious", "uncertainty",
-#'  "constraining", and "superfluous".}
-#'  \item{lexicon}{The source of the sentiment for the word. One of either
-#'  "nrc", "bing", "loughran", or "AFINN".}
-#'  \item{score}{A numerical score for the sentiment. This value is \code{NA}
-#'  for the Bing, NRC, and Loughran lexicons, and runs between -5 and 5 for the
-#'  AFINN lexicon.}
+#'  \item{sentiment}{A sentiment for that word, either positive or negative.}
 #' }
 #'
-#' @details Note that the Loughran lexicon is best suited for financial text,
-#' (e.g. where "share" is not necessarily positive and "liability"
-#' not necessarily negative).
 #'
-#' @source \itemize{
-#'  \item \url{http://saifmohammad.com/WebPages/lexicons.html}
-#'  \item \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
-#'  \item \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
-#'  \item \url{http://www3.nd.edu/~mcdonald/Word_Lists.html}
-#'  }
+#' @source \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
 "sentiments"
 
 
@@ -40,12 +28,12 @@
 #'
 #' Get specific sentiment lexicons in a tidy format, with one row per word,
 #' in a form that can be joined with a one-word-per-row dataset.
-#' Each of these comes from the included \code{\link{sentiments}} data frame,
-#' but this performs the filtering for a specific lexicon, and removes
-#' columns that are not used in that lexicon.
+#' The \code{"bing"} option comes from the included \code{\link{sentiments}}
+#' data frame, and others call the relevant function in the \pkg{textdata}
+#' package.
 #'
 #' @param lexicon The sentiment lexicon to retrieve;
-#' either "afinn", "bing", "nrc", or "loughran"
+#' either "afinn", "bing", or "loughran"
 #'
 #' @return A tbl_df with a \code{word} column, and either a \code{sentiment}
 #' column (if \code{lexicon} is not "afinn") or a numeric \code{score} column
@@ -54,29 +42,28 @@
 #' @examples
 #'
 #' library(dplyr)
+#'
+#' \dontrun{
 #' get_sentiments("afinn")
+#' }
 #' get_sentiments("bing")
 #'
 #' @importFrom utils data
 #' @export
-get_sentiments <- function(lexicon = c("afinn", "bing", "nrc", "loughran")) {
+get_sentiments <- function(lexicon = c("afinn", "bing", "loughran")) {
   data(list = "sentiments", package = "tidytext", envir = environment())
   lex <- match.arg(lexicon)
 
   if (lex == "afinn") {
-    # turn uppercase: reverse compatibility issue
-    lex <- "AFINN"
+    return(textdata::lexicon_afinn())
+  } else if (lex == "nrc") {
+    stop(paste("The NRC lexicon is no longer available within this package.\n",
+               "Learn more about this dataset here:\n",
+               "https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm"))
+  } else if (lex == "loughran") {
+    return(textdata::lexicon_loughran())
+  } else if (lex == "bing") {
+    return(sentiments)
   }
 
-  ret <- sentiments %>%
-    dplyr::filter(lex == lexicon) %>%
-    dplyr::select(-lexicon)
-
-  if (lex == "AFINN") {
-    ret$sentiment <- NULL
-  } else {
-    ret$score <- NULL
-  }
-
-  ret
 }

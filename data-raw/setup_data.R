@@ -5,14 +5,6 @@ library(dplyr)
 
 # sentiments dataset ------------------------------------------------------
 
-nrc_lexicon <- readr::read_tsv("data-raw/NRC-emotion-lexicon-wordlevel-alphabetized-v0.92.txt.zip",
-                               col_names = FALSE, skip = 46
-)
-nrc_lexicon <- nrc_lexicon %>%
-  filter(X3 == 1) %>%
-  select(word = X1, sentiment = X2) %>%
-  mutate(lexicon = "nrc")
-
 bing_lexicon1 <- readr::read_lines("data-raw/positive-words.txt",
                                    skip = 35
 )
@@ -20,42 +12,17 @@ bing_lexicon2 <- readr::read_lines("data-raw/negative-words.txt",
                                    skip = 35
 )
 bing_lexicon1 <- tibble(word = bing_lexicon1) %>%
-  mutate(sentiment = "positive", lexicon = "bing")
+  mutate(sentiment = "positive")
 bing_lexicon2 <- tibble(word = bing_lexicon2) %>%
-  mutate(sentiment = "negative", lexicon = "bing")
+  mutate(sentiment = "negative")
 bing_lexicon <- bind_rows(bing_lexicon1, bing_lexicon2) %>% arrange(word)
 
-AFINN_lexicon <- readr::read_tsv("data-raw/AFINN-111.txt",
-                                 col_names = FALSE
-)
-AFINN_lexicon <- AFINN_lexicon %>%
-  transmute(word = X1, sentiment = NA, score = X2, lexicon = "AFINN")
 
-# Loughran and McDonald lexicon: financial terms
-
-url <- "http://www3.nd.edu/~mcdonald/Word_Lists_files/LoughranMcDonald_MasterDictionary_2014.xlsx"
-tmp <- tempfile(fileext = ".xlsx")
-download.file(url, tmp)
-
-loughran_raw <- readxl::read_excel(tmp)
-
-loughran_lexicon <- mcdonald_raw %>%
-  select(word = Word, Negative:Superfluous) %>%
-  mutate(word = ifelse(word == "0", "FALSE", word)) %>%
-  tidyr::gather(sentiment, value, -word) %>%
-  filter(value > 0) %>%
-  select(-value) %>%
-  mutate(
-    word = stringr::str_to_lower(word),
-    sentiment = stringr::str_to_lower(sentiment),
-    lexicon = "loughran"
-  )
-
-sentiments <- bind_rows(nrc_lexicon, bing_lexicon, AFINN_lexicon, loughran_lexicon) %>%
+sentiments <- bing_lexicon %>%
   filter(!stringr::str_detect(word, "[^[:ascii:]]"))
 
 readr::write_csv(sentiments, "data-raw/sentiments.csv")
-devtools::use_data(sentiments, overwrite = TRUE)
+usethis::use_data(sentiments, overwrite = TRUE)
 
 
 # stop_words dataset ------------------------------------------------------
