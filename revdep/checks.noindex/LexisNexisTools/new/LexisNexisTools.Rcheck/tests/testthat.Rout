@@ -1,94 +1,0 @@
-
-R version 3.5.3 (2019-03-11) -- "Great Truth"
-Copyright (C) 2019 The R Foundation for Statistical Computing
-Platform: x86_64-apple-darwin15.6.0 (64-bit)
-
-R is free software and comes with ABSOLUTELY NO WARRANTY.
-You are welcome to redistribute it under certain conditions.
-Type 'license()' or 'licence()' for distribution details.
-
-R is a collaborative project with many contributors.
-Type 'contributors()' for more information and
-'citation()' on how to cite R or R packages in publications.
-
-Type 'demo()' for some demos, 'help()' for on-line help, or
-'help.start()' for an HTML browser interface to help.
-Type 'q()' to quit R.
-
-> library(testthat)
-> library(LexisNexisTools)
-LexisNexisTools Version 0.2.2
-> 
-> test_check("LexisNexisTools")
-Creating LNToutput from input 1 files...
-	...processing date 2010-01-08: 0 duplicates found [0.10 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.10 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.17 secs]. 			...processing date 2010-01-11: 15 duplicates found [5.92 secs]. 		
-Threshold = 0.95; 4 days processed; 5 duplicates found; in 5.92 secsCreating LNToutput from input 1 files...
-   |                                                  | 0 % ~calculating     |+++++                                             | 10% ~00s             |++++++++++                                        | 20% ~00s             |+++++++++++++++                                   | 30% ~00s             |++++++++++++++++++++                              | 40% ~00s             |+++++++++++++++++++++++++                         | 50% ~00s             |++++++++++++++++++++++++++++++                    | 60% ~00s             |+++++++++++++++++++++++++++++++++++               | 70% ~00s             |++++++++++++++++++++++++++++++++++++++++         | 80% ~00s             |+++++++++++++++++++++++++++++++++++++++++++++    | 90% ~00s             |++++++++++++++++++++++++++++++++++++++++++++++++++| 100% elapsed = 00s
-Creating LNToutput from input 1 files...
-	...files loaded [0.0018 secs]
-	...articles split [0.013 secs]
-	...lengths extracted [0.015 secs]
-	...newspapers extracted [0.015 secs]
-	...dates extracted [0.02 secs]
-	...authors extracted [0.022 secs]
-	...sections extracted [0.023 secs]
-	...editions extracted [0.023 secs]
-	...headlines extracted [0.027 secs]
-	...dates converted [0.035 secs]
-	...metadata extracted [0.038 secs]
-	...article texts extracted [0.044 secs]
-	...paragraphs extracted [0.058 secs]
-	...superfluous whitespace removed from articles [0.064 secs]
-	...superfluous whitespace removed from paragraphs [0.072 secs]
-Elapsed time: 0.072 secs
-Creating LNToutput from input 2 files...
-	...files loaded [0.0032 secs]
-	...articles split [0.025 secs]
-	...lengths extracted [0.027 secs]
-	...newspapers extracted [0.028 secs]
-	...dates extracted [0.034 secs]
-	...authors extracted [0.037 secs]
-	...sections extracted [0.038 secs]
-	...editions extracted [0.04 secs]
-	...headlines extracted [0.045 secs]
-	...dates converted [0.055 secs]
-	...metadata extracted [0.058 secs]
-	...article texts extracted [0.068 secs]
-	...paragraphs extracted [0.088 secs]
-	...superfluous whitespace removed from articles [0.097 secs]
-	...superfluous whitespace removed from paragraphs [0.10 secs]
-Elapsed time: 0.10 secs
-Creating LNToutput from input 2 files...
-	...files loaded [0.0029 secs]
-	...articles split [0.026 secs]
-	...lengths extracted [0.028 secs]
-	...newspapers extracted [0.029 secs]
-	...dates extracted [0.035 secs]
-	...authors extracted [0.038 secs]
-	...sections extracted [0.039 secs]
-	...editions extracted [0.04 secs]
-	...headlines extracted [0.046 secs]
-	...dates converted [0.054 secs]
-	...metadata extracted [0.057 secs]
-	...article texts extracted [0.066 secs]
-	...superfluous whitespace removed from articles [0.076 secs]
-	...superfluous whitespace removed from paragraphs [0.076 secs]
-Elapsed time: 0.076 secs
-in 0.0018 secs [changes were only simulated]in 0.0023 secs1 not renamed (file already exists), in 0.0016 secs [changes were only simulated]Creating LNToutput from input 1 files...
-Checking similiarity for 10 articles over 4 dates...
-	...quanteda dfm construced for similarity comparison [0.09 secs].	...processing date 2010-01-08: 0 duplicates found [0.091 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.091 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.15 secs]. 			...processing date 2010-01-11: 9 duplicates found [4.74 secs]. 		
-Threshold = 0.99; 4 days processed; 4 duplicates found; in 4.74 secsChecking similiarity for 10 articles over 4 dates...
-	...quanteda dfm construced for similarity comparison [0.046 secs].	...processing date 2010-01-08: 0 duplicates found [0.047 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.047 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.075 secs]. 			...processing date 2010-01-11: 9 duplicates found [3.72 secs]. 		
-Threshold = 0.99; 4 days processed; 4 duplicates found; in 3.72 secsChecking similiarity for 10 articles over 4 dates...
-	...quanteda dfm construced for similarity comparison [0.045 secs].	...processing date 2010-01-08: 0 duplicates found [0.046 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.046 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.075 secs]. 			...processing date 2010-01-11: 9 duplicates found [3.94 secs]. 		
-Threshold = 0.99; 4 days processed; 4 duplicates found; in 3.94 secsChecking similiarity for 9 articles over 4 dates...
-	...quanteda dfm construced for similarity comparison [0.052 secs].	...processing date 2010-01-08: 0 duplicates found [0.053 secs]. 			...processing date 2010-01-09: 0 duplicates found [0.053 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.081 secs]. 			...processing date 2010-01-11: 9 duplicates found [4.24 secs]. 		
-Threshold = 0.99; 4 days processed; 4 duplicates found; in 4.24 secsChecking similiarity for 10 articles over 3 dates...
-	...quanteda dfm construced for similarity comparison [0.061 secs].	...processing date 2010-01-08: 0 duplicates found [0.061 secs]. 			...processing date 2010-01-10: 0 duplicates found [0.099 secs]. 			...processing date 2010-01-11: 9 duplicates found [4.07 secs]. 		
-Threshold = 0.99; 3 days processed; 4 duplicates found; in 4.07 secsCreating LNToutput from input 1 files...
-══ testthat results  ══════════════════════════════════════════════════════════════════════════════════════
-OK: 48 SKIPPED: 0 WARNINGS: 0 FAILED: 0
-> 
-> proc.time()
-   user  system elapsed 
- 28.166   4.976  34.206 
