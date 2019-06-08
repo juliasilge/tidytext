@@ -13,7 +13,7 @@ test_that("Convert LNToutput to rDNA", {
 })
 
 # saveRDS(lnt_convert(x = readRDS("../files/LNToutput.RDS"),
-#                     to = "rDNA", what = "Articles"), "../files/rDNA.RDS")
+#                     to = "rDNA", what = "Articles", collapse = TRUE), "../files/rDNA.RDS")
 
 test_that("Convert LNToutput to quanteda", {
   expect_equal({
@@ -36,12 +36,21 @@ test_that("Convert LNToutput to corpustools", {
   expect_equal({
     cptools <- lnt_convert(x = readRDS("../files/LNToutput.RDS"),
                            to = "corpustools", what = "Articles")
-    cptools
+    out <- list()
+    out[[1]] <- class(cptools)
+    out[[2]] <- cptools$get()
+    out[[3]] <- cptools$get_meta()
   }, readRDS("../files/corpustools.RDS"))
 })
 
-# saveRDS(lnt_convert(x = readRDS("../files/LNToutput.RDS"),
-#                     to = "corpustools", what = "Articles"), "../files/corpustools.RDS")
+# saveRDS({
+#   cptools <- lnt_convert(x = readRDS("../files/LNToutput.RDS"),
+#                          to = "corpustools", what = "Articles")
+#   out <- list()
+#   out[[1]] <- class(cptools)
+#   out[[2]] <- cptools$get()
+#   out[[3]] <- cptools$get_meta()
+# }, "../files/corpustools.RDS")
 
 test_that("Convert LNToutput to tidytext", {
   expect_equal({
@@ -65,18 +74,26 @@ test_that("Convert LNToutput to tm", {
 
 test_that("Convert LNToutput to SQLite", {
   expect_equal({
+    unlink("../files/LNT.sqlite")
     conn <- lnt_convert(x = readRDS("../files/LNToutput.RDS"),
                         to = "SQLite", what = "Articles",
                         file = "../files/LNT.sqlite")
     conn@dbname <- basename(conn@dbname)
-    RSQLite::dbDisconnect(conn)
     conn
   }, readRDS("../files/SQLite.RDS"))
 })
 
+test_that("Test error messages", {
+  expect_error ({
+    lnt_convert(x = readRDS("../files/LNToutput.RDS"),
+                to = "rDNA", what = "Article")
+  },"Choose either \"Articles\" or \"Paragraphs\" as what argument.", fixed = TRUE)
+  expect_error ({
+    lnt_convert(x = readRDS("../files/LNToutput.RDS"),
+                to = "quanteda", what = "Paragraph")
+  },"Choose either \"Articles\" or \"Paragraphs\" as what argument.", fixed = TRUE)
+})
+
 # saveRDS(conn, "../files/SQLite.RDS")
 
-teardown(unlink(c(
-  lnt_sample(verbose = FALSE),
-  "../files/LNT.sqlite"
-)))
+teardown(unlink("../files/LNT.sqlite"))

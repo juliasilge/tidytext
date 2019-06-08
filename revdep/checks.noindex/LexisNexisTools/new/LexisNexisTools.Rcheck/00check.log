@@ -1,9 +1,10 @@
-* using log directory ‘/Volumes/Data1TB/Google Drive/data_science/runconf16/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck’
-* using R version 3.5.1 (2018-07-02)
+* using log directory ‘/Users/juliasilge/Work/tidytext/tidytext/revdep/checks.noindex/LexisNexisTools/new/LexisNexisTools.Rcheck’
+* using R version 3.5.3 (2019-03-11)
 * using platform: x86_64-apple-darwin15.6.0 (64-bit)
 * using session charset: UTF-8
+* using options ‘--no-manual --no-build-vignettes’
 * checking for file ‘LexisNexisTools/DESCRIPTION’ ... OK
-* this is package ‘LexisNexisTools’ version ‘0.2.0’
+* this is package ‘LexisNexisTools’ version ‘0.2.2’
 * package encoding: UTF-8
 * checking package namespace information ... OK
 * checking package dependencies ... OK
@@ -48,11 +49,11 @@
 * checking examples ... OK
 * checking for unstated dependencies in ‘tests’ ... OK
 * checking tests ... OK
+  Running ‘spelling.R’
   Running ‘testthat.R’
 * checking for unstated dependencies in vignettes ... OK
 * checking package vignettes in ‘inst/doc’ ... OK
 * checking running R code from vignettes ... NONE
-* checking re-building of vignette outputs ... OK
-* checking PDF version of manual ... OK
+* checking re-building of vignette outputs ... SKIPPED
 * DONE
 Status: OK

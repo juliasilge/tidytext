@@ -1,0 +1,334 @@
+pkgname <- "saotd"
+source(file.path(R.home("share"), "R", "examples-header.R"))
+options(warn = 1)
+library('saotd')
+
+base::assign(".oldSearch", base::search(), pos = 'CheckExEnv')
+base::assign(".old_wd", base::getwd(), pos = 'CheckExEnv')
+cleanEx()
+nameEx("bigram")
+### * bigram
+
+flush(stderr()); flush(stdout())
+
+### Name: bigram
+### Title: Twitter Bi-Grams
+### Aliases: bigram
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("bigram_network")
+### * bigram_network
+
+flush(stderr()); flush(stdout())
+
+### Name: bigram_network
+### Title: Twitter Bi-Gram Network
+### Aliases: bigram_network
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("merge_terms")
+### * merge_terms
+
+flush(stderr()); flush(stdout())
+
+### Name: merge_terms
+### Title: Merge Terms
+### Aliases: merge_terms
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("number_topics")
+### * number_topics
+
+flush(stderr()); flush(stdout())
+
+### Name: number_topics
+### Title: Number Topics
+### Aliases: number_topics
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("posneg_words")
+### * posneg_words
+
+flush(stderr()); flush(stdout())
+
+### Name: posneg_words
+### Title: Twitter Positive and Negative Words
+### Aliases: posneg_words
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("trigram")
+### * trigram
+
+flush(stderr()); flush(stdout())
+
+### Name: trigram
+### Title: Twitter Tri-Grams
+### Aliases: trigram
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_acquire")
+### * tweet_acquire
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_acquire
+### Title: Acquire Twitter Tweets
+### Aliases: tweet_acquire
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_box")
+### * tweet_box
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_box
+### Title: Twitter Data Box Plot
+### Aliases: tweet_box
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_corpus_distribution")
+### * tweet_corpus_distribution
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_corpus_distribution
+### Title: Twitter Corpus Distribution
+### Aliases: tweet_corpus_distribution
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_distribution")
+### * tweet_distribution
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_distribution
+### Title: Twitter Hashtag or Topic Distribution
+### Aliases: tweet_distribution
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_max_scores")
+### * tweet_max_scores
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_max_scores
+### Title: Twitter Data Maximum Scores
+### Aliases: tweet_max_scores
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_min_scores")
+### * tweet_min_scores
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_min_scores
+### Title: Twitter Data Minimum Scores
+### Aliases: tweet_min_scores
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_scores")
+### * tweet_scores
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_scores
+### Title: Score Tidy Twitter Data
+### Aliases: tweet_scores
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_tidy")
+### * tweet_tidy
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_tidy
+### Title: Tidy Twitter Data
+### Aliases: tweet_tidy
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_time")
+### * tweet_time
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_time
+### Title: Twitter Data Timeseries Plot.
+### Aliases: tweet_time
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_topics")
+### * tweet_topics
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_topics
+### Title: Tweet Topics
+### Aliases: tweet_topics
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_violin")
+### * tweet_violin
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_violin
+### Title: Twitter Data Violin Plot
+### Aliases: tweet_violin
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("tweet_worldmap")
+### * tweet_worldmap
+
+flush(stderr()); flush(stdout())
+
+### Name: tweet_worldmap
+### Title: Twitter Data Worldmap Plot.
+### Aliases: tweet_worldmap
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("unigram")
+### * unigram
+
+flush(stderr()); flush(stdout())
+
+### Name: unigram
+### Title: Twitter Uni-Grams
+### Aliases: unigram
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("word_corr")
+### * word_corr
+
+flush(stderr()); flush(stdout())
+
+### Name: word_corr
+### Title: Twitter Word Correlations
+### Aliases: word_corr
+
+### ** Examples
+
+
+
+
+cleanEx()
+nameEx("word_corr_network")
+### * word_corr_network
+
+flush(stderr()); flush(stdout())
+
+### Name: word_corr_network
+### Title: Twitter Word Correlations Plot
+### Aliases: word_corr_network
+
+### ** Examples
+
+
+
+
+### * <FOOTER>
+###
+cleanEx()
+options(digits = 7L)
+base::cat("Time elapsed: ", proc.time() - base::get("ptime", pos = 'CheckExEnv'),"\n")
+grDevices::dev.off()
+###
+### Local variables: ***
+### mode: outline-minor ***
+### outline-regexp: "\\(> \\)?### [*]+" ***
+### End: ***
+quit('no')

@@ -1,0 +1,12 @@
+* installing *source* package ‘saotd’ ...
+** package ‘saotd’ successfully unpacked and MD5 sums checked
+** R
+** data
+** inst
+** byte-compile and prepare package for lazy loading
+** help
+*** installing help indices
+** building package indices
+** installing vignettes
+** testing if installed package can be loaded
+* DONE (saotd)

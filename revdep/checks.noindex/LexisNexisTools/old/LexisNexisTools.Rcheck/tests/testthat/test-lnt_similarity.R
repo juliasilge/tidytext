@@ -2,7 +2,9 @@ context("Lookup keyword")
 library(LexisNexisTools)
 
 
-LNToutput <- lnt_read(lnt_sample(verbose = FALSE), verbose = FALSE)
+LNToutput <- lnt_read(system.file("extdata", "sample.TXT", 
+                                  package = "LexisNexisTools"), 
+                      verbose = FALSE)
 
 test_that("Test similarity", {
   expect_equal(lnt_similarity(LNToutput = LNToutput),
@@ -35,6 +37,3 @@ test_that("Test similarity warnings and errors", {
                               dates = LNToutput@meta$Date[1:8]),
                "'texts', 'dates' and 'IDs' need to have the same length.")
 })
-
-
-teardown(unlink(lnt_sample(verbose = FALSE)))

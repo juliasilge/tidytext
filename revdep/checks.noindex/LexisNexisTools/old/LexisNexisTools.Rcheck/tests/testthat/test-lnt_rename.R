@@ -20,7 +20,9 @@ test_that("Rename Sample", {
   }, "Not all provided files were TXT files. Other formats are ignored.")
 })
 
-teardown(unlink(c("sample.TXT", 
-                  "SampleFile_20091201-20100511_1-10.txt")))
+teardown(unlink(c(
+  "sample.TXT", 
+  "SampleFile_20091201-20100511_1-10.txt"
+)))
 
 

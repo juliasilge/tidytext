@@ -2,7 +2,10 @@ context("LNToutput methods")
 library(LexisNexisTools)
 
 
-LNToutput <- lnt_read(lnt_sample(verbose = FALSE), verbose = FALSE)
+LNToutput <- lnt_read(
+  system.file("extdata", "sample.TXT", package = "LexisNexisTools"), 
+  verbose = FALSE
+)
 LNToutput@meta$Source_File <- basename(LNToutput@meta$Source_File)
 
 # test_that("Show method", {
@@ -45,5 +48,3 @@ test_that("Subset method", {
        "The Times (London)", "The Times (London)",
        "MAIL ON SUNDAY (London)", "Sunday Mirror", "DAILY MAIL (London)"))
 })
-
-teardown(unlink(lnt_sample(verbose = FALSE)))

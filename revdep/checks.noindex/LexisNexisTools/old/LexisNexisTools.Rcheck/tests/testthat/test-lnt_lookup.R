@@ -2,7 +2,9 @@ context("Lookup keyword")
 library(LexisNexisTools)
 
 
-LNToutput <- lnt_read(lnt_sample(verbose = FALSE), verbose = FALSE)
+LNToutput <- lnt_read(system.file("extdata", "sample.TXT", 
+                                  package = "LexisNexisTools"), 
+                      verbose = FALSE)
 
 test_that("Lookup stat. computing in sample", {
   expect_equal(lnt_lookup(LNToutput, "statistical computing", verbose = FALSE),
@@ -30,5 +32,3 @@ test_that("Lookup stat. computing in sample", {
                     `9` = c("statis", "statis", "statis", "statis", "statis", "statis"),
                     `10` = NULL))
 })
-
-teardown(unlink(lnt_sample(verbose = FALSE)))
