@@ -16,13 +16,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
 
-<!-- sticky kit -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
+<!-- headroom.js -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -73,7 +75,7 @@ are similar to lda_tidiers." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fa fa-home fa-lg"></span>
+    <span class="fas fa fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -109,7 +111,7 @@ are similar to lda_tidiers." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext">
-    <span class="fa fa-github fa-lg"></span>
+    <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -139,11 +141,11 @@ are similar to <code><a href='lda_tidiers.html'>lda_tidiers</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for jobjRef</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/generics/topics/tidy'>tidy</a></span>(<span class='no'>x</span>, <span class='kw'>matrix</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"beta"</span>, <span class='st'>"gamma"</span>), <span class='kw'>log</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>x</span>, <span class='kw'>matrix</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"beta"</span>, <span class='st'>"gamma"</span>), <span class='kw'>log</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
   <span class='kw'>normalized</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>smoothed</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='no'>...</span>)
 
 <span class='co'># S3 method for jobjRef</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/generics/topics/augment'>augment</a></span>(<span class='no'>x</span>, <span class='no'>data</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/augment.html'>augment</a></span>(<span class='no'>x</span>, <span class='no'>data</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -151,7 +153,7 @@ are similar to <code><a href='lda_tidiers.html'>lda_tidiers</a></code>.</p>
     <tr>
       <th>x</th>
       <td><p>A jobjRef object, of type RTopicModel, such as created
-by <code><a href='https://www.rdocumentation.org/packages/mallet/topics/MalletLDA'>MalletLDA</a></code>.</p></td>
+by <code><a href='https://rdrr.io/pkg/mallet/man/MalletLDA.html'>MalletLDA</a></code>.</p></td>
     </tr>
     <tr>
       <th>matrix</th>
@@ -173,7 +175,7 @@ assignments.</p></td>
       <th>smoothed</th>
       <td><p>If true (default), add the smoothing parameter to each
 to avoid any values being zero. This smoothing parameter is initialized
-as <code>alpha.sum</code> in <code><a href='https://www.rdocumentation.org/packages/mallet/topics/MalletLDA'>MalletLDA</a></code>.</p></td>
+as <code>alpha.sum</code> in <code><a href='https://rdrr.io/pkg/mallet/man/MalletLDA.html'>MalletLDA</a></code>.</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -197,44 +199,44 @@ It returns that same data with an additional column
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>Note that the LDA models from <code><a href='https://www.rdocumentation.org/packages/mallet/topics/MalletLDA'>MalletLDA</a></code>
+    <p>Note that the LDA models from <code><a href='https://rdrr.io/pkg/mallet/man/MalletLDA.html'>MalletLDA</a></code>
 are technically a special case of S4 objects with class <code>jobjRef</code>.
 These are thus implemented as <code>jobjRef</code> tidiers, with a check for
 whether the <code>toString</code> output is as expected.</p>
     
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <div class='dont-index'><p><code><a href='lda_tidiers.html'>lda_tidiers</a></code>, <code><a href='https://www.rdocumentation.org/packages/mallet/topics/mallet.doc.topics'>mallet.doc.topics</a></code>,
-<code><a href='https://www.rdocumentation.org/packages/mallet/topics/mallet.topic.words'>mallet.topic.words</a></code></p></div>
+    <div class='dont-index'><p><code><a href='lda_tidiers.html'>lda_tidiers</a></code>, <code><a href='https://rdrr.io/pkg/mallet/man/mallet.doc.topics.html'>mallet.doc.topics</a></code>,
+<code><a href='https://rdrr.io/pkg/mallet/man/mallet.topic.words.html'>mallet.topic.words</a></code></p></div>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 </div><span class='co'># NOT RUN {</span>
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>mallet</span>)
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>mallet</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 
-<span class='fu'><a href='https://www.rdocumentation.org/packages/utils/topics/data'>data</a></span>(<span class='st'>"AssociatedPress"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"topicmodels"</span>)
-<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/generics/topics/tidy'>tidy</a></span>(<span class='no'>AssociatedPress</span>)
+<span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"AssociatedPress"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"topicmodels"</span>)
+<span class='no'>td</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>AssociatedPress</span>)
 
 <span class='co'># mallet needs a file with stop words</span>
-<span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/tempfile'>tempfile</a></span>()
-<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/writeLines'>writeLines</a></span>(<span class='no'>stop_words</span>$<span class='no'>word</span>, <span class='no'>tmp</span>)
+<span class='no'>tmp</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/tempfile.html'>tempfile</a></span>()
+<span class='fu'><a href='https://rdrr.io/r/base/writeLines.html'>writeLines</a></span>(<span class='no'>stop_words</span>$<span class='no'>word</span>, <span class='no'>tmp</span>)
 
 <span class='co'># two vectors: one with document IDs, one with text</span>
 <span class='no'>docs</span> <span class='kw'>&lt;-</span> <span class='no'>td</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>document</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>as.character</a></span>(<span class='no'>document</span>)) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/paste'>paste</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/rep'>rep</a></span>(<span class='no'>term</span>, <span class='no'>count</span>), <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>" "</span>))
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>document</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/character.html'>as.character</a></span>(<span class='no'>document</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/summarise.html'>summarize</a></span>(<span class='kw'>text</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/paste.html'>paste</a></span>(<span class='fu'><a href='https://rdrr.io/r/base/rep.html'>rep</a></span>(<span class='no'>term</span>, <span class='no'>count</span>), <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>" "</span>))
 
-<span class='no'>docs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/mallet/topics/mallet.import'>mallet.import</a></span>(<span class='no'>docs</span>$<span class='no'>document</span>, <span class='no'>docs</span>$<span class='no'>text</span>, <span class='no'>tmp</span>)
+<span class='no'>docs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/mallet/man/mallet.import.html'>mallet.import</a></span>(<span class='no'>docs</span>$<span class='no'>document</span>, <span class='no'>docs</span>$<span class='no'>text</span>, <span class='no'>tmp</span>)
 
 <span class='co'># create and run a topic model</span>
-<span class='no'>topic_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/mallet/topics/MalletLDA'>MalletLDA</a></span>(<span class='kw'>num.topics</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+<span class='no'>topic_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/mallet/man/MalletLDA.html'>MalletLDA</a></span>(<span class='kw'>num.topics</span> <span class='kw'>=</span> <span class='fl'>4</span>)
 <span class='no'>topic_model</span>$<span class='fu'>loadDocuments</span>(<span class='no'>docs</span>)
 <span class='no'>topic_model</span>$<span class='fu'>train</span>(<span class='fl'>20</span>)
 
 <span class='co'># tidy the word-topic combinations</span>
-<span class='no'>td_beta</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/generics/topics/tidy'>tidy</a></span>(<span class='no'>topic_model</span>)
+<span class='no'>td_beta</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>topic_model</span>)
 <span class='no'>td_beta</span>
 
 <span class='co'># Examine the four topics</span>
@@ -242,14 +244,14 @@ whether the <code>toString</code> output is as expected.</p>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>topic</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/top_n.html'>top_n</a></span>(<span class='fl'>8</span>, <span class='no'>beta</span>) <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span>() <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>term</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/stats/topics/reorder.factor'>reorder</a></span>(<span class='no'>term</span>, <span class='no'>beta</span>)) <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>term</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span>(<span class='no'>term</span>, <span class='no'>beta</span>)) <span class='kw'>%&gt;%</span>
   <span class='fu'>ggplot</span>(<span class='fu'>aes</span>(<span class='no'>term</span>, <span class='no'>beta</span>)) +
   <span class='fu'>geom_col</span>() +
   <span class='fu'>facet_wrap</span>(~ <span class='no'>topic</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free"</span>) +
   <span class='fu'>coord_flip</span>()
 
 <span class='co'># find the assignments of each word in each document</span>
-<span class='no'>assignments</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/generics/topics/augment'>augment</a></span>(<span class='no'>topic_model</span>, <span class='no'>td</span>)
+<span class='no'>assignments</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/augment.html'>augment</a></span>(<span class='no'>topic_model</span>, <span class='no'>td</span>)
 <span class='no'>assignments</span>
 <span class='co'># }</span><div class='input'>
 </div></pre>
@@ -277,7 +279,7 @@ whether the <code>toString</code> output is as expected.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.3.0.9100.</p>
 </div>
       </footer>
    </div>
