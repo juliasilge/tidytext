@@ -39,10 +39,10 @@ install.packages("tidytext")
 ```
 
 
-Or you can install the development version from Github with [devtools](https://github.com/hadley/devtools):
+Or you can install the development version from Github with [remotes](https://github.com/r-lib/remotes):
 
 ```{r, eval=FALSE}
-library(devtools)
+library(remotes)
 install_github("juliasilge/tidytext")
 ```
 
@@ -169,4 +169,4 @@ For more examples of working with objects from other text mining packages using 
 
 ### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
+This project is released with a [Contributor Code of Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
