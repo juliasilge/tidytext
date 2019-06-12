@@ -1,4 +1,4 @@
-# tidytext 0.2.1 [WIP]
+# tidytext 0.2.1
 
 * Fix bug in `augment()` function for stm topic model.
 * Warn when tf-idf is negative, thanks to @EmilHvitfeldt (#112).

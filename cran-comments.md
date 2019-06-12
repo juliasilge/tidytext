@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 11th CRAN release of tidytext. This release includes a fix for non-standard evaluation, improved documentation, and new tidiers for correlated topic models and estimated regressions from `stm()`.
+This is the 12th CRAN release of tidytext. The most important changes in this release is a change in how sentiment lexicons are accessed from package (remove NRC lexicon entirely, access AFINN and Loughran lexicons via textdata package so they are no longer included in this package). More minor changes include fixing bugs, lighter dependencies, helper functions for plotting, and documentation improvements. 
 
 ## Test environments
 
@@ -14,4 +14,10 @@ This is the 11th CRAN release of tidytext. This release includes a fix for non-s
 
 ## Downstream dependencies
 
-I ran R CMD check on the 15 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems related to tidytext.
+I ran R CMD check on the 21 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and sent updates to all maintainers who are impacted by the change in the sentiment lexicons (the only change in this release that impacted any downstream dependencies).
+
+The following packages are impacted and have not yet updated:
+
+- quanteda
+- newsanchor
+- ggpage
