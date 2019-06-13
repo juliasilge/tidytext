@@ -1,11 +1,11 @@
 ## Release Summary
 
-This is the 12th CRAN release of tidytext. The most important changes in this release is a change in how sentiment lexicons are accessed from package (remove NRC lexicon entirely, access AFINN and Loughran lexicons via textdata package so they are no longer included in this package). More minor changes include fixing bugs, lighter dependencies, helper functions for plotting, and documentation improvements. 
+This is the 12th CRAN release of tidytext. The most important change in this release is in how sentiment lexicons are accessed from package (remove NRC lexicon entirely, access AFINN and Loughran lexicons via textdata package so they are no longer included in this package). More minor changes include fixing bugs, lighter dependencies, helper functions for plotting, and documentation improvements. 
 
 ## Test environments
 
-* Local OS X install, R 3.5.1
-* Ubuntu 14.04 (on Travis-CI), R 3.5.1 and R 3.4.4
+* Local OS X install, R 3.6.0
+* Ubuntu 14.04 (on Travis-CI), R 3.6.0 and R 3.5.3
 * Win-builder (devel and release)
 
 ## R CMD check results
