@@ -39,7 +39,7 @@ install.packages("tidytext")
 ```
 
 
-Or you can install the development version from Github with [remotes](https://github.com/r-lib/remotes):
+Or you can install the development version from GitHub with [remotes](https://github.com/r-lib/remotes):
 
 ```{r, eval=FALSE}
 library(remotes)

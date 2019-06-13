@@ -22,7 +22,7 @@ A tibble with two columns, \code{word} and \code{lexicon}. The
 parameter \code{lexicon} is "quanteda" in this case.
 }
 \description{
-Get a specific stop word lexicon via the \pkg{stopwords} packages's
+Get a specific stop word lexicon via the \pkg{stopwords} package's
 \link[stopwords]{stopwords} function, in a tidy format with one word per row.
 }
 \examples{

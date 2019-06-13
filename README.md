@@ -31,7 +31,7 @@ install.packages("tidytext")
 ```
 
 
-Or you can install the development version from Github with [remotes](https://github.com/r-lib/remotes):
+Or you can install the development version from GitHub with [remotes](https://github.com/r-lib/remotes):
 
 
 ```r
@@ -133,20 +133,20 @@ Sentiment analysis can be done as an inner join. Three sentiment lexicons are av
 ```r
 library(tidyr)
 get_sentiments("bing")
-#> # A tibble: 6,786 x 2
+#> # A tibble: 6,788 x 2
 #>    word        sentiment
 #>    <chr>       <chr>    
-#>  1 2-faces     negative 
-#>  2 abnormal    negative 
-#>  3 abolish     negative 
-#>  4 abominable  negative 
-#>  5 abominably  negative 
-#>  6 abominate   negative 
-#>  7 abomination negative 
-#>  8 abort       negative 
-#>  9 aborted     negative 
-#> 10 aborts      negative 
-#> # … with 6,776 more rows
+#>  1 2-faced     negative 
+#>  2 2-faces     negative 
+#>  3 a+          positive 
+#>  4 abnormal    negative 
+#>  5 abolish     negative 
+#>  6 abominable  negative 
+#>  7 abominably  negative 
+#>  8 abominate   negative 
+#>  9 abomination negative 
+#> 10 abort       negative 
+#> # … with 6,778 more rows
 
 janeaustensentiment <- tidy_books %>%
   inner_join(get_sentiments("bing"), by = "word") %>% 
