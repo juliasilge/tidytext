@@ -55,12 +55,22 @@ get_sentiments <- function(lexicon = c("afinn", "bing", "loughran")) {
   lex <- match.arg(lexicon)
 
   if (lex == "afinn") {
+    if (!requireNamespace("textdata", quietly = TRUE)){
+      stop("The textdata package is required to get the afinn lexicon. \nPlease run install.packages(\"textdata\") to use this functionality.",
+        call. = FALSE
+      )
+    }
     return(textdata::lexicon_afinn())
   } else if (lex == "nrc") {
     stop(paste("The NRC lexicon is no longer available within this package.\n",
                "Learn more about this dataset here:\n",
                "https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm"))
   } else if (lex == "loughran") {
+    if (!requireNamespace("textdata", quietly = TRUE)){
+      stop("The textdata package is required to get the loughran lexicon. \nPlease run install.packages(\"textdata\") to use this functionality.",
+        call. = FALSE
+      )
+    }
     return(textdata::lexicon_loughran())
   } else if (lex == "bing") {
     return(sentiments)
