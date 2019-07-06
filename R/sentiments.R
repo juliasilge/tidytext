@@ -50,20 +50,26 @@
 #'
 #' @importFrom utils data
 #' @export
-get_sentiments <- function(lexicon = c("afinn", "bing", "loughran")) {
-  data(list = "sentiments", package = "tidytext", envir = environment())
-  lex <- match.arg(lexicon)
-
-  if (lex == "afinn") {
-    return(textdata::lexicon_afinn())
-  } else if (lex == "nrc") {
-    stop(paste("The NRC lexicon is no longer available within this package.\n",
+get_sentiments <- function (lexicon = c("afinn", "bing", "loughran")) 
+{
+  data(list = "sentiments", package = "tidytext", 
+       envir = environment())
+  if (lexicon == "nrc") {
+    stop(paste("The NRC lexicon is no longer available within this package.\n", 
                "Learn more about this dataset here:\n",
                "https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm"))
-  } else if (lex == "loughran") {
+  }
+  
+  lex <- match.arg(lexicon)
+  if (lex == "afinn") {
+    return(textdata::lexicon_afinn())
+  }
+  
+  
+  else if (lex == "loughran") {
     return(textdata::lexicon_loughran())
-  } else if (lex == "bing") {
+  }
+  else if (lex == "bing") {
     return(sentiments)
   }
-
 }
