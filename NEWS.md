@@ -1,3 +1,7 @@
+# tidytext 0.2.2 [WIP]
+
+* Access NRC lexicon via textdata package
+
 # tidytext 0.2.1
 
 * Fix bug in `augment()` function for stm topic model.

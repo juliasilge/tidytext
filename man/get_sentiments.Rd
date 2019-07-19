@@ -4,11 +4,11 @@
 \alias{get_sentiments}
 \title{Get a tidy data frame of a single sentiment lexicon}
 \usage{
-get_sentiments(lexicon = c("afinn", "bing", "loughran"))
+get_sentiments(lexicon = c("afinn", "bing", "loughran", "nrc"))
 }
 \arguments{
 \item{lexicon}{The sentiment lexicon to retrieve;
-either "afinn", "bing", or "loughran"}
+either "afinn", "bing", "nrc", or "loughran"}
 }
 \value{
 A tbl_df with a \code{word} column, and either a \code{sentiment}
@@ -28,6 +28,7 @@ library(dplyr)
 
 \dontrun{
 get_sentiments("afinn")
+get_sentiments("nrc")
 }
 get_sentiments("bing")
 

@@ -10,3 +10,4 @@ paper\..*
 ^appveyor\.yml$
 ^revdep$
 ^docs$
+^CRAN-RELEASE$
