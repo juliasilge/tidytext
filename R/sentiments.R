@@ -56,10 +56,20 @@ get_sentiments <- function(lexicon = c("afinn", "bing", "loughran", "nrc")) {
   lex <- match.arg(lexicon)
 
   if (lex == "afinn") {
+    if (!requireNamespace("textdata", quietly = TRUE)){
+      stop("The textdata package is required to get the afinn lexicon. \nPlease run install.packages(\"textdata\") to use this functionality.",
+        call. = FALSE
+      )
+    }
     return(textdata::lexicon_afinn())
   } else if (lex == "nrc") {
     return(textdata::lexicon_nrc())
   } else if (lex == "loughran") {
+    if (!requireNamespace("textdata", quietly = TRUE)){
+      stop("The textdata package is required to get the loughran lexicon. \nPlease run install.packages(\"textdata\") to use this functionality.",
+        call. = FALSE
+      )
+    }
     return(textdata::lexicon_loughran())
   } else if (lex == "bing") {
     return(sentiments)
