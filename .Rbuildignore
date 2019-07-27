@@ -11,3 +11,5 @@ paper\..*
 ^revdep$
 ^docs$
 ^CRAN-RELEASE$
+^_pkgdown\.yml$
+^pkgdown$
