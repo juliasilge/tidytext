@@ -96,7 +96,7 @@
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 <div id="tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools" class="section level1">
 <div class="page-header"><h1 class="hasAnchor">
-<a href="#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools" class="anchor"></a>tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="tools/tidytext.png" align="right">
+<a href="#tidytext-text-mining-using-dplyr-ggplot2-and-other-tidy-tools" class="anchor"></a>tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="reference/figures/tidytext.png" align="right">
 </h1></div>
 <p><strong>Authors:</strong> <a href="https://juliasilge.com/">Julia Silge</a>, <a href="http://varianceexplained.org/">David Robinson</a><br><strong>License:</strong> <a href="https://opensource.org/licenses/MIT">MIT</a></p>
 <p><a href="https://travis-ci.org/juliasilge/tidytext"><img src="https://travis-ci.org/juliasilge/tidytext.svg?branch=master" alt="Build Status"></a> <a href="https://ci.appveyor.com/project/juliasilge/tidytext"><img src="https://ci.appveyor.com/api/projects/status/github/juliasilge/tidytext?branch=master&amp;svg=true" alt="AppVeyor Build Status"></a> <a href="https://cran.r-project.org/package=tidytext"><img src="http://www.r-pkg.org/badges/version/tidytext" alt="CRAN_Status_Badge"></a> <a href="https://codecov.io/github/juliasilge/tidytext?branch=master"><img src="https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg" alt="Coverage Status"></a> <a href="https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext"><img src="https://zenodo.org/badge/22224/juliasilge/tidytext.svg" alt="DOI"></a> <a href="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f"><img src="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg" alt="status"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/tidytext" alt="Downloads"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange" alt="Total Downloads"></a></p>
@@ -223,7 +223,7 @@
 <a class="sourceLine" id="cb8-3" data-line-number="3"><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(janeaustensentiment, <span class="kw"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(index, sentiment, <span class="dt">fill =</span> book)) <span class="op">+</span></a>
 <a class="sourceLine" id="cb8-4" data-line-number="4"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="dt">stat =</span> <span class="st">"identity"</span>, <span class="dt">show.legend =</span> <span class="ot">FALSE</span>) <span class="op">+</span></a>
 <a class="sourceLine" id="cb8-5" data-line-number="5"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span>book, <span class="dt">ncol =</span> <span class="dv">2</span>, <span class="dt">scales =</span> <span class="st">"free_x"</span>)</a></code></pre></div>
-<p><img src="tools/README-unnamed-chunk-9-1.png" width="672"></p>
+<p><img src="reference/figures/README-unnamed-chunk-9-1.png" width="672"></p>
 <p>For more examples of text mining using tidy data frames, see the tidytext vignette.</p>
 </div>
 <div id="tidying-document-term-matrices" class="section level3">
@@ -294,7 +294,7 @@
 <a class="sourceLine" id="cb12-30" data-line-number="30"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_x_log10</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/scales/topics/number_format">percent_format</a></span>()) <span class="op">+</span></a>
 <a class="sourceLine" id="cb12-31" data-line-number="31"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="https://www.rdocumentation.org/packages/scales/topics/number_format">percent_format</a></span>()) <span class="op">+</span></a>
 <a class="sourceLine" id="cb12-32" data-line-number="32"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html">geom_abline</a></span>(<span class="dt">color =</span> <span class="st">"red"</span>)</a></code></pre></div>
-<p><img src="tools/README-unnamed-chunk-13-1.png" width="768"></p>
+<p><img src="reference/figures/README-unnamed-chunk-13-1.png" width="768"></p>
 <p>For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.</p>
 </div>
 <div id="community-guidelines" class="section level3">
