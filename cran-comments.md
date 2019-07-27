@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 12th CRAN release of tidytext. The most important change in this release is in how sentiment lexicons are accessed from package (remove NRC lexicon entirely, access AFINN and Loughran lexicons via textdata package so they are no longer included in this package). More minor changes include fixing bugs, lighter dependencies, helper functions for plotting, and documentation improvements. 
+This is the 13th CRAN release of tidytext. The most important change in this release is adding access to the NRC word-emotion association lexicon. 
 
 ## Test environments
 
@@ -14,10 +14,4 @@ This is the 12th CRAN release of tidytext. The most important change in this rel
 
 ## Downstream dependencies
 
-I ran R CMD check on the 21 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and sent updates to all maintainers who are impacted by the change in the sentiment lexicons (the only change in this release that impacted any downstream dependencies).
-
-The following packages are impacted and have not yet updated:
-
-- quanteda
-- newsanchor
-- ggpage
+I ran R CMD check on the 22 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems related to tidytext.

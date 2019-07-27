@@ -1,4 +1,4 @@
-# tidytext 0.2.2 [WIP]
+# tidytext 0.2.2
 
 * Access NRC lexicon via textdata package
 
