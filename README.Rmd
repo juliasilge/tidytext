@@ -5,14 +5,14 @@
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "tools/README-",
+  fig.path = "man/figures/README-",
   message = FALSE
 )
 suppressPackageStartupMessages(library(ggplot2))
 theme_set(theme_light())
 ```
 
-# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="tools/tidytext.png" align="right" />
+# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="man/figures/tidytext.png" align="right" />
 
 **Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)

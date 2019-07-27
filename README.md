@@ -3,7 +3,7 @@
 
 
 
-# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="tools/tidytext.png" align="right" />
+# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="man/figures/tidytext.png" align="right" />
 
 **Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
@@ -133,20 +133,20 @@ Sentiment analysis can be done as an inner join. Three sentiment lexicons are av
 ```r
 library(tidyr)
 get_sentiments("bing")
-#> # A tibble: 6,788 x 2
+#> # A tibble: 6,786 x 2
 #>    word        sentiment
 #>    <chr>       <chr>    
-#>  1 2-faced     negative 
-#>  2 2-faces     negative 
-#>  3 a+          positive 
-#>  4 abnormal    negative 
-#>  5 abolish     negative 
-#>  6 abominable  negative 
-#>  7 abominably  negative 
-#>  8 abominate   negative 
-#>  9 abomination negative 
-#> 10 abort       negative 
-#> # … with 6,778 more rows
+#>  1 2-faces     negative 
+#>  2 abnormal    negative 
+#>  3 abolish     negative 
+#>  4 abominable  negative 
+#>  5 abominably  negative 
+#>  6 abominate   negative 
+#>  7 abomination negative 
+#>  8 abort       negative 
+#>  9 aborted     negative 
+#> 10 aborts      negative 
+#> # … with 6,776 more rows
 
 janeaustensentiment <- tidy_books %>%
   inner_join(get_sentiments("bing"), by = "word") %>% 
@@ -182,7 +182,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-9](tools/README-unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](man/figures/README-unnamed-chunk-9-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
@@ -273,7 +273,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-13](tools/README-unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-13](man/figures/README-unnamed-chunk-13-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
