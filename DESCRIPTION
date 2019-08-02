@@ -4,6 +4,9 @@ Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
 Version: 0.2.2
 Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
              email = "gabidequeiroz@gmail.com"),
+             person("Colin", "Fay", role = c("ctb"),
+             email = "contact@colinfay.me",
+             comment = c(ORCID = "0000-0001-7343-1846")),
              person("Emil", "Hvitfeldt", role = c("ctb"),
              email = "emilhhvitfeldt@gmail.com"),
              person("Os", "Keyes", role = c("ctb"),
@@ -27,6 +30,7 @@ Encoding: UTF-8
 LazyData: TRUE
 URL: http://github.com/juliasilge/tidytext
 BugReports: http://github.com/juliasilge/tidytext/issues
+Roxygen: list(markdown = TRUE)
 RoxygenNote: 6.1.1
 Depends: R (>= 2.10)
 Imports: rlang,
@@ -55,7 +59,7 @@ Suggests:
     NLP,
     scales,
     gutenbergr,
-    testthat,
+    testthat (>= 2.1.0),
     vdiffr,
     mallet,
     stm,
