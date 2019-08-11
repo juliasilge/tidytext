@@ -67,19 +67,19 @@ cleaned_books %>%
   count(word, sort = TRUE) 
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's look at the words with a joy score from the NRC lexicon. What are the most common joy words in *Emma*?
+Sentiment analysis can be done as an inner join. Sentiment lexicons are available via the `get_sentiments()` function. Let's look at the words with a positive score from the lexicon of Bing Liu and collaborators. What are the most common positive words in *Emma*?
 
 ```{r}
-nrcjoy <- get_sentiments("nrc") %>%
-  filter(sentiment == "joy")
+positive <- get_sentiments("bing") %>%
+  filter(sentiment == "positive")
 
 tidy_books %>%
   filter(book == "Emma") %>%
-  semi_join(nrcjoy) %>%
+  semi_join(positive) %>%
   count(word, sort = TRUE)
 ```
 
-Or instead we could examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Or instead we could examine how sentiment changes during each novel. Let's find a sentiment score for each word using the same lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 ```{r}
 library(tidyr)

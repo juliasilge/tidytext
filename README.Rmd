@@ -5,14 +5,14 @@
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
-  fig.path = "tools/README-",
+  fig.path = "man/figures/README-",
   message = FALSE
 )
 suppressPackageStartupMessages(library(ggplot2))
 theme_set(theme_light())
 ```
 
-# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="tools/tidytext.png" align="right" />
+# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="man/figures/tidytext.png" align="right" />
 
 **Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
@@ -39,10 +39,10 @@ install.packages("tidytext")
 ```
 
 
-Or you can install the development version from Github with [devtools](https://github.com/hadley/devtools):
+Or you can install the development version from GitHub with [remotes](https://github.com/r-lib/remotes):
 
 ```{r, eval=FALSE}
-library(devtools)
+library(remotes)
 install_github("juliasilge/tidytext")
 ```
 
@@ -169,4 +169,4 @@ For more examples of working with objects from other text mining packages using 
 
 ### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
+This project is released with a [Contributor Code of Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).

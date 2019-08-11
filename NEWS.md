@@ -1,4 +1,8 @@
-# tidytext 0.2.1 [WIP]
+# tidytext 0.2.2
+
+* Access NRC lexicon via textdata package
+
+# tidytext 0.2.1
 
 * Fix bug in `augment()` function for stm topic model.
 * Warn when tf-idf is negative, thanks to @EmilHvitfeldt (#112).
@@ -6,6 +10,7 @@
 * Add functions for reordering factors (such as for ggplot2 bar plots) thanks to @tmastny (#110).
 * Update to `tibble()` where appropriate, thanks to @luisdza (#136).
 * Clarify documentation about impact of lowercase conversion on URLs (#139).
+* Change how sentiment lexicons are accessed from package (remove NRC lexicon entirely, access AFINN and Loughran lexicons via textdata package so they are no longer included in this package).
 
 # tidytext 0.2.0
 

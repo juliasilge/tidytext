@@ -3,44 +3,31 @@
 \docType{data}
 \name{sentiments}
 \alias{sentiments}
-\title{Sentiment lexicons from four sources}
-\format{A data frame with 27,314 rows and 4 variables:
+\title{Sentiment lexicon from Bing Liu and collaborators}
+\format{A data frame with 6,786 rows and 2 variables:
 \describe{
  \item{word}{An English word}
- \item{sentiment}{A sentiment whose possible values depend on the lexicon.
- The "afinn" lexicon has no sentiment category (all are NA), and each of the
- others can be "positive" or "negative". The NRC lexicon can also be
- "anger", "anticipation", "disgust", "fear", "joy", "sadness", "surprise",
- or "trust", and the Loughran lexicon can also be "litigious", "uncertainty",
- "constraining", and "superfluous".}
- \item{lexicon}{The source of the sentiment for the word. One of either
- "nrc", "bing", "loughran", or "AFINN".}
- \item{score}{A numerical score for the sentiment. This value is \code{NA}
- for the Bing, NRC, and Loughran lexicons, and runs between -5 and 5 for the
- AFINN lexicon.}
+ \item{sentiment}{A sentiment for that word, either positive or negative.}
 }}
 \source{
-\itemize{
- \item \url{http://saifmohammad.com/WebPages/lexicons.html}
- \item \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
- \item \url{http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010}
- \item \url{http://www3.nd.edu/~mcdonald/Word_Lists.html}
- }
+\url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
 }
 \usage{
 sentiments
 }
 \description{
-Four lexicons for sentiment analysis are combined here in a tidy data frame.
-The lexicons are the NRC Emotion Lexicon from Saif Mohammad and Peter Turney,
-the sentiment lexicon from Bing Liu and collaborators, of
-Finn Arup Nielsen, and of Tim Loughran and Bill McDonald.
-Words with non-ASCII characters were removed from the
-lexicons.
+Lexicon for opinion and sentiment analysis in a tidy data frame. This
+dataset is included in this package with permission of the creators, and
+may be used in research, commercial, etc. contexts with attribution, using
+either the paper or URL below.
 }
 \details{
-Note that the Loughran lexicon is best suited for financial text,
-(e.g. where "share" is not necessarily positive and "liability"
-not necessarily negative).
+This lexicon was first published in:
+
+Minqing Hu and Bing Liu, ``Mining and summarizing customer reviews.'',
+Proceedings of the ACM SIGKDD International Conference on Knowledge Discovery
+& Data Mining (KDD-2004), Seattle, Washington, USA, Aug 22-25, 2004.
+
+Words with non-ASCII characters were removed.
 }
 \keyword{datasets}

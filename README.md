@@ -3,7 +3,7 @@
 
 
 
-# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="tools/tidytext.png" align="right" />
+# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="man/figures/tidytext.png" align="right" />
 
 **Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
@@ -31,11 +31,11 @@ install.packages("tidytext")
 ```
 
 
-Or you can install the development version from Github with [devtools](https://github.com/hadley/devtools):
+Or you can install the development version from GitHub with [remotes](https://github.com/r-lib/remotes):
 
 
 ```r
-library(devtools)
+library(remotes)
 install_github("juliasilge/tidytext")
 ```
 
@@ -67,7 +67,7 @@ original_books
 #>  8 ""                    Sense & Sensibility     8
 #>  9 ""                    Sense & Sensibility     9
 #> 10 CHAPTER 1             Sense & Sensibility    10
-#> # ... with 73,412 more rows
+#> # … with 73,412 more rows
 ```
 
 To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row:
@@ -92,7 +92,7 @@ tidy_books
 #>  8 Sense & Sensibility    10 chapter    
 #>  9 Sense & Sensibility    10 1          
 #> 10 Sense & Sensibility    13 the        
-#> # ... with 725,045 more rows
+#> # … with 725,045 more rows
 ```
 
 This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.
@@ -124,7 +124,7 @@ tidy_books %>%
 #>  8 well   1523
 #>  9 every  1456
 #> 10 think  1440
-#> # ... with 14,365 more rows
+#> # … with 14,365 more rows
 ```
 
 Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
@@ -133,20 +133,20 @@ Sentiment analysis can be done as an inner join. Three sentiment lexicons are av
 ```r
 library(tidyr)
 get_sentiments("bing")
-#> # A tibble: 6,788 x 2
+#> # A tibble: 6,786 x 2
 #>    word        sentiment
 #>    <chr>       <chr>    
-#>  1 2-faced     negative 
-#>  2 2-faces     negative 
-#>  3 a+          positive 
-#>  4 abnormal    negative 
-#>  5 abolish     negative 
-#>  6 abominable  negative 
-#>  7 abominably  negative 
-#>  8 abominate   negative 
-#>  9 abomination negative 
-#> 10 abort       negative 
-#> # ... with 6,778 more rows
+#>  1 2-faces     negative 
+#>  2 abnormal    negative 
+#>  3 abolish     negative 
+#>  4 abominable  negative 
+#>  5 abominably  negative 
+#>  6 abominate   negative 
+#>  7 abomination negative 
+#>  8 abort       negative 
+#>  9 aborted     negative 
+#> 10 aborts      negative 
+#> # … with 6,776 more rows
 
 janeaustensentiment <- tidy_books %>%
   inner_join(get_sentiments("bing"), by = "word") %>% 
@@ -158,17 +158,17 @@ janeaustensentiment
 #> # A tibble: 920 x 5
 #>    book                index negative positive sentiment
 #>    <fct>               <dbl>    <dbl>    <dbl>     <dbl>
-#>  1 Sense & Sensibility    0.      16.      32.       16.
-#>  2 Sense & Sensibility    1.      19.      53.       34.
-#>  3 Sense & Sensibility    2.      12.      31.       19.
-#>  4 Sense & Sensibility    3.      15.      31.       16.
-#>  5 Sense & Sensibility    4.      16.      34.       18.
-#>  6 Sense & Sensibility    5.      16.      51.       35.
-#>  7 Sense & Sensibility    6.      24.      40.       16.
-#>  8 Sense & Sensibility    7.      23.      51.       28.
-#>  9 Sense & Sensibility    8.      30.      40.       10.
-#> 10 Sense & Sensibility    9.      15.      19.        4.
-#> # ... with 910 more rows
+#>  1 Sense & Sensibility     0       16       32        16
+#>  2 Sense & Sensibility     1       19       53        34
+#>  3 Sense & Sensibility     2       12       31        19
+#>  4 Sense & Sensibility     3       15       31        16
+#>  5 Sense & Sensibility     4       16       34        18
+#>  6 Sense & Sensibility     5       16       51        35
+#>  7 Sense & Sensibility     6       24       40        16
+#>  8 Sense & Sensibility     7       23       51        28
+#>  9 Sense & Sensibility     8       30       40        10
+#> 10 Sense & Sensibility     9       15       19         4
+#> # … with 910 more rows
 ```
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
@@ -182,7 +182,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-9](tools/README-unnamed-chunk-9-1.png)
+![plot of chunk unnamed-chunk-9](man/figures/README-unnamed-chunk-9-1.png)
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
 
@@ -210,17 +210,17 @@ tidy(AssociatedPress)
 #> # A tibble: 302,031 x 3
 #>    document term       count
 #>       <int> <chr>      <dbl>
-#>  1        1 adding        1.
-#>  2        1 adult         2.
-#>  3        1 ago           1.
-#>  4        1 alcohol       1.
-#>  5        1 allegedly     1.
-#>  6        1 allen         1.
-#>  7        1 apparently    2.
-#>  8        1 appeared      1.
-#>  9        1 arrested      1.
-#> 10        1 assault       1.
-#> # ... with 302,021 more rows
+#>  1        1 adding         1
+#>  2        1 adult          2
+#>  3        1 ago            1
+#>  4        1 alcohol        1
+#>  5        1 allegedly      1
+#>  6        1 allen          1
+#>  7        1 apparently     2
+#>  8        1 appeared       1
+#>  9        1 arrested       1
+#> 10        1 assault        1
+#> # … with 302,021 more rows
 ```
 
 We could find the most negative documents:
@@ -261,7 +261,7 @@ comparison
 #>  8 absence   0.0000776 0.000547  
 #>  9 absent    0.0000436 0.000247  
 #> 10 absolute  0.0000533 0.000128  
-#> # ... with 4,720 more rows
+#> # … with 4,720 more rows
 
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
@@ -273,10 +273,10 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-13](tools/README-unnamed-chunk-13-1.png)
+![plot of chunk unnamed-chunk-13](man/figures/README-unnamed-chunk-13-1.png)
 
 For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
 
 ### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
+This project is released with a [Contributor Code of Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).

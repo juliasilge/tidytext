@@ -4,7 +4,7 @@
 \alias{get_sentiments}
 \title{Get a tidy data frame of a single sentiment lexicon}
 \usage{
-get_sentiments(lexicon = c("afinn", "bing", "nrc", "loughran"))
+get_sentiments(lexicon = c("afinn", "bing", "loughran", "nrc"))
 }
 \arguments{
 \item{lexicon}{The sentiment lexicon to retrieve;
@@ -18,14 +18,18 @@ column (if \code{lexicon} is not "afinn") or a numeric \code{score} column
 \description{
 Get specific sentiment lexicons in a tidy format, with one row per word,
 in a form that can be joined with a one-word-per-row dataset.
-Each of these comes from the included \code{\link{sentiments}} data frame,
-but this performs the filtering for a specific lexicon, and removes
-columns that are not used in that lexicon.
+The \code{"bing"} option comes from the included \code{\link{sentiments}}
+data frame, and others call the relevant function in the \pkg{textdata}
+package.
 }
 \examples{
 
 library(dplyr)
+
+\dontrun{
 get_sentiments("afinn")
+get_sentiments("nrc")
+}
 get_sentiments("bing")
 
 }
