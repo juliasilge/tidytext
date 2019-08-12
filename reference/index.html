@@ -144,25 +144,25 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
+          <h2 id="section-unnesting-functions" class="hasAnchor"><a href="#section-unnesting-functions" class="anchor"></a>Unnesting functions</h2>
           <p class="section-desc"></p>
         </th>
       </tr>
       <tr>
         
         <td>
-          <p><code><a href="bind_tf_idf.html">bind_tf_idf()</a></code> </p>
+          <p><code><a href="unnest_tokens.html">unnest_tokens()</a></code> </p>
         </td>
-        <td><p>Bind the term frequency and inverse document frequency of a tidy text
-dataset to the dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="cast_sparse.html">cast_sparse()</a></code> </p>
-        </td>
-        <td><p>Create a sparse matrix from row names, column names, and values
-in a table.</p></td>
-      </tr><tr>
+        <td><p>Split a column into tokens using the tokenizers package</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-tidiers" class="hasAnchor"><a href="#section-tidiers" class="anchor"></a>Tidiers</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="corpus_tidiers.html">tidy(<i>&lt;corpus&gt;</i>)</a></code> <code><a href="corpus_tidiers.html">glance(<i>&lt;corpus&gt;</i>)</a></code> </p>
@@ -174,25 +174,6 @@ in a table.</p></td>
           <p><code><a href="dictionary_tidiers.html">tidy(<i>&lt;dictionary2&gt;</i>)</a></code> </p>
         </td>
         <td><p>Tidy dictionary objects from the quanteda package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="document_term_casters.html">cast_tdm()</a></code> <code><a href="document_term_casters.html">cast_dtm()</a></code> <code><a href="document_term_casters.html">cast_dfm()</a></code> </p>
-        </td>
-        <td><p>Casting a data frame to
-a DocumentTermMatrix, TermDocumentMatrix, or dfm</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_sentiments.html">get_sentiments()</a></code> </p>
-        </td>
-        <td><p>Get a tidy data frame of a single sentiment lexicon</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_stopwords.html">get_stopwords()</a></code> </p>
-        </td>
-        <td><p>Get a tidy data frame of a single stopword lexicon</p></td>
       </tr><tr>
         
         <td>
@@ -208,39 +189,9 @@ a DocumentTermMatrix, TermDocumentMatrix, or dfm</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="nma_words.html">nma_words</a></code> </p>
-        </td>
-        <td><p>English negators, modals, and adverbs</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="parts_of_speech.html">parts_of_speech</a></code> </p>
-        </td>
-        <td><p>Parts of speech for English words from the Moby Project</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="reorder_within.html">reorder_within()</a></code> <code><a href="reorder_within.html">scale_x_reordered()</a></code> <code><a href="reorder_within.html">scale_y_reordered()</a></code> </p>
-        </td>
-        <td><p>Reorder an x or y axis within facets</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="sentiments.html">sentiments</a></code> </p>
-        </td>
-        <td><p>Sentiment lexicon from Bing Liu and collaborators</p></td>
-      </tr><tr>
-        
-        <td>
           <p><code><a href="stm_tidiers.html">tidy(<i>&lt;STM&gt;</i>)</a></code> <code><a href="stm_tidiers.html">tidy(<i>&lt;estimateEffect&gt;</i>)</a></code> <code><a href="stm_tidiers.html">augment(<i>&lt;STM&gt;</i>)</a></code> <code><a href="stm_tidiers.html">glance(<i>&lt;STM&gt;</i>)</a></code> </p>
         </td>
         <td><p>Tidiers for Structural Topic Models from the stm package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="stop_words.html">stop_words</a></code> </p>
-        </td>
-        <td><p>Various lexicons for English stop words</p></td>
       </tr><tr>
         
         <td>
@@ -260,18 +211,93 @@ from the tm package</p></td>
           <p><code><a href="tidy_triplet.html">tidy_triplet()</a></code> </p>
         </td>
         <td><p>Utility function to tidy a simple triplet matrix</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-casters" class="hasAnchor"><a href="#section-casters" class="anchor"></a>Casters</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="document_term_casters.html">cast_tdm()</a></code> <code><a href="document_term_casters.html">cast_dtm()</a></code> <code><a href="document_term_casters.html">cast_dfm()</a></code> </p>
+        </td>
+        <td><p>Casting a data frame to
+a DocumentTermMatrix, TermDocumentMatrix, or dfm</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="tidytext.html">tidytext</a></code> </p>
+          <p><code><a href="cast_sparse.html">cast_sparse()</a></code> </p>
         </td>
-        <td><p>tidytext: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools</p></td>
+        <td><p>Create a sparse matrix from row names, column names, and values
+in a table.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-word-lists" class="hasAnchor"><a href="#section-word-lists" class="anchor"></a>Word lists</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="parts_of_speech.html">parts_of_speech</a></code> </p>
+        </td>
+        <td><p>Parts of speech for English words from the Moby Project</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="unnest_tokens.html">unnest_tokens()</a></code> </p>
+          <p><code><a href="get_sentiments.html">get_sentiments()</a></code> </p>
         </td>
-        <td><p>Split a column into tokens using the tokenizers package</p></td>
+        <td><p>Get a tidy data frame of a single sentiment lexicon</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_stopwords.html">get_stopwords()</a></code> </p>
+        </td>
+        <td><p>Get a tidy data frame of a single stopword lexicon</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="sentiments.html">sentiments</a></code> </p>
+        </td>
+        <td><p>Sentiment lexicon from Bing Liu and collaborators</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="stop_words.html">stop_words</a></code> </p>
+        </td>
+        <td><p>Various lexicons for English stop words</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="nma_words.html">nma_words</a></code> </p>
+        </td>
+        <td><p>English negators, modals, and adverbs</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-miscellaneous-functions" class="hasAnchor"><a href="#section-miscellaneous-functions" class="anchor"></a>Miscellaneous functions</h2>
+          <p class="section-desc"></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="bind_tf_idf.html">bind_tf_idf()</a></code> </p>
+        </td>
+        <td><p>Bind the term frequency and inverse document frequency of a tidy text
+dataset to the dataset</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="reorder_within.html">reorder_within()</a></code> <code><a href="reorder_within.html">scale_x_reordered()</a></code> <code><a href="reorder_within.html">scale_y_reordered()</a></code> </p>
+        </td>
+        <td><p>Reorder an x or y axis within facets</p></td>
       </tr>
     </tbody>
     </table>
@@ -280,7 +306,11 @@ from the tm package</p></td>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-unnesting-functions">Unnesting functions</a></li>
+      <li><a href="#section-tidiers">Tidiers</a></li>
+      <li><a href="#section-casters">Casters</a></li>
+      <li><a href="#section-word-lists">Word lists</a></li>
+      <li><a href="#section-miscellaneous-functions">Miscellaneous functions</a></li>
     </ul>
   </div>
 </div>
