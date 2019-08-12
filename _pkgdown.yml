@@ -3,3 +3,39 @@ destination: docs
 template:
   params:
     bootswatch: cosmo
+
+reference:
+- title: Unnesting functions
+  desc: ~
+  contents:
+  - '`unnest_tokens`'
+- title: Tidiers
+  desc: ~
+  contents:
+  - '`corpus_tidiers`'
+  - '`dictionary_tidiers`'
+  - '`lda_tidiers`'
+  - '`mallet_tidiers`'
+  - '`stm_tidiers`'
+  - '`tdm_tidiers`'
+  - '`tidy.Corpus`'
+  - '`tidy_triplet`'
+- title: Casters
+  desc: ~
+  contents:
+  - '`cast_tdm`'
+  - '`cast_sparse`'
+- title: Word lists
+  desc: ~
+  contents:
+  - '`parts_of_speech`'
+  - '`get_sentiments`'
+  - '`get_stopwords`'
+  - '`sentiments`'
+  - '`stop_words`'
+  - '`nma_words`'
+- title: Miscellaneous functions
+  desc: ~
+  contents:
+  - '`bind_tf_idf`'
+  - '`reorder_within`'
