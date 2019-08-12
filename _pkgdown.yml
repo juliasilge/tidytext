@@ -5,11 +5,15 @@ template:
     bootswatch: cosmo
 
 reference:
-- title: Unnesting functions
+- title: Transform and tokenize text
   desc: ~
   contents:
   - '`unnest_tokens`'
-- title: Tidiers
+- title: Term frequency and inverse document frequency
+  desc: ~
+  contents:
+  - '`bind_tf_idf`'
+- title: Tidy
   desc: ~
   contents:
   - '`corpus_tidiers`'
@@ -20,22 +24,21 @@ reference:
   - '`tdm_tidiers`'
   - '`tidy.Corpus`'
   - '`tidy_triplet`'
-- title: Casters
+- title: Cast
   desc: ~
   contents:
   - '`cast_tdm`'
   - '`cast_sparse`'
-- title: Word lists
+- title: Supporting data sets
   desc: ~
   contents:
-  - '`parts_of_speech`'
   - '`get_sentiments`'
   - '`get_stopwords`'
   - '`sentiments`'
   - '`stop_words`'
   - '`nma_words`'
-- title: Miscellaneous functions
+  - '`parts_of_speech`'
+- title: Graphing helpers
   desc: ~
   contents:
-  - '`bind_tf_idf`'
   - '`reorder_within`'
