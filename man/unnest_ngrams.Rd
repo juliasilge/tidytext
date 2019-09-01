@@ -5,9 +5,8 @@
 \title{Wrapper around unnest_tokens & ngram}
 \usage{
 unnest_ngrams(tbl, output, input, n = 3L, n_min = n,
-  stopwords = character(), ngram_delim = " ", simplify = FALSE,
-  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
-  drop = TRUE, collapse = NULL)
+  ngram_delim = " ", format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -25,15 +24,7 @@ than or equal to 1.}
 \item{n_min}{This must be an integer greater than or equal to 1, and less
 than or equal to \code{n}.}
 
-\item{stopwords}{A character vector of stop words to be excluded from the
-n-grams.}
-
 \item{ngram_delim}{The separator between words in an n-gram.}
-
-\item{simplify}{\code{FALSE} by default so that a consistent value is
-returned regardless of length of input. If \code{TRUE}, then an input with
-a single element will return a character vector of tokens instead of a
-list.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
 this uses the hunspell tokenizer, and can tokenize only by "word"}
@@ -49,6 +40,8 @@ if the original input and new output column have the same name.}
 (such as sentences or paragraphs) span multiple lines. If NULL, collapses
 when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".}
+
+\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
 }
 \description{
 This function is a wrapper around \code{unnest_tokens( token = "ngrams" )}.

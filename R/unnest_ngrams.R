@@ -8,6 +8,8 @@
 #' @inheritParams unnest_tokens
 #' @inheritParams tokenizers::tokenize_ngrams
 #'
+#' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
+#'
 #' @export
 #' @importFrom dplyr enquo
 #'
@@ -26,13 +28,12 @@ unnest_ngrams <- function(
   input,
   n = 3L,
   n_min = n,
-  stopwords = character(),
   ngram_delim = " ",
-  simplify = FALSE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
-  collapse = NULL
+  collapse = NULL,
+  ...
 ){
   format <- match.arg(format)
   unnest_tokens(tbl,
@@ -45,8 +46,7 @@ unnest_ngrams <- function(
                 token = "ngrams",
                 n = n,
                 n_min = n_min,
-                stopwords = stopwords,
                 ngram_delim = ngram_delim,
-                simplify = simplify
+                ...
   )
 }
