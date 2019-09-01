@@ -1,3 +1,7 @@
+# tidytext 0.2.3 [WIP]
+
+* Wrapper functions for n-gram tokenization thanks to @ColinFay (#148).
+
 # tidytext 0.2.2
 
 * Access NRC lexicon via textdata package

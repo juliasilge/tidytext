@@ -2,7 +2,7 @@
 % Please edit documentation in R/unnest_ngrams.R
 \name{unnest_ngrams}
 \alias{unnest_ngrams}
-\title{Wrapper around unnest_tokens & ngram}
+\title{Wrapper around unnest_tokens for n-grams}
 \usage{
 unnest_ngrams(tbl, output, input, n = 3L, n_min = n,
   ngram_delim = " ", format = c("text", "man", "latex", "html", "xml"),

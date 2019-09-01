@@ -1,4 +1,4 @@
-#' Wrapper around unnest_tokens & ngram
+#' Wrapper around unnest_tokens for n-grams
 #'
 #' This function is a wrapper around `unnest_tokens( token = "ngrams" )`.
 #'
