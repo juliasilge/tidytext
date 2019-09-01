@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Deprecated SE version of functions — bind_tf_idf_ • tidytext</title>
+<title>Wrapper around unnest_tokens &amp; ngram — unnest_ngrams • tidytext</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -40,16 +40,8 @@
 
 
 
-<meta property="og:title" content="Deprecated SE version of functions — bind_tf_idf_" />
-<meta property="og:description" content="tidytext used to offer twin versions of each verb suffixed with an
-underscore, like dplyr and the main tidyverse packages. These
-versions had standard evaluation (SE) semantics; rather than taking
-arguments by code, like NSE verbs, they took arguments by value.
-Their purpose was to make it possible to program with tidytext.
-However, tidytext now uses tidy evaluation semantics. NSE verbs
-still capture their arguments, but you can now unquote parts of
-these arguments. This offers full programmability with NSE verbs.
-Thus, the underscored versions are now superfluous." />
+<meta property="og:title" content="Wrapper around unnest_tokens &amp; ngram — unnest_ngrams" />
+<meta property="og:description" content="This function is a wrapper around unnest_tokens( token = &quot;ngrams&quot; )." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -141,85 +133,62 @@ Thus, the underscored versions are now superfluous." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Deprecated SE version of functions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/bind_tf_idf.R'><code>R/bind_tf_idf.R</code></a>, <a href='https://github.com/juliasilge/tidytext/blob/master/R/sparse_casters.R'><code>R/sparse_casters.R</code></a>, <a href='https://github.com/juliasilge/tidytext/blob/master/R/tidytext.R'><code>R/tidytext.R</code></a>, and 2 more</small>
-    <div class="hidden name"><code>deprecated-se.Rd</code></div>
+    <h1>Wrapper around unnest_tokens &amp; ngram</h1>
+    <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/unnest_ngrams.R'><code>R/unnest_ngrams.R</code></a></small>
+    <div class="hidden name"><code>unnest_ngrams.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>tidytext used to offer twin versions of each verb suffixed with an
-underscore, like dplyr and the main tidyverse packages. These
-versions had standard evaluation (SE) semantics; rather than taking
-arguments by code, like NSE verbs, they took arguments by value.
-Their purpose was to make it possible to program with tidytext.
-However, tidytext now uses tidy evaluation semantics. NSE verbs
-still capture their arguments, but you can now unquote parts of
-these arguments. This offers full programmability with NSE verbs.
-Thus, the underscored versions are now superfluous.</p>
+    <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "ngrams" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bind_tf_idf_</span>(<span class='no'>tbl</span>, <span class='no'>term</span>, <span class='no'>document</span>, <span class='no'>n</span>)
-
-<span class='fu'>cast_sparse_</span>(<span class='no'>data</span>, <span class='no'>row</span>, <span class='no'>column</span>, <span class='no'>value</span>)
-
-<span class='fu'>cast_tdm_</span>(<span class='no'>data</span>, <span class='no'>term</span>, <span class='no'>document</span>, <span class='no'>value</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/tm/topics/weightTf'>weightTf</a></span>, <span class='no'>...</span>)
-
-<span class='fu'>cast_dtm_</span>(<span class='no'>data</span>, <span class='no'>document</span>, <span class='no'>term</span>, <span class='no'>value</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='https://www.rdocumentation.org/packages/tm/topics/weightTf'>weightTf</a></span>, <span class='no'>...</span>)
-
-<span class='fu'>cast_dfm_</span>(<span class='no'>data</span>, <span class='no'>document</span>, <span class='no'>term</span>, <span class='no'>value</span>, <span class='no'>...</span>)
-
-<span class='fu'>unnest_tokens_</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"text"</span>,
-  <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest_ngrams</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>n_min</span> <span class='kw'>=</span> <span class='no'>n</span>,
+  <span class='kw'>stopwords</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(), <span class='kw'>ngram_delim</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>tbl</th>
-      <td><p>A data frame.</p></td>
+      <td><p>A data frame</p></td>
     </tr>
     <tr>
-      <th>term, document, n</th>
-      <td><p>Strings giving names of term, document, and count columns.</p></td>
+      <th>output</th>
+      <td><p>Output column to be created as string or symbol.</p></td>
     </tr>
     <tr>
-      <th>data</th>
-      <td><p>A tbl</p></td>
+      <th>input</th>
+      <td><p>Input column that gets split as string or symbol.</p>
+<p>The output/input arguments are passed by expression and support
+<a href='https://rlang.r-lib.org/reference/quasiquotation.html'>quasiquotation</a>; you can unquote strings and symbols.</p></td>
     </tr>
     <tr>
-      <th>row</th>
-      <td><p>Column name to use as row names in sparse matrix, as string or symbol</p></td>
+      <th>n</th>
+      <td><p>The number of words in the n-gram. This must be an integer greater
+than or equal to 1.</p></td>
     </tr>
     <tr>
-      <th>column</th>
-      <td><p>Column name to use as column names in sparse matrix, as string or symbol</p></td>
+      <th>n_min</th>
+      <td><p>This must be an integer greater than or equal to 1, and less
+than or equal to <code>n</code>.</p></td>
     </tr>
     <tr>
-      <th>value</th>
-      <td><p>Column name to use as sparse matrix values (default 1) as string or symbol</p></td>
+      <th>stopwords</th>
+      <td><p>A character vector of stop words to be excluded from the
+n-grams.</p></td>
     </tr>
     <tr>
-      <th>weighting</th>
-      <td><p>The weighting function for the DTM/TDM
-(default is term-frequency, effectively unweighted)</p></td>
+      <th>ngram_delim</th>
+      <td><p>The separator between words in an n-gram.</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>Extra arguments to pass on to <code>sparseMatrix</code></p></td>
-    </tr>
-    <tr>
-      <th>output, input</th>
-      <td><p>Name of columns.</p></td>
-    </tr>
-    <tr>
-      <th>token</th>
-      <td><p>Unit for tokenizing, or a custom tokenizing function. Built-in
-options are "words" (default), "characters", "character_shingles", "ngrams",
-"skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets"
-(tokenization by word that preserves usernames, hashtags, and URLS ), and
-"ptb" (Penn Treebank). If a function, should take a character vector and
-return a list of character vectors of the same length.</p></td>
+      <th>simplify</th>
+      <td><p><code>FALSE</code> by default so that a consistent value is
+returned regardless of length of input. If <code>TRUE</code>, then an input with
+a single element will return a character vector of tokens instead of a
+list.</p></td>
     </tr>
     <tr>
       <th>format</th>
@@ -244,25 +213,55 @@ if the original input and new output column have the same name.</p></td>
 when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".</p></td>
     </tr>
-    <tr>
-      <th>output_col, input_col</th>
-      <td><p>Strings giving names of output and input columns.</p></td>
-    </tr>
     </table>
 
-    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>Unquoting triggers immediate evaluation of its operand and inlines
-the result within the captured expression. This result can be a
-value or an expression to be evaluated later with the rest of the
-argument.</p>
+    <div class='dont-index'><ul>
+<li><p><code><a href='unnest_tokens.html'>unnest_tokens()</a></code></p></li>
+</ul></div>
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/library'>library</a></span>(<span class='no'>janeaustenr</span>)
+
+<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
+<span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
+#&gt;    txt                                                                    
+#&gt;    &lt;chr&gt;                                                                  
+#&gt;  1 PRIDE AND PREJUDICE                                                    
+#&gt;  2 ""                                                                     
+#&gt;  3 By Jane Austen                                                         
+#&gt;  4 ""                                                                     
+#&gt;  5 ""                                                                     
+#&gt;  6 ""                                                                     
+#&gt;  7 Chapter 1                                                              
+#&gt;  8 ""                                                                     
+#&gt;  9 ""                                                                     
+#&gt; 10 It is a truth universally acknowledged, that a single man in possession
+#&gt; # … with 13,020 more rows</div><div class='input'><span class='no'>d</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>unnest_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 122,202 x 1
+#&gt;    word               
+#&gt;    &lt;chr&gt;              
+#&gt;  1 pride and prejudice
+#&gt;  2 and prejudice by   
+#&gt;  3 prejudice by jane  
+#&gt;  4 by jane austen     
+#&gt;  5 jane austen chapter
+#&gt;  6 austen chapter 1   
+#&gt;  7 chapter 1 it       
+#&gt;  8 1 it is            
+#&gt;  9 it is a            
+#&gt; 10 is a truth         
+#&gt; # … with 122,192 more rows</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
+      <li><a href="#see-also">See also</a></li>
+      <li><a href="#examples">Examples</a></li>
     </ul>
 
   </div>

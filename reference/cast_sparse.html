@@ -16,10 +16,12 @@ in a table. — cast_sparse • tidytext</title>
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -38,13 +40,13 @@ in a table. — cast_sparse • tidytext</title>
 
 
 
+
 <meta property="og:title" content="Create a sparse matrix from row names, column names, and values
 in a table. — cast_sparse" />
-
 <meta property="og:description" content="This function supports non-standard evaluation through the tidyeval framework." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -114,7 +116,6 @@ in a table. — cast_sparse" />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext">
@@ -141,13 +142,11 @@ in a table.</h1>
     </div>
 
     <div class="ref-description">
-    
     <p>This function supports non-standard evaluation through the tidyeval framework.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>cast_sparse</span>(<span class='no'>data</span>, <span class='no'>row</span>, <span class='no'>column</span>, <span class='no'>value</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -172,19 +171,17 @@ in a table.</h1>
       <td><p>Extra arguments to pass on to <code>sparseMatrix</code></p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
     <p>A sparse Matrix object, with one row for each unique value in
 the <code>row</code> column, one column for each unique value in the <code>column</code>
 column, and with as many non-zero values as there are rows in <code>data</code>.</p>
-    
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>Note that cast_sparse ignores groups in a grouped tbl_df. The arguments
 <code>row</code>, <code>column</code>, and <code>value</code> are passed by expression and support
 <a href='https://rlang.r-lib.org/reference/quasiquotation.html'>quasiquotation</a>; you can unquote strings and symbols.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -206,11 +203,8 @@ column, and with as many non-zero values as there are rows in <code>data</code>.
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#value">Value</a></li>
-
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

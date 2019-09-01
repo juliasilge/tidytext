@@ -15,10 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -37,17 +39,17 @@
 
 
 
-<meta property="og:title" content="Tidiers for a corpus object from the quanteda package — corpus_tidiers" />
 
+<meta property="og:title" content="Tidiers for a corpus object from the quanteda package — corpus_tidiers" />
 <meta property="og:description" content="Tidy a corpus object from the quanteda package. tidy returns a
 tbl_df with one-row-per-document, with a text column containing
 the document's text, and one column for each document-level metadata.
 glance returns a one-row tbl_df with corpus-level metadata,
 such as source and created. For Corpus objects from the tm package,
 see tidy.Corpus." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -117,7 +119,6 @@ see tidy.Corpus." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext">
@@ -143,14 +144,12 @@ see tidy.Corpus." />
     </div>
 
     <div class="ref-description">
-    
     <p>Tidy a corpus object from the quanteda package. <code>tidy</code> returns a
 tbl_df with one-row-per-document, with a <code>text</code> column containing
 the document's text, and one column for each document-level metadata.
 <code>glance</code> returns a one-row tbl_df with corpus-level metadata,
 such as source and created. For Corpus objects from the tm package,
 see <code><a href='tidy.Corpus.html'>tidy.Corpus</a></code>.</p>
-    
     </div>
 
     <pre class="usage"><span class='co'># S3 method for corpus</span>
@@ -158,7 +157,7 @@ see <code><a href='tidy.Corpus.html'>tidy.Corpus</a></code>.</p>
 
 <span class='co'># S3 method for corpus</span>
 <span class='fu'><a href='https://www.rdocumentation.org/packages/generics/topics/glance'>glance</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -171,7 +170,7 @@ see <code><a href='tidy.Corpus.html'>tidy.Corpus</a></code>.</p>
       <td><p>Extra arguments, not used</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
     <p>For the most part, the <code>tidy</code> output is equivalent to the
@@ -180,7 +179,6 @@ to a tbl_df, and <code>texts</code> column is renamed to <code>text</code>
 to be consistent with other uses in tidytext.</p>
 <p>Similarly, the <code>glance</code> output is simply the "metadata" object,
 with NULL fields removed and turned into a one-row tbl_df.</p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -210,9 +208,7 @@ with NULL fields removed and turned into a one-row tbl_df.</p>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#details">Details</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 

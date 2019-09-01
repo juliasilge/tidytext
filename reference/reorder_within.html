@@ -15,10 +15,12 @@
 <link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png" />
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
+
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
 <link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
 
@@ -37,17 +39,17 @@
 
 
 
-<meta property="og:title" content="Reorder an x or y axis within facets — reorder_within" />
 
+<meta property="og:title" content="Reorder an x or y axis within facets — reorder_within" />
 <meta property="og:description" content="Reorder a column before plotting with faceting, such that the values are
 ordered within each facet. This requires two functions: reorder_within
 applied to the column, then either scale_x_reordered or
 scale_y_reordered added to the plot.
 This is implemented as a bit of a hack: it appends ___ and then the facet
 at the end of each string." />
-
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
+
 
 
 
@@ -117,7 +119,6 @@ at the end of each string." />
   <a href="../news/index.html">Changelog</a>
 </li>
       </ul>
-      
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext">
@@ -143,14 +144,12 @@ at the end of each string." />
     </div>
 
     <div class="ref-description">
-    
     <p>Reorder a column before plotting with faceting, such that the values are
 ordered within each facet. This requires two functions: <code>reorder_within</code>
 applied to the column, then either <code>scale_x_reordered</code> or
 <code>scale_y_reordered</code> added to the plot.
 This is implemented as a bit of a hack: it appends ___ and then the facet
 at the end of each string.</p>
-    
     </div>
 
     <pre class="usage"><span class='fu'>reorder_within</span>(<span class='no'>x</span>, <span class='no'>by</span>, <span class='no'>within</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>mean</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"___"</span>, <span class='no'>...</span>)
@@ -158,7 +157,7 @@ at the end of each string.</p>
 <span class='fu'>scale_x_reordered</span>(<span class='no'>...</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"___"</span>)
 
 <span class='fu'>scale_y_reordered</span>(<span class='no'>...</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"___"</span>)</pre>
-    
+
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
@@ -191,12 +190,11 @@ manually if ___ can exist within one of your labels.</p></td>
 <code><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></code> or <code><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_y_discrete</a></code>.</p></td>
     </tr>
     </table>
-    
+
     <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
 
     <p>"Ordering categories within ggplot2 Facets" by Tyler Rinker:
 <a href='https://trinkerrstuff.wordpress.com/2016/12/23/ordering-categories-within-ggplot2-facets/'>https://trinkerrstuff.wordpress.com/2016/12/23/ordering-categories-within-ggplot2-facets/</a></p>
-    
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
@@ -221,9 +219,7 @@ manually if ___ can exist within one of your labels.</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
       <li><a href="#source">Source</a></li>
-      
       <li><a href="#examples">Examples</a></li>
     </ul>
 
