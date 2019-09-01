@@ -42,26 +42,26 @@ columns}
 If \code{matrix == "beta"} (default), returns a table with one row per topic and term,
 with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{term}{Term}
-  \item{beta}{Probability of a term generated from a topic according to
-  the multinomial model}
+\item{topic}{Topic, as an integer}
+\item{term}{Term}
+\item{beta}{Probability of a term generated from a topic according to
+the multinomial model}
 }
 
 If \code{matrix == "gamma"}, returns a table with one row per topic and document,
 with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{document}{Document name or ID}
-  \item{gamma}{Probability of topic given document}
+\item{topic}{Topic, as an integer}
+\item{document}{Document name or ID}
+\item{gamma}{Probability of topic given document}
 }
 
 \code{augment} returns a table with one row per original
 document-term pair, such as is returned by \link{tdm_tidiers}:
 \describe{
-  \item{document}{Name of document (if present), or index}
-  \item{term}{Term}
-  \item{.topic}{Topic assignment}
+\item{document}{Name of document (if present), or index}
+\item{term}{Term}
+\item{.topic}{Topic assignment}
 }
 
 If the \code{data} argument is provided, any columns in the original
@@ -70,10 +70,10 @@ columns.
 
 \code{glance} always returns a one-row table, with columns
 \describe{
-  \item{iter}{Number of iterations used}
-  \item{terms}{Number of terms in the model}
-  \item{alpha}{If an LDA_VEM, the parameter of the Dirichlet distribution
-  for topics over documents}
+\item{iter}{Number of iterations used}
+\item{terms}{Number of terms in the model}
+\item{alpha}{If an LDA_VEM, the parameter of the Dirichlet distribution
+for topics over documents}
 }
 }
 \description{

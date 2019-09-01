@@ -6,8 +6,8 @@
 \title{Sentiment lexicon from Bing Liu and collaborators}
 \format{A data frame with 6,786 rows and 2 variables:
 \describe{
- \item{word}{An English word}
- \item{sentiment}{A sentiment for that word, either positive or negative.}
+\item{word}{An English word}
+\item{sentiment}{A sentiment for that word, either positive or negative.}
 }}
 \source{
 \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}

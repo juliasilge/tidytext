@@ -15,8 +15,8 @@ unnest_tokens(tbl, output, input, token = "words", format = c("text",
 
 \item{input}{Input column that gets split as string or symbol.
 
-  The output/input arguments are passed by expression and support
-  \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
+The output/input arguments are passed by expression and support
+\link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
 options are "words" (default), "characters", "character_shingles", "ngrams",

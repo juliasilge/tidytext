@@ -50,12 +50,12 @@ document-term combination.
 
 \code{glance} always returns a one-row table, with columns
 \describe{
-  \item{k}{Number of topics in the model}
-  \item{docs}{Number of documents in the model}
-  \item{terms}{Number of terms in the model}
-  \item{iter}{Number of iterations used}
-  \item{alpha}{If an LDA model, the parameter of the Dirichlet distribution
-  for topics over documents}
+\item{k}{Number of topics in the model}
+\item{docs}{Number of documents in the model}
+\item{terms}{Number of terms in the model}
+\item{iter}{Number of iterations used}
+\item{alpha}{If an LDA model, the parameter of the Dirichlet distribution
+for topics over documents}
 }
 }
 \description{
@@ -113,28 +113,28 @@ if (requireNamespace("stm", quietly = TRUE)) {
 If \code{matrix == "beta"} (default), returns a table with one row per topic and term,
 with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{term}{Term}
-  \item{beta}{Probability of a term generated from a topic according to
-  the structural topic model}
+\item{topic}{Topic, as an integer}
+\item{term}{Term}
+\item{beta}{Probability of a term generated from a topic according to
+the structural topic model}
 }
 
 If \code{matrix == "gamma"}, returns a table with one row per topic and document,
 with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{document}{Document name (if given in vector of \code{document_names}) or
-  ID as an integer}
-  \item{gamma}{Probability of topic given document}
+\item{topic}{Topic, as an integer}
+\item{document}{Document name (if given in vector of \code{document_names}) or
+ID as an integer}
+\item{gamma}{Probability of topic given document}
 }
 
 If called on an object from \code{estimateEffect}, returns a table with columns
 \describe{
-  \item{topic}{Topic, as an integer}
-  \item{term}{The term in the model being estimated and tested}
-  \item{estimate}{The estimated coefficient}
-  \item{std.error}{The standard error from the linear model}
-  \item{statistic}{t-statistic}
-  \item{p.value}{two-sided p-value}
+\item{topic}{Topic, as an integer}
+\item{term}{The term in the model being estimated and tested}
+\item{estimate}{The estimated coefficient}
+\item{std.error}{The standard error from the linear model}
+\item{statistic}{t-statistic}
+\item{p.value}{two-sided p-value}
 }
 }

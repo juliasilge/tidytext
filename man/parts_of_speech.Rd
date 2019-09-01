@@ -6,9 +6,9 @@
 \title{Parts of speech for English words from the Moby Project}
 \format{A data frame with 205,985 rows and 2 variables:
 \describe{
- \item{word}{An English word}
- \item{pos}{The part of speech of the word. One of 13 options, such as
-            "Noun", "Adverb", "Adjective"}
+\item{word}{An English word}
+\item{pos}{The part of speech of the word. One of 13 options, such as
+"Noun", "Adverb", "Adjective"}
 }}
 \source{
 \url{https://archive.org/details/mobypartofspeech03203gut}
