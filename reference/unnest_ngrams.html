@@ -143,9 +143,8 @@
     </div>
 
     <pre class="usage"><span class='fu'>unnest_ngrams</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>n_min</span> <span class='kw'>=</span> <span class='no'>n</span>,
-  <span class='kw'>stopwords</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/character'>character</a></span>(), <span class='kw'>ngram_delim</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
+  <span class='kw'>ngram_delim</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -175,20 +174,8 @@ than or equal to 1.</p></td>
 than or equal to <code>n</code>.</p></td>
     </tr>
     <tr>
-      <th>stopwords</th>
-      <td><p>A character vector of stop words to be excluded from the
-n-grams.</p></td>
-    </tr>
-    <tr>
       <th>ngram_delim</th>
       <td><p>The separator between words in an n-gram.</p></td>
-    </tr>
-    <tr>
-      <th>simplify</th>
-      <td><p><code>FALSE</code> by default so that a consistent value is
-returned regardless of length of input. If <code>TRUE</code>, then an input with
-a single element will return a character vector of tokens instead of a
-list.</p></td>
     </tr>
     <tr>
       <th>format</th>
@@ -212,6 +199,10 @@ if the original input and new output column have the same name.</p></td>
 (such as sentences or paragraphs) span multiple lines. If NULL, collapses
 when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>Extra arguments passed on to <a href='https://lincolnmullen.com/software/tokenizers/reference/tokenizers.html'>tokenizers</a></p></td>
     </tr>
     </table>
 
