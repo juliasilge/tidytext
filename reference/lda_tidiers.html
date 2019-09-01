@@ -193,34 +193,34 @@ columns</p></td>
     <p><code>tidy</code> returns a tidied version of either the beta or gamma matrix.</p>
 <p>If <code>matrix == "beta"</code> (default), returns a table with one row per topic and term,
 with columns</p><dl class='dl-horizontal'>
-  <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
-  <dt>term</dt><dd><p>Term</p></dd>
-  <dt>beta</dt><dd><p>Probability of a term generated from a topic according to
-  the multinomial model</p></dd>
+<dt>topic</dt><dd><p>Topic, as an integer</p></dd>
+<dt>term</dt><dd><p>Term</p></dd>
+<dt>beta</dt><dd><p>Probability of a term generated from a topic according to
+the multinomial model</p></dd>
 </dl>
 
 <p>If <code>matrix == "gamma"</code>, returns a table with one row per topic and document,
 with columns</p><dl class='dl-horizontal'>
-  <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
-  <dt>document</dt><dd><p>Document name or ID</p></dd>
-  <dt>gamma</dt><dd><p>Probability of topic given document</p></dd>
+<dt>topic</dt><dd><p>Topic, as an integer</p></dd>
+<dt>document</dt><dd><p>Document name or ID</p></dd>
+<dt>gamma</dt><dd><p>Probability of topic given document</p></dd>
 </dl>
 
 <p><code>augment</code> returns a table with one row per original
 document-term pair, such as is returned by <a href='tdm_tidiers.html'>tdm_tidiers</a>:</p><dl class='dl-horizontal'>
-  <dt>document</dt><dd><p>Name of document (if present), or index</p></dd>
-  <dt>term</dt><dd><p>Term</p></dd>
-  <dt>.topic</dt><dd><p>Topic assignment</p></dd>
+<dt>document</dt><dd><p>Name of document (if present), or index</p></dd>
+<dt>term</dt><dd><p>Term</p></dd>
+<dt>.topic</dt><dd><p>Topic assignment</p></dd>
 </dl>
 
 <p>If the <code>data</code> argument is provided, any columns in the original
 data are included, combined based on the <code>document</code> and <code>term</code>
 columns.</p>
 <p><code>glance</code> always returns a one-row table, with columns</p><dl class='dl-horizontal'>
-  <dt>iter</dt><dd><p>Number of iterations used</p></dd>
-  <dt>terms</dt><dd><p>Number of terms in the model</p></dd>
-  <dt>alpha</dt><dd><p>If an LDA_VEM, the parameter of the Dirichlet distribution
-  for topics over documents</p></dd>
+<dt>iter</dt><dd><p>Number of iterations used</p></dd>
+<dt>terms</dt><dd><p>Number of terms in the model</p></dd>
+<dt>alpha</dt><dd><p>If an LDA_VEM, the parameter of the Dirichlet distribution
+for topics over documents</p></dd>
 </dl>
 
 
@@ -268,16 +268,16 @@ columns.</p>
 }</div><div class='output co'>#&gt; <span class='message'>Selecting by gamma</span></div><div class='output co'>#&gt; # A tibble: 100 x 3
 #&gt;    document topic gamma
 #&gt;       &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
-#&gt;  1       77     3 0.544
-#&gt;  2       98     3 0.544
-#&gt;  3       87     2 0.548
-#&gt;  4       72     2 0.807
-#&gt;  5       91     4 0.849
-#&gt;  6        4     3 0.957
-#&gt;  7       37     1 0.962
-#&gt;  8       61     1 0.982
-#&gt;  9        9     3 0.994
-#&gt; 10       23     3 0.994
+#&gt;  1       63     3 0.518
+#&gt;  2       32     4 0.769
+#&gt;  3       39     2 0.930
+#&gt;  4       77     2 0.966
+#&gt;  5       17     1 0.992
+#&gt;  6        9     1 0.994
+#&gt;  7       23     1 0.994
+#&gt;  8       22     1 0.995
+#&gt;  9       60     1 0.995
+#&gt; 10       98     3 0.998
 #&gt; # … with 90 more rows</div><div class='input'>
 </div></pre>
   </div>

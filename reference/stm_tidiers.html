@@ -204,12 +204,12 @@ columns <code>document</code> and <code>term</code>. It returns that same data a
 with an additional column <code>.topic</code> with the topic assignment for that
 document-term combination.</p>
 <p><code>glance</code> always returns a one-row table, with columns</p><dl class='dl-horizontal'>
-  <dt>k</dt><dd><p>Number of topics in the model</p></dd>
-  <dt>docs</dt><dd><p>Number of documents in the model</p></dd>
-  <dt>terms</dt><dd><p>Number of terms in the model</p></dd>
-  <dt>iter</dt><dd><p>Number of iterations used</p></dd>
-  <dt>alpha</dt><dd><p>If an LDA model, the parameter of the Dirichlet distribution
-  for topics over documents</p></dd>
+<dt>k</dt><dd><p>Number of topics in the model</p></dd>
+<dt>docs</dt><dd><p>Number of documents in the model</p></dd>
+<dt>terms</dt><dd><p>Number of terms in the model</p></dd>
+<dt>iter</dt><dd><p>Number of iterations used</p></dd>
+<dt>alpha</dt><dd><p>If an LDA model, the parameter of the Dirichlet distribution
+for topics over documents</p></dd>
 </dl>
 
     <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
@@ -217,25 +217,25 @@ document-term combination.</p>
     <div class='dont-index'><p><code><a href='lda_tidiers.html'>lda_tidiers</a></code></p>
 <p>If <code>matrix == "beta"</code> (default), returns a table with one row per topic and term,
 with columns</p><dl class='dl-horizontal'>
-  <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
-  <dt>term</dt><dd><p>Term</p></dd>
-  <dt>beta</dt><dd><p>Probability of a term generated from a topic according to
-  the structural topic model</p></dd>
+<dt>topic</dt><dd><p>Topic, as an integer</p></dd>
+<dt>term</dt><dd><p>Term</p></dd>
+<dt>beta</dt><dd><p>Probability of a term generated from a topic according to
+the structural topic model</p></dd>
 </dl></div>
     <div class='dont-index'><p>If <code>matrix == "gamma"</code>, returns a table with one row per topic and document,
 with columns</p><dl class='dl-horizontal'>
-  <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
-  <dt>document</dt><dd><p>Document name (if given in vector of <code>document_names</code>) or
-  ID as an integer</p></dd>
-  <dt>gamma</dt><dd><p>Probability of topic given document</p></dd>
+<dt>topic</dt><dd><p>Topic, as an integer</p></dd>
+<dt>document</dt><dd><p>Document name (if given in vector of <code>document_names</code>) or
+ID as an integer</p></dd>
+<dt>gamma</dt><dd><p>Probability of topic given document</p></dd>
 </dl></div>
     <div class='dont-index'><p>If called on an object from <code>estimateEffect</code>, returns a table with columns</p><dl class='dl-horizontal'>
-  <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
-  <dt>term</dt><dd><p>The term in the model being estimated and tested</p></dd>
-  <dt>estimate</dt><dd><p>The estimated coefficient</p></dd>
-  <dt>std.error</dt><dd><p>The standard error from the linear model</p></dd>
-  <dt>statistic</dt><dd><p>t-statistic</p></dd>
-  <dt>p.value</dt><dd><p>two-sided p-value</p></dd>
+<dt>topic</dt><dd><p>Topic, as an integer</p></dd>
+<dt>term</dt><dd><p>The term in the model being estimated and tested</p></dd>
+<dt>estimate</dt><dd><p>The estimated coefficient</p></dd>
+<dt>std.error</dt><dd><p>The standard error from the linear model</p></dd>
+<dt>statistic</dt><dd><p>t-statistic</p></dd>
+<dt>p.value</dt><dd><p>two-sided p-value</p></dd>
 </dl></div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
