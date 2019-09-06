@@ -49,35 +49,21 @@
 #' }
 #' get_sentiments("bing")
 #'
-#' @importFrom utils data
 #' @export
 get_sentiments <- function(lexicon = c("afinn", "bing", "loughran", "nrc")) {
-  data(list = "sentiments", package = "tidytext", envir = environment())
-  lex <- match.arg(lexicon)
+  lexicon <- match.arg(lexicon)
 
-  if (lex == "afinn") {
-    if (!requireNamespace("textdata", quietly = TRUE)){
-      stop("The textdata package is required to download the AFINN lexicon. \nInstall the textdata package to access this dataset.",
-        call. = FALSE
-      )
-    }
-    return(textdata::lexicon_afinn())
-  } else if (lex == "nrc") {
-    if (!requireNamespace("textdata", quietly = TRUE)){
-      stop("The textdata package is required to download the NRC word-emotion association lexicon. \nInstall the textdata package to access this dataset.",
-           call. = FALSE
-      )
-    }
-    return(textdata::lexicon_nrc())
-  } else if (lex == "loughran") {
-    if (!requireNamespace("textdata", quietly = TRUE)){
-      stop("The textdata package is required to download the Loughran-McDonald lexicon. \nInstall the textdata package to access this dataset.",
-           call. = FALSE
-      )
-    }
-    return(textdata::lexicon_loughran())
-  } else if (lex == "bing") {
-    return(sentiments)
+  if (lexicon != "bing" && !requireNamespace("textdata", quietly = TRUE)) {
+    msg <- "Install the textdata package to access the {lexicon} lexicon."
+    stop(stringr::str_glue(msg), call. = FALSE)
   }
 
+  switch(
+    lexicon,
+    afinn    = textdata::lexicon_afinn(),
+    nrc      = textdata::lexicon_nrc(),
+    loughran = textdata::lexicon_loughran(),
+    bing     = sentiments,
+    stop("Unexpected lexicon", call. = FALSE)
+  )
 }
