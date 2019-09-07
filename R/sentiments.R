@@ -53,8 +53,12 @@
 get_sentiments <- function(lexicon = c("afinn", "bing", "loughran", "nrc")) {
   lexicon <- match.arg(lexicon)
 
+  lexicon_names <- list(afinn    = "AFINN",
+                        loughran = "Loughran-McDonald",
+                        nrc      = "NRC word-emotion association")
+
   if (lexicon != "bing" && !requireNamespace("textdata", quietly = TRUE)) {
-    msg <- "Install the textdata package to access the {lexicon} lexicon."
+    msg <- "The textdata package is required to download the {lexicon_names[[lexicon]]} lexicon.\nInstall the textdata package to access this dataset."
     stop(stringr::str_glue(msg), call. = FALSE)
   }
 
