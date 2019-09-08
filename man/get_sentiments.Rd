@@ -4,7 +4,7 @@
 \alias{get_sentiments}
 \title{Get a tidy data frame of a single sentiment lexicon}
 \usage{
-get_sentiments(lexicon = c("afinn", "bing", "loughran", "nrc"))
+get_sentiments(lexicon = c("bing", "afinn", "loughran", "nrc"))
 }
 \arguments{
 \item{lexicon}{The sentiment lexicon to retrieve;
@@ -26,10 +26,11 @@ package.
 
 library(dplyr)
 
+get_sentiments("bing")
+
 \dontrun{
 get_sentiments("afinn")
 get_sentiments("nrc")
 }
-get_sentiments("bing")
 
 }

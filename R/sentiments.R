@@ -43,14 +43,15 @@
 #'
 #' library(dplyr)
 #'
+#' get_sentiments("bing")
+#'
 #' \dontrun{
 #' get_sentiments("afinn")
 #' get_sentiments("nrc")
 #' }
-#' get_sentiments("bing")
 #'
 #' @export
-get_sentiments <- function(lexicon = c("afinn", "bing", "loughran", "nrc")) {
+get_sentiments <- function(lexicon = c("bing", "afinn", "loughran", "nrc")) {
   lexicon <- match.arg(lexicon)
 
   lexicon_names <- list(afinn    = "AFINN",
