@@ -154,7 +154,7 @@ data frame, and others call the relevant function in the <span class="pkg">textd
 package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_sentiments</span>(<span class='kw'>lexicon</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"afinn"</span>, <span class='st'>"bing"</span>, <span class='st'>"loughran"</span>, <span class='st'>"nrc"</span>))</pre>
+    <pre class="usage"><span class='fu'>get_sentiments</span>(<span class='kw'>lexicon</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bing"</span>, <span class='st'>"afinn"</span>, <span class='st'>"loughran"</span>, <span class='st'>"nrc"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -176,10 +176,6 @@ column (if <code>lexicon</code> is not "afinn") or a numeric <code>score</code> 
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_sentiments</span>(<span class='st'>"afinn"</span>)
-<span class='fu'>get_sentiments</span>(<span class='st'>"nrc"</span>)
-}
 <span class='fu'>get_sentiments</span>(<span class='st'>"bing"</span>)</div><div class='output co'>#&gt; # A tibble: 6,786 x 2
 #&gt;    word        sentiment
 #&gt;    &lt;chr&gt;       &lt;chr&gt;    
@@ -194,7 +190,10 @@ column (if <code>lexicon</code> is not "afinn") or a numeric <code>score</code> 
 #&gt;  9 aborted     negative 
 #&gt; 10 aborts      negative 
 #&gt; # … with 6,776 more rows</div><div class='input'>
-</div></pre>
+<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'>get_sentiments</span>(<span class='st'>"afinn"</span>)
+<span class='fu'>get_sentiments</span>(<span class='st'>"nrc"</span>)
+}</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
