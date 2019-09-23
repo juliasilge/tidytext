@@ -1,4 +1,4 @@
-#' Wrapper around unnest_tokens for regex
+#' Wrapper around unnest_tokens for regular expressions
 #'
 #' This function is a wrapper around `unnest_tokens( token = "regex" )`.
 #'
@@ -20,14 +20,13 @@
 #' d <- tibble(txt = prideprejudice)
 #' d
 #' d %>%
-#'   unnest_ngrams(word, txt)
+#'   unnest_regex(word, txt, pattern = "Chapter [\\d]")
 #'
 unnest_regex <- function(
   tbl,
   output,
   input,
   pattern = "\\s+",
-  simplify = FALSE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -38,13 +37,12 @@ unnest_regex <- function(
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
+                token = "regex",
                 format = format,
                 to_lower = to_lower,
                 drop = drop,
                 collapse = collapse,
-                token = "regex",
                 pattern = pattern,
-                simplify = simplify,
                 ...
   )
 }

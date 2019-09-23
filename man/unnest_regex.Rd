@@ -2,11 +2,11 @@
 % Please edit documentation in R/unnest_regex.R
 \name{unnest_regex}
 \alias{unnest_regex}
-\title{Wrapper around unnest_tokens for regex}
+\title{Wrapper around unnest_tokens for regular expressions}
 \usage{
-unnest_regex(tbl, output, input, pattern = "\\\\s+", simplify = FALSE,
-  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
+unnest_regex(tbl, output, input, pattern = "\\\\s+", format = c("text",
+  "man", "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
+  collapse = NULL, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -19,11 +19,6 @@ The output/input arguments are passed by expression and support
 \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{pattern}{A regular expression that defines the split.}
-
-\item{simplify}{\code{FALSE} by default so that a consistent value is
-returned regardless of length of input. If \code{TRUE}, then an input with
-a single element will return a character vector of tokens instead of a
-list.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
 this uses the hunspell tokenizer, and can tokenize only by "word"}
@@ -52,7 +47,7 @@ library(janeaustenr)
 d <- tibble(txt = prideprejudice)
 d
 d \%>\%
-  unnest_ngrams(word, txt)
+  unnest_regex(word, txt, pattern = "Chapter [\\\\d]")
 
 }
 \seealso{
