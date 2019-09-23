@@ -146,10 +146,9 @@
     <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "tweets" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest_tweets</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>stopwords</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>strip_punct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>strip_url</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>,
-  <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest_tweets</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>strip_punct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strip_url</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -169,10 +168,6 @@
 <a href='https://rlang.r-lib.org/reference/quasiquotation.html'>quasiquotation</a>; you can unquote strings and symbols.</p></td>
     </tr>
     <tr>
-      <th>stopwords</th>
-      <td><p>A character vector of stop words to be excluded.</p></td>
-    </tr>
-    <tr>
       <th>strip_punct</th>
       <td><p>Should punctuation be stripped?</p></td>
     </tr>
@@ -180,13 +175,6 @@
       <th>strip_url</th>
       <td><p>Should URLs (starting with <code>http(s)</code>) be preserved intact, or
 removed entirely?</p></td>
-    </tr>
-    <tr>
-      <th>simplify</th>
-      <td><p><code>FALSE</code> by default so that a consistent value is
-returned regardless of length of input. If <code>TRUE</code>, then an input with
-a single element will return a character vector of tokens instead of a
-list.</p></td>
     </tr>
     <tr>
       <th>format</th>
@@ -233,7 +221,7 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 )
 
 <span class='no'>tweets</span> <span class='kw'>%&gt;%</span>
-   <span class='fu'><a href='unnest_tokens.html'>unnest_tokens</a></span>(<span class='no'>out</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"tweets"</span>)</div><div class='output co'>#&gt; <span class='message'>Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.</span></div><div class='output co'>#&gt; # A tibble: 5 x 2
+   <span class='fu'>unnest_tweets</span>(<span class='no'>out</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; <span class='message'>Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.</span></div><div class='output co'>#&gt; # A tibble: 5 x 2
 #&gt;      id out                       
 #&gt;   &lt;dbl&gt; &lt;chr&gt;                     
 #&gt; 1     1 @ropensci                 
