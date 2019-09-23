@@ -2,11 +2,10 @@
 % Please edit documentation in R/unnest_ptb.R
 \name{unnest_ptb}
 \alias{unnest_ptb}
-\title{Wrapper around unnest_tokens for ptb}
+\title{Wrapper around unnest_tokens for Penn Treebank Tokenizer}
 \usage{
-unnest_ptb(tbl, output, input, simplify = FALSE, format = c("text",
-  "man", "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
-  collapse = NULL, ...)
+unnest_ptb(tbl, output, input, format = c("text", "man", "latex", "html",
+  "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -17,11 +16,6 @@ unnest_ptb(tbl, output, input, simplify = FALSE, format = c("text",
 
 The output/input arguments are passed by expression and support
 \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
-
-\item{simplify}{\code{FALSE} by default so that a consistent value is
-returned regardless of length of input. If \code{TRUE}, then an input with
-a single element will return a character vector of tokens instead of a
-list.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
 this uses the hunspell tokenizer, and can tokenize only by "word"}

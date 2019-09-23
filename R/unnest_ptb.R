@@ -1,4 +1,4 @@
-#' Wrapper around unnest_tokens for ptb
+#' Wrapper around unnest_tokens for Penn Treebank Tokenizer
 #'
 #' This function is a wrapper around `unnest_tokens( token = "ptb" )`.
 #'
@@ -26,7 +26,6 @@ unnest_ptb <- function(
   tbl,
   output,
   input,
-  simplify = FALSE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -42,7 +41,6 @@ unnest_ptb <- function(
                 drop = drop,
                 collapse = collapse,
                 token = "ptb",
-                simplify = simplify,
                 ...
   )
 }
