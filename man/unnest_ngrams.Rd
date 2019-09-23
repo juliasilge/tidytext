@@ -2,11 +2,16 @@
 % Please edit documentation in R/unnest_ngrams.R
 \name{unnest_ngrams}
 \alias{unnest_ngrams}
+\alias{unnest_skip_ngrams}
 \title{Wrapper around unnest_tokens for n-grams}
 \usage{
 unnest_ngrams(tbl, output, input, n = 3L, n_min = n,
   ngram_delim = " ", format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
+
+unnest_skip_ngrams(tbl, output, input, n_min = 1, n = 3, k = 1,
+  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
+  drop = TRUE, collapse = NULL, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -42,9 +47,14 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".}
 
 \item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
+
+\item{k}{For the skip n-gram tokenizer, the maximum skip distance between
+words. The function will compute all skip n-grams between \code{0} and
+\code{k}.}
 }
 \description{
-This function is a wrapper around \code{unnest_tokens( token = "ngrams" )}.
+These functions are wrappers around \code{unnest_tokens( token = "ngrams" )}
+and \code{unnest_tokens( token = "skip_ngrams" )} .
 }
 \examples{
 library(dplyr)
