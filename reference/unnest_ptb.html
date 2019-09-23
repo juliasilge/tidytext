@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper around unnest_tokens for ptb — unnest_ptb • tidytext</title>
+<title>Wrapper around unnest_tokens for Penn Treebank Tokenizer — unnest_ptb • tidytext</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Wrapper around unnest_tokens for ptb — unnest_ptb" />
+<meta property="og:title" content="Wrapper around unnest_tokens for Penn Treebank Tokenizer — unnest_ptb" />
 <meta property="og:description" content="This function is a wrapper around unnest_tokens( token = &quot;ptb&quot; )." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
@@ -137,7 +137,7 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper around unnest_tokens for ptb</h1>
+    <h1>Wrapper around unnest_tokens for Penn Treebank Tokenizer</h1>
     <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/unnest_ptb.R'><code>R/unnest_ptb.R</code></a></small>
     <div class="hidden name"><code>unnest_ptb.Rd</code></div>
     </div>
@@ -146,9 +146,8 @@
     <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "ptb" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest_ptb</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>,
-  <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest_ptb</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>,
+  <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -166,13 +165,6 @@
       <td><p>Input column that gets split as string or symbol.</p>
 <p>The output/input arguments are passed by expression and support
 <a href='https://rlang.r-lib.org/reference/quasiquotation.html'>quasiquotation</a>; you can unquote strings and symbols.</p></td>
-    </tr>
-    <tr>
-      <th>simplify</th>
-      <td><p><code>FALSE</code> by default so that a consistent value is
-returned regardless of length of input. If <code>TRUE</code>, then an input with
-a single element will return a character vector of tokens instead of a
-list.</p></td>
     </tr>
     <tr>
       <th>format</th>
