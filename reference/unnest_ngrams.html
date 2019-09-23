@@ -43,7 +43,8 @@
 
 
 <meta property="og:title" content="Wrapper around unnest_tokens for n-grams — unnest_ngrams" />
-<meta property="og:description" content="This function is a wrapper around unnest_tokens( token = &quot;ngrams&quot; )." />
+<meta property="og:description" content="These functions are wrappers around unnest_tokens( token = &quot;ngrams&quot; )
+and unnest_tokens( token = &quot;skip_ngrams&quot; ) ." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -143,12 +144,17 @@
     </div>
 
     <div class="ref-description">
-    <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "ngrams" )</a></code>.</p>
+    <p>These functions are wrappers around <code><a href='unnest_tokens.html'>unnest_tokens( token = "ngrams" )</a></code>
+and <code><a href='unnest_tokens.html'>unnest_tokens( token = "skip_ngrams" )</a></code> .</p>
     </div>
 
     <pre class="usage"><span class='fu'>unnest_ngrams</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>n_min</span> <span class='kw'>=</span> <span class='no'>n</span>,
   <span class='kw'>ngram_delim</span> <span class='kw'>=</span> <span class='st'>" "</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
-  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+
+<span class='fu'>unnest_skip_ngrams</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>n_min</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -207,6 +213,12 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
     <tr>
       <th>...</th>
       <td><p>Extra arguments passed on to <a href='https://lincolnmullen.com/software/tokenizers/reference/tokenizers.html'>tokenizers</a></p></td>
+    </tr>
+    <tr>
+      <th>k</th>
+      <td><p>For the skip n-gram tokenizer, the maximum skip distance between
+words. The function will compute all skip n-grams between <code>0</code> and
+<code>k</code>.</p></td>
     </tr>
     </table>
 
