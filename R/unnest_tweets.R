@@ -21,16 +21,14 @@
 #')
 #'
 #' tweets %>%
-#'    unnest_tokens(out, txt, token = "tweets")
+#'    unnest_tweets(out, txt)
 #'
 unnest_tweets <- function(
   tbl,
   output,
   input,
-  stopwords = NULL,
   strip_punct = TRUE,
   strip_url = FALSE,
-  simplify = FALSE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -41,15 +39,13 @@ unnest_tweets <- function(
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
+                token = "tweets",
                 format = format,
                 to_lower = to_lower,
                 drop = drop,
                 collapse = collapse,
-                token = "tweets",
-                stopwords = stopwords,
                 strip_punct = strip_punct,
                 strip_url = strip_url,
-                simplify = simplify,
                 ...
   )
 }

@@ -4,10 +4,9 @@
 \alias{unnest_tweets}
 \title{Wrapper around unnest_tokens for tweets}
 \usage{
-unnest_tweets(tbl, output, input, stopwords = NULL, strip_punct = TRUE,
-  strip_url = FALSE, simplify = FALSE, format = c("text", "man",
-  "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
-  collapse = NULL, ...)
+unnest_tweets(tbl, output, input, strip_punct = TRUE,
+  strip_url = FALSE, format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -19,17 +18,10 @@ unnest_tweets(tbl, output, input, stopwords = NULL, strip_punct = TRUE,
 The output/input arguments are passed by expression and support
 \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
-\item{stopwords}{A character vector of stop words to be excluded.}
-
 \item{strip_punct}{Should punctuation be stripped?}
 
 \item{strip_url}{Should URLs (starting with \code{http(s)}) be preserved intact, or
 removed entirely?}
-
-\item{simplify}{\code{FALSE} by default so that a consistent value is
-returned regardless of length of input. If \code{TRUE}, then an input with
-a single element will return a character vector of tokens instead of a
-list.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
 this uses the hunspell tokenizer, and can tokenize only by "word"}
@@ -59,7 +51,7 @@ tweets <- tibble(
 )
 
 tweets \%>\%
-   unnest_tokens(out, txt, token = "tweets")
+   unnest_tweets(out, txt)
 
 }
 \seealso{
