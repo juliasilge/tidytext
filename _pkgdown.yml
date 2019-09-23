@@ -10,6 +10,7 @@ reference:
   contents:
   - '`unnest_tokens`'
   - '`unnest_ngrams`'
+  - '`unnest_regex`'
 - title: Term frequency and inverse document frequency
   desc: ~
   contents:
