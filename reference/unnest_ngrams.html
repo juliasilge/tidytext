@@ -235,34 +235,37 @@ words. The function will compute all skip n-grams between <code>0</code> and
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>janeaustenr</span>)
 
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
-<span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
-#&gt;    txt                                                                    
-#&gt;    &lt;chr&gt;                                                                  
-#&gt;  1 PRIDE AND PREJUDICE                                                    
-#&gt;  2 ""                                                                     
-#&gt;  3 By Jane Austen                                                         
-#&gt;  4 ""                                                                     
-#&gt;  5 ""                                                                     
-#&gt;  6 ""                                                                     
-#&gt;  7 Chapter 1                                                              
-#&gt;  8 ""                                                                     
-#&gt;  9 ""                                                                     
-#&gt; 10 It is a truth universally acknowledged, that a single man in possession
-#&gt; # … with 13,020 more rows</div><div class='input'><span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 122,202 x 1
-#&gt;    word               
-#&gt;    &lt;chr&gt;              
-#&gt;  1 pride and prejudice
-#&gt;  2 and prejudice by   
-#&gt;  3 prejudice by jane  
-#&gt;  4 by jane austen     
-#&gt;  5 jane austen chapter
-#&gt;  6 austen chapter 1   
-#&gt;  7 chapter 1 it       
-#&gt;  8 1 it is            
-#&gt;  9 it is a            
-#&gt; 10 is a truth         
-#&gt; # … with 122,192 more rows</div><div class='input'>
+
+<span class='no'>d</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>unnest_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 122,203 x 1
+#&gt;    word          
+#&gt;    &lt;chr&gt;         
+#&gt;  1 pride and     
+#&gt;  2 and prejudice 
+#&gt;  3 prejudice by  
+#&gt;  4 by jane       
+#&gt;  5 jane austen   
+#&gt;  6 austen chapter
+#&gt;  7 chapter 1     
+#&gt;  8 1 it          
+#&gt;  9 it is         
+#&gt; 10 is a          
+#&gt; # … with 122,193 more rows</div><div class='input'>
+<span class='no'>d</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>unnest_skip_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; # A tibble: 855,413 x 1
+#&gt;    word                
+#&gt;    &lt;chr&gt;               
+#&gt;  1 pride               
+#&gt;  2 pride and           
+#&gt;  3 pride prejudice     
+#&gt;  4 pride and prejudice 
+#&gt;  5 pride and by        
+#&gt;  6 pride prejudice by  
+#&gt;  7 pride prejudice jane
+#&gt;  8 and                 
+#&gt;  9 and prejudice       
+#&gt; 10 and by              
+#&gt; # … with 855,403 more rows</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
