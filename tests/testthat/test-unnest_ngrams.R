@@ -5,16 +5,13 @@ test_that("unnest_ngrams works", {
   r <- unnest_ngrams(skspr, out, txt, n = 4)
   expect_nrow(r, 20)
   expect_first_row(r, out, "now is the winter")
-  r <- unnest_ngrams(skspr, out, txt, n = 4, stopwords = c("the"))
-  expect_nrow( r, 16 )
-  expect_first_row(r, out, "now is winter")
 })
 
 test_that("unnest_skip_ngrams works", {
   r <- unnest_skip_ngrams(song_df, out, txt, n = 4)
   s <- unnest_tokens(song_df, out, txt, n = 4, token = "skip_ngrams")
   expect_equal(r, s)
-  r <- unnest_skip_ngrams(song_df, out, txt, n = 4, stopwords = c("how"))
-  s <- unnest_tokens(song_df, out, txt, n = 4, stopwords = c("how"), token = "skip_ngrams")
+  r <- unnest_skip_ngrams(skspr, out, txt, n = 3, k = 2)
+  s <- unnest_tokens(skspr, out, txt, token = "skip_ngrams", n = 3, k = 2)
   expect_equal(r, s)
 })

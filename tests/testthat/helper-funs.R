@@ -30,6 +30,7 @@ song_df <- data.frame(
           "How many times must the cannonballs fly",
           "Before they're forever banned?",
           "The answer, my friend, is blowin' in the wind.",
-          "The answer is blowin' in the wind.")
+          "The answer is blowin' in the wind."),
+  stringsAsFactors = FALSE
 )
 

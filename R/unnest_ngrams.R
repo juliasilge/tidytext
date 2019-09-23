@@ -6,9 +6,9 @@
 #' @seealso
 #' + [unnest_tokens()]
 #'
-#' @inheritParams unnest_tokens
 #' @inheritParams tokenizers::tokenize_ngrams
 #' @inheritParams tokenizers::tokenize_skip_ngrams
+#' @inheritParams unnest_tokens
 #'
 #' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
 #'
@@ -21,9 +21,12 @@
 #' library(janeaustenr)
 #'
 #' d <- tibble(txt = prideprejudice)
-#' d
+#'
 #' d %>%
-#'   unnest_ngrams(word, txt)
+#'   unnest_ngrams(word, txt, n = 2)
+#'
+#' d %>%
+#'   unnest_skip_ngrams(word, txt, n = 3, k = 1)
 #'
 unnest_ngrams <- function(
   tbl,
@@ -81,6 +84,7 @@ unnest_skip_ngrams <- function(
                 token = "skip_ngrams",
                 n = n,
                 n_min = n_min,
+                k = k,
                 ...
   )
 }

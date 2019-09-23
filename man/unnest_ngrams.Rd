@@ -61,9 +61,12 @@ library(dplyr)
 library(janeaustenr)
 
 d <- tibble(txt = prideprejudice)
-d
+
 d \%>\%
-  unnest_ngrams(word, txt)
+  unnest_ngrams(word, txt, n = 2)
+
+d \%>\%
+  unnest_skip_ngrams(word, txt, n = 3, k = 1)
 
 }
 \seealso{
