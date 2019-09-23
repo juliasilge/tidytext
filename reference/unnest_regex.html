@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Reorder an x or y axis within facets — reorder_within • tidytext</title>
+<title>Wrapper around unnest_tokens for regex — unnest_regex • tidytext</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,13 +42,8 @@
 
 
 
-<meta property="og:title" content="Reorder an x or y axis within facets — reorder_within" />
-<meta property="og:description" content="Reorder a column before plotting with faceting, such that the values are
-ordered within each facet. This requires two functions: reorder_within
-applied to the column, then either scale_x_reordered or
-scale_y_reordered added to the plot.
-This is implemented as a bit of a hack: it appends ___ and then the facet
-at the end of each string." />
+<meta property="og:title" content="Wrapper around unnest_tokens for regex — unnest_regex" />
+<meta property="og:description" content="This function is a wrapper around unnest_tokens( token = &quot;regex&quot; )." />
 <meta property="og:image" content="/logo.png" />
 <meta name="twitter:card" content="summary" />
 
@@ -142,88 +137,124 @@ at the end of each string." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Reorder an x or y axis within facets</h1>
-    <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/reorder_within.R'><code>R/reorder_within.R</code></a></small>
-    <div class="hidden name"><code>reorder_within.Rd</code></div>
+    <h1>Wrapper around unnest_tokens for regex</h1>
+    <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/unnest_regex.R'><code>R/unnest_regex.R</code></a></small>
+    <div class="hidden name"><code>unnest_regex.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Reorder a column before plotting with faceting, such that the values are
-ordered within each facet. This requires two functions: <code>reorder_within</code>
-applied to the column, then either <code>scale_x_reordered</code> or
-<code>scale_y_reordered</code> added to the plot.
-This is implemented as a bit of a hack: it appends ___ and then the facet
-at the end of each string.</p>
+    <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "regex" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>reorder_within</span>(<span class='no'>x</span>, <span class='no'>by</span>, <span class='no'>within</span>, <span class='kw'>fun</span> <span class='kw'>=</span> <span class='no'>mean</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"___"</span>, <span class='no'>...</span>)
-
-<span class='fu'>scale_x_reordered</span>(<span class='no'>...</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"___"</span>)
-
-<span class='fu'>scale_y_reordered</span>(<span class='no'>...</span>, <span class='kw'>sep</span> <span class='kw'>=</span> <span class='st'>"___"</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest_regex</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"\\s+"</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>x</th>
-      <td><p>Vector to reorder.</p></td>
+      <th>tbl</th>
+      <td><p>A data frame</p></td>
     </tr>
     <tr>
-      <th>by</th>
-      <td><p>Vector of the same length, to use for reordering.</p></td>
+      <th>output</th>
+      <td><p>Output column to be created as string or symbol.</p></td>
     </tr>
     <tr>
-      <th>within</th>
-      <td><p>Vector of the same length that will later be used for faceting</p></td>
+      <th>input</th>
+      <td><p>Input column that gets split as string or symbol.</p>
+<p>The output/input arguments are passed by expression and support
+<a href='https://rlang.r-lib.org/reference/quasiquotation.html'>quasiquotation</a>; you can unquote strings and symbols.</p></td>
     </tr>
     <tr>
-      <th>fun</th>
-      <td><p>Function to perform within each subset to determine the resulting
-ordering. By default, mean.</p></td>
+      <th>pattern</th>
+      <td><p>A regular expression that defines the split.</p></td>
     </tr>
     <tr>
-      <th>sep</th>
-      <td><p>Separator to distinguish the two. You may want to set this
-manually if ___ can exist within one of your labels.</p></td>
+      <th>simplify</th>
+      <td><p><code>FALSE</code> by default so that a consistent value is
+returned regardless of length of input. If <code>TRUE</code>, then an input with
+a single element will return a character vector of tokens instead of a
+list.</p></td>
+    </tr>
+    <tr>
+      <th>format</th>
+      <td><p>Either "text", "man", "latex", "html", or "xml". If not text,
+this uses the hunspell tokenizer, and can tokenize only by "word"</p></td>
+    </tr>
+    <tr>
+      <th>to_lower</th>
+      <td><p>Whether to convert tokens to lowercase. If tokens include
+URLS (such as with <code>token = "tweets"</code>), such converted URLs may no
+longer be correct.</p></td>
+    </tr>
+    <tr>
+      <th>drop</th>
+      <td><p>Whether original input column should get dropped. Ignored
+if the original input and new output column have the same name.</p></td>
+    </tr>
+    <tr>
+      <th>collapse</th>
+      <td><p>Whether to combine text with newlines first in case tokens
+(such as sentences or paragraphs) span multiple lines. If NULL, collapses
+when token method is "ngrams", "skip_ngrams", "sentences", "lines",
+"paragraphs", or "regex".</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td><p>In <code>reorder_within</code> arguments passed on to
-<code><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></code>. In the scale functions, extra arguments passed on to
-<code><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_x_discrete</a></code> or <code><a href='https://ggplot2.tidyverse.org/reference/scale_discrete.html'>scale_y_discrete</a></code>.</p></td>
+      <td><p>Extra arguments passed on to <a href='https://lincolnmullen.com/software/tokenizers/reference/tokenizers.html'>tokenizers</a></p></td>
     </tr>
     </table>
 
-    <h2 class="hasAnchor" id="source"><a class="anchor" href="#source"></a>Source</h2>
+    <h2 class="hasAnchor" id="see-also"><a class="anchor" href="#see-also"></a>See also</h2>
 
-    <p>"Ordering categories within ggplot2 Facets" by Tyler Rinker:
-<a href='https://trinkerrstuff.wordpress.com/2016/12/23/ordering-categories-within-ggplot2-facets/'>https://trinkerrstuff.wordpress.com/2016/12/23/ordering-categories-within-ggplot2-facets/</a></p>
+    <div class='dont-index'>
+<ul>
+<li><p><code><a href='unnest_tokens.html'>unnest_tokens()</a></code></p></li>
+</ul>
+</div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>tidyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>janeaustenr</span>)
 
-<span class='no'>iris_gathered</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://tidyr.tidyverse.org/reference/gather.html'>gather</a></span>(<span class='no'>iris</span>, <span class='no'>metric</span>, <span class='no'>value</span>, -<span class='no'>Species</span>)
-
-<span class='co'># reordering doesn't work within each facet (see Sepal.Width):</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>iris_gathered</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span>(<span class='no'>Species</span>, <span class='no'>value</span>), <span class='no'>value</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span>() +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~ <span class='no'>metric</span>)</div><div class='img'><img src='reorder_within-1.png' alt='' width='700' height='433' /></div><div class='input'>
-<span class='co'># reorder_within and scale_x_reordered work.</span>
-<span class='co'># (Note that you need to set scales = "free_x" in the facet)</span>
-<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>iris_gathered</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='fu'>reorder_within</span>(<span class='no'>Species</span>, <span class='no'>value</span>, <span class='no'>metric</span>), <span class='no'>value</span>)) +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span>() +
-  <span class='fu'>scale_x_reordered</span>() +
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~ <span class='no'>metric</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_x"</span>)</div><div class='img'><img src='reorder_within-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
+<span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
+#&gt;    txt                                                                    
+#&gt;    &lt;chr&gt;                                                                  
+#&gt;  1 PRIDE AND PREJUDICE                                                    
+#&gt;  2 ""                                                                     
+#&gt;  3 By Jane Austen                                                         
+#&gt;  4 ""                                                                     
+#&gt;  5 ""                                                                     
+#&gt;  6 ""                                                                     
+#&gt;  7 Chapter 1                                                              
+#&gt;  8 ""                                                                     
+#&gt;  9 ""                                                                     
+#&gt; 10 It is a truth universally acknowledged, that a single man in possession
+#&gt; # … with 13,020 more rows</div><div class='input'><span class='no'>d</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'><a href='unnest_ngrams.html'>unnest_ngrams</a></span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 122,202 x 1
+#&gt;    word               
+#&gt;    &lt;chr&gt;              
+#&gt;  1 pride and prejudice
+#&gt;  2 and prejudice by   
+#&gt;  3 prejudice by jane  
+#&gt;  4 by jane austen     
+#&gt;  5 jane austen chapter
+#&gt;  6 austen chapter 1   
+#&gt;  7 chapter 1 it       
+#&gt;  8 1 it is            
+#&gt;  9 it is a            
+#&gt; 10 is a truth         
+#&gt; # … with 122,192 more rows</div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#source">Source</a></li>
+      <li><a href="#see-also">See also</a></li>
       <li><a href="#examples">Examples</a></li>
     </ul>
 
