@@ -17,7 +17,8 @@ skspr <- data.frame(
     "Made glorious summer by this sun of York;",
     "And all the clouds that lour'd upon our house",
     "In the deep bosom of the ocean buried."
-  )
+  ),
+  stringsAsFactors = FALSE
 )
 
 song_df <- data.frame(
