@@ -1,4 +1,4 @@
-#' Wrapper around unnest_tokens for sentences, lines and paragraphs
+#' Wrapper around unnest_tokens for sentences, lines, and paragraphs
 #'
 #' These functions are wrappers around `unnest_tokens( token = "sentences" )`
 #' `unnest_tokens( token = "lines" )` and `unnest_tokens( token = "paragraphs" )`.
@@ -21,7 +21,7 @@
 #' library(janeaustenr)
 #'
 #' d <- tibble(txt = prideprejudice)
-#' d
+#'
 #' d %>%
 #'   unnest_sentences(word, txt)
 #'
@@ -30,7 +30,6 @@ unnest_sentences <- function(
   output,
   input,
   strip_punct = FALSE,
-  simplify = FALSE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -41,13 +40,12 @@ unnest_sentences <- function(
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
+                token = "sentences",
                 format = format,
                 to_lower = to_lower,
                 drop = drop,
                 collapse = collapse,
-                token = "sentences",
                 strip_punct = strip_punct,
-                simplify = simplify,
                 ...
   )
 }
@@ -59,7 +57,6 @@ unnest_lines <- function(
   tbl,
   output,
   input,
-  simplify = FALSE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -70,12 +67,11 @@ unnest_lines <- function(
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
+                token = "lines",
                 format = format,
                 to_lower = to_lower,
                 drop = drop,
                 collapse = collapse,
-                token = "lines",
-                simplify = simplify,
                 ...
   )
 }
@@ -88,7 +84,6 @@ unnest_paragraphs <- function(
   output,
   input,
   paragraph_break = "\n\n",
-  simplify = FALSE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -99,13 +94,12 @@ unnest_paragraphs <- function(
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
+                token = "paragraphs",
                 format = format,
                 to_lower = to_lower,
                 drop = drop,
                 collapse = collapse,
-                token = "paragraphs",
                 paragraph_break = paragraph_break,
-                simplify = simplify,
                 ...
   )
 }

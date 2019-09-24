@@ -11,6 +11,7 @@ reference:
   - '`unnest_tokens`'
   - '`unnest_characters`'
   - '`unnest_ngrams`'
+  - '`unnest_sentences`'
   - '`unnest_regex`'
   - '`unnest_tweets`'
   - '`unnest_ptb`'
