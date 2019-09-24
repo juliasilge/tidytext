@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Wrapper around unnest_tokens &amp; characters / character_shingles — unnest_characters • tidytext</title>
+<title>Wrapper around unnest_tokens for characters and character shingles — unnest_characters • tidytext</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -42,7 +42,7 @@
 
 
 
-<meta property="og:title" content="Wrapper around unnest_tokens &amp; characters / character_shingles — unnest_characters" />
+<meta property="og:title" content="Wrapper around unnest_tokens for characters and character shingles — unnest_characters" />
 <meta property="og:description" content="Thes functions are a wrapper around unnest_tokens( token = &quot;characters&quot; )
 and unnest_tokens( token = &quot;character_shingles&quot; )." />
 <meta property="og:image" content="/logo.png" />
@@ -138,7 +138,7 @@ and unnest_tokens( token = &quot;character_shingles&quot; )." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Wrapper around unnest_tokens &amp; characters / character_shingles</h1>
+    <h1>Wrapper around unnest_tokens for characters and character shingles</h1>
     <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/unnest_char.R'><code>R/unnest_char.R</code></a></small>
     <div class="hidden name"><code>unnest_character.Rd</code></div>
     </div>
@@ -149,13 +149,12 @@ and <code><a href='unnest_tokens.html'>unnest_tokens( token = "character_shingle
     </div>
 
     <pre class="usage"><span class='fu'>unnest_characters</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>strip_non_alphanum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
-  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)
 
 <span class='fu'>unnest_character_shingles</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3L</span>, <span class='kw'>n_min</span> <span class='kw'>=</span> <span class='no'>n</span>,
-  <span class='kw'>strip_non_alphanum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>simplify</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>,
-  <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+  <span class='kw'>strip_non_alphanum</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>,
+  <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,13 +176,6 @@ and <code><a href='unnest_tokens.html'>unnest_tokens( token = "character_shingle
     <tr>
       <th>strip_non_alphanum</th>
       <td><p>Should punctuation and white space be stripped?</p></td>
-    </tr>
-    <tr>
-      <th>simplify</th>
-      <td><p><code>FALSE</code> by default so that a consistent value is
-returned regardless of length of input. If <code>TRUE</code>, then an input with
-a single element will return a character vector of tokens instead of a
-list.</p></td>
     </tr>
     <tr>
       <th>format</th>
@@ -240,20 +232,8 @@ than or equal to <code>n</code>.</p></td>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>janeaustenr</span>)
 
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
-<span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
-#&gt;    txt                                                                    
-#&gt;    &lt;chr&gt;                                                                  
-#&gt;  1 PRIDE AND PREJUDICE                                                    
-#&gt;  2 ""                                                                     
-#&gt;  3 By Jane Austen                                                         
-#&gt;  4 ""                                                                     
-#&gt;  5 ""                                                                     
-#&gt;  6 ""                                                                     
-#&gt;  7 Chapter 1                                                              
-#&gt;  8 ""                                                                     
-#&gt;  9 ""                                                                     
-#&gt; 10 It is a truth universally acknowledged, that a single man in possession
-#&gt; # … with 13,020 more rows</div><div class='input'><span class='no'>d</span> <span class='kw'>%&gt;%</span>
+
+<span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_characters</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 536,529 x 1
 #&gt;    word 
 #&gt;    &lt;chr&gt;
@@ -267,7 +247,23 @@ than or equal to <code>n</code>.</p></td>
 #&gt;  8 d    
 #&gt;  9 p    
 #&gt; 10 r    
-#&gt; # … with 536,519 more rows</div></pre>
+#&gt; # … with 536,519 more rows</div><div class='input'>
+<span class='no'>d</span> <span class='kw'>%&gt;%</span>
+  <span class='fu'>unnest_character_shingles</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>)</div><div class='output co'>#&gt; # A tibble: 536,527 x 1
+#&gt;    word 
+#&gt;    &lt;chr&gt;
+#&gt;  1 pri  
+#&gt;  2 rid  
+#&gt;  3 ide  
+#&gt;  4 dea  
+#&gt;  5 ean  
+#&gt;  6 and  
+#&gt;  7 ndp  
+#&gt;  8 dpr  
+#&gt;  9 pre  
+#&gt; 10 rej  
+#&gt; # … with 536,517 more rows</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
