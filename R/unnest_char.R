@@ -1,20 +1,20 @@
-#' Wrapper around unnest_tokens for n-grams
+#' Wrapper around unnest_tokens for characters and character shingles
 #'
-#' These functions are wrappers around `unnest_tokens( token = "ngrams" )`
-#' and `unnest_tokens( token = "skip_ngrams" )` .
+#' Thes functions are a wrapper around `unnest_tokens( token = "characters" )`
+#' and `unnest_tokens( token = "character_shingles" )`.
 #'
 #' @seealso
 #' + [unnest_tokens()]
 #'
-#' @inheritParams tokenizers::tokenize_ngrams
-#' @inheritParams tokenizers::tokenize_skip_ngrams
+#' @inheritParams tokenizers::tokenize_characters
+#' @inheritParams tokenizers::tokenize_character_shingles
 #' @inheritParams unnest_tokens
 #'
 #' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
 #'
 #' @export
-#' @rdname unnest_ngrams
 #' @importFrom dplyr enquo
+#' @rdname unnest_character
 #'
 #' @examples
 #' library(dplyr)
@@ -23,18 +23,16 @@
 #' d <- tibble(txt = prideprejudice)
 #'
 #' d %>%
-#'   unnest_ngrams(word, txt, n = 2)
+#'   unnest_characters(word, txt)
 #'
 #' d %>%
-#'   unnest_skip_ngrams(word, txt, n = 3, k = 1)
+#'   unnest_character_shingles(word, txt, n = 3)
 #'
-unnest_ngrams <- function(
+unnest_characters <- function(
   tbl,
   output,
   input,
-  n = 3L,
-  n_min = n,
-  ngram_delim = " ",
+  strip_non_alphanum = TRUE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -45,28 +43,27 @@ unnest_ngrams <- function(
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
+                token = "characters",
                 format = format,
                 to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                token = "ngrams",
-                n = n,
-                n_min = n_min,
-                ngram_delim = ngram_delim,
+                drop = to_lower,
+                collapse = to_lower,
+                strip_non_alphanum = strip_non_alphanum,
                 ...
   )
 }
 
 #' @export
-#' @rdname unnest_ngrams
 #' @importFrom dplyr enquo
-unnest_skip_ngrams <- function(
+#' @rdname unnest_character
+#'
+unnest_character_shingles <- function(
   tbl,
   output,
   input,
-  n_min = 1,
-  n = 3,
-  k = 1,
+  n = 3L,
+  n_min = n,
+  strip_non_alphanum = TRUE,
   format = c("text", "man", "latex", "html", "xml"),
   to_lower = TRUE,
   drop = TRUE,
@@ -77,14 +74,14 @@ unnest_skip_ngrams <- function(
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
+                token = "character_shingles",
                 format = format,
                 to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                token = "skip_ngrams",
+                drop = to_lower,
+                collapse = to_lower,
                 n = n,
                 n_min = n_min,
-                k = k,
+                strip_non_alphanum = strip_non_alphanum,
                 ...
   )
 }

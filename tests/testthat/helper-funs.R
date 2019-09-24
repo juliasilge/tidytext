@@ -17,5 +17,20 @@ skspr <- data.frame(
     "Made glorious summer by this sun of York;",
     "And all the clouds that lour'd upon our house",
     "In the deep bosom of the ocean buried."
-  )
+  ),
+  stringsAsFactors = FALSE
 )
+
+song_df <- data.frame(
+  id = 1:8,
+  txt = c("How many roads must a man walk down",
+          "Before you call him a man?",
+          "How many seas must a white dove sail",
+          "Before she sleeps in the sand?",
+          "How many times must the cannonballs fly",
+          "Before they're forever banned?",
+          "The answer, my friend, is blowin' in the wind.",
+          "The answer is blowin' in the wind."),
+  stringsAsFactors = FALSE
+)
+
