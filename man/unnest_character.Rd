@@ -40,10 +40,7 @@ if the original input and new output column have the same name.}
 when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".}
 
-\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}, such
-as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
-"ngrams" and "skip_ngrams", \code{strip_url} for "tweets", and
-\code{pattern} for "regex".}
+\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
 
 \item{n}{The number of characters in each shingle. This must be an integer
 greater than or equal to 1.}

@@ -10,6 +10,8 @@
 #' @inheritParams tokenizers::tokenize_character_shingles
 #' @inheritParams unnest_tokens
 #'
+#' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
+#'
 #' @export
 #' @importFrom dplyr enquo
 #' @rdname unnest_character
