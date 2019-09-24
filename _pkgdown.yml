@@ -9,6 +9,7 @@ reference:
   desc: ~
   contents:
   - '`unnest_tokens`'
+  - '`unnest_characters`'
   - '`unnest_ngrams`'
   - '`unnest_regex`'
   - '`unnest_tweets`'

@@ -3,16 +3,15 @@
 \name{unnest_characters}
 \alias{unnest_characters}
 \alias{unnest_character_shingles}
-\title{Wrapper around unnest_tokens & characters / character_shingles}
+\title{Wrapper around unnest_tokens for characters and character shingles}
 \usage{
 unnest_characters(tbl, output, input, strip_non_alphanum = TRUE,
-  simplify = FALSE, format = c("text", "man", "latex", "html", "xml"),
-  to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
+  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
+  drop = TRUE, collapse = NULL, ...)
 
 unnest_character_shingles(tbl, output, input, n = 3L, n_min = n,
-  strip_non_alphanum = TRUE, simplify = FALSE, format = c("text",
-  "man", "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
-  collapse = NULL, ...)
+  strip_non_alphanum = TRUE, format = c("text", "man", "latex", "html",
+  "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -25,11 +24,6 @@ The output/input arguments are passed by expression and support
 \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{strip_non_alphanum}{Should punctuation and white space be stripped?}
-
-\item{simplify}{\code{FALSE} by default so that a consistent value is
-returned regardless of length of input. If \code{TRUE}, then an input with
-a single element will return a character vector of tokens instead of a
-list.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
 this uses the hunspell tokenizer, and can tokenize only by "word"}
@@ -66,9 +60,13 @@ library(dplyr)
 library(janeaustenr)
 
 d <- tibble(txt = prideprejudice)
-d
+
 d \%>\%
   unnest_characters(word, txt)
+
+d \%>\%
+  unnest_character_shingles(word, txt, n = 3)
+
 }
 \seealso{
 \itemize{
