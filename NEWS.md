@@ -1,6 +1,6 @@
 # tidytext 0.2.3 [WIP]
 
-* Wrapper functions for n-gram tokenization thanks to @ColinFay (#148).
+* Wrapper tokenization functions for n-grams, characters, sentences, tweets, and more, thanks to @ColinFay (#148).
 * Simplify get_sentiments() thanks to @jennybc (#151).
 
 # tidytext 0.2.2
