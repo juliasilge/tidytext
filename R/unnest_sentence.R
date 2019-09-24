@@ -7,8 +7,9 @@
 #' + [unnest_tokens()]
 #'
 #' @inheritParams unnest_tokens
-#' @inheritParams tokenizers::tokenize_ngrams
-#' @inheritParams tokenizers::tokenize_skip_ngrams
+#' @inheritParams tokenizers::tokenize_sentences
+#' @inheritParams tokenizers::tokenize_lines
+#' @inheritParams tokenizers::tokenize_paragraphs
 #'
 #' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
 #'

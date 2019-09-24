@@ -27,6 +27,8 @@ unnest_paragraphs(tbl, output, input, paragraph_break = "\\n\\n",
 The output/input arguments are passed by expression and support
 \link[rlang]{quasiquotation}; you can unquote strings and symbols.}
 
+\item{strip_punct}{Should punctuation be stripped?}
+
 \item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
 this uses the hunspell tokenizer, and can tokenize only by "word"}
 
@@ -43,6 +45,9 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 "paragraphs", or "regex".}
 
 \item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
+
+\item{paragraph_break}{A string identifying the boundary between two
+paragraphs.}
 }
 \description{
 These functions are wrappers around \code{unnest_tokens( token = "sentences" )}
