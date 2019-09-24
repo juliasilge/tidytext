@@ -208,20 +208,8 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>janeaustenr</span>)
 
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
-<span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
-#&gt;    txt                                                                    
-#&gt;    &lt;chr&gt;                                                                  
-#&gt;  1 PRIDE AND PREJUDICE                                                    
-#&gt;  2 ""                                                                     
-#&gt;  3 By Jane Austen                                                         
-#&gt;  4 ""                                                                     
-#&gt;  5 ""                                                                     
-#&gt;  6 ""                                                                     
-#&gt;  7 Chapter 1                                                              
-#&gt;  8 ""                                                                     
-#&gt;  9 ""                                                                     
-#&gt; 10 It is a truth universally acknowledged, that a single man in possession
-#&gt; # … with 13,020 more rows</div><div class='input'><span class='no'>d</span> <span class='kw'>%&gt;%</span>
+
+<span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_ptb</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 141,310 x 1
 #&gt;    word     
 #&gt;    &lt;chr&gt;    
