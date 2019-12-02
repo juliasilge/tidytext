@@ -35,7 +35,9 @@ test_that("Can tidy corpus from quanteda using accessor functions", {
     x <- quanteda::data_corpus_inaugural
 
     ## old method
-    ret_old <- tbl_df(x$documents) %>%
+    ret_old <- tbl_df(data.frame(texts = quanteda::texts(x),
+                                 quanteda::docvars(x),
+                                 stringsAsFactors = FALSE)) %>%
       rename(text = texts)
 
     ## new method
@@ -51,7 +53,7 @@ test_that("Can glance a corpus from quanteda using accessor functions", {
 
     ## old method
     glance_old <- function(x, ...) {
-      md <- purrr::compact(x$metadata)
+      md <- purrr::compact(quanteda::metacorpus(x))
       # turn vectors into list columns
       md <- purrr::map_if(md, ~ length(.) > 1, list)
       as_tibble(md)
