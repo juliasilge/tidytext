@@ -20,7 +20,7 @@
 #' d <- tibble(txt = prideprejudice)
 #'
 #' d %>%
-#'   unnest_regex(word, txt, pattern = "Chapter [\\d]")
+#'   unnest_regex(word, txt, pattern = "Chapter [\\\\d]")
 #'
 unnest_regex <- function(
   tbl,
