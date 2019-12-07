@@ -101,7 +101,7 @@
       <h1>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2019-11-02</h4>
+            <h4 class="date">2019-12-07</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/master/vignettes/tidying_casting.Rmd"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -271,31 +271,31 @@
 <div class="sourceCode" id="cb27"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb27-1" data-line-number="1">reuters_td &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(reuters)</a>
 <a class="sourceLine" id="cb27-2" data-line-number="2">reuters_td</a></code></pre></div>
 <pre><code>## # A tibble: 20 x 17
-##    author datetimestamp       description heading id    language origin
-##    &lt;chr&gt;  &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt; 
-##  1 &lt;NA&gt;   1987-02-26 17:00:56 ""          DIAMON… 127   en       Reute…
-##  2 BY TE… 1987-02-26 17:34:11 ""          OPEC M… 144   en       Reute…
-##  3 &lt;NA&gt;   1987-02-26 18:18:00 ""          TEXACO… 191   en       Reute…
-##  4 &lt;NA&gt;   1987-02-26 18:21:01 ""          MARATH… 194   en       Reute…
-##  5 &lt;NA&gt;   1987-02-26 19:00:57 ""          HOUSTO… 211   en       Reute…
-##  6 &lt;NA&gt;   1987-03-01 03:25:46 ""          KUWAIT… 236   en       Reute…
-##  7 By Je… 1987-03-01 03:39:14 ""          INDONE… 237   en       Reute…
-##  8 &lt;NA&gt;   1987-03-01 05:27:27 ""          SAUDI … 242   en       Reute…
-##  9 &lt;NA&gt;   1987-03-01 08:22:30 ""          QATAR … 246   en       Reute…
-## 10 &lt;NA&gt;   1987-03-01 18:31:44 ""          SAUDI … 248   en       Reute…
-## 11 &lt;NA&gt;   1987-03-02 01:05:49 ""          SAUDI … 273   en       Reute…
-## 12 &lt;NA&gt;   1987-03-02 07:39:23 ""          GULF A… 349   en       Reute…
-## 13 &lt;NA&gt;   1987-03-02 07:43:22 ""          SAUDI … 352   en       Reute…
-## 14 &lt;NA&gt;   1987-03-02 07:43:41 ""          KUWAIT… 353   en       Reute…
-## 15 &lt;NA&gt;   1987-03-02 08:25:42 ""          PHILAD… 368   en       Reute…
-## 16 &lt;NA&gt;   1987-03-02 11:20:05 ""          STUDY … 489   en       Reute…
-## 17 &lt;NA&gt;   1987-03-02 11:28:26 ""          STUDY … 502   en       Reute…
-## 18 &lt;NA&gt;   1987-03-02 12:13:46 ""          UNOCAL… 543   en       Reute…
-## 19 By BE… 1987-03-02 14:38:34 ""          NYMEX … 704   en       Reute…
-## 20 &lt;NA&gt;   1987-03-02 14:49:06 ""          ARGENT… 708   en       Reute…
-## # … with 10 more variables: topics &lt;chr&gt;, lewissplit &lt;chr&gt;,
-## #   cgisplit &lt;chr&gt;, oldid &lt;chr&gt;, topics_cat &lt;named list&gt;, places &lt;named
-## #   list&gt;, people &lt;chr&gt;, orgs &lt;chr&gt;, exchanges &lt;chr&gt;, text &lt;chr&gt;</code></pre>
+##    author datetimestamp       description heading id    language origin topics
+##    &lt;chr&gt;  &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; 
+##  1 &lt;NA&gt;   1987-02-26 17:00:56 ""          DIAMON… 127   en       Reute… YES   
+##  2 BY TE… 1987-02-26 17:34:11 ""          OPEC M… 144   en       Reute… YES   
+##  3 &lt;NA&gt;   1987-02-26 18:18:00 ""          TEXACO… 191   en       Reute… YES   
+##  4 &lt;NA&gt;   1987-02-26 18:21:01 ""          MARATH… 194   en       Reute… YES   
+##  5 &lt;NA&gt;   1987-02-26 19:00:57 ""          HOUSTO… 211   en       Reute… YES   
+##  6 &lt;NA&gt;   1987-03-01 03:25:46 ""          KUWAIT… 236   en       Reute… YES   
+##  7 By Je… 1987-03-01 03:39:14 ""          INDONE… 237   en       Reute… YES   
+##  8 &lt;NA&gt;   1987-03-01 05:27:27 ""          SAUDI … 242   en       Reute… YES   
+##  9 &lt;NA&gt;   1987-03-01 08:22:30 ""          QATAR … 246   en       Reute… YES   
+## 10 &lt;NA&gt;   1987-03-01 18:31:44 ""          SAUDI … 248   en       Reute… YES   
+## 11 &lt;NA&gt;   1987-03-02 01:05:49 ""          SAUDI … 273   en       Reute… YES   
+## 12 &lt;NA&gt;   1987-03-02 07:39:23 ""          GULF A… 349   en       Reute… YES   
+## 13 &lt;NA&gt;   1987-03-02 07:43:22 ""          SAUDI … 352   en       Reute… YES   
+## 14 &lt;NA&gt;   1987-03-02 07:43:41 ""          KUWAIT… 353   en       Reute… YES   
+## 15 &lt;NA&gt;   1987-03-02 08:25:42 ""          PHILAD… 368   en       Reute… YES   
+## 16 &lt;NA&gt;   1987-03-02 11:20:05 ""          STUDY … 489   en       Reute… YES   
+## 17 &lt;NA&gt;   1987-03-02 11:28:26 ""          STUDY … 502   en       Reute… YES   
+## 18 &lt;NA&gt;   1987-03-02 12:13:46 ""          UNOCAL… 543   en       Reute… YES   
+## 19 By BE… 1987-03-02 14:38:34 ""          NYMEX … 704   en       Reute… YES   
+## 20 &lt;NA&gt;   1987-03-02 14:49:06 ""          ARGENT… 708   en       Reute… YES   
+## # … with 9 more variables: lewissplit &lt;chr&gt;, cgisplit &lt;chr&gt;, oldid &lt;chr&gt;,
+## #   topics_cat &lt;named list&gt;, places &lt;named list&gt;, people &lt;chr&gt;, orgs &lt;chr&gt;,
+## #   exchanges &lt;chr&gt;, text &lt;chr&gt;</code></pre>
 <p>Similarly, you can <code>tidy</code> a <code>corpus</code> object from the quanteda package:</p>
 <div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(quanteda)</a>
 <a class="sourceLine" id="cb29-2" data-line-number="2"></a>
@@ -306,18 +306,18 @@
 <div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb31-1" data-line-number="1">inaug_td &lt;-<span class="st"> </span><span class="kw"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(data_corpus_inaugural)</a>
 <a class="sourceLine" id="cb31-2" data-line-number="2">inaug_td</a></code></pre></div>
 <pre><code>## # A tibble: 58 x 4
-##    text                                           Year President FirstName 
-##    &lt;chr&gt;                                         &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     
-##  1 "Fellow-Citizens of the Senate and of the Ho…  1789 Washingt… George    
-##  2 "Fellow citizens, I am again called upon by …  1793 Washingt… George    
-##  3 "When it was first perceived, in early times…  1797 Adams     John      
-##  4 "Friends and Fellow Citizens:\n\nCalled upon…  1801 Jefferson Thomas    
-##  5 "Proceeding, fellow citizens, to that qualif…  1805 Jefferson Thomas    
-##  6 "Unwilling to depart from examples of the mo…  1809 Madison   James     
-##  7 "About to add the solemnity of an oath to th…  1813 Madison   James     
-##  8 "I should be destitute of feeling if I was n…  1817 Monroe    James     
-##  9 "Fellow citizens, I shall not attempt to des…  1821 Monroe    James     
-## 10 "In compliance with an usage coeval with the…  1825 Adams     John Quin…
+##    text                                                Year President FirstName 
+##    &lt;chr&gt;                                              &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;     
+##  1 "Fellow-Citizens of the Senate and of the House o…  1789 Washingt… George    
+##  2 "Fellow citizens, I am again called upon by the v…  1793 Washingt… George    
+##  3 "When it was first perceived, in early times, tha…  1797 Adams     John      
+##  4 "Friends and Fellow Citizens:\n\nCalled upon to u…  1801 Jefferson Thomas    
+##  5 "Proceeding, fellow citizens, to that qualificati…  1805 Jefferson Thomas    
+##  6 "Unwilling to depart from examples of the most re…  1809 Madison   James     
+##  7 "About to add the solemnity of an oath to the obl…  1813 Madison   James     
+##  8 "I should be destitute of feeling if I was not de…  1817 Monroe    James     
+##  9 "Fellow citizens, I shall not attempt to describe…  1821 Monroe    James     
+## 10 "In compliance with an usage coeval with the exis…  1825 Adams     John Quin…
 ## # … with 48 more rows</code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to analyze the text alongside the metadata.</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" data-line-number="1">inaug_words &lt;-<span class="st"> </span>inaug_td <span class="op">%&gt;%</span></a>
@@ -428,7 +428,7 @@
 <a class="sourceLine" id="cb42-7" data-line-number="7"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb42-8" data-line-number="8"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span>() <span class="op">+</span></a>
 <a class="sourceLine" id="cb42-9" data-line-number="9"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span><span class="st"> </span>word) <span class="op">+</span></a>
-<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="https://scales.r-lib.org//reference/number_format.html">percent_format</a></span>()) <span class="op">+</span></a>
+<a class="sourceLine" id="cb42-10" data-line-number="10"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="dt">labels =</span> <span class="kw"><a href="https://scales.r-lib.org//reference/label_percent.html">percent_format</a></span>()) <span class="op">+</span></a>
 <a class="sourceLine" id="cb42-11" data-line-number="11"><span class="st">  </span><span class="kw"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Frequency of word in speech"</span>)</a></code></pre></div>
 <p><img src="tidying_casting_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
 </div>
