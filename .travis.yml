@@ -3,12 +3,6 @@ cache: packages
 sudo: false
 warnings_are_errors: true
 
-matrix:
-  include:
-  - r: release
-  - r: oldrel
-    env: _R_CHECK_FORCE_SUGGESTS_=false
-
 addons:
   apt:
     packages:
@@ -19,12 +13,16 @@ r_packages:
   - covr
   - data.table # so data.table tests will get checked
 
-after_success:
-  - Rscript -e 'covr::codecov(coverage = covr::package_coverage(line_exclusions = list("R/compat_lazyeval.R")))'
-
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-
-deploy:
-  provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github()'
-  skip_cleanup: true
+matrix:
+  include:
+  - r: release
+    after_success:
+    - Rscript -e 'covr::codecov(coverage = covr::package_coverage(line_exclusions = list("R/compat_lazyeval.R")))'
+    before_cache: 
+    - Rscript -e 'remotes::install_cran("pkgdown")'
+    deploy:
+      provider: script
+      script: Rscript -e 'pkgdown::deploy_site_github(verbose = TRUE)'
+      skip_cleanup: true
+  - r: oldrel
+    env: _R_CHECK_FORCE_SUGGESTS_=false
