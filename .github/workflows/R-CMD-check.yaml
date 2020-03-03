@@ -35,6 +35,10 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
+      - name: Configure Java on Linux
+        if: runner.os == 'Linux'
+        run: sudo R CMD javareconf
+
       - uses: r-lib/actions/setup-pandoc@master
 
       - name: Install XQuartz on MacOS
