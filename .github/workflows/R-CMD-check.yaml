@@ -39,10 +39,6 @@ jobs:
         with:
           java-version: '9.0.4'
 
-      - name: Configure Java on Linux
-        if: runner.os == 'Linux'
-        run: sudo R CMD javareconf
-
       - uses: r-lib/actions/setup-pandoc@master
 
       - name: Install XQuartz on MacOS
