@@ -8,6 +8,7 @@
 **Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
 
+[![R build status](https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg)](https://github.com/juliasilge/tidytext/actions)
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
 [![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/juliasilge/tidytext?branch=master&svg=true)](https://ci.appveyor.com/project/juliasilge/tidytext)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
@@ -56,18 +57,18 @@ original_books <- austen_books() %>%
 
 original_books
 #> # A tibble: 73,422 x 3
-#>    text                  book                 line
-#>    <chr>                 <fct>               <int>
-#>  1 SENSE AND SENSIBILITY Sense & Sensibility     1
-#>  2 ""                    Sense & Sensibility     2
-#>  3 by Jane Austen        Sense & Sensibility     3
-#>  4 ""                    Sense & Sensibility     4
-#>  5 (1811)                Sense & Sensibility     5
-#>  6 ""                    Sense & Sensibility     6
-#>  7 ""                    Sense & Sensibility     7
-#>  8 ""                    Sense & Sensibility     8
-#>  9 ""                    Sense & Sensibility     9
-#> 10 CHAPTER 1             Sense & Sensibility    10
+#>    text                    book                 line
+#>    <chr>                   <fct>               <int>
+#>  1 "SENSE AND SENSIBILITY" Sense & Sensibility     1
+#>  2 ""                      Sense & Sensibility     2
+#>  3 "by Jane Austen"        Sense & Sensibility     3
+#>  4 ""                      Sense & Sensibility     4
+#>  5 "(1811)"                Sense & Sensibility     5
+#>  6 ""                      Sense & Sensibility     6
+#>  7 ""                      Sense & Sensibility     7
+#>  8 ""                      Sense & Sensibility     8
+#>  9 ""                      Sense & Sensibility     9
+#> 10 "CHAPTER 1"             Sense & Sensibility    10
 #> # … with 73,412 more rows
 ```
 

@@ -5,13 +5,33 @@
 \alias{unnest_skip_ngrams}
 \title{Wrapper around unnest_tokens for n-grams}
 \usage{
-unnest_ngrams(tbl, output, input, n = 3L, n_min = n,
-  ngram_delim = " ", format = c("text", "man", "latex", "html", "xml"),
-  to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
+unnest_ngrams(
+  tbl,
+  output,
+  input,
+  n = 3L,
+  n_min = n,
+  ngram_delim = " ",
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 
-unnest_skip_ngrams(tbl, output, input, n_min = 1, n = 3, k = 1,
-  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
+unnest_skip_ngrams(
+  tbl,
+  output,
+  input,
+  n_min = 1,
+  n = 3,
+  k = 1,
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 }
 \arguments{
 \item{tbl}{A data frame}

@@ -18,8 +18,7 @@ from the tm package}
 
 \method{tidy}{dfmSparse}(x, ...)
 
-\method{tidy}{simple_triplet_matrix}(x, row_names = NULL,
-  col_names = NULL, ...)
+\method{tidy}{simple_triplet_matrix}(x, row_names = NULL, col_names = NULL, ...)
 }
 \arguments{
 \item{x}{A DocumentTermMatrix or TermDocumentMatrix object}

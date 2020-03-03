@@ -4,9 +4,17 @@
 \alias{unnest_regex}
 \title{Wrapper around unnest_tokens for regular expressions}
 \usage{
-unnest_regex(tbl, output, input, pattern = "\\\\s+", format = c("text",
-  "man", "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
-  collapse = NULL, ...)
+unnest_regex(
+  tbl,
+  output,
+  input,
+  pattern = "\\\\s+",
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -47,7 +55,7 @@ library(janeaustenr)
 d <- tibble(txt = prideprejudice)
 
 d \%>\%
-  unnest_regex(word, txt, pattern = "Chapter [\\\\d]")
+  unnest_regex(word, txt, pattern = "Chapter [\\\\\\\\d]")
 
 }
 \seealso{

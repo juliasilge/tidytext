@@ -5,13 +5,31 @@
 \alias{unnest_character_shingles}
 \title{Wrapper around unnest_tokens for characters and character shingles}
 \usage{
-unnest_characters(tbl, output, input, strip_non_alphanum = TRUE,
-  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
+unnest_characters(
+  tbl,
+  output,
+  input,
+  strip_non_alphanum = TRUE,
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 
-unnest_character_shingles(tbl, output, input, n = 3L, n_min = n,
-  strip_non_alphanum = TRUE, format = c("text", "man", "latex", "html",
-  "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
+unnest_character_shingles(
+  tbl,
+  output,
+  input,
+  n = 3L,
+  n_min = n,
+  strip_non_alphanum = TRUE,
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 }
 \arguments{
 \item{tbl}{A data frame}

@@ -4,8 +4,16 @@
 \alias{unnest_ptb}
 \title{Wrapper around unnest_tokens for Penn Treebank Tokenizer}
 \usage{
-unnest_ptb(tbl, output, input, format = c("text", "man", "latex", "html",
-  "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
+unnest_ptb(
+  tbl,
+  output,
+  input,
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 }
 \arguments{
 \item{tbl}{A data frame}

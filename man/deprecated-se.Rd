@@ -21,9 +21,17 @@ cast_dtm_(data, document, term, value, weighting = tm::weightTf, ...)
 
 cast_dfm_(data, document, term, value, ...)
 
-unnest_tokens_(tbl, output, input, token = "words", format = c("text",
-  "man", "latex", "html", "xml"), to_lower = TRUE, drop = TRUE,
-  collapse = NULL, ...)
+unnest_tokens_(
+  tbl,
+  output,
+  input,
+  token = "words",
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 }
 \arguments{
 \item{tbl}{A data frame.}

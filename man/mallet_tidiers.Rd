@@ -6,8 +6,14 @@
 \alias{augment.jobjRef}
 \title{Tidiers for Latent Dirichlet Allocation models from the mallet package}
 \usage{
-\method{tidy}{jobjRef}(x, matrix = c("beta", "gamma"), log = FALSE,
-  normalized = TRUE, smoothed = TRUE, ...)
+\method{tidy}{jobjRef}(
+  x,
+  matrix = c("beta", "gamma"),
+  log = FALSE,
+  normalized = TRUE,
+  smoothed = TRUE,
+  ...
+)
 
 \method{augment}{jobjRef}(x, data, ...)
 }

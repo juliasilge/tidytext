@@ -4,9 +4,18 @@
 \alias{unnest_tweets}
 \title{Wrapper around unnest_tokens for tweets}
 \usage{
-unnest_tweets(tbl, output, input, strip_punct = TRUE,
-  strip_url = FALSE, format = c("text", "man", "latex", "html", "xml"),
-  to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
+unnest_tweets(
+  tbl,
+  output,
+  input,
+  strip_punct = TRUE,
+  strip_url = FALSE,
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 }
 \arguments{
 \item{tbl}{A data frame}

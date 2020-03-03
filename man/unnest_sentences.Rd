@@ -6,16 +6,40 @@
 \alias{unnest_paragraphs}
 \title{Wrapper around unnest_tokens for sentences, lines, and paragraphs}
 \usage{
-unnest_sentences(tbl, output, input, strip_punct = FALSE,
-  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
+unnest_sentences(
+  tbl,
+  output,
+  input,
+  strip_punct = FALSE,
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 
-unnest_lines(tbl, output, input, format = c("text", "man", "latex",
-  "html", "xml"), to_lower = TRUE, drop = TRUE, collapse = NULL, ...)
+unnest_lines(
+  tbl,
+  output,
+  input,
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 
-unnest_paragraphs(tbl, output, input, paragraph_break = "\\n\\n",
-  format = c("text", "man", "latex", "html", "xml"), to_lower = TRUE,
-  drop = TRUE, collapse = NULL, ...)
+unnest_paragraphs(
+  tbl,
+  output,
+  input,
+  paragraph_break = "\\n\\n",
+  format = c("text", "man", "latex", "html", "xml"),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+)
 }
 \arguments{
 \item{tbl}{A data frame}

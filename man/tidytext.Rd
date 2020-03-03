@@ -3,7 +3,6 @@
 \docType{package}
 \name{tidytext}
 \alias{tidytext}
-\alias{tidytext-package}
 \title{tidytext: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools}
 \description{
 This package implements tidy data principles to make many text mining tasks easier,
