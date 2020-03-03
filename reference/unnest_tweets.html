@@ -146,9 +146,18 @@
     <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "tweets" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest_tweets</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>strip_punct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>strip_url</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
-  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest_tweets</span>(
+  <span class='no'>tbl</span>,
+  <span class='no'>output</span>,
+  <span class='no'>input</span>,
+  <span class='kw'>strip_punct</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>strip_url</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

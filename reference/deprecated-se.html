@@ -172,9 +172,17 @@ Thus, the underscored versions are now superfluous.</p>
 
 <span class='fu'>cast_dfm_</span>(<span class='no'>data</span>, <span class='no'>document</span>, <span class='no'>term</span>, <span class='no'>value</span>, <span class='no'>...</span>)
 
-<span class='fu'>unnest_tokens_</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>,
-  <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+<span class='fu'>unnest_tokens_</span>(
+  <span class='no'>tbl</span>,
+  <span class='no'>output</span>,
+  <span class='no'>input</span>,
+  <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">

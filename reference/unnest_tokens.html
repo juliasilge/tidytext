@@ -150,9 +150,17 @@ into one-token-per-row. This function supports non-standard evaluation
 through the tidyeval framework.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest_tokens</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>,
-  <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest_tokens</span>(
+  <span class='no'>tbl</span>,
+  <span class='no'>output</span>,
+  <span class='no'>input</span>,
+  <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -228,18 +236,18 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
 <span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
-#&gt;    txt                                                                    
-#&gt;    &lt;chr&gt;                                                                  
-#&gt;  1 PRIDE AND PREJUDICE                                                    
-#&gt;  2 ""                                                                     
-#&gt;  3 By Jane Austen                                                         
-#&gt;  4 ""                                                                     
-#&gt;  5 ""                                                                     
-#&gt;  6 ""                                                                     
-#&gt;  7 Chapter 1                                                              
-#&gt;  8 ""                                                                     
-#&gt;  9 ""                                                                     
-#&gt; 10 It is a truth universally acknowledged, that a single man in possession
+#&gt;    txt                                                                      
+#&gt;    &lt;chr&gt;                                                                    
+#&gt;  1 "PRIDE AND PREJUDICE"                                                    
+#&gt;  2 ""                                                                       
+#&gt;  3 "By Jane Austen"                                                         
+#&gt;  4 ""                                                                       
+#&gt;  5 ""                                                                       
+#&gt;  6 ""                                                                       
+#&gt;  7 "Chapter 1"                                                              
+#&gt;  8 ""                                                                       
+#&gt;  9 ""                                                                       
+#&gt; 10 "It is a truth universally acknowledged, that a single man in possession"
 #&gt; # … with 13,020 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 122,204 x 1
@@ -260,16 +268,16 @@ This does not yet have support for tokenizing by any unit other than words.</p>
   <span class='fu'>unnest_tokens</span>(<span class='no'>sentence</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"sentences"</span>)</div><div class='output co'>#&gt; # A tibble: 7,066 x 1
 #&gt;    sentence                                                                     
 #&gt;    &lt;chr&gt;                                                                        
-#&gt;  1 pride and prejudice  by jane austen    chapter 1   it is a truth universally…
-#&gt;  2 however little known the feelings or views of such a man may be on his first…
+#&gt;  1 "pride and prejudice  by jane austen    chapter 1   it is a truth universall…
+#&gt;  2 "however little known the feelings or views of such a man may be on his firs…
 #&gt;  3 "\"my dear mr."                                                              
 #&gt;  4 "bennet,\" said his lady to him one day, \"have you heard that netherfield p…
-#&gt;  5 mr.                                                                          
-#&gt;  6 bennet replied that he had not.                                              
+#&gt;  5 "mr."                                                                        
+#&gt;  6 "bennet replied that he had not."                                            
 #&gt;  7 "\"but it is,\" returned she; \"for mrs."                                    
 #&gt;  8 "long has just been here, and she told me all about it.\""                   
-#&gt;  9 mr.                                                                          
-#&gt; 10 bennet made no answer.                                                       
+#&gt;  9 "mr."                                                                        
+#&gt; 10 "bennet made no answer."                                                     
 #&gt; # … with 7,056 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>ngram</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"ngrams"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 122,203 x 1
@@ -287,20 +295,10 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; 10 is a          
 #&gt; # … with 122,193 more rows</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>chapter</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"regex"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Chapter [\\d]"</span>)</div><div class='output co'>#&gt; # A tibble: 62 x 1
-#&gt;    chapter                                                                      
-#&gt;    &lt;chr&gt;                                                                        
-#&gt;  1 "pride and prejudice\n\nby jane austen\n\n\n\n"                              
-#&gt;  2 "\n\n\nit is a truth universally acknowledged, that a single man in possessi…
-#&gt;  3 "\n\n\nmr. bennet was among the earliest of those who waited on mr. bingley.…
-#&gt;  4 "\n\n\nnot all that mrs. bennet, however, with the assistance of her five\nd…
-#&gt;  5 "\n\n\nwhen jane and elizabeth were alone, the former, who had been cautious…
-#&gt;  6 "\n\n\nwithin a short walk of longbourn lived a family with whom the bennets…
-#&gt;  7 "\n\n\nthe ladies of longbourn soon waited on those of netherfield. the visi…
-#&gt;  8 "\n\n\nmr. bennet's property consisted almost entirely in an estate of two\n…
-#&gt;  9 "\n\n\nat five o'clock the two ladies retired to dress, and at half-past six…
-#&gt; 10 "\n\n\nelizabeth passed the chief of the night in her sister's room, and in …
-#&gt; # … with 52 more rows</div><div class='input'>
+  <span class='fu'>unnest_tokens</span>(<span class='no'>chapter</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"regex"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Chapter [\\\\d]"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 1
+#&gt;   chapter                                                                       
+#&gt;   &lt;chr&gt;                                                                         
+#&gt; 1 "pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>shingle</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"character_shingles"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; # A tibble: 536,526 x 1
 #&gt;    shingle
@@ -319,18 +317,18 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class='co'># custom function</span>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_split.html'>str_split</a></span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; # A tibble: 124,032 x 1
-#&gt;    word     
-#&gt;    &lt;chr&gt;    
-#&gt;  1 pride    
-#&gt;  2 and      
-#&gt;  3 prejudice
-#&gt;  4 ""       
-#&gt;  5 by       
-#&gt;  6 jane     
-#&gt;  7 austen   
-#&gt;  8 ""       
-#&gt;  9 ""       
-#&gt; 10 ""       
+#&gt;    word       
+#&gt;    &lt;chr&gt;      
+#&gt;  1 "pride"    
+#&gt;  2 "and"      
+#&gt;  3 "prejudice"
+#&gt;  4 ""         
+#&gt;  5 "by"       
+#&gt;  6 "jane"     
+#&gt;  7 "austen"   
+#&gt;  8 ""         
+#&gt;  9 ""         
+#&gt; 10 ""         
 #&gt; # … with 124,022 more rows</div><div class='input'>
 <span class='co'># tokenize HTML</span>
 <span class='no'>h</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>,

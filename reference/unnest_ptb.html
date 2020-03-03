@@ -146,8 +146,16 @@
     <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "ptb" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest_ptb</span>(<span class='no'>tbl</span>, <span class='no'>output</span>, <span class='no'>input</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>,
-  <span class='st'>"xml"</span>), <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>unnest_ptb</span>(
+  <span class='no'>tbl</span>,
+  <span class='no'>output</span>,
+  <span class='no'>input</span>,
+  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
+  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='no'>...</span>
+)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -211,18 +219,18 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
   <span class='fu'>unnest_ptb</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 141,310 x 1
-#&gt;    word     
-#&gt;    &lt;chr&gt;    
-#&gt;  1 pride    
-#&gt;  2 and      
-#&gt;  3 prejudice
-#&gt;  4 ""       
-#&gt;  5 by       
-#&gt;  6 jane     
-#&gt;  7 austen   
-#&gt;  8 ""       
-#&gt;  9 ""       
-#&gt; 10 ""       
+#&gt;    word       
+#&gt;    &lt;chr&gt;      
+#&gt;  1 "pride"    
+#&gt;  2 "and"      
+#&gt;  3 "prejudice"
+#&gt;  4 ""         
+#&gt;  5 "by"       
+#&gt;  6 "jane"     
+#&gt;  7 "austen"   
+#&gt;  8 ""         
+#&gt;  9 ""         
+#&gt; 10 ""         
 #&gt; # … with 141,300 more rows</div><div class='input'>
 </div></pre>
   </div>

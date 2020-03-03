@@ -101,7 +101,7 @@
       <h1>Introduction to tidytext</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2019-12-12</h4>
+            <h4 class="date">2020-03-03</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/master/vignettes/tidytext.Rmd"><code>vignettes/tidytext.Rmd</code></a></small>
       <div class="hidden name"><code>tidytext.Rmd</code></div>
@@ -132,18 +132,18 @@
 <a class="sourceLine" id="cb1-11" data-line-number="11"></a>
 <a class="sourceLine" id="cb1-12" data-line-number="12">original_books</a></code></pre></div>
 <pre><code>## # A tibble: 73,422 x 4
-##    text                  book                 line chapter
-##    &lt;chr&gt;                 &lt;fct&gt;               &lt;int&gt;   &lt;int&gt;
-##  1 SENSE AND SENSIBILITY Sense &amp; Sensibility     1       0
-##  2 ""                    Sense &amp; Sensibility     2       0
-##  3 by Jane Austen        Sense &amp; Sensibility     3       0
-##  4 ""                    Sense &amp; Sensibility     4       0
-##  5 (1811)                Sense &amp; Sensibility     5       0
-##  6 ""                    Sense &amp; Sensibility     6       0
-##  7 ""                    Sense &amp; Sensibility     7       0
-##  8 ""                    Sense &amp; Sensibility     8       0
-##  9 ""                    Sense &amp; Sensibility     9       0
-## 10 CHAPTER 1             Sense &amp; Sensibility    10       1
+##    text                    book                 line chapter
+##    &lt;chr&gt;                   &lt;fct&gt;               &lt;int&gt;   &lt;int&gt;
+##  1 "SENSE AND SENSIBILITY" Sense &amp; Sensibility     1       0
+##  2 ""                      Sense &amp; Sensibility     2       0
+##  3 "by Jane Austen"        Sense &amp; Sensibility     3       0
+##  4 ""                      Sense &amp; Sensibility     4       0
+##  5 "(1811)"                Sense &amp; Sensibility     5       0
+##  6 ""                      Sense &amp; Sensibility     6       0
+##  7 ""                      Sense &amp; Sensibility     7       0
+##  8 ""                      Sense &amp; Sensibility     8       0
+##  9 ""                      Sense &amp; Sensibility     9       0
+## 10 "CHAPTER 1"             Sense &amp; Sensibility    10       1
 ## # … with 73,412 more rows</code></pre>
 <p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code>unnest_tokens</code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" data-line-number="1"><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span>(tidytext)</a>
