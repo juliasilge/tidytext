@@ -4,8 +4,9 @@ test_that("Can tidy corpus from tm package", {
   skip_if_not_installed("tm")
   # tm package examples
   txt <- system.file("texts", "txt", package = "tm")
-  ovid <- VCorpus(DirSource(txt, encoding = "UTF-8"),
-                  readerControl = list(language = "lat")
+  ovid <- tm::VCorpus(
+    tm::DirSource(txt, encoding = "UTF-8"),
+    readerControl = list(language = "lat")
   )
 
   td <- tidy(ovid, collapse = " ")
@@ -32,11 +33,10 @@ test_that("Can tidy corpus from quanteda using accessor functions", {
   skip_if_not_installed("quanteda")
   x <- quanteda::data_corpus_inaugural
 
-  ## old method
-  ret_old <- tibble(data.frame(texts = quanteda::texts(x),
-                               quanteda::docvars(x),
-                               stringsAsFactors = FALSE)) %>%
-    rename(text = texts)
+  ## similar to old method
+  ret_old <- as_tibble(quanteda::docvars(x)) %>%
+    mutate(text = unname(quanteda::texts(x))) %>%
+    select(text, everything())
 
   ## new method
   ret_new <- tidy(x)
