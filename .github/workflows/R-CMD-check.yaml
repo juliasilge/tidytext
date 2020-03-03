@@ -35,6 +35,10 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
+      - uses: actions/setup-java@v1
+        with:
+          java-version: '9.0.4'
+
       - name: Configure Java on Linux
         if: runner.os == 'Linux'
         run: sudo R CMD javareconf
