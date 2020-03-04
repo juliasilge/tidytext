@@ -68,7 +68,7 @@ get_sentiments <- function(lexicon = c("bing", "afinn", "loughran", "nrc")) {
     afinn    = textdata::lexicon_afinn(),
     nrc      = textdata::lexicon_nrc(),
     loughran = textdata::lexicon_loughran(),
-    bing     = sentiments,
+    bing     = tidytext::sentiments,
     stop("Unexpected lexicon", call. = FALSE)
   )
 }
