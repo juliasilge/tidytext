@@ -40,6 +40,10 @@ jobs:
         if: runner.os == 'macOS'
         run: brew cask install xquartz
 
+      - name: Install GSL on MacOS
+        if: runner.os == 'macOS'
+        run: brew install gsl
+
       - name: Query dependencies
         run: |
           install.packages('remotes')
