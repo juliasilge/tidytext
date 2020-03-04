@@ -12,6 +12,15 @@ This is the 13th CRAN release of tidytext. The most important change in this rel
 
 0 errors | 0 warnings | 0 notes
 
-## Downstream dependencies
+## revdepcheck results
 
-I ran R CMD check on the 22 downstream dependencies (results at https://github.com/juliasilge/tidytext/tree/master/revdep) and there were no problems related to tidytext.
+I checked 20 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+
+ * I saw 0 new problems
+ * I failed to check 1 packages
+
+Issues with CRAN packages are summarised below.
+
+### Failed to check
+
+* quanteda (NA)
