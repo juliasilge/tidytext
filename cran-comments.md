@@ -1,12 +1,12 @@
 ## Release Summary
 
-This is the 13th CRAN release of tidytext. The most important change in this release is adding access to the NRC word-emotion association lexicon. 
+This is the 14th CRAN release of tidytext. This release fixes a flaky test that was causing errors for some OS + R version combinations, and includes new wrapper functions for tokenization and a simpler get_sentiments(). 
 
 ## Test environments
 
-* Local OS X install, R 3.6.0
-* Ubuntu 14.04 (on Travis-CI), R 3.6.0 and R 3.5.3
-* Win-builder (devel and release)
+* local OS X install: release
+* travis-ci ubuntu 14.04: devel, release, oldrel
+* win-builder: devel, release
 
 ## R CMD check results
 
