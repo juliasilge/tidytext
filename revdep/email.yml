@@ -1,0 +1,5 @@
+release_date: Mar 9
+rel_release_date: days
+my_news_url: https://github.com/juliasilge/tidytext/blob/master/NEWS.md
+release_version: 0.2.3
+release_details: New tidytext features
