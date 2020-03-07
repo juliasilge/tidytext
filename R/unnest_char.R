@@ -1,6 +1,6 @@
 #' Wrapper around unnest_tokens for characters and character shingles
 #'
-#' Thes functions are a wrapper around `unnest_tokens( token = "characters" )`
+#' These functions are a wrapper around `unnest_tokens( token = "characters" )`
 #' and `unnest_tokens( token = "character_shingles" )`.
 #'
 #' @seealso

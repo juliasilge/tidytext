@@ -67,7 +67,7 @@ greater than or equal to 1.}
 than or equal to \code{n}.}
 }
 \description{
-Thes functions are a wrapper around \code{unnest_tokens( token = "characters" )}
+These functions are a wrapper around \code{unnest_tokens( token = "characters" )}
 and \code{unnest_tokens( token = "character_shingles" )}.
 }
 \examples{
