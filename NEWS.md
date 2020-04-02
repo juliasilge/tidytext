@@ -1,5 +1,7 @@
 # tidytext (development version)
 
+- Update tidying test for new tibble release (inner names for columns)
+
 # tidytext 0.2.3
 
 * Wrapper tokenization functions for n-grams, characters, sentences, tweets, and more, thanks to @ColinFay (#137).
