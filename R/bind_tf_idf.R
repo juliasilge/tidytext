@@ -40,20 +40,6 @@
 #' @export
 
 bind_tf_idf <- function(tbl, term, document, n) {
-  UseMethod("bind_tf_idf")
-}
-
-#' @export
-bind_tf_idf.default <- function(tbl, term, document, n) {
-  term <- compat_as_lazy(enquo(term))
-  document <- compat_as_lazy(enquo(document))
-  n <- compat_as_lazy(enquo(n))
-
-  bind_tf_idf_(tbl, term, document, n)
-}
-
-#' @export
-bind_tf_idf.data.frame <- function(tbl, term, document, n) {
   term <- quo_name(enquo(term))
   document <- quo_name(enquo(document))
   n_col <- quo_name(enquo(n))
@@ -68,23 +54,10 @@ bind_tf_idf.data.frame <- function(tbl, term, document, n) {
   tbl$idf <- as.numeric(idf[terms])
   tbl$tf_idf <- tbl$tf * tbl$idf
 
-  if(any(tbl$idf < 0, na.rm = TRUE)) warning("A value for tf_idf is negative:\nInput should have exactly one row per document-term combination.")
-
+  if(any(tbl$idf < 0, na.rm = TRUE)) {
+    rlang::warn(paste("A value for tf_idf is negative:\n",
+                      "Input should have exactly one row per document-term combination."))
+  }
   tbl
 }
 
-#' @rdname deprecated-se
-#' @inheritParams bind_tf_idf
-#' @param term,document,n Strings giving names of term, document, and count columns.
-#' @export
-bind_tf_idf_ <- function(tbl, term, document, n) {
-  UseMethod("bind_tf_idf_")
-}
-
-#' @export
-bind_tf_idf_.data.frame <- function(tbl, term, document, n) {
-  term <- compat_lazy(term, caller_env())
-  document <- compat_lazy(document, caller_env())
-  n <- compat_lazy(n, caller_env())
-  bind_tf_idf(tbl, !!term, !!document, !!n)
-}

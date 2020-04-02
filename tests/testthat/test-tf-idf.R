@@ -16,7 +16,7 @@ test_that("Can calculate TF-IDF", {
   result <- w %>%
     bind_tf_idf(word, document, frequency)
   result2 <- w %>%
-    bind_tf_idf_("word", "document", "frequency")
+    bind_tf_idf("word", "document", "frequency")
   expect_equal(result, result2)
 
   expect_equal(
