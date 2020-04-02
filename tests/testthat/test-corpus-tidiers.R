@@ -12,7 +12,8 @@ test_that("Can tidy corpus from tm package", {
   td <- tidy(ovid, collapse = " ")
 
   expect_equal(length(ovid), nrow(td))
-  expect_equal(paste(as.character(ovid[[1]]), collapse = " "), td$text[1])
+  expect_equal(paste(as.character(ovid[[1]]), collapse = " "),
+               unname(td$text[1]))
 
 })
 
