@@ -97,32 +97,6 @@ unnest_tokens <- function(tbl, output, input, token = "words",
                           ),
                           to_lower = TRUE, drop = TRUE,
                           collapse = NULL, ...) {
-  UseMethod("unnest_tokens")
-}
-#' @export
-unnest_tokens.default <- function(tbl, output, input, token = "words",
-                                  format = c(
-                                    "text", "man", "latex",
-                                    "html", "xml"
-                                  ),
-                                  to_lower = TRUE, drop = TRUE,
-                                  collapse = NULL, ...) {
-  output <- compat_as_lazy(enquo(output))
-  input <- compat_as_lazy(enquo(input))
-
-  unnest_tokens_(
-    tbl, output, input,
-    token, format, to_lower, drop, collapse, ...
-  )
-}
-#' @export
-unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
-                                     format = c(
-                                       "text", "man", "latex",
-                                       "html", "xml"
-                                     ),
-                                     to_lower = TRUE, drop = TRUE,
-                                     collapse = NULL, ...) {
   output <- quo_name(enquo(output))
   input <- quo_name(enquo(input))
 
@@ -236,31 +210,4 @@ unnest_tokens.data.frame <- function(tbl, output, input, token = "words",
   }
 
   ret
-}
-
-#' @rdname deprecated-se
-#' @inheritParams unnest_tokens
-#' @param output_col,input_col Strings giving names of output and input columns.
-#' @export
-unnest_tokens_ <- function(tbl, output, input, token = "words",
-                           format = c("text", "man", "latex", "html", "xml"),
-                           to_lower = TRUE, drop = TRUE,
-                           collapse = NULL, ...) {
-  UseMethod("unnest_tokens_")
-}
-
-#' @export
-unnest_tokens_.data.frame <- function(tbl, output, input, token = "words",
-                                      format = c(
-                                        "text", "man", "latex",
-                                        "html", "xml"
-                                      ),
-                                      to_lower = TRUE, drop = TRUE,
-                                      collapse = NULL, ...) {
-  output <- compat_lazy(output, caller_env())
-  input <- compat_lazy(input, caller_env())
-  unnest_tokens(tbl, !!output, !!input,
-                token = token, format = format,
-                to_lower = to_lower, drop = drop, collapse = collapse, ...
-  )
 }

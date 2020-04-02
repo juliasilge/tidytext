@@ -134,7 +134,7 @@ test_that("tokenizing with standard evaluation works", {
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))
-  d <- d %>% unnest_tokens_("word", "txt")
+  d <- d %>% unnest_tokens("word", "txt")
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
   expect_equal(d$word[1], "because")
