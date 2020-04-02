@@ -73,21 +73,6 @@ cast_sparse <- function(data, row, column, value, ...) {
   ret
 }
 
-#' @rdname deprecated-se
-#' @inheritParams cast_sparse
-#' @export
-cast_sparse_ <- function(data, row, column, value) {
-  row <- compat_lazy(row, caller_env())
-  column <- compat_lazy(column, caller_env())
-  if (missing(value)) {
-    cast_sparse(data, !!row, !!column)
-  } else {
-    value_col <- compat_lazy(value, caller_env())
-    cast_sparse(data, !!row, !!column, !!value_col)
-  }
-}
-
-
 #' Casting a data frame to
 #' a DocumentTermMatrix, TermDocumentMatrix, or dfm
 #'
@@ -120,22 +105,6 @@ cast_tdm <- function(data, term, document, value,
   tm::as.TermDocumentMatrix(m, weighting = weighting)
 }
 
-
-#' @rdname deprecated-se
-#' @inheritParams cast_tdm
-#' @export
-cast_tdm_ <- function(data, term, document, value,
-                      weighting = tm::weightTf, ...) {
-  term <- compat_lazy(term, caller_env())
-  document <- compat_lazy(document, caller_env())
-  value <- compat_lazy(value, caller_env())
-  cast_tdm(data, !!term, !!document, !!value,
-           weighting = weighting, ...
-  )
-}
-
-
-
 #' @rdname document_term_casters
 #' @export
 cast_dtm <- function(data, document, term, value,
@@ -147,21 +116,6 @@ cast_dtm <- function(data, document, term, value,
   tm::as.DocumentTermMatrix(m, weighting = weighting)
 }
 
-
-#' @rdname deprecated-se
-#' @inheritParams cast_dtm
-#' @export
-cast_dtm_ <- function(data, document, term, value,
-                      weighting = tm::weightTf, ...) {
-  document <- compat_lazy(document, caller_env())
-  term <- compat_lazy(term, caller_env())
-  value <- compat_lazy(value, caller_env())
-  cast_dtm(data, !!document, !!term, !!value,
-           weighting = weighting, ...
-  )
-}
-
-
 #' @rdname document_term_casters
 #' @export
 cast_dfm <- function(data, document, term, value, ...) {
@@ -170,15 +124,4 @@ cast_dfm <- function(data, document, term, value, ...) {
   value <- quo_name(enquo(value))
   m <- cast_sparse(data, !!document, !!term, !!value, ...)
   quanteda::as.dfm(m)
-}
-
-
-#' @rdname deprecated-se
-#' @inheritParams cast_dfm
-#' @export
-cast_dfm_ <- function(data, document, term, value, ...) {
-  document <- compat_lazy(document, caller_env())
-  term <- compat_lazy(term, caller_env())
-  value <- compat_lazy(value, caller_env())
-  cast_dfm(data, !!document, !!term, !!value)
 }

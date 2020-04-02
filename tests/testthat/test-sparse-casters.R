@@ -11,11 +11,9 @@ dat <- tibble(
 test_that("Can cast tables into a sparse Matrix", {
   m <- cast_sparse(dat, a, b)
   m2 <- cast_sparse(dat, "a", "b")
-  m3 <- cast_sparse_(dat, "a", "b")
 
   expect_is(m, "dgCMatrix")
   expect_equal(m, m2)
-  expect_equal(m, m3)
   expect_equal(sum(m), 5)
 
   expect_equal(nrow(m), length(unique(dat$a)))
@@ -46,7 +44,7 @@ test_that("Can cast_sparse with tidyeval", {
 test_that("Can cast tables into a sparse DocumentTermMatrix", {
   skip_if_not_installed("tm")
   d <- cast_dtm(dat, a, b, val)
-  d2 <- cast_dtm_(dat, "a", "b", "val")
+  d2 <- cast_dtm(dat, "a", "b", "val")
   expect_equal(d, d2)
   expect_is(d, "DocumentTermMatrix")
   expect_equal(dim(d), c(2, 4))
@@ -59,7 +57,7 @@ test_that("Can cast tables into a sparse DocumentTermMatrix", {
 test_that("Can cast tables into a sparse TermDocumentMatrix", {
   skip_if_not_installed("tm")
   d <- cast_tdm(dat, b, a, val)
-  d2 <- cast_tdm_(dat, "b", "a", "val")
+  d2 <- cast_tdm(dat, "b", "a", "val")
   expect_equal(d, d2)
   expect_is(d, "TermDocumentMatrix")
 
@@ -72,7 +70,7 @@ test_that("Can cast tables into a sparse dfm", {
 
   library(methods)
   d <- cast_dfm(dat, a, b, val)
-  d2 <- cast_dfm_(dat, "a", "b", "val")
+  d2 <- cast_dfm(dat, "a", "b", "val")
   expect_equal(d, d2)
   expect_true(quanteda::is.dfm(d))
   expect_equal(dim(d), c(2, 4))
