@@ -121,13 +121,13 @@ unnest_tokens <- function(tbl, output, input, token = "words",
     "skip_ngram", "sentence", "line",
     "paragraph", "tweet"
   )) {
-    stop(paste0(
+    rlang::abort(paste0(
       "Error: Token must be a supported type, or a function that takes a character vector as input\nDid you mean token = ",
       token, "s?"
     ))
   } else if (format != "text") {
     if (token != "words") {
-      stop("Cannot tokenize by any unit except words when format is not text")
+      rlang::abort("Cannot tokenize by any unit except words when format is not text")
     }
     tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
                                                              format = format
@@ -153,9 +153,9 @@ unnest_tokens <- function(tbl, output, input, token = "words",
 
   if (!is.null(collapse) && collapse) {
     if (any(!purrr::map_lgl(tbl, is.atomic))) {
-      stop(
-        "If collapse = TRUE (such as for unnesting by sentence or paragraph), ",
-        "unnest_tokens needs all input columns to be atomic vectors (not lists)"
+      rlang::abort(
+        paste0("If collapse = TRUE (such as for unnesting by sentence or paragraph),\n",
+               "unnest_tokens needs all input columns to be atomic vectors (not lists)")
       )
     }
 
@@ -180,7 +180,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
   output_lst <- tokenfunc(col, ...)
 
   if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
-    stop(
+    rlang::abort(
       "Expected output of tokenizing function to be a list of length ",
       nrow(tbl)
     )
@@ -192,7 +192,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
   if (to_lower) {
     if (!is.function(token))
       if(token == "tweets") {
-        message("Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.")
+        rlang::inform("Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.")
       }
     ret[[output]] <- stringr::str_to_lower(ret[[output]])
   }

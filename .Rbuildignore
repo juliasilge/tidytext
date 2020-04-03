@@ -13,6 +13,5 @@ paper\..*
 ^CRAN-RELEASE$
 ^_pkgdown\.yml$
 ^pkgdown$
-^\.github/workflows/R-CMD-check\.yaml$
+^\.github$
 ^codecov\.yml$
-^\.github/workflows/pr-commands\.yaml$
