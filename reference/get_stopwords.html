@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -46,7 +50,6 @@
 <meta property="og:description" content="Get a specific stop word lexicon via the stopwords package's
 stopwords function, in a tidy format with one word per row." />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -64,7 +67,7 @@ stopwords function, in a tidy format with one word per row." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -120,7 +123,7 @@ stopwords function, in a tidy format with one word per row." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/juliasilge/tidytext">
+  <a href="http://github.com/juliasilge/tidytext/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -139,7 +142,7 @@ stopwords function, in a tidy format with one word per row." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Get a tidy data frame of a single stopword lexicon</h1>
-    <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/stop_words.R'><code>R/stop_words.R</code></a></small>
+    <small class="dont-index">Source: <a href='http://github.com/juliasilge/tidytext/blob/master/R/stop_words.R'><code>R/stop_words.R</code></a></small>
     <div class="hidden name"><code>get_stopwords.Rd</code></div>
     </div>
 
@@ -177,69 +180,65 @@ parameter <code>lexicon</code> is "quanteda" in this case.</p>
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'>get_stopwords</span>()</div><div class='output co'>#&gt; # A tibble: 175 x 2
+<span class='fu'>get_stopwords</span>()</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 175 x 2</span><span>
 #&gt;    word      lexicon 
-#&gt;    &lt;chr&gt;     &lt;chr&gt;   
-#&gt;  1 i         snowball
-#&gt;  2 me        snowball
-#&gt;  3 my        snowball
-#&gt;  4 myself    snowball
-#&gt;  5 we        snowball
-#&gt;  6 our       snowball
-#&gt;  7 ours      snowball
-#&gt;  8 ourselves snowball
-#&gt;  9 you       snowball
-#&gt; 10 your      snowball
-#&gt; # … with 165 more rows</div><div class='input'><span class='fu'>get_stopwords</span>(<span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"smart"</span>)</div><div class='output co'>#&gt; # A tibble: 571 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'> 1</span><span> i         snowball
+#&gt; </span><span style='color: #555555;'> 2</span><span> me        snowball
+#&gt; </span><span style='color: #555555;'> 3</span><span> my        snowball
+#&gt; </span><span style='color: #555555;'> 4</span><span> myself    snowball
+#&gt; </span><span style='color: #555555;'> 5</span><span> we        snowball
+#&gt; </span><span style='color: #555555;'> 6</span><span> our       snowball
+#&gt; </span><span style='color: #555555;'> 7</span><span> ours      snowball
+#&gt; </span><span style='color: #555555;'> 8</span><span> ourselves snowball
+#&gt; </span><span style='color: #555555;'> 9</span><span> you       snowball
+#&gt; </span><span style='color: #555555;'>10</span><span> your      snowball
+#&gt; </span><span style='color: #555555;'># … with 165 more rows</span><span></div><div class='input'><span class='fu'>get_stopwords</span>(<span class='kw'>source</span> <span class='kw'>=</span> <span class='st'>"smart"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 571 x 2</span><span>
 #&gt;    word        lexicon
-#&gt;    &lt;chr&gt;       &lt;chr&gt;  
-#&gt;  1 a           smart  
-#&gt;  2 a's         smart  
-#&gt;  3 able        smart  
-#&gt;  4 about       smart  
-#&gt;  5 above       smart  
-#&gt;  6 according   smart  
-#&gt;  7 accordingly smart  
-#&gt;  8 across      smart  
-#&gt;  9 actually    smart  
-#&gt; 10 after       smart  
-#&gt; # … with 561 more rows</div><div class='input'><span class='fu'>get_stopwords</span>(<span class='st'>"es"</span>, <span class='st'>"snowball"</span>)</div><div class='output co'>#&gt; # A tibble: 308 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'> 1</span><span> a           smart  
+#&gt; </span><span style='color: #555555;'> 2</span><span> a's         smart  
+#&gt; </span><span style='color: #555555;'> 3</span><span> able        smart  
+#&gt; </span><span style='color: #555555;'> 4</span><span> about       smart  
+#&gt; </span><span style='color: #555555;'> 5</span><span> above       smart  
+#&gt; </span><span style='color: #555555;'> 6</span><span> according   smart  
+#&gt; </span><span style='color: #555555;'> 7</span><span> accordingly smart  
+#&gt; </span><span style='color: #555555;'> 8</span><span> across      smart  
+#&gt; </span><span style='color: #555555;'> 9</span><span> actually    smart  
+#&gt; </span><span style='color: #555555;'>10</span><span> after       smart  
+#&gt; </span><span style='color: #555555;'># … with 561 more rows</span><span></div><div class='input'><span class='fu'>get_stopwords</span>(<span class='st'>"es"</span>, <span class='st'>"snowball"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 308 x 2</span><span>
 #&gt;    word  lexicon 
-#&gt;    &lt;chr&gt; &lt;chr&gt;   
-#&gt;  1 de    snowball
-#&gt;  2 la    snowball
-#&gt;  3 que   snowball
-#&gt;  4 el    snowball
-#&gt;  5 en    snowball
-#&gt;  6 y     snowball
-#&gt;  7 a     snowball
-#&gt;  8 los   snowball
-#&gt;  9 del   snowball
-#&gt; 10 se    snowball
-#&gt; # … with 298 more rows</div><div class='input'><span class='fu'>get_stopwords</span>(<span class='st'>"ru"</span>, <span class='st'>"snowball"</span>)</div><div class='output co'>#&gt; # A tibble: 159 x 2
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'> 1</span><span> de    snowball
+#&gt; </span><span style='color: #555555;'> 2</span><span> la    snowball
+#&gt; </span><span style='color: #555555;'> 3</span><span> que   snowball
+#&gt; </span><span style='color: #555555;'> 4</span><span> el    snowball
+#&gt; </span><span style='color: #555555;'> 5</span><span> en    snowball
+#&gt; </span><span style='color: #555555;'> 6</span><span> y     snowball
+#&gt; </span><span style='color: #555555;'> 7</span><span> a     snowball
+#&gt; </span><span style='color: #555555;'> 8</span><span> los   snowball
+#&gt; </span><span style='color: #555555;'> 9</span><span> del   snowball
+#&gt; </span><span style='color: #555555;'>10</span><span> se    snowball
+#&gt; </span><span style='color: #555555;'># … with 298 more rows</span><span></div><div class='input'><span class='fu'>get_stopwords</span>(<span class='st'>"ru"</span>, <span class='st'>"snowball"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 159 x 2</span><span>
 #&gt;    word  lexicon 
-#&gt;    &lt;chr&gt; &lt;chr&gt;   
-#&gt;  1 и     snowball
-#&gt;  2 в     snowball
-#&gt;  3 во    snowball
-#&gt;  4 не    snowball
-#&gt;  5 что   snowball
-#&gt;  6 он    snowball
-#&gt;  7 на    snowball
-#&gt;  8 я     snowball
-#&gt;  9 с     snowball
-#&gt; 10 со    snowball
-#&gt; # … with 149 more rows</div><div class='input'>
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   
+#&gt; </span><span style='color: #555555;'> 1</span><span> и     snowball
+#&gt; </span><span style='color: #555555;'> 2</span><span> в     snowball
+#&gt; </span><span style='color: #555555;'> 3</span><span> во    snowball
+#&gt; </span><span style='color: #555555;'> 4</span><span> не    snowball
+#&gt; </span><span style='color: #555555;'> 5</span><span> что   snowball
+#&gt; </span><span style='color: #555555;'> 6</span><span> он    snowball
+#&gt; </span><span style='color: #555555;'> 7</span><span> на    snowball
+#&gt; </span><span style='color: #555555;'> 8</span><span> я     snowball
+#&gt; </span><span style='color: #555555;'> 9</span><span> с     snowball
+#&gt; </span><span style='color: #555555;'>10</span><span> со    snowball
+#&gt; </span><span style='color: #555555;'># … with 149 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#value">Value</a></li>
-      <li><a href="#examples">Examples</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -250,7 +249,7 @@ parameter <code>lexicon</code> is "quanteda" in this case.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
 </div>
 
       </footer>

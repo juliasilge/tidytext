@@ -17,23 +17,27 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png" />
 
 <!-- jquery -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.3.7/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
+
+<!-- bootstrap-toc -->
+<link rel="stylesheet" href="../bootstrap-toc.css">
+<script src="../bootstrap-toc.js"></script>
 
 <!-- Font Awesome icons -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/all.min.css" integrity="sha256-nAmazAk6vS34Xqo0BSrTb+abbtFlgsFK7NKSi6o7Y78=" crossorigin="anonymous" />
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.1/css/v4-shims.min.css" integrity="sha256-6qHlizsOWFskGlwVOKuns+D1nB6ssZrHQrNj1wGplHc=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous" />
 
 <!-- clipboard.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script>
 
 <!-- headroom.js -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/headroom.min.js" integrity="sha256-DJFC1kqIhelURkuza0AvYal5RxMtpzLjFhsnVIeuk+U=" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.9.4/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
 <link href="../pkgdown.css" rel="stylesheet">
@@ -53,7 +57,6 @@ still capture their arguments, but you can now unquote parts of
 these arguments. This offers full programmability with NSE verbs.
 Thus, the underscored versions are now superfluous." />
 <meta property="og:image" content="/logo.png" />
-<meta name="twitter:card" content="summary" />
 
 
 
@@ -71,7 +74,7 @@ Thus, the underscored versions are now superfluous." />
 
   </head>
 
-  <body>
+  <body data-spy="scroll" data-target="#toc">
     <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -127,7 +130,7 @@ Thus, the underscored versions are now superfluous." />
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://github.com/juliasilge/tidytext">
+  <a href="http://github.com/juliasilge/tidytext/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -146,7 +149,7 @@ Thus, the underscored versions are now superfluous." />
   <div class="col-md-9 contents">
     <div class="page-header">
     <h1>Deprecated SE version of functions</h1>
-    <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/bind_tf_idf.R'><code>R/bind_tf_idf.R</code></a>, <a href='https://github.com/juliasilge/tidytext/blob/master/R/sparse_casters.R'><code>R/sparse_casters.R</code></a>, <a href='https://github.com/juliasilge/tidytext/blob/master/R/tidytext.R'><code>R/tidytext.R</code></a>, and 2 more</small>
+    <small class="dont-index">Source: <a href='http://github.com/juliasilge/tidytext/blob/master/R/deprecated.R'><code>R/deprecated.R</code></a>, <a href='http://github.com/juliasilge/tidytext/blob/master/R/tidytext.R'><code>R/tidytext.R</code></a></small>
     <div class="hidden name"><code>deprecated-se.Rd</code></div>
     </div>
 
@@ -162,103 +165,24 @@ these arguments. This offers full programmability with NSE verbs.
 Thus, the underscored versions are now superfluous.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>bind_tf_idf_</span>(<span class='no'>tbl</span>, <span class='no'>term</span>, <span class='no'>document</span>, <span class='no'>n</span>)
+    <pre class="usage"><span class='fu'>bind_tf_idf_</span>(<span class='no'>...</span>)
 
-<span class='fu'>cast_sparse_</span>(<span class='no'>data</span>, <span class='no'>row</span>, <span class='no'>column</span>, <span class='no'>value</span>)
+<span class='fu'>cast_sparse_</span>(<span class='no'>...</span>)
 
-<span class='fu'>cast_tdm_</span>(<span class='no'>data</span>, <span class='no'>term</span>, <span class='no'>document</span>, <span class='no'>value</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/tm/man/weightTf.html'>weightTf</a></span>, <span class='no'>...</span>)
+<span class='fu'>cast_tdm_</span>(<span class='no'>...</span>)
 
-<span class='fu'>cast_dtm_</span>(<span class='no'>data</span>, <span class='no'>document</span>, <span class='no'>term</span>, <span class='no'>value</span>, <span class='kw'>weighting</span> <span class='kw'>=</span> <span class='kw pkg'>tm</span><span class='kw ns'>::</span><span class='no'><a href='https://rdrr.io/pkg/tm/man/weightTf.html'>weightTf</a></span>, <span class='no'>...</span>)
+<span class='fu'>cast_dtm_</span>(<span class='no'>...</span>)
 
-<span class='fu'>cast_dfm_</span>(<span class='no'>data</span>, <span class='no'>document</span>, <span class='no'>term</span>, <span class='no'>value</span>, <span class='no'>...</span>)
+<span class='fu'>cast_dfm_</span>(<span class='no'>...</span>)
 
-<span class='fu'>unnest_tokens_</span>(
-  <span class='no'>tbl</span>,
-  <span class='no'>output</span>,
-  <span class='no'>input</span>,
-  <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
-  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
-)</pre>
+<span class='fu'>unnest_tokens_</span>(<span class='no'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>tbl</th>
-      <td><p>A data frame.</p></td>
-    </tr>
-    <tr>
-      <th>term, document, n</th>
-      <td><p>Strings giving names of term, document, and count columns.</p></td>
-    </tr>
-    <tr>
-      <th>data</th>
-      <td><p>A tbl</p></td>
-    </tr>
-    <tr>
-      <th>row</th>
-      <td><p>Column name to use as row names in sparse matrix, as string or symbol</p></td>
-    </tr>
-    <tr>
-      <th>column</th>
-      <td><p>Column name to use as column names in sparse matrix, as string or symbol</p></td>
-    </tr>
-    <tr>
-      <th>value</th>
-      <td><p>Column name to use as sparse matrix values (default 1) as string or symbol</p></td>
-    </tr>
-    <tr>
-      <th>weighting</th>
-      <td><p>The weighting function for the DTM/TDM
-(default is term-frequency, effectively unweighted)</p></td>
-    </tr>
-    <tr>
       <th>...</th>
-      <td><p>Extra arguments to pass on to <code>sparseMatrix</code></p></td>
-    </tr>
-    <tr>
-      <th>output, input</th>
-      <td><p>Name of columns.</p></td>
-    </tr>
-    <tr>
-      <th>token</th>
-      <td><p>Unit for tokenizing, or a custom tokenizing function. Built-in
-options are "words" (default), "characters", "character_shingles", "ngrams",
-"skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets"
-(tokenization by word that preserves usernames, hashtags, and URLS ), and
-"ptb" (Penn Treebank). If a function, should take a character vector and
-return a list of character vectors of the same length.</p></td>
-    </tr>
-    <tr>
-      <th>format</th>
-      <td><p>Either "text", "man", "latex", "html", or "xml". If not text,
-this uses the hunspell tokenizer, and can tokenize only by "word"</p></td>
-    </tr>
-    <tr>
-      <th>to_lower</th>
-      <td><p>Whether to convert tokens to lowercase. If tokens include
-URLS (such as with <code>token = "tweets"</code>), such converted URLs may no
-longer be correct.</p></td>
-    </tr>
-    <tr>
-      <th>drop</th>
-      <td><p>Whether original input column should get dropped. Ignored
-if the original input and new output column have the same name.</p></td>
-    </tr>
-    <tr>
-      <th>collapse</th>
-      <td><p>Whether to combine text with newlines first in case tokens
-(such as sentences or paragraphs) span multiple lines. If NULL, collapses
-when token method is "ngrams", "skip_ngrams", "sentences", "lines",
-"paragraphs", or "regex".</p></td>
-    </tr>
-    <tr>
-      <th>output_col, input_col</th>
-      <td><p>Strings giving names of output and input columns.</p></td>
+      <td><p>All arguments for non-deprecated functions</p></td>
     </tr>
     </table>
 
@@ -270,13 +194,10 @@ value or an expression to be evaluated later with the rest of the
 argument.</p>
 
   </div>
-  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
-    <h2>Contents</h2>
-    <ul class="nav nav-pills nav-stacked">
-      <li><a href="#arguments">Arguments</a></li>
-      <li><a href="#details">Details</a></li>
-    </ul>
-
+  <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
+    <nav id="toc" data-toggle="toc" class="sticky-top">
+      <h2 data-toc-skip>Contents</h2>
+    </nav>
   </div>
 </div>
 
@@ -287,7 +208,7 @@ argument.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.4.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
 </div>
 
       </footer>
