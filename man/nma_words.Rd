@@ -4,12 +4,14 @@
 \name{nma_words}
 \alias{nma_words}
 \title{English negators, modals, and adverbs}
-\format{A data frame with 44 rows and 2 variables:
+\format{
+A data frame with 44 rows and 2 variables:
 \describe{
 \item{word}{An English word or bigram}
 \item{modifier}{The modifier type for \code{word}, either "negator",
 "modal", or "adverb"}
-}}
+}
+}
 \source{
 \url{http://saifmohammad.com/WebPages/SCL.html#NMA}
 }

@@ -31,7 +31,7 @@ LazyData: TRUE
 URL: http://github.com/juliasilge/tidytext
 BugReports: http://github.com/juliasilge/tidytext/issues
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Depends: R (>= 2.10)
 Imports: rlang,
     dplyr,

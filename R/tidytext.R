@@ -33,8 +33,6 @@ NULL
 #' value or an expression to be evaluated later with the rest of the
 #' argument.
 #'
-#' @param tbl A data frame.
-#' @param output,input Name of columns.
 #' @name deprecated-se
 #' @keywords internal
 NULL

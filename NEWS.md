@@ -1,6 +1,7 @@
 # tidytext (development version)
 
 - Update tidying test for new tibble release (inner names for columns)
+- Deprecate SE versions of main functions (have long been replaced by tidy eval semantics)
 
 # tidytext 0.2.3
 

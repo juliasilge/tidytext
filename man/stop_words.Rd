@@ -4,11 +4,13 @@
 \name{stop_words}
 \alias{stop_words}
 \title{Various lexicons for English stop words}
-\format{A data frame with 1149 rows and 2 variables:
+\format{
+A data frame with 1149 rows and 2 variables:
 \describe{
 \item{word}{An English word}
 \item{lexicon}{The source of the stop word. Either "onix", "SMART", or "snowball"}
-}}
+}
+}
 \source{
 \itemize{
 \item \url{http://www.lextek.com/manuals/onix/stopwords1.html}
