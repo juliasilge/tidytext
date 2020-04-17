@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 14th CRAN release of tidytext. This release fixes a flaky test that was causing errors for some OS + R version combinations, and includes new wrapper functions for tokenization and a simpler get_sentiments(). 
+This is the 15th CRAN release of tidytext. This release fixes a test (related to the new version of tibble), improves error handling throughout, and finally deprecates some functions that have been soft-deprecated for a very long time. 
 
 ## Test environments
 
@@ -14,13 +14,17 @@ This is the 14th CRAN release of tidytext. This release fixes a flaky test that 
 
 ## revdepcheck results
 
-I checked 20 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+I checked 26 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
- * I saw 0 new problems
- * I failed to check 1 packages
+* I saw 1 new problem
+* I failed to check 1 package
 
 Issues with CRAN packages are summarised below.
 
+### New problems
+
+* [funrar](https://cran.r-project.org/package=funrar) is impacted by this release; I sent a [patch to them in this PR](https://github.com/Rekyt/funrar/pull/42) that fixes the problem but have not heard back yet
+
 ### Failed to check
 
-* quanteda (NA)
+* kdtools (NA)

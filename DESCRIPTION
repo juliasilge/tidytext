@@ -1,7 +1,7 @@
 Package: tidytext
 Type: Package
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
-Version: 0.2.3.9000
+Version: 0.2.4
 Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
              email = "gabidequeiroz@gmail.com"),
              person("Colin", "Fay", role = c("ctb"),
