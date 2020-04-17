@@ -231,7 +231,7 @@
 </h1>
 <ul>
 <li>
-<code>unnest_tokens</code> can now unnest a data frame with a list column (which formerly threw the error <code>unnest_tokens expects all columns of input to be atomic vectors (not lists)</code>). The unnested result repeats the objects within each list. (Itâs still not possible when <code>collapse = TRUE</code>, in which tokens can span multiple lines).</li>
+<code>unnest_tokens</code> can now unnest a data frame with a list column (which formerly threw the error <code>unnest_tokens expects all columns of input to be atomic vectors (not lists)</code>). The unnested result repeats the objects within each list. (It’s still not possible when <code>collapse = TRUE</code>, in which tokens can span multiple lines).</li>
 <li>Add <code>get_tidy_stopwords()</code> to obtain stopword lexicons in multiple languages in a tidy format.</li>
 <li>Add a dataset <code>nma_words</code> of negators, modals, and adverbs that affect sentiment analysis (<a href='http://github.com/juliasilge/tidytext/issues/55'>#55</a>).</li>
 <li>Updated various vignettes/docs/tests so package can build on R-oldrel.</li>
@@ -283,11 +283,11 @@
 <ul>
 <li>Updated DESCRIPTION to require purrr &gt;= 0.1.1.</li>
 <li>Fixed <code>cast_sparse</code>, <code>cast_dtm</code>, and other sparse casters to ignore groups in the input (<a href='http://github.com/juliasilge/tidytext/issues/19'>#19</a>)</li>
-<li>Changed <code>unnest_tokens</code> so that it no longer uses tidyrâs unnest, but rather a custom version that removes some overhead. In some experiments, this sped up unnest_tokens on large inputs by about 40%. This also moves tidyr from Imports to Suggests for now.</li>
+<li>Changed <code>unnest_tokens</code> so that it no longer uses tidyr’s unnest, but rather a custom version that removes some overhead. In some experiments, this sped up unnest_tokens on large inputs by about 40%. This also moves tidyr from Imports to Suggests for now.</li>
 <li>
 <code>unnest_tokens</code> now checks that there are no list columns in the input, and raises an error if present (since those cannot be unnested).</li>
 <li>Added a <code>format</code> argument to unnest_tokens so that it can process html, xml, latex or man pages using the hunspell package, though only when <code>token = "words"</code>.</li>
-<li>Added a <code>get_sentiments</code> function that takes the name of a lexicon (ânrcâ, âbingâ, or âsentimentâ) and returns just that sentiment data frame (<a href='http://github.com/juliasilge/tidytext/issues/25'>#25</a>)</li>
+<li>Added a <code>get_sentiments</code> function that takes the name of a lexicon (“nrc”, “bing”, or “sentiment”) and returns just that sentiment data frame (<a href='http://github.com/juliasilge/tidytext/issues/25'>#25</a>)</li>
 </ul>
 </div>
     <div id="tidytext-011" class="section level1">
@@ -332,7 +332,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

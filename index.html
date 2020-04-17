@@ -117,7 +117,7 @@
 <div id="tidy-text-mining-example-the-unnest_tokens-function" class="section level3">
 <h3 class="hasAnchor">
 <a href="#tidy-text-mining-example-the-unnest_tokens-function" class="anchor"></a>Tidy text mining example: the <code>unnest_tokens</code> function</h3>
-<p>The novels of Jane Austen can be so tidy! Letâs use the text of Jane Austenâs 6 completed, published novels from the <a href="https://cran.r-project.org/package=janeaustenr">janeaustenr</a> package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:</p>
+<p>The novels of Jane Austen can be so tidy! Let’s use the text of Jane Austen’s 6 completed, published novels from the <a href="https://cran.r-project.org/package=janeaustenr">janeaustenr</a> package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:</p>
 <div class="sourceCode" id="cb3"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">janeaustenr</span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
 
@@ -140,7 +140,7 @@
 <span class="co">#&gt;  8 ""                      Sense &amp; Sensibility     8</span>
 <span class="co">#&gt;  9 ""                      Sense &amp; Sensibility     9</span>
 <span class="co">#&gt; 10 "CHAPTER 1"             Sense &amp; Sensibility    10</span>
-<span class="co">#&gt; # â¦ with 73,412 more rows</span></pre></div>
+<span class="co">#&gt; # … with 73,412 more rows</span></pre></div>
 <p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code>unnest_tokens</code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
 <div class="sourceCode" id="cb4"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidytext</span>)
 <span class="no">tidy_books</span> <span class="kw">&lt;-</span> <span class="no">original_books</span> <span class="kw">%&gt;%</span>
@@ -160,7 +160,7 @@
 <span class="co">#&gt;  8 Sense &amp; Sensibility    10 chapter    </span>
 <span class="co">#&gt;  9 Sense &amp; Sensibility    10 1          </span>
 <span class="co">#&gt; 10 Sense &amp; Sensibility    13 the        </span>
-<span class="co">#&gt; # â¦ with 725,045 more rows</span></pre></div>
+<span class="co">#&gt; # … with 725,045 more rows</span></pre></div>
 <p>This function uses the <a href="https://github.com/lmullen/tokenizers">tokenizers package</a> to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
 <p>Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function <code><a href="reference/get_stopwords.html">get_stopwords()</a></code>) with an <code>anti_join</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="r"><span class="no">tidy_books</span> <span class="kw">&lt;-</span> <span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
@@ -181,8 +181,8 @@
 <span class="co">#&gt;  8 well   1523</span>
 <span class="co">#&gt;  9 every  1456</span>
 <span class="co">#&gt; 10 think  1440</span>
-<span class="co">#&gt; # â¦ with 14,365 more rows</span></pre></div>
-<p>Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the <code><a href="reference/get_sentiments.html">get_sentiments()</a></code> function. Letâs examine how sentiment changes during each novel. Letâs find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.</p>
+<span class="co">#&gt; # … with 14,365 more rows</span></pre></div>
+<p>Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the <code><a href="reference/get_sentiments.html">get_sentiments()</a></code> function. Let’s examine how sentiment changes during each novel. Let’s find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.</p>
 <div class="sourceCode" id="cb7"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyr</span>)
 <span class="fu"><a href="reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>)
 <span class="co">#&gt; # A tibble: 6,786 x 2</span>
@@ -198,7 +198,7 @@
 <span class="co">#&gt;  8 abort       negative </span>
 <span class="co">#&gt;  9 aborted     negative </span>
 <span class="co">#&gt; 10 aborts      negative </span>
-<span class="co">#&gt; # â¦ with 6,776 more rows</span>
+<span class="co">#&gt; # … with 6,776 more rows</span>
 
 <span class="no">janeaustensentiment</span> <span class="kw">&lt;-</span> <span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">inner_join</a></span>(<span class="fu"><a href="reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="st">"word"</span>) <span class="kw">%&gt;%</span>
@@ -220,7 +220,7 @@
 <span class="co">#&gt;  8 Sense &amp; Sensibility     7       23       51        28</span>
 <span class="co">#&gt;  9 Sense &amp; Sensibility     8       30       40        10</span>
 <span class="co">#&gt; 10 Sense &amp; Sensibility     9       15       19         4</span>
-<span class="co">#&gt; # â¦ with 910 more rows</span></pre></div>
+<span class="co">#&gt; # … with 910 more rows</span></pre></div>
 <p>Now we can plot these sentiment scores across the plot trajectory of each novel.</p>
 <div class="sourceCode" id="cb8"><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
 
@@ -257,7 +257,7 @@
 <span class="co">#&gt;  8        1 appeared       1</span>
 <span class="co">#&gt;  9        1 arrested       1</span>
 <span class="co">#&gt; 10        1 assault        1</span>
-<span class="co">#&gt; # â¦ with 302,021 more rows</span></pre></div>
+<span class="co">#&gt; # … with 302,021 more rows</span></pre></div>
 <p>We could find the most negative documents:</p>
 <div class="sourceCode" id="cb11"><pre class="r"><span class="no">ap_sentiments</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">AssociatedPress</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">inner_join</a></span>(<span class="fu"><a href="reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">term</span> <span class="kw">=</span> <span class="st">"word"</span>)) <span class="kw">%&gt;%</span>
@@ -288,7 +288,7 @@
 <span class="co">#&gt;  8 absence   0.0000776 0.000547  </span>
 <span class="co">#&gt;  9 absent    0.0000436 0.000247  </span>
 <span class="co">#&gt; 10 absolute  0.0000533 0.000128  </span>
-<span class="co">#&gt; # â¦ with 4,720 more rows</span>
+<span class="co">#&gt; # … with 4,720 more rows</span>
 
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">scales</span>)
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">comparison</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">AP</span>, <span class="no">Austen</span>)) +
@@ -353,7 +353,7 @@
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.0.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
