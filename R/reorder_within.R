@@ -42,7 +42,11 @@
 #'
 #' @export
 reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
-  new_x <- paste(x, within, sep = sep)
+  if (!is.list(within)) {
+    within <- list(within)
+  }
+
+  new_x <- do.call(paste, c(list(x, sep = sep), within))
   stats::reorder(new_x, by, FUN = fun)
 }
 
