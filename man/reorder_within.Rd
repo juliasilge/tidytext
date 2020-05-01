@@ -21,7 +21,9 @@ scale_y_reordered(..., sep = "___")
 
 \item{by}{Vector of the same length, to use for reordering.}
 
-\item{within}{Vector of the same length that will later be used for faceting}
+\item{within}{Vector or list of vectors of the same length that will later
+be used for faceting. A list of vectors will be used to facet within multiple
+variables.}
 
 \item{fun}{Function to perform within each subset to determine the resulting
 ordering. By default, mean.}
@@ -59,5 +61,12 @@ ggplot(iris_gathered, aes(reorder_within(Species, value, metric), value)) +
   geom_boxplot() +
   scale_x_reordered() +
   facet_wrap(~ metric, scales = "free_x")
+
+# to reorder within multiple variables, set within to the list of
+# facet variables.
+ggplot(mtcars, aes(reorder_within(carb, mpg, list(vs, am)), mpg)) +
+  geom_boxplot() +
+  scale_x_reordered() +
+  facet_wrap(vs ~ am, scales = "free_x")
 
 }

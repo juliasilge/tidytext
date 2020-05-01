@@ -1,3 +1,7 @@
+# tidytext devel [WIP]
+
+* `reorder_within()` now handles multiple variables, thanks to @tmastny (#170)
+
 # tidytext 0.2.4
 
 * Update tidying test for new tibble release (inner names for columns)

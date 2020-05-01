@@ -9,7 +9,9 @@
 #'
 #' @param x Vector to reorder.
 #' @param by Vector of the same length, to use for reordering.
-#' @param within Vector of the same length that will later be used for faceting
+#' @param within Vector or list of vectors of the same length that will later
+#' be used for faceting. A list of vectors will be used to facet within multiple
+#' variables.
 #' @param fun Function to perform within each subset to determine the resulting
 #' ordering. By default, mean.
 #' @param sep Separator to distinguish the two. You may want to set this
@@ -40,9 +42,20 @@
 #'   scale_x_reordered() +
 #'   facet_wrap(~ metric, scales = "free_x")
 #'
+#' # to reorder within multiple variables, set within to the list of
+#' # facet variables.
+#' ggplot(mtcars, aes(reorder_within(carb, mpg, list(vs, am)), mpg)) +
+#'   geom_boxplot() +
+#'   scale_x_reordered() +
+#'   facet_wrap(vs ~ am, scales = "free_x")
+#'
 #' @export
 reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
-  new_x <- paste(x, within, sep = sep)
+  if (!is.list(within)) {
+    within <- list(within)
+  }
+
+  new_x <- do.call(paste, c(list(x, sep = sep), within))
   stats::reorder(new_x, by, FUN = fun)
 }
 
