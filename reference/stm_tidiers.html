@@ -81,7 +81,7 @@ are similar to lda_tidiers." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4.900</span>
       </span>
     </div>
 
@@ -215,7 +215,7 @@ document-term pair, such as is returned by <a href='tdm_tidiers.html'>tdm_tidier
 columns <code>document</code> and <code>term</code>. It returns that same data as a table
 with an additional column <code>.topic</code> with the topic assignment for that
 document-term combination.</p>
-<p><code>glance</code> always returns a one-row table, with columns</p><dl'>
+<p><code>glance</code> always returns a one-row table, with columns</p><dl>
 <dt>k</dt><dd><p>Number of topics in the model</p></dd>
 <dt>docs</dt><dd><p>Number of documents in the model</p></dd>
 <dt>terms</dt><dd><p>Number of terms in the model</p></dd>
@@ -229,7 +229,7 @@ for topics over documents</p></dd>
 
     <div class='dont-index'><p><code><a href='lda_tidiers.html'>lda_tidiers</a></code></p>
 <p>If <code>matrix == "beta"</code> (default), returns a table with one row per topic and term,
-with columns</p><dl'>
+with columns</p><dl>
 <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
 <dt>term</dt><dd><p>Term</p></dd>
 <dt>beta</dt><dd><p>Probability of a term generated from a topic according to
@@ -238,7 +238,7 @@ the structural topic model</p></dd>
 </dl>
 
 <p>If <code>matrix == "gamma"</code>, returns a table with one row per topic and document,
-with columns</p><dl'>
+with columns</p><dl>
 <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
 <dt>document</dt><dd><p>Document name (if given in vector of <code>document_names</code>) or
 ID as an integer</p></dd>
@@ -246,7 +246,7 @@ ID as an integer</p></dd>
 
 </dl>
 
-<p>If called on an object from <code>estimateEffect</code>, returns a table with columns</p><dl'>
+<p>If called on an object from <code>estimateEffect</code>, returns a table with columns</p><dl>
 <dt>topic</dt><dd><p>Topic, as an integer</p></dd>
 <dt>term</dt><dd><p>The term in the model being estimated and tested</p></dd>
 <dt>estimate</dt><dd><p>The estimated coefficient</p></dd>

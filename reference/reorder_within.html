@@ -85,7 +85,7 @@ at the end of each string." />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.2.4.900</span>
       </span>
     </div>
 
@@ -178,7 +178,9 @@ at the end of each string.</p>
     </tr>
     <tr>
       <th>within</th>
-      <td><p>Vector of the same length that will later be used for faceting</p></td>
+      <td><p>Vector or list of vectors of the same length that will later
+be used for faceting. A list of vectors will be used to facet within multiple
+variables.</p></td>
     </tr>
     <tr>
       <th>fun</th>
@@ -220,6 +222,12 @@ manually if ___ can exist within one of your labels.</p></td>
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span>() +
   <span class='fu'>scale_x_reordered</span>() +
   <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~ <span class='no'>metric</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_x"</span>)</div><div class='img'><img src='reorder_within-2.png' alt='' width='700' height='433' /></div><div class='input'>
+<span class='co'># to reorder within multiple variables, set within to the list of</span>
+<span class='co'># facet variables.</span>
+<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>mtcars</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='fu'>reorder_within</span>(<span class='no'>carb</span>, <span class='no'>mpg</span>, <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='no'>vs</span>, <span class='no'>am</span>)), <span class='no'>mpg</span>)) +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_boxplot.html'>geom_boxplot</a></span>() +
+  <span class='fu'>scale_x_reordered</span>() +
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(<span class='no'>vs</span> ~ <span class='no'>am</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free_x"</span>)</div><div class='img'><img src='reorder_within-3.png' alt='' width='700' height='433' /></div><div class='input'>
 </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
