@@ -30,3 +30,14 @@ test_that("Can make a plot", {
   vdiffr::expect_doppelganger("reordered boxplot", p)
 
 })
+
+test_that("Can make a multi-facet plot", {
+  p <- ggplot(mtcars, aes(reorder_within(carb, mpg, list(vs, am)), mpg)) +
+    geom_boxplot() +
+    scale_x_reordered() +
+    facet_wrap(vs ~ am, scales = "free_x")
+
+  expect_is(p, "ggplot")
+  vdiffr::expect_doppelganger("reordered multi-facet boxplot", p)
+})
+
