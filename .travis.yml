@@ -11,6 +11,7 @@ addons:
 
 r_packages:
   - covr
+  - topicmodels
   - data.table # so data.table tests will get checked
 
 matrix:
