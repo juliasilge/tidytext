@@ -34,6 +34,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.0
 Depends: R (>= 2.10)
 Imports: rlang,
+    tibble,
     dplyr,
     stringr,
     hunspell,

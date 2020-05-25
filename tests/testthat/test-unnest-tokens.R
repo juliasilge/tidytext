@@ -305,8 +305,8 @@ test_that("unnest_tokens keeps top-level attributes", {
   result <- unnest_tokens(d, word, txt)
   expect_equal(attr(result, "custom"), lst)
 
-  # now tbl_df
-  d2 <- dplyr::tbl_df(d)
+  # now tibble
+  d2 <- tibble::as_tibble(d)
   attr(d2, "custom") <- list(1, 2, 3, 4)
   result <- unnest_tokens(d2, word, txt)
   expect_equal(attr(result, "custom"), lst)

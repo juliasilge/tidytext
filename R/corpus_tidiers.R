@@ -115,7 +115,7 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #'
 #' @export
 tidy.corpus <- function(x, ...) {
-  dplyr::tbl_df(data.frame(
+  tibble::as_tibble(data.frame(
     text = quanteda::texts(x),
     quanteda::docvars(x),
     stringsAsFactors = FALSE

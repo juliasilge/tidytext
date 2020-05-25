@@ -96,7 +96,7 @@ tidy_topicmodels <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
   }
 
   ret <- reshape2::melt(mat) %>%
-    tbl_df()
+    tibble::as_tibble()
 
   if (matrix == "beta") {
     ret <- transmute(ret, topic = Var1, term = x@terms[Var2], beta = value)
