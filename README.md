@@ -10,7 +10,6 @@
 
 [![R build status](https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg)](https://github.com/juliasilge/tidytext/actions)
 [![Build Status](https://travis-ci.org/juliasilge/tidytext.svg?branch=master)](https://travis-ci.org/juliasilge/tidytext)
-[![AppVeyor Build Status](https://ci.appveyor.com/api/projects/status/github/juliasilge/tidytext?branch=master&svg=true)](https://ci.appveyor.com/project/juliasilge/tidytext)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
 [![cran checks](https://cranchecks.info/badges/summary/tidytext)](https://cran.r-project.org/web/checks/check_results_tidytext.html)
 [![Coverage Status](https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg)](https://codecov.io/github/juliasilge/tidytext?branch=master)
