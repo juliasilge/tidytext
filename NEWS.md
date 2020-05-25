@@ -1,6 +1,7 @@
 # tidytext devel [WIP]
 
 * `reorder_within()` now handles multiple variables, thanks to @tmastny (#170)
+* Move stopwords to Suggests so tidytext can be installed on older versions of R
 
 # tidytext 0.2.4
 

@@ -42,8 +42,7 @@ Imports: rlang,
     tokenizers,
     janeaustenr,
     purrr (>= 0.1.1),
-    methods,
-    stopwords
+    methods
 Suggests: 
     readr,
     tidyr,
@@ -66,5 +65,6 @@ Suggests:
     data.table,
     broom,
     textdata,
+    stopwords,
     covr
 VignetteBuilder: knitr
