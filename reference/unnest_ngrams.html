@@ -260,36 +260,36 @@ words. The function will compute all skip n-grams between <code>0</code> and
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
 
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 122,203 x 1
+  <span class='fu'>unnest_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 122,203 x 1</span><span>
 #&gt;    word          
-#&gt;    &lt;chr&gt;         
-#&gt;  1 pride and     
-#&gt;  2 and prejudice 
-#&gt;  3 prejudice by  
-#&gt;  4 by jane       
-#&gt;  5 jane austen   
-#&gt;  6 austen chapter
-#&gt;  7 chapter 1     
-#&gt;  8 1 it          
-#&gt;  9 it is         
-#&gt; 10 is a          
-#&gt; # … with 122,193 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         
+#&gt; </span><span style='color: #555555;'> 1</span><span> pride and     
+#&gt; </span><span style='color: #555555;'> 2</span><span> and prejudice 
+#&gt; </span><span style='color: #555555;'> 3</span><span> prejudice by  
+#&gt; </span><span style='color: #555555;'> 4</span><span> by jane       
+#&gt; </span><span style='color: #555555;'> 5</span><span> jane austen   
+#&gt; </span><span style='color: #555555;'> 6</span><span> austen chapter
+#&gt; </span><span style='color: #555555;'> 7</span><span> chapter 1     
+#&gt; </span><span style='color: #555555;'> 8</span><span> 1 it          
+#&gt; </span><span style='color: #555555;'> 9</span><span> it is         
+#&gt; </span><span style='color: #555555;'>10</span><span> is a          
+#&gt; </span><span style='color: #555555;'># … with 122,193 more rows</span><span></div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_skip_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; # A tibble: 855,413 x 1
+  <span class='fu'>unnest_skip_ngrams</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>3</span>, <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>1</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 855,413 x 1</span><span>
 #&gt;    word                
-#&gt;    &lt;chr&gt;               
-#&gt;  1 pride               
-#&gt;  2 pride and           
-#&gt;  3 pride prejudice     
-#&gt;  4 pride and prejudice 
-#&gt;  5 pride and by        
-#&gt;  6 pride prejudice by  
-#&gt;  7 pride prejudice jane
-#&gt;  8 and                 
-#&gt;  9 and prejudice       
-#&gt; 10 and by              
-#&gt; # … with 855,403 more rows</div><div class='input'>
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               
+#&gt; </span><span style='color: #555555;'> 1</span><span> pride               
+#&gt; </span><span style='color: #555555;'> 2</span><span> pride and           
+#&gt; </span><span style='color: #555555;'> 3</span><span> pride prejudice     
+#&gt; </span><span style='color: #555555;'> 4</span><span> pride and prejudice 
+#&gt; </span><span style='color: #555555;'> 5</span><span> pride and by        
+#&gt; </span><span style='color: #555555;'> 6</span><span> pride prejudice by  
+#&gt; </span><span style='color: #555555;'> 7</span><span> pride prejudice jane
+#&gt; </span><span style='color: #555555;'> 8</span><span> and                 
+#&gt; </span><span style='color: #555555;'> 9</span><span> and prejudice       
+#&gt; </span><span style='color: #555555;'>10</span><span> and by              
+#&gt; </span><span style='color: #555555;'># … with 855,403 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -305,7 +305,7 @@ words. The function will compute all skip n-grams between <code>0</code> and
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

@@ -156,7 +156,7 @@ Words with non-ASCII characters and items with a space have been removed.</p>
 
     <h2 class="hasAnchor" id="format"><a class="anchor" href="#format"></a>Format</h2>
 
-    <p>A data frame with 205,985 rows and 2 variables:</p><dl'>
+    <p>A data frame with 205,985 rows and 2 variables:</p><dl>
 <dt>word</dt><dd><p>An English word</p></dd>
 <dt>pos</dt><dd><p>The part of speech of the word. One of 13 options, such as
 "Noun", "Adverb", "Adjective"</p></dd>
@@ -176,39 +176,39 @@ non-commercial use, is available as part of SUBTLEXus at
     <pre class="examples"><div class='input'>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
 
-<span class='no'>parts_of_speech</span></div><div class='output co'>#&gt; # A tibble: 208,259 x 2
+<span class='no'>parts_of_speech</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 208,259 x 2</span><span>
 #&gt;    word    pos      
-#&gt;    &lt;chr&gt;   &lt;chr&gt;    
-#&gt;  1 3-d     Adjective
-#&gt;  2 3-d     Noun     
-#&gt;  3 4-f     Noun     
-#&gt;  4 4-h'er  Noun     
-#&gt;  5 4-h     Adjective
-#&gt;  6 a'      Adjective
-#&gt;  7 a-1     Noun     
-#&gt;  8 a-axis  Noun     
-#&gt;  9 a-bomb  Noun     
-#&gt; 10 a-frame Noun     
-#&gt; # … with 208,249 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 1</span><span> 3-d     Adjective
+#&gt; </span><span style='color: #555555;'> 2</span><span> 3-d     Noun     
+#&gt; </span><span style='color: #555555;'> 3</span><span> 4-f     Noun     
+#&gt; </span><span style='color: #555555;'> 4</span><span> 4-h'er  Noun     
+#&gt; </span><span style='color: #555555;'> 5</span><span> 4-h     Adjective
+#&gt; </span><span style='color: #555555;'> 6</span><span> a'      Adjective
+#&gt; </span><span style='color: #555555;'> 7</span><span> a-1     Noun     
+#&gt; </span><span style='color: #555555;'> 8</span><span> a-axis  Noun     
+#&gt; </span><span style='color: #555555;'> 9</span><span> a-bomb  Noun     
+#&gt; </span><span style='color: #555555;'>10</span><span> a-frame Noun     
+#&gt; </span><span style='color: #555555;'># … with 208,249 more rows</span><span></div><div class='input'>
 <span class='no'>parts_of_speech</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>pos</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; # A tibble: 14 x 2
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>pos</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 14 x 2</span><span>
 #&gt;    pos                        n
-#&gt;    &lt;chr&gt;                  &lt;int&gt;
-#&gt;  1 Noun                  104542
-#&gt;  2 Adjective              47719
-#&gt;  3 Verb (transitive)      15723
-#&gt;  4 Adverb                 13234
-#&gt;  5 Verb (usu participle)  11402
-#&gt;  6 Plural                  7764
-#&gt;  7 Verb (intransitive)     4626
-#&gt;  8 &lt;NA&gt;                    2274
-#&gt;  9 Interjection             395
-#&gt; 10 Preposition              159
-#&gt; 11 Noun Phrase              115
-#&gt; 12 Pronoun                  113
-#&gt; 13 Definite Article         103
-#&gt; 14 Conjunction               90</div><div class='input'>
-</div></pre>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span>
+#&gt; </span><span style='color: #555555;'> 1</span><span> Noun                  </span><span style='text-decoration: underline;'>104</span><span>542
+#&gt; </span><span style='color: #555555;'> 2</span><span> Adjective              </span><span style='text-decoration: underline;'>47</span><span>719
+#&gt; </span><span style='color: #555555;'> 3</span><span> Verb (transitive)      </span><span style='text-decoration: underline;'>15</span><span>723
+#&gt; </span><span style='color: #555555;'> 4</span><span> Adverb                 </span><span style='text-decoration: underline;'>13</span><span>234
+#&gt; </span><span style='color: #555555;'> 5</span><span> Verb (usu participle)  </span><span style='text-decoration: underline;'>11</span><span>402
+#&gt; </span><span style='color: #555555;'> 6</span><span> Plural                  </span><span style='text-decoration: underline;'>7</span><span>764
+#&gt; </span><span style='color: #555555;'> 7</span><span> Verb (intransitive)     </span><span style='text-decoration: underline;'>4</span><span>626
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>                      </span><span style='text-decoration: underline;'>2</span><span>274
+#&gt; </span><span style='color: #555555;'> 9</span><span> Interjection             395
+#&gt; </span><span style='color: #555555;'>10</span><span> Preposition              159
+#&gt; </span><span style='color: #555555;'>11</span><span> Noun Phrase              115
+#&gt; </span><span style='color: #555555;'>12</span><span> Pronoun                  113
+#&gt; </span><span style='color: #555555;'>13</span><span> Definite Article         103
+#&gt; </span><span style='color: #555555;'>14</span><span> Conjunction               90</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -224,7 +224,7 @@ non-commercial use, is available as part of SUBTLEXus at
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>

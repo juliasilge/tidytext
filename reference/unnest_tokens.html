@@ -238,113 +238,113 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>janeaustenr</span>)
 
 <span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
-<span class='no'>d</span></div><div class='output co'>#&gt; # A tibble: 13,030 x 1
+<span class='no'>d</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 13,030 x 1</span><span>
 #&gt;    txt                                                                      
-#&gt;    &lt;chr&gt;                                                                    
-#&gt;  1 "PRIDE AND PREJUDICE"                                                    
-#&gt;  2 ""                                                                       
-#&gt;  3 "By Jane Austen"                                                         
-#&gt;  4 ""                                                                       
-#&gt;  5 ""                                                                       
-#&gt;  6 ""                                                                       
-#&gt;  7 "Chapter 1"                                                              
-#&gt;  8 ""                                                                       
-#&gt;  9 ""                                                                       
-#&gt; 10 "It is a truth universally acknowledged, that a single man in possession"
-#&gt; # … with 13,020 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                    
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>PRIDE AND PREJUDICE</span><span style='color: #555555;'>"</span><span>                                                    
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>""</span><span>                                                                       
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>By Jane Austen</span><span style='color: #555555;'>"</span><span>                                                         
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>""</span><span>                                                                       
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>""</span><span>                                                                       
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>""</span><span>                                                                       
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>Chapter 1</span><span style='color: #555555;'>"</span><span>                                                              
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>""</span><span>                                                                       
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>""</span><span>                                                                       
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>It is a truth universally acknowledged, that a single man in possession</span><span style='color: #555555;'>"</span><span>
+#&gt; </span><span style='color: #555555;'># … with 13,020 more rows</span><span></div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; # A tibble: 122,204 x 1
+  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 122,204 x 1</span><span>
 #&gt;    word     
-#&gt;    &lt;chr&gt;    
-#&gt;  1 pride    
-#&gt;  2 and      
-#&gt;  3 prejudice
-#&gt;  4 by       
-#&gt;  5 jane     
-#&gt;  6 austen   
-#&gt;  7 chapter  
-#&gt;  8 1        
-#&gt;  9 it       
-#&gt; 10 is       
-#&gt; # … with 122,194 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
+#&gt; </span><span style='color: #555555;'> 1</span><span> pride    
+#&gt; </span><span style='color: #555555;'> 2</span><span> and      
+#&gt; </span><span style='color: #555555;'> 3</span><span> prejudice
+#&gt; </span><span style='color: #555555;'> 4</span><span> by       
+#&gt; </span><span style='color: #555555;'> 5</span><span> jane     
+#&gt; </span><span style='color: #555555;'> 6</span><span> austen   
+#&gt; </span><span style='color: #555555;'> 7</span><span> chapter  
+#&gt; </span><span style='color: #555555;'> 8</span><span> 1        
+#&gt; </span><span style='color: #555555;'> 9</span><span> it       
+#&gt; </span><span style='color: #555555;'>10</span><span> is       
+#&gt; </span><span style='color: #555555;'># … with 122,194 more rows</span><span></div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>sentence</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"sentences"</span>)</div><div class='output co'>#&gt; # A tibble: 7,066 x 1
+  <span class='fu'>unnest_tokens</span>(<span class='no'>sentence</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"sentences"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7,066 x 1</span><span>
 #&gt;    sentence                                                                     
-#&gt;    &lt;chr&gt;                                                                        
-#&gt;  1 "pride and prejudice  by jane austen    chapter 1   it is a truth universall…
-#&gt;  2 "however little known the feelings or views of such a man may be on his firs…
-#&gt;  3 "\"my dear mr."                                                              
-#&gt;  4 "bennet,\" said his lady to him one day, \"have you heard that netherfield p…
-#&gt;  5 "mr."                                                                        
-#&gt;  6 "bennet replied that he had not."                                            
-#&gt;  7 "\"but it is,\" returned she; \"for mrs."                                    
-#&gt;  8 "long has just been here, and she told me all about it.\""                   
-#&gt;  9 "mr."                                                                        
-#&gt; 10 "bennet made no answer."                                                     
-#&gt; # … with 7,056 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                        
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice  by jane austen    chapter 1   it is a truth universall…
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>however little known the feelings or views of such a man may be on his firs…
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>\"my dear mr.</span><span style='color: #555555;'>"</span><span>                                                              
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>"</span><span>bennet,\" said his lady to him one day, \"have you heard that netherfield p…
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>mr.</span><span style='color: #555555;'>"</span><span>                                                                        
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>bennet replied that he had not.</span><span style='color: #555555;'>"</span><span>                                            
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>\"but it is,\" returned she; \"for mrs.</span><span style='color: #555555;'>"</span><span>                                    
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>"</span><span>long has just been here, and she told me all about it.\"</span><span style='color: #555555;'>"</span><span>                   
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>"</span><span>mr.</span><span style='color: #555555;'>"</span><span>                                                                        
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>bennet made no answer.</span><span style='color: #555555;'>"</span><span>                                                     
+#&gt; </span><span style='color: #555555;'># … with 7,056 more rows</span><span></div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>ngram</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"ngrams"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; # A tibble: 122,203 x 1
+  <span class='fu'>unnest_tokens</span>(<span class='no'>ngram</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"ngrams"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 122,203 x 1</span><span>
 #&gt;    ngram         
-#&gt;    &lt;chr&gt;         
-#&gt;  1 pride and     
-#&gt;  2 and prejudice 
-#&gt;  3 prejudice by  
-#&gt;  4 by jane       
-#&gt;  5 jane austen   
-#&gt;  6 austen chapter
-#&gt;  7 chapter 1     
-#&gt;  8 1 it          
-#&gt;  9 it is         
-#&gt; 10 is a          
-#&gt; # … with 122,193 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         
+#&gt; </span><span style='color: #555555;'> 1</span><span> pride and     
+#&gt; </span><span style='color: #555555;'> 2</span><span> and prejudice 
+#&gt; </span><span style='color: #555555;'> 3</span><span> prejudice by  
+#&gt; </span><span style='color: #555555;'> 4</span><span> by jane       
+#&gt; </span><span style='color: #555555;'> 5</span><span> jane austen   
+#&gt; </span><span style='color: #555555;'> 6</span><span> austen chapter
+#&gt; </span><span style='color: #555555;'> 7</span><span> chapter 1     
+#&gt; </span><span style='color: #555555;'> 8</span><span> 1 it          
+#&gt; </span><span style='color: #555555;'> 9</span><span> it is         
+#&gt; </span><span style='color: #555555;'>10</span><span> is a          
+#&gt; </span><span style='color: #555555;'># … with 122,193 more rows</span><span></div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>chapter</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"regex"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Chapter [\\\\d]"</span>)</div><div class='output co'>#&gt; # A tibble: 1 x 1
+  <span class='fu'>unnest_tokens</span>(<span class='no'>chapter</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"regex"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Chapter [\\\\d]"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
 #&gt;   chapter                                                                       
-#&gt;   &lt;chr&gt;                                                                         
-#&gt; 1 "pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                         
+#&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>shingle</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"character_shingles"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; # A tibble: 536,526 x 1
+  <span class='fu'>unnest_tokens</span>(<span class='no'>shingle</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"character_shingles"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 536,526 x 1</span><span>
 #&gt;    shingle
-#&gt;    &lt;chr&gt;  
-#&gt;  1 prid   
-#&gt;  2 ride   
-#&gt;  3 idea   
-#&gt;  4 dean   
-#&gt;  5 eand   
-#&gt;  6 andp   
-#&gt;  7 ndpr   
-#&gt;  8 dpre   
-#&gt;  9 prej   
-#&gt; 10 reju   
-#&gt; # … with 536,516 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
+#&gt; </span><span style='color: #555555;'> 1</span><span> prid   
+#&gt; </span><span style='color: #555555;'> 2</span><span> ride   
+#&gt; </span><span style='color: #555555;'> 3</span><span> idea   
+#&gt; </span><span style='color: #555555;'> 4</span><span> dean   
+#&gt; </span><span style='color: #555555;'> 5</span><span> eand   
+#&gt; </span><span style='color: #555555;'> 6</span><span> andp   
+#&gt; </span><span style='color: #555555;'> 7</span><span> ndpr   
+#&gt; </span><span style='color: #555555;'> 8</span><span> dpre   
+#&gt; </span><span style='color: #555555;'> 9</span><span> prej   
+#&gt; </span><span style='color: #555555;'>10</span><span> reju   
+#&gt; </span><span style='color: #555555;'># … with 536,516 more rows</span><span></div><div class='input'>
 <span class='co'># custom function</span>
 <span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_split.html'>str_split</a></span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; # A tibble: 124,032 x 1
+  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_split.html'>str_split</a></span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 124,032 x 1</span><span>
 #&gt;    word       
-#&gt;    &lt;chr&gt;      
-#&gt;  1 "pride"    
-#&gt;  2 "and"      
-#&gt;  3 "prejudice"
-#&gt;  4 ""         
-#&gt;  5 "by"       
-#&gt;  6 "jane"     
-#&gt;  7 "austen"   
-#&gt;  8 ""         
-#&gt;  9 ""         
-#&gt; 10 ""         
-#&gt; # … with 124,022 more rows</div><div class='input'>
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride</span><span style='color: #555555;'>"</span><span>    
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>and</span><span style='color: #555555;'>"</span><span>      
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>prejudice</span><span style='color: #555555;'>"</span><span>
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>""</span><span>         
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>by</span><span style='color: #555555;'>"</span><span>       
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>jane</span><span style='color: #555555;'>"</span><span>     
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>austen</span><span style='color: #555555;'>"</span><span>   
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>""</span><span>         
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>""</span><span>         
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>""</span><span>         
+#&gt; </span><span style='color: #555555;'># … with 124,022 more rows</span><span></div><div class='input'>
 <span class='co'># tokenize HTML</span>
 <span class='no'>h</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>,
                 <span class='kw'>text</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class='st'>"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span>))
 
 <span class='no'>h</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>text</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; # A tibble: 3 x 2
+  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>text</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
 #&gt;     row word 
-#&gt;   &lt;int&gt; &lt;chr&gt;
-#&gt; 1     1 text 
-#&gt; 2     1 is   
-#&gt; 3     2 here </div><div class='input'>
-</div></pre>
+#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
+#&gt; </span><span style='color: #555555;'>1</span><span>     1 text 
+#&gt; </span><span style='color: #555555;'>2</span><span>     1 is   
+#&gt; </span><span style='color: #555555;'>3</span><span>     2 here </div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -360,7 +360,7 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
 </div>
 
       </footer>
