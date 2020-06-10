@@ -2,6 +2,7 @@
 
 * `reorder_within()` now handles multiple variables, thanks to @tmastny (#170)
 * Move stopwords to Suggests so tidytext can be installed on older versions of R
+* Pass `to_lower` argument to other tokenizing functions, for more consistent behavior (#175)
 
 # tidytext 0.2.4
 

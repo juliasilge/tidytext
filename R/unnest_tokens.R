@@ -145,7 +145,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
       "characters", "words", "ngrams", "skip_ngrams",
       "tweets", "ptb"
     )) {
-      tokenfunc <- function(col, ...) tf(col, lowercase = FALSE, ...)
+      tokenfunc <- function(col, ...) tf(col, lowercase = to_lower, ...)
     } else {
       tokenfunc <- tf
     }
