@@ -268,8 +268,8 @@ ID as an integer</p></dd>
 
   <span class='no'>austen_sparse</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/janeaustenr/man/austen_books.html'>austen_books</a></span>() <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='unnest_tokens.html'>unnest_tokens</a></span>(<span class='no'>word</span>, <span class='no'>text</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/join.html'>anti_join</a></span>(<span class='no'>stop_words</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>book</span>, <span class='no'>word</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter-joins.html'>anti_join</a></span>(<span class='no'>stop_words</span>) <span class='kw'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>book</span>, <span class='no'>word</span>) <span class='kw'>%&gt;%</span>
     <span class='fu'><a href='cast_sparse.html'>cast_sparse</a></span>(<span class='no'>book</span>, <span class='no'>word</span>, <span class='no'>n</span>)
   <span class='no'>topic_model</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/stm/man/stm.html'>stm</a></span>(<span class='no'>austen_sparse</span>, <span class='kw'>K</span> <span class='kw'>=</span> <span class='fl'>12</span>, <span class='kw'>verbose</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='kw'>init.type</span> <span class='kw'>=</span> <span class='st'>"Spectral"</span>)
 

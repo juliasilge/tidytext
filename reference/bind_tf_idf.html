@@ -202,7 +202,7 @@ for this to work.</p>
 
 <span class='no'>book_words</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/janeaustenr/man/austen_books.html'>austen_books</a></span>() <span class='kw'>%&gt;%</span>
   <span class='fu'><a href='unnest_tokens.html'>unnest_tokens</a></span>(<span class='no'>word</span>, <span class='no'>text</span>) <span class='kw'>%&gt;%</span>
-  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/tally.html'>count</a></span>(<span class='no'>book</span>, <span class='no'>word</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
+  <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='no'>book</span>, <span class='no'>word</span>, <span class='kw'>sort</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)
 
 <span class='no'>book_words</span></div><div class='output co'>#&gt; # A tibble: 40,379 x 3
 #&gt;    book              word      n

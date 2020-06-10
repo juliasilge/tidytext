@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-05-25</h4>
+            <h4 class="date">2020-06-10</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/tf_idf.Rmd"><code>vignettes/tf_idf.Rmd</code></a></small>
       <div class="hidden name"><code>tf_idf.Rmd</code></div>
@@ -120,10 +120,10 @@
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidytext</span>)
 <span class="no">book_words</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html">austen_books</a></span>() <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">word</span>, <span class="no">text</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">book</span>, <span class="no">word</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">book</span>, <span class="no">word</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 
 <span class="no">total_words</span> <span class="kw">&lt;-</span> <span class="no">book_words</span> <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">book</span>) <span class="kw">%&gt;%</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="kw">total</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">n</span>))
-<span class="no">book_words</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">left_join</a></span>(<span class="no">book_words</span>, <span class="no">total_words</span>)
+<span class="no">book_words</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span>(<span class="no">book_words</span>, <span class="no">total_words</span>)
 <span class="no">book_words</span></pre></body></html></div>
 <pre><code>## # A tibble: 40,379 x 4
 ##    book              word      n  total

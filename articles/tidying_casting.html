@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-05-25</h4>
+            <h4 class="date">2020-06-10</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/tidying_casting.Rmd"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -129,7 +129,7 @@
 <span class="no">ap_td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">AssociatedPress</span>)</pre></body></html></div>
 <p>Just as shown in <a href="tidytext.html">this vignette</a>, having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles.</p>
 <div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">ap_sentiments</span> <span class="kw">&lt;-</span> <span class="no">ap_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">inner_join</a></span>(<span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">term</span> <span class="kw">=</span> <span class="st">"word"</span>))
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">term</span> <span class="kw">=</span> <span class="st">"word"</span>))
 
 <span class="no">ap_sentiments</span></pre></body></html></div>
 <pre><code>## # A tibble: 30,094 x 4
@@ -150,7 +150,7 @@
 <div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyr</span>)
 
 <span class="no">ap_sentiments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">document</span>, <span class="no">sentiment</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">document</span>, <span class="no">sentiment</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="no">sentiment</span>, <span class="no">n</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">sentiment</span> <span class="kw">=</span> <span class="no">positive</span> - <span class="no">negative</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">sentiment</span>)</pre></body></html></div>
@@ -172,7 +172,7 @@
 <div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
 
 <span class="no">ap_sentiments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">sentiment</span>, <span class="no">term</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">sentiment</span>, <span class="no">term</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">n</span> <span class="kw">&gt;=</span> <span class="fl">150</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="no">sentiment</span> <span class="kw">==</span> <span class="st">"negative"</span>, -<span class="no">n</span>, <span class="no">n</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">term</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">term</span>, <span class="no">n</span>)) <span class="kw">%&gt;%</span>
@@ -367,7 +367,7 @@
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to analyze the text alongside the metadata.</p>
 <div class="sourceCode" id="cb33"><html><body><pre class="r"><span class="no">inaug_words</span> <span class="kw">&lt;-</span> <span class="no">inaug_td</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">word</span>, <span class="no">text</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">anti_join</a></span>(<span class="no">stop_words</span>)
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="no">stop_words</span>)
 
 <span class="no">inaug_words</span></pre></body></html></div>
 <pre><code>## # A tibble: 50,156 x 5
@@ -386,7 +386,7 @@
 ## # … with 50,146 more rows</code></pre>
 <p>We could then, for example, see how the appearance of a word changes over time:</p>
 <div class="sourceCode" id="cb35"><html><body><pre class="r"><span class="no">inaug_freq</span> <span class="kw">&lt;-</span> <span class="no">inaug_words</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">Year</span>, <span class="no">word</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">Year</span>, <span class="no">word</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span>(<span class="no">Year</span>, <span class="no">word</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">0</span>)) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">Year</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">year_total</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">n</span>),
@@ -468,7 +468,7 @@
 
 <span class="no">models</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">6</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="no">estimate</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">inner_join</a></span>(<span class="no">inaug_freq</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">inaug_freq</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">Year</span>, <span class="no">percent</span>)) +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() +
   <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span>() +

@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Tidy Topic Modeling</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-05-25</h4>
+            <h4 class="date">2020-06-10</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/topic_modeling.Rmd"><code>vignettes/topic_modeling.Rmd</code></a></small>
       <div class="hidden name"><code>topic_modeling.Rmd</code></div>
@@ -167,8 +167,8 @@
   <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">word</span>, <span class="no">text</span>)
 
 <span class="no">word_counts</span> <span class="kw">&lt;-</span> <span class="no">by_chapter_word</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">anti_join</a></span>(<span class="no">stop_words</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">title_chapter</span>, <span class="no">word</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="no">stop_words</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title_chapter</span>, <span class="no">word</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
 
 <span class="no">word_counts</span></pre></body></html></div>
 <pre><code>## # A tibble: 104,721 x 3
@@ -334,7 +334,7 @@
 ## # … with 183 more rows</code></pre>
 <p>We can determine this by finding the consensus book for each, which we note is correct based on our earlier visualization:</p>
 <div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">book_topics</span> <span class="kw">&lt;-</span> <span class="no">chapter_classifications</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">title</span>, <span class="no">topic</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">topic</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">topic</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">1</span>, <span class="no">n</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
@@ -350,8 +350,8 @@
 ## 4 Twenty Thousand Leagues under the Sea     2</code></pre>
 <p>Then we see which chapters were misidentified:</p>
 <div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">chapter_classifications</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">inner_join</a></span>(<span class="no">book_topics</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="st">"topic"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>)</pre></body></html></div>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">book_topics</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="st">"topic"</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>)</pre></body></html></div>
 <pre><code>## # A tibble: 6 x 3
 ##   title                                 consensus                                 n
 ##   &lt;chr&gt;                                 &lt;chr&gt;                                 &lt;int&gt;
@@ -373,7 +373,7 @@
 <p>We can combine this with the consensus book titles to find which words were incorrectly classified.</p>
 <div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="no">assignments</span> <span class="kw">&lt;-</span> <span class="no">assignments</span> <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span>(<span class="no">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"title"</span>, <span class="st">"chapter"</span>), <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"_"</span>, <span class="kw">convert</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join.html">inner_join</a></span>(<span class="no">book_topics</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">".topic"</span> <span class="kw">=</span> <span class="st">"topic"</span>))
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">book_topics</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">".topic"</span> <span class="kw">=</span> <span class="st">"topic"</span>))
 
 <span class="no">assignments</span></pre></body></html></div>
 <pre><code>## # A tibble: 104,721 x 6
@@ -392,7 +392,7 @@
 ## # … with 104,711 more rows</code></pre>
 <p>We can, for example, create a “confusion matrix” using dplyr’s <code>count</code> and tidyr’s <code>spread</code>:</p>
 <div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="no">assignments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="no">consensus</span>, <span class="no">n</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fl">0</span>)</pre></body></html></div>
 <pre><code>## # A tibble: 4 x 5
 ##   title                                 `Great Expectations` `Pride and Prejudice`
@@ -440,7 +440,7 @@
 ## 10 Twenty Thousand Leagues under the Sea
 ## # … with 4,525 more rows</code></pre>
 <div class="sourceCode" id="cb34"><html><body><pre class="r"><span class="no">wrong_words</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/tally.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>, <span class="no">term</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>, <span class="no">term</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">n</span>))</pre></body></html></div>
 <pre><code>## # A tibble: 3,500 x 4
 ##    title              consensus             term         n
