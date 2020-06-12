@@ -88,6 +88,7 @@ if (require("stm", quietly = TRUE)) {
   })
 
   stm_estimate_one_topic <- estimateEffect(c(1) ~ treatment, gadarianFit, gadarian)
+
   test_that("can tidy estimateEffect object with one topic", {
     td <- tidy(stm_estimate_one_topic)
     expect_is(td, "tbl_df")
@@ -107,6 +108,17 @@ if (require("stm", quietly = TRUE)) {
 
     expect_true(all(c("(Intercept)", "treatment") %in% td$term))
   })
+
+  test_that("can glance estimateEffect object with one topic", {
+    gla <- glance(stm_estimate_one_topic)
+    expect_is(gla, "tbl_df")
+    expect_equal(colnames(gla), c("k", "docs", "uncertainty"))
+    expect_is(gla$k, "integer")
+    expect_is(gla$docs, "integer")
+    expect_is(gla$uncertainty, "character")
+    expect_equal(nrow(gla), 1)
+  })
+
 
   stm_estimate_three_topic_interaction <- estimateEffect(c(1:3) ~ treatment*s(pid_rep), gadarianFit, gadarian)
   test_that("can tidy estimateEffect object with three topics and an interaction term", {

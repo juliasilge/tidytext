@@ -143,6 +143,23 @@ tidy.estimateEffect <- function(x, ...) {
 
 #' @rdname stm_tidiers
 #'
+#' @return \code{glance} always returns a one-row table, with columns
+#' \describe{
+#'   \item{k}{Number of topics in the model}
+#'   \item{docs}{Number of documents in the model}
+#'   \item{uncertainty}{Uncertainty measure}
+#' }
+#'
+#' @export
+glance.estimateEffect <- function(x, ...) {
+    ret <- tibble(k = length(x[['topics']]),
+                  docs = nrow(x[['modelframe']]),
+                  uncertainty = x[['uncertainty']])
+    ret
+}
+
+#' @rdname stm_tidiers
+#'
 #' @return \code{augment} must be provided a data argument, either a
 #' \code{dfm} from quanteda or a table containing one row per original
 #' document-term pair, such as is returned by \link{tdm_tidiers}, containing
