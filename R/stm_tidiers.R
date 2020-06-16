@@ -88,6 +88,7 @@
 #'   # using stm's gardarianFit, we can tidy the result of a model
 #'   # estimated with covariates
 #'   effects <- estimateEffect(1:3 ~ treatment, gadarianFit, gadarian)
+#'   glance(effects)
 #'   td_estimate <- tidy(effects)
 #'   td_estimate
 #'
