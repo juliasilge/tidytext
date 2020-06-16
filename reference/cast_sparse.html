@@ -152,7 +152,7 @@ in a table.</h1>
     <p>This function supports non-standard evaluation through the tidyeval framework.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>cast_sparse</span>(<span class='no'>data</span>, <span class='no'>row</span>, <span class='no'>column</span>, <span class='no'>value</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/cast_sparse.html'>cast_sparse</a></span>(<span class='kw'>data</span>, <span class='kw'>row</span>, <span class='kw'>column</span>, <span class='kw'>value</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -192,19 +192,18 @@ column, and with as many non-zero values as there are rows in <code>data</code>.
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='no'>dat</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(<span class='kw'>a</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"row1"</span>, <span class='st'>"row1"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span>),
-                  <span class='kw'>b</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"col1"</span>, <span class='st'>"col2"</span>, <span class='st'>"col1"</span>, <span class='st'>"col3"</span>, <span class='st'>"col4"</span>),
-                  <span class='kw'>val</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>5</span>)
+<span class='kw'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span>(a = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"row1"</span>, <span class='st'>"row1"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span>),
+                  b = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"col1"</span>, <span class='st'>"col2"</span>, <span class='st'>"col1"</span>, <span class='st'>"col3"</span>, <span class='st'>"col4"</span>),
+                  val = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>)
 
-<span class='fu'>cast_sparse</span>(<span class='no'>dat</span>, <span class='no'>a</span>, <span class='no'>b</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
+<span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/cast_sparse.html'>cast_sparse</a></span>(<span class='kw'>dat</span>, <span class='kw'>a</span>, <span class='kw'>b</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
 #&gt;      col1 col2 col3 col4
 #&gt; row1    1    1    .    .
 #&gt; row2    1    .    1    1</div><div class='input'>
-<span class='fu'>cast_sparse</span>(<span class='no'>dat</span>, <span class='no'>a</span>, <span class='no'>b</span>, <span class='no'>val</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
+<span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/cast_sparse.html'>cast_sparse</a></span>(<span class='kw'>dat</span>, <span class='kw'>a</span>, <span class='kw'>b</span>, <span class='kw'>val</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
 #&gt;      col1 col2 col3 col4
 #&gt; row1    1    2    .    .
-#&gt; row2    3    .    4    5</div><div class='input'>
-</div></pre>
+#&gt; row2    3    .    4    5</div><div class='input'></div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

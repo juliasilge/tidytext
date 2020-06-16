@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Introduction to tidytext</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-06-11</h4>
+            <h4 class="date">2020-06-16</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/tidytext.Rmd"><code>vignettes/tidytext.Rmd</code></a></small>
       <div class="hidden name"><code>tidytext.Rmd</code></div>
@@ -119,18 +119,20 @@
 <h3 class="hasAnchor">
 <a href="#a-few-first-tidy-text-mining-examples" class="anchor"></a>A few first tidy text mining examples</h3>
 <p>The novels of Jane Austen can be so tidy! Let’s use the text of Jane Austen’s 6 completed, published novels from the <a href="https://cran.r-project.org/package=janeaustenr">janeaustenr</a> package, and transform them into a tidy format. janeaustenr provides them as a one-row-per-line format:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">janeaustenr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">stringr</span>)
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/juliasilge/janeaustenr">janeaustenr</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://stringr.tidyverse.org">stringr</a></span>)
 
-<span class="no">original_books</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html">austen_books</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">book</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">line</span> <span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span>(),
-         <span class="kw">chapter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span>(<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(<span class="no">text</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/modifiers.html">regex</a></span>(<span class="st">"^chapter [\\divxlc]"</span>,
-                                                 <span class="kw">ignore_case</span> <span class="kw">=</span> <span class="fl">TRUE</span>)))) <span class="kw">%&gt;%</span>
+<span class="kw">original_books</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html">austen_books</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">book</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(line = <span class="fu"><a href="https://dplyr.tidyverse.org/reference/ranking.html">row_number</a></span>(),
+         chapter = <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span>(<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(<span class="kw">text</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/modifiers.html">regex</a></span>(<span class="st">"^chapter [\\divxlc]"</span>,
+                                                 ignore_case = <span class="fl">TRUE</span>)))) <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()
 
-<span class="no">original_books</span></pre></body></html></div>
+<span class="kw">original_books</span>
+</pre></div>
 <pre><code>## # A tibble: 73,422 x 4
 ##    text                    book                 line chapter
 ##    &lt;chr&gt;                   &lt;fct&gt;               &lt;int&gt;   &lt;int&gt;
@@ -146,11 +148,13 @@
 ## 10 "CHAPTER 1"             Sense &amp; Sensibility    10       1
 ## # … with 73,412 more rows</code></pre>
 <p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code>unnest_tokens</code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidytext</span>)
-<span class="no">tidy_books</span> <span class="kw">&lt;-</span> <span class="no">original_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">word</span>, <span class="no">text</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/juliasilge/tidytext">tidytext</a></span>)
+<span class="kw">tidy_books</span> <span class="op">&lt;-</span> <span class="kw">original_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">word</span>, <span class="kw">text</span>)
 
-<span class="no">tidy_books</span></pre></body></html></div>
+<span class="kw">tidy_books</span>
+</pre></div>
 <pre><code>## # A tibble: 725,055 x 4
 ##    book                 line chapter word       
 ##    &lt;fct&gt;               &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
@@ -167,11 +171,15 @@
 ## # … with 725,045 more rows</code></pre>
 <p>This function uses the <a href="https://github.com/lmullen/tokenizers">tokenizers package</a> to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
 <p>Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (accessible in a tidy form with the function <code><a href="../reference/get_stopwords.html">get_stopwords()</a></code>) with an <code>anti_join</code>.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="no">cleaned_books</span> <span class="kw">&lt;-</span> <span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="fu"><a href="../reference/get_stopwords.html">get_stopwords</a></span>())</pre></body></html></div>
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="kw">cleaned_books</span> <span class="op">&lt;-</span> <span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="fu"><a href="../reference/get_stopwords.html">get_stopwords</a></span>())
+</pre></div>
 <p>We can also use <code>count</code> to find the most common words in all the books as a whole.</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="no">cleaned_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">word</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="kw">cleaned_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">word</span>, sort = <span class="fl">TRUE</span>) 
+</pre></div>
 <pre><code>## # A tibble: 14,375 x 2
 ##    word      n
 ##    &lt;chr&gt; &lt;int&gt;
@@ -187,13 +195,15 @@
 ## 10 think  1440
 ## # … with 14,365 more rows</code></pre>
 <p>Sentiment analysis can be done as an inner join. Sentiment lexicons are available via the <code><a href="../reference/get_sentiments.html">get_sentiments()</a></code> function. Let’s look at the words with a positive score from the lexicon of Bing Liu and collaborators. What are the most common positive words in <em>Emma</em>?</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="no">positive</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">sentiment</span> <span class="kw">==</span> <span class="st">"positive"</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="kw">positive</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">sentiment</span> <span class="op">==</span> <span class="st">"positive"</span>)
 
-<span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">book</span> <span class="kw">==</span> <span class="st">"Emma"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span>(<span class="no">positive</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">word</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)</pre></body></html></div>
+<span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">book</span> <span class="op">==</span> <span class="st">"Emma"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span>(<span class="kw">positive</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">word</span>, sort = <span class="fl">TRUE</span>)
+</pre></div>
 <pre><code>## # A tibble: 668 x 2
 ##    word         n
 ##    &lt;chr&gt;    &lt;int&gt;
@@ -209,31 +219,37 @@
 ## 10 right       92
 ## # … with 658 more rows</code></pre>
 <p>Or instead we could examine how sentiment changes during each novel. Let’s find a sentiment score for each word using the same lexicon, then count the number of positive and negative words in defined sections of each novel.</p>
-<div class="sourceCode" id="cb10"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyr</span>)
-<span class="no">bing</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>)
+<div class="sourceCode" id="cb10"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://tidyr.tidyverse.org">tidyr</a></span>)
+<span class="kw">bing</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>)
 
-<span class="no">janeaustensentiment</span> <span class="kw">&lt;-</span> <span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">bing</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">book</span>, <span class="kw">index</span> <span class="kw">=</span> <span class="no">line</span> <span class="kw">%/%</span> <span class="fl">80</span>, <span class="no">sentiment</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="no">sentiment</span>, <span class="no">n</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">sentiment</span> <span class="kw">=</span> <span class="no">positive</span> - <span class="no">negative</span>)</pre></body></html></div>
+<span class="kw">janeaustensentiment</span> <span class="op">&lt;-</span> <span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="kw">bing</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">book</span>, index = <span class="kw">line</span> <span class="op">%/%</span> <span class="fl">80</span>, <span class="kw">sentiment</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="kw">sentiment</span>, <span class="kw">n</span>, fill = <span class="fl">0</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(sentiment = <span class="kw">positive</span> <span class="op">-</span> <span class="kw">negative</span>)
+</pre></div>
 <p>Now we can plot these sentiment scores across the plot trajectory of each novel.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 
-<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">janeaustensentiment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">index</span>, <span class="no">sentiment</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="no">book</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>, <span class="kw">show.legend</span> <span class="kw">=</span> <span class="fl">FALSE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(~<span class="no">book</span>, <span class="kw">ncol</span> <span class="kw">=</span> <span class="fl">2</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_x"</span>)</pre></body></html></div>
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">janeaustensentiment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">index</span>, <span class="kw">sentiment</span>, fill = <span class="kw">book</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(stat = <span class="st">"identity"</span>, show.legend = <span class="fl">FALSE</span>) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span><span class="kw">book</span>, ncol = <span class="fl">2</span>, scales = <span class="st">"free_x"</span>)
+</pre></div>
 <p><img src="tidytext_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
 </div>
 <div id="most-common-positive-and-negative-words" class="section level3">
 <h3 class="hasAnchor">
 <a href="#most-common-positive-and-negative-words" class="anchor"></a>Most common positive and negative words</h3>
 <p>One advantage of having the data frame with both sentiment and word is that we can analyze word counts that contribute to each sentiment.</p>
-<div class="sourceCode" id="cb12"><html><body><pre class="r"><span class="no">bing_word_counts</span> <span class="kw">&lt;-</span> <span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">bing</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">word</span>, <span class="no">sentiment</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<div class="sourceCode" id="cb12"><pre class="downlit">
+<span class="kw">bing_word_counts</span> <span class="op">&lt;-</span> <span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="kw">bing</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">word</span>, <span class="kw">sentiment</span>, sort = <span class="fl">TRUE</span>)
 
-<span class="no">bing_word_counts</span></pre></body></html></div>
+<span class="kw">bing_word_counts</span>
+</pre></div>
 <pre><code>## # A tibble: 2,585 x 3
 ##    word     sentiment     n
 ##    &lt;chr&gt;    &lt;chr&gt;     &lt;int&gt;
@@ -249,14 +265,16 @@
 ## 10 pleasure positive    462
 ## # … with 2,575 more rows</code></pre>
 <p>This can be shown visually, and we can pipe straight into ggplot2 because of the way we are consistently using tools built for handling tidy data frames.</p>
-<div class="sourceCode" id="cb14"><html><body><pre class="r"><span class="no">bing_word_counts</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">n</span> <span class="kw">&gt;</span> <span class="fl">150</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="no">sentiment</span> <span class="kw">==</span> <span class="st">"negative"</span>, -<span class="no">n</span>, <span class="no">n</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">word</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">word</span>, <span class="no">n</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">word</span>, <span class="no">n</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="no">sentiment</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(<span class="kw">y</span> <span class="kw">=</span> <span class="st">"Contribution to sentiment"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb14"><pre class="downlit">
+<span class="kw">bing_word_counts</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">n</span> <span class="op">&gt;</span> <span class="fl">150</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(n = <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="kw">sentiment</span> <span class="op">==</span> <span class="st">"negative"</span>, <span class="op">-</span><span class="kw">n</span>, <span class="kw">n</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(word = <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="kw">word</span>, <span class="kw">n</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">word</span>, <span class="kw">n</span>, fill = <span class="kw">sentiment</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_col</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html">coord_flip</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">labs</a></span>(y = <span class="st">"Contribution to sentiment"</span>)
+</pre></div>
 <p><img src="tidytext_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
 <p>This lets us spot an anomaly in the sentiment analysis; the word “miss” is coded as negative but it is used as a title for young, unmarried women in Jane Austen’s works. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using <code>bind_rows</code>.</p>
 </div>
@@ -265,21 +283,25 @@
 <a href="#wordclouds" class="anchor"></a>Wordclouds</h3>
 <p>We’ve seen that this tidy text mining approach works well with ggplot2, but having our data in a tidy format is useful for other plots as well.</p>
 <p>For example, consider the wordcloud package. Let’s look at the most common words in Jane Austen’s works as a whole again.</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">wordcloud</span>)
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://blog.fellstat.com/?cat=11">wordcloud</a></span>)
 
-<span class="no">cleaned_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">word</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/wordcloud.html">wordcloud</a></span>(<span class="no">word</span>, <span class="no">n</span>, <span class="kw">max.words</span> <span class="kw">=</span> <span class="fl">100</span>))</pre></body></html></div>
+<span class="kw">cleaned_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">word</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/r/base/with.html">with</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/wordcloud.html">wordcloud</a></span>(<span class="kw">word</span>, <span class="kw">n</span>, max.words = <span class="fl">100</span>))
+</pre></div>
 <p><img src="tidytext_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
 <p>In other functions, such as <code>comparison.cloud</code>, you may need to turn it into a matrix with reshape2’s <code>acast</code>. Let’s do the sentiment analysis to tag positive and negative words using an inner join, then find the most common positive and negative words. Until the step where we need to send the data to <code>comparison.cloud</code>, this can all be done with joins, piping, and dplyr because our data is in tidy format.</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">reshape2</span>)
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/hadley/reshape">reshape2</a></span>)
 
-<span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">bing</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">word</span>, <span class="no">sentiment</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/cast.html">acast</a></span>(<span class="no">word</span> ~ <span class="no">sentiment</span>, <span class="kw">value.var</span> <span class="kw">=</span> <span class="st">"n"</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/comparison.cloud.html">comparison.cloud</a></span>(<span class="kw">colors</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#F8766D"</span>, <span class="st">"#00BFC4"</span>),
-                   <span class="kw">max.words</span> <span class="kw">=</span> <span class="fl">100</span>)</pre></body></html></div>
+<span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="kw">bing</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">word</span>, <span class="kw">sentiment</span>, sort = <span class="fl">TRUE</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/reshape2/man/cast.html">acast</a></span>(<span class="kw">word</span> <span class="op">~</span> <span class="kw">sentiment</span>, value.var = <span class="st">"n"</span>, fill = <span class="fl">0</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/comparison.cloud.html">comparison.cloud</a></span>(colors = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"#F8766D"</span>, <span class="st">"#00BFC4"</span>),
+                   max.words = <span class="fl">100</span>)
+</pre></div>
 <p><img src="tidytext_files/figure-html/wordcloud-1.png" width="480"></p>
 </div>
 <div id="looking-at-units-beyond-just-words" class="section level3">
@@ -290,21 +312,27 @@
 <p>I am not having a good day.</p>
 </blockquote>
 <p>is a sad sentence, not a happy one, because of negation. The <a href="http://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a> tools and the <a href="https://cran.r-project.org/package=sentimentr">sentimentr R package</a> are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.</p>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="no">PandP_sentences</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/reexports.html">tibble</a></span>(<span class="kw">text</span> <span class="kw">=</span> <span class="no">prideprejudice</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">sentence</span>, <span class="no">text</span>, <span class="kw">token</span> <span class="kw">=</span> <span class="st">"sentences"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb17"><pre class="downlit">
+<span class="kw">PandP_sentences</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(text = <span class="kw">prideprejudice</span>) <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">sentence</span>, <span class="kw">text</span>, token = <span class="st">"sentences"</span>)
+</pre></div>
 <p>Let’s look at just one.</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">PandP_sentences</span>$<span class="no">sentence</span>[<span class="fl">2</span>]</pre></body></html></div>
+<div class="sourceCode" id="cb18"><pre class="downlit">
+<span class="kw">PandP_sentences</span><span class="op">$</span><span class="kw">sentence</span>[<span class="fl">2</span>]
+</pre></div>
 <pre><code>## [1] "however little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters."</code></pre>
 <p>The sentence tokenizing does seem to have a bit of trouble with UTF-8 encoded text, especially with sections of dialogue; it does much better with punctuation in ASCII.</p>
 <p>Another option in <code>unnest_tokens</code> is to split into tokens using a regex pattern. We could use this, for example, to split the text of Jane Austen’s novels into a data frame by chapter.</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="no">austen_chapters</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html">austen_books</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">book</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">chapter</span>, <span class="no">text</span>, <span class="kw">token</span> <span class="kw">=</span> <span class="st">"regex"</span>, <span class="kw">pattern</span> <span class="kw">=</span> <span class="st">"Chapter|CHAPTER [\\dIVXLC]"</span>) <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb20"><pre class="downlit">
+<span class="kw">austen_chapters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html">austen_books</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">book</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">chapter</span>, <span class="kw">text</span>, token = <span class="st">"regex"</span>, pattern = <span class="st">"Chapter|CHAPTER [\\dIVXLC]"</span>) <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()
 
-<span class="no">austen_chapters</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">book</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(<span class="kw">chapters</span> <span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span>())</pre></body></html></div>
+<span class="kw">austen_chapters</span> <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">book</span>) <span class="op">%&gt;%</span> 
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarise</a></span>(chapters = <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span>())
+</pre></div>
 <pre><code>## # A tibble: 6 x 2
 ##   book                chapters
 ##   &lt;fct&gt;                  &lt;int&gt;
@@ -316,21 +344,23 @@
 ## 6 Persuasion                25</code></pre>
 <p>We have recovered the correct number of chapters in each novel (plus an “extra” row for each novel title). In this data frame, each row corresponds to one chapter.</p>
 <p>Near the beginning of this vignette, we used a similar regex to find where all the chapters were in Austen’s novels for a tidy data frame organized by one-word-per-row. We can use tidy text analysis to ask questions such as what are the most negative chapters in each of Jane Austen’s novels? First, let’s get the list of negative words from the Bing lexicon. Second, let’s make a dataframe of how many words are in each chapter so we can normalize for the length of chapters. Then, let’s find the number of negative words in each chapter and divide by the total words in each chapter. Which chapter has the highest proportion of negative words?</p>
-<div class="sourceCode" id="cb22"><html><body><pre class="r"><span class="no">bingnegative</span> <span class="kw">&lt;-</span> <span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">sentiment</span> <span class="kw">==</span> <span class="st">"negative"</span>)
+<div class="sourceCode" id="cb22"><pre class="downlit">
+<span class="kw">bingnegative</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">sentiment</span> <span class="op">==</span> <span class="st">"negative"</span>)
 
-<span class="no">wordcounts</span> <span class="kw">&lt;-</span> <span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">book</span>, <span class="no">chapter</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="kw">words</span> <span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span>())
+<span class="kw">wordcounts</span> <span class="op">&lt;-</span> <span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">book</span>, <span class="kw">chapter</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(words = <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span>())
 
-<span class="no">tidy_books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span>(<span class="no">bingnegative</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">book</span>, <span class="no">chapter</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(<span class="kw">negativewords</span> <span class="kw">=</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span>()) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span>(<span class="no">wordcounts</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"book"</span>, <span class="st">"chapter"</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">ratio</span> <span class="kw">=</span> <span class="no">negativewords</span>/<span class="no">words</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">chapter</span> <span class="kw">!=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">1</span>)</pre></body></html></div>
+<span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">semi_join</a></span>(<span class="kw">bingnegative</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">book</span>, <span class="kw">chapter</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html">summarize</a></span>(negativewords = <span class="fu"><a href="https://dplyr.tidyverse.org/reference/context.html">n</a></span>()) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">left_join</a></span>(<span class="kw">wordcounts</span>, by = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"book"</span>, <span class="st">"chapter"</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(ratio = <span class="kw">negativewords</span><span class="op">/</span><span class="kw">words</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">chapter</span> != <span class="fl">0</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">1</span>)
+</pre></div>
 <pre><code>## # A tibble: 6 x 5
 ## # Groups:   book [6]
 ##   book                chapter negativewords words  ratio

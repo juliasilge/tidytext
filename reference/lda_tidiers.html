@@ -150,22 +150,22 @@
     </div>
 
     <pre class="usage"><span class='co'># S3 method for LDA</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>x</span>, <span class='kw'>matrix</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"beta"</span>, <span class='st'>"gamma"</span>), <span class='kw'>log</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>x</span>, matrix = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"beta"</span>, <span class='st'>"gamma"</span>), log = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for CTM</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>x</span>, <span class='kw'>matrix</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"beta"</span>, <span class='st'>"gamma"</span>), <span class='kw'>log</span> <span class='kw'>=</span> <span class='fl'>FALSE</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>x</span>, matrix = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"beta"</span>, <span class='st'>"gamma"</span>), log = <span class='fl'>FALSE</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for LDA</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/augment.html'>augment</a></span>(<span class='no'>x</span>, <span class='no'>data</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/augment.html'>augment</a></span>(<span class='kw'>x</span>, <span class='kw'>data</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for CTM</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/augment.html'>augment</a></span>(<span class='no'>x</span>, <span class='no'>data</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/augment.html'>augment</a></span>(<span class='kw'>x</span>, <span class='kw'>data</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for LDA</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
 
 <span class='co'># S3 method for CTM</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='no'>x</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -216,7 +216,7 @@ with columns</p><dl>
 </dl>
 
 <p><code>augment</code> returns a table with one row per original
-document-term pair, such as is returned by <a href='tdm_tidiers.html'>tdm_tidiers</a>:</p><dl>
+document-term pair, such as is returned by <a href='https://rdrr.io/pkg/tidytext/man/tdm_tidiers.html'>tdm_tidiers</a>:</p><dl>
 <dt>document</dt><dd><p>Name of document (if present), or index</p></dd>
 <dt>term</dt><dd><p>Term</p></dd>
 <dt>.topic</dt><dd><p>Topic assignment</p></dd>
@@ -237,60 +237,59 @@ for topics over documents</p></dd>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"topicmodels"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
+<span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"topicmodels"</span>, quietly = <span class='fl'>TRUE</span>)) {
   <span class='fu'><a href='https://rdrr.io/r/base/Random.html'>set.seed</a></span>(<span class='fl'>2016</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>topicmodels</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'>topicmodels</span>)
 
-  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"AssociatedPress"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"topicmodels"</span>)
-  <span class='no'>ap</span> <span class='kw'>&lt;-</span> <span class='no'>AssociatedPress</span>[<span class='fl'>1</span>:<span class='fl'>100</span>, ]
-  <span class='no'>lda</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/topicmodels/man/lda.html'>LDA</a></span>(<span class='no'>ap</span>, <span class='kw'>control</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>alpha</span> <span class='kw'>=</span> <span class='fl'>0.1</span>), <span class='kw'>k</span> <span class='kw'>=</span> <span class='fl'>4</span>)
+  <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span>(<span class='st'>"AssociatedPress"</span>, package = <span class='st'>"topicmodels"</span>)
+  <span class='kw'>ap</span> <span class='op'>&lt;-</span> <span class='kw'>AssociatedPress</span>[<span class='fl'>1</span><span class='op'>:</span><span class='fl'>100</span>, ]
+  <span class='kw'>lda</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/topicmodels/man/lda.html'>LDA</a></span>(<span class='kw'>ap</span>, control = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(alpha = <span class='fl'>0.1</span>), k = <span class='fl'>4</span>)
 
   <span class='co'># get term distribution within each topic</span>
-  <span class='no'>td_lda</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>lda</span>)
-  <span class='no'>td_lda</span>
+  <span class='kw'>td_lda</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>lda</span>)
+  <span class='kw'>td_lda</span>
 
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>ggplot2</span>)
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span>)
 
   <span class='co'># visualize the top terms within each topic</span>
-  <span class='no'>td_lda_filtered</span> <span class='kw'>&lt;-</span> <span class='no'>td_lda</span> <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='no'>beta</span> <span class='kw'>&gt;</span> <span class='fl'>.004</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(<span class='kw'>term</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span>(<span class='no'>term</span>, <span class='no'>beta</span>))
+  <span class='kw'>td_lda_filtered</span> <span class='op'>&lt;-</span> <span class='kw'>td_lda</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter.html'>filter</a></span>(<span class='kw'>beta</span> <span class='op'>&gt;</span> <span class='fl'>.004</span>) <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/mutate.html'>mutate</a></span>(term = <span class='fu'><a href='https://rdrr.io/r/stats/reorder.factor.html'>reorder</a></span>(<span class='kw'>term</span>, <span class='kw'>beta</span>))
 
-  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='no'>td_lda_filtered</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='no'>term</span>, <span class='no'>beta</span>)) +
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(<span class='kw'>stat</span> <span class='kw'>=</span> <span class='st'>"identity"</span>) +
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(~ <span class='no'>topic</span>, <span class='kw'>scales</span> <span class='kw'>=</span> <span class='st'>"free"</span>) +
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span>(<span class='kw'>axis.text.x</span> <span class='kw'>=</span> <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span>(<span class='kw'>angle</span> <span class='kw'>=</span> <span class='fl'>90</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>15</span>))
+  <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='kw'>td_lda_filtered</span>, <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>term</span>, <span class='kw'>beta</span>)) <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_bar</a></span>(stat = <span class='st'>"identity"</span>) <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(<span class='op'>~</span> <span class='kw'>topic</span>, scales = <span class='st'>"free"</span>) <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/theme.html'>theme</a></span>(axis.text.x = <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/element.html'>element_text</a></span>(angle = <span class='fl'>90</span>, size = <span class='fl'>15</span>))
 
   <span class='co'># get classification of each document</span>
-  <span class='no'>td_lda_docs</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>lda</span>, <span class='kw'>matrix</span> <span class='kw'>=</span> <span class='st'>"gamma"</span>)
-  <span class='no'>td_lda_docs</span>
+  <span class='kw'>td_lda_docs</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>lda</span>, matrix = <span class='st'>"gamma"</span>)
+  <span class='kw'>td_lda_docs</span>
 
-  <span class='no'>doc_classes</span> <span class='kw'>&lt;-</span> <span class='no'>td_lda_docs</span> <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='no'>document</span>) <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/top_n.html'>top_n</a></span>(<span class='fl'>1</span>) <span class='kw'>%&gt;%</span>
+  <span class='kw'>doc_classes</span> <span class='op'>&lt;-</span> <span class='kw'>td_lda_docs</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>document</span>) <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/top_n.html'>top_n</a></span>(<span class='fl'>1</span>) <span class='op'>%&gt;%</span>
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span>()
 
-  <span class='no'>doc_classes</span>
+  <span class='kw'>doc_classes</span>
 
   <span class='co'># which were we most uncertain about?</span>
-  <span class='no'>doc_classes</span> <span class='kw'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='no'>gamma</span>)
+  <span class='kw'>doc_classes</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='kw'>gamma</span>)
 }</div><div class='output co'>#&gt; <span class='message'>Selecting by gamma</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 100 x 3</span><span>
 #&gt;    document topic gamma
 #&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>        5     2 0.635
-#&gt; </span><span style='color: #555555;'> 2</span><span>       19     2 0.661
-#&gt; </span><span style='color: #555555;'> 3</span><span>       61     1 0.777
-#&gt; </span><span style='color: #555555;'> 4</span><span>       66     1 0.799
-#&gt; </span><span style='color: #555555;'> 5</span><span>       83     3 0.951
-#&gt; </span><span style='color: #555555;'> 6</span><span>       23     3 0.993
-#&gt; </span><span style='color: #555555;'> 7</span><span>        9     3 0.993
-#&gt; </span><span style='color: #555555;'> 8</span><span>       22     2 0.995
-#&gt; </span><span style='color: #555555;'> 9</span><span>       60     2 0.995
-#&gt; </span><span style='color: #555555;'>10</span><span>       98     2 0.998
-#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'> 1</span><span>       89     1 0.608
+#&gt; </span><span style='color: #555555;'> 2</span><span>        5     1 0.640
+#&gt; </span><span style='color: #555555;'> 3</span><span>       82     4 0.705
+#&gt; </span><span style='color: #555555;'> 4</span><span>       30     3 0.828
+#&gt; </span><span style='color: #555555;'> 5</span><span>       56     4 0.932
+#&gt; </span><span style='color: #555555;'> 6</span><span>       45     4 0.952
+#&gt; </span><span style='color: #555555;'> 7</span><span>       77     4 0.965
+#&gt; </span><span style='color: #555555;'> 8</span><span>        4     3 0.970
+#&gt; </span><span style='color: #555555;'> 9</span><span>       72     4 0.980
+#&gt; </span><span style='color: #555555;'>10</span><span>        9     2 0.994
+#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

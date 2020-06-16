@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-06-11</h4>
+            <h4 class="date">2020-06-16</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/tidying_casting.Rmd"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -114,24 +114,30 @@
 <h3 class="hasAnchor">
 <a href="#tidying-document-term-matrices" class="anchor"></a>Tidying document-term matrices</h3>
 <p>Many existing text mining datasets are in the form of a <code>DocumentTermMatrix</code> class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels package:</p>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tm</span>)
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"AssociatedPress"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"topicmodels"</span>)
-<span class="no">AssociatedPress</span></pre></body></html></div>
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://tm.r-forge.r-project.org">tm</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"AssociatedPress"</span>, package = <span class="st">"topicmodels"</span>)
+<span class="kw">AssociatedPress</span>
+</pre></div>
 <pre><code>## &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
 ## Non-/sparse entries: 302031/23220327
 ## Sparsity           : 99%
 ## Maximal term length: 18
 ## Weighting          : term frequency (tf)</code></pre>
 <p>If we want to analyze this with tidy tools, we need to turn it into a one-term-per-document-per-row data frame first. The <code>tidy</code> function does this. (For more on the tidy verb, <a href="https://github.com/dgrtwo/broom">see the broom package</a>).</p>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidytext</span>)
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/juliasilge/tidytext">tidytext</a></span>)
 
-<span class="no">ap_td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">AssociatedPress</span>)</pre></body></html></div>
+<span class="kw">ap_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="kw">AssociatedPress</span>)
+</pre></div>
 <p>Just as shown in <a href="tidytext.html">this vignette</a>, having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles.</p>
-<div class="sourceCode" id="cb4"><html><body><pre class="r"><span class="no">ap_sentiments</span> <span class="kw">&lt;-</span> <span class="no">ap_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>), <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="kw">term</span> <span class="kw">=</span> <span class="st">"word"</span>))
+<div class="sourceCode" id="cb4"><pre class="downlit">
+<span class="kw">ap_sentiments</span> <span class="op">&lt;-</span> <span class="kw">ap_td</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>), by = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(term = <span class="st">"word"</span>))
 
-<span class="no">ap_sentiments</span></pre></body></html></div>
+<span class="kw">ap_sentiments</span>
+</pre></div>
 <pre><code>## # A tibble: 30,094 x 4
 ##    document term    count sentiment
 ##       &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    
@@ -147,13 +153,15 @@
 ## 10        1 miracle     1 positive 
 ## # … with 30,084 more rows</code></pre>
 <p>We can find the most negative documents:</p>
-<div class="sourceCode" id="cb6"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyr</span>)
+<div class="sourceCode" id="cb6"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://tidyr.tidyverse.org">tidyr</a></span>)
 
-<span class="no">ap_sentiments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">document</span>, <span class="no">sentiment</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="no">sentiment</span>, <span class="no">n</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fl">0</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">sentiment</span> <span class="kw">=</span> <span class="no">positive</span> - <span class="no">negative</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">sentiment</span>)</pre></body></html></div>
+<span class="kw">ap_sentiments</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">document</span>, <span class="kw">sentiment</span>, wt = <span class="kw">count</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="kw">sentiment</span>, <span class="kw">n</span>, fill = <span class="fl">0</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(sentiment = <span class="kw">positive</span> <span class="op">-</span> <span class="kw">negative</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">sentiment</span>)
+</pre></div>
 <pre><code>## # A tibble: 2,190 x 4
 ##    document negative positive sentiment
 ##       &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
@@ -169,25 +177,29 @@
 ## 10      516       38        6       -32
 ## # … with 2,180 more rows</code></pre>
 <p>Or visualize which words contributed to positive and negative sentiment:</p>
-<div class="sourceCode" id="cb8"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<div class="sourceCode" id="cb8"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 
-<span class="no">ap_sentiments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">sentiment</span>, <span class="no">term</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">n</span> <span class="kw">&gt;=</span> <span class="fl">150</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="no">sentiment</span> <span class="kw">==</span> <span class="st">"negative"</span>, -<span class="no">n</span>, <span class="no">n</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">term</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="no">term</span>, <span class="no">n</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">term</span>, <span class="no">n</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="no">sentiment</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(<span class="kw">axis.text.x</span> <span class="kw">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span>(<span class="kw">angle</span> <span class="kw">=</span> <span class="fl">90</span>, <span class="kw">hjust</span> <span class="kw">=</span> <span class="fl">1</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Contribution to sentiment"</span>)</pre></body></html></div>
+<span class="kw">ap_sentiments</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">sentiment</span>, <span class="kw">term</span>, wt = <span class="kw">count</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">n</span> <span class="op">&gt;=</span> <span class="fl">150</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(n = <span class="fu"><a href="https://rdrr.io/r/base/ifelse.html">ifelse</a></span>(<span class="kw">sentiment</span> <span class="op">==</span> <span class="st">"negative"</span>, <span class="op">-</span><span class="kw">n</span>, <span class="kw">n</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(term = <span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html">reorder</a></span>(<span class="kw">term</span>, <span class="kw">n</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">term</span>, <span class="kw">n</span>, fill = <span class="kw">sentiment</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(stat = <span class="st">"identity"</span>) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html">theme</a></span>(axis.text.x = <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html">element_text</a></span>(angle = <span class="fl">90</span>, hjust = <span class="fl">1</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Contribution to sentiment"</span>)
+</pre></div>
 <p><img src="tidying_casting_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
 <p>Note that a tidier is also available for the <code>dfm</code> class from the quanteda package:</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">methods</span>)
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">methods</span>)
 
-<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"data_corpus_inaugural"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"quanteda"</span>)
-<span class="no">d</span> <span class="kw">&lt;-</span> <span class="kw pkg">quanteda</span><span class="kw ns">::</span><span class="fu"><a href="https://quanteda.io/reference/dfm.html">dfm</a></span>(<span class="no">data_corpus_inaugural</span>, <span class="kw">verbose</span> <span class="kw">=</span> <span class="fl">FALSE</span>)
+<span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"data_corpus_inaugural"</span>, package = <span class="st">"quanteda"</span>)
+<span class="kw">d</span> <span class="op">&lt;-</span> <span class="kw">quanteda</span>::<span class="fu"><a href="https://quanteda.io/reference/dfm.html">dfm</a></span>(<span class="kw">data_corpus_inaugural</span>, verbose = <span class="fl">FALSE</span>)
 
-<span class="no">d</span></pre></body></html></div>
+<span class="kw">d</span>
+</pre></div>
 <pre><code>## Document-feature matrix of: 58 documents, 9,360 features (91.8% sparse) and 4 docvars.
 ##                  features
 ## docs              fellow-citizens  of the senate and house representatives :
@@ -206,7 +218,9 @@
 ##   1805-Jefferson      7            0
 ##   1809-Madison        0            0
 ## [ reached max_ndoc ... 52 more documents, reached max_nfeat ... 9,350 more features ]</code></pre>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">d</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="kw">d</span>)
+</pre></div>
 <pre><code>## # A tibble: 44,710 x 3
 ##    document        term            count
 ##    &lt;chr&gt;           &lt;chr&gt;           &lt;dbl&gt;
@@ -226,7 +240,9 @@
 <h3 class="hasAnchor">
 <a href="#casting-tidy-text-data-into-a-documenttermmatrix" class="anchor"></a>Casting tidy text data into a DocumentTermMatrix</h3>
 <p>Some existing text mining tools or algorithms work only on sparse document-term matrices. Therefore, tidytext provides <code>cast_</code> verbs for converting from a tidy form to these matrices.</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">ap_td</span></pre></body></html></div>
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="kw">ap_td</span>
+</pre></div>
 <pre><code>## # A tibble: 302,031 x 3
 ##    document term       count
 ##       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -241,25 +257,31 @@
 ##  9        1 arrested       1
 ## 10        1 assault        1
 ## # … with 302,021 more rows</code></pre>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="co"># cast into a Document-Term Matrix</span>
-<span class="no">ap_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/document_term_casters.html">cast_dtm</a></span>(<span class="no">document</span>, <span class="no">term</span>, <span class="no">count</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="co"># cast into a Document-Term Matrix</span>
+<span class="kw">ap_td</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/cast_tdm.html">cast_dtm</a></span>(<span class="kw">document</span>, <span class="kw">term</span>, <span class="kw">count</span>)
+</pre></div>
 <pre><code>## &lt;&lt;DocumentTermMatrix (documents: 2246, terms: 10473)&gt;&gt;
 ## Non-/sparse entries: 302031/23220327
 ## Sparsity           : 99%
 ## Maximal term length: 18
 ## Weighting          : term frequency (tf)</code></pre>
-<div class="sourceCode" id="cb17"><html><body><pre class="r"><span class="co"># cast into a Term-Document Matrix</span>
-<span class="no">ap_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/document_term_casters.html">cast_tdm</a></span>(<span class="no">term</span>, <span class="no">document</span>, <span class="no">count</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb17"><pre class="downlit">
+<span class="co"># cast into a Term-Document Matrix</span>
+<span class="kw">ap_td</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/cast_tdm.html">cast_tdm</a></span>(<span class="kw">term</span>, <span class="kw">document</span>, <span class="kw">count</span>)
+</pre></div>
 <pre><code>## &lt;&lt;TermDocumentMatrix (terms: 10473, documents: 2246)&gt;&gt;
 ## Non-/sparse entries: 302031/23220327
 ## Sparsity           : 99%
 ## Maximal term length: 18
 ## Weighting          : term frequency (tf)</code></pre>
-<div class="sourceCode" id="cb19"><html><body><pre class="r"><span class="co"># cast into quanteda's dfm</span>
-<span class="no">ap_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/document_term_casters.html">cast_dfm</a></span>(<span class="no">term</span>, <span class="no">document</span>, <span class="no">count</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb19"><pre class="downlit">
+<span class="co"># cast into quanteda's dfm</span>
+<span class="kw">ap_td</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/cast_tdm.html">cast_dfm</a></span>(<span class="kw">term</span>, <span class="kw">document</span>, <span class="kw">count</span>)
+</pre></div>
 <pre><code>## Document-feature matrix of: 10,473 documents, 2,246 features (98.7% sparse).
 ##            features
 ## docs        1 2 3 4 5 6 7 8 9 10
@@ -270,14 +292,18 @@
 ##   allegedly 1 0 0 0 0 0 0 0 0  0
 ##   allen     1 0 0 0 0 0 0 0 0  0
 ## [ reached max_ndoc ... 10,467 more documents, reached max_nfeat ... 2,236 more features ]</code></pre>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="co"># cast into a Matrix object</span>
-<span class="no">m</span> <span class="kw">&lt;-</span> <span class="no">ap_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/cast_sparse.html">cast_sparse</a></span>(<span class="no">document</span>, <span class="no">term</span>, <span class="no">count</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="no">m</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb21"><pre class="downlit">
+<span class="co"># cast into a Matrix object</span>
+<span class="kw">m</span> <span class="op">&lt;-</span> <span class="kw">ap_td</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/cast_sparse.html">cast_sparse</a></span>(<span class="kw">document</span>, <span class="kw">term</span>, <span class="kw">count</span>)
+<span class="fu"><a href="https://rdrr.io/r/base/class.html">class</a></span>(<span class="kw">m</span>)
+</pre></div>
 <pre><code>## [1] "dgCMatrix"
 ## attr(,"package")
 ## [1] "Matrix"</code></pre>
-<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="no">m</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb23"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/dim.html">dim</a></span>(<span class="kw">m</span>)
+</pre></div>
 <pre><code>## [1]  2246 10473</code></pre>
 <p>This allows for easy reading, filtering, and processing to be done using dplyr and other tidy tools, after which the data can be converted into a document-term matrix for machine learning applications.</p>
 </div>
@@ -285,17 +311,21 @@
 <h3 class="hasAnchor">
 <a href="#tidying-corpus-data" class="anchor"></a>Tidying corpus data</h3>
 <p>You can also tidy Corpus objects from the tm package. For example, consider a Corpus containing 20 documents, one for each</p>
-<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">reut21578</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"texts"</span>, <span class="st">"crude"</span>, <span class="kw">package</span> <span class="kw">=</span> <span class="st">"tm"</span>)
-<span class="no">reuters</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tm/man/VCorpus.html">VCorpus</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/tm/man/DirSource.html">DirSource</a></span>(<span class="no">reut21578</span>),
-                   <span class="kw">readerControl</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">reader</span> <span class="kw">=</span> <span class="no">readReut21578XMLasPlain</span>))
+<div class="sourceCode" id="cb25"><pre class="downlit">
+<span class="kw">reut21578</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html">system.file</a></span>(<span class="st">"texts"</span>, <span class="st">"crude"</span>, package = <span class="st">"tm"</span>)
+<span class="kw">reuters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tm/man/VCorpus.html">VCorpus</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/tm/man/DirSource.html">DirSource</a></span>(<span class="kw">reut21578</span>),
+                   readerControl = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(reader = <span class="kw">readReut21578XMLasPlain</span>))
 
-<span class="no">reuters</span></pre></body></html></div>
+<span class="kw">reuters</span>
+</pre></div>
 <pre><code>## &lt;&lt;VCorpus&gt;&gt;
 ## Metadata:  corpus specific: 0, document level (indexed): 0
 ## Content:  documents: 20</code></pre>
 <p>The <code>tidy</code> verb creates a table with one row per document:</p>
-<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="no">reuters_td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">reuters</span>)
-<span class="no">reuters_td</span></pre></body></html></div>
+<div class="sourceCode" id="cb27"><pre class="downlit">
+<span class="kw">reuters_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="kw">reuters</span>)
+<span class="kw">reuters_td</span>
+</pre></div>
 <pre><code>## # A tibble: 20 x 17
 ##    author datetimestamp       description heading id    language origin topics
 ##    &lt;chr&gt;  &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; 
@@ -323,11 +353,13 @@
 ## #   topics_cat &lt;named list&gt;, places &lt;named list&gt;, people &lt;chr&gt;, orgs &lt;chr&gt;,
 ## #   exchanges &lt;chr&gt;, text &lt;chr&gt;</code></pre>
 <p>Similarly, you can <code>tidy</code> a <code>corpus</code> object from the quanteda package:</p>
-<div class="sourceCode" id="cb29"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">quanteda</span>)
+<div class="sourceCode" id="cb29"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://quanteda.io">quanteda</a></span>)
 
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"data_corpus_inaugural"</span>)
 
-<span class="no">data_corpus_inaugural</span></pre></body></html></div>
+<span class="kw">data_corpus_inaugural</span>
+</pre></div>
 <pre><code>## Corpus consisting of 58 documents and 4 docvars.
 ## 1789-Washington :
 ## "Fellow-Citizens of the Senate and of the House of Representa..."
@@ -348,8 +380,10 @@
 ## "Unwilling to depart from examples of the most revered author..."
 ## 
 ## [ reached max_ndoc ... 52 more documents ]</code></pre>
-<div class="sourceCode" id="cb31"><html><body><pre class="r"><span class="no">inaug_td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">data_corpus_inaugural</span>)
-<span class="no">inaug_td</span></pre></body></html></div>
+<div class="sourceCode" id="cb31"><pre class="downlit">
+<span class="kw">inaug_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="kw">data_corpus_inaugural</span>)
+<span class="kw">inaug_td</span>
+</pre></div>
 <pre><code>## # A tibble: 58 x 5
 ##    text                                   Year President  FirstName Party       
 ##    &lt;chr&gt;                                 &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;fct&gt;       
@@ -365,11 +399,13 @@
 ## 10 "In compliance with an usage coeval …  1825 Adams      John Qui… Democratic-…
 ## # … with 48 more rows</code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to analyze the text alongside the metadata.</p>
-<div class="sourceCode" id="cb33"><html><body><pre class="r"><span class="no">inaug_words</span> <span class="kw">&lt;-</span> <span class="no">inaug_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">word</span>, <span class="no">text</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="no">stop_words</span>)
+<div class="sourceCode" id="cb33"><pre class="downlit">
+<span class="kw">inaug_words</span> <span class="op">&lt;-</span> <span class="kw">inaug_td</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">word</span>, <span class="kw">text</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="kw">stop_words</span>)
 
-<span class="no">inaug_words</span></pre></body></html></div>
+<span class="kw">inaug_words</span>
+</pre></div>
 <pre><code>## # A tibble: 50,156 x 5
 ##     Year President  FirstName Party word           
 ##    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;fct&gt; &lt;chr&gt;          
@@ -385,15 +421,17 @@
 ## 10  1789 Washington George    none  filled         
 ## # … with 50,146 more rows</code></pre>
 <p>We could then, for example, see how the appearance of a word changes over time:</p>
-<div class="sourceCode" id="cb35"><html><body><pre class="r"><span class="no">inaug_freq</span> <span class="kw">&lt;-</span> <span class="no">inaug_words</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">Year</span>, <span class="no">word</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span>(<span class="no">Year</span>, <span class="no">word</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">n</span> <span class="kw">=</span> <span class="fl">0</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">Year</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">year_total</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">n</span>),
-         <span class="kw">percent</span> <span class="kw">=</span> <span class="no">n</span> / <span class="no">year_total</span>) <span class="kw">%&gt;%</span>
+<div class="sourceCode" id="cb35"><pre class="downlit">
+<span class="kw">inaug_freq</span> <span class="op">&lt;-</span> <span class="kw">inaug_words</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">Year</span>, <span class="kw">word</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html">complete</a></span>(<span class="kw">Year</span>, <span class="kw">word</span>, fill = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(n = <span class="fl">0</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">Year</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(year_total = <span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="kw">n</span>),
+         percent = <span class="kw">n</span> <span class="op">/</span> <span class="kw">year_total</span>) <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>()
 
-<span class="no">inaug_freq</span></pre></body></html></div>
+<span class="kw">inaug_freq</span>
+</pre></div>
 <pre><code>## # A tibble: 501,990 x 5
 ##     Year word            n year_total percent
 ##    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
@@ -409,16 +447,18 @@
 ## 10  1789 16              0        529 0      
 ## # … with 501,980 more rows</code></pre>
 <p>For example, we can use the broom package to perform logistic regression on each word.</p>
-<div class="sourceCode" id="cb37"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">broom</span>)
-<span class="no">models</span> <span class="kw">&lt;-</span> <span class="no">inaug_freq</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">word</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="no">n</span>) <span class="kw">&gt;</span> <span class="fl">50</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="no">n</span>, <span class="no">year_total</span> - <span class="no">n</span>) ~ <span class="no">Year</span>, <span class="no">.</span>,
-              <span class="kw">family</span> <span class="kw">=</span> <span class="st">"binomial"</span>))) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">term</span> <span class="kw">==</span> <span class="st">"Year"</span>)
+<div class="sourceCode" id="cb37"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/tidyverse/broom">broom</a></span>)
+<span class="kw">models</span> <span class="op">&lt;-</span> <span class="kw">inaug_freq</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">word</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="kw">n</span>) <span class="op">&gt;</span> <span class="fl">50</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/do.html">do</a></span>(<span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="fu"><a href="https://rdrr.io/r/stats/glm.html">glm</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/cbind.html">cbind</a></span>(<span class="kw">n</span>, <span class="kw">year_total</span> <span class="op">-</span> <span class="kw">n</span>) <span class="op">~</span> <span class="kw">Year</span>, <span class="kw">.</span>,
+              family = <span class="st">"binomial"</span>))) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">term</span> <span class="op">==</span> <span class="st">"Year"</span>)
 
-<span class="no">models</span></pre></body></html></div>
+<span class="kw">models</span>
+</pre></div>
 <pre><code>## # A tibble: 114 x 6
 ##    word           term  estimate std.error statistic  p.value
 ##    &lt;chr&gt;          &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -433,9 +473,11 @@
 ##  9 called         Year  -0.00222   0.00207     -1.07 2.83e- 1
 ## 10 century        Year   0.0155    0.00242      6.41 1.45e-10
 ## # … with 104 more rows</code></pre>
-<div class="sourceCode" id="cb39"><html><body><pre class="r"><span class="no">models</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">term</span> <span class="kw">==</span> <span class="st">"Year"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="no">estimate</span>)))</pre></body></html></div>
+<div class="sourceCode" id="cb39"><pre class="downlit">
+<span class="kw">models</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">term</span> <span class="op">==</span> <span class="st">"Year"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw">estimate</span>)))
+</pre></div>
 <pre><code>## # A tibble: 114 x 6
 ##    word      term  estimate std.error statistic  p.value
 ##    &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
@@ -451,30 +493,34 @@
 ## 10 world     Year    0.0120  0.000974     12.3  7.10e-35
 ## # … with 104 more rows</code></pre>
 <p>You can show these models as a volcano plot, which compares the effect size with the significance:</p>
-<div class="sourceCode" id="cb41"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<div class="sourceCode" id="cb41"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 
-<span class="no">models</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">adjusted.p.value</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust</a></span>(<span class="no">p.value</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">estimate</span>, <span class="no">adjusted.p.value</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">label</span> <span class="kw">=</span> <span class="no">word</span>), <span class="kw">vjust</span> <span class="kw">=</span> <span class="fl">1</span>, <span class="kw">hjust</span> <span class="kw">=</span> <span class="fl">1</span>,
-            <span class="kw">check_overlap</span> <span class="kw">=</span> <span class="fl">TRUE</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Estimated change over time"</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Adjusted p-value"</span>)</pre></body></html></div>
+<span class="kw">models</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(adjusted.p.value = <span class="fu"><a href="https://rdrr.io/r/stats/p.adjust.html">p.adjust</a></span>(<span class="kw">p.value</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">estimate</span>, <span class="kw">adjusted.p.value</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_log10</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html">geom_text</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(label = <span class="kw">word</span>), vjust = <span class="fl">1</span>, hjust = <span class="fl">1</span>,
+            check_overlap = <span class="fl">TRUE</span>) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">xlab</a></span>(<span class="st">"Estimated change over time"</span>) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Adjusted p-value"</span>)
+</pre></div>
 <p><img src="tidying_casting_files/figure-html/unnamed-chunk-15-1.png" width="672"></p>
 <p>We can also use the ggplot2 package to display the top 6 terms that have changed in frequency over time.</p>
-<div class="sourceCode" id="cb42"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">scales</span>)
+<div class="sourceCode" id="cb42"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://scales.r-lib.org">scales</a></span>)
 
-<span class="no">models</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">6</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="no">estimate</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">inaug_freq</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">Year</span>, <span class="no">percent</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(~ <span class="no">word</span>) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(<span class="kw">labels</span> <span class="kw">=</span> <span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent_format</a></span>()) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Frequency of word in speech"</span>)</pre></body></html></div>
+<span class="kw">models</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">6</span>, <span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span>(<span class="kw">estimate</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="kw">inaug_freq</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">Year</span>, <span class="kw">percent</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span> <span class="kw">word</span>) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html">scale_y_continuous</a></span>(labels = <span class="fu"><a href="https://scales.r-lib.org//reference/label_percent.html">percent_format</a></span>()) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html">ylab</a></span>(<span class="st">"Frequency of word in speech"</span>)
+</pre></div>
 <p><img src="tidying_casting_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
 </div>
   </div>

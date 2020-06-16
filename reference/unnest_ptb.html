@@ -146,18 +146,18 @@
     </div>
 
     <div class="ref-description">
-    <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "ptb" )</a></code>.</p>
+    <p>This function is a wrapper around <code><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens( token = "ptb" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest_ptb</span>(
-  <span class='no'>tbl</span>,
-  <span class='no'>output</span>,
-  <span class='no'>input</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
-  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_ptb.html'>unnest_ptb</a></span>(
+  <span class='kw'>tbl</span>,
+  <span class='kw'>output</span>,
+  <span class='kw'>input</span>,
+  format = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  to_lower = <span class='fl'>TRUE</span>,
+  drop = <span class='fl'>TRUE</span>,
+  collapse = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -210,18 +210,18 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 
     <div class='dont-index'>
 <ul>
-<li><p><code><a href='unnest_tokens.html'>unnest_tokens()</a></code></p></li>
+<li><p><code><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens()</a></code></p></li>
 </ul>
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>janeaustenr</span>)
+    <pre class="examples"><div class='input'><span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/juliasilge/janeaustenr'>janeaustenr</a></span>)
 
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
+<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(txt = <span class='kw'>prideprejudice</span>)
 
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_ptb</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 141,310 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_ptb.html'>unnest_ptb</a></span>(<span class='kw'>word</span>, <span class='kw'>txt</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 141,310 x 1</span><span>
 #&gt;    word       
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
 #&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride</span><span style='color: #555555;'>"</span><span>    
@@ -234,8 +234,7 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 #&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>""</span><span>         
 #&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>""</span><span>         
 #&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>""</span><span>         
-#&gt; </span><span style='color: #555555;'># … with 141,300 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'># … with 141,300 more rows</span><span></div><div class='input'></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

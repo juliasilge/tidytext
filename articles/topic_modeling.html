@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Tidy Topic Modeling</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-06-11</h4>
+            <h4 class="date">2020-06-16</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/topic_modeling.Rmd"><code>vignettes/topic_modeling.Rmd</code></a></small>
       <div class="hidden name"><code>topic_modeling.Rmd</code></div>
@@ -130,13 +130,19 @@
 <div id="setup" class="section level4">
 <h4 class="hasAnchor">
 <a href="#setup" class="anchor"></a>Setup</h4>
-<div class="sourceCode" id="cb1"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">dplyr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">gutenbergr</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb2"><html><body><pre class="r"><span class="no">titles</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Twenty Thousand Leagues under the Sea"</span>, <span class="st">"The War of the Worlds"</span>,
+<div class="sourceCode" id="cb1"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://docs.ropensci.org/gutenbergr">gutenbergr</a></span>)
+</pre></div>
+<div class="sourceCode" id="cb2"><pre class="downlit">
+<span class="kw">titles</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"Twenty Thousand Leagues under the Sea"</span>, <span class="st">"The War of the Worlds"</span>,
             <span class="st">"Pride and Prejudice"</span>, <span class="st">"Great Expectations"</span>)
-<span class="no">books</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_works.html">gutenberg_works</a></span>(<span class="no">title</span> <span class="kw">%in%</span> <span class="no">titles</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download</a></span>(<span class="kw">meta_fields</span> <span class="kw">=</span> <span class="st">"title"</span>)</pre></body></html></div>
-<div class="sourceCode" id="cb3"><html><body><pre class="r"><span class="no">books</span></pre></body></html></div>
+<span class="kw">books</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_works.html">gutenberg_works</a></span>(<span class="kw">title</span> <span class="op">%in%</span> <span class="kw">titles</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download</a></span>(meta_fields = <span class="st">"title"</span>)
+</pre></div>
+<div class="sourceCode" id="cb3"><pre class="downlit">
+<span class="kw">books</span>
+</pre></div>
 <pre><code>## # A tibble: 51,663 x 3
 ##    gutenberg_id text                                                          title                
 ##           &lt;int&gt; &lt;chr&gt;                                                         &lt;chr&gt;                
@@ -152,25 +158,27 @@
 ## 10           36 ""                                                            The War of the Worlds
 ## # … with 51,653 more rows</code></pre>
 <p>As pre-processing, we divide these into chapters, use tidytext’s <code>unnest_tokens</code> to separate them into words, then remove <code>stop_words</code>. We’re treating every chapter as a separate “document”, each with a name like <code>Great Expectations_1</code> or <code>Pride and Prejudice_11</code>.</p>
-<div class="sourceCode" id="cb5"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidytext</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">stringr</span>)
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">tidyr</span>)
+<div class="sourceCode" id="cb5"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/juliasilge/tidytext">tidytext</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://stringr.tidyverse.org">stringr</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://tidyr.tidyverse.org">tidyr</a></span>)
 
-<span class="no">by_chapter</span> <span class="kw">&lt;-</span> <span class="no">books</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">title</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">chapter</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span>(<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(<span class="no">text</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/modifiers.html">regex</a></span>(<span class="st">"^chapter "</span>, <span class="kw">ignore_case</span> <span class="kw">=</span> <span class="fl">TRUE</span>)))) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">chapter</span> <span class="kw">&gt;</span> <span class="fl">0</span>)
+<span class="kw">by_chapter</span> <span class="op">&lt;-</span> <span class="kw">books</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">title</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(chapter = <span class="fu"><a href="https://rdrr.io/r/base/cumsum.html">cumsum</a></span>(<span class="fu"><a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect</a></span>(<span class="kw">text</span>, <span class="fu"><a href="https://stringr.tidyverse.org/reference/modifiers.html">regex</a></span>(<span class="st">"^chapter "</span>, ignore_case = <span class="fl">TRUE</span>)))) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">chapter</span> <span class="op">&gt;</span> <span class="fl">0</span>)
 
-<span class="no">by_chapter_word</span> <span class="kw">&lt;-</span> <span class="no">by_chapter</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span>(<span class="no">title_chapter</span>, <span class="no">title</span>, <span class="no">chapter</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="no">word</span>, <span class="no">text</span>)
+<span class="kw">by_chapter_word</span> <span class="op">&lt;-</span> <span class="kw">by_chapter</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/unite.html">unite</a></span>(<span class="kw">title_chapter</span>, <span class="kw">title</span>, <span class="kw">chapter</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">word</span>, <span class="kw">text</span>)
 
-<span class="no">word_counts</span> <span class="kw">&lt;-</span> <span class="no">by_chapter_word</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="no">stop_words</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title_chapter</span>, <span class="no">word</span>, <span class="kw">sort</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
+<span class="kw">word_counts</span> <span class="op">&lt;-</span> <span class="kw">by_chapter_word</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="kw">stop_words</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">title_chapter</span>, <span class="kw">word</span>, sort = <span class="fl">TRUE</span>)
 
-<span class="no">word_counts</span></pre></body></html></div>
+<span class="kw">word_counts</span>
+</pre></div>
 <pre><code>## # A tibble: 104,721 x 3
 ##    title_chapter            word        n
 ##    &lt;chr&gt;                    &lt;chr&gt;   &lt;int&gt;
@@ -191,24 +199,30 @@
 <h3 class="hasAnchor">
 <a href="#latent-dirichlet-allocation-with-the-topicmodels-package" class="anchor"></a>Latent Dirichlet Allocation with the topicmodels package</h3>
 <p>Right now this data frame is in a tidy form, with one-term-per-document-per-row. However, the topicmodels package requires a <code>DocumentTermMatrix</code> (from the tm package). As described in <a href="tidying_casting.html">this vignette</a>, we can cast a one-token-per-row table into a <code>DocumentTermMatrix</code> with tidytext’s <code>cast_dtm</code>:</p>
-<div class="sourceCode" id="cb7"><html><body><pre class="r"><span class="no">chapters_dtm</span> <span class="kw">&lt;-</span> <span class="no">word_counts</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="../reference/document_term_casters.html">cast_dtm</a></span>(<span class="no">title_chapter</span>, <span class="no">word</span>, <span class="no">n</span>)
+<div class="sourceCode" id="cb7"><pre class="downlit">
+<span class="kw">chapters_dtm</span> <span class="op">&lt;-</span> <span class="kw">word_counts</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="../reference/cast_tdm.html">cast_dtm</a></span>(<span class="kw">title_chapter</span>, <span class="kw">word</span>, <span class="kw">n</span>)
 
-<span class="no">chapters_dtm</span></pre></body></html></div>
+<span class="kw">chapters_dtm</span>
+</pre></div>
 <pre><code>## &lt;&lt;DocumentTermMatrix (documents: 193, terms: 18215)&gt;&gt;
 ## Non-/sparse entries: 104721/3410774
 ## Sparsity           : 97%
 ## Maximal term length: 19
 ## Weighting          : term frequency (tf)</code></pre>
 <p>Now we are ready to use the <a href="https://cran.r-project.org/package=topicmodels">topicmodels</a> package to create a four topic LDA model.</p>
-<div class="sourceCode" id="cb9"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">topicmodels</span>)
-<span class="no">chapters_lda</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/topicmodels/man/lda.html">LDA</a></span>(<span class="no">chapters_dtm</span>, <span class="kw">k</span> <span class="kw">=</span> <span class="fl">4</span>, <span class="kw">control</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(<span class="kw">seed</span> <span class="kw">=</span> <span class="fl">1234</span>))
-<span class="no">chapters_lda</span></pre></body></html></div>
+<div class="sourceCode" id="cb9"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw">topicmodels</span>)
+<span class="kw">chapters_lda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/topicmodels/man/lda.html">LDA</a></span>(<span class="kw">chapters_dtm</span>, k = <span class="fl">4</span>, control = <span class="fu"><a href="https://rdrr.io/r/base/list.html">list</a></span>(seed = <span class="fl">1234</span>))
+<span class="kw">chapters_lda</span>
+</pre></div>
 <pre><code>## A LDA_VEM topic model with 4 topics.</code></pre>
 <p>(In this case we know there are four topics because there are four books; in practice we may need to try a few different values of <code>k</code>).</p>
 <p>Now tidytext gives us the option of <em>returning</em> to a tidy analysis, using the <code>tidy</code> and <code>augment</code> verbs borrowed from the <a href="https://github.com/dgrtwo/broom">broom package</a>. In particular, we start with the <code>tidy</code> verb.</p>
-<div class="sourceCode" id="cb11"><html><body><pre class="r"><span class="no">chapters_lda_td</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">chapters_lda</span>)
-<span class="no">chapters_lda_td</span></pre></body></html></div>
+<div class="sourceCode" id="cb11"><pre class="downlit">
+<span class="kw">chapters_lda_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="kw">chapters_lda</span>)
+<span class="kw">chapters_lda_td</span>
+</pre></div>
 <pre><code>## # A tibble: 72,860 x 3
 ##    topic term        beta
 ##    &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
@@ -225,13 +239,15 @@
 ## # … with 72,850 more rows</code></pre>
 <p>Notice that this has turned the model into a one-topic-per-term-per-row format. For each combination the model has <span class="math inline">\(\beta\)</span>, the probability of that term being generated from that topic.</p>
 <p>We could use dplyr’s <code>top_n</code> to find the top 5 terms within each topic:</p>
-<div class="sourceCode" id="cb13"><html><body><pre class="r"><span class="no">top_terms</span> <span class="kw">&lt;-</span> <span class="no">chapters_lda_td</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">topic</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">5</span>, <span class="no">beta</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">topic</span>, -<span class="no">beta</span>)
+<div class="sourceCode" id="cb13"><pre class="downlit">
+<span class="kw">top_terms</span> <span class="op">&lt;-</span> <span class="kw">chapters_lda_td</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">topic</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">5</span>, <span class="kw">beta</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">topic</span>, <span class="op">-</span><span class="kw">beta</span>)
 
-<span class="no">top_terms</span></pre></body></html></div>
+<span class="kw">top_terms</span>
+</pre></div>
 <pre><code>## # A tibble: 20 x 3
 ##    topic term         beta
 ##    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
@@ -256,23 +272,27 @@
 ## 19     4 looked    0.00637
 ## 20     4 miss      0.00623</code></pre>
 <p>This model lends itself to a visualization:</p>
-<div class="sourceCode" id="cb15"><html><body><pre class="r"><span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="no">ggplot2</span>)
+<div class="sourceCode" id="cb15"><pre class="downlit">
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://ggplot2.tidyverse.org">ggplot2</a></span>)
 <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html">theme_set</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_bw</a></span>())
 
-<span class="no">top_terms</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(<span class="kw">term</span> <span class="kw">=</span> <span class="fu"><a href="../reference/reorder_within.html">reorder_within</a></span>(<span class="no">term</span>, <span class="no">beta</span>, <span class="no">topic</span>)) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">term</span>, <span class="no">beta</span>)) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(<span class="kw">stat</span> <span class="kw">=</span> <span class="st">"identity"</span>) +
-  <span class="fu"><a href="../reference/reorder_within.html">scale_x_reordered</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(~ <span class="no">topic</span>, <span class="kw">scales</span> <span class="kw">=</span> <span class="st">"free_x"</span>)</pre></body></html></div>
+<span class="kw">top_terms</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span>(term = <span class="fu"><a href="../reference/reorder_within.html">reorder_within</a></span>(<span class="kw">term</span>, <span class="kw">beta</span>, <span class="kw">topic</span>)) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">term</span>, <span class="kw">beta</span>)) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html">geom_bar</a></span>(stat = <span class="st">"identity"</span>) <span class="op">+</span>
+  <span class="fu"><a href="../reference/reorder_within.html">scale_x_reordered</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span> <span class="kw">topic</span>, scales = <span class="st">"free_x"</span>)
+</pre></div>
 <p><img src="topic_modeling_files/figure-html/top_terms_plot-1.png" width="672"></p>
 <p>These topics are pretty clearly associated with the four books! There’s no question that the topic of “nemo”, “sea”, and “nautilus” belongs to <em>Twenty Thousand Leagues Under the Sea</em>, and that “jane”, “darcy”, and “elizabeth” belongs to <em>Pride and Prejudice</em>. We see “pip” and “joe” from <em>Great Expectations</em> and “martians”, “black”, and “night” from <em>The War of the Worlds</em>.</p>
 <div id="per-document-classification" class="section level4">
 <h4 class="hasAnchor">
 <a href="#per-document-classification" class="anchor"></a>Per-document classification</h4>
 <p>Each chapter was a “document” in this analysis. Thus, we may want to know which topics are associated with each document. Can we put the chapters back together in the correct books?</p>
-<div class="sourceCode" id="cb16"><html><body><pre class="r"><span class="no">chapters_lda_gamma</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="no">chapters_lda</span>, <span class="kw">matrix</span> <span class="kw">=</span> <span class="st">"gamma"</span>)
-<span class="no">chapters_lda_gamma</span></pre></body></html></div>
+<div class="sourceCode" id="cb16"><pre class="downlit">
+<span class="kw">chapters_lda_gamma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="kw">chapters_lda</span>, matrix = <span class="st">"gamma"</span>)
+<span class="kw">chapters_lda_gamma</span>
+</pre></div>
 <pre><code>## # A tibble: 772 x 3
 ##    document                 topic     gamma
 ##    &lt;chr&gt;                    &lt;int&gt;     &lt;dbl&gt;
@@ -288,9 +308,11 @@
 ## 10 The War of the Worlds_16     1 0.0000108
 ## # … with 762 more rows</code></pre>
 <p>Setting <code>matrix = "gamma"</code> returns a tidied version with one-document-per-topic-per-row. Now that we have these document classifications, we can see how well our unsupervised learning did at distinguishing the four books. First we re-separate the document name into title and chapter:</p>
-<div class="sourceCode" id="cb18"><html><body><pre class="r"><span class="no">chapters_lda_gamma</span> <span class="kw">&lt;-</span> <span class="no">chapters_lda_gamma</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span>(<span class="no">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"title"</span>, <span class="st">"chapter"</span>), <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"_"</span>, <span class="kw">convert</span> <span class="kw">=</span> <span class="fl">TRUE</span>)
-<span class="no">chapters_lda_gamma</span></pre></body></html></div>
+<div class="sourceCode" id="cb18"><pre class="downlit">
+<span class="kw">chapters_lda_gamma</span> <span class="op">&lt;-</span> <span class="kw">chapters_lda_gamma</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span>(<span class="kw">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"title"</span>, <span class="st">"chapter"</span>), sep = <span class="st">"_"</span>, convert = <span class="fl">TRUE</span>)
+<span class="kw">chapters_lda_gamma</span>
+</pre></div>
 <pre><code>## # A tibble: 772 x 4
 ##    title                 chapter topic     gamma
 ##    &lt;chr&gt;                   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
@@ -306,18 +328,22 @@
 ## 10 The War of the Worlds      16     1 0.0000108
 ## # … with 762 more rows</code></pre>
 <p>Then we examine what fraction of chapters we got right for each:</p>
-<div class="sourceCode" id="cb20"><html><body><pre class="r"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="no">chapters_lda_gamma</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="no">gamma</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="no">topic</span>))) +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>() +
-  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(~ <span class="no">title</span>, <span class="kw">nrow</span> <span class="kw">=</span> <span class="fl">2</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb20"><pre class="downlit">
+<span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span>(<span class="kw">chapters_lda_gamma</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span>(<span class="kw">gamma</span>, fill = <span class="fu"><a href="https://rdrr.io/r/base/factor.html">factor</a></span>(<span class="kw">topic</span>))) <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html">geom_histogram</a></span>() <span class="op">+</span>
+  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html">facet_wrap</a></span>(<span class="op">~</span> <span class="kw">title</span>, nrow = <span class="fl">2</span>)
+</pre></div>
 <p><img src="topic_modeling_files/figure-html/chapters_lda_gamma_plot-1.png" width="672"></p>
 <p>We notice that almost all of the chapters from <em>Pride and Prejudice</em>, <em>War of the Worlds</em>, and <em>Twenty Thousand Leagues Under the Sea</em> were uniquely identified as a single topic each.</p>
-<div class="sourceCode" id="cb21"><html><body><pre class="r"><span class="no">chapter_classifications</span> <span class="kw">&lt;-</span> <span class="no">chapters_lda_gamma</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">title</span>, <span class="no">chapter</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">1</span>, <span class="no">gamma</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="no">gamma</span>)
+<div class="sourceCode" id="cb21"><pre class="downlit">
+<span class="kw">chapter_classifications</span> <span class="op">&lt;-</span> <span class="kw">chapters_lda_gamma</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">title</span>, <span class="kw">chapter</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">1</span>, <span class="kw">gamma</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="kw">gamma</span>)
 
-<span class="no">chapter_classifications</span></pre></body></html></div>
+<span class="kw">chapter_classifications</span>
+</pre></div>
 <pre><code>## # A tibble: 193 x 4
 ##    title              chapter topic gamma
 ##    &lt;chr&gt;                &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
@@ -333,14 +359,16 @@
 ## 10 Great Expectations      44     4 0.678
 ## # … with 183 more rows</code></pre>
 <p>We can determine this by finding the consensus book for each, which we note is correct based on our earlier visualization:</p>
-<div class="sourceCode" id="cb23"><html><body><pre class="r"><span class="no">book_topics</span> <span class="kw">&lt;-</span> <span class="no">chapter_classifications</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">topic</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="no">topic</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">1</span>, <span class="no">n</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(<span class="kw">consensus</span> <span class="kw">=</span> <span class="no">title</span>, <span class="no">topic</span>)
+<div class="sourceCode" id="cb23"><pre class="downlit">
+<span class="kw">book_topics</span> <span class="op">&lt;-</span> <span class="kw">chapter_classifications</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">title</span>, <span class="kw">topic</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">topic</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html">top_n</a></span>(<span class="fl">1</span>, <span class="kw">n</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span>() <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span>(consensus = <span class="kw">title</span>, <span class="kw">topic</span>)
 
-<span class="no">book_topics</span></pre></body></html></div>
+<span class="kw">book_topics</span>
+</pre></div>
 <pre><code>## # A tibble: 4 x 2
 ##   consensus                             topic
 ##   &lt;chr&gt;                                 &lt;int&gt;
@@ -349,9 +377,11 @@
 ## 3 The War of the Worlds                     3
 ## 4 Twenty Thousand Leagues under the Sea     2</code></pre>
 <p>Then we see which chapters were misidentified:</p>
-<div class="sourceCode" id="cb25"><html><body><pre class="r"><span class="no">chapter_classifications</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">book_topics</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="st">"topic"</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb25"><pre class="downlit">
+<span class="kw">chapter_classifications</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="kw">book_topics</span>, by = <span class="st">"topic"</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">title</span>, <span class="kw">consensus</span>)
+</pre></div>
 <pre><code>## # A tibble: 6 x 3
 ##   title                                 consensus                                 n
 ##   &lt;chr&gt;                                 &lt;chr&gt;                                 &lt;int&gt;
@@ -369,13 +399,17 @@
 </h4>
 <p>One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight (<code>gamma</code>) will go on that document-topic classification.</p>
 <p>We may want to take the original document-word pairs and find which words in each document were assigned to which topic. This is the job of the <code>augment</code> verb.</p>
-<div class="sourceCode" id="cb27"><html><body><pre class="r"><span class="no">assignments</span> <span class="kw">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/augment.html">augment</a></span>(<span class="no">chapters_lda</span>, <span class="kw">data</span> <span class="kw">=</span> <span class="no">chapters_dtm</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb27"><pre class="downlit">
+<span class="kw">assignments</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/generics/man/augment.html">augment</a></span>(<span class="kw">chapters_lda</span>, data = <span class="kw">chapters_dtm</span>)
+</pre></div>
 <p>We can combine this with the consensus book titles to find which words were incorrectly classified.</p>
-<div class="sourceCode" id="cb28"><html><body><pre class="r"><span class="no">assignments</span> <span class="kw">&lt;-</span> <span class="no">assignments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span>(<span class="no">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"title"</span>, <span class="st">"chapter"</span>), <span class="kw">sep</span> <span class="kw">=</span> <span class="st">"_"</span>, <span class="kw">convert</span> <span class="kw">=</span> <span class="fl">TRUE</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="no">book_topics</span>, <span class="kw">by</span> <span class="kw">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">".topic"</span> <span class="kw">=</span> <span class="st">"topic"</span>))
+<div class="sourceCode" id="cb28"><pre class="downlit">
+<span class="kw">assignments</span> <span class="op">&lt;-</span> <span class="kw">assignments</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span>(<span class="kw">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">"title"</span>, <span class="st">"chapter"</span>), sep = <span class="st">"_"</span>, convert = <span class="fl">TRUE</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span>(<span class="kw">book_topics</span>, by = <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span>(<span class="st">".topic"</span> = <span class="st">"topic"</span>))
 
-<span class="no">assignments</span></pre></body></html></div>
+<span class="kw">assignments</span>
+</pre></div>
 <pre><code>## # A tibble: 104,721 x 6
 ##    title              chapter term  count .topic consensus         
 ##    &lt;chr&gt;                &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;             
@@ -391,9 +425,11 @@
 ## 10 Great Expectations      13 joe      40      4 Great Expectations
 ## # … with 104,711 more rows</code></pre>
 <p>We can, for example, create a “confusion matrix” using dplyr’s <code>count</code> and tidyr’s <code>spread</code>:</p>
-<div class="sourceCode" id="cb30"><html><body><pre class="r"><span class="no">assignments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="no">consensus</span>, <span class="no">n</span>, <span class="kw">fill</span> <span class="kw">=</span> <span class="fl">0</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb30"><pre class="downlit">
+<span class="kw">assignments</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">title</span>, <span class="kw">consensus</span>, wt = <span class="kw">count</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span>(<span class="kw">consensus</span>, <span class="kw">n</span>, fill = <span class="fl">0</span>)
+</pre></div>
 <pre><code>## # A tibble: 4 x 5
 ##   title                                 `Great Expectations` `Pride and Prejudice`
 ##   &lt;chr&gt;                                                &lt;dbl&gt;                 &lt;dbl&gt;
@@ -409,10 +445,12 @@
 ## 4                       0                                   39629</code></pre>
 <p>We notice that almost all the words for <em>Pride and Prejudice</em>, <em>Twenty Thousand Leagues Under the Sea</em>, and <em>War of the Worlds</em> were correctly assigned, while <em>Great Expectations</em> had a fair amount of misassignment.</p>
 <p>What were the most commonly mistaken words?</p>
-<div class="sourceCode" id="cb32"><html><body><pre class="r"><span class="no">wrong_words</span> <span class="kw">&lt;-</span> <span class="no">assignments</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">title</span> <span class="kw">!=</span> <span class="no">consensus</span>)
+<div class="sourceCode" id="cb32"><pre class="downlit">
+<span class="kw">wrong_words</span> <span class="op">&lt;-</span> <span class="kw">assignments</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">title</span> != <span class="kw">consensus</span>)
 
-<span class="no">wrong_words</span></pre></body></html></div>
+<span class="kw">wrong_words</span>
+</pre></div>
 <pre><code>## # A tibble: 4,535 x 6
 ##    title                                 chapter term     count .topic
 ##    &lt;chr&gt;                                   &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
@@ -439,9 +477,11 @@
 ##  9 Twenty Thousand Leagues under the Sea
 ## 10 Twenty Thousand Leagues under the Sea
 ## # … with 4,525 more rows</code></pre>
-<div class="sourceCode" id="cb34"><html><body><pre class="r"><span class="no">wrong_words</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="no">title</span>, <span class="no">consensus</span>, <span class="no">term</span>, <span class="kw">wt</span> <span class="kw">=</span> <span class="no">count</span>) <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="no">n</span>))</pre></body></html></div>
+<div class="sourceCode" id="cb34"><pre class="downlit">
+<span class="kw">wrong_words</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">title</span>, <span class="kw">consensus</span>, <span class="kw">term</span>, wt = <span class="kw">count</span>) <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span>(<span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span>(<span class="kw">n</span>))
+</pre></div>
 <pre><code>## # A tibble: 3,500 x 4
 ##    title              consensus             term         n
 ##    &lt;chr&gt;              &lt;chr&gt;                 &lt;chr&gt;    &lt;dbl&gt;
@@ -457,8 +497,10 @@
 ## 10 Great Expectations Pride and Prejudice   family      16
 ## # … with 3,490 more rows</code></pre>
 <p>Notice the word “flopson” here; these wrong words do not necessarily appear in the novels they were misassigned to. Indeed, we can confirm “flopson” appears only in <em>Great Expectations</em>:</p>
-<div class="sourceCode" id="cb36"><html><body><pre class="r"><span class="no">word_counts</span> <span class="kw">%&gt;%</span>
-  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="no">word</span> <span class="kw">==</span> <span class="st">"flopson"</span>)</pre></body></html></div>
+<div class="sourceCode" id="cb36"><pre class="downlit">
+<span class="kw">word_counts</span> <span class="op">%&gt;%</span>
+  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="kw">word</span> <span class="op">==</span> <span class="st">"flopson"</span>)
+</pre></div>
 <pre><code>## # A tibble: 3 x 3
 ##   title_chapter         word        n
 ##   &lt;chr&gt;                 &lt;chr&gt;   &lt;int&gt;

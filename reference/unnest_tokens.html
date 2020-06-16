@@ -153,16 +153,16 @@ into one-token-per-row. This function supports non-standard evaluation
 through the tidyeval framework.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>unnest_tokens</span>(
-  <span class='no'>tbl</span>,
-  <span class='no'>output</span>,
-  <span class='no'>input</span>,
-  <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"words"</span>,
-  <span class='kw'>format</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
-  <span class='kw'>to_lower</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>drop</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>,
-  <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
-  <span class='no'>...</span>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(
+  <span class='kw'>tbl</span>,
+  <span class='kw'>output</span>,
+  <span class='kw'>input</span>,
+  token = <span class='st'>"words"</span>,
+  format = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"text"</span>, <span class='st'>"man"</span>, <span class='st'>"latex"</span>, <span class='st'>"html"</span>, <span class='st'>"xml"</span>),
+  to_lower = <span class='fl'>TRUE</span>,
+  drop = <span class='fl'>TRUE</span>,
+  collapse = <span class='kw'>NULL</span>,
+  <span class='kw'>...</span>
 )</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
@@ -234,11 +234,11 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>janeaustenr</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/juliasilge/janeaustenr'>janeaustenr</a></span>)
 
-<span class='no'>d</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>txt</span> <span class='kw'>=</span> <span class='no'>prideprejudice</span>)
-<span class='no'>d</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 13,030 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(txt = <span class='kw'>prideprejudice</span>)
+<span class='kw'>d</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 13,030 x 1</span><span>
 #&gt;    txt                                                                      
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                    
 #&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>PRIDE AND PREJUDICE</span><span style='color: #555555;'>"</span><span>                                                    
@@ -252,8 +252,8 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>""</span><span>                                                                       
 #&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>It is a truth universally acknowledged, that a single man in possession</span><span style='color: #555555;'>"</span><span>
 #&gt; </span><span style='color: #555555;'># … with 13,020 more rows</span><span></div><div class='input'>
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 122,204 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>word</span>, <span class='kw'>txt</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 122,204 x 1</span><span>
 #&gt;    word     
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
 #&gt; </span><span style='color: #555555;'> 1</span><span> pride    
@@ -267,8 +267,8 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'> 9</span><span> it       
 #&gt; </span><span style='color: #555555;'>10</span><span> is       
 #&gt; </span><span style='color: #555555;'># … with 122,194 more rows</span><span></div><div class='input'>
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>sentence</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"sentences"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7,066 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>sentence</span>, <span class='kw'>txt</span>, token = <span class='st'>"sentences"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7,066 x 1</span><span>
 #&gt;    sentence                                                                     
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                        
 #&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice  by jane austen    chapter 1   it is a truth universall…
@@ -282,8 +282,8 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>"</span><span>mr.</span><span style='color: #555555;'>"</span><span>                                                                        
 #&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>bennet made no answer.</span><span style='color: #555555;'>"</span><span>                                                     
 #&gt; </span><span style='color: #555555;'># … with 7,056 more rows</span><span></div><div class='input'>
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>ngram</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"ngrams"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>2</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 122,203 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>ngram</span>, <span class='kw'>txt</span>, token = <span class='st'>"ngrams"</span>, n = <span class='fl'>2</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 122,203 x 1</span><span>
 #&gt;    ngram         
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         
 #&gt; </span><span style='color: #555555;'> 1</span><span> pride and     
@@ -297,13 +297,13 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'> 9</span><span> it is         
 #&gt; </span><span style='color: #555555;'>10</span><span> is a          
 #&gt; </span><span style='color: #555555;'># … with 122,193 more rows</span><span></div><div class='input'>
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>chapter</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"regex"</span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>"Chapter [\\\\d]"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>chapter</span>, <span class='kw'>txt</span>, token = <span class='st'>"regex"</span>, pattern = <span class='st'>"Chapter [\\\\d]"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
 #&gt;   chapter                                                                       
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                         
 #&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'>
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>shingle</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='st'>"character_shingles"</span>, <span class='kw'>n</span> <span class='kw'>=</span> <span class='fl'>4</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 536,526 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>shingle</span>, <span class='kw'>txt</span>, token = <span class='st'>"character_shingles"</span>, n = <span class='fl'>4</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 536,526 x 1</span><span>
 #&gt;    shingle
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
 #&gt; </span><span style='color: #555555;'> 1</span><span> prid   
@@ -318,8 +318,8 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'>10</span><span> reju   
 #&gt; </span><span style='color: #555555;'># … with 536,516 more rows</span><span></div><div class='input'>
 <span class='co'># custom function</span>
-<span class='no'>d</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>txt</span>, <span class='kw'>token</span> <span class='kw'>=</span> <span class='kw pkg'>stringr</span><span class='kw ns'>::</span><span class='no'><a href='https://stringr.tidyverse.org/reference/str_split.html'>str_split</a></span>, <span class='kw'>pattern</span> <span class='kw'>=</span> <span class='st'>" "</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 124,032 x 1</span><span>
+<span class='kw'>d</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>word</span>, <span class='kw'>txt</span>, token = <span class='kw'>stringr</span>::<span class='kw'><a href='https://stringr.tidyverse.org/reference/str_split.html'>str_split</a></span>, pattern = <span class='st'>" "</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 124,032 x 1</span><span>
 #&gt;    word       
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
 #&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride</span><span style='color: #555555;'>"</span><span>    
@@ -334,17 +334,16 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>""</span><span>         
 #&gt; </span><span style='color: #555555;'># … with 124,022 more rows</span><span></div><div class='input'>
 <span class='co'># tokenize HTML</span>
-<span class='no'>h</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://dplyr.tidyverse.org/reference/reexports.html'>tibble</a></span>(<span class='kw'>row</span> <span class='kw'>=</span> <span class='fl'>1</span>:<span class='fl'>2</span>,
-                <span class='kw'>text</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class='st'>"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span>))
+<span class='kw'>h</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(row = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>,
+                text = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class='st'>"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span>))
 
-<span class='no'>h</span> <span class='kw'>%&gt;%</span>
-  <span class='fu'>unnest_tokens</span>(<span class='no'>word</span>, <span class='no'>text</span>, <span class='kw'>format</span> <span class='kw'>=</span> <span class='st'>"html"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
+<span class='kw'>h</span> <span class='op'>%&gt;%</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>word</span>, <span class='kw'>text</span>, format = <span class='st'>"html"</span>)</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 3 x 2</span><span>
 #&gt;     row word 
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>
 #&gt; </span><span style='color: #555555;'>1</span><span>     1 text 
 #&gt; </span><span style='color: #555555;'>2</span><span>     1 is   
-#&gt; </span><span style='color: #555555;'>3</span><span>     2 here </div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'>3</span><span>     2 here </div><div class='input'></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

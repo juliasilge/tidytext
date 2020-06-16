@@ -154,11 +154,11 @@ see tidy.corpus." />
 with one-row-per-document, with a <code>text</code> column containing
 the document's text, and one column for each local (per-document)
 metadata tag. For corpus objects from the quanteda package,
-see <code><a href='corpus_tidiers.html'>tidy.corpus</a></code>.</p>
+see <code><a href='https://rdrr.io/pkg/tidytext/man/corpus_tidiers.html'>tidy.corpus</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for Corpus</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>x</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>"\n"</span>, <span class='no'>...</span>)</pre>
+<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>x</span>, collapse = <span class='st'>"\n"</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -183,30 +183,30 @@ will end up as a list column if there are multi-line documents.</p></td>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)   <span class='co'># displaying tbl_dfs</span>
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)   <span class='co'># displaying tbl_dfs</span>
 
-<span class='kw'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"tm"</span>, <span class='kw'>quietly</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>)) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>tm</span>)
+<span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"tm"</span>, quietly = <span class='fl'>TRUE</span>)) {
+  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://tm.r-forge.r-project.org'>tm</a></span>)
   <span class='co'>#' # tm package examples</span>
-  <span class='no'>txt</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"texts"</span>, <span class='st'>"txt"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"tm"</span>)
-  <span class='no'>ovid</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/tm/man/VCorpus.html'>VCorpus</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/tm/man/DirSource.html'>DirSource</a></span>(<span class='no'>txt</span>, <span class='kw'>encoding</span> <span class='kw'>=</span> <span class='st'>"UTF-8"</span>),
-                  <span class='kw'>readerControl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>language</span> <span class='kw'>=</span> <span class='st'>"lat"</span>))
+  <span class='kw'>txt</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"texts"</span>, <span class='st'>"txt"</span>, package = <span class='st'>"tm"</span>)
+  <span class='kw'>ovid</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/tm/man/VCorpus.html'>VCorpus</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/tm/man/DirSource.html'>DirSource</a></span>(<span class='kw'>txt</span>, encoding = <span class='st'>"UTF-8"</span>),
+                  readerControl = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(language = <span class='st'>"lat"</span>))
 
-  <span class='no'>ovid</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>ovid</span>)
+  <span class='kw'>ovid</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>ovid</span>)
 
   <span class='co'># choose different options for collapsing text within each</span>
   <span class='co'># document</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>ovid</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='st'>""</span>)$<span class='no'>text</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>ovid</span>, <span class='kw'>collapse</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)$<span class='no'>text</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>ovid</span>, collapse = <span class='st'>""</span>)<span class='op'>$</span><span class='kw'>text</span>
+  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>ovid</span>, collapse = <span class='kw'>NULL</span>)<span class='op'>$</span><span class='kw'>text</span>
 
   <span class='co'># another example from Reuters articles</span>
-  <span class='no'>reut21578</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"texts"</span>, <span class='st'>"crude"</span>, <span class='kw'>package</span> <span class='kw'>=</span> <span class='st'>"tm"</span>)
-  <span class='no'>reuters</span> <span class='kw'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/tm/man/VCorpus.html'>VCorpus</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/tm/man/DirSource.html'>DirSource</a></span>(<span class='no'>reut21578</span>),
-                     <span class='kw'>readerControl</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(<span class='kw'>reader</span> <span class='kw'>=</span> <span class='no'>readReut21578XMLasPlain</span>))
-  <span class='no'>reuters</span>
+  <span class='kw'>reut21578</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/system.file.html'>system.file</a></span>(<span class='st'>"texts"</span>, <span class='st'>"crude"</span>, package = <span class='st'>"tm"</span>)
+  <span class='kw'>reuters</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/tm/man/VCorpus.html'>VCorpus</a></span>(<span class='fu'><a href='https://rdrr.io/pkg/tm/man/DirSource.html'>DirSource</a></span>(<span class='kw'>reut21578</span>),
+                     readerControl = <span class='fu'><a href='https://rdrr.io/r/base/list.html'>list</a></span>(reader = <span class='kw'>readReut21578XMLasPlain</span>))
+  <span class='kw'>reuters</span>
 
-  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='no'>reuters</span>)
+  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>reuters</span>)
 }</div><div class='output co'>#&gt; <span class='message'>Loading required package: NLP</span></div><div class='output co'>#&gt; <span class='message'></span>
 #&gt; <span class='message'>Attaching package: ‘NLP’</span></div><div class='output co'>#&gt; <span class='message'>The following object is masked from ‘package:ggplot2’:</span>
 #&gt; <span class='message'></span>
@@ -235,8 +235,7 @@ will end up as a list column if there are multi-line documents.</p></td>
 #&gt; </span><span style='color: #555555;'>20</span><span> </span><span style='color: #BB0000;'>NA</span><span>     1987-03-02 </span><span style='color: #555555;'>14:49:06</span><span> </span><span style='color: #555555;'>""</span><span>          ARGENT… 708   en       Reute… YES   
 #&gt; </span><span style='color: #555555;'># … with 9 more variables: lewissplit </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, cgisplit </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, oldid </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
 #&gt; </span><span style='color: #555555;'>#   topics_cat </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span style='color: #555555;'>, places </span><span style='color: #555555;font-style: italic;'>&lt;named list&gt;</span><span style='color: #555555;'>, people </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, orgs </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>,</span><span>
-#&gt; </span><span style='color: #555555;'>#   exchanges </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, text </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'>
-</div></span></pre>
+#&gt; </span><span style='color: #555555;'>#   exchanges </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span style='color: #555555;'>, text </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span></div><div class='input'></div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

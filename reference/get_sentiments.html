@@ -152,12 +152,12 @@ package." />
     <div class="ref-description">
     <p>Get specific sentiment lexicons in a tidy format, with one row per word,
 in a form that can be joined with a one-word-per-row dataset.
-The <code>"bing"</code> option comes from the included <code><a href='sentiments.html'>sentiments</a></code>
+The <code>"bing"</code> option comes from the included <code><a href='https://rdrr.io/pkg/tidytext/man/sentiments.html'>sentiments</a></code>
 data frame, and others call the relevant function in the <span class="pkg">textdata</span>
 package.</p>
     </div>
 
-    <pre class="usage"><span class='fu'>get_sentiments</span>(<span class='kw'>lexicon</span> <span class='kw'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bing"</span>, <span class='st'>"afinn"</span>, <span class='st'>"loughran"</span>, <span class='st'>"nrc"</span>))</pre>
+    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/get_sentiments.html'>get_sentiments</a></span>(lexicon = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"bing"</span>, <span class='st'>"afinn"</span>, <span class='st'>"loughran"</span>, <span class='st'>"nrc"</span>))</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -177,9 +177,9 @@ column (if <code>lexicon</code> is not "afinn") or a numeric <code>score</code> 
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='no'>dplyr</span>)
+<span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
 
-<span class='fu'>get_sentiments</span>(<span class='st'>"bing"</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6,786 x 2</span><span>
+<span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/get_sentiments.html'>get_sentiments</a></span>(<span class='st'>"bing"</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 6,786 x 2</span><span>
 #&gt;    word        sentiment
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>       </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>    
 #&gt; </span><span style='color: #555555;'> 1</span><span> 2-faces     negative 
@@ -193,10 +193,11 @@ column (if <code>lexicon</code> is not "afinn") or a numeric <code>score</code> 
 #&gt; </span><span style='color: #555555;'> 9</span><span> aborted     negative 
 #&gt; </span><span style='color: #555555;'>10</span><span> aborts      negative 
 #&gt; </span><span style='color: #555555;'># … with 6,776 more rows</span><span></div><div class='input'>
-<span class='kw'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='fu'>get_sentiments</span>(<span class='st'>"afinn"</span>)
-<span class='fu'>get_sentiments</span>(<span class='st'>"nrc"</span>)
-}</div></span></pre>
+<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
+<span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/get_sentiments.html'>get_sentiments</a></span>(<span class='st'>"afinn"</span>)
+<span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/get_sentiments.html'>get_sentiments</a></span>(<span class='st'>"nrc"</span>)
+}
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
