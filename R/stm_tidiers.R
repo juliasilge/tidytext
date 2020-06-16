@@ -88,6 +88,7 @@
 #'   # using stm's gardarianFit, we can tidy the result of a model
 #'   # estimated with covariates
 #'   effects <- estimateEffect(1:3 ~ treatment, gadarianFit, gadarian)
+#'   glance(effects)
 #'   td_estimate <- tidy(effects)
 #'   td_estimate
 #'
@@ -139,6 +140,23 @@ tidy.estimateEffect <- function(x, ...) {
   colnames(ret) <- c("topic", "term", "estimate", "std.error",
                      "statistic", "p.value")
   ret
+}
+
+#' @rdname stm_tidiers
+#'
+#' @return \code{glance} always returns a one-row table, with columns
+#' \describe{
+#'   \item{k}{Number of topics in the model}
+#'   \item{docs}{Number of documents in the model}
+#'   \item{uncertainty}{Uncertainty measure}
+#' }
+#'
+#' @export
+glance.estimateEffect <- function(x, ...) {
+    ret <- tibble(k = length(x[['topics']]),
+                  docs = nrow(x[['modelframe']]),
+                  uncertainty = x[['uncertainty']])
+    ret
 }
 
 #' @rdname stm_tidiers

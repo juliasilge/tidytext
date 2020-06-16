@@ -4,6 +4,7 @@
 \alias{stm_tidiers}
 \alias{tidy.STM}
 \alias{tidy.estimateEffect}
+\alias{glance.estimateEffect}
 \alias{augment.STM}
 \alias{glance.STM}
 \title{Tidiers for Structural Topic Models from the stm package}
@@ -17,6 +18,8 @@
 )
 
 \method{tidy}{estimateEffect}(x, ...)
+
+\method{glance}{estimateEffect}(x, ...)
 
 \method{augment}{STM}(x, data, ...)
 
@@ -45,6 +48,13 @@ as a \code{dfm} from quanteda or as a tidied table with "document" and
 \code{tidy} returns a tidied version of either the beta or gamma matrix if
 called on an object from \code{stm} or a tidied version of the estimated regressions
 if called on an object from \code{estimateEffect}.
+
+\code{glance} always returns a one-row table, with columns
+\describe{
+\item{k}{Number of topics in the model}
+\item{docs}{Number of documents in the model}
+\item{uncertainty}{Uncertainty measure}
+}
 
 \code{augment} must be provided a data argument, either a
 \code{dfm} from quanteda or a table containing one row per original
@@ -105,6 +115,7 @@ if (requireNamespace("stm", quietly = TRUE)) {
   # using stm's gardarianFit, we can tidy the result of a model
   # estimated with covariates
   effects <- estimateEffect(1:3 ~ treatment, gadarianFit, gadarian)
+  glance(effects)
   td_estimate <- tidy(effects)
   td_estimate
 
