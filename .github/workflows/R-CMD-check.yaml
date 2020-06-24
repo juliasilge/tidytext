@@ -40,17 +40,13 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
-      - name: Install XQuartz on MacOS
+      - name: Install system dependencies on MacOS (for vdiffr)
         if: runner.os == 'macOS'
-        run: brew cask install xquartz
+        run: |
+          brew cask install xquartz
+          brew install pkg-config cairo
 
-      ## for vdiffr
-      - name: Install system dependencies on MacOS
-        if: runner.os == 'macOS'
-        run: brew cask pkg-config cairo
-
-      ## for topicmodels
-      - name: Install GSL on MacOS
+      - name: Install GSL on MacOS (for topicmodels)
         if: runner.os == 'macOS'
         run: brew install gsl
 
