@@ -45,7 +45,7 @@ jobs:
         run: brew cask install xquartz
 
       ## for vdiffr
-      - name: Install XQuartz on MacOS
+      - name: Install system dependencies on MacOS
         if: runner.os == 'macOS'
         run: brew cask pkg-config cairo
 
