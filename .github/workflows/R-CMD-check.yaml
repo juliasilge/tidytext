@@ -44,6 +44,12 @@ jobs:
         if: runner.os == 'macOS'
         run: brew cask install xquartz
 
+      ## for vdiffr
+      - name: Install XQuartz on MacOS
+        if: runner.os == 'macOS'
+        run: brew cask pkg-config cairo
+
+      ## for topicmodels
       - name: Install GSL on MacOS
         if: runner.os == 'macOS'
         run: brew install gsl
