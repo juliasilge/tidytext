@@ -3,7 +3,7 @@
 
 
 
-# tidytext: Text mining using dplyr, ggplot2, and other tidy tools <img src="man/figures/tidytext.png" align="right" />
+# tidytext: Text mining using tidy tools <img src="man/figures/tidytext.png" align="right" />
 
 **Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
 **License:** [MIT](https://opensource.org/licenses/MIT)
