@@ -16,8 +16,6 @@ r_packages:
 
 matrix:
   include:
-  - r: devel
-    env: _R_CHECK_FORCE_SUGGESTS_=false
   - r: release
     after_success:
     - Rscript -e 'covr::codecov(coverage = covr::package_coverage(line_exclusions = list("R/compat_lazyeval.R")))'
