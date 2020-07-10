@@ -42,7 +42,7 @@ install_github("juliasilge/tidytext")
 
 ### Tidy text mining example: the `unnest_tokens` function
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:
+The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and transform them to a tidy format. janeaustenr provides them as a one-row-per-line format:
 
 
 ```r
@@ -71,7 +71,7 @@ original_books
 #> # … with 73,412 more rows
 ```
 
-To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row:
+To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens()` function is a way to convert a dataframe with a text column to be one-token-per-row:
 
 
 ```r
@@ -96,9 +96,9 @@ tidy_books
 #> # … with 725,045 more rows
 ```
 
-This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.
+This function uses the [tokenizers](https://docs.ropensci.org/tokenizers/) package to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.
 
-Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function `get_stopwords()`) with an `anti_join`.
+Now that the data is in a one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function `get_stopwords()`) with an `anti_join()`.
 
 
 ```r
@@ -106,7 +106,7 @@ tidy_books <- tidy_books %>%
   anti_join(get_stopwords())
 ```
 
-We can also use `count` to find the most common words in all the books as a whole.
+We can also use `count()` to find the most common words in all the books as a whole.
 
 
 ```r
@@ -128,7 +128,7 @@ tidy_books %>%
 #> # … with 14,365 more rows
 ```
 
-Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes during each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Sentiment analysis can be implemented as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes across each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
 
 ```r
@@ -189,7 +189,7 @@ For more examples of text mining using tidy data frames, see the tidytext vignet
 
 ### Tidying document term matrices
 
-Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.
+Some existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.
 
 
 ```r
@@ -203,7 +203,7 @@ AssociatedPress
 #> Weighting          : term frequency (tf)
 ```
 
-If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first with a `tidy` function. (For more on the tidy verb, [see the broom package](https://github.com/dgrtwo/broom)).
+If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first with a `tidy()` function. (For more on the tidy verb, [see the broom package](https://broom.tidymodels.org/)).
 
 
 ```r
