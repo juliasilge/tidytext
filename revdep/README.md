@@ -17,16 +17,8 @@
 |package  |old   |new       |Δ  |
 |:--------|:-----|:---------|:--|
 |tidytext |0.2.4 |0.2.4.900 |*  |
-|rlang    |NA    |0.4.6     |*  |
+|rlang    |NA    |0.4.7     |*  |
+|tibble   |NA    |3.0.3     |*  |
 
 # Revdeps
-
-## Failed to check (4)
-
-|package    |version |error |warning |note |
-|:----------|:-------|:-----|:-------|:----|
-|kdtools    |0.4.2   |1     |        |     |
-|mvrsquared |0.1.0   |1     |        |     |
-|quanteda   |2.1.0   |1     |        |     |
-|textmineR  |3.0.4   |1     |        |     |
 
