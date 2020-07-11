@@ -1,3 +1,5 @@
+# tidytext (development version)
+
 # tidytext 0.2.5
 
 * `reorder_within()` now handles multiple variables, thanks to @tmastny (#170)
