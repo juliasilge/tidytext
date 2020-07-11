@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-06-25</h4>
+            <h4 class="date">2020-07-11</h4>
       
       <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/tidying_casting.Rmd"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -448,7 +448,7 @@
 ## # … with 501,980 more rows</code></pre>
 <p>For example, we can use the broom package to perform logistic regression on each word.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/tidyverse/broom">broom</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://broom.tidymodels.org">broom</a></span>)
 <span class="kw">models</span> <span class="op">&lt;-</span> <span class="kw">inaug_freq</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">group_by</a></span>(<span class="kw">word</span>) <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span>(<span class="fu"><a href="https://rdrr.io/r/base/sum.html">sum</a></span>(<span class="kw">n</span>) <span class="op">&gt;</span> <span class="fl">50</span>) <span class="op">%&gt;%</span>

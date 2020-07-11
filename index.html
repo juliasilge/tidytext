@@ -121,7 +121,7 @@
 <div id="tidy-text-mining-example-the-unnest_tokens-function" class="section level3">
 <h3 class="hasAnchor">
 <a href="#tidy-text-mining-example-the-unnest_tokens-function" class="anchor"></a>Tidy text mining example: the <code>unnest_tokens</code> function</h3>
-<p>The novels of Jane Austen can be so tidy! Let’s use the text of Jane Austen’s 6 completed, published novels from the <a href="https://cran.r-project.org/package=janeaustenr">janeaustenr</a> package, and bring them into a tidy format. janeaustenr provides them as a one-row-per-line format:</p>
+<p>The novels of Jane Austen can be so tidy! Let’s use the text of Jane Austen’s 6 completed, published novels from the <a href="https://cran.r-project.org/package=janeaustenr">janeaustenr</a> package, and transform them to a tidy format. janeaustenr provides them as a one-row-per-line format:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/juliasilge/janeaustenr">janeaustenr</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://dplyr.tidyverse.org">dplyr</a></span>)
@@ -147,7 +147,7 @@
 <span class="co">#&gt; 10 "CHAPTER 1"             Sense &amp; Sensibility    10</span>
 <span class="co">#&gt; # … with 73,412 more rows</span>
 </pre></div>
-<p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code>unnest_tokens</code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
+<p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code><a href="reference/unnest_tokens.html">unnest_tokens()</a></code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/juliasilge/tidytext">tidytext</a></span>)
 <span class="kw">tidy_books</span> <span class="op">&lt;-</span> <span class="kw">original_books</span> <span class="op">%&gt;%</span>
@@ -169,13 +169,13 @@
 <span class="co">#&gt; 10 Sense &amp; Sensibility    13 the        </span>
 <span class="co">#&gt; # … with 725,045 more rows</span>
 </pre></div>
-<p>This function uses the <a href="https://github.com/lmullen/tokenizers">tokenizers package</a> to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
-<p>Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function <code><a href="reference/get_stopwords.html">get_stopwords()</a></code>) with an <code>anti_join</code>.</p>
+<p>This function uses the <a href="https://docs.ropensci.org/tokenizers/">tokenizers</a> package to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
+<p>Now that the data is in a one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function <code><a href="reference/get_stopwords.html">get_stopwords()</a></code>) with an <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw">tidy_books</span> <span class="op">&lt;-</span> <span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span>(<span class="fu"><a href="reference/get_stopwords.html">get_stopwords</a></span>())
 </pre></div>
-<p>We can also use <code>count</code> to find the most common words in all the books as a whole.</p>
+<p>We can also use <code><a href="https://dplyr.tidyverse.org/reference/count.html">count()</a></code> to find the most common words in all the books as a whole.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit">
 <span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span>(<span class="kw">word</span>, sort = <span class="fl">TRUE</span>) 
@@ -194,7 +194,7 @@
 <span class="co">#&gt; 10 think  1440</span>
 <span class="co">#&gt; # … with 14,365 more rows</span>
 </pre></div>
-<p>Sentiment analysis can be done as an inner join. Three sentiment lexicons are available via the <code><a href="reference/get_sentiments.html">get_sentiments()</a></code> function. Let’s examine how sentiment changes during each novel. Let’s find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.</p>
+<p>Sentiment analysis can be implemented as an inner join. Three sentiment lexicons are available via the <code><a href="reference/get_sentiments.html">get_sentiments()</a></code> function. Let’s examine how sentiment changes across each novel. Let’s find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://tidyr.tidyverse.org">tidyr</a></span>)
 <span class="fu"><a href="reference/get_sentiments.html">get_sentiments</a></span>(<span class="st">"bing"</span>)
@@ -249,7 +249,7 @@
 <div id="tidying-document-term-matrices" class="section level3">
 <h3 class="hasAnchor">
 <a href="#tidying-document-term-matrices" class="anchor"></a>Tidying document term matrices</h3>
-<p>Many existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.</p>
+<p>Some existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://tm.r-forge.r-project.org">tm</a></span>)
 <span class="fu"><a href="https://rdrr.io/r/utils/data.html">data</a></span>(<span class="st">"AssociatedPress"</span>, package = <span class="st">"topicmodels"</span>)
@@ -260,7 +260,7 @@
 <span class="co">#&gt; Maximal term length: 18</span>
 <span class="co">#&gt; Weighting          : term frequency (tf)</span>
 </pre></div>
-<p>If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first with a <code>tidy</code> function. (For more on the tidy verb, <a href="https://github.com/dgrtwo/broom">see the broom package</a>).</p>
+<p>If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first with a <code><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy()</a></code> function. (For more on the tidy verb, <a href="https://broom.tidymodels.org/">see the broom package</a>).</p>
 <div class="sourceCode" id="cb10"><pre class="downlit">
 <span class="fu"><a href="https://rdrr.io/pkg/generics/man/tidy.html">tidy</a></span>(<span class="kw">AssociatedPress</span>)
 <span class="co">#&gt; # A tibble: 302,031 x 3</span>
