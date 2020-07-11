@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 15th CRAN release of tidytext. This release fixes a test (related to the new version of tibble), improves error handling throughout, and finally deprecates some functions that have been soft-deprecated for a very long time. 
+This is the 16th CRAN release of tidytext. This release improves argument handling in tokenizing functions and `reorder_within()`, moves the stopwords package to Suggests, and adds a `glance()` method for stm's estimated regressions. 
 
 ## Test environments
 
@@ -14,17 +14,7 @@ This is the 15th CRAN release of tidytext. This release fixes a test (related to
 
 ## revdepcheck results
 
-I checked 26 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+I checked 31 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
-* I saw 1 new problem
-* I failed to check 1 package
-
-Issues with CRAN packages are summarised below.
-
-### New problems
-
-* [funrar](https://cran.r-project.org/package=funrar) is impacted by this release; I sent a [patch to them in this PR](https://github.com/Rekyt/funrar/pull/42) that fixes the problem but have not heard back yet
-
-### Failed to check
-
-* kdtools (NA)
+ * I saw 0 new problems
+ * I failed to check 0 packages
