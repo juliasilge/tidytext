@@ -4,13 +4,26 @@ This is the 16th CRAN release of tidytext. This release improves argument handli
 
 ## Test environments
 
-* local OS X install: release
-* travis-ci ubuntu 14.04: devel, release, oldrel
-* win-builder: devel, release
+* local macOS install: release
+* macOS 10.15.5 (on GitHub actions): release, devel
+* ubuntu 16.04 (on GitHub actions): oldrel, release
+* windows server 2019 10.0.17763 (on GitHub actions): release, devel
+* win-builder: release, devel
 
 ## R CMD check results
 
-0 errors | 0 warnings | 0 notes
+0 errors | 0 warnings | 1 notes
+
+I found the following note about a possibly invalid URL in the documentation, but the URL seems to be working fine:
+
+  Found the following (possibly) invalid URLs:
+    URL: https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html
+      From: man/sentiments.Rd
+      Status: Error
+      Message: libcurl error code 60:
+        	SSL certificate problem: certificate has expired
+        	(Status without verification: OK)
+
 
 ## revdepcheck results
 
