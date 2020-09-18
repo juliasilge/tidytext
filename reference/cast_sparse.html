@@ -108,13 +108,13 @@ in a table. — cast_sparse" />
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/articles/topic_modeling.html">Tidy Topic Modeling</a>
+    </li>
+    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
       <a href="../articles/tidying_casting.html">Converting to and from Document-Term Matrix and Corpus objects</a>
-    </li>
-    <li>
-      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
     </li>
   </ul>
 </li>
@@ -152,7 +152,7 @@ in a table.</h1>
     <p>This function supports non-standard evaluation through the tidyeval framework.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/cast_sparse.html'>cast_sparse</a></span>(<span class='kw'>data</span>, <span class='kw'>row</span>, <span class='kw'>column</span>, <span class='kw'>value</span>, <span class='kw'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>cast_sparse</span>(<span class='kw'>data</span>, <span class='kw'>row</span>, <span class='kw'>column</span>, <span class='kw'>value</span>, <span class='kw'>...</span>)</pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -196,14 +196,17 @@ column, and with as many non-zero values as there are rows in <code>data</code>.
                   b = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"col1"</span>, <span class='st'>"col2"</span>, <span class='st'>"col1"</span>, <span class='st'>"col3"</span>, <span class='st'>"col4"</span>),
                   val = <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span>)
 
-<span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/cast_sparse.html'>cast_sparse</a></span>(<span class='kw'>dat</span>, <span class='kw'>a</span>, <span class='kw'>b</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
+<span class='fu'>cast_sparse</span>(<span class='kw'>dat</span>, <span class='kw'>a</span>, <span class='kw'>b</span>)
+</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
 #&gt;      col1 col2 col3 col4
 #&gt; row1    1    1    .    .
 #&gt; row2    1    .    1    1</div><div class='input'>
-<span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/cast_sparse.html'>cast_sparse</a></span>(<span class='kw'>dat</span>, <span class='kw'>a</span>, <span class='kw'>b</span>, <span class='kw'>val</span>)</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
+<span class='fu'>cast_sparse</span>(<span class='kw'>dat</span>, <span class='kw'>a</span>, <span class='kw'>b</span>, <span class='kw'>val</span>)
+</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
 #&gt;      col1 col2 col3 col4
 #&gt; row1    1    2    .    .
-#&gt; row2    3    .    4    5</div><div class='input'></div></pre>
+#&gt; row2    3    .    4    5</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -219,7 +222,7 @@ column, and with as many non-zero values as there are rows in <code>data</code>.
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

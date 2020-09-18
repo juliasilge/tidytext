@@ -106,13 +106,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/articles/topic_modeling.html">Tidy Topic Modeling</a>
+    </li>
+    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
       <a href="../articles/tidying_casting.html">Converting to and from Document-Term Matrix and Corpus objects</a>
-    </li>
-    <li>
-      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
     </li>
   </ul>
 </li>
@@ -216,7 +216,7 @@ with columns</p><dl>
 </dl>
 
 <p><code>augment</code> returns a table with one row per original
-document-term pair, such as is returned by <a href='https://rdrr.io/pkg/tidytext/man/tdm_tidiers.html'>tdm_tidiers</a>:</p><dl>
+document-term pair, such as is returned by <a href='tdm_tidiers.html'>tdm_tidiers</a>:</p><dl>
 <dt>document</dt><dd><p>Name of document (if present), or index</p></dd>
 <dt>term</dt><dd><p>Term</p></dd>
 <dt>.topic</dt><dd><p>Topic assignment</p></dd>
@@ -276,20 +276,22 @@ for topics over documents</p></dd>
   <span class='co'># which were we most uncertain about?</span>
   <span class='kw'>doc_classes</span> <span class='op'>%&gt;%</span>
     <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span>(<span class='kw'>gamma</span>)
-}</div><div class='output co'>#&gt; <span class='message'>Selecting by gamma</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 100 x 3</span><span>
+}
+</div><div class='output co'>#&gt; <span class='message'>Selecting by gamma</span></div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 100 x 3</span><span>
 #&gt;    document topic gamma
 #&gt;       </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #555555;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #555555;'> 1</span><span>       28     2 0.557
-#&gt; </span><span style='color: #555555;'> 2</span><span>       82     3 0.632
-#&gt; </span><span style='color: #555555;'> 3</span><span>       15     3 0.701
-#&gt; </span><span style='color: #555555;'> 4</span><span>       36     3 0.799
-#&gt; </span><span style='color: #555555;'> 5</span><span>       66     2 0.800
-#&gt; </span><span style='color: #555555;'> 6</span><span>       98     2 0.835
-#&gt; </span><span style='color: #555555;'> 7</span><span>       83     1 0.860
-#&gt; </span><span style='color: #555555;'> 8</span><span>        3     1 0.955
-#&gt; </span><span style='color: #555555;'> 9</span><span>        9     3 0.991
-#&gt; </span><span style='color: #555555;'>10</span><span>       23     3 0.991
-#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'></div></span></pre>
+#&gt; </span><span style='color: #555555;'> 1</span><span>       98     1 0.548
+#&gt; </span><span style='color: #555555;'> 2</span><span>       72     1 0.599
+#&gt; </span><span style='color: #555555;'> 3</span><span>       42     4 0.673
+#&gt; </span><span style='color: #555555;'> 4</span><span>       77     1 0.678
+#&gt; </span><span style='color: #555555;'> 5</span><span>       85     3 0.723
+#&gt; </span><span style='color: #555555;'> 6</span><span>       41     4 0.748
+#&gt; </span><span style='color: #555555;'> 7</span><span>       93     1 0.840
+#&gt; </span><span style='color: #555555;'> 8</span><span>       16     3 0.845
+#&gt; </span><span style='color: #555555;'> 9</span><span>       54     2 0.909
+#&gt; </span><span style='color: #555555;'>10</span><span>       26     4 0.984
+#&gt; </span><span style='color: #555555;'># … with 90 more rows</span><span></div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -305,7 +307,7 @@ for topics over documents</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>

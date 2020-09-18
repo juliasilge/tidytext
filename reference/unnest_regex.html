@@ -106,13 +106,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/articles/topic_modeling.html">Tidy Topic Modeling</a>
+    </li>
+    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
       <a href="../articles/tidying_casting.html">Converting to and from Document-Term Matrix and Corpus objects</a>
-    </li>
-    <li>
-      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
     </li>
   </ul>
 </li>
@@ -146,10 +146,10 @@
     </div>
 
     <div class="ref-description">
-    <p>This function is a wrapper around <code><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens( token = "regex" )</a></code>.</p>
+    <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "regex" )</a></code>.</p>
     </div>
 
-    <pre class="usage"><span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_regex.html'>unnest_regex</a></span>(
+    <pre class="usage"><span class='fu'>unnest_regex</span>(
   <span class='kw'>tbl</span>,
   <span class='kw'>output</span>,
   <span class='kw'>input</span>,
@@ -215,7 +215,7 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 
     <div class='dont-index'>
 <ul>
-<li><p><code><a href='https://rdrr.io/pkg/tidytext/man/unnest_tokens.html'>unnest_tokens()</a></code></p></li>
+<li><p><code><a href='unnest_tokens.html'>unnest_tokens()</a></code></p></li>
 </ul>
 </div>
 
@@ -226,10 +226,12 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 <span class='kw'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span>(txt = <span class='kw'>prideprejudice</span>)
 
 <span class='kw'>d</span> <span class='op'>%&gt;%</span>
-  <span class='fu'><a href='https://rdrr.io/pkg/tidytext/man/unnest_regex.html'>unnest_regex</a></span>(<span class='kw'>word</span>, <span class='kw'>txt</span>, pattern = <span class='st'>"Chapter [\\\\d]"</span>)</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 1</span><span>
+  <span class='fu'>unnest_regex</span>(<span class='kw'>word</span>, <span class='kw'>txt</span>, pattern = <span class='st'>"Chapter [\\\\d]"</span>)
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 1</span><span>
 #&gt;   word                                                                          
 #&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                         
-#&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'></div></span></pre>
+#&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'>
+</div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
@@ -245,7 +247,7 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.5.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
 </div>
 
       </footer>
