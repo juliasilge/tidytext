@@ -58,7 +58,6 @@ Suggests:
     topicmodels,
     NLP,
     scales,
-    gutenbergr,
     testthat (>= 2.1.0),
     vdiffr,
     mallet,

@@ -34,6 +34,7 @@ jobs:
         run: |
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
+          remotes::install_github("ropensci/gutenbergr")
           remotes::install_dev("pkgdown")
         shell: Rscript {0}
 
@@ -41,5 +42,7 @@ jobs:
         run: R CMD INSTALL .
 
       - name: Deploy package
-        run: pkgdown::deploy_to_branch(new_process = FALSE)
-        shell: Rscript {0}
+        run: |
+          git config --local user.email "actions@github.com"
+          git config --local user.name "GitHub Actions"
+          Rscript -e 'pkgdown::deploy_to_branch(new_process = FALSE)'

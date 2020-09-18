@@ -1,5 +1,7 @@
 # tidytext (development version)
 
+* Move one vignette to pkgdown site, because of dependency removal
+
 # tidytext 0.2.5
 
 * `reorder_within()` now handles multiple variables, thanks to @tmastny (#170)
