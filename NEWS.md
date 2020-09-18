@@ -1,6 +1,7 @@
 # tidytext (development version)
 
 * Move one vignette to pkgdown site, because of dependency removal
+* Move all CI from Travis to GH actions
 
 # tidytext 0.2.5
 
