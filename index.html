@@ -81,7 +81,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="http://github.com/juliasilge/tidytext/">
+  <a href="https://github.com/juliasilge/tidytext/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -103,7 +103,7 @@
 <a href="#tidytext-text-mining-using-tidy-tools-" class="anchor"></a>tidytext: Text mining using tidy tools <img src="reference/figures/tidytext.png" align="right">
 </h1></div>
 <p><strong>Authors:</strong> <a href="https://juliasilge.com/">Julia Silge</a>, <a href="http://varianceexplained.org/">David Robinson</a><br><strong>License:</strong> <a href="https://opensource.org/licenses/MIT">MIT</a></p>
-<p><a href="https://github.com/juliasilge/tidytext/actions"><img src="https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <a href="https://cran.r-project.org/package=tidytext"><img src="http://www.r-pkg.org/badges/version/tidytext" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/web/checks/check_results_tidytext.html"><img src="https://cranchecks.info/badges/summary/tidytext" alt="cran checks"></a> <a href="https://codecov.io/github/juliasilge/tidytext?branch=master"><img src="https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg" alt="Coverage Status"></a> <a href="https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext"><img src="https://zenodo.org/badge/22224/juliasilge/tidytext.svg" alt="DOI"></a> <a href="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f"><img src="http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg" alt="status"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/tidytext" alt="Downloads"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange" alt="Total Downloads"></a></p>
+<p><a href="https://github.com/juliasilge/tidytext/actions"><img src="https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg" alt="R build status"></a> <a href="https://cran.r-project.org/package=tidytext"><img src="http://www.r-pkg.org/badges/version/tidytext" alt="CRAN_Status_Badge"></a> <a href="https://cran.r-project.org/web/checks/check_results_tidytext.html"><img src="https://cranchecks.info/badges/summary/tidytext" alt="cran checks"></a> <a href="https://codecov.io/github/juliasilge/tidytext?branch=master"><img src="https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg" alt="Coverage Status"></a> <a href="https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext"><img src="https://zenodo.org/badge/22224/juliasilge/tidytext.svg" alt="DOI"></a> <a href="https://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f"><img src="https://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg" alt="status"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/tidytext" alt="Downloads"></a> <a href="https://CRAN.R-project.org/package=tidytext"><img src="https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange" alt="Total Downloads"></a></p>
 <p>Using <a href="https://www.jstatsoft.org/article/view/v059i10">tidy data principles</a> can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like <a href="https://cran.r-project.org/package=dplyr">dplyr</a>, <a href="https://cran.r-project.org/package=broom">broom</a>, <a href="https://cran.r-project.org/package=tidyr">tidyr</a> and <a href="https://cran.r-project.org/package=ggplot2">ggplot2</a>. In this package, we provide functions and supporting data sets to allow conversion of text to and from tidy formats, and to switch seamlessly between tidy tools and existing text mining packages. Check out <a href="https://www.tidytextmining.com/">our book</a> to learn more about text mining using tidy data principles.</p>
 <div id="installation" class="section level3">
 <h3 class="hasAnchor">
@@ -149,7 +149,7 @@
 </pre></div>
 <p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code><a href="reference/unnest_tokens.html">unnest_tokens()</a></code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/juliasilge/tidytext">tidytext</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/juliasilge/tidytext">tidytext</a></span>)
 <span class="kw">tidy_books</span> <span class="op">&lt;-</span> <span class="kw">original_books</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">word</span>, <span class="kw">text</span>)
 
@@ -328,7 +328,7 @@
 <div id="community-guidelines" class="section level3">
 <h3 class="hasAnchor">
 <a href="#community-guidelines" class="anchor"></a>Community Guidelines</h3>
-<p>This project is released with a <a href="https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support <a href="http://github.com/juliasilge/tidytext/issues">here</a>.</p>
+<p>This project is released with a <a href="https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md">Contributor Code of Conduct</a>. By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support <a href="https://github.com/juliasilge/tidytext/issues">here</a>.</p>
 </div>
 </div>
   </div>
@@ -339,9 +339,9 @@
 <ul class="list-unstyled">
 <li>Download from CRAN at <br><a href="https://cloud.r-project.org/package=tidytext">https://​cloud.r-project.org/​package=tidytext</a>
 </li>
-<li>Browse source code at <br><a href="http://github.com/juliasilge/tidytext/">http://​github.com/​juliasilge/​tidytext/​</a>
+<li>Browse source code at <br><a href="https://github.com/juliasilge/tidytext/">https://​github.com/​juliasilge/​tidytext/​</a>
 </li>
-<li>Report a bug at <br><a href="http://github.com/juliasilge/tidytext/issues">http://​github.com/​juliasilge/​tidytext/​issues</a>
+<li>Report a bug at <br><a href="https://github.com/juliasilge/tidytext/issues">https://​github.com/​juliasilge/​tidytext/​issues</a>
 </li>
 </ul>
 </div>

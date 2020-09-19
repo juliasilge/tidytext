@@ -80,7 +80,7 @@
       </ul>
 <ul class="nav navbar-nav navbar-right">
 <li>
-  <a href="http://github.com/juliasilge/tidytext/">
+  <a href="https://github.com/juliasilge/tidytext/">
     <span class="fab fa fab fa-github fa-lg"></span>
      
   </a>
@@ -103,7 +103,7 @@
             
             <h4 class="date">2020-09-19</h4>
       
-      <small class="dont-index">Source: <a href="http://github.com/juliasilge/tidytext/blob/master/vignettes/tidytext.Rmd"><code>vignettes/tidytext.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/master/vignettes/tidytext.Rmd"><code>vignettes/tidytext.Rmd</code></a></small>
       <div class="hidden name"><code>tidytext.Rmd</code></div>
 
     </div>
@@ -149,7 +149,7 @@
 ## # … with 73,412 more rows</code></pre>
 <p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code>unnest_tokens</code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="http://github.com/juliasilge/tidytext">tidytext</a></span>)
+<span class="fu"><a href="https://rdrr.io/r/base/library.html">library</a></span>(<span class="kw"><a href="https://github.com/juliasilge/tidytext">tidytext</a></span>)
 <span class="kw">tidy_books</span> <span class="op">&lt;-</span> <span class="kw">original_books</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">word</span>, <span class="kw">text</span>)
 
@@ -169,7 +169,7 @@
 ##  9 Sense &amp; Sensibility    10       1 1          
 ## 10 Sense &amp; Sensibility    13       1 the        
 ## # … with 725,045 more rows</code></pre>
-<p>This function uses the <a href="https://github.com/lmullen/tokenizers">tokenizers package</a> to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
+<p>This function uses the <a href="https://github.com/ropensci/tokenizers">tokenizers package</a> to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
 <p>Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (accessible in a tidy form with the function <code><a href="../reference/get_stopwords.html">get_stopwords()</a></code>) with an <code>anti_join</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit">
 <span class="kw">cleaned_books</span> <span class="op">&lt;-</span> <span class="kw">tidy_books</span> <span class="op">%&gt;%</span>
@@ -311,7 +311,7 @@
 <blockquote>
 <p>I am not having a good day.</p>
 </blockquote>
-<p>is a sad sentence, not a happy one, because of negation. The <a href="http://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a> tools and the <a href="https://cran.r-project.org/package=sentimentr">sentimentr R package</a> are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.</p>
+<p>is a sad sentence, not a happy one, because of negation. The <a href="https://stanfordnlp.github.io/CoreNLP/">Stanford CoreNLP</a> tools and the <a href="https://cran.r-project.org/package=sentimentr">sentimentr R package</a> are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.</p>
 <div class="sourceCode" id="cb17"><pre class="downlit">
 <span class="kw">PandP_sentences</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html">tibble</a></span>(text = <span class="kw">prideprejudice</span>) <span class="op">%&gt;%</span> 
   <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span>(<span class="kw">sentence</span>, <span class="kw">text</span>, token = <span class="st">"sentences"</span>)
