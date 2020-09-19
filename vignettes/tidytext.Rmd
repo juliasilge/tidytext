@@ -51,7 +51,7 @@ tidy_books <- original_books %>%
 tidy_books
 ```
 
-This function uses the [tokenizers package](https://github.com/lmullen/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.
+This function uses the [tokenizers package](https://github.com/ropensci/tokenizers) to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.
 
 Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (accessible in a tidy form with the function `get_stopwords()`) with an `anti_join`.
 
@@ -162,7 +162,7 @@ Lots of useful work can be done by tokenizing at the word level, but sometimes i
 
 > I am not having a good day.
 
-is a sad sentence, not a happy one, because of negation. The [Stanford CoreNLP](http://stanfordnlp.github.io/CoreNLP/) tools and the [sentimentr R package](https://cran.r-project.org/package=sentimentr) are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.
+is a sad sentence, not a happy one, because of negation. The [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/) tools and the [sentimentr R package](https://cran.r-project.org/package=sentimentr) are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.
 
 ```{r}
 PandP_sentences <- tibble(text = prideprejudice) %>% 

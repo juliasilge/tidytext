@@ -13,7 +13,7 @@
 [![cran checks](https://cranchecks.info/badges/summary/tidytext)](https://cran.r-project.org/web/checks/check_results_tidytext.html)
 [![Coverage Status](https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg)](https://codecov.io/github/juliasilge/tidytext?branch=master)
 [![DOI](https://zenodo.org/badge/22224/juliasilge/tidytext.svg)](https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext)
-[![status](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg)](http://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f)
+[![status](https://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f/status.svg)](https://joss.theoj.org/papers/89fd1099620268fe0342ffdcdf66776f)
 [![Downloads](https://cranlogs.r-pkg.org/badges/tidytext)](https://CRAN.R-project.org/package=tidytext)
 [![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange)](https://CRAN.R-project.org/package=tidytext)
 
@@ -279,4 +279,4 @@ For more examples of working with objects from other text mining packages using 
 
 ### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](http://github.com/juliasilge/tidytext/issues).
+This project is released with a [Contributor Code of Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](https://github.com/juliasilge/tidytext/issues).
