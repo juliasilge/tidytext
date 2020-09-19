@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 16th CRAN release of tidytext. This release improves argument handling in tokenizing functions and `reorder_within()`, moves the stopwords package to Suggests, and adds a `glance()` method for stm's estimated regressions. 
+This is the 17th CRAN release of tidytext. This release moves one vignette out of the package itself to its pkgdown site, because of a dependency removal from CRAN. 
 
 ## Test environments
 
@@ -27,7 +27,7 @@ I found the following note about a possibly invalid URL in the documentation, bu
 
 ## revdepcheck results
 
-I checked 31 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+I checked 29 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
 
  * I saw 0 new problems
  * I failed to check 0 packages
