@@ -8,43 +8,53 @@ reference:
 - title: Transform and tokenize text
   desc: ~
   contents:
-  - '`unnest_tokens`'
-  - '`unnest_characters`'
-  - '`unnest_ngrams`'
-  - '`unnest_sentences`'
-  - '`unnest_regex`'
-  - '`unnest_tweets`'
-  - '`unnest_ptb`'
+  - unnest_tokens
+  - unnest_characters
+  - unnest_ngrams
+  - unnest_sentences
+  - unnest_regex
+  - unnest_tweets
+  - unnest_ptb
+
 - title: Term frequency and inverse document frequency
   desc: ~
   contents:
-  - '`bind_tf_idf`'
+  - bind_tf_idf
+
 - title: Tidy
   desc: ~
   contents:
-  - '`corpus_tidiers`'
-  - '`dictionary_tidiers`'
-  - '`lda_tidiers`'
-  - '`mallet_tidiers`'
-  - '`stm_tidiers`'
-  - '`tdm_tidiers`'
-  - '`tidy.Corpus`'
-  - '`tidy_triplet`'
+  - corpus_tidiers
+  - dictionary_tidiers
+  - lda_tidiers
+  - mallet_tidiers
+  - stm_tidiers
+  - tdm_tidiers
+  - tidy.Corpus
+  - tidy_triplet
+
 - title: Cast
   desc: ~
   contents:
-  - '`cast_tdm`'
-  - '`cast_sparse`'
+  - cast_tdm
+  - cast_sparse
+
 - title: Supporting data sets
   desc: ~
   contents:
-  - '`get_sentiments`'
-  - '`get_stopwords`'
-  - '`sentiments`'
-  - '`stop_words`'
-  - '`nma_words`'
-  - '`parts_of_speech`'
+  - get_sentiments
+  - get_stopwords
+  - sentiments
+  - stop_words
+  - nma_words
+  - parts_of_speech
+
 - title: Graphing helpers
   desc: ~
   contents:
-  - '`reorder_within`'
+  - reorder_within
+
+- title: Package info
+  desc: ~
+  contents:
+  - tidytext
