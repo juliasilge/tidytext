@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 17th CRAN release of tidytext. This release moves one vignette out of the package itself to its pkgdown site, because of a dependency removal from CRAN. 
+This is a resubmission of the 17th CRAN release of tidytext, with a URL fix as requested. This release moves one vignette out of the package itself to its pkgdown site, because of a dependency removal from CRAN. 
 
 ## Test environments
 
