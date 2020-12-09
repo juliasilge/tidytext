@@ -1,5 +1,7 @@
 # tidytext (development version)
 
+* Use vdiffr conditionally
+
 # tidytext 0.2.6
 
 * Move one vignette to pkgdown site, because of dependency removal

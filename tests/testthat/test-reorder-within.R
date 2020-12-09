@@ -32,12 +32,18 @@ test_that("Can make a plot", {
 })
 
 test_that("Can make a multi-facet plot", {
+
+  expect_doppelganger <- function(title, fig, path = NULL, ...) {
+    testthat::skip_if_not_installed("vdiffr")
+    vdiffr::expect_doppelganger(title, fig, path = path, ...)
+  }
+
   p <- ggplot(mtcars, aes(reorder_within(carb, mpg, list(vs, am)), mpg)) +
     geom_boxplot() +
     scale_x_reordered() +
     facet_wrap(vs ~ am, scales = "free_x")
 
   expect_is(p, "ggplot")
-  vdiffr::expect_doppelganger("reordered multi-facet boxplot", p)
+  expect_doppelganger("reordered multi-facet boxplot", p)
 })
 
