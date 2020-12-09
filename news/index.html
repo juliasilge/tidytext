@@ -141,6 +141,9 @@
 <h1 class="page-header" data-toc-text="development version">
 <a href="#tidytext-development-version" class="anchor"></a>tidytext (development version)<small> Unreleased </small>
 </h1>
+<ul>
+<li>Use vdiffr conditionally</li>
+</ul>
 </div>
     <div id="tidytext-026" class="section level1">
 <h1 class="page-header" data-toc-text="0.2.6">
@@ -160,7 +163,7 @@
 <code><a href="../reference/reorder_within.html">reorder_within()</a></code> now handles multiple variables, thanks to <a href='https://github.com/tmastny'>@tmastny</a> (<a href='https://github.com/juliasilge/tidytext/issues/170'>#170</a>)</li>
 <li>Move stopwords to Suggests so tidytext can be installed on older versions of R</li>
 <li>Pass <code>to_lower</code> argument to other tokenizing functions, for more consistent behavior (<a href='https://github.com/juliasilge/tidytext/issues/175'>#175</a>)</li>
-<li>Add <code><a href="https://rdrr.io/pkg/generics/man/glance.html">glance()</a></code> method for stm’s estimated regressions, thanks to <a href='https://github.com/vincentarelbundock'>@vincentarelbundock</a> (<a href='https://github.com/juliasilge/tidytext/issues/176'>#176</a>)</li>
+<li>Add <code><a href="https://generics.r-lib.org/reference/glance.html">glance()</a></code> method for stm’s estimated regressions, thanks to <a href='https://github.com/vincentarelbundock'>@vincentarelbundock</a> (<a href='https://github.com/juliasilge/tidytext/issues/176'>#176</a>)</li>
 </ul>
 </div>
     <div id="tidytext-024" class="section level1">
@@ -196,7 +199,7 @@
 <a href="#tidytext-021" class="anchor"></a>tidytext 0.2.1<small> 2019-06-14 </small>
 </h1>
 <ul>
-<li>Fix bug in <code><a href="https://rdrr.io/pkg/generics/man/augment.html">augment()</a></code> function for stm topic model.</li>
+<li>Fix bug in <code><a href="https://generics.r-lib.org/reference/augment.html">augment()</a></code> function for stm topic model.</li>
 <li>Warn when tf-idf is negative, thanks to <a href='https://github.com/EmilHvitfeldt'>@EmilHvitfeldt</a> (<a href='https://github.com/juliasilge/tidytext/issues/112'>#112</a>).</li>
 <li>Switch from importing broom to importing generics, for lighter dependencies (<a href='https://github.com/juliasilge/tidytext/issues/133'>#133</a>).</li>
 <li>Add functions for reordering factors (such as for ggplot2 bar plots) thanks to <a href='https://github.com/tmastny'>@tmastny</a> (<a href='https://github.com/juliasilge/tidytext/issues/110'>#110</a>).</li>

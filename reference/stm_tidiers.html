@@ -146,25 +146,25 @@ are similar to <code><a href='lda_tidiers.html'>lda_tidiers</a></code>.</p>
     </div>
 
     <pre class="usage"><span class='co'># S3 method for STM</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(
-  <span class='kw'>x</span>,
-  matrix = <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span>(<span class='st'>"beta"</span>, <span class='st'>"gamma"</span>, <span class='st'>"theta"</span>),
-  log = <span class='fl'>FALSE</span>,
-  document_names = <span class='kw'>NULL</span>,
-  <span class='kw'>...</span>
-)
+<span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span>
+  <span class='va'>x</span>,
+  matrix <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"beta"</span>, <span class='st'>"gamma"</span>, <span class='st'>"theta"</span><span class='op'>)</span>,
+  log <span class='op'>=</span> <span class='cn'>FALSE</span>,
+  document_names <span class='op'>=</span> <span class='cn'>NULL</span>,
+  <span class='va'>...</span>
+<span class='op'>)</span>
 
 <span class='co'># S3 method for estimateEffect</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for estimateEffect</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)
+<span class='fu'><a href='https://generics.r-lib.org/reference/glance.html'>glance</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for STM</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/augment.html'>augment</a></span>(<span class='kw'>x</span>, <span class='kw'>data</span>, <span class='kw'>...</span>)
+<span class='fu'><a href='https://generics.r-lib.org/reference/augment.html'>augment</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>data</span>, <span class='va'>...</span><span class='op'>)</span>
 
 <span class='co'># S3 method for STM</span>
-<span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='kw'>x</span>, <span class='kw'>...</span>)</pre>
+<span class='fu'><a href='https://generics.r-lib.org/reference/glance.html'>glance</a></span><span class='op'>(</span><span class='va'>x</span>, <span class='va'>...</span><span class='op'>)</span></pre>
 
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -263,48 +263,48 @@ ID as an integer</p></dd>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
     <pre class="examples"><div class='input'>
-<span class='co'>if</span> (<span class='fl'>FALSE</span>) {
-<span class='co'>if</span> (<span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span>(<span class='st'>"stm"</span>, quietly = <span class='fl'>TRUE</span>)) {
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://dplyr.tidyverse.org'>dplyr</a></span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='http://www.structuraltopicmodel.com'>stm</a></span>)
-  <span class='fu'><a href='https://rdrr.io/r/base/library.html'>library</a></span>(<span class='kw'><a href='https://github.com/juliasilge/janeaustenr'>janeaustenr</a></span>)
+<span class='kw'>if</span> <span class='op'>(</span><span class='cn'>FALSE</span><span class='op'>)</span> <span class='op'>{</span>
+<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"stm"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://ggplot2.tidyverse.org'>ggplot2</a></span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='http://www.structuraltopicmodel.com/'>stm</a></span><span class='op'>)</span>
+  <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/juliasilge/janeaustenr'>janeaustenr</a></span><span class='op'>)</span>
 
-  <span class='kw'>austen_sparse</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/janeaustenr/man/austen_books.html'>austen_books</a></span>() <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='unnest_tokens.html'>unnest_tokens</a></span>(<span class='kw'>word</span>, <span class='kw'>text</span>) <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter-joins.html'>anti_join</a></span>(<span class='kw'>stop_words</span>) <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span>(<span class='kw'>book</span>, <span class='kw'>word</span>) <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='cast_sparse.html'>cast_sparse</a></span>(<span class='kw'>book</span>, <span class='kw'>word</span>, <span class='kw'>n</span>)
-  <span class='kw'>topic_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/stm/man/stm.html'>stm</a></span>(<span class='kw'>austen_sparse</span>, K = <span class='fl'>12</span>, verbose = <span class='fl'>FALSE</span>, init.type = <span class='st'>"Spectral"</span>)
+  <span class='va'>austen_sparse</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/janeaustenr/man/austen_books.html'>austen_books</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='unnest_tokens.html'>unnest_tokens</a></span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>text</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/filter-joins.html'>anti_join</a></span><span class='op'>(</span><span class='va'>stop_words</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>book</span>, <span class='va'>word</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='cast_sparse.html'>cast_sparse</a></span><span class='op'>(</span><span class='va'>book</span>, <span class='va'>word</span>, <span class='va'>n</span><span class='op'>)</span>
+  <span class='va'>topic_model</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/stm/man/stm.html'>stm</a></span><span class='op'>(</span><span class='va'>austen_sparse</span>, K <span class='op'>=</span> <span class='fl'>12</span>, verbose <span class='op'>=</span> <span class='cn'>FALSE</span>, init.type <span class='op'>=</span> <span class='st'>"Spectral"</span><span class='op'>)</span>
 
   <span class='co'># tidy the word-topic combinations</span>
-  <span class='kw'>td_beta</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>topic_model</span>)
-  <span class='kw'>td_beta</span>
+  <span class='va'>td_beta</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>topic_model</span><span class='op'>)</span>
+  <span class='va'>td_beta</span>
 
   <span class='co'># Examine the topics</span>
-  <span class='kw'>td_beta</span> <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span>(<span class='kw'>topic</span>) <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/top_n.html'>top_n</a></span>(<span class='fl'>10</span>, <span class='kw'>beta</span>) <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span>() <span class='op'>%&gt;%</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span>(<span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span>(<span class='kw'>term</span>, <span class='kw'>beta</span>)) <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span>() <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span>(<span class='op'>~</span> <span class='kw'>topic</span>, scales = <span class='st'>"free"</span>) <span class='op'>+</span>
-    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span>()
+  <span class='va'>td_beta</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>group_by</a></span><span class='op'>(</span><span class='va'>topic</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/top_n.html'>top_n</a></span><span class='op'>(</span><span class='fl'>10</span>, <span class='va'>beta</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://dplyr.tidyverse.org/reference/group_by.html'>ungroup</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/ggplot.html'>ggplot</a></span><span class='op'>(</span><span class='fu'><a href='https://ggplot2.tidyverse.org/reference/aes.html'>aes</a></span><span class='op'>(</span><span class='va'>term</span>, <span class='va'>beta</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/geom_bar.html'>geom_col</a></span><span class='op'>(</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/facet_wrap.html'>facet_wrap</a></span><span class='op'>(</span><span class='op'>~</span> <span class='va'>topic</span>, scales <span class='op'>=</span> <span class='st'>"free"</span><span class='op'>)</span> <span class='op'>+</span>
+    <span class='fu'><a href='https://ggplot2.tidyverse.org/reference/coord_flip.html'>coord_flip</a></span><span class='op'>(</span><span class='op'>)</span>
 
   <span class='co'># tidy the document-topic combinations, with optional document names</span>
-  <span class='kw'>td_gamma</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>topic_model</span>, matrix = <span class='st'>"gamma"</span>,
-                   document_names = <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span>(<span class='kw'>austen_sparse</span>))
-  <span class='kw'>td_gamma</span>
+  <span class='va'>td_gamma</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>topic_model</span>, matrix <span class='op'>=</span> <span class='st'>"gamma"</span>,
+                   document_names <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/colnames.html'>rownames</a></span><span class='op'>(</span><span class='va'>austen_sparse</span><span class='op'>)</span><span class='op'>)</span>
+  <span class='va'>td_gamma</span>
 
   <span class='co'># using stm's gardarianFit, we can tidy the result of a model</span>
   <span class='co'># estimated with covariates</span>
-  <span class='kw'>effects</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/stm/man/estimateEffect.html'>estimateEffect</a></span>(<span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span> <span class='op'>~</span> <span class='kw'>treatment</span>, <span class='kw'>gadarianFit</span>, <span class='kw'>gadarian</span>)
-  <span class='fu'><a href='https://rdrr.io/pkg/generics/man/glance.html'>glance</a></span>(<span class='kw'>effects</span>)
-  <span class='kw'>td_estimate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/generics/man/tidy.html'>tidy</a></span>(<span class='kw'>effects</span>)
-  <span class='kw'>td_estimate</span>
+  <span class='va'>effects</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/pkg/stm/man/estimateEffect.html'>estimateEffect</a></span><span class='op'>(</span><span class='fl'>1</span><span class='op'>:</span><span class='fl'>3</span> <span class='op'>~</span> <span class='va'>treatment</span>, <span class='va'>gadarianFit</span>, <span class='va'>gadarian</span><span class='op'>)</span>
+  <span class='fu'><a href='https://generics.r-lib.org/reference/glance.html'>glance</a></span><span class='op'>(</span><span class='va'>effects</span><span class='op'>)</span>
+  <span class='va'>td_estimate</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>effects</span><span class='op'>)</span>
+  <span class='va'>td_estimate</span>
 
-}
-}
+<span class='op'>}</span>
+<span class='op'>}</span>
 
 </div></pre>
   </div>
