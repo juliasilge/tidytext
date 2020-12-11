@@ -1,8 +1,7 @@
-#' Split a column into tokens using the tokenizers package
+#' Split a column into tokens
 #'
-#' Split a column into tokens using the tokenizers package, splitting the table
-#' into one-token-per-row. This function supports non-standard evaluation
-#' through the tidyeval framework.
+#' Split a column into tokens, flattening the table into one-token-per-row.
+#' This function supports non-standard evaluation through the tidyeval framework.
 #'
 #' @param tbl A data frame
 #'
@@ -13,7 +12,8 @@
 #' "ptb" (Penn Treebank). If a function, should take a character vector and
 #' return a list of character vectors of the same length.
 #'
-#' @param format Either "text", "man", "latex", "html", or "xml". If not text,
+#' @param format Either "text", "man", "latex", "html", or "xml". When the
+#' format is "text", this function uses the tokenizers package. If not "text",
 #' this uses the hunspell tokenizer, and can tokenize only by "word"
 #'
 #' @param to_lower Whether to convert tokens to lowercase. If tokens include
@@ -111,7 +111,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
     )
   )]
 
-  format <- match.arg(format)
+  format <- arg_match(format)
 
   if (is.function(token)) {
     tokenfunc <- token

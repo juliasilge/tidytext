@@ -2,7 +2,7 @@
 % Please edit documentation in R/unnest_tokens.R
 \name{unnest_tokens}
 \alias{unnest_tokens}
-\title{Split a column into tokens using the tokenizers package}
+\title{Split a column into tokens}
 \usage{
 unnest_tokens(
   tbl,
@@ -33,7 +33,8 @@ options are "words" (default), "characters", "character_shingles", "ngrams",
 "ptb" (Penn Treebank). If a function, should take a character vector and
 return a list of character vectors of the same length.}
 
-\item{format}{Either "text", "man", "latex", "html", or "xml". If not text,
+\item{format}{Either "text", "man", "latex", "html", or "xml". When the
+format is "text", this function uses the tokenizers package. If not "text",
 this uses the hunspell tokenizer, and can tokenize only by "word"}
 
 \item{to_lower}{Whether to convert tokens to lowercase. If tokens include
@@ -54,9 +55,8 @@ as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
 \code{pattern} for "regex".}
 }
 \description{
-Split a column into tokens using the tokenizers package, splitting the table
-into one-token-per-row. This function supports non-standard evaluation
-through the tidyeval framework.
+Split a column into tokens, flattening the table into one-token-per-row.
+This function supports non-standard evaluation through the tidyeval framework.
 }
 \details{
 If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
