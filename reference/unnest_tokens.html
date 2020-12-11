@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Split a column into tokens using the tokenizers package — unnest_tokens • tidytext</title>
+<title>Split a column into tokens — unnest_tokens • tidytext</title>
 
 <!-- favicons -->
 <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
@@ -46,10 +46,9 @@
 
 
 
-<meta property="og:title" content="Split a column into tokens using the tokenizers package — unnest_tokens" />
-<meta property="og:description" content="Split a column into tokens using the tokenizers package, splitting the table
-into one-token-per-row. This function supports non-standard evaluation
-through the tidyeval framework." />
+<meta property="og:title" content="Split a column into tokens — unnest_tokens" />
+<meta property="og:description" content="Split a column into tokens, flattening the table into one-token-per-row.
+This function supports non-standard evaluation through the tidyeval framework." />
 <meta property="og:image" content="/logo.png" />
 
 
@@ -89,6 +88,12 @@ through the tidyeval framework." />
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../articles/tidytext.html">Get started</a>
 </li>
 <li>
@@ -136,15 +141,14 @@ through the tidyeval framework." />
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Split a column into tokens using the tokenizers package</h1>
+    <h1>Split a column into tokens</h1>
     <small class="dont-index">Source: <a href='https://github.com/juliasilge/tidytext/blob/master/R/unnest_tokens.R'><code>R/unnest_tokens.R</code></a></small>
     <div class="hidden name"><code>unnest_tokens.Rd</code></div>
     </div>
 
     <div class="ref-description">
-    <p>Split a column into tokens using the tokenizers package, splitting the table
-into one-token-per-row. This function supports non-standard evaluation
-through the tidyeval framework.</p>
+    <p>Split a column into tokens, flattening the table into one-token-per-row.
+This function supports non-standard evaluation through the tidyeval framework.</p>
     </div>
 
     <pre class="usage"><span class='fu'>unnest_tokens</span><span class='op'>(</span>
@@ -187,7 +191,8 @@ return a list of character vectors of the same length.</p></td>
     </tr>
     <tr>
       <th>format</th>
-      <td><p>Either "text", "man", "latex", "html", or "xml". If not text,
+      <td><p>Either "text", "man", "latex", "html", or "xml". When the
+format is "text", this function uses the tokenizers package. If not "text",
 this uses the hunspell tokenizer, and can tokenize only by "word"</p></td>
     </tr>
     <tr>
@@ -362,7 +367,7 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>

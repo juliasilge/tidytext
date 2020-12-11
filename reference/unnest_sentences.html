@@ -88,6 +88,12 @@ unnest_tokens( token = &quot;lines&quot; ) and unnest_tokens( token = &quot;para
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
+  <a href="../index.html">
+    <span class="fas fa fas fa-home fa-lg"></span>
+     
+  </a>
+</li>
+<li>
   <a href="../articles/tidytext.html">Get started</a>
 </li>
 <li>
@@ -203,7 +209,8 @@ unnest_tokens( token = &quot;lines&quot; ) and unnest_tokens( token = &quot;para
     </tr>
     <tr>
       <th>format</th>
-      <td><p>Either "text", "man", "latex", "html", or "xml". If not text,
+      <td><p>Either "text", "man", "latex", "html", or "xml". When the
+format is "text", this function uses the tokenizers package. If not "text",
 this uses the hunspell tokenizer, and can tokenize only by "word"</p></td>
     </tr>
     <tr>
@@ -281,7 +288,7 @@ paragraphs.</p></td>
 </div>
 
 <div class="pkgdown">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.9000.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/">pkgdown</a> 1.6.1.</p>
 </div>
 
       </footer>
