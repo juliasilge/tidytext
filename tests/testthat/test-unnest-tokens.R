@@ -34,12 +34,17 @@ test_that("tokenizing by character shingles can include whitespace/punctuation",
 test_that("tokenizing by word works", {
   d <- tibble(txt = c(
     "Because I could not stop for Death -",
-    "He kindly stopped for me -"
-  ))
-  d <- d %>% unnest_tokens(word, txt)
-  expect_equal(nrow(d), 12)
-  expect_equal(ncol(d), 1)
-  expect_equal(d$word[1], "because")
+    "He kindly stopped for me -"),
+    line = 1:2)
+  d1 <- d %>% unnest_tokens(word, txt)
+  expect_equal(nrow(d1), 12)
+  expect_equal(ncol(d1), 2)
+  expect_equal(d1$word[1], "because")
+  d2 <- d %>% group_by(line) %>% unnest_tokens(word, txt)
+  expect_equal(nrow(d2), 12)
+  expect_equal(ncol(d2), 2)
+  expect_equal(d2$word[1], "because")
+
 })
 
 test_that("tokenizing errors with appropriate message", {
@@ -76,7 +81,7 @@ test_that("tokenizing by sentence works", {
 
 
 test_that("tokenizing by ngram and skip ngram works", {
-  d2 <- tibble(txt = c(
+  d <- tibble(txt = c(
     "Hope is the thing with feathers",
     "That perches in the soul",
     "And sings the tune without the words",
@@ -88,22 +93,37 @@ test_that("tokenizing by ngram and skip ngram works", {
     "I’ve heard it in the chillest land ",
     "And on the strangest Sea ",
     "Yet never in Extremity,",
-    "It asked a crumb of me."
-  ))
+    "It asked a crumb of me."),
+    line = c(rep(1, 6), rep(2, 6))
+  )
 
   # tokenize by ngram
-  d <- d2 %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+  d1 <- d %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2)
   # expect_equal(nrow(d), 68) does not pass on appveyor
-  expect_equal(ncol(d), 1)
-  expect_equal(d$ngram[1], "hope is")
-  expect_equal(d$ngram[10], "and sings")
+  expect_equal(ncol(d1), 2)
+  expect_equal(d1$ngram[1], "hope is")
+  expect_equal(d1$ngram[10], "and sings")
+
+  d2 <- d %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2, collapse = "line")
+  d3 <- d %>% group_by(line) %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+  expect_equal(d2, ungroup(d3))
+  expect_equal(ncol(d2), 2)
+  expect_equal(d2$ngram[4], "thing with")
+  expect_equal(d2$ngram[40], "little bird")
+
+  expect_error(
+    d %>%
+      group_by(line) %>%
+      unnest_tokens(ngram, txt, token = "ngrams", n = 2, collapse = "line"),
+    "Use the `collapse` argument"
+  )
 
   # tokenize by skip_ngram
-  d <- d2 %>% unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
+  d2 <- d %>% unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
   # expect_equal(nrow(d), 189) does not pass on appveyor
-  expect_equal(ncol(d), 1)
-  expect_equal(d$ngram[30], "is thing with")
-  expect_equal(d$ngram[300], "sore must storm")
+  expect_equal(ncol(d2), 2)
+  expect_equal(d2$ngram[30], "is thing with")
+  expect_equal(d2$ngram[300], "sore must storm")
 })
 
 test_that("tokenizing with a custom function works", {
