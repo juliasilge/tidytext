@@ -33,7 +33,7 @@ unnest_regex <- function(
   collapse = NULL,
   ...
 ){
-  format <- match.arg(format)
+  format <- arg_match(format)
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),

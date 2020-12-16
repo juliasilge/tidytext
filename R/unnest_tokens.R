@@ -30,21 +30,25 @@
 #'   The output/input arguments are passed by expression and support
 #'   \link[rlang]{quasiquotation}; you can unquote strings and symbols.
 #'
-#' @param collapse Whether to combine text with newlines first in case tokens
-#' (such as sentences or paragraphs) span multiple lines. If NULL, collapses
-#' when token method is "ngrams", "skip_ngrams", "sentences", "lines",
-#' "paragraphs", or "regex".
+#' @param collapse A character vector of variables to collapse text across,
+#'  or `NULL`.
+#'
+#'   For tokens like n-grams or sentences, text can be collapsed across rows
+#'   within variables specified by `collapse` before tokenization. At tidytext
+#'   0.2.7, the default behavior for `collapse = NULL` changed to be more
+#'   consistent. The new behavior is that text is _not_ collapsed for `NULL`.
+#'
+#'   Grouping data specifies variables to collapse across in the same way as
+#'   `collapse` but you **cannot** use both the `collapse` argument and
+#'   grouped data. Collapsing applies mostly to `token` options of "ngrams",
+#'   "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".
 #'
 #' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}, such
 #' as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
 #' "ngrams" and "skip_ngrams", \code{strip_url} for "tweets", and
 #' \code{pattern} for "regex".
 #'
-#' @details If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
-#' paragraphs, or regex, the entire input will be collapsed together before
-#' tokenizing unless \code{collapse = FALSE}.
-#'
-#' If format is anything other than "text", this uses the
+#' @details If format is anything other than "text", this uses the
 #' \code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.
 #' This does not yet have support for tokenizing by any unit other than words.
 #'
@@ -52,6 +56,8 @@
 #' @import rlang
 #' @import tokenizers
 #' @import janeaustenr
+#' @importFrom vctrs vec_rep_each
+#' @importFrom vctrs vec_slice
 #' @export
 #'
 #' @name unnest_tokens
@@ -97,23 +103,91 @@ unnest_tokens <- function(tbl, output, input, token = "words",
                           ),
                           to_lower = TRUE, drop = TRUE,
                           collapse = NULL, ...) {
-  output <- quo_name(enquo(output))
-  input <- quo_name(enquo(input))
-
-  # retain top-level attributes
-  attrs <- attributes(tbl)
-  custom_attributes <- attrs[setdiff(
-    names(attrs),
-    c(
-      "dim", "dimnames",
-      "names", "row.names",
-      ".internal.selfref"
-    )
-  )]
-
+  output <- enquo(output)
+  input <- enquo(input)
   format <- arg_match(format)
 
-  if (is.function(token)) {
+  tokenfunc <- find_function(token, format, to_lower, ...)
+
+  if (!is_null(collapse)) {
+
+    if (is_logical(collapse)) {
+      lifecycle::deprecate_stop(
+        "0.2.7",
+        "tidytext::unnest_tokens(collapse = 'must be `NULL` or a character vector')"
+      )
+    }
+
+    if (is_grouped_df(tbl)) {
+      rlang::abort(
+        paste0("Use the `collapse` argument or grouped data, but not both.")
+      )
+    }
+    if (any(!purrr::map_lgl(tbl, is_atomic))) {
+      rlang::abort(
+        paste0("If collapse != NULL (such as for unnesting by sentence or paragraph),\n",
+               "unnest_tokens needs all input columns to be atomic vectors (not lists)")
+      )
+    }
+
+    tbl <- group_by(tbl, !!!syms(collapse))
+  }
+
+
+  if (is_grouped_df(tbl)) {
+
+    tbl <- tbl %>%
+      ungroup() %>%
+      mutate(new_groups = cumsum(c(1, diff(group_indices(tbl)) != 0))) %>%
+      group_by(new_groups, !!!groups(tbl)) %>%
+      summarise(!!input := stringr::str_c(!!input, collapse = "\n")) %>%
+      group_by(!!!groups(tbl)) %>%
+      dplyr::select(-new_groups)
+
+    if(!is_null(collapse)) {
+      tbl <- ungroup(tbl)
+    }
+
+  }
+
+  input <- as_name(input)
+  output <- as_name(output)
+
+  col <- tbl[[input]]
+  output_lst <- tokenfunc(col, ...)
+
+  if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
+    rlang::abort(
+      "Expected output of tokenizing function to be a list of length ",
+      nrow(tbl)
+    )
+  }
+
+  tbl_indices <- vec_rep_each(seq_len(nrow(tbl)), lengths(output_lst))
+  ret <- vec_slice(tbl, tbl_indices)
+  ret[[output]] <- flatten_chr(output_lst)
+
+  if (to_lower) {
+    if (!is_function(token))
+      if(token == "tweets") {
+        rlang::inform("Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.")
+      }
+    ret[[output]] <- stringr::str_to_lower(ret[[output]])
+  }
+
+  # For data.tables we want this to hit the result and be after the result
+  # has been assigned, just to make sure that we don't reduce the data.table
+  # to 0 rows before inserting the output.
+  if (drop && input != output) {
+    ret[[input]] <- NULL
+  }
+
+  ret
+}
+
+find_function <- function(token, format, to_lower, ...) {
+
+  if (is_function(token)) {
     tokenfunc <- token
   } else if (token %in% c(
     "word", "character",
@@ -122,8 +196,8 @@ unnest_tokens <- function(tbl, output, input, token = "words",
     "paragraph", "tweet"
   )) {
     rlang::abort(paste0(
-      "Error: Token must be a supported type, or a function that takes a character vector as input\nDid you mean token = ",
-      token, "s?"
+      "Error: Token must be a supported type, or a function that takes a character vector as input",
+      "\nDid you mean token = ", token, "s?"
     ))
   } else if (format != "text") {
     if (token != "words") {
@@ -133,12 +207,15 @@ unnest_tokens <- function(tbl, output, input, token = "words",
                                                              format = format
     )
   } else {
-    if (is.null(collapse) && token %in% c(
+    if (is_null(collapse) && token %in% c(
       "ngrams", "skip_ngrams", "sentences",
       "lines", "paragraphs", "regex",
       "character_shingles"
     )) {
-      collapse <- TRUE
+      lifecycle::deprecate_warn(
+        "0.2.7",
+        "tidytext::unnest_tokens(collapse = 'changed its default behavior for `NULL`')"
+      )
     }
     tf <- get(paste0("tokenize_", token))
     if (token %in% c(
@@ -151,63 +228,6 @@ unnest_tokens <- function(tbl, output, input, token = "words",
     }
   }
 
-  if (!is.null(collapse) && collapse) {
-    if (any(!purrr::map_lgl(tbl, is.atomic))) {
-      rlang::abort(
-        paste0("If collapse = TRUE (such as for unnesting by sentence or paragraph),\n",
-               "unnest_tokens needs all input columns to be atomic vectors (not lists)")
-      )
-    }
-
-    group_vars <- setdiff(names(tbl), input)
-    exps <- substitute(
-      stringr::str_c(colname, collapse = "\n"),
-      list(colname = as.name(input))
-    )
-
-    if (is_empty(group_vars)) {
-      tbl <- summarise(tbl, col = !!exps)
-    } else {
-      tbl <- group_by(tbl, !!!syms(group_vars)) %>%
-        summarise(col = !!exps) %>%
-        ungroup()
-    }
-
-    names(tbl)[names(tbl) == "col"] <- input
-  }
-
-  col <- tbl[[input]]
-  output_lst <- tokenfunc(col, ...)
-
-  if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
-    rlang::abort(
-      "Expected output of tokenizing function to be a list of length ",
-      nrow(tbl)
-    )
-  }
-
-  ret <- tbl[rep(seq_len(nrow(tbl)), lengths(output_lst)), , drop = FALSE]
-  ret[[output]] <- unlist(output_lst)
-
-  if (to_lower) {
-    if (!is.function(token))
-      if(token == "tweets") {
-        rlang::inform("Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.")
-      }
-    ret[[output]] <- stringr::str_to_lower(ret[[output]])
-  }
-
-  # For data.tables we want this to hit the result and be after the result
-  # has been assigned, just to make sure that we don't reduce the data.table
-  # to 0 rows before inserting the output.
-  if (drop && (input != output)) {
-    ret[[input]] <- NULL
-  }
-
-  # re-assign top-level attributes
-  for (n in names(custom_attributes)) {
-    attr(ret, n) <- custom_attributes[[n]]
-  }
-
-  ret
+  tokenfunc
 }
+

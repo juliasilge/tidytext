@@ -41,7 +41,7 @@ unnest_ngrams <- function(
   collapse = NULL,
   ...
 ){
-  format <- match.arg(format)
+  format <- arg_match(format)
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),
@@ -73,7 +73,7 @@ unnest_skip_ngrams <- function(
   collapse = NULL,
   ...
 ){
-  format <- match.arg(format)
+  format <- arg_match(format)
   unnest_tokens(tbl,
                 !! enquo(output),
                 !! enquo(input),

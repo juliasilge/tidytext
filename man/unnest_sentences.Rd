@@ -64,10 +64,18 @@ longer be correct.}
 \item{drop}{Whether original input column should get dropped. Ignored
 if the original input and new output column have the same name.}
 
-\item{collapse}{Whether to combine text with newlines first in case tokens
-(such as sentences or paragraphs) span multiple lines. If NULL, collapses
-when token method is "ngrams", "skip_ngrams", "sentences", "lines",
-"paragraphs", or "regex".}
+\item{collapse}{A character vector of variables to collapse text across,
+or \code{NULL}.
+
+For tokens like n-grams or sentences, text can be collapsed across rows
+within variables specified by \code{collapse} before tokenization. At tidytext
+0.2.7, the default behavior for \code{collapse = NULL} changed to be more
+consistent. The new behavior is that text is \emph{not} collapsed for \code{NULL}.
+
+Grouping data specifies variables to collapse across in the same way as
+\code{collapse} but you \strong{cannot} use both the \code{collapse} argument and
+grouped data. Collapsing applies mostly to \code{token} options of "ngrams",
+"skip_ngrams", "sentences", "lines", "paragraphs", or "regex".}
 
 \item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
 
