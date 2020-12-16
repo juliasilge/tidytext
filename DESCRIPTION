@@ -44,11 +44,13 @@ Imports: rlang,
     stringr,
     hunspell,
     generics,
+    lifecycle,
     Matrix,
     tokenizers,
     janeaustenr,
     purrr (>= 0.1.1),
-    methods
+    methods,
+    vctrs
 Suggests: 
     readr,
     tidyr,
