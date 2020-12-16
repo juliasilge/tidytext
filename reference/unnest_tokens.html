@@ -89,7 +89,7 @@ This function supports non-standard evaluation through the tidyeval framework." 
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -124,7 +124,7 @@ This function supports non-standard evaluation through the tidyeval framework." 
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -208,10 +208,16 @@ if the original input and new output column have the same name.</p></td>
     </tr>
     <tr>
       <th>collapse</th>
-      <td><p>Whether to combine text with newlines first in case tokens
-(such as sentences or paragraphs) span multiple lines. If NULL, collapses
-when token method is "ngrams", "skip_ngrams", "sentences", "lines",
-"paragraphs", or "regex".</p></td>
+      <td><p>A character vector of variables to collapse text across,
+or <code>NULL</code>.</p>
+<p>For tokens like n-grams or sentences, text can be collapsed across rows
+within variables specified by <code>collapse</code> before tokenization. At tidytext
+0.2.7, the default behavior for <code>collapse = NULL</code> changed to be more
+consistent. The new behavior is that text is <em>not</em> collapsed for <code>NULL</code>.</p>
+<p>Grouping data specifies variables to collapse across in the same way as
+<code>collapse</code> but you <strong>cannot</strong> use both the <code>collapse</code> argument and
+grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams",
+"skip_ngrams", "sentences", "lines", "paragraphs", or "regex".</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -224,10 +230,7 @@ as <code>strip_punct</code> for "words" and "tweets", <code>n</code> and <code>k
 
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>If the unit for tokenizing is ngrams, skip_ngrams, sentences, lines,
-paragraphs, or regex, the entire input will be collapsed together before
-tokenizing unless <code>collapse = FALSE</code>.</p>
-<p>If format is anything other than "text", this uses the
+    <p>If format is anything other than "text", this uses the
 <code><a href='https://docs.ropensci.org/hunspell/reference/hunspell.html'>hunspell_parse</a></code> tokenizer instead of the tokenizers package.
 This does not yet have support for tokenizing by any unit other than words.</p>
 
@@ -270,45 +273,55 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'># … with 122,194 more rows</span><span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>sentence</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"sentences"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 7,066 x 1</span><span>
-#&gt;    sentence                                                                     
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                        
-#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice  by jane austen    chapter 1   it is a truth universall…
-#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>however little known the feelings or views of such a man may be on his firs…
-#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>\"my dear mr.</span><span style='color: #555555;'>"</span><span>                                                              
-#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>"</span><span>bennet,\" said his lady to him one day, \"have you heard that netherfield p…
-#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>mr.</span><span style='color: #555555;'>"</span><span>                                                                        
-#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>bennet replied that he had not.</span><span style='color: #555555;'>"</span><span>                                            
-#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>\"but it is,\" returned she; \"for mrs.</span><span style='color: #555555;'>"</span><span>                                    
-#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>"</span><span>long has just been here, and she told me all about it.\"</span><span style='color: #555555;'>"</span><span>                   
-#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>"</span><span>mr.</span><span style='color: #555555;'>"</span><span>                                                                        
-#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>bennet made no answer.</span><span style='color: #555555;'>"</span><span>                                                     
-#&gt; </span><span style='color: #555555;'># … with 7,056 more rows</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 15,545 x 1</span><span>
+#&gt;    sentence                                                                  
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                     
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice</span><span style='color: #555555;'>"</span><span>                                                     
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>by jane austen</span><span style='color: #555555;'>"</span><span>                                                          
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>chapter 1</span><span style='color: #555555;'>"</span><span>                                                               
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>"</span><span>it is a truth universally acknowledged, that a single man in possession</span><span style='color: #555555;'>"</span><span> 
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>of a good fortune, must be in want of a wife.</span><span style='color: #555555;'>"</span><span>                           
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>however little known the feelings or views of such a man may be on his</span><span style='color: #555555;'>"</span><span>  
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>first entering a neighbourhood, this truth is so well fixed in the minds</span><span style='color: #555555;'>"</span><span>
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>"</span><span>of the surrounding families, that he is considered the rightful property</span><span style='color: #555555;'>"</span><span>
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>"</span><span>of some one or other of their daughters.</span><span style='color: #555555;'>"</span><span>                                
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>\"my dear mr.</span><span style='color: #555555;'>"</span><span>                                                           
+#&gt; </span><span style='color: #555555;'># … with 15,535 more rows</span><span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>ngram</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"ngrams"</span>, n <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 122,203 x 1</span><span>
-#&gt;    ngram         
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         
-#&gt; </span><span style='color: #555555;'> 1</span><span> pride and     
-#&gt; </span><span style='color: #555555;'> 2</span><span> and prejudice 
-#&gt; </span><span style='color: #555555;'> 3</span><span> prejudice by  
-#&gt; </span><span style='color: #555555;'> 4</span><span> by jane       
-#&gt; </span><span style='color: #555555;'> 5</span><span> jane austen   
-#&gt; </span><span style='color: #555555;'> 6</span><span> austen chapter
-#&gt; </span><span style='color: #555555;'> 7</span><span> chapter 1     
-#&gt; </span><span style='color: #555555;'> 8</span><span> 1 it          
-#&gt; </span><span style='color: #555555;'> 9</span><span> it is         
-#&gt; </span><span style='color: #555555;'>10</span><span> is a          
-#&gt; </span><span style='color: #555555;'># … with 122,193 more rows</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 114,045 x 1</span><span>
+#&gt;    ngram        
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        
+#&gt; </span><span style='color: #555555;'> 1</span><span> pride and    
+#&gt; </span><span style='color: #555555;'> 2</span><span> and prejudice
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 4</span><span> by jane      
+#&gt; </span><span style='color: #555555;'> 5</span><span> jane austen  
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 9</span><span> chapter 1    
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'># … with 114,035 more rows</span><span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>chapter</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"regex"</span>, pattern <span class='op'>=</span> <span class='st'>"Chapter [\\\\d]"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 1 x 1</span><span>
-#&gt;   chapter                                                                       
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                         
-#&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 10,721 x 1</span><span>
+#&gt;    chapter                                                                      
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                        
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice</span><span style='color: #555555;'>"</span><span>                                                        
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>by jane austen</span><span style='color: #555555;'>"</span><span>                                                             
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>chapter 1</span><span style='color: #555555;'>"</span><span>                                                                  
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>"</span><span>it is a truth universally acknowledged, that a single man in possession</span><span style='color: #555555;'>"</span><span>    
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>of a good fortune, must be in want of a wife.</span><span style='color: #555555;'>"</span><span>                              
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>however little known the feelings or views of such a man may be on his</span><span style='color: #555555;'>"</span><span>     
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>first entering a neighbourhood, this truth is so well fixed in the minds</span><span style='color: #555555;'>"</span><span>   
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>"</span><span>of the surrounding families, that he is considered the rightful property</span><span style='color: #555555;'>"</span><span>   
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>"</span><span>of some one or other of their daughters.</span><span style='color: #555555;'>"</span><span>                                   
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>\"my dear mr. bennet,\" said his lady to him one day, \"have you heard that</span><span style='color: #555555;'>"</span><span>
+#&gt; </span><span style='color: #555555;'># … with 10,711 more rows</span><span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>shingle</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"character_shingles"</span>, n <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 536,526 x 1</span><span>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 506,732 x 1</span><span>
 #&gt;    shingle
 #&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>  
 #&gt; </span><span style='color: #555555;'> 1</span><span> prid   
@@ -321,7 +334,7 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 #&gt; </span><span style='color: #555555;'> 8</span><span> dpre   
 #&gt; </span><span style='color: #555555;'> 9</span><span> prej   
 #&gt; </span><span style='color: #555555;'>10</span><span> reju   
-#&gt; </span><span style='color: #555555;'># … with 536,516 more rows</span><span></div><div class='input'>
+#&gt; </span><span style='color: #555555;'># … with 506,722 more rows</span><span></div><div class='input'>
 <span class='co'># custom function</span>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='fu'>stringr</span><span class='fu'>::</span><span class='va'><a href='https://stringr.tidyverse.org/reference/str_split.html'>str_split</a></span>, pattern <span class='op'>=</span> <span class='st'>" "</span><span class='op'>)</span>

@@ -89,7 +89,7 @@ and unnest_tokens( token = &quot;skip_ngrams&quot; ) ." />
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -124,7 +124,7 @@ and unnest_tokens( token = &quot;skip_ngrams&quot; ) ." />
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -229,10 +229,16 @@ if the original input and new output column have the same name.</p></td>
     </tr>
     <tr>
       <th>collapse</th>
-      <td><p>Whether to combine text with newlines first in case tokens
-(such as sentences or paragraphs) span multiple lines. If NULL, collapses
-when token method is "ngrams", "skip_ngrams", "sentences", "lines",
-"paragraphs", or "regex".</p></td>
+      <td><p>A character vector of variables to collapse text across,
+or <code>NULL</code>.</p>
+<p>For tokens like n-grams or sentences, text can be collapsed across rows
+within variables specified by <code>collapse</code> before tokenization. At tidytext
+0.2.7, the default behavior for <code>collapse = NULL</code> changed to be more
+consistent. The new behavior is that text is <em>not</em> collapsed for <code>NULL</code>.</p>
+<p>Grouping data specifies variables to collapse across in the same way as
+<code>collapse</code> but you <strong>cannot</strong> use both the <code>collapse</code> argument and
+grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams",
+"skip_ngrams", "sentences", "lines", "paragraphs", or "regex".</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -262,36 +268,36 @@ words. The function will compute all skip n-grams between <code>0</code> and
 
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_ngrams</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, n <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 122,203 x 1</span><span>
-#&gt;    word          
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>         
-#&gt; </span><span style='color: #555555;'> 1</span><span> pride and     
-#&gt; </span><span style='color: #555555;'> 2</span><span> and prejudice 
-#&gt; </span><span style='color: #555555;'> 3</span><span> prejudice by  
-#&gt; </span><span style='color: #555555;'> 4</span><span> by jane       
-#&gt; </span><span style='color: #555555;'> 5</span><span> jane austen   
-#&gt; </span><span style='color: #555555;'> 6</span><span> austen chapter
-#&gt; </span><span style='color: #555555;'> 7</span><span> chapter 1     
-#&gt; </span><span style='color: #555555;'> 8</span><span> 1 it          
-#&gt; </span><span style='color: #555555;'> 9</span><span> it is         
-#&gt; </span><span style='color: #555555;'>10</span><span> is a          
-#&gt; </span><span style='color: #555555;'># … with 122,193 more rows</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 114,045 x 1</span><span>
+#&gt;    word         
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>        
+#&gt; </span><span style='color: #555555;'> 1</span><span> pride and    
+#&gt; </span><span style='color: #555555;'> 2</span><span> and prejudice
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 4</span><span> by jane      
+#&gt; </span><span style='color: #555555;'> 5</span><span> jane austen  
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'> 9</span><span> chapter 1    
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
+#&gt; </span><span style='color: #555555;'># … with 114,035 more rows</span><span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_skip_ngrams</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, n <span class='op'>=</span> <span class='fl'>3</span>, k <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 855,413 x 1</span><span>
-#&gt;    word                
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>               
-#&gt; </span><span style='color: #555555;'> 1</span><span> pride               
-#&gt; </span><span style='color: #555555;'> 2</span><span> pride and           
-#&gt; </span><span style='color: #555555;'> 3</span><span> pride prejudice     
-#&gt; </span><span style='color: #555555;'> 4</span><span> pride and prejudice 
-#&gt; </span><span style='color: #555555;'> 5</span><span> pride and by        
-#&gt; </span><span style='color: #555555;'> 6</span><span> pride prejudice by  
-#&gt; </span><span style='color: #555555;'> 7</span><span> pride prejudice jane
-#&gt; </span><span style='color: #555555;'> 8</span><span> and                 
-#&gt; </span><span style='color: #555555;'> 9</span><span> and prejudice       
-#&gt; </span><span style='color: #555555;'>10</span><span> and by              
-#&gt; </span><span style='color: #555555;'># … with 855,403 more rows</span><span></div><div class='input'>
+</div><div class='output co'>#&gt; </span><span style='color: #555555;'># A tibble: 700,179 x 1</span><span>
+#&gt;    word               
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>              
+#&gt; </span><span style='color: #555555;'> 1</span><span> pride              
+#&gt; </span><span style='color: #555555;'> 2</span><span> pride and          
+#&gt; </span><span style='color: #555555;'> 3</span><span> pride prejudice    
+#&gt; </span><span style='color: #555555;'> 4</span><span> pride and prejudice
+#&gt; </span><span style='color: #555555;'> 5</span><span> and                
+#&gt; </span><span style='color: #555555;'> 6</span><span> and prejudice      
+#&gt; </span><span style='color: #555555;'> 7</span><span> prejudice          
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>                 
+#&gt; </span><span style='color: #555555;'> 9</span><span> by                 
+#&gt; </span><span style='color: #555555;'>10</span><span> by jane            
+#&gt; </span><span style='color: #555555;'># … with 700,169 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

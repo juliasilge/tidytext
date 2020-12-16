@@ -87,7 +87,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -122,7 +122,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -149,6 +149,7 @@
 </h1>
 <ul>
 <li>Use vdiffr conditionally</li>
+<li>Bug fix/breaking change for <code>collapse</code> argument to <code>unnest_functions()</code>. This argument now takes either <code>NULL</code> (do not collapse text across rows for tokenizing) or a character vector of variables (use said variables to collapse text across rows for tokenizing). This fixes a long-standing bug and provides more consistent behavior, but does change results for many situations (such as n-gram tokenization).</li>
 </ul>
 </div>
     <div id="tidytext-026" class="section level1">

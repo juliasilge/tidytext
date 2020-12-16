@@ -88,7 +88,7 @@
       <ul class="nav navbar-nav">
         <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -123,7 +123,7 @@
       <ul class="nav navbar-nav navbar-right">
         <li>
   <a href="https://github.com/juliasilge/tidytext/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -201,10 +201,16 @@ if the original input and new output column have the same name.</p></td>
     </tr>
     <tr>
       <th>collapse</th>
-      <td><p>Whether to combine text with newlines first in case tokens
-(such as sentences or paragraphs) span multiple lines. If NULL, collapses
-when token method is "ngrams", "skip_ngrams", "sentences", "lines",
-"paragraphs", or "regex".</p></td>
+      <td><p>A character vector of variables to collapse text across,
+or <code>NULL</code>.</p>
+<p>For tokens like n-grams or sentences, text can be collapsed across rows
+within variables specified by <code>collapse</code> before tokenization. At tidytext
+0.2.7, the default behavior for <code>collapse = NULL</code> changed to be more
+consistent. The new behavior is that text is <em>not</em> collapsed for <code>NULL</code>.</p>
+<p>Grouping data specifies variables to collapse across in the same way as
+<code>collapse</code> but you <strong>cannot</strong> use both the <code>collapse</code> argument and
+grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams",
+"skip_ngrams", "sentences", "lines", "paragraphs", or "regex".</p></td>
     </tr>
     <tr>
       <th>...</th>
@@ -228,10 +234,20 @@ when token method is "ngrams", "skip_ngrams", "sentences", "lines",
 
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_regex</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, pattern <span class='op'>=</span> <span class='st'>"Chapter [\\\\d]"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 1 x 1</span><span>
-#&gt;   word                                                                          
-#&gt;   </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                         
-#&gt; </span><span style='color: #555555;'>1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice\n\nby jane austen\n\n\n\nchapter 1\n\n\nit is a truth un…</div><div class='input'>
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 10,721 x 1</span><span>
+#&gt;    word                                                                         
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                                                                        
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride and prejudice</span><span style='color: #555555;'>"</span><span>                                                        
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>by jane austen</span><span style='color: #555555;'>"</span><span>                                                             
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>chapter 1</span><span style='color: #555555;'>"</span><span>                                                                  
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>"</span><span>it is a truth universally acknowledged, that a single man in possession</span><span style='color: #555555;'>"</span><span>    
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>of a good fortune, must be in want of a wife.</span><span style='color: #555555;'>"</span><span>                              
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>however little known the feelings or views of such a man may be on his</span><span style='color: #555555;'>"</span><span>     
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>first entering a neighbourhood, this truth is so well fixed in the minds</span><span style='color: #555555;'>"</span><span>   
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>"</span><span>of the surrounding families, that he is considered the rightful property</span><span style='color: #555555;'>"</span><span>   
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>"</span><span>of some one or other of their daughters.</span><span style='color: #555555;'>"</span><span>                                   
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>"</span><span>\"my dear mr. bennet,\" said his lady to him one day, \"have you heard that</span><span style='color: #555555;'>"</span><span>
+#&gt; </span><span style='color: #555555;'># … with 10,711 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

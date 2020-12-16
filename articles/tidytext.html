@@ -46,7 +46,7 @@
       <ul class="nav navbar-nav">
 <li>
   <a href="../index.html">
-    <span class="fas fa fas fa-home fa-lg"></span>
+    <span class="fas fa-home fa-lg"></span>
      
   </a>
 </li>
@@ -81,7 +81,7 @@
 <ul class="nav navbar-nav navbar-right">
 <li>
   <a href="https://github.com/juliasilge/tidytext/">
-    <span class="fab fa fab fa-github fa-lg"></span>
+    <span class="fab fa-github fa-lg"></span>
      
   </a>
 </li>
@@ -95,14 +95,13 @@
 
       
 
-      </header><script src="tidytext_files/accessible-code-block-0.0.1/empty-anchor.js"></script><link href="tidytext_files/anchor-sections-1.0/anchor-sections.css" rel="stylesheet">
-<script src="tidytext_files/anchor-sections-1.0/anchor-sections.js"></script><div class="row">
+      </header><script src="tidytext_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Introduction to tidytext</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2020-12-12</h4>
+            <h4 class="date">2020-12-16</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/master/vignettes/tidytext.Rmd"><code>vignettes/tidytext.Rmd</code></a></small>
       <div class="hidden name"><code>tidytext.Rmd</code></div>
@@ -308,7 +307,7 @@
 <p>Let’s look at just one.</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">PandP_sentences</span><span class="op">$</span><span class="va">sentence</span><span class="op">[</span><span class="fl">2</span><span class="op">]</span></code></pre></div>
-<pre><code>## [1] "however little known the feelings or views of such a man may be on his first entering a neighbourhood, this truth is so well fixed in the minds of the surrounding families, that he is considered the rightful property of some one or other of their daughters."</code></pre>
+<pre><code>## [1] "by jane austen"</code></pre>
 <p>The sentence tokenizing does seem to have a bit of trouble with UTF-8 encoded text, especially with sections of dialogue; it does much better with punctuation in ASCII.</p>
 <p>Another option in <code>unnest_tokens</code> is to split into tokens using a regex pattern. We could use this, for example, to split the text of Jane Austen’s novels into a data frame by chapter.</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
