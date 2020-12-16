@@ -12,7 +12,7 @@ either "afinn", "bing", "nrc", or "loughran"}
 }
 \value{
 A tbl_df with a \code{word} column, and either a \code{sentiment}
-column (if \code{lexicon} is not "afinn") or a numeric \code{score} column
+column (if \code{lexicon} is not "afinn") or a numeric \code{value} column
 (if \code{lexicon} is "afinn").
 }
 \description{
