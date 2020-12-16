@@ -96,14 +96,14 @@ test_that("tokenizing by ngram and skip ngram works", {
   # expect_equal(nrow(d), 68) does not pass on appveyor
   expect_equal(ncol(d), 1)
   expect_equal(d$ngram[1], "hope is")
-  expect_equal(d$ngram[10], "the soul")
+  expect_equal(d$ngram[10], "and sings")
 
   # tokenize by skip_ngram
   d <- d2 %>% unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
   # expect_equal(nrow(d), 189) does not pass on appveyor
   expect_equal(ncol(d), 1)
-  expect_equal(d$ngram[40], "hope thing that the")
-  expect_equal(d$ngram[400], "the sings without and")
+  expect_equal(d$ngram[30], "is thing with")
+  expect_equal(d$ngram[300], "sore must storm")
 })
 
 test_that("tokenizing with a custom function works", {
@@ -112,7 +112,7 @@ test_that("tokenizing with a custom function works", {
     "Are you - Nobody - too?",
     "Then there’s a pair of us!",
     "Don’t tell! they’d advertise - you know!"
-  ))
+  ), group = "all")
   d <- orig %>%
     unnest_tokens(unit, txt, token = stringr::str_split, pattern = " - ")
   expect_equal(nrow(d), 7)
@@ -120,9 +120,10 @@ test_that("tokenizing with a custom function works", {
   expect_equal(d$unit[4], "too?")
 
   d2 <- orig %>%
-    unnest_tokens(unit, txt,
-                  token = stringr::str_split,
-                  pattern = " - ", collapse = TRUE
+    unnest_tokens(
+      unit, txt,
+      token = stringr::str_split,
+      pattern = " - ", collapse = "group"
     )
   expect_equal(nrow(d2), 4)
   expect_equal(d2$unit[2], "nobody")
@@ -166,7 +167,7 @@ test_that("tokenizing with to_lower = FALSE works", {
                                token = "ngrams",
                                n = 2, to_lower = FALSE
   )
-  expect_equal(nrow(d2), 11)
+  expect_equal(nrow(d2), 10)
   expect_equal(ncol(d2), 1)
   expect_equal(d2$ngram[1], "Because I")
 })
@@ -401,12 +402,12 @@ test_that("Can't tokenize with list columns with collapse = TRUE", {
   )
 
   expect_error(
-    unnest_tokens(df, word, txt, token = "sentences"),
+    unnest_tokens(df, word, txt, token = "sentences", collapse = "line"),
     "to be atomic vectors"
   )
 
   # Can tokenize by sentence without collapsing
   # though it sort of defeats the purpose
-  ret <- unnest_tokens(df, word, txt, token = "sentences", collapse = FALSE)
+  ret <- unnest_tokens(df, word, txt, token = "sentences", collapse = NULL)
   expect_equal(nrow(ret), 2)
 })
