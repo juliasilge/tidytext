@@ -41,6 +41,9 @@ test_that("tokenizing by word works", {
   expect_equal(ncol(d1), 2)
   expect_equal(d1$word[1], "because")
 
+  d2 <- d %>% unnest_tokens(.data$word, .data$txt)
+  expect_equal(d1, d2)
+
   d3 <- d %>% group_by(line) %>% unnest_tokens(word, txt)
   expect_equal(d1, ungroup(d3))
 
