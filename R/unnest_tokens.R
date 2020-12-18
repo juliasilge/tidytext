@@ -160,27 +160,26 @@ unnest_tokens <- function(tbl, output, input, token = "words",
     )
   }
 
+  output <- quo_name(output)
+  input <- quo_name(input)
+
   tbl_indices <- vec_rep_each(seq_len(nrow(tbl)), lengths(output_lst))
   ret <- vec_slice(tbl, tbl_indices)
-  ret$out <- flatten_chr(output_lst)
+  ret[[output]] <- flatten_chr(output_lst)
 
   if (to_lower) {
     if (!is_function(token))
       if(token == "tweets") {
         rlang::inform("Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.")
       }
-    ret$out <- stringr::str_to_lower(ret$out)
+    ret[[output]] <- stringr::str_to_lower(ret[[output]])
   }
-
-  ret <- rename(ret, !!output := out)
-  eval_input <- eval_tidy(input, data = ret)
-  eval_output <- eval_tidy(output, data = ret)
 
   # For data.tables we want this to hit the result and be after the result
   # has been assigned, just to make sure that we don't reduce the data.table
   # to 0 rows before inserting the output.
-  if (drop && all(eval_input != eval_output, na.rm = TRUE)) {
-    ret <- mutate(ret, !!input := NULL)
+  if (drop && output != input) {
+    ret[[input]] <- NULL
   }
 
   ret
