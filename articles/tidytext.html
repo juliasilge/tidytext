@@ -153,19 +153,19 @@
   <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span>
 
 <span class="va">tidy_books</span></code></pre></div>
-<pre><code>## # A tibble: 725,055 x 5
-##    text                                      book          line chapter word    
-##    &lt;chr&gt;                                     &lt;fct&gt;        &lt;int&gt;   &lt;int&gt; &lt;chr&gt;   
-##  1 SENSE AND SENSIBILITY                     Sense &amp; Sen…     1       0 sense   
-##  2 SENSE AND SENSIBILITY                     Sense &amp; Sen…     1       0 and     
-##  3 SENSE AND SENSIBILITY                     Sense &amp; Sen…     1       0 sensibi…
-##  4 by Jane Austen                            Sense &amp; Sen…     3       0 by      
-##  5 by Jane Austen                            Sense &amp; Sen…     3       0 jane    
-##  6 by Jane Austen                            Sense &amp; Sen…     3       0 austen  
-##  7 (1811)                                    Sense &amp; Sen…     5       0 1811    
-##  8 CHAPTER 1                                 Sense &amp; Sen…    10       1 chapter 
-##  9 CHAPTER 1                                 Sense &amp; Sen…    10       1 1       
-## 10 The family of Dashwood had long been set… Sense &amp; Sen…    13       1 the     
+<pre><code>## # A tibble: 725,055 x 4
+##    book                 line chapter word       
+##    &lt;fct&gt;               &lt;int&gt;   &lt;int&gt; &lt;chr&gt;      
+##  1 Sense &amp; Sensibility     1       0 sense      
+##  2 Sense &amp; Sensibility     1       0 and        
+##  3 Sense &amp; Sensibility     1       0 sensibility
+##  4 Sense &amp; Sensibility     3       0 by         
+##  5 Sense &amp; Sensibility     3       0 jane       
+##  6 Sense &amp; Sensibility     3       0 austen     
+##  7 Sense &amp; Sensibility     5       0 1811       
+##  8 Sense &amp; Sensibility    10       1 chapter    
+##  9 Sense &amp; Sensibility    10       1 1          
+## 10 Sense &amp; Sensibility    13       1 the        
 ## # … with 725,045 more rows</code></pre>
 <p>This function uses the <a href="https://github.com/ropensci/tokenizers">tokenizers package</a> to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
 <p>Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (accessible in a tidy form with the function <code><a href="../reference/get_stopwords.html">get_stopwords()</a></code>) with an <code>anti_join</code>.</p>

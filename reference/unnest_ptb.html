@@ -229,19 +229,19 @@ grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams
 
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_ptb</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 141,310 x 2</span><span>
-#&gt;    txt                   word       
-#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>                 </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>PRIDE AND PREJUDICE</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>"</span><span>pride</span><span style='color: #555555;'>"</span><span>    
-#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>PRIDE AND PREJUDICE</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>"</span><span>and</span><span style='color: #555555;'>"</span><span>      
-#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>PRIDE AND PREJUDICE</span><span style='color: #555555;'>"</span><span> </span><span style='color: #555555;'>"</span><span>prejudice</span><span style='color: #555555;'>"</span><span>
-#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>""</span><span>                    </span><span style='color: #555555;'>""</span><span>         
-#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>By Jane Austen</span><span style='color: #555555;'>"</span><span>      </span><span style='color: #555555;'>"</span><span>by</span><span style='color: #555555;'>"</span><span>       
-#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>By Jane Austen</span><span style='color: #555555;'>"</span><span>      </span><span style='color: #555555;'>"</span><span>jane</span><span style='color: #555555;'>"</span><span>     
-#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>By Jane Austen</span><span style='color: #555555;'>"</span><span>      </span><span style='color: #555555;'>"</span><span>austen</span><span style='color: #555555;'>"</span><span>   
-#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>""</span><span>                    </span><span style='color: #555555;'>""</span><span>         
-#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>""</span><span>                    </span><span style='color: #555555;'>""</span><span>         
-#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>""</span><span>                    </span><span style='color: #555555;'>""</span><span>         
+</div><div class='output co'>#&gt; <span style='color: #555555;'># A tibble: 141,310 x 1</span><span>
+#&gt;    word       
+#&gt;    </span><span style='color: #555555;font-style: italic;'>&lt;chr&gt;</span><span>      
+#&gt; </span><span style='color: #555555;'> 1</span><span> </span><span style='color: #555555;'>"</span><span>pride</span><span style='color: #555555;'>"</span><span>    
+#&gt; </span><span style='color: #555555;'> 2</span><span> </span><span style='color: #555555;'>"</span><span>and</span><span style='color: #555555;'>"</span><span>      
+#&gt; </span><span style='color: #555555;'> 3</span><span> </span><span style='color: #555555;'>"</span><span>prejudice</span><span style='color: #555555;'>"</span><span>
+#&gt; </span><span style='color: #555555;'> 4</span><span> </span><span style='color: #555555;'>""</span><span>         
+#&gt; </span><span style='color: #555555;'> 5</span><span> </span><span style='color: #555555;'>"</span><span>by</span><span style='color: #555555;'>"</span><span>       
+#&gt; </span><span style='color: #555555;'> 6</span><span> </span><span style='color: #555555;'>"</span><span>jane</span><span style='color: #555555;'>"</span><span>     
+#&gt; </span><span style='color: #555555;'> 7</span><span> </span><span style='color: #555555;'>"</span><span>austen</span><span style='color: #555555;'>"</span><span>   
+#&gt; </span><span style='color: #555555;'> 8</span><span> </span><span style='color: #555555;'>""</span><span>         
+#&gt; </span><span style='color: #555555;'> 9</span><span> </span><span style='color: #555555;'>""</span><span>         
+#&gt; </span><span style='color: #555555;'>10</span><span> </span><span style='color: #555555;'>""</span><span>         
 #&gt; </span><span style='color: #555555;'># … with 141,300 more rows</span><span></div><div class='input'>
 </div></span></pre>
   </div>
