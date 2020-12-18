@@ -172,7 +172,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
     ret$out <- stringr::str_to_lower(ret$out)
   }
 
-  ret <- rename(ret, "{{output}}" := out)
+  ret <- rename(ret, !!output := out)
   eval_input <- eval_tidy(input, data = ret)
   eval_output <- eval_tidy(output, data = ret)
 
@@ -180,7 +180,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
   # has been assigned, just to make sure that we don't reduce the data.table
   # to 0 rows before inserting the output.
   if (drop && all(eval_input != eval_output, na.rm = TRUE)) {
-    ret <- mutate(ret, "{{input}}" := NULL)
+    ret <- mutate(ret, !!input := NULL)
   }
 
   ret
