@@ -40,10 +40,12 @@ test_that("tokenizing by word works", {
   expect_equal(nrow(d1), 12)
   expect_equal(ncol(d1), 2)
   expect_equal(d1$word[1], "because")
-  d2 <- d %>% group_by(line) %>% unnest_tokens(word, txt)
-  expect_equal(nrow(d2), 12)
-  expect_equal(ncol(d2), 2)
-  expect_equal(d2$word[1], "because")
+
+  d2 <- d %>% unnest_tokens(.data$word, .data$txt)
+  expect_equal(d1, d2)
+
+  d3 <- d %>% group_by(line) %>% unnest_tokens(word, txt)
+  expect_equal(d1, ungroup(d3))
 
 })
 
@@ -150,24 +152,13 @@ test_that("tokenizing with a custom function works", {
   expect_equal(d2$unit[4], "you know!")
 })
 
-test_that("tokenizing with standard evaluation works", {
-  d <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"
-  ))
-  d <- d %>% unnest_tokens("word", "txt")
-  expect_equal(nrow(d), 12)
-  expect_equal(ncol(d), 1)
-  expect_equal(d$word[1], "because")
-})
-
 test_that("tokenizing with tidyeval works", {
   d <- tibble(txt = c(
     "Because I could not stop for Death -",
     "He kindly stopped for me -"
   ))
-  outputvar <- quo("word")
-  inputvar <- quo("txt")
+  outputvar <- quo(word)
+  inputvar <- quo(txt)
   d <- d %>% unnest_tokens(!!outputvar, !!inputvar)
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
