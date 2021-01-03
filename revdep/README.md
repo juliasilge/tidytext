@@ -10,14 +10,15 @@
 |collate  |en_US.UTF-8                  |
 |ctype    |en_US.UTF-8                  |
 |tz       |America/Denver               |
-|date     |2020-12-17                   |
+|date     |2021-01-03                   |
 
 # Dependencies
 
 |package  |old   |new        |Δ  |
 |:--------|:-----|:----------|:--|
 |tidytext |0.2.6 |0.2.6.9000 |*  |
-|vctrs    |NA    |0.3.5      |*  |
+|rlang    |NA    |0.4.10     |*  |
+|vctrs    |NA    |0.3.6      |*  |
 
 # Revdeps
 
