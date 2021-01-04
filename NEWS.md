@@ -1,4 +1,4 @@
-# tidytext (development version)
+# tidytext 0.3.0
 
 * Use vdiffr conditionally
 * Bug fix/breaking change for `collapse` argument to `unnest_functions()`. This argument now takes either `NULL` (do not collapse text across rows for tokenizing) or a character vector of variables (use said variables to collapse text across rows for tokenizing). This fixes a long-standing bug and provides more consistent behavior, but does change results for many situations (such as n-gram tokenization).
