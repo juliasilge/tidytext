@@ -1,3 +1,5 @@
+# tidytext (development version)
+
 # tidytext 0.3.0
 
 * Use vdiffr conditionally
