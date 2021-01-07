@@ -22,6 +22,11 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@v1
 
+      - name: Install system dependencies for vdiffr
+        run: |
+          brew cask install xquartz
+          brew install pkg-config cairo
+
       - name: Query dependencies
         run: |
           install.packages('remotes')
