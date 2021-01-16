@@ -1,50 +1,68 @@
+
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-
-
-
 
 # tidytext: Text mining using tidy tools <img src="man/figures/tidytext.png" align="right" />
 
-**Authors:** [Julia Silge](https://juliasilge.com/), [David Robinson](http://varianceexplained.org/)<br/>
-**License:** [MIT](https://opensource.org/licenses/MIT)
+**Authors:** [Julia Silge](https://juliasilge.com/), [David
+Robinson](http://varianceexplained.org/)<br/> **License:**
+[MIT](https://opensource.org/licenses/MIT)
 
-[![R build status](https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg)](https://github.com/juliasilge/tidytext/actions)
-[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
-[![cran checks](https://cranchecks.info/badges/summary/tidytext)](https://cran.r-project.org/web/checks/check_results_tidytext.html)
-[![Coverage Status](https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg)](https://codecov.io/github/juliasilge/tidytext?branch=master)
+<!-- badges: start -->
+
+[![R build
+status](https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg)](https://github.com/juliasilge/tidytext/actions)
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
+[![cran
+checks](https://cranchecks.info/badges/summary/tidytext)](https://cran.r-project.org/web/checks/check_results_tidytext.html)
+[![Coverage
+Status](https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg)](https://codecov.io/github/juliasilge/tidytext?branch=master)
 [![DOI](https://zenodo.org/badge/22224/juliasilge/tidytext.svg)](https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext)
 [![JOSS](https://joss.theoj.org/papers/10.21105/joss.00037/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00037)
 [![Downloads](https://cranlogs.r-pkg.org/badges/tidytext)](https://CRAN.R-project.org/package=tidytext)
-[![Total Downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange)](https://CRAN.R-project.org/package=tidytext)
+[![Total
+Downloads](https://cranlogs.r-pkg.org/badges/grand-total/tidytext?color=orange)](https://CRAN.R-project.org/package=tidytext)
+<!-- badges: end -->
 
-
-
-Using [tidy data principles](https://www.jstatsoft.org/article/view/v059i10) can make many text mining tasks easier, more effective, and consistent with tools already in wide use. Much of the infrastructure needed for text mining with tidy data frames already exists in packages like [dplyr](https://cran.r-project.org/package=dplyr), [broom](https://cran.r-project.org/package=broom), [tidyr](https://cran.r-project.org/package=tidyr), and [ggplot2](https://cran.r-project.org/package=ggplot2). In this package, we provide functions and supporting data sets to allow conversion of text to and from tidy formats, and to switch seamlessly between tidy tools and existing text mining packages. Check out [our book](https://www.tidytextmining.com/) to learn more about text mining using tidy data principles.
+Using [tidy data
+principles](https://www.jstatsoft.org/article/view/v059i10) can make
+many text mining tasks easier, more effective, and consistent with tools
+already in wide use. Much of the infrastructure needed for text mining
+with tidy data frames already exists in packages like
+[dplyr](https://cran.r-project.org/package=dplyr),
+[broom](https://cran.r-project.org/package=broom),
+[tidyr](https://cran.r-project.org/package=tidyr), and
+[ggplot2](https://cran.r-project.org/package=ggplot2). In this package,
+we provide functions and supporting data sets to allow conversion of
+text to and from tidy formats, and to switch seamlessly between tidy
+tools and existing text mining packages. Check out [our
+book](https://www.tidytextmining.com/) to learn more about text mining
+using tidy data principles.
 
 ### Installation
 
 You can install this package from CRAN:
 
-
-```r
+``` r
 install.packages("tidytext")
 ```
 
+Or you can install the development version from GitHub with
+[remotes](https://github.com/r-lib/remotes):
 
-Or you can install the development version from GitHub with [remotes](https://github.com/r-lib/remotes):
-
-
-```r
+``` r
 library(remotes)
 install_github("juliasilge/tidytext")
 ```
 
 ### Tidy text mining example: the `unnest_tokens` function
 
-The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 completed, published novels from the [janeaustenr](https://cran.r-project.org/package=janeaustenr) package, and transform them to a tidy format. janeaustenr provides them as a one-row-per-line format:
+The novels of Jane Austen can be so tidy! Let’s use the text of Jane
+Austen’s 6 completed, published novels from the
+[janeaustenr](https://cran.r-project.org/package=janeaustenr) package,
+and transform them to a tidy format. janeaustenr provides them as a
+one-row-per-line format:
 
-
-```r
+``` r
 library(janeaustenr)
 library(dplyr)
 
@@ -70,10 +88,11 @@ original_books
 #> # … with 73,412 more rows
 ```
 
-To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens()` function is a way to convert a dataframe with a text column to be one-token-per-row:
+To work with this as a tidy dataset, we need to restructure it as
+**one-token-per-row** format. The `unnest_tokens()` function is a way to
+convert a dataframe with a text column to be one-token-per-row:
 
-
-```r
+``` r
 library(tidytext)
 tidy_books <- original_books %>%
   unnest_tokens(word, text)
@@ -95,20 +114,25 @@ tidy_books
 #> # … with 725,045 more rows
 ```
 
-This function uses the [tokenizers](https://docs.ropensci.org/tokenizers/) package to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.
+This function uses the
+[tokenizers](https://docs.ropensci.org/tokenizers/) package to separate
+each line into words. The default tokenizing is for words, but other
+options include characters, n-grams, sentences, lines, paragraphs, or
+separation around a regex pattern.
 
-Now that the data is in a one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function `get_stopwords()`) with an `anti_join()`.
+Now that the data is in a one-word-per-row format, we can manipulate it
+with tidy tools like dplyr. We can remove stop words (available via the
+function `get_stopwords()`) with an `anti_join()`.
 
-
-```r
+``` r
 tidy_books <- tidy_books %>%
   anti_join(get_stopwords())
 ```
 
-We can also use `count()` to find the most common words in all the books as a whole.
+We can also use `count()` to find the most common words in all the books
+as a whole.
 
-
-```r
+``` r
 tidy_books %>%
   count(word, sort = TRUE) 
 #> # A tibble: 14,375 x 2
@@ -127,10 +151,13 @@ tidy_books %>%
 #> # … with 14,365 more rows
 ```
 
-Sentiment analysis can be implemented as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes across each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
+Sentiment analysis can be implemented as an inner join. Three sentiment
+lexicons are available via the `get_sentiments()` function. Let’s
+examine how sentiment changes across each novel. Let’s find a sentiment
+score for each word using the Bing lexicon, then count the number of
+positive and negative words in defined sections of each novel.
 
-
-```r
+``` r
 library(tidyr)
 get_sentiments("bing")
 #> # A tibble: 6,786 x 2
@@ -171,10 +198,10 @@ janeaustensentiment
 #> # … with 910 more rows
 ```
 
-Now we can plot these sentiment scores across the plot trajectory of each novel.
+Now we can plot these sentiment scores across the plot trajectory of
+each novel.
 
-
-```r
+``` r
 library(ggplot2)
 
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
@@ -182,16 +209,19 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(~book, ncol = 2, scales = "free_x")
 ```
 
-![plot of chunk unnamed-chunk-9](man/figures/README-unnamed-chunk-9-1.png)
+<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
 
-For more examples of text mining using tidy data frames, see the tidytext vignette.
+For more examples of text mining using tidy data frames, see the
+tidytext vignette.
 
 ### Tidying document term matrices
 
-Some existing text mining datasets are in the form of a DocumentTermMatrix class (from the tm package). For example, consider the corpus of 2246 Associated Press articles from the topicmodels dataset.
+Some existing text mining datasets are in the form of a
+DocumentTermMatrix class (from the tm package). For example, consider
+the corpus of 2246 Associated Press articles from the topicmodels
+dataset.
 
-
-```r
+``` r
 library(tm)
 data("AssociatedPress", package = "topicmodels")
 AssociatedPress
@@ -202,10 +232,12 @@ AssociatedPress
 #> Weighting          : term frequency (tf)
 ```
 
-If we want to analyze this with tidy tools, we need to transform it into a one-row-per-term data frame first with a `tidy()` function. (For more on the tidy verb, [see the broom package](https://broom.tidymodels.org/)).
+If we want to analyze this with tidy tools, we need to transform it into
+a one-row-per-term data frame first with a `tidy()` function. (For more
+on the tidy verb, [see the broom
+package](https://broom.tidymodels.org/)).
 
-
-```r
+``` r
 tidy(AssociatedPress)
 #> # A tibble: 302,031 x 3
 #>    document term       count
@@ -225,8 +257,7 @@ tidy(AssociatedPress)
 
 We could find the most negative documents:
 
-
-```r
+``` r
 ap_sentiments <- tidy(AssociatedPress) %>%
   inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
@@ -235,10 +266,10 @@ ap_sentiments <- tidy(AssociatedPress) %>%
   arrange(sentiment)
 ```
 
-Or we can join the Austen and AP datasets and compare the frequencies of each word:
+Or we can join the Austen and AP datasets and compare the frequencies of
+each word:
 
-
-```r
+``` r
 comparison <- tidy(AssociatedPress) %>%
   count(word = term) %>%
   rename(AP = n) %>%
@@ -273,10 +304,17 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-![plot of chunk unnamed-chunk-13](man/figures/README-unnamed-chunk-13-1.png)
+<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
 
-For more examples of working with objects from other text mining packages using tidy data principles, see the vignette on converting to and from document term matrices.
+For more examples of working with objects from other text mining
+packages using tidy data principles, see the vignette on converting to
+and from document term matrices.
 
 ### Community Guidelines
 
-This project is released with a [Contributor Code of Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md). By participating in this project you agree to abide by its terms. Feedback, bug reports (and fixes!), and feature requests are welcome; file issues or seek support [here](https://github.com/juliasilge/tidytext/issues).
+This project is released with a [Contributor Code of
+Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md).
+By participating in this project you agree to abide by its terms.
+Feedback, bug reports (and fixes!), and feature requests are welcome;
+file issues or seek support
+[here](https://github.com/juliasilge/tidytext/issues).
