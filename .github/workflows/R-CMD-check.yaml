@@ -43,7 +43,7 @@ jobs:
       - name: Install system dependencies on MacOS (for vdiffr)
         if: runner.os == 'macOS'
         run: |
-          brew cask install xquartz
+          brew install [--cask] xquartz
           brew install pkg-config cairo
 
       - name: Install GSL on MacOS (for topicmodels)
