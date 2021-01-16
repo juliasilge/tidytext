@@ -45,6 +45,7 @@
 #' @export
 #'
 get_stopwords <- function(language = "en", source = "snowball") {
+  rlang::check_installed("stopwords", "to use this function.")
   tibble(
     word = stopwords::stopwords(language = language, source = source),
     lexicon = source

@@ -1,5 +1,7 @@
 # tidytext (development version)
 
+* Check for installation of stopwords more gracefully
+
 # tidytext 0.3.0
 
 * Use vdiffr conditionally
