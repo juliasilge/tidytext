@@ -20,7 +20,7 @@ jobs:
 
       - name: Install system dependencies for vdiffr
         run: |
-          brew install [--cask] xquartz
+          brew install --cask xquartz
           brew install pkg-config cairo
 
       - name: Query dependencies
