@@ -1,6 +1,7 @@
-# tidytext (development version)
+# tidytext 0.3.1
 
 * Check for installation of stopwords more gracefully
+* Update tidiers and casters for new version of quanteda
 
 # tidytext 0.3.0
 
