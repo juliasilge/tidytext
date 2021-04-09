@@ -116,7 +116,7 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #' @export
 tidy.corpus <- function(x, ...) {
   tibble::as_tibble(data.frame(
-    text = quanteda::texts(x),
+    text = as.character(x),
     quanteda::docvars(x),
     stringsAsFactors = FALSE
   ))
@@ -126,7 +126,7 @@ tidy.corpus <- function(x, ...) {
 #' @rdname corpus_tidiers
 #' @export
 glance.corpus <- function(x, ...) {
-  md <- purrr::compact(quanteda::metacorpus(x))
+  md <- purrr::compact(quanteda::meta(x))
 
   # turn vectors into list columns
   md <- purrr::map_if(md, ~ length(.) > 1, list)

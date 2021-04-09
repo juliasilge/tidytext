@@ -22,7 +22,7 @@ test_that("Can tidy corpus from quanteda package", {
   skip_if_not_installed("quanteda")
   data("data_corpus_inaugural", package = "quanteda")
 
-  texts <- quanteda::texts(data_corpus_inaugural)
+  texts <- as.character(data_corpus_inaugural)
 
   td <- tidy(data_corpus_inaugural)
 
@@ -36,7 +36,7 @@ test_that("Can tidy corpus from quanteda using accessor functions", {
 
   ## similar to old method
   ret_old <- as_tibble(quanteda::docvars(x)) %>%
-    mutate(text = unname(quanteda::texts(x))) %>%
+    mutate(text = unname(as.character(x))) %>%
     select(text, everything())
 
   ## new method
