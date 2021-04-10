@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 18th CRAN release of tidytext. This release uses vdiffr conditionally in tests, as requested due to M1 macOS issues. This release also fixes a long-standing bug and provides more consistent behavior with the `collapse` argument to `unnest_tokens()`.
+This is the 19th CRAN release of tidytext. This release updates tidytext for the recent quanteda release, as requested by CRAN. This release also checks for the installation of the stopwords package more gracefully.
 
 ## Test environments
 
@@ -17,7 +17,16 @@ This is the 18th CRAN release of tidytext. This release uses vdiffr conditionall
 
 ## revdepcheck results
 
-I checked 31 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+I checked 40 reverse dependencies (39 from CRAN + 1 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
 
  * I saw 0 new problems
- * I failed to check 0 packages
+ * I failed to check 4 packages
+
+Issues with CRAN packages are summarized below.
+
+### Failed to check
+
+* kdtools (no longer on CRAN)
+* mvrsquared
+* quanteda
+* textmineR
