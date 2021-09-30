@@ -17,16 +17,7 @@ This is the 20th CRAN release of tidytext. This release updates how tidytext is 
 
 ## revdepcheck results
 
-I checked 40 reverse dependencies (39 from CRAN + 1 from BioConductor), comparing R CMD check results across CRAN and dev versions of this package.
+I checked 51 reverse dependencies (50 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
  * I saw 0 new problems
- * I failed to check 4 packages
-
-Issues with CRAN packages are summarized below.
-
-### Failed to check
-
-* kdtools (no longer on CRAN)
-* mvrsquared
-* quanteda
-* textmineR
+ * I failed to check 0 packages
