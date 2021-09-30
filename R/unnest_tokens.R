@@ -155,7 +155,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
 
   if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
     rlang::abort(sprintf(
-      "Expected output of tokenizing function to be a list of length ",
+      "Expected output of tokenizing function to be a list of length %d",
       nrow(tbl)
     ))
   }
