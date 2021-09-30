@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Tidy Topic Modeling</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2021-04-11</h4>
+            <h4 class="date">2021-09-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/master/vignettes/articles/topic_modeling.Rmd"><code>vignettes/articles/topic_modeling.Rmd</code></a></small>
       <div class="hidden name"><code>topic_modeling.Rmd</code></div>
@@ -140,7 +140,7 @@
   <span class="fu"><a href="https://docs.ropensci.org/gutenbergr/reference/gutenberg_download.html">gutenberg_download</a></span><span class="op">(</span>meta_fields <span class="op">=</span> <span class="st">"title"</span><span class="op">)</span></code></pre></div>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">books</span></code></pre></div>
-<pre><code>## # A tibble: 51,663 x 3
+<pre><code>## # A tibble: 51,663 × 3
 ##    gutenberg_id text                                                          title                
 ##           &lt;int&gt; &lt;chr&gt;                                                         &lt;chr&gt;                
 ##  1           36 "The War of the Worlds"                                       The War of the Worlds
@@ -175,7 +175,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">title_chapter</span>, <span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 
 <span class="va">word_counts</span></code></pre></div>
-<pre><code>## # A tibble: 104,721 x 3
+<pre><code>## # A tibble: 104,721 × 3
 ##    title_chapter            word        n
 ##    &lt;chr&gt;                    &lt;chr&gt;   &lt;int&gt;
 ##  1 Great Expectations_57    joe        88
@@ -216,7 +216,7 @@
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chapters_lda_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">chapters_lda</span><span class="op">)</span>
 <span class="va">chapters_lda_td</span></code></pre></div>
-<pre><code>## # A tibble: 72,860 x 3
+<pre><code>## # A tibble: 72,860 × 3
 ##    topic term        beta
 ##    &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
 ##  1     1 joe     5.83e-17
@@ -240,7 +240,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">topic</span>, <span class="op">-</span><span class="va">beta</span><span class="op">)</span>
 
 <span class="va">top_terms</span></code></pre></div>
-<pre><code>## # A tibble: 20 x 3
+<pre><code>## # A tibble: 20 × 3
 ##    topic term         beta
 ##    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;
 ##  1     1 elizabeth 0.0141 
@@ -283,7 +283,7 @@
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">chapters_lda_gamma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">chapters_lda</span>, matrix <span class="op">=</span> <span class="st">"gamma"</span><span class="op">)</span>
 <span class="va">chapters_lda_gamma</span></code></pre></div>
-<pre><code>## # A tibble: 772 x 3
+<pre><code>## # A tibble: 772 × 3
 ##    document                 topic     gamma
 ##    &lt;chr&gt;                    &lt;int&gt;     &lt;dbl&gt;
 ##  1 Great Expectations_57        1 0.0000135
@@ -302,7 +302,7 @@
 <code class="sourceCode R"><span class="va">chapters_lda_gamma</span> <span class="op">&lt;-</span> <span class="va">chapters_lda_gamma</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html">separate</a></span><span class="op">(</span><span class="va">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"chapter"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span>
 <span class="va">chapters_lda_gamma</span></code></pre></div>
-<pre><code>## # A tibble: 772 x 4
+<pre><code>## # A tibble: 772 × 4
 ##    title                 chapter topic     gamma
 ##    &lt;chr&gt;                   &lt;int&gt; &lt;int&gt;     &lt;dbl&gt;
 ##  1 Great Expectations         57     1 0.0000135
@@ -331,7 +331,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">gamma</span><span class="op">)</span>
 
 <span class="va">chapter_classifications</span></code></pre></div>
-<pre><code>## # A tibble: 193 x 4
+<pre><code>## # A tibble: 193 × 4
 ##    title              chapter topic gamma
 ##    &lt;chr&gt;                &lt;int&gt; &lt;int&gt; &lt;dbl&gt;
 ##  1 Great Expectations      54     3 0.480
@@ -355,7 +355,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">transmute</a></span><span class="op">(</span>consensus <span class="op">=</span> <span class="va">title</span>, <span class="va">topic</span><span class="op">)</span>
 
 <span class="va">book_topics</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 2
+<pre><code>## # A tibble: 4 × 2
 ##   consensus                             topic
 ##   &lt;chr&gt;                                 &lt;int&gt;
 ## 1 Great Expectations                        4
@@ -367,7 +367,7 @@
 <code class="sourceCode R"><span class="va">chapter_classifications</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">book_topics</span>, by <span class="op">=</span> <span class="st">"topic"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 6 x 3
+<pre><code>## # A tibble: 6 × 3
 ##   title                                 consensus                                 n
 ##   &lt;chr&gt;                                 &lt;chr&gt;                                 &lt;int&gt;
 ## 1 Great Expectations                    Great Expectations                       57
@@ -393,7 +393,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="va">book_topics</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">".topic"</span> <span class="op">=</span> <span class="st">"topic"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">assignments</span></code></pre></div>
-<pre><code>## # A tibble: 104,721 x 6
+<pre><code>## # A tibble: 104,721 × 6
 ##    title              chapter term  count .topic consensus         
 ##    &lt;chr&gt;                &lt;int&gt; &lt;chr&gt; &lt;dbl&gt;  &lt;dbl&gt; &lt;chr&gt;             
 ##  1 Great Expectations      57 joe      88      4 Great Expectations
@@ -412,7 +412,7 @@
 <code class="sourceCode R"><span class="va">assignments</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span><span class="op">(</span><span class="va">consensus</span>, <span class="va">n</span>, fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 4 x 5
+<pre><code>## # A tibble: 4 × 5
 ##   title                                 `Great Expectations` `Pride and Prejudice`
 ##   &lt;chr&gt;                                                &lt;dbl&gt;                 &lt;dbl&gt;
 ## 1 Great Expectations                                   49770                  3876
@@ -432,7 +432,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">title</span> <span class="op">!=</span> <span class="va">consensus</span><span class="op">)</span>
 
 <span class="va">wrong_words</span></code></pre></div>
-<pre><code>## # A tibble: 4,535 x 6
+<pre><code>## # A tibble: 4,535 × 6
 ##    title                                 chapter term     count .topic
 ##    &lt;chr&gt;                                   &lt;int&gt; &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;
 ##  1 Great Expectations                         38 brother      2      1
@@ -462,7 +462,7 @@
 <code class="sourceCode R"><span class="va">wrong_words</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span>, <span class="va">term</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3,500 x 4
+<pre><code>## # A tibble: 3,500 × 4
 ##    title              consensus             term         n
 ##    &lt;chr&gt;              &lt;chr&gt;                 &lt;chr&gt;    &lt;dbl&gt;
 ##  1 Great Expectations Pride and Prejudice   love        44
@@ -480,7 +480,7 @@
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">word_counts</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">word</span> <span class="op">==</span> <span class="st">"flopson"</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 3 x 3
+<pre><code>## # A tibble: 3 × 3
 ##   title_chapter         word        n
 ##   &lt;chr&gt;                 &lt;chr&gt;   &lt;int&gt;
 ## 1 Great Expectations_22 flopson    10

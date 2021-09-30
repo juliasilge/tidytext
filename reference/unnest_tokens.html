@@ -241,130 +241,130 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 
 <span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>txt <span class='op'>=</span> <span class='va'>prideprejudice</span><span class='op'>)</span>
 <span class='va'>d</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,030 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 13,030 × 1</span>
 #&gt;    txt                                                                      
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                                    
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> </span><span style='color: #949494;'>"</span><span>PRIDE AND PREJUDICE</span><span style='color: #949494;'>"</span><span>                                                    
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> </span><span style='color: #949494;'>""</span><span>                                                                       
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='color: #949494;'>"</span><span>By Jane Austen</span><span style='color: #949494;'>"</span><span>                                                         
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> </span><span style='color: #949494;'>""</span><span>                                                                       
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> </span><span style='color: #949494;'>""</span><span>                                                                       
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='color: #949494;'>""</span><span>                                                                       
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #949494;'>"</span><span>Chapter 1</span><span style='color: #949494;'>"</span><span>                                                              
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #949494;'>""</span><span>                                                                       
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='color: #949494;'>""</span><span>                                                                       
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='color: #949494;'>"</span><span>It is a truth universally acknowledged, that a single man in possession</span><span style='color: #949494;'>"</span><span>
-#&gt; </span><span style='color: #949494;'># … with 13,020 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                                    
+#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>PRIDE AND PREJUDICE<span style='color: #949494;'>"</span>                                                    
+#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>""</span>                                                                       
+#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>By Jane Austen<span style='color: #949494;'>"</span>                                                         
+#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>""</span>                                                                       
+#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>""</span>                                                                       
+#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>""</span>                                                                       
+#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>Chapter 1<span style='color: #949494;'>"</span>                                                              
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>""</span>                                                                       
+#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>""</span>                                                                       
+#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>"</span>It is a truth universally acknowledged, that a single man in possession<span style='color: #949494;'>"</span>
+#&gt; <span style='color: #949494;'># … with 13,020 more rows</span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 122,204 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 122,204 × 1</span>
 #&gt;    word     
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> pride    
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> and      
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> prejudice
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> by       
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> jane     
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> austen   
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> chapter  
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> 1        
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> it       
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> is       
-#&gt; </span><span style='color: #949494;'># … with 122,194 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'> 1</span> pride    
+#&gt; <span style='color: #BCBCBC;'> 2</span> and      
+#&gt; <span style='color: #BCBCBC;'> 3</span> prejudice
+#&gt; <span style='color: #BCBCBC;'> 4</span> by       
+#&gt; <span style='color: #BCBCBC;'> 5</span> jane     
+#&gt; <span style='color: #BCBCBC;'> 6</span> austen   
+#&gt; <span style='color: #BCBCBC;'> 7</span> chapter  
+#&gt; <span style='color: #BCBCBC;'> 8</span> 1        
+#&gt; <span style='color: #BCBCBC;'> 9</span> it       
+#&gt; <span style='color: #BCBCBC;'>10</span> is       
+#&gt; <span style='color: #949494;'># … with 122,194 more rows</span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>sentence</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"sentences"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 15,545 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 15,545 × 1</span>
 #&gt;    sentence                                                                  
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                                     
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> </span><span style='color: #949494;'>"</span><span>pride and prejudice</span><span style='color: #949494;'>"</span><span>                                                     
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> </span><span style='color: #949494;'>"</span><span>by jane austen</span><span style='color: #949494;'>"</span><span>                                                          
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='color: #949494;'>"</span><span>chapter 1</span><span style='color: #949494;'>"</span><span>                                                               
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> </span><span style='color: #949494;'>"</span><span>it is a truth universally acknowledged, that a single man in possession</span><span style='color: #949494;'>"</span><span> 
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> </span><span style='color: #949494;'>"</span><span>of a good fortune, must be in want of a wife.</span><span style='color: #949494;'>"</span><span>                           
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='color: #949494;'>"</span><span>however little known the feelings or views of such a man may be on his</span><span style='color: #949494;'>"</span><span>  
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #949494;'>"</span><span>first entering a neighbourhood, this truth is so well fixed in the minds</span><span style='color: #949494;'>"</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #949494;'>"</span><span>of the surrounding families, that he is considered the rightful property</span><span style='color: #949494;'>"</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='color: #949494;'>"</span><span>of some one or other of their daughters.</span><span style='color: #949494;'>"</span><span>                                
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='color: #949494;'>"</span><span>\"my dear mr.</span><span style='color: #949494;'>"</span><span>                                                           
-#&gt; </span><span style='color: #949494;'># … with 15,535 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                                     
+#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>pride and prejudice<span style='color: #949494;'>"</span>                                                     
+#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>by jane austen<span style='color: #949494;'>"</span>                                                          
+#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>chapter 1<span style='color: #949494;'>"</span>                                                               
+#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>"</span>it is a truth universally acknowledged, that a single man in possession<span style='color: #949494;'>"</span> 
+#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>of a good fortune, must be in want of a wife.<span style='color: #949494;'>"</span>                           
+#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>however little known the feelings or views of such a man may be on his<span style='color: #949494;'>"</span>  
+#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>first entering a neighbourhood, this truth is so well fixed in the minds<span style='color: #949494;'>"</span>
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>"</span>of the surrounding families, that he is considered the rightful property<span style='color: #949494;'>"</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>"</span>of some one or other of their daughters.<span style='color: #949494;'>"</span>                                
+#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>"</span>\"my dear mr.<span style='color: #949494;'>"</span>                                                           
+#&gt; <span style='color: #949494;'># … with 15,535 more rows</span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>ngram</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"ngrams"</span>, n <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 114,045 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 114,045 × 1</span>
 #&gt;    ngram        
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> pride and    
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> and prejudice
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> by jane      
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> jane austen  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> chapter 1    
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #949494;'># … with 114,035 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        
+#&gt; <span style='color: #BCBCBC;'> 1</span> pride and    
+#&gt; <span style='color: #BCBCBC;'> 2</span> and prejudice
+#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 4</span> by jane      
+#&gt; <span style='color: #BCBCBC;'> 5</span> jane austen  
+#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 9</span> chapter 1    
+#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #949494;'># … with 114,035 more rows</span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>chapter</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"regex"</span>, pattern <span class='op'>=</span> <span class='st'>"Chapter [\\\\d]"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 10,721 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 10,721 × 1</span>
 #&gt;    chapter                                                                      
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                                                                        
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> </span><span style='color: #949494;'>"</span><span>pride and prejudice</span><span style='color: #949494;'>"</span><span>                                                        
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> </span><span style='color: #949494;'>"</span><span>by jane austen</span><span style='color: #949494;'>"</span><span>                                                             
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='color: #949494;'>"</span><span>chapter 1</span><span style='color: #949494;'>"</span><span>                                                                  
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> </span><span style='color: #949494;'>"</span><span>it is a truth universally acknowledged, that a single man in possession</span><span style='color: #949494;'>"</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> </span><span style='color: #949494;'>"</span><span>of a good fortune, must be in want of a wife.</span><span style='color: #949494;'>"</span><span>                              
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='color: #949494;'>"</span><span>however little known the feelings or views of such a man may be on his</span><span style='color: #949494;'>"</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #949494;'>"</span><span>first entering a neighbourhood, this truth is so well fixed in the minds</span><span style='color: #949494;'>"</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #949494;'>"</span><span>of the surrounding families, that he is considered the rightful property</span><span style='color: #949494;'>"</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='color: #949494;'>"</span><span>of some one or other of their daughters.</span><span style='color: #949494;'>"</span><span>                                   
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='color: #949494;'>"</span><span>\"my dear mr. bennet,\" said his lady to him one day, \"have you heard that</span><span style='color: #949494;'>"</span><span>
-#&gt; </span><span style='color: #949494;'># … with 10,711 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                                                        
+#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>pride and prejudice<span style='color: #949494;'>"</span>                                                        
+#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>by jane austen<span style='color: #949494;'>"</span>                                                             
+#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>chapter 1<span style='color: #949494;'>"</span>                                                                  
+#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>"</span>it is a truth universally acknowledged, that a single man in possession<span style='color: #949494;'>"</span>    
+#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>of a good fortune, must be in want of a wife.<span style='color: #949494;'>"</span>                              
+#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>however little known the feelings or views of such a man may be on his<span style='color: #949494;'>"</span>     
+#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>first entering a neighbourhood, this truth is so well fixed in the minds<span style='color: #949494;'>"</span>   
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>"</span>of the surrounding families, that he is considered the rightful property<span style='color: #949494;'>"</span>   
+#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>"</span>of some one or other of their daughters.<span style='color: #949494;'>"</span>                                   
+#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>"</span>\"my dear mr. bennet,\" said his lady to him one day, \"have you heard that<span style='color: #949494;'>"</span>
+#&gt; <span style='color: #949494;'># … with 10,711 more rows</span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>shingle</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='st'>"character_shingles"</span>, n <span class='op'>=</span> <span class='fl'>4</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 506,732 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 506,732 × 1</span>
 #&gt;    shingle
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>  
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> prid   
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> ride   
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> idea   
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> dean   
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> eand   
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> andp   
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> ndpr   
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> dpre   
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> prej   
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> reju   
-#&gt; </span><span style='color: #949494;'># … with 506,722 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  
+#&gt; <span style='color: #BCBCBC;'> 1</span> prid   
+#&gt; <span style='color: #BCBCBC;'> 2</span> ride   
+#&gt; <span style='color: #BCBCBC;'> 3</span> idea   
+#&gt; <span style='color: #BCBCBC;'> 4</span> dean   
+#&gt; <span style='color: #BCBCBC;'> 5</span> eand   
+#&gt; <span style='color: #BCBCBC;'> 6</span> andp   
+#&gt; <span style='color: #BCBCBC;'> 7</span> ndpr   
+#&gt; <span style='color: #BCBCBC;'> 8</span> dpre   
+#&gt; <span style='color: #BCBCBC;'> 9</span> prej   
+#&gt; <span style='color: #BCBCBC;'>10</span> reju   
+#&gt; <span style='color: #949494;'># … with 506,722 more rows</span></div><div class='input'>
 <span class='co'># custom function</span>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, token <span class='op'>=</span> <span class='fu'>stringr</span><span class='fu'>::</span><span class='va'><a href='https://stringr.tidyverse.org/reference/str_split.html'>str_split</a></span>, pattern <span class='op'>=</span> <span class='st'>" "</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 124,032 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 124,032 × 1</span>
 #&gt;    word       
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> </span><span style='color: #949494;'>"</span><span>pride</span><span style='color: #949494;'>"</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> </span><span style='color: #949494;'>"</span><span>and</span><span style='color: #949494;'>"</span><span>      
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='color: #949494;'>"</span><span>prejudice</span><span style='color: #949494;'>"</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> </span><span style='color: #949494;'>""</span><span>         
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> </span><span style='color: #949494;'>"</span><span>by</span><span style='color: #949494;'>"</span><span>       
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='color: #949494;'>"</span><span>jane</span><span style='color: #949494;'>"</span><span>     
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #949494;'>"</span><span>austen</span><span style='color: #949494;'>"</span><span>   
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #949494;'>""</span><span>         
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> </span><span style='color: #949494;'>""</span><span>         
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='color: #949494;'>""</span><span>         
-#&gt; </span><span style='color: #949494;'># … with 124,022 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
+#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>pride<span style='color: #949494;'>"</span>    
+#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>and<span style='color: #949494;'>"</span>      
+#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>prejudice<span style='color: #949494;'>"</span>
+#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>""</span>         
+#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>by<span style='color: #949494;'>"</span>       
+#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>jane<span style='color: #949494;'>"</span>     
+#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>austen<span style='color: #949494;'>"</span>   
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>""</span>         
+#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>""</span>         
+#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>""</span>         
+#&gt; <span style='color: #949494;'># … with 124,022 more rows</span></div><div class='input'>
 <span class='co'># tokenize HTML</span>
 <span class='va'>h</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>row <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>2</span>,
                 text <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class='st'>"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span><span class='op'>)</span><span class='op'>)</span>
 
 <span class='va'>h</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_tokens</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>text</span>, format <span class='op'>=</span> <span class='st'>"html"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 3 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 3 × 2</span>
 #&gt;     row word 
-#&gt;   </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>1</span><span>     1 text 
-#&gt; </span><span style='color: #BCBCBC;'>2</span><span>     1 is   
-#&gt; </span><span style='color: #BCBCBC;'>3</span><span>     2 here </div><div class='input'>
-</div></span></pre>
+#&gt;   <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'>1</span>     1 text 
+#&gt; <span style='color: #BCBCBC;'>2</span>     1 is   
+#&gt; <span style='color: #BCBCBC;'>3</span>     2 here </div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

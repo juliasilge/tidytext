@@ -177,40 +177,40 @@ non-commercial use, is available as part of SUBTLEXus at
 <span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
 
 <span class='va'>parts_of_speech</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 208,259 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 208,259 × 2</span>
 #&gt;    word    pos      
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>    
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> 3-d     Adjective
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> 3-d     Noun     
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> 4-f     Noun     
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> 4-h'er  Noun     
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> 4-h     Adjective
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> a'      Adjective
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> a-1     Noun     
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> a-axis  Noun     
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> a-bomb  Noun     
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> a-frame Noun     
-#&gt; </span><span style='color: #949494;'># … with 208,249 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>    
+#&gt; <span style='color: #BCBCBC;'> 1</span> 3-d     Adjective
+#&gt; <span style='color: #BCBCBC;'> 2</span> 3-d     Noun     
+#&gt; <span style='color: #BCBCBC;'> 3</span> 4-f     Noun     
+#&gt; <span style='color: #BCBCBC;'> 4</span> 4-h'er  Noun     
+#&gt; <span style='color: #BCBCBC;'> 5</span> 4-h     Adjective
+#&gt; <span style='color: #BCBCBC;'> 6</span> a'      Adjective
+#&gt; <span style='color: #BCBCBC;'> 7</span> a-1     Noun     
+#&gt; <span style='color: #BCBCBC;'> 8</span> a-axis  Noun     
+#&gt; <span style='color: #BCBCBC;'> 9</span> a-bomb  Noun     
+#&gt; <span style='color: #BCBCBC;'>10</span> a-frame Noun     
+#&gt; <span style='color: #949494;'># … with 208,249 more rows</span></div><div class='input'>
 <span class='va'>parts_of_speech</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>pos</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 14 x 2</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 14 × 2</span>
 #&gt;    pos                        n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>                  </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Noun                  </span><span style='text-decoration: underline;'>104</span><span>542
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Adjective              </span><span style='text-decoration: underline;'>47</span><span>719
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Verb (transitive)      </span><span style='text-decoration: underline;'>15</span><span>723
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Adverb                 </span><span style='text-decoration: underline;'>13</span><span>234
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Verb (usu participle)  </span><span style='text-decoration: underline;'>11</span><span>402
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Plural                  </span><span style='text-decoration: underline;'>7</span><span>764
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Verb (intransitive)     </span><span style='text-decoration: underline;'>4</span><span>626
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>                      </span><span style='text-decoration: underline;'>2</span><span>274
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Interjection             395
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Preposition              159
-#&gt; </span><span style='color: #BCBCBC;'>11</span><span> Noun Phrase              115
-#&gt; </span><span style='color: #BCBCBC;'>12</span><span> Pronoun                  113
-#&gt; </span><span style='color: #BCBCBC;'>13</span><span> Definite Article         103
-#&gt; </span><span style='color: #BCBCBC;'>14</span><span> Conjunction               90</div><div class='input'>
-</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                  <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Noun                  <span style='text-decoration: underline;'>104</span>542
+#&gt; <span style='color: #BCBCBC;'> 2</span> Adjective              <span style='text-decoration: underline;'>47</span>719
+#&gt; <span style='color: #BCBCBC;'> 3</span> Verb (transitive)      <span style='text-decoration: underline;'>15</span>723
+#&gt; <span style='color: #BCBCBC;'> 4</span> Adverb                 <span style='text-decoration: underline;'>13</span>234
+#&gt; <span style='color: #BCBCBC;'> 5</span> Verb (usu participle)  <span style='text-decoration: underline;'>11</span>402
+#&gt; <span style='color: #BCBCBC;'> 6</span> Plural                  <span style='text-decoration: underline;'>7</span>764
+#&gt; <span style='color: #BCBCBC;'> 7</span> Verb (intransitive)     <span style='text-decoration: underline;'>4</span>626
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #BB0000;'>NA</span>                      <span style='text-decoration: underline;'>2</span>274
+#&gt; <span style='color: #BCBCBC;'> 9</span> Interjection             395
+#&gt; <span style='color: #BCBCBC;'>10</span> Preposition              159
+#&gt; <span style='color: #BCBCBC;'>11</span> Noun Phrase              115
+#&gt; <span style='color: #BCBCBC;'>12</span> Pronoun                  113
+#&gt; <span style='color: #BCBCBC;'>13</span> Definite Article         103
+#&gt; <span style='color: #BCBCBC;'>14</span> Conjunction               90</div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

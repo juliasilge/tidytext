@@ -206,39 +206,39 @@ for this to work.</p>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/count.html'>count</a></span><span class='op'>(</span><span class='va'>book</span>, <span class='va'>word</span>, sort <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span>
 
 <span class='va'>book_words</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 40,379 x 3</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 40,379 × 3</span>
 #&gt;    book              word      n
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>             </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Mansfield Park    the    </span><span style='text-decoration: underline;'>6</span><span>206
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Mansfield Park    to     </span><span style='text-decoration: underline;'>5</span><span>475
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Mansfield Park    and    </span><span style='text-decoration: underline;'>5</span><span>438
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Emma              to     </span><span style='text-decoration: underline;'>5</span><span>239
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Emma              the    </span><span style='text-decoration: underline;'>5</span><span>201
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Emma              and    </span><span style='text-decoration: underline;'>4</span><span>896
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Mansfield Park    of     </span><span style='text-decoration: underline;'>4</span><span>778
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Pride &amp; Prejudice the    </span><span style='text-decoration: underline;'>4</span><span>331
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Emma              of     </span><span style='text-decoration: underline;'>4</span><span>291
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Pride &amp; Prejudice to     </span><span style='text-decoration: underline;'>4</span><span>162
-#&gt; </span><span style='color: #949494;'># … with 40,369 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>             <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Mansfield Park    the    <span style='text-decoration: underline;'>6</span>206
+#&gt; <span style='color: #BCBCBC;'> 2</span> Mansfield Park    to     <span style='text-decoration: underline;'>5</span>475
+#&gt; <span style='color: #BCBCBC;'> 3</span> Mansfield Park    and    <span style='text-decoration: underline;'>5</span>438
+#&gt; <span style='color: #BCBCBC;'> 4</span> Emma              to     <span style='text-decoration: underline;'>5</span>239
+#&gt; <span style='color: #BCBCBC;'> 5</span> Emma              the    <span style='text-decoration: underline;'>5</span>201
+#&gt; <span style='color: #BCBCBC;'> 6</span> Emma              and    <span style='text-decoration: underline;'>4</span>896
+#&gt; <span style='color: #BCBCBC;'> 7</span> Mansfield Park    of     <span style='text-decoration: underline;'>4</span>778
+#&gt; <span style='color: #BCBCBC;'> 8</span> Pride &amp; Prejudice the    <span style='text-decoration: underline;'>4</span>331
+#&gt; <span style='color: #BCBCBC;'> 9</span> Emma              of     <span style='text-decoration: underline;'>4</span>291
+#&gt; <span style='color: #BCBCBC;'>10</span> Pride &amp; Prejudice to     <span style='text-decoration: underline;'>4</span>162
+#&gt; <span style='color: #949494;'># … with 40,369 more rows</span></div><div class='input'>
 <span class='co'># find the words most distinctive to each document</span>
 <span class='va'>book_words</span> <span class='op'>%&gt;%</span>
   <span class='fu'>bind_tf_idf</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>book</span>, <span class='va'>n</span><span class='op'>)</span> <span class='op'>%&gt;%</span>
   <span class='fu'><a href='https://dplyr.tidyverse.org/reference/arrange.html'>arrange</a></span><span class='op'>(</span><span class='fu'><a href='https://dplyr.tidyverse.org/reference/desc.html'>desc</a></span><span class='op'>(</span><span class='va'>tf_idf</span><span class='op'>)</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 40,379 x 6</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 40,379 × 6</span>
 #&gt;    book                word          n      tf   idf  tf_idf
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;fct&gt;</span><span>               </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>     </span><span style='color: #949494;font-style: italic;'>&lt;int&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span> </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>   </span><span style='color: #949494;font-style: italic;'>&lt;dbl&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> Sense &amp; Sensibility elinor      623 0.005</span><span style='text-decoration: underline;'>19</span><span>  1.79 0.009</span><span style='text-decoration: underline;'>31</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> Sense &amp; Sensibility marianne    492 0.004</span><span style='text-decoration: underline;'>10</span><span>  1.79 0.007</span><span style='text-decoration: underline;'>35</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> Mansfield Park      crawford    493 0.003</span><span style='text-decoration: underline;'>07</span><span>  1.79 0.005</span><span style='text-decoration: underline;'>51</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> Pride &amp; Prejudice   darcy       373 0.003</span><span style='text-decoration: underline;'>05</span><span>  1.79 0.005</span><span style='text-decoration: underline;'>47</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> Persuasion          elliot      254 0.003</span><span style='text-decoration: underline;'>04</span><span>  1.79 0.005</span><span style='text-decoration: underline;'>44</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> Emma                emma        786 0.004</span><span style='text-decoration: underline;'>88</span><span>  1.10 0.005</span><span style='text-decoration: underline;'>36</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> Northanger Abbey    tilney      196 0.002</span><span style='text-decoration: underline;'>52</span><span>  1.79 0.004</span><span style='text-decoration: underline;'>52</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> Emma                weston      389 0.002</span><span style='text-decoration: underline;'>42</span><span>  1.79 0.004</span><span style='text-decoration: underline;'>33</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> Pride &amp; Prejudice   bennet      294 0.002</span><span style='text-decoration: underline;'>41</span><span>  1.79 0.004</span><span style='text-decoration: underline;'>31</span><span>
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> Persuasion          wentworth   191 0.002</span><span style='text-decoration: underline;'>28</span><span>  1.79 0.004</span><span style='text-decoration: underline;'>09</span><span>
-#&gt; </span><span style='color: #949494;'># … with 40,369 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>               <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>   <span style='color: #949494; font-style: italic;'>&lt;dbl&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> Sense &amp; Sensibility elinor      623 0.005<span style='text-decoration: underline;'>19</span>  1.79 0.009<span style='text-decoration: underline;'>31</span>
+#&gt; <span style='color: #BCBCBC;'> 2</span> Sense &amp; Sensibility marianne    492 0.004<span style='text-decoration: underline;'>10</span>  1.79 0.007<span style='text-decoration: underline;'>35</span>
+#&gt; <span style='color: #BCBCBC;'> 3</span> Mansfield Park      crawford    493 0.003<span style='text-decoration: underline;'>07</span>  1.79 0.005<span style='text-decoration: underline;'>51</span>
+#&gt; <span style='color: #BCBCBC;'> 4</span> Pride &amp; Prejudice   darcy       373 0.003<span style='text-decoration: underline;'>05</span>  1.79 0.005<span style='text-decoration: underline;'>47</span>
+#&gt; <span style='color: #BCBCBC;'> 5</span> Persuasion          elliot      254 0.003<span style='text-decoration: underline;'>04</span>  1.79 0.005<span style='text-decoration: underline;'>44</span>
+#&gt; <span style='color: #BCBCBC;'> 6</span> Emma                emma        786 0.004<span style='text-decoration: underline;'>88</span>  1.10 0.005<span style='text-decoration: underline;'>36</span>
+#&gt; <span style='color: #BCBCBC;'> 7</span> Northanger Abbey    tilney      196 0.002<span style='text-decoration: underline;'>52</span>  1.79 0.004<span style='text-decoration: underline;'>52</span>
+#&gt; <span style='color: #BCBCBC;'> 8</span> Emma                weston      389 0.002<span style='text-decoration: underline;'>42</span>  1.79 0.004<span style='text-decoration: underline;'>33</span>
+#&gt; <span style='color: #BCBCBC;'> 9</span> Pride &amp; Prejudice   bennet      294 0.002<span style='text-decoration: underline;'>41</span>  1.79 0.004<span style='text-decoration: underline;'>31</span>
+#&gt; <span style='color: #BCBCBC;'>10</span> Persuasion          wentworth   191 0.002<span style='text-decoration: underline;'>28</span>  1.79 0.004<span style='text-decoration: underline;'>09</span>
+#&gt; <span style='color: #949494;'># … with 40,369 more rows</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

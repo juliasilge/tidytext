@@ -260,37 +260,37 @@ than or equal to <code>n</code>.</p></td>
 
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_characters</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 536,529 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 536,529 × 1</span>
 #&gt;    word 
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> p    
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> r    
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> i    
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> d    
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> e    
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> a    
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> n    
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> d    
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> p    
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> r    
-#&gt; </span><span style='color: #949494;'># … with 536,519 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> p    
+#&gt; <span style='color: #BCBCBC;'> 2</span> r    
+#&gt; <span style='color: #BCBCBC;'> 3</span> i    
+#&gt; <span style='color: #BCBCBC;'> 4</span> d    
+#&gt; <span style='color: #BCBCBC;'> 5</span> e    
+#&gt; <span style='color: #BCBCBC;'> 6</span> a    
+#&gt; <span style='color: #BCBCBC;'> 7</span> n    
+#&gt; <span style='color: #BCBCBC;'> 8</span> d    
+#&gt; <span style='color: #BCBCBC;'> 9</span> p    
+#&gt; <span style='color: #BCBCBC;'>10</span> r    
+#&gt; <span style='color: #949494;'># … with 536,519 more rows</span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_character_shingles</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, n <span class='op'>=</span> <span class='fl'>3</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 517,422 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 517,422 × 1</span>
 #&gt;    word 
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> pri  
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> rid  
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> ide  
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> dea  
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> ean  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> and  
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> ndp  
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> dpr  
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> pre  
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> rej  
-#&gt; </span><span style='color: #949494;'># … with 517,412 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>
+#&gt; <span style='color: #BCBCBC;'> 1</span> pri  
+#&gt; <span style='color: #BCBCBC;'> 2</span> rid  
+#&gt; <span style='color: #BCBCBC;'> 3</span> ide  
+#&gt; <span style='color: #BCBCBC;'> 4</span> dea  
+#&gt; <span style='color: #BCBCBC;'> 5</span> ean  
+#&gt; <span style='color: #BCBCBC;'> 6</span> and  
+#&gt; <span style='color: #BCBCBC;'> 7</span> ndp  
+#&gt; <span style='color: #BCBCBC;'> 8</span> dpr  
+#&gt; <span style='color: #BCBCBC;'> 9</span> pre  
+#&gt; <span style='color: #BCBCBC;'>10</span> rej  
+#&gt; <span style='color: #949494;'># … with 517,412 more rows</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

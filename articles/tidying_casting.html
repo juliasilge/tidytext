@@ -101,7 +101,7 @@
       <h1 data-toc-skip>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 class="author">Julia Silge and David Robinson</h4>
             
-            <h4 class="date">2021-04-11</h4>
+            <h4 class="date">2021-09-30</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/master/vignettes/tidying_casting.Rmd"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -135,7 +135,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html">inner_join</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span>term <span class="op">=</span> <span class="st">"word"</span><span class="op">)</span><span class="op">)</span>
 
 <span class="va">ap_sentiments</span></code></pre></div>
-<pre><code>## # A tibble: 30,094 x 4
+<pre><code>## # A tibble: 30,094 × 4
 ##    document term    count sentiment
 ##       &lt;int&gt; &lt;chr&gt;   &lt;dbl&gt; &lt;chr&gt;    
 ##  1        1 assault     1 negative 
@@ -158,7 +158,7 @@
   <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html">spread</a></span><span class="op">(</span><span class="va">sentiment</span>, <span class="va">n</span>, fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html">mutate</a></span><span class="op">(</span>sentiment <span class="op">=</span> <span class="va">positive</span> <span class="op">-</span> <span class="va">negative</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="va">sentiment</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 2,190 x 4
+<pre><code>## # A tibble: 2,190 × 4
 ##    document negative positive sentiment
 ##       &lt;int&gt;    &lt;dbl&gt;    &lt;dbl&gt;     &lt;dbl&gt;
 ##  1     1251       54        6       -48
@@ -214,7 +214,7 @@
 ## [ reached max_ndoc ... 53 more documents, reached max_nfeat ... 9,429 more features ]</code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 45,453 x 3
+<pre><code>## # A tibble: 45,453 × 3
 ##    document        term            count
 ##    &lt;chr&gt;           &lt;chr&gt;           &lt;dbl&gt;
 ##  1 1789-Washington fellow-citizens     1
@@ -235,7 +235,7 @@
 <p>Some existing text mining tools or algorithms work only on sparse document-term matrices. Therefore, tidytext provides <code>cast_</code> verbs for converting from a tidy form to these matrices.</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">ap_td</span></code></pre></div>
-<pre><code>## # A tibble: 302,031 x 3
+<pre><code>## # A tibble: 302,031 × 3
 ##    document term       count
 ##       &lt;int&gt; &lt;chr&gt;      &lt;dbl&gt;
 ##  1        1 adding         1
@@ -311,7 +311,7 @@
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">reuters_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">reuters</span><span class="op">)</span>
 <span class="va">reuters_td</span></code></pre></div>
-<pre><code>## # A tibble: 20 x 17
+<pre><code>## # A tibble: 20 × 17
 ##    author  datetimestamp       description heading  id    language origin topics
 ##    &lt;chr&gt;   &lt;dttm&gt;              &lt;chr&gt;       &lt;chr&gt;    &lt;chr&gt; &lt;chr&gt;    &lt;chr&gt;  &lt;chr&gt; 
 ##  1 &lt;NA&gt;    1987-02-26 17:00:56 ""          DIAMOND… 127   en       Reute… YES   
@@ -367,7 +367,7 @@
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span class="va">inaug_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html">tidy</a></span><span class="op">(</span><span class="va">data_corpus_inaugural</span><span class="op">)</span>
 <span class="va">inaug_td</span></code></pre></div>
-<pre><code>## # A tibble: 59 x 5
+<pre><code>## # A tibble: 59 × 5
 ##    text                                   Year President  FirstName Party       
 ##    &lt;chr&gt;                                 &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;fct&gt;       
 ##  1 "Fellow-Citizens of the Senate and o…  1789 Washington George    none        
@@ -388,7 +388,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html">anti_join</a></span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span>
 
 <span class="va">inaug_words</span></code></pre></div>
-<pre><code>## # A tibble: 50,965 x 5
+<pre><code>## # A tibble: 50,965 × 5
 ##     Year President  FirstName Party word           
 ##    &lt;int&gt; &lt;chr&gt;      &lt;chr&gt;     &lt;fct&gt; &lt;chr&gt;          
 ##  1  1789 Washington George    none  fellow         
@@ -413,7 +413,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html">ungroup</a></span><span class="op">(</span><span class="op">)</span>
 
 <span class="va">inaug_freq</span></code></pre></div>
-<pre><code>## # A tibble: 514,834 x 5
+<pre><code>## # A tibble: 514,834 × 5
 ##     Year word            n year_total percent
 ##    &lt;int&gt; &lt;chr&gt;       &lt;dbl&gt;      &lt;dbl&gt;   &lt;dbl&gt;
 ##  1  1789 1               0        529 0      
@@ -439,7 +439,7 @@
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Year"</span><span class="op">)</span>
 
 <span class="va">models</span></code></pre></div>
-<pre><code>## # A tibble: 115 x 6
+<pre><code>## # A tibble: 115 × 6
 ##    word           term  estimate std.error statistic  p.value
 ##    &lt;chr&gt;          &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ##  1 act            Year   0.00645   0.00207     3.11  1.85e- 3
@@ -457,7 +457,7 @@
 <code class="sourceCode R"><span class="va">models</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Year"</span><span class="op">)</span> <span class="op">%&gt;%</span>
   <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html">desc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html">abs</a></span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></code></pre></div>
-<pre><code>## # A tibble: 115 x 6
+<pre><code>## # A tibble: 115 × 6
 ##    word      term  estimate std.error statistic  p.value
 ##    &lt;chr&gt;     &lt;chr&gt;    &lt;dbl&gt;     &lt;dbl&gt;     &lt;dbl&gt;    &lt;dbl&gt;
 ##  1 americans Year    0.0310   0.00321      9.65 5.01e-22

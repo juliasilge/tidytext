@@ -268,37 +268,37 @@ words. The function will compute all skip n-grams between <code>0</code> and
 
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_ngrams</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, n <span class='op'>=</span> <span class='fl'>2</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 114,045 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 114,045 × 1</span>
 #&gt;    word         
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>        
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> pride and    
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> and prejudice
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> by jane      
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> jane austen  
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> chapter 1    
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> </span><span style='color: #BB0000;'>NA</span><span>           
-#&gt; </span><span style='color: #949494;'># … with 114,035 more rows</span><span></div><div class='input'>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>        
+#&gt; <span style='color: #BCBCBC;'> 1</span> pride and    
+#&gt; <span style='color: #BCBCBC;'> 2</span> and prejudice
+#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 4</span> by jane      
+#&gt; <span style='color: #BCBCBC;'> 5</span> jane austen  
+#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #BCBCBC;'> 9</span> chapter 1    
+#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #BB0000;'>NA</span>           
+#&gt; <span style='color: #949494;'># … with 114,035 more rows</span></div><div class='input'>
 <span class='va'>d</span> <span class='op'>%&gt;%</span>
   <span class='fu'>unnest_skip_ngrams</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span>, n <span class='op'>=</span> <span class='fl'>3</span>, k <span class='op'>=</span> <span class='fl'>1</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; </span><span style='color: #949494;'># A tibble: 700,179 x 1</span><span>
+</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 700,179 × 1</span>
 #&gt;    word               
-#&gt;    </span><span style='color: #949494;font-style: italic;'>&lt;chr&gt;</span><span>              
-#&gt; </span><span style='color: #BCBCBC;'> 1</span><span> pride              
-#&gt; </span><span style='color: #BCBCBC;'> 2</span><span> pride and          
-#&gt; </span><span style='color: #BCBCBC;'> 3</span><span> pride prejudice    
-#&gt; </span><span style='color: #BCBCBC;'> 4</span><span> pride and prejudice
-#&gt; </span><span style='color: #BCBCBC;'> 5</span><span> and                
-#&gt; </span><span style='color: #BCBCBC;'> 6</span><span> and prejudice      
-#&gt; </span><span style='color: #BCBCBC;'> 7</span><span> prejudice          
-#&gt; </span><span style='color: #BCBCBC;'> 8</span><span> </span><span style='color: #BB0000;'>NA</span><span>                 
-#&gt; </span><span style='color: #BCBCBC;'> 9</span><span> by                 
-#&gt; </span><span style='color: #BCBCBC;'>10</span><span> by jane            
-#&gt; </span><span style='color: #949494;'># … with 700,169 more rows</span><span></div><div class='input'>
-</div></span></pre>
+#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>              
+#&gt; <span style='color: #BCBCBC;'> 1</span> pride              
+#&gt; <span style='color: #BCBCBC;'> 2</span> pride and          
+#&gt; <span style='color: #BCBCBC;'> 3</span> pride prejudice    
+#&gt; <span style='color: #BCBCBC;'> 4</span> pride and prejudice
+#&gt; <span style='color: #BCBCBC;'> 5</span> and                
+#&gt; <span style='color: #BCBCBC;'> 6</span> and prejudice      
+#&gt; <span style='color: #BCBCBC;'> 7</span> prejudice          
+#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #BB0000;'>NA</span>                 
+#&gt; <span style='color: #BCBCBC;'> 9</span> by                 
+#&gt; <span style='color: #BCBCBC;'>10</span> by jane            
+#&gt; <span style='color: #949494;'># … with 700,169 more rows</span></div><div class='input'>
+</div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
