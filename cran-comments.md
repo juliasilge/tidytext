@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 19th CRAN release of tidytext. This release updates tidytext for the recent quanteda release, as requested by CRAN. This release also checks for the installation of the stopwords package more gracefully.
+This is the 20th CRAN release of tidytext. This release updates how tidytext is tested, for the upcoming release of rlang as well as the 3rd edition of testthat.
 
 ## Test environments
 
