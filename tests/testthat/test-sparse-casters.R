@@ -1,5 +1,3 @@
-context("Sparse casters")
-
 library(Matrix)
 
 dat <- tibble(
@@ -12,7 +10,7 @@ test_that("Can cast tables into a sparse Matrix", {
   m <- cast_sparse(dat, a, b)
   m2 <- cast_sparse(dat, "a", "b")
 
-  expect_is(m, "dgCMatrix")
+  expect_s4_class(m, "dgCMatrix")
   expect_equal(m, m2)
   expect_equal(sum(m), 5)
 
@@ -46,7 +44,7 @@ test_that("Can cast tables into a sparse DocumentTermMatrix", {
   d <- cast_dtm(dat, a, b, val)
   d2 <- cast_dtm(dat, "a", "b", "val")
   expect_equal(d, d2)
-  expect_is(d, "DocumentTermMatrix")
+  expect_s3_class(d, "DocumentTermMatrix")
   expect_equal(dim(d), c(2, 4))
   expect_equal(sort(tm::Docs(d)), sort(unique(dat$a)))
   expect_equal(sort(tm::Terms(d)), sort(unique(dat$b)))
@@ -59,7 +57,7 @@ test_that("Can cast tables into a sparse TermDocumentMatrix", {
   d <- cast_tdm(dat, b, a, val)
   d2 <- cast_tdm(dat, "b", "a", "val")
   expect_equal(d, d2)
-  expect_is(d, "TermDocumentMatrix")
+  expect_s3_class(d, "TermDocumentMatrix")
 
   expect_equal(dim(d), c(4, 2))
   expect_equal(sort(tm::Terms(d)), sort(unique(dat$b)))

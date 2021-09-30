@@ -1,5 +1,3 @@
-context("tf-idf calculation")
-
 w <- tibble(
   document = rep(1:2, each = 5),
   word = c(
@@ -24,10 +22,10 @@ test_that("Can calculate TF-IDF", {
     select(result, document, word, frequency)
   )
 
-  expect_is(result, "tbl_df")
-  expect_is(result$tf, "numeric")
-  expect_is(result$idf, "numeric")
-  expect_is(result$tf_idf, "numeric")
+  expect_s3_class(result, "tbl_df")
+  expect_type(result$tf, "double")
+  expect_type(result$idf, "double")
+  expect_type(result$tf_idf, "double")
 
   expect_equal(result$tf, rep(c(1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 3), 2))
   expect_equal(result$idf[1:4], c(0, log(2), 0, log(2)))
@@ -74,10 +72,10 @@ test_that("tf-idf with tidyeval works", {
     select(result, document, word, frequency)
   )
 
-  expect_is(result, "tbl_df")
-  expect_is(result$tf, "numeric")
-  expect_is(result$idf, "numeric")
-  expect_is(result$tf_idf, "numeric")
+  expect_s3_class(result, "tbl_df")
+  expect_type(result$tf, "double")
+  expect_type(result$idf, "double")
+  expect_type(result$tf_idf, "double")
 
   expect_equal(result$tf, rep(c(1 / 6, 1 / 6, 1 / 6, 1 / 6, 1 / 3), 2))
   expect_equal(result$idf[1:4], c(0, log(2), 0, log(2)))

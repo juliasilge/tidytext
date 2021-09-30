@@ -1,7 +1,3 @@
-# tests for unnest_tokens function
-
-context("Unnesting tokens")
-
 suppressPackageStartupMessages(library(dplyr))
 
 test_that("tokenizing by character works", {
@@ -76,7 +72,7 @@ test_that("tokenizing by sentence works", {
   orig$line <- c(1, 1, 2, 2)
   orig$other_line <- c("a", "a", "b", "b")
   d <- orig %>% unnest_tokens(sentence, txt, token = "sentences")
-  expect_is(d$sentence, "character")
+  expect_type(d$sentence, "character")
   expect_equal(d$sentence[1], "i'm nobody!")
 })
 
@@ -197,16 +193,11 @@ test_that("tokenizing with to_lower = FALSE works", {
 
 test_that("unnest_tokens raises an error if custom tokenizer gives bad output", {
   d <- tibble(txt = "Emily Dickinson")
-
-  expect_error(
-    unnest_tokens(d, word, txt, token = function(e) c("a", "b")),
-    "to be a list",
-    class = "rlang_error"
+  expect_snapshot_error(
+    unnest_tokens(d, word, txt, token = function(e) c("a", "b"))
   )
-  expect_error(
-    unnest_tokens(d, word, txt, token = function(e) list("a", "b")),
-    "of length",
-    class = "rlang_error"
+  expect_snapshot_error(
+    unnest_tokens(d, word, txt, token = function(e) list("a", "b"))
   )
 })
 
@@ -257,7 +248,7 @@ test_that("Tokenizing a one-column data.frame works", {
   )
   d <- unnest_tokens(text, word, txt)
 
-  expect_is(d, "data.frame")
+  expect_s3_class(d, "data.frame")
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
   expect_equal(d$word[1], "because")
@@ -274,7 +265,7 @@ test_that("Tokenizing a two-column data.frame with one non-text column works", {
   )
   d <- unnest_tokens(text, word, txt)
 
-  expect_is(d, "data.frame")
+  expect_s3_class(d, "data.frame")
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 2)
   expect_equal(d$word[1], "because")
@@ -293,7 +284,7 @@ test_that("Tokenizing with NA values in columns behaves as expected", {
   )
   d <- unnest_tokens(text, word, txt)
 
-  expect_is(d, "data.frame")
+  expect_s3_class(d, "data.frame")
   expect_equal(nrow(d), 13)
   expect_equal(ncol(d), 2)
   expect_equal(d$word[2], "because")
@@ -384,10 +375,10 @@ test_that("Tokenizing a data frame with list columns works", {
   df$list_col <- list(1L:3L, c("a", "b"))
 
   ret <- unnest_tokens(df, word, txt)
-  expect_is(ret, "data.frame")
-  expect_is(ret$line, "integer")
-  expect_is(ret$list_col, "list")
-  expect_is(ret$list_col[[1]], "integer")
+  expect_s3_class(ret, "data.frame")
+  expect_type(ret$line, "integer")
+  expect_type(ret$list_col, "list")
+  expect_type(ret$list_col[[1]], "integer")
 
   # 7 items of length 3, 5 items of length 2
   expect_equal(lengths(ret$list_col), rep(c(3, 2), c(7, 5)))
@@ -404,10 +395,10 @@ test_that("Tokenizing a tbl_df with list columns works", {
   )
 
   ret <- unnest_tokens(df, word, txt)
-  expect_is(ret, "tbl_df")
-  expect_is(ret$line, "integer")
-  expect_is(ret$list_col, "list")
-  expect_is(ret$list_col[[1]], "integer")
+  expect_s3_class(ret, "tbl_df")
+  expect_type(ret$line, "integer")
+  expect_type(ret$list_col, "list")
+  expect_type(ret$list_col[[1]], "integer")
 
   # 7 items of length 3, 5 items of length 2
   expect_equal(lengths(ret$list_col), rep(c(3, 2), c(7, 5)))

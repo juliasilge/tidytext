@@ -1,4 +1,3 @@
-context("LDA tidiers")
 
 suppressPackageStartupMessages(library(dplyr))
 
@@ -11,17 +10,17 @@ if (require("topicmodels", quietly = TRUE)) {
   test_that("can tidy beta matrix", {
     td <- tidy.LDA(lda, matrix = "beta")
     td2 <- tidy.CTM(ctm, matrix = "beta")
-    expect_is(td, "tbl_df")
-    expect_is(td2, "tbl_df")
+    expect_s3_class(td, "tbl_df")
+    expect_s3_class(td2, "tbl_df")
 
     expect_equal(colnames(td), c("topic", "term", "beta"))
     expect_equal(colnames(td2), c("topic", "term", "beta"))
 
-    expect_is(td$term, "character")
-    expect_is(td$beta, "numeric")
+    expect_type(td$term, "character")
+    expect_type(td$beta, "double")
     expect_equal(unique(td$topic), 1:4)
-    expect_is(td2$term, "character")
-    expect_is(td2$beta, "numeric")
+    expect_type(td2$term, "character")
+    expect_type(td2$beta, "double")
     expect_equal(unique(td2$topic), 1:4)
 
     expect_gt(nrow(td), 10000)
@@ -42,17 +41,17 @@ if (require("topicmodels", quietly = TRUE)) {
 
   test_that("can tidy gamma matrix", {
     td <- tidy.LDA(lda, matrix = "gamma")
-    expect_is(td, "tbl_df")
+    expect_s3_class(td, "tbl_df")
     td2 <- tidy.CTM(ctm, matrix = "gamma")
-    expect_is(td2, "tbl_df")
+    expect_s3_class(td2, "tbl_df")
 
     expect_equal(colnames(td), c("document", "topic", "gamma"))
     expect_equal(colnames(td2), c("document", "topic", "gamma"))
 
-    expect_is(td$document, "integer")
-    expect_is(td$gamma, "numeric")
-    expect_is(td2$document, "integer")
-    expect_is(td2$gamma, "numeric")
+    expect_type(td$document, "integer")
+    expect_type(td$gamma, "double")
+    expect_type(td2$document, "integer")
+    expect_type(td2$gamma, "double")
 
     expect_equal(nrow(td), 400)
     expect_equal(unique(td$topic), 1:4)
@@ -72,9 +71,9 @@ if (require("topicmodels", quietly = TRUE)) {
 
   test_that("can augment an LDA output", {
     au <- augment.LDA(lda)
-    expect_is(au, "tbl_df")
+    expect_s3_class(au, "tbl_df")
     au2 <- augment.CTM(ctm)
-    expect_is(au2, "tbl_df")
+    expect_s3_class(au2, "tbl_df")
     expect_equal(colnames(au), c("document", "term", ".topic"))
     expect_equal(sort(unique(au$.topic)), 1:4)
 
@@ -93,7 +92,7 @@ if (require("topicmodels", quietly = TRUE)) {
     au2 <- augment.LDA(lda, data = ap_tidied2)
     expect_equal(au$document, au2$document)
     expect_equal(au$term, au2$term)
-    expect_is(au2$starts_a, "logical")
+    expect_type(au2$starts_a, "logical")
     expect_equal(stringr::str_detect(au2$term, "^a"), au2$starts_a)
 
     # can give document term matrix
@@ -105,10 +104,10 @@ if (require("topicmodels", quietly = TRUE)) {
 
   test_that("can glance an LDA output", {
     g <- glance.LDA(lda)
-    expect_is(g, "tbl_df")
+    expect_s3_class(g, "tbl_df")
     expect_equal(nrow(g), 1)
     expect_equal(g$terms, 19253)
     g2 <- glance.CTM(lda)
-    expect_is(g2, "tbl_df")
+    expect_s3_class(g2, "tbl_df")
   })
 }

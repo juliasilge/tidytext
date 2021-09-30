@@ -1,4 +1,3 @@
-context("Corpus tidiers")
 
 test_that("Can tidy corpus from tm package", {
   skip_if_not_installed("tm")

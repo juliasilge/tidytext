@@ -1,5 +1,3 @@
-context("sentiments")
-
 suppressPackageStartupMessages(library(dplyr))
 
 test_data <- tibble(

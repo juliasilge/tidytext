@@ -1,4 +1,3 @@
-context("stm tidiers")
 
 suppressPackageStartupMessages(library(dplyr))
 
@@ -13,12 +12,12 @@ if (require("stm", quietly = TRUE)) {
 
   test_that("can tidy beta matrix", {
     td <- tidy(stm_model, matrix = "beta")
-    expect_is(td, "tbl_df")
+    expect_s3_class(td, "tbl_df")
 
     expect_equal(colnames(td), c("topic", "term", "beta"))
 
-    expect_is(td$term, "character")
-    expect_is(td$beta, "numeric")
+    expect_type(td$term, "character")
+    expect_type(td$beta, "double")
     expect_equal(unique(td$topic), 1:3)
 
     expect_gt(nrow(td), 10)
@@ -36,12 +35,12 @@ if (require("stm", quietly = TRUE)) {
 
   test_that("can tidy gamma matrix", {
     td <- tidy(stm_model, matrix = "gamma")
-    expect_is(td, "tbl_df")
+    expect_s3_class(td, "tbl_df")
 
     expect_equal(colnames(td), c("document", "topic", "gamma"))
 
-    expect_is(td$document, "integer")
-    expect_is(td$gamma, "numeric")
+    expect_type(td$document, "integer")
+    expect_type(td$gamma, "double")
 
     expect_equal(nrow(td), 6)
     expect_equal(unique(td$topic), 1:3)
@@ -59,7 +58,7 @@ if (require("stm", quietly = TRUE)) {
   test_that("can augment an stm output", {
     skip_if_not_installed("quanteda")
     au <- augment(stm_model, dat)
-    expect_is(au, "tbl_df")
+    expect_s3_class(au, "tbl_df")
     expect_equal(colnames(au), c(colnames(dat), ".topic"))
     expect_equal(sort(unique(au$.topic)), 1:3)
 
@@ -76,13 +75,13 @@ if (require("stm", quietly = TRUE)) {
     au2 <- augment(stm_model, data = inaug_tidied2)
     expect_equal(au$document, au2$document)
     expect_equal(au$term, au2$term)
-    expect_is(au2$starts_c, "logical")
+    expect_type(au2$starts_c, "logical")
     expect_equal(stringr::str_detect(au2$term, "^c"), au2$starts_c)
   })
 
   test_that("can glance an stm output", {
     g <- glance(stm_model)
-    expect_is(g, "tbl_df")
+    expect_s3_class(g, "tbl_df")
     expect_equal(nrow(g), 1)
     expect_equal(g$terms, 4)
   })
@@ -91,16 +90,16 @@ if (require("stm", quietly = TRUE)) {
 
   test_that("can tidy estimateEffect object with one topic", {
     td <- tidy(stm_estimate_one_topic)
-    expect_is(td, "tbl_df")
+    expect_s3_class(td, "tbl_df")
 
     expect_equal(colnames(td), c("topic", "term", "estimate", "std.error", "statistic", "p.value"))
 
-    expect_is(td$topic, "integer")
-    expect_is(td$term, "character")
-    expect_is(td$estimate, "numeric")
-    expect_is(td$std.error, "numeric")
-    expect_is(td$statistic, "numeric")
-    expect_is(td$p.value, "numeric")
+    expect_type(td$topic, "integer")
+    expect_type(td$term, "character")
+    expect_type(td$estimate, "double")
+    expect_type(td$std.error, "double")
+    expect_type(td$statistic, "double")
+    expect_type(td$p.value, "double")
 
     expect_equal(unique(td$topic), 1)
 
@@ -111,11 +110,11 @@ if (require("stm", quietly = TRUE)) {
 
   test_that("can glance estimateEffect object with one topic", {
     gla <- glance(stm_estimate_one_topic)
-    expect_is(gla, "tbl_df")
+    expect_s3_class(gla, "tbl_df")
     expect_equal(colnames(gla), c("k", "docs", "uncertainty"))
-    expect_is(gla$k, "integer")
-    expect_is(gla$docs, "integer")
-    expect_is(gla$uncertainty, "character")
+    expect_type(gla$k, "integer")
+    expect_type(gla$docs, "integer")
+    expect_type(gla$uncertainty, "character")
     expect_equal(nrow(gla), 1)
   })
 
@@ -123,16 +122,16 @@ if (require("stm", quietly = TRUE)) {
   stm_estimate_three_topic_interaction <- estimateEffect(c(1:3) ~ treatment*s(pid_rep), gadarianFit, gadarian)
   test_that("can tidy estimateEffect object with three topics and an interaction term", {
     td <- tidy(stm_estimate_three_topic_interaction)
-    expect_is(td, "tbl_df")
+    expect_s3_class(td, "tbl_df")
 
     expect_equal(colnames(td), c("topic", "term", "estimate", "std.error", "statistic", "p.value"))
 
-    expect_is(td$topic, "integer")
-    expect_is(td$term, "character")
-    expect_is(td$estimate, "numeric")
-    expect_is(td$std.error, "numeric")
-    expect_is(td$statistic, "numeric")
-    expect_is(td$p.value, "numeric")
+    expect_type(td$topic, "integer")
+    expect_type(td$term, "character")
+    expect_type(td$estimate, "double")
+    expect_type(td$std.error, "double")
+    expect_type(td$statistic, "double")
+    expect_type(td$p.value, "double")
 
     expect_equal(unique(td$topic), c(1:3))
 

@@ -1,77 +1,101 @@
-Package: tidytext
 Type: Package
+Package: tidytext
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
 Version: 0.3.1.9000
-Authors@R: c(person("Gabriela", "De Queiroz", role = c("ctb"),
+Authors@R: 
+    c(person(given = "Gabriela",
+             family = "De Queiroz",
+             role = "ctb",
              email = "gabidequeiroz@gmail.com"),
-             person("Colin", "Fay", role = c("ctb"),
+      person(given = "Colin",
+             family = "Fay",
+             role = "ctb",
              email = "contact@colinfay.me",
              comment = c(ORCID = "0000-0001-7343-1846")),
-             person("Emil", "Hvitfeldt", role = c("ctb"),
+      person(given = "Emil",
+             family = "Hvitfeldt",
+             role = "ctb",
              email = "emilhhvitfeldt@gmail.com"),
-             person("Os", "Keyes", role = c("ctb"),
+      person(given = "Os",
+             family = "Keyes",
+             role = "ctb",
              email = "ironholds@gmail.com",
              comment = c(ORCID = "0000-0001-5196-609X")),
-             person("Kanishka", "Misra", role = c("ctb"),
+      person(given = "Kanishka",
+             family = "Misra",
+             role = "ctb",
              email = "kmisra@purdue.edu"),
-             person("Tim", "Mastny", role = c("ctb"),
+      person(given = "Tim",
+             family = "Mastny",
+             role = "ctb",
              email = "tim.mastny@gmail.com"),
-             person("Jeff", "Erickson", role = c("ctb"),
+      person(given = "Jeff",
+             family = "Erickson",
+             role = "ctb",
              email = "jeff@erick.so"),
-             person("David", "Robinson", role = c("aut"),
+      person(given = "David",
+             family = "Robinson",
+             role = "aut",
              email = "admiral.david@gmail.com"),
-             person("Julia", "Silge", role = c("aut", "cre"), 
-             email = "julia.silge@gmail.com", 
+      person(given = "Julia",
+             family = "Silge",
+             role = c("aut", "cre"),
+             email = "julia.silge@gmail.com",
              comment = c(ORCID = "0000-0002-3671-836X")))
-Description: Using tidy data principles can make many text mining tasks easier, 
-    more effective, and consistent with tools already in wide use. Much of the 
-    infrastructure needed for text mining with tidy data frames already exists 
-    in packages like 'dplyr', 'broom', 'tidyr', and 'ggplot2'. In this package, 
-    we provide functions and supporting data sets to allow conversion of text 
-    to and from tidy formats, and to switch seamlessly between tidy tools and 
-    existing text mining packages.
+Description: Using tidy data principles can make many text mining tasks
+    easier, more effective, and consistent with tools already in wide use.
+    Much of the infrastructure needed for text mining with tidy data
+    frames already exists in packages like 'dplyr', 'broom', 'tidyr', and
+    'ggplot2'. In this package, we provide functions and supporting data
+    sets to allow conversion of text to and from tidy formats, and to
+    switch seamlessly between tidy tools and existing text mining
+    packages.
 License: MIT + file LICENSE
-Encoding: UTF-8
-LazyData: TRUE
 URL: https://github.com/juliasilge/tidytext
 BugReports: https://github.com/juliasilge/tidytext/issues
-Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1.9001
-Depends: R (>= 2.10)
-Imports: rlang (>= 0.4.10),
-    tibble,
+Depends: 
+    R (>= 2.10)
+Imports: 
     dplyr,
-    stringr,
-    hunspell,
     generics,
+    hunspell,
+    janeaustenr,
     lifecycle,
     Matrix,
-    tokenizers,
-    janeaustenr,
-    purrr (>= 0.1.1),
     methods,
+    purrr (>= 0.1.1),
+    rlang (>= 0.4.10),
+    stringr,
+    tibble,
+    tokenizers,
     vctrs
 Suggests: 
-    readr,
-    tidyr,
-    XML,
-    tm,
-    quanteda,
-    knitr,
-    rmarkdown,
-    ggplot2,
-    reshape2,
-    wordcloud,
-    topicmodels,
-    NLP,
-    scales,
-    testthat (>= 2.1.0),
-    vdiffr,
-    mallet,
-    stm,
-    data.table,
     broom,
-    textdata,
+    covr,
+    data.table,
+    ggplot2,
+    knitr,
+    mallet,
+    NLP,
+    quanteda,
+    readr,
+    reshape2,
+    rmarkdown,
+    scales,
+    stm,
     stopwords,
-    covr
-VignetteBuilder: knitr
+    testthat (>= 2.1.0),
+    textdata,
+    tidyr,
+    tm,
+    topicmodels,
+    vdiffr,
+    wordcloud,
+    XML
+VignetteBuilder: 
+    knitr
+Config/testthat/edition: 3
+Encoding: UTF-8
+LazyData: TRUE
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2

@@ -1,5 +1,5 @@
 expect_nrow <- function(tbl, n){
-  expect_is(tbl, "data.frame")
+  expect_s3_class(tbl, "data.frame")
   expect_equal(nrow(tbl), n)
 }
 
