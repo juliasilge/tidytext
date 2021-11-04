@@ -178,66 +178,70 @@ languages.</p></td>
 parameter <code>lexicon</code> is "quanteda" in this case.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='fu'>get_stopwords</span><span class='op'>(</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 175 × 2</span>
-#&gt;    word      lexicon 
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span> i         snowball
-#&gt; <span style='color: #BCBCBC;'> 2</span> me        snowball
-#&gt; <span style='color: #BCBCBC;'> 3</span> my        snowball
-#&gt; <span style='color: #BCBCBC;'> 4</span> myself    snowball
-#&gt; <span style='color: #BCBCBC;'> 5</span> we        snowball
-#&gt; <span style='color: #BCBCBC;'> 6</span> our       snowball
-#&gt; <span style='color: #BCBCBC;'> 7</span> ours      snowball
-#&gt; <span style='color: #BCBCBC;'> 8</span> ourselves snowball
-#&gt; <span style='color: #BCBCBC;'> 9</span> you       snowball
-#&gt; <span style='color: #BCBCBC;'>10</span> your      snowball
-#&gt; <span style='color: #949494;'># … with 165 more rows</span></div><div class='input'><span class='fu'>get_stopwords</span><span class='op'>(</span>source <span class='op'>=</span> <span class='st'>"smart"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 571 × 2</span>
-#&gt;    word        lexicon
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  
-#&gt; <span style='color: #BCBCBC;'> 1</span> a           smart  
-#&gt; <span style='color: #BCBCBC;'> 2</span> a's         smart  
-#&gt; <span style='color: #BCBCBC;'> 3</span> able        smart  
-#&gt; <span style='color: #BCBCBC;'> 4</span> about       smart  
-#&gt; <span style='color: #BCBCBC;'> 5</span> above       smart  
-#&gt; <span style='color: #BCBCBC;'> 6</span> according   smart  
-#&gt; <span style='color: #BCBCBC;'> 7</span> accordingly smart  
-#&gt; <span style='color: #BCBCBC;'> 8</span> across      smart  
-#&gt; <span style='color: #BCBCBC;'> 9</span> actually    smart  
-#&gt; <span style='color: #BCBCBC;'>10</span> after       smart  
-#&gt; <span style='color: #949494;'># … with 561 more rows</span></div><div class='input'><span class='fu'>get_stopwords</span><span class='op'>(</span><span class='st'>"es"</span>, <span class='st'>"snowball"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 308 × 2</span>
-#&gt;    word  lexicon 
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span> de    snowball
-#&gt; <span style='color: #BCBCBC;'> 2</span> la    snowball
-#&gt; <span style='color: #BCBCBC;'> 3</span> que   snowball
-#&gt; <span style='color: #BCBCBC;'> 4</span> el    snowball
-#&gt; <span style='color: #BCBCBC;'> 5</span> en    snowball
-#&gt; <span style='color: #BCBCBC;'> 6</span> y     snowball
-#&gt; <span style='color: #BCBCBC;'> 7</span> a     snowball
-#&gt; <span style='color: #BCBCBC;'> 8</span> los   snowball
-#&gt; <span style='color: #BCBCBC;'> 9</span> del   snowball
-#&gt; <span style='color: #BCBCBC;'>10</span> se    snowball
-#&gt; <span style='color: #949494;'># … with 298 more rows</span></div><div class='input'><span class='fu'>get_stopwords</span><span class='op'>(</span><span class='st'>"ru"</span>, <span class='st'>"snowball"</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 159 × 2</span>
-#&gt;    word  lexicon 
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   
-#&gt; <span style='color: #BCBCBC;'> 1</span> и     snowball
-#&gt; <span style='color: #BCBCBC;'> 2</span> в     snowball
-#&gt; <span style='color: #BCBCBC;'> 3</span> во    snowball
-#&gt; <span style='color: #BCBCBC;'> 4</span> не    snowball
-#&gt; <span style='color: #BCBCBC;'> 5</span> что   snowball
-#&gt; <span style='color: #BCBCBC;'> 6</span> он    snowball
-#&gt; <span style='color: #BCBCBC;'> 7</span> на    snowball
-#&gt; <span style='color: #BCBCBC;'> 8</span> я     snowball
-#&gt; <span style='color: #BCBCBC;'> 9</span> с     snowball
-#&gt; <span style='color: #BCBCBC;'>10</span> со    snowball
-#&gt; <span style='color: #949494;'># … with 149 more rows</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='fu'>get_stopwords</span><span class='op'>(</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 175 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    word      lexicon </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> i         snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> me        snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> my        snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> myself    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> we        snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> our       snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> ours      snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> ourselves snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> you       snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> your      snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 165 more rows</span></span>
+<span class='r-in'><span class='fu'>get_stopwords</span><span class='op'>(</span>source <span class='op'>=</span> <span class='st'>"smart"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 571 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    word        lexicon</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>       <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> a           smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> a's         smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> able        smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> about       smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> above       smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> according   smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> accordingly smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> across      smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> actually    smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> after       smart  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 561 more rows</span></span>
+<span class='r-in'><span class='fu'>get_stopwords</span><span class='op'>(</span><span class='st'>"es"</span>, <span class='st'>"snowball"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 308 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    word  lexicon </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> de    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> la    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> que   snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> el    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> en    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> y     snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> a     snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> los   snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> del   snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> se    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 298 more rows</span></span>
+<span class='r-in'><span class='fu'>get_stopwords</span><span class='op'>(</span><span class='st'>"ru"</span>, <span class='st'>"snowball"</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 159 × 2</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    word  lexicon </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> и     snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> в     snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> во    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> не    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> что   snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> он    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> на    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> я     snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> с     snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> со    snowball</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 149 more rows</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

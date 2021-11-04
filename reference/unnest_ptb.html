@@ -146,7 +146,7 @@
     </div>
 
     <div class="ref-description">
-    <p>This function is a wrapper around <code><a href='unnest_tokens.html'>unnest_tokens( token = "ptb" )</a></code>.</p>
+    <p>This function is a wrapper around <code>unnest_tokens( token = "ptb" )</code>.</p>
     </div>
 
     <pre class="usage"><span class='fu'>unnest_ptb</span><span class='op'>(</span>
@@ -222,28 +222,29 @@ grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams
 </div>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span>
-<span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/juliasilge/janeaustenr'>janeaustenr</a></span><span class='op'>)</span>
-
-<span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>txt <span class='op'>=</span> <span class='va'>prideprejudice</span><span class='op'>)</span>
-
-<span class='va'>d</span> <span class='op'>%&gt;%</span>
-  <span class='fu'>unnest_ptb</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 141,310 × 1</span>
-#&gt;    word       
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      
-#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>pride<span style='color: #949494;'>"</span>    
-#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>and<span style='color: #949494;'>"</span>      
-#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>prejudice<span style='color: #949494;'>"</span>
-#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>""</span>         
-#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>by<span style='color: #949494;'>"</span>       
-#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>jane<span style='color: #949494;'>"</span>     
-#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>austen<span style='color: #949494;'>"</span>   
-#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>""</span>         
-#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>""</span>         
-#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>""</span>         
-#&gt; <span style='color: #949494;'># … with 141,300 more rows</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://dplyr.tidyverse.org'>dplyr</a></span><span class='op'>)</span></span>
+<span class='r-in'><span class='kw'><a href='https://rdrr.io/r/base/library.html'>library</a></span><span class='op'>(</span><span class='va'><a href='https://github.com/juliasilge/janeaustenr'>janeaustenr</a></span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>d</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://tibble.tidyverse.org/reference/tibble.html'>tibble</a></span><span class='op'>(</span>txt <span class='op'>=</span> <span class='va'>prideprejudice</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='va'>d</span> <span class='op'><a href='https://magrittr.tidyverse.org/reference/pipe.html'>%&gt;%</a></span></span>
+<span class='r-in'>  <span class='fu'>unnest_ptb</span><span class='op'>(</span><span class='va'>word</span>, <span class='va'>txt</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 141,310 × 1</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    word       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>pride<span style='color: #949494;'>"</span>    </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>and<span style='color: #949494;'>"</span>      </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>prejudice<span style='color: #949494;'>"</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>""</span>         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>by<span style='color: #949494;'>"</span>       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>jane<span style='color: #949494;'>"</span>     </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>austen<span style='color: #949494;'>"</span>   </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>""</span>         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>""</span>         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>""</span>         </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 141,300 more rows</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

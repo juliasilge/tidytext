@@ -191,22 +191,24 @@ column, and with as many non-zero values as there are rows in <code>data</code>.
 <a href='https://rlang.r-lib.org/reference/nse-force.html'>quasiquotation</a>; you can unquote strings and symbols.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"row1"</span>, <span class='st'>"row1"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span><span class='op'>)</span>,
-                  b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"col1"</span>, <span class='st'>"col2"</span>, <span class='st'>"col1"</span>, <span class='st'>"col3"</span>, <span class='st'>"col4"</span><span class='op'>)</span>,
-                  val <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span>
-
-<span class='fu'>cast_sparse</span><span class='op'>(</span><span class='va'>dat</span>, <span class='va'>a</span>, <span class='va'>b</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
-#&gt;      col1 col2 col3 col4
-#&gt; row1    1    1    .    .
-#&gt; row2    1    .    1    1</div><div class='input'>
-<span class='fu'>cast_sparse</span><span class='op'>(</span><span class='va'>dat</span>, <span class='va'>a</span>, <span class='va'>b</span>, <span class='va'>val</span><span class='op'>)</span>
-</div><div class='output co'>#&gt; 2 x 4 sparse Matrix of class "dgCMatrix"
-#&gt;      col1 col2 col3 col4
-#&gt; row1    1    2    .    .
-#&gt; row2    3    .    4    5</div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='va'>dat</span> <span class='op'>&lt;-</span> <span class='fu'><a href='https://rdrr.io/r/base/data.frame.html'>data.frame</a></span><span class='op'>(</span>a <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"row1"</span>, <span class='st'>"row1"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span>, <span class='st'>"row2"</span><span class='op'>)</span>,</span>
+<span class='r-in'>                  b <span class='op'>=</span> <span class='fu'><a href='https://rdrr.io/r/base/c.html'>c</a></span><span class='op'>(</span><span class='st'>"col1"</span>, <span class='st'>"col2"</span>, <span class='st'>"col1"</span>, <span class='st'>"col3"</span>, <span class='st'>"col4"</span><span class='op'>)</span>,</span>
+<span class='r-in'>                  val <span class='op'>=</span> <span class='fl'>1</span><span class='op'>:</span><span class='fl'>5</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>cast_sparse</span><span class='op'>(</span><span class='va'>dat</span>, <span class='va'>a</span>, <span class='va'>b</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 x 4 sparse Matrix of class "dgCMatrix"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      col1 col2 col3 col4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> row1    1    1    .    .</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> row2    1    .    1    1</span>
+<span class='r-in'></span>
+<span class='r-in'><span class='fu'>cast_sparse</span><span class='op'>(</span><span class='va'>dat</span>, <span class='va'>a</span>, <span class='va'>b</span>, <span class='va'>val</span><span class='op'>)</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> 2 x 4 sparse Matrix of class "dgCMatrix"</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>      col1 col2 col3 col4</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> row1    1    2    .    .</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> row2    3    .    4    5</span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">

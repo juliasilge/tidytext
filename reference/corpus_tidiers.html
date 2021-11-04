@@ -188,29 +188,30 @@ to be consistent with other uses in tidytext.</p>
 with NULL fields removed and turned into a one-row tbl_df.</p>
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'>
-<span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"quanteda"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span>
- <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"data_corpus_inaugural"</span>, package <span class='op'>=</span> <span class='st'>"quanteda"</span><span class='op'>)</span>
-
- <span class='va'>data_corpus_inaugural</span>
-
- <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>data_corpus_inaugural</span><span class='op'>)</span>
-<span class='op'>}</span>
-</div><div class='output co'>#&gt; <span style='color: #949494;'># A tibble: 59 × 5</span>
-#&gt;    text                                   Year President  FirstName Party       
-#&gt;    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                 <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>       
-#&gt; <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>Fellow-Citizens of the Senate and o…  <span style='text-decoration: underline;'>1</span>789 Washington George    none        
-#&gt; <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>Fellow citizens, I am again called …  <span style='text-decoration: underline;'>1</span>793 Washington George    none        
-#&gt; <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>When it was first perceived, in ear…  <span style='text-decoration: underline;'>1</span>797 Adams      John      Federalist  
-#&gt; <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>"</span>Friends and Fellow Citizens:\n\nCal…  <span style='text-decoration: underline;'>1</span>801 Jefferson  Thomas    Democratic-…
-#&gt; <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>Proceeding, fellow citizens, to tha…  <span style='text-decoration: underline;'>1</span>805 Jefferson  Thomas    Democratic-…
-#&gt; <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>Unwilling to depart from examples o…  <span style='text-decoration: underline;'>1</span>809 Madison    James     Democratic-…
-#&gt; <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>About to add the solemnity of an oa…  <span style='text-decoration: underline;'>1</span>813 Madison    James     Democratic-…
-#&gt; <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>"</span>I should be destitute of feeling if…  <span style='text-decoration: underline;'>1</span>817 Monroe     James     Democratic-…
-#&gt; <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>"</span>Fellow citizens, I shall not attemp…  <span style='text-decoration: underline;'>1</span>821 Monroe     James     Democratic-…
-#&gt; <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>"</span>In compliance with an usage coeval …  <span style='text-decoration: underline;'>1</span>825 Adams      John Qui… Democratic-…
-#&gt; <span style='color: #949494;'># … with 49 more rows</span></div><div class='input'>
-</div></pre>
+    <pre class="examples"><span class='r-in'></span>
+<span class='r-in'><span class='kw'>if</span> <span class='op'>(</span><span class='fu'><a href='https://rdrr.io/r/base/ns-load.html'>requireNamespace</a></span><span class='op'>(</span><span class='st'>"quanteda"</span>, quietly <span class='op'>=</span> <span class='cn'>TRUE</span><span class='op'>)</span><span class='op'>)</span> <span class='op'>{</span></span>
+<span class='r-in'> <span class='fu'><a href='https://rdrr.io/r/utils/data.html'>data</a></span><span class='op'>(</span><span class='st'>"data_corpus_inaugural"</span>, package <span class='op'>=</span> <span class='st'>"quanteda"</span><span class='op'>)</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='va'>data_corpus_inaugural</span></span>
+<span class='r-in'></span>
+<span class='r-in'> <span class='fu'><a href='https://generics.r-lib.org/reference/tidy.html'>tidy</a></span><span class='op'>(</span><span class='va'>data_corpus_inaugural</span><span class='op'>)</span></span>
+<span class='r-in'><span class='op'>}</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># A tibble: 59 × 5</span></span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    text                                   Year President  FirstName Party       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span>    <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>                                 <span style='color: #949494; font-style: italic;'>&lt;int&gt;</span> <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>      <span style='color: #949494; font-style: italic;'>&lt;chr&gt;</span>     <span style='color: #949494; font-style: italic;'>&lt;fct&gt;</span>       </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 1</span> <span style='color: #949494;'>"</span>Fellow-Citizens of the Senate and o…  <span style='text-decoration: underline;'>1</span>789 Washington George    none        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 2</span> <span style='color: #949494;'>"</span>Fellow citizens, I am again called …  <span style='text-decoration: underline;'>1</span>793 Washington George    none        </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 3</span> <span style='color: #949494;'>"</span>When it was first perceived, in ear…  <span style='text-decoration: underline;'>1</span>797 Adams      John      Federalist  </span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 4</span> <span style='color: #949494;'>"</span>Friends and Fellow Citizens:\n\nCal…  <span style='text-decoration: underline;'>1</span>801 Jefferson  Thomas    Democratic-…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 5</span> <span style='color: #949494;'>"</span>Proceeding, fellow citizens, to tha…  <span style='text-decoration: underline;'>1</span>805 Jefferson  Thomas    Democratic-…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 6</span> <span style='color: #949494;'>"</span>Unwilling to depart from examples o…  <span style='text-decoration: underline;'>1</span>809 Madison    James     Democratic-…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 7</span> <span style='color: #949494;'>"</span>About to add the solemnity of an oa…  <span style='text-decoration: underline;'>1</span>813 Madison    James     Democratic-…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 8</span> <span style='color: #949494;'>"</span>I should be destitute of feeling if…  <span style='text-decoration: underline;'>1</span>817 Monroe     James     Democratic-…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'> 9</span> <span style='color: #949494;'>"</span>Fellow citizens, I shall not attemp…  <span style='text-decoration: underline;'>1</span>821 Monroe     James     Democratic-…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #BCBCBC;'>10</span> <span style='color: #949494;'>"</span>In compliance with an usage coeval …  <span style='text-decoration: underline;'>1</span>825 Adams      John Qui… Democratic-…</span>
+<span class='r-out co'><span class='r-pr'>#&gt;</span> <span style='color: #949494;'># … with 49 more rows</span></span>
+<span class='r-in'></span>
+</pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
     <nav id="toc" data-toggle="toc" class="sticky-top">
