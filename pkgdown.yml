@@ -1,10 +1,10 @@
 pandoc: 2.7.3
-pkgdown: 1.6.1
-pkgdown_sha: ~
+pkgdown: 1.9000.9000.9000
+pkgdown_sha: ae9e62a2ee41edb45d732ee42bc19077da374169
 articles:
-  articles/topic_modeling: topic_modeling.html
+  topic_modeling: articles/topic_modeling.html
   tf_idf: tf_idf.html
   tidying_casting: tidying_casting.html
   tidytext: tidytext.html
-last_built: 2021-11-04T20:38Z
+last_built: 2021-11-04T20:46Z
 
