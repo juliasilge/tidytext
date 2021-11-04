@@ -1,5 +1,3 @@
-destination: docs
-
 template:
   params:
     bootswatch: cosmo

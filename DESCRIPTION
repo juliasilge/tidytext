@@ -2,46 +2,20 @@ Type: Package
 Package: tidytext
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
 Version: 0.3.2.9000
-Authors@R: 
-    c(person(given = "Gabriela",
-             family = "De Queiroz",
-             role = "ctb",
-             email = "gabidequeiroz@gmail.com"),
-      person(given = "Colin",
-             family = "Fay",
-             role = "ctb",
-             email = "contact@colinfay.me",
-             comment = c(ORCID = "0000-0001-7343-1846")),
-      person(given = "Emil",
-             family = "Hvitfeldt",
-             role = "ctb",
-             email = "emilhhvitfeldt@gmail.com"),
-      person(given = "Os",
-             family = "Keyes",
-             role = "ctb",
-             email = "ironholds@gmail.com",
-             comment = c(ORCID = "0000-0001-5196-609X")),
-      person(given = "Kanishka",
-             family = "Misra",
-             role = "ctb",
-             email = "kmisra@purdue.edu"),
-      person(given = "Tim",
-             family = "Mastny",
-             role = "ctb",
-             email = "tim.mastny@gmail.com"),
-      person(given = "Jeff",
-             family = "Erickson",
-             role = "ctb",
-             email = "jeff@erick.so"),
-      person(given = "David",
-             family = "Robinson",
-             role = "aut",
-             email = "admiral.david@gmail.com"),
-      person(given = "Julia",
-             family = "Silge",
-             role = c("aut", "cre"),
-             email = "julia.silge@gmail.com",
-             comment = c(ORCID = "0000-0002-3671-836X")))
+Authors@R: c(
+    person("Gabriela", "De Queiroz", , "gabidequeiroz@gmail.com", role = "ctb"),
+    person("Colin", "Fay", , "contact@colinfay.me", role = "ctb",
+           comment = c(ORCID = "0000-0001-7343-1846")),
+    person("Emil", "Hvitfeldt", , "emilhhvitfeldt@gmail.com", role = "ctb"),
+    person("Os", "Keyes", , "ironholds@gmail.com", role = "ctb",
+           comment = c(ORCID = "0000-0001-5196-609X")),
+    person("Kanishka", "Misra", , "kmisra@purdue.edu", role = "ctb"),
+    person("Tim", "Mastny", , "tim.mastny@gmail.com", role = "ctb"),
+    person("Jeff", "Erickson", , "jeff@erick.so", role = "ctb"),
+    person("David", "Robinson", , "admiral.david@gmail.com", role = "aut"),
+    person("Julia", "Silge", , "julia.silge@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-3671-836X"))
+  )
 Description: Using tidy data principles can make many text mining tasks
     easier, more effective, and consistent with tools already in wide use.
     Much of the infrastructure needed for text mining with tidy data
@@ -94,6 +68,8 @@ Suggests:
     XML
 VignetteBuilder: 
     knitr
+Config/Needs/website: 
+    ropensci/gutenbergr
 Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: TRUE

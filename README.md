@@ -14,8 +14,8 @@ status](https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg)]
 [![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
 [![cran
 checks](https://cranchecks.info/badges/summary/tidytext)](https://cran.r-project.org/web/checks/check_results_tidytext.html)
-[![Coverage
-Status](https://img.shields.io/codecov/c/github/juliasilge/tidytext/master.svg)](https://codecov.io/github/juliasilge/tidytext?branch=master)
+[![Codecov test
+coverage](https://codecov.io/gh/juliasilge/tidytext/branch/main/graph/badge.svg)](https://app.codecov.io/gh/juliasilge/tidytext?branch=main)
 [![DOI](https://zenodo.org/badge/22224/juliasilge/tidytext.svg)](https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext)
 [![JOSS](https://joss.theoj.org/papers/10.21105/joss.00037/status.svg)](https://joss.theoj.org/papers/10.21105/joss.00037)
 [![Downloads](https://cranlogs.r-pkg.org/badges/tidytext)](https://CRAN.R-project.org/package=tidytext)
@@ -312,7 +312,7 @@ and from document term matrices.
 ### Community Guidelines
 
 This project is released with a [Contributor Code of
-Conduct](https://github.com/juliasilge/tidytext/blob/master/CONDUCT.md).
+Conduct](https://github.com/juliasilge/tidytext/blob/main/CONDUCT.md).
 By participating in this project you agree to abide by its terms.
 Feedback, bug reports (and fixes!), and feature requests are welcome;
 file issues or seek support
