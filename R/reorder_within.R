@@ -14,7 +14,9 @@
 #' variables.
 #' @param fun Function to perform within each subset to determine the resulting
 #' ordering. By default, mean.
-#' @param sep Separator to distinguish the two. You may want to set this
+#' @param labels Function to transform the labels of
+#' [ggplot2::scale_x_discrete()], by default `reorder_func`.
+#' @param sep Separator to distinguish `by` and `within`. You may want to set this
 #' manually if ___ can exist within one of your labels.
 #' @param ... In \code{reorder_within} arguments passed on to
 #' \code{\link{reorder}}. In the scale functions, extra arguments passed on to
@@ -49,6 +51,7 @@
 #'   scale_x_reordered() +
 #'   facet_wrap(vs ~ am, scales = "free_x")
 #'
+#' @importFrom lifecycle deprecated
 #' @export
 reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
   if (!is.list(within)) {
@@ -62,15 +65,39 @@ reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
 
 #' @rdname reorder_within
 #' @export
-scale_x_reordered <- function(..., sep = "___") {
-  reg <- paste0(sep, ".+$")
-  ggplot2::scale_x_discrete(labels = function(x) gsub(reg, "", x), ...)
+scale_x_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
+
+  if (lifecycle::is_present(sep)) {
+    lifecycle::deprecate_soft(
+      "0.3.3",
+      "scale_x_reordered(sep = )",
+      "reorder_func(sep = )"
+    )
+  }
+
+  ggplot2::scale_x_discrete(labels = labels, ...)
 }
 
 
 #' @rdname reorder_within
 #' @export
-scale_y_reordered <- function(..., sep = "___") {
-  reg <- paste0(sep, ".+$")
-  ggplot2::scale_y_discrete(labels = function(x) gsub(reg, "", x), ...)
+scale_y_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
+
+  if (lifecycle::is_present(sep)) {
+    lifecycle::deprecate_soft(
+      "0.3.3",
+      "scale_y_reordered(sep = )",
+      "reorder_func(sep = )"
+    )
+  }
+
+  ggplot2::scale_y_discrete(labels = labels, ...)
 }
+
+#' @rdname reorder_within
+#' @export
+reorder_func <- function(x, sep = "___") {
+  reg <- paste0(sep, ".+$")
+  gsub(reg, "", x)
+}
+

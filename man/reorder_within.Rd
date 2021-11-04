@@ -4,6 +4,7 @@
 \alias{reorder_within}
 \alias{scale_x_reordered}
 \alias{scale_y_reordered}
+\alias{reorder_func}
 \title{Reorder an x or y axis within facets}
 \source{
 "Ordering categories within ggplot2 Facets" by Tyler Rinker:
@@ -12,9 +13,11 @@
 \usage{
 reorder_within(x, by, within, fun = mean, sep = "___", ...)
 
-scale_x_reordered(..., sep = "___")
+scale_x_reordered(..., labels = reorder_func, sep = deprecated())
 
-scale_y_reordered(..., sep = "___")
+scale_y_reordered(..., labels = reorder_func, sep = deprecated())
+
+reorder_func(x, sep = "___")
 }
 \arguments{
 \item{x}{Vector to reorder.}
@@ -28,12 +31,15 @@ variables.}
 \item{fun}{Function to perform within each subset to determine the resulting
 ordering. By default, mean.}
 
-\item{sep}{Separator to distinguish the two. You may want to set this
+\item{sep}{Separator to distinguish \code{by} and \code{within}. You may want to set this
 manually if ___ can exist within one of your labels.}
 
 \item{...}{In \code{reorder_within} arguments passed on to
 \code{\link{reorder}}. In the scale functions, extra arguments passed on to
 \code{\link[ggplot2]{scale_x_discrete}} or \code{\link[ggplot2]{scale_y_discrete}}.}
+
+\item{labels}{Function to transform the labels of
+\code{\link[ggplot2:scale_discrete]{ggplot2::scale_x_discrete()}}, by default \code{reorder_func}.}
 }
 \description{
 Reorder a column before plotting with faceting, such that the values are

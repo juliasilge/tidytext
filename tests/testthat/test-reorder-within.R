@@ -29,6 +29,24 @@ test_that("Can make a plot", {
 
 })
 
+test_that("Can make a plot with custom labels", {
+
+  custom_labeler <- function(x) {
+    x %>%
+      stringr::str_replace("___[0-9]+$", "") %>%
+      stringr::str_replace("0", "ZERO")
+  }
+
+  p <- ggplot(mtcars, aes(reorder_within(vs, mpg, cyl), mpg)) +
+    geom_boxplot() +
+    scale_x_reordered(labels = custom_labeler) +
+    facet_wrap(~ cyl, scales = "free_x")
+
+  expect_s3_class(p, "ggplot")
+  vdiffr::expect_doppelganger("custom label boxplot", p)
+
+})
+
 test_that("Can make a multi-facet plot", {
 
   expect_doppelganger <- function(title, fig, ...) {
