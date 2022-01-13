@@ -306,8 +306,9 @@ ggplot(comparison, aes(AP, Austen)) +
 <img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
 
 For more examples of working with objects from other text mining
-packages using tidy data principles, see the vignette on converting to
-and from document term matrices.
+packages using tidy data principles, see the
+[vignette](https://juliasilge.github.io/tidytext/articles/tidying_casting.html)
+on converting to and from document term matrices.
 
 ### Community Guidelines
 
