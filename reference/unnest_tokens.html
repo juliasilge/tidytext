@@ -36,7 +36,7 @@ This function supports non-standard evaluation through the tidyeval framework.">
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/articles/topic_modeling.html">Tidy Topic Modeling</a>
+      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
     </li>
     <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
@@ -73,7 +73,8 @@ This function supports non-standard evaluation through the tidyeval framework.">
 This function supports non-standard evaluation through the tidyeval framework.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">unnest_tokens</span><span class="op">(</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">unnest_tokens</span><span class="op">(</span>
   <span class="va">tbl</span>,
   <span class="va">output</span>,
   <span class="va">input</span>,
@@ -84,8 +85,8 @@ This function supports non-standard evaluation through the tidyeval framework.</
   collapse <span class="op">=</span> <span class="cn">NULL</span>,
   <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tbl</dt>
@@ -137,11 +138,10 @@ as <code>strip_punct</code> for "words" and "tweets", <code>n</code> and <code>k
 <code><a href="https://docs.ropensci.org/hunspell/reference/hunspell.html" class="external-link">hunspell_parse</a></code> tokenizer instead of the tokenizers package.
 This does not yet have support for tokenizing by any unit other than words.</p>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span>
 <span class="r-in"></span>
@@ -292,7 +292,7 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

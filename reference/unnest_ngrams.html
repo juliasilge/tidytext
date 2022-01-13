@@ -36,7 +36,7 @@ and unnest_tokens( token = "skip_ngrams" ) .'><meta property="og:image" content=
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/articles/topic_modeling.html">Tidy Topic Modeling</a>
+      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
     </li>
     <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
@@ -73,7 +73,8 @@ and unnest_tokens( token = "skip_ngrams" ) .'><meta property="og:image" content=
 and <code>unnest_tokens( token = "skip_ngrams" )</code> .</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">unnest_ngrams</span><span class="op">(</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">unnest_ngrams</span><span class="op">(</span>
   <span class="va">tbl</span>,
   <span class="va">output</span>,
   <span class="va">input</span>,
@@ -100,8 +101,8 @@ and <code>unnest_tokens( token = "skip_ngrams" )</code> .</p>
   collapse <span class="op">=</span> <span class="cn">NULL</span>,
   <span class="va">...</span>
 <span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tbl</dt>
@@ -155,11 +156,10 @@ words. The function will compute all skip n-grams between <code>0</code> and
 <ul><li><p><code><a href="unnest_tokens.html">unnest_tokens()</a></code></p></li>
 </ul></div>
     </div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span>
 <span class="r-in"></span>
 <span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="va">prideprejudice</span><span class="op">)</span></span>
@@ -212,7 +212,7 @@ words. The function will compute all skip n-grams between <code>0</code> and
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>

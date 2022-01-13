@@ -10,9 +10,6 @@
     <loc>/LICENSE-text.html</loc>
   </url>
   <url>
-    <loc>/articles/articles/topic_modeling.html</loc>
-  </url>
-  <url>
     <loc>/articles/index.html</loc>
   </url>
   <url>
@@ -23,6 +20,9 @@
   </url>
   <url>
     <loc>/articles/tidytext.html</loc>
+  </url>
+  <url>
+    <loc>/articles/topic_modeling.html</loc>
   </url>
   <url>
     <loc>/authors.html</loc>

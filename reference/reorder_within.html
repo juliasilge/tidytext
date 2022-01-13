@@ -40,7 +40,7 @@ at the end of each string."><meta property="og:image" content="/logo.png"><!-- m
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu"><li>
-      <a href="../articles/articles/topic_modeling.html">Tidy Topic Modeling</a>
+      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
     </li>
     <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
@@ -81,15 +81,16 @@ This is implemented as a bit of a hack: it appends ___ and then the facet
 at the end of each string.</p>
     </div>
 
-    <div class="ref-usage sourceCode"><pre class="sourceCode r"><code><span class="fu">reorder_within</span><span class="op">(</span><span class="va">x</span>, <span class="va">by</span>, <span class="va">within</span>, fun <span class="op">=</span> <span class="va">mean</span>, sep <span class="op">=</span> <span class="st">"___"</span>, <span class="va">...</span><span class="op">)</span>
+    <div id="ref-usage">
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">reorder_within</span><span class="op">(</span><span class="va">x</span>, <span class="va">by</span>, <span class="va">within</span>, fun <span class="op">=</span> <span class="va">mean</span>, sep <span class="op">=</span> <span class="st">"___"</span>, <span class="va">...</span><span class="op">)</span>
 
 <span class="fu">scale_x_reordered</span><span class="op">(</span><span class="va">...</span>, labels <span class="op">=</span> <span class="va">reorder_func</span>, sep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Deprecated.html" class="external-link">deprecated</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu">scale_y_reordered</span><span class="op">(</span><span class="va">...</span>, labels <span class="op">=</span> <span class="va">reorder_func</span>, sep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Deprecated.html" class="external-link">deprecated</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
 
 <span class="fu">reorder_func</span><span class="op">(</span><span class="va">x</span>, sep <span class="op">=</span> <span class="st">"___"</span><span class="op">)</span></code></pre></div>
+    </div>
 
-    <div id="ref-sections">
     <div id="source">
     <h2>Source</h2>
     <p>"Ordering categories within ggplot2 Facets" by Tyler Rinker:
@@ -119,11 +120,10 @@ manually if ___ can exist within one of your labels.</p></dd>
 <dd><p>Function to transform the labels of
 <code><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">ggplot2::scale_x_discrete()</a></code>, by default <code>reorder_func</code>.</p></dd>
 </dl></div>
-    </div>
 
-    <div id="examples">
+    <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="ref-examples sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span class="r-in"></span>
@@ -165,7 +165,7 @@ manually if ___ can exist within one of your labels.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 1.9000.9000.9000.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
 </div>
 
       </footer></div>
