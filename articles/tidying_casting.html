@@ -53,7 +53,7 @@
   <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
-  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
      
     <span class="caret"></span>
@@ -91,13 +91,13 @@
 
       
 
-      </header><script src="tidying_casting_files/accessible-code-block-0.0.1/empty-anchor.js"></script><div class="row">
+      </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 data-toc-skip class="author">Julia Silge and David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2022-01-13</h4>
+            <h4 data-toc-skip class="date">2022-03-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tidying_casting.Rmd" class="external-link"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -308,28 +308,28 @@
 <code class="sourceCode R"><span class="va">reuters_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">reuters</span><span class="op">)</span>
 <span class="va">reuters_td</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 20 × 17</span></span>
-<span class="co">##    author  datetimestamp       description heading  id    language origin topics</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>      1987-02-26 <span style="color: #949494;">17:00:56</span> <span style="color: #949494;">""</span>          DIAMOND… 127   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> BY TED… 1987-02-26 <span style="color: #949494;">17:34:11</span> <span style="color: #949494;">""</span>          OPEC MA… 144   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #BB0000;">NA</span>      1987-02-26 <span style="color: #949494;">18:18:00</span> <span style="color: #949494;">""</span>          TEXACO … 191   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #BB0000;">NA</span>      1987-02-26 <span style="color: #949494;">18:21:01</span> <span style="color: #949494;">""</span>          MARATHO… 194   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #BB0000;">NA</span>      1987-02-26 <span style="color: #949494;">19:00:57</span> <span style="color: #949494;">""</span>          HOUSTON… 211   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #BB0000;">NA</span>      1987-03-01 <span style="color: #949494;">03:25:46</span> <span style="color: #949494;">""</span>          KUWAIT … 236   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> By Jer… 1987-03-01 <span style="color: #949494;">03:39:14</span> <span style="color: #949494;">""</span>          INDONES… 237   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #BB0000;">NA</span>      1987-03-01 <span style="color: #949494;">05:27:27</span> <span style="color: #949494;">""</span>          SAUDI R… 242   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #BB0000;">NA</span>      1987-03-01 <span style="color: #949494;">08:22:30</span> <span style="color: #949494;">""</span>          QATAR U… 246   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #BB0000;">NA</span>      1987-03-01 <span style="color: #949494;">18:31:44</span> <span style="color: #949494;">""</span>          SAUDI A… 248   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">11</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">01:05:49</span> <span style="color: #949494;">""</span>          SAUDI F… 273   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">12</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">07:39:23</span> <span style="color: #949494;">""</span>          GULF AR… 349   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">13</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">07:43:22</span> <span style="color: #949494;">""</span>          SAUDI A… 352   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">14</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">07:43:41</span> <span style="color: #949494;">""</span>          KUWAIT … 353   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">15</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">08:25:42</span> <span style="color: #949494;">""</span>          PHILADE… 368   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">16</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">11:20:05</span> <span style="color: #949494;">""</span>          STUDY G… 489   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">17</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">11:28:26</span> <span style="color: #949494;">""</span>          STUDY G… 502   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">18</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">12:13:46</span> <span style="color: #949494;">""</span>          UNOCAL … 543   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">19</span> By BER… 1987-03-02 <span style="color: #949494;">14:38:34</span> <span style="color: #949494;">""</span>          NYMEX W… 704   en       Reute… YES   </span>
-<span class="co">## <span style="color: #BCBCBC;">20</span> <span style="color: #BB0000;">NA</span>      1987-03-02 <span style="color: #949494;">14:49:06</span> <span style="color: #949494;">""</span>          ARGENTI… 708   en       Reute… YES   </span>
+<span class="co">##    author   datetimestamp       description heading id    language origin topics</span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">17:00:56</span> <span style="color: #949494;">""</span>          DIAMON… 127   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span> BY TED … 1987-02-26 <span style="color: #949494;">17:34:11</span> <span style="color: #949494;">""</span>          OPEC M… 144   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">18:18:00</span> <span style="color: #949494;">""</span>          TEXACO… 191   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">18:21:01</span> <span style="color: #949494;">""</span>          MARATH… 194   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">19:00:57</span> <span style="color: #949494;">""</span>          HOUSTO… 211   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">03:25:46</span> <span style="color: #949494;">""</span>          KUWAIT… 236   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span> By Jere… 1987-03-01 <span style="color: #949494;">03:39:14</span> <span style="color: #949494;">""</span>          INDONE… 237   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">05:27:27</span> <span style="color: #949494;">""</span>          SAUDI … 242   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">08:22:30</span> <span style="color: #949494;">""</span>          QATAR … 246   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">18:31:44</span> <span style="color: #949494;">""</span>          SAUDI … 248   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">11</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">01:05:49</span> <span style="color: #949494;">""</span>          SAUDI … 273   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">12</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">07:39:23</span> <span style="color: #949494;">""</span>          GULF A… 349   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">13</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">07:43:22</span> <span style="color: #949494;">""</span>          SAUDI … 352   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">14</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">07:43:41</span> <span style="color: #949494;">""</span>          KUWAIT… 353   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">15</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">08:25:42</span> <span style="color: #949494;">""</span>          PHILAD… 368   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">16</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">11:20:05</span> <span style="color: #949494;">""</span>          STUDY … 489   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">17</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">11:28:26</span> <span style="color: #949494;">""</span>          STUDY … 502   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">18</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">12:13:46</span> <span style="color: #949494;">""</span>          UNOCAL… 543   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">19</span> By BERN… 1987-03-02 <span style="color: #949494;">14:38:34</span> <span style="color: #949494;">""</span>          NYMEX … 704   en       Reute… YES   </span>
+<span class="co">## <span style="color: #BCBCBC;">20</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">14:49:06</span> <span style="color: #949494;">""</span>          ARGENT… 708   en       Reute… YES   </span>
 <span class="co">## <span style="color: #949494;"># … with 9 more variables: lewissplit &lt;chr&gt;, cgisplit &lt;chr&gt;, oldid &lt;chr&gt;,</span></span>
 <span class="co">## <span style="color: #949494;">#   topics_cat &lt;named list&gt;, places &lt;named list&gt;, people &lt;chr&gt;, orgs &lt;chr&gt;,</span></span>
 <span class="co">## <span style="color: #949494;">#   exchanges &lt;chr&gt;, text &lt;chr&gt;</span></span></code></pre>
@@ -364,18 +364,18 @@
 <code class="sourceCode R"><span class="va">inaug_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">data_corpus_inaugural</span><span class="op">)</span>
 <span class="va">inaug_td</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 59 × 5</span></span>
-<span class="co">##    text                                   Year President  FirstName Party       </span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>       </span>
-<span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Fellow-Citizens of the Senate and o…  <span style="text-decoration: underline;">1</span>789 Washington George    none        </span>
-<span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Fellow citizens, I am again called …  <span style="text-decoration: underline;">1</span>793 Washington George    none        </span>
-<span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>When it was first perceived, in ear…  <span style="text-decoration: underline;">1</span>797 Adams      John      Federalist  </span>
-<span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Friends and Fellow Citizens:\n\nCal…  <span style="text-decoration: underline;">1</span>801 Jefferson  Thomas    Democratic-…</span>
-<span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Proceeding, fellow citizens, to tha…  <span style="text-decoration: underline;">1</span>805 Jefferson  Thomas    Democratic-…</span>
-<span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Unwilling to depart from examples o…  <span style="text-decoration: underline;">1</span>809 Madison    James     Democratic-…</span>
-<span class="co">## <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>About to add the solemnity of an oa…  <span style="text-decoration: underline;">1</span>813 Madison    James     Democratic-…</span>
-<span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>I should be destitute of feeling if…  <span style="text-decoration: underline;">1</span>817 Monroe     James     Democratic-…</span>
-<span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>Fellow citizens, I shall not attemp…  <span style="text-decoration: underline;">1</span>821 Monroe     James     Democratic-…</span>
-<span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>In compliance with an usage coeval …  <span style="text-decoration: underline;">1</span>825 Adams      John Qui… Democratic-…</span>
+<span class="co">##    text                                           Year President FirstName Party</span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span></span>
+<span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Fellow-Citizens of the Senate and of the Ho…  <span style="text-decoration: underline;">1</span>789 Washingt… George    none </span>
+<span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Fellow citizens, I am again called upon by …  <span style="text-decoration: underline;">1</span>793 Washingt… George    none </span>
+<span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>When it was first perceived, in early times…  <span style="text-decoration: underline;">1</span>797 Adams     John      Fede…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Friends and Fellow Citizens:\n\nCalled upon…  <span style="text-decoration: underline;">1</span>801 Jefferson Thomas    Demo…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Proceeding, fellow citizens, to that qualif…  <span style="text-decoration: underline;">1</span>805 Jefferson Thomas    Demo…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Unwilling to depart from examples of the mo…  <span style="text-decoration: underline;">1</span>809 Madison   James     Demo…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>About to add the solemnity of an oath to th…  <span style="text-decoration: underline;">1</span>813 Madison   James     Demo…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>I should be destitute of feeling if I was n…  <span style="text-decoration: underline;">1</span>817 Monroe    James     Demo…</span>
+<span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>Fellow citizens, I shall not attempt to des…  <span style="text-decoration: underline;">1</span>821 Monroe    James     Demo…</span>
+<span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>In compliance with an usage coeval with the…  <span style="text-decoration: underline;">1</span>825 Adams     John Qui… Demo…</span>
 <span class="co">## <span style="color: #949494;"># … with 49 more rows</span></span></code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to analyze the text alongside the metadata.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
@@ -411,7 +411,7 @@
 <span class="va">inaug_freq</span></code></pre></div>
 <pre><code><span class="co">## <span style="color: #949494;"># A tibble: 514,834 × 5</span></span>
 <span class="co">##     Year word            n year_total percent</span>
-<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
+<span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
 <span class="co">## <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">1</span>789 1               0        529 0      </span>
 <span class="co">## <span style="color: #BCBCBC;"> 2</span>  <span style="text-decoration: underline;">1</span>789 1,000           0        529 0      </span>
 <span class="co">## <span style="color: #BCBCBC;"> 3</span>  <span style="text-decoration: underline;">1</span>789 100             0        529 0      </span>
@@ -513,7 +513,7 @@
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.1.9000.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.2.</p>
 </div>
 
       </footer>
