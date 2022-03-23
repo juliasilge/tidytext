@@ -9,9 +9,8 @@ Robinson](http://varianceexplained.org/)<br/> **License:**
 
 <!-- badges: start -->
 
-[![R build
-status](https://github.com/juliasilge/tidytext/workflows/R-CMD-check/badge.svg)](https://github.com/juliasilge/tidytext/actions)
-[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
+[![R-CMD-check](https://github.com/juliasilge/tidytext/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/juliasilge/tidytext/actions/workflows/R-CMD-check.yaml)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
 [![cran
 checks](https://cranchecks.info/badges/summary/tidytext)](https://cran.r-project.org/web/checks/check_results_tidytext.html)
 [![Codecov test
