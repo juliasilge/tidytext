@@ -64,8 +64,7 @@ Suggests:
     tm,
     topicmodels,
     vdiffr,
-    wordcloud,
-    XML
+    wordcloud
 VignetteBuilder: 
     knitr
 Config/Needs/website: 
