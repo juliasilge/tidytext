@@ -14,14 +14,6 @@ test_that("tokenizing by character shingles works", {
   expect_equal(nrow(d), 14)
   expect_equal(ncol(d), 1)
   expect_equal(d$char_ngram[1], "tidy")
-
-  d <- tibble(txt = "Emily Dickinson")
-  d <- unnest_tokens(d, char_ngram, txt,
-                     token = "character_shingles",
-                     to_lower = FALSE, n = 5)
-  expect_equal(nrow(d), 10)
-  expect_equal(ncol(d), 1)
-  expect_equal(d$char_ngram[1], "Emily")
 })
 
 test_that("tokenizing by character shingles can include whitespace/punctuation", {
@@ -196,6 +188,14 @@ test_that("tokenizing with to_lower = FALSE works", {
   expect_equal(nrow(d2), 10)
   expect_equal(ncol(d2), 1)
   expect_equal(d2$ngram[1], "Because I")
+
+  d <- tibble(txt = "Emily Dickinson")
+  d <- unnest_tokens(d, char_ngram, txt,
+                     token = "character_shingles",
+                     to_lower = FALSE, n = 5)
+  expect_equal(nrow(d), 10)
+  expect_equal(ncol(d), 1)
+  expect_equal(d$char_ngram[1], "Emily")
 })
 
 
