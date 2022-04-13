@@ -112,16 +112,10 @@ unnest_tokens <- function(tbl, output, input, token = "words",
   if (!is_null(collapse)) {
 
     if (is_logical(collapse)) {
-      lifecycle::deprecate_stop(
-        "0.2.7",
-        "tidytext::unnest_tokens(collapse = 'must be `NULL` or a character vector')"
-      )
+      rlang::abort("`collapse` must be `NULL` or a character vector")
     }
-
     if (is_grouped_df(tbl)) {
-      rlang::abort(
-        paste0("Use the `collapse` argument or grouped data, but not both.")
-      )
+      rlang::abort("Use the `collapse` argument or grouped data, but not both.")
     }
     if (any(!purrr::map_lgl(tbl, is_atomic))) {
       rlang::abort(
@@ -207,16 +201,6 @@ find_function <- function(token, format, to_lower, ...) {
                                                              format = format
     )
   } else {
-    if (is_null(collapse) && token %in% c(
-      "ngrams", "skip_ngrams", "sentences",
-      "lines", "paragraphs", "regex",
-      "character_shingles"
-    )) {
-      lifecycle::deprecate_warn(
-        "0.2.7",
-        "tidytext::unnest_tokens(collapse = 'changed its default behavior for `NULL`')"
-      )
-    }
     tf <- get(paste0("tokenize_", token))
     if (token %in% c(
       "characters", "character_shingles",
