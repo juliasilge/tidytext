@@ -219,7 +219,8 @@ find_function <- function(token, format, to_lower, ...) {
     }
     tf <- get(paste0("tokenize_", token))
     if (token %in% c(
-      "characters", "words", "ngrams", "skip_ngrams",
+      "characters", "character_shingles",
+      "words", "ngrams", "skip_ngrams",
       "tweets", "ptb"
     )) {
       tokenfunc <- function(col, ...) tf(col, lowercase = to_lower, ...)
