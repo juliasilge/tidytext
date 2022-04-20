@@ -111,12 +111,8 @@ tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE,
     tibble::as_tibble()
 
   if (matrix == "beta") {
-    if (length(ret) > 1) {
-      ret <- transmute(ret, topic = Var1, term = x$vocab[Var2], beta = value,
-                       yvarlevel = x$settings$covariates$yvarlevels[as.integer(L1)])
-    } else {
-      ret <- transmute(ret, topic = Var1, term = x$vocab[Var2], beta = value)
-    }
+    ret <- transmute(ret, topic = Var1, term = x$vocab[Var2], beta = value,
+                     yvarlevel = x$settings$covariates$yvarlevels[as.integer(L1)])
   } else {
     ret <- transmute(ret, document = Var1, topic = Var2, gamma = value)
     if (!is.null(document_names)) {
