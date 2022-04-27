@@ -10,15 +10,24 @@ if (require("stm", quietly = TRUE)) {
   m <- cast_sparse(dat, document, term)
   stm_model <- stm(m, seed = 1234, K = 3, verbose = FALSE)
 
+  temp <- textProcessor(documents = gadarian[1:10,]$open.ended.response, metadata = gadarian[1:10,], verbose = F)
+  out <- prepDocuments(temp$documents, temp$vocab, temp$meta, verbose = F)
+  stm_model_cov <- stm(out$documents, out$vocab, K = 3, content = out$meta$treatment, max.em.its = 3, verbose = F)
+
   test_that("can tidy beta matrix", {
     td <- tidy(stm_model, matrix = "beta")
+    td_cov <- tidy(stm_model_cov, matrix = "beta")
     expect_s3_class(td, "tbl_df")
+    expect_s3_class(td_cov, "tbl_df")
 
     expect_equal(colnames(td), c("topic", "term", "beta"))
+    expect_equal(colnames(td_cov), c("topic", "term", "beta", "y.level"))
 
     expect_type(td$term, "character")
     expect_type(td$beta, "double")
+    expect_type(td_cov$y.level, "character")
     expect_equal(unique(td$topic), 1:3)
+    expect_equal(unique(td_cov$y.level), c("0", "1"))
 
     expect_gt(nrow(td), 10)
 
@@ -28,9 +37,14 @@ if (require("stm", quietly = TRUE)) {
     summ <- td %>%
       count(topic, wt = beta)
     expect_lt(max(abs(summ$n - 1)), .000001)
+    summ_cov <- td_cov %>%
+      count(topic, y.level, wt = beta)
+    expect_lt(max(abs(summ_cov$n - 1)), .000001)
 
     td_log <- tidy(stm_model, matrix = "beta", log = TRUE)
     expect_true(all(td_log$beta <= 0))
+    td_cov_log <- tidy(stm_model_cov, matrix = "beta", log = TRUE)
+    expect_true(all(td_cov_log$beta <= 0))
   })
 
   test_that("can tidy gamma matrix", {
