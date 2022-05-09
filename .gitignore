@@ -3,3 +3,4 @@
 .RData
 inst/doc
 docs/
+revdep/cloud.noindex*
