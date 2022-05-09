@@ -1,3 +1,5 @@
+# tidytext (development version)
+
 # tidytext 0.3.3
 
 * `scale_x/y_reordered()` now uses a function `labels` as its main input (#200)
