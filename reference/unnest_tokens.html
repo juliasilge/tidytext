@@ -74,29 +74,35 @@ This function supports non-standard evaluation through the tidyeval framework.</
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">unnest_tokens</span><span class="op">(</span>
-  <span class="va">tbl</span>,
-  <span class="va">output</span>,
-  <span class="va">input</span>,
-  token <span class="op">=</span> <span class="st">"words"</span>,
-  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"text"</span>, <span class="st">"man"</span>, <span class="st">"latex"</span>, <span class="st">"html"</span>, <span class="st">"xml"</span><span class="op">)</span>,
-  to_lower <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop <span class="op">=</span> <span class="cn">TRUE</span>,
-  collapse <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">unnest_tokens</span><span class="op">(</span></span>
+<span>  <span class="va">tbl</span>,</span>
+<span>  <span class="va">output</span>,</span>
+<span>  <span class="va">input</span>,</span>
+<span>  token <span class="op">=</span> <span class="st">"words"</span>,</span>
+<span>  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"text"</span>, <span class="st">"man"</span>, <span class="st">"latex"</span>, <span class="st">"html"</span>, <span class="st">"xml"</span><span class="op">)</span>,</span>
+<span>  to_lower <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  collapse <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tbl</dt>
 <dd><p>A data frame</p></dd>
+
+
 <dt>output</dt>
 <dd><p>Output column to be created as string or symbol.</p></dd>
+
+
 <dt>input</dt>
 <dd><p>Input column that gets split as string or symbol.</p>
 <p>The output/input arguments are passed by expression and support
 <a href="https://rlang.r-lib.org/reference/topic-inject.html" class="external-link">quasiquotation</a>; you can unquote strings and symbols.</p></dd>
+
+
 <dt>token</dt>
 <dd><p>Unit for tokenizing, or a custom tokenizing function. Built-in
 options are "words" (default), "characters", "character_shingles", "ngrams",
@@ -104,17 +110,25 @@ options are "words" (default), "characters", "character_shingles", "ngrams",
 (tokenization by word that preserves usernames, hashtags, and URLS ), and
 "ptb" (Penn Treebank). If a function, should take a character vector and
 return a list of character vectors of the same length.</p></dd>
+
+
 <dt>format</dt>
 <dd><p>Either "text", "man", "latex", "html", or "xml". When the
 format is "text", this function uses the tokenizers package. If not "text",
 this uses the hunspell tokenizer, and can tokenize only by "word"</p></dd>
+
+
 <dt>to_lower</dt>
 <dd><p>Whether to convert tokens to lowercase. If tokens include
 URLS (such as with <code>token = "tweets"</code>), such converted URLs may no
 longer be correct.</p></dd>
+
+
 <dt>drop</dt>
 <dd><p>Whether original input column should get dropped. Ignored
 if the original input and new output column have the same name.</p></dd>
+
+
 <dt>collapse</dt>
 <dd><p>A character vector of variables to collapse text across,
 or <code>NULL</code>.</p>
@@ -126,11 +140,14 @@ consistent. The new behavior is that text is <em>not</em> collapsed for <code>NU
 <code>collapse</code> but you <strong>cannot</strong> use both the <code>collapse</code> argument and
 grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams",
 "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Extra arguments passed on to <a href="https://lincolnmullen.com/software/tokenizers/reference/tokenizers.html" class="external-link">tokenizers</a>, such
 as <code>strip_punct</code> for "words" and "tweets", <code>n</code> and <code>k</code> for
 "ngrams" and "skip_ngrams", <code>strip_url</code> for "tweets", and
 <code>pattern</code> for "regex".</p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -141,12 +158,12 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="va">prideprejudice</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">d</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="va">prideprejudice</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">d</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 13,030 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    txt                                                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                    </span>
@@ -161,9 +178,10 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">""</span>                                                                       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>It is a truth universally acknowledged, that a single man in possession<span style="color: #949494;">"</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 13,020 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 122,204 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
@@ -178,9 +196,10 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> it       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> is       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 122,194 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">sentence</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"sentences"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">sentence</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"sentences"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15,545 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sentence                                                                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                     </span>
@@ -195,9 +214,10 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>of some one or other of their daughters.<span style="color: #949494;">"</span>                                </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>\"my dear mr.<span style="color: #949494;">"</span>                                                           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 15,535 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">ngram</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"ngrams"</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">ngram</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"ngrams"</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 114,045 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ngram        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
@@ -212,9 +232,10 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> chapter 1    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #BB0000;">NA</span>           </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 114,035 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">chapter</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"regex"</span>, pattern <span class="op">=</span> <span class="st">"Chapter [\\\\d]"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">chapter</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"regex"</span>, pattern <span class="op">=</span> <span class="st">"Chapter [\\\\d]"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 10,721 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    chapter                                                                      </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                        </span>
@@ -229,9 +250,10 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>of some one or other of their daughters.<span style="color: #949494;">"</span>                                   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>\"my dear mr. bennet,\" said his lady to him one day, \"have you heard that<span style="color: #949494;">"</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 10,711 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">shingle</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"character_shingles"</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">shingle</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"character_shingles"</span>, n <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 506,732 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    shingle</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
@@ -246,10 +268,11 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> prej   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> reju   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 506,722 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># custom function</span></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/str_split.html" class="external-link">str_split</a></span>, pattern <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># custom function</span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="fu">stringr</span><span class="fu">::</span><span class="va"><a href="https://stringr.tidyverse.org/reference/str_split.html" class="external-link">str_split</a></span>, pattern <span class="op">=</span> <span class="st">" "</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 124,032 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word       </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span>
@@ -264,20 +287,21 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">""</span>         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">""</span>         </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 124,022 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># tokenize HTML</span></span>
-<span class="r-in"><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>row <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span>
-<span class="r-in">                text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class="st">"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span><span class="op">)</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">h</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span>, format <span class="op">=</span> <span class="st">"html"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># tokenize HTML</span></span></span>
+<span class="r-in"><span><span class="va">h</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>row <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">2</span>,</span></span>
+<span class="r-in"><span>                text <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"&lt;h1&gt;Text &lt;b&gt;is&lt;/b&gt;"</span>, <span class="st">"&lt;a href='example.com'&gt;here&lt;/a&gt;"</span><span class="op">)</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">h</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span>, format <span class="op">=</span> <span class="st">"html"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 3 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>     row word </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 text </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     1 is   </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     2 here </span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -292,7 +316,7 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

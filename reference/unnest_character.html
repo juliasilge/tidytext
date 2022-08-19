@@ -74,56 +74,70 @@ and <code>unnest_tokens( token = "character_shingles" )</code>.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">unnest_characters</span><span class="op">(</span>
-  <span class="va">tbl</span>,
-  <span class="va">output</span>,
-  <span class="va">input</span>,
-  strip_non_alphanum <span class="op">=</span> <span class="cn">TRUE</span>,
-  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"text"</span>, <span class="st">"man"</span>, <span class="st">"latex"</span>, <span class="st">"html"</span>, <span class="st">"xml"</span><span class="op">)</span>,
-  to_lower <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop <span class="op">=</span> <span class="cn">TRUE</span>,
-  collapse <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span>
-
-<span class="fu">unnest_character_shingles</span><span class="op">(</span>
-  <span class="va">tbl</span>,
-  <span class="va">output</span>,
-  <span class="va">input</span>,
-  n <span class="op">=</span> <span class="fl">3L</span>,
-  n_min <span class="op">=</span> <span class="va">n</span>,
-  strip_non_alphanum <span class="op">=</span> <span class="cn">TRUE</span>,
-  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"text"</span>, <span class="st">"man"</span>, <span class="st">"latex"</span>, <span class="st">"html"</span>, <span class="st">"xml"</span><span class="op">)</span>,
-  to_lower <span class="op">=</span> <span class="cn">TRUE</span>,
-  drop <span class="op">=</span> <span class="cn">TRUE</span>,
-  collapse <span class="op">=</span> <span class="cn">NULL</span>,
-  <span class="va">...</span>
-<span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">unnest_characters</span><span class="op">(</span></span>
+<span>  <span class="va">tbl</span>,</span>
+<span>  <span class="va">output</span>,</span>
+<span>  <span class="va">input</span>,</span>
+<span>  strip_non_alphanum <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"text"</span>, <span class="st">"man"</span>, <span class="st">"latex"</span>, <span class="st">"html"</span>, <span class="st">"xml"</span><span class="op">)</span>,</span>
+<span>  to_lower <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  collapse <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">unnest_character_shingles</span><span class="op">(</span></span>
+<span>  <span class="va">tbl</span>,</span>
+<span>  <span class="va">output</span>,</span>
+<span>  <span class="va">input</span>,</span>
+<span>  n <span class="op">=</span> <span class="fl">3L</span>,</span>
+<span>  n_min <span class="op">=</span> <span class="va">n</span>,</span>
+<span>  strip_non_alphanum <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  format <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"text"</span>, <span class="st">"man"</span>, <span class="st">"latex"</span>, <span class="st">"html"</span>, <span class="st">"xml"</span><span class="op">)</span>,</span>
+<span>  to_lower <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  drop <span class="op">=</span> <span class="cn">TRUE</span>,</span>
+<span>  collapse <span class="op">=</span> <span class="cn">NULL</span>,</span>
+<span>  <span class="va">...</span></span>
+<span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>tbl</dt>
 <dd><p>A data frame</p></dd>
+
+
 <dt>output</dt>
 <dd><p>Output column to be created as string or symbol.</p></dd>
+
+
 <dt>input</dt>
 <dd><p>Input column that gets split as string or symbol.</p>
 <p>The output/input arguments are passed by expression and support
 <a href="https://rlang.r-lib.org/reference/topic-inject.html" class="external-link">quasiquotation</a>; you can unquote strings and symbols.</p></dd>
+
+
 <dt>strip_non_alphanum</dt>
 <dd><p>Should punctuation and white space be stripped?</p></dd>
+
+
 <dt>format</dt>
 <dd><p>Either "text", "man", "latex", "html", or "xml". When the
 format is "text", this function uses the tokenizers package. If not "text",
 this uses the hunspell tokenizer, and can tokenize only by "word"</p></dd>
+
+
 <dt>to_lower</dt>
 <dd><p>Whether to convert tokens to lowercase. If tokens include
 URLS (such as with <code>token = "tweets"</code>), such converted URLs may no
 longer be correct.</p></dd>
+
+
 <dt>drop</dt>
 <dd><p>Whether original input column should get dropped. Ignored
 if the original input and new output column have the same name.</p></dd>
+
+
 <dt>collapse</dt>
 <dd><p>A character vector of variables to collapse text across,
 or <code>NULL</code>.</p>
@@ -135,14 +149,21 @@ consistent. The new behavior is that text is <em>not</em> collapsed for <code>NU
 <code>collapse</code> but you <strong>cannot</strong> use both the <code>collapse</code> argument and
 grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams",
 "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Extra arguments passed on to <a href="https://lincolnmullen.com/software/tokenizers/reference/tokenizers.html" class="external-link">tokenizers</a></p></dd>
+
+
 <dt>n</dt>
 <dd><p>The number of characters in each shingle. This must be an integer
 greater than or equal to 1.</p></dd>
+
+
 <dt>n_min</dt>
 <dd><p>This must be an integer greater than or equal to 1, and less
 than or equal to <code>n</code>.</p></dd>
+
 </dl></div>
     <div id="see-also">
     <h2>See also</h2>
@@ -153,13 +174,13 @@ than or equal to <code>n</code>.</p></dd>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="va">prideprejudice</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_characters</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/tibble.html" class="external-link">tibble</a></span><span class="op">(</span>txt <span class="op">=</span> <span class="va">prideprejudice</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_characters</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 536,529 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
@@ -174,9 +195,10 @@ than or equal to <code>n</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> p    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> r    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 536,519 more rows</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span class="r-in">  <span class="fu">unnest_character_shingles</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_character_shingles</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 517,422 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span>
@@ -191,7 +213,8 @@ than or equal to <code>n</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> pre  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rej  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 517,412 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -206,7 +229,7 @@ than or equal to <code>n</code>.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

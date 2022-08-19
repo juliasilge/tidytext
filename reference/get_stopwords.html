@@ -74,7 +74,7 @@ stopwords function, in a tidy format with one word per row."><meta property="og:
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">get_stopwords</span><span class="op">(</span>language <span class="op">=</span> <span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"snowball"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">get_stopwords</span><span class="op">(</span>language <span class="op">=</span> <span class="st">"en"</span>, source <span class="op">=</span> <span class="st">"snowball"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -85,22 +85,27 @@ two-letter ISO code, such as <code>"es"</code>, <code>"de"</code>, or <code>"fr"
 Default is <code>"en"</code> for English. Use
 <a href="https://rdrr.io/pkg/stopwords/man/stopwords_getlanguages.html" class="external-link">stopwords_getlanguages</a> from <span class="pkg">stopwords</span> to see available
 languages.</p></dd>
+
+
 <dt>source</dt>
 <dd><p>The source of the stopword lexicon specified. Default is
 <code>"snowball"</code>. Use <a href="https://rdrr.io/pkg/stopwords/man/stopwords_getsources.html" class="external-link">stopwords_getsources</a> from
 <span class="pkg">stopwords</span> to see available sources.</p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A tibble with two columns, <code>word</code> and <code>lexicon</code>. The
+    
+
+<p>A tibble with two columns, <code>word</code> and <code>lexicon</code>. The
 parameter <code>lexicon</code> is "quanteda" in this case.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">get_stopwords</span><span class="op">(</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">get_stopwords</span><span class="op">(</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 175 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word      lexicon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
@@ -115,7 +120,8 @@ parameter <code>lexicon</code> is "quanteda" in this case.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> you       snowball</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> your      snowball</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 165 more rows</span></span>
-<span class="r-in"><span class="fu">get_stopwords</span><span class="op">(</span>source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span><span class="fu">get_stopwords</span><span class="op">(</span>source <span class="op">=</span> <span class="st">"smart"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 571 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word        lexicon</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span>
@@ -130,7 +136,8 @@ parameter <code>lexicon</code> is "quanteda" in this case.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> actually    smart  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> after       smart  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 561 more rows</span></span>
-<span class="r-in"><span class="fu">get_stopwords</span><span class="op">(</span><span class="st">"es"</span>, <span class="st">"snowball"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span><span class="fu">get_stopwords</span><span class="op">(</span><span class="st">"es"</span>, <span class="st">"snowball"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 308 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word  lexicon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
@@ -145,7 +152,8 @@ parameter <code>lexicon</code> is "quanteda" in this case.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> del   snowball</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> se    snowball</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 298 more rows</span></span>
-<span class="r-in"><span class="fu">get_stopwords</span><span class="op">(</span><span class="st">"ru"</span>, <span class="st">"snowball"</span><span class="op">)</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span><span class="fu">get_stopwords</span><span class="op">(</span><span class="st">"ru"</span>, <span class="st">"snowball"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 159 × 2</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word  lexicon </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span>
@@ -160,7 +168,8 @@ parameter <code>lexicon</code> is "quanteda" in this case.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> с     snowball</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> со    snowball</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 149 more rows</span></span>
-<span class="r-in"></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -175,7 +184,7 @@ parameter <code>lexicon</code> is "quanteda" in this case.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

@@ -75,26 +75,40 @@ in a table.</h1>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cast_sparse</span><span class="op">(</span><span class="va">data</span>, <span class="va">row</span>, <span class="va">column</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cast_sparse</span><span class="op">(</span><span class="va">data</span>, <span class="va">row</span>, <span class="va">column</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>A tbl</p></dd>
+
+
 <dt>row</dt>
 <dd><p>Column name to use as row names in sparse matrix, as string or symbol</p></dd>
+
+
 <dt>column</dt>
 <dd><p>Column name to use as column names in sparse matrix, as string or symbol</p></dd>
+
+
 <dt>value</dt>
 <dd><p>Column name to use as sparse matrix values (default 1) as string or symbol</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Extra arguments to pass on to <code>sparseMatrix</code></p></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
-    <p>A sparse Matrix object, with one row for each unique value in
-the <code>row</code> column, one column for each unique value in the <code>column</code>column, and with as many non-zero values as there are rows in <code>data</code>.</p>
+    
+
+<p>A sparse Matrix object, with one row for each unique value in
+the <code>row</code> column, one column for each unique value in the <code>column</code></p>
+
+
+<p>column, and with as many non-zero values as there are rows in <code>data</code>.</p>
     </div>
     <div id="details">
     <h2>Details</h2>
@@ -105,23 +119,23 @@ the <code>row</code> column, one column for each unique value in the <code>colum
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"row1"</span>, <span class="st">"row1"</span>, <span class="st">"row2"</span>, <span class="st">"row2"</span>, <span class="st">"row2"</span><span class="op">)</span>,</span>
-<span class="r-in">                  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"col1"</span>, <span class="st">"col2"</span>, <span class="st">"col1"</span>, <span class="st">"col3"</span>, <span class="st">"col4"</span><span class="op">)</span>,</span>
-<span class="r-in">                  val <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">cast_sparse</span><span class="op">(</span><span class="va">dat</span>, <span class="va">a</span>, <span class="va">b</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">dat</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/data.frame.html" class="external-link">data.frame</a></span><span class="op">(</span>a <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"row1"</span>, <span class="st">"row1"</span>, <span class="st">"row2"</span>, <span class="st">"row2"</span>, <span class="st">"row2"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                  b <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"col1"</span>, <span class="st">"col2"</span>, <span class="st">"col1"</span>, <span class="st">"col3"</span>, <span class="st">"col4"</span><span class="op">)</span>,</span></span>
+<span class="r-in"><span>                  val <span class="op">=</span> <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">cast_sparse</span><span class="op">(</span><span class="va">dat</span>, <span class="va">a</span>, <span class="va">b</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 x 4 sparse Matrix of class "dgCMatrix"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      col1 col2 col3 col4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> row1    1    1    .    .</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> row2    1    .    1    1</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="fu">cast_sparse</span><span class="op">(</span><span class="va">dat</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">val</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="fu">cast_sparse</span><span class="op">(</span><span class="va">dat</span>, <span class="va">a</span>, <span class="va">b</span>, <span class="va">val</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> 2 x 4 sparse Matrix of class "dgCMatrix"</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>      col1 col2 col3 col4</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> row1    1    2    .    .</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> row2    3    .    4    5</span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -136,7 +150,7 @@ the <code>row</code> column, one column for each unique value in the <code>colum
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

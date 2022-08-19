@@ -82,13 +82,13 @@ at the end of each string.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">reorder_within</span><span class="op">(</span><span class="va">x</span>, <span class="va">by</span>, <span class="va">within</span>, fun <span class="op">=</span> <span class="va">mean</span>, sep <span class="op">=</span> <span class="st">"___"</span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">scale_x_reordered</span><span class="op">(</span><span class="va">...</span>, labels <span class="op">=</span> <span class="va">reorder_func</span>, sep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Deprecated.html" class="external-link">deprecated</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">scale_y_reordered</span><span class="op">(</span><span class="va">...</span>, labels <span class="op">=</span> <span class="va">reorder_func</span>, sep <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/Deprecated.html" class="external-link">deprecated</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span>
-
-<span class="fu">reorder_func</span><span class="op">(</span><span class="va">x</span>, sep <span class="op">=</span> <span class="st">"___"</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">reorder_within</span><span class="op">(</span><span class="va">x</span>, <span class="va">by</span>, <span class="va">within</span>, fun <span class="op">=</span> <span class="va">mean</span>, sep <span class="op">=</span> <span class="st">"___"</span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scale_x_reordered</span><span class="op">(</span><span class="va">...</span>, labels <span class="op">=</span> <span class="va">reorder_func</span>, sep <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">scale_y_reordered</span><span class="op">(</span><span class="va">...</span>, labels <span class="op">=</span> <span class="va">reorder_func</span>, sep <span class="op">=</span> <span class="fu">deprecated</span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">reorder_func</span><span class="op">(</span><span class="va">x</span>, sep <span class="op">=</span> <span class="st">"___"</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="source">
@@ -100,57 +100,70 @@ at the end of each string.</p>
     <h2>Arguments</h2>
     <dl><dt>x</dt>
 <dd><p>Vector to reorder.</p></dd>
+
+
 <dt>by</dt>
 <dd><p>Vector of the same length, to use for reordering.</p></dd>
+
+
 <dt>within</dt>
 <dd><p>Vector or list of vectors of the same length that will later
 be used for faceting. A list of vectors will be used to facet within multiple
 variables.</p></dd>
+
+
 <dt>fun</dt>
 <dd><p>Function to perform within each subset to determine the resulting
 ordering. By default, mean.</p></dd>
+
+
 <dt>sep</dt>
 <dd><p>Separator to distinguish <code>by</code> and <code>within</code>. You may want to set this
 manually if ___ can exist within one of your labels.</p></dd>
+
+
 <dt>...</dt>
 <dd><p>In <code>reorder_within</code> arguments passed on to
 <code><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></code>. In the scale functions, extra arguments passed on to
 <code><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">scale_x_discrete</a></code> or <code><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">scale_y_discrete</a></code>.</p></dd>
+
+
 <dt>labels</dt>
 <dd><p>Function to transform the labels of
 <code><a href="https://ggplot2.tidyverse.org/reference/scale_discrete.html" class="external-link">ggplot2::scale_x_discrete()</a></code>, by default <code>reorder_func</code>.</p></dd>
+
 </dl></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
-<span class="r-in"><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="va">iris_gathered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html" class="external-link">gather</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">metric</span>, <span class="va">value</span>, <span class="op">-</span><span class="va">Species</span><span class="op">)</span></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># reordering doesn't work within each facet (see Sepal.Width):</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris_gathered</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">Species</span>, <span class="va">value</span><span class="op">)</span>, <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">metric</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">iris_gathered</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tidyr.tidyverse.org/reference/gather.html" class="external-link">gather</a></span><span class="op">(</span><span class="va">iris</span>, <span class="va">metric</span>, <span class="va">value</span>, <span class="op">-</span><span class="va">Species</span><span class="op">)</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># reordering doesn't work within each facet (see Sepal.Width):</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris_gathered</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/stats/reorder.factor.html" class="external-link">reorder</a></span><span class="op">(</span><span class="va">Species</span>, <span class="va">value</span><span class="op">)</span>, <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">metric</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="reorder_within-1.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># reorder_within and scale_x_reordered work.</span></span>
-<span class="r-in"><span class="co"># (Note that you need to set scales = "free_x" in the facet)</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris_gathered</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu">reorder_within</span><span class="op">(</span><span class="va">Species</span>, <span class="va">value</span>, <span class="va">metric</span><span class="op">)</span>, <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">scale_x_reordered</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">metric</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># reorder_within and scale_x_reordered work.</span></span></span>
+<span class="r-in"><span><span class="co"># (Note that you need to set scales = "free_x" in the facet)</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">iris_gathered</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu">reorder_within</span><span class="op">(</span><span class="va">Species</span>, <span class="va">value</span>, <span class="va">metric</span><span class="op">)</span>, <span class="va">value</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu">scale_x_reordered</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">metric</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="reorder_within-2.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># to reorder within multiple variables, set within to the list of</span></span>
-<span class="r-in"><span class="co"># facet variables.</span></span>
-<span class="r-in"><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu">reorder_within</span><span class="op">(</span><span class="va">carb</span>, <span class="va">mpg</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">vs</span>, <span class="va">am</span><span class="op">)</span><span class="op">)</span>, <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu">scale_x_reordered</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span class="r-in">  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">am</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># to reorder within multiple variables, set within to the list of</span></span></span>
+<span class="r-in"><span><span class="co"># facet variables.</span></span></span>
+<span class="r-in"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">mtcars</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="fu">reorder_within</span><span class="op">(</span><span class="va">carb</span>, <span class="va">mpg</span>, <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span><span class="va">vs</span>, <span class="va">am</span><span class="op">)</span><span class="op">)</span>, <span class="va">mpg</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_boxplot.html" class="external-link">geom_boxplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu">scale_x_reordered</span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span></span>
+<span class="r-in"><span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="va">vs</span> <span class="op">~</span> <span class="va">am</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></span>
 <span class="r-plt img"><img src="reorder_within-3.png" alt="" width="700" height="433"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -165,7 +178,7 @@ manually if ___ can exist within one of your labels.</p></dd>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>

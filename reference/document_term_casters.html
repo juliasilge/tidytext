@@ -81,29 +81,40 @@ evaluation through the tidyeval framework. Groups are ignored.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">cast_tdm</span><span class="op">(</span><span class="va">data</span>, <span class="va">term</span>, <span class="va">document</span>, <span class="va">value</span>, weighting <span class="op">=</span> <span class="fu">tm</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/tm/man/weightTf.html" class="external-link">weightTf</a></span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">cast_dtm</span><span class="op">(</span><span class="va">data</span>, <span class="va">document</span>, <span class="va">term</span>, <span class="va">value</span>, weighting <span class="op">=</span> <span class="fu">tm</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/tm/man/weightTf.html" class="external-link">weightTf</a></span>, <span class="va">...</span><span class="op">)</span>
-
-<span class="fu">cast_dfm</span><span class="op">(</span><span class="va">data</span>, <span class="va">document</span>, <span class="va">term</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">cast_tdm</span><span class="op">(</span><span class="va">data</span>, <span class="va">term</span>, <span class="va">document</span>, <span class="va">value</span>, weighting <span class="op">=</span> <span class="fu">tm</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/tm/man/weightTf.html" class="external-link">weightTf</a></span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cast_dtm</span><span class="op">(</span><span class="va">data</span>, <span class="va">document</span>, <span class="va">term</span>, <span class="va">value</span>, weighting <span class="op">=</span> <span class="fu">tm</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/tm/man/weightTf.html" class="external-link">weightTf</a></span>, <span class="va">...</span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu">cast_dfm</span><span class="op">(</span><span class="va">data</span>, <span class="va">document</span>, <span class="va">term</span>, <span class="va">value</span>, <span class="va">...</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
     <h2>Arguments</h2>
     <dl><dt>data</dt>
 <dd><p>Table with one-term-per-document-per-row</p></dd>
+
+
 <dt>term</dt>
 <dd><p>Column containing terms as string or symbol</p></dd>
+
+
 <dt>document</dt>
 <dd><p>Column containing document IDs as string or symbol</p></dd>
+
+
 <dt>value</dt>
 <dd><p>Column containing values as string or symbol</p></dd>
+
+
 <dt>weighting</dt>
 <dd><p>The weighting function for the DTM/TDM
 (default is term-frequency, effectively unweighted)</p></dd>
+
+
 <dt>...</dt>
 <dd><p>Extra arguments passed on to
 <code>sparseMatrix</code></p></dd>
+
 </dl></div>
     <div id="details">
     <h2>Details</h2>
@@ -124,7 +135,7 @@ you can unquote strings and symbols.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.3.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
 </div>
 
       </footer></div>
