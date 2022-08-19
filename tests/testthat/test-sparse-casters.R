@@ -75,3 +75,4 @@ test_that("Can cast tables into a sparse dfm", {
   expect_equal(as.numeric(d[1, 1]), 1)
   expect_equal(as.numeric(d[2, 3]), 4)
 })
+
