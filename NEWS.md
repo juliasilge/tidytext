@@ -1,3 +1,5 @@
+# tidytext (development version)
+
 # tidytext 0.3.4
 
 * Updated the tidy method for a quanteda `dfm` because of the upcoming release of Matrix (#218)
