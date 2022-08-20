@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 21st CRAN release of tidytext. This release adds support for more STM tidying, and fixes a bug with `to_lower`.
+This is the 22nd CRAN release of tidytext. This release updates a tidy method for the upcoming release of Matrix.
 
 ## R CMD check results
 
@@ -8,7 +8,7 @@ This is the 21st CRAN release of tidytext. This release adds support for more ST
 
 ## revdepcheck results
 
-I checked 54 reverse dependencies, comparing R CMD check results across CRAN and dev versions of this package.
+We checked 55 reverse dependencies (54 from CRAN + 1 from Bioconductor), comparing R CMD check results across CRAN and dev versions of this package.
 
- * I saw 0 new problems
- * I failed to check 0 packages
+ * We saw 0 new problems
+ * We failed to check 0 packages
