@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Introduction to tidytext</h1>
                         <h4 data-toc-skip class="author">Julia Silge and David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2022-08-20</h4>
+            <h4 data-toc-skip class="date">2022-08-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tidytext.Rmd" class="external-link"><code>vignettes/tidytext.Rmd</code></a></small>
       <div class="hidden name"><code>tidytext.Rmd</code></div>
@@ -118,7 +118,7 @@
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="http://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">original_books</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html" class="external-link">austen_books</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">book</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -141,8 +141,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">""</span>                      Sense &amp; Sensibility     8       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">""</span>                      Sense &amp; Sensibility     9       0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>CHAPTER 1<span style="color: #949494;">"</span>             Sense &amp; Sensibility    10       1</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 73,412 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 73,412 more rows</span></span></span></code></pre>
 <p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code>unnest_tokens</code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/tidytext" class="external-link">tidytext</a></span><span class="op">)</span></span>
@@ -163,8 +162,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Sense &amp; Sensibility    10       1 chapter    </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Sense &amp; Sensibility    10       1 1          </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Sense &amp; Sensibility    13       1 the        </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 725,045 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 725,045 more rows</span></span></span></code></pre>
 <p>This function uses the <a href="https://github.com/ropensci/tokenizers" class="external-link">tokenizers package</a> to separate each line into words. The default tokenizing is for words, but other options include characters, ngrams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
 <p>Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (accessible in a tidy form with the function <code><a href="../reference/get_stopwords.html">get_stopwords()</a></code>) with an <code>anti_join</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -187,8 +185,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> well   <span style="text-decoration: underline;">1</span>523</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> every  <span style="text-decoration: underline;">1</span>456</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> think  <span style="text-decoration: underline;">1</span>440</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 14,365 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 14,365 more rows</span></span></span></code></pre>
 <p>Sentiment analysis can be done as an inner join. Sentiment lexicons are available via the <code><a href="../reference/get_sentiments.html">get_sentiments()</a></code> function. Let’s look at the words with a positive score from the lexicon of Bing Liu and collaborators. What are the most common positive words in <em>Emma</em>?</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">positive</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -211,8 +208,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> love       117</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> pleasure   115</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> right       92</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 658 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 658 more rows</span></span></span></code></pre>
 <p>Or instead we could examine how sentiment changes during each novel. Let’s find a sentiment score for each word using the same lexicon, then count the number of positive and negative words in defined sections of each novel.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
@@ -230,7 +226,7 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">janeaustensentiment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">index</span>, <span class="va">sentiment</span>, fill <span class="op">=</span> <span class="va">book</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">book</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidytext_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
+<p><img src="tidytext_files/figure-html/unnamed-chunk-8-1.png" width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="most-common-positive-and-negative-words">Most common positive and negative words<a class="anchor" aria-label="anchor" href="#most-common-positive-and-negative-words"></a>
@@ -255,8 +251,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> happy    positive    534</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> love     positive    495</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> pleasure positive    462</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 2,575 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 2,575 more rows</span></span></span></code></pre>
 <p>This can be shown visually, and we can pipe straight into ggplot2 because of the way we are consistently using tools built for handling tidy data frames.</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">bing_word_counts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -267,7 +262,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/coord_flip.html" class="external-link">coord_flip</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Contribution to sentiment"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidytext_files/figure-html/unnamed-chunk-9-1.png" width="672"></p>
+<p><img src="tidytext_files/figure-html/unnamed-chunk-10-1.png" width="672"></p>
 <p>This lets us spot an anomaly in the sentiment analysis; the word “miss” is coded as negative but it is used as a title for young, unmarried women in Jane Austen’s works. If it were appropriate for our purposes, we could easily add “miss” to a custom stop-words list using <code>bind_rows</code>.</p>
 </div>
 <div class="section level3">
@@ -281,7 +276,7 @@
 <span><span class="va">cleaned_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">word</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/wordcloud.html" class="external-link">wordcloud</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span>, max.words <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidytext_files/figure-html/unnamed-chunk-10-1.png" width="576"></p>
+<p><img src="tidytext_files/figure-html/unnamed-chunk-11-1.png" width="576"></p>
 <p>In other functions, such as <code>comparison.cloud</code>, you may need to turn it into a matrix with reshape2’s <code>acast</code>. Let’s do the sentiment analysis to tag positive and negative words using an inner join, then find the most common positive and negative words. Until the step where we need to send the data to <code>comparison.cloud</code>, this can all be done with joins, piping, and dplyr because our data is in tidy format.</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/hadley/reshape" class="external-link">reshape2</a></span><span class="op">)</span></span>

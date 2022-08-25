@@ -97,7 +97,7 @@
       <h1 data-toc-skip>Converting to and from Document-Term Matrix and Corpus objects</h1>
                         <h4 data-toc-skip class="author">Julia Silge and David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2022-08-20</h4>
+            <h4 data-toc-skip class="date">2022-08-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tidying_casting.Rmd" class="external-link"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -144,8 +144,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        1 like        2 positive </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        1 liked       1 positive </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        1 miracle     1 positive </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 30,084 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 30,084 more rows</span></span></span></code></pre>
 <p>We can find the most negative documents:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
@@ -168,8 +167,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     <span style="text-decoration: underline;">1</span>664       38        5       -<span style="color: #BB0000;">33</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     <span style="text-decoration: underline;">2</span>147       47       14       -<span style="color: #BB0000;">33</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>      516       38        6       -<span style="color: #BB0000;">32</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 2,180 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 2,180 more rows</span></span></span></code></pre>
 <p>Or visualize which words contributed to positive and negative sentiment:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -183,7 +181,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme.html" class="external-link">theme</a></span><span class="op">(</span>axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>angle <span class="op">=</span> <span class="fl">90</span>, hjust <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Contribution to sentiment"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidying_casting_files/figure-html/unnamed-chunk-6-1.png" width="672"></p>
+<p><img src="tidying_casting_files/figure-html/unnamed-chunk-7-1.png" width="672"></p>
 <p>Note that a tidier is also available for the <code>dfm</code> class from the quanteda package:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">methods</span><span class="op">)</span></span>
@@ -225,8 +223,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 1841-Harrison   fellow-citizens    11</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 1845-Polk       fellow-citizens     1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> 1849-Taylor     fellow-citizens     1</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 45,443 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 45,443 more rows</span></span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="casting-tidy-text-data-into-a-documenttermmatrix">Casting tidy text data into a DocumentTermMatrix<a class="anchor" aria-label="anchor" href="#casting-tidy-text-data-into-a-documenttermmatrix"></a>
@@ -247,8 +244,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        1 appeared       1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        1 arrested       1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        1 assault        1</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 302,021 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 302,021 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># cast into a Document-Term Matrix</span></span>
 <span><span class="va">ap_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -337,8 +333,7 @@
 <span><span class="co">## <span style="color: #949494;"># … with 9 more variables: lewissplit &lt;chr&gt;, cgisplit &lt;chr&gt;, oldid &lt;chr&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   topics_cat &lt;named list&gt;, places &lt;named list&gt;, people &lt;chr&gt;, orgs &lt;chr&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   exchanges &lt;chr&gt;, text &lt;chr&gt;, and abbreviated variable names ¹​description,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ²​language</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `colnames()` to see all variable names</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;">#   ²​language</span></span></span></code></pre>
 <p>Similarly, you can <code>tidy</code> a <code>corpus</code> object from the quanteda package:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://quanteda.io" class="external-link">quanteda</a></span><span class="op">)</span></span>
@@ -382,8 +377,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>I should be destitute of feeling if I was not d…  <span style="text-decoration: underline;">1</span>817 Monroe  James   Demo…</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>Fellow citizens, I shall not attempt to describ…  <span style="text-decoration: underline;">1</span>821 Monroe  James   Demo…</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>In compliance with an usage coeval with the exi…  <span style="text-decoration: underline;">1</span>825 Adams   John Q… Demo…</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 49 more rows, and abbreviated variable names ¹​President, ²​FirstName</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 49 more rows, and abbreviated variable names ¹​President, ²​FirstName</span></span></span></code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to analyze the text alongside the metadata.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inaug_words</span> <span class="op">&lt;-</span> <span class="va">inaug_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -404,8 +398,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  life           </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  event          </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  filled         </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 50,955 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 50,955 more rows</span></span></span></code></pre>
 <p>We could then, for example, see how the appearance of a word changes over time:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inaug_freq</span> <span class="op">&lt;-</span> <span class="va">inaug_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -430,8 +423,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>789 125             0        529 0      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>789 13              0        529 0      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>789 14th            1        529 0.001<span style="text-decoration: underline;">89</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 514,824 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 514,824 more rows</span></span></span></code></pre>
 <p>For example, we can use the broom package to perform logistic regression on each word.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span>
@@ -457,8 +449,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> business       Year   0.002<span style="text-decoration: underline;">71</span>   0.001<span style="text-decoration: underline;">94</span>     1.40  1.63<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> called         Year  -<span style="color: #BB0000;">0.001</span><span style="color: #BB0000; text-decoration: underline;">58</span>   0.001<span style="text-decoration: underline;">98</span>    -<span style="color: #BB0000;">0.799</span> 4.24<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> century        Year   0.014<span style="text-decoration: underline;">5</span>    0.002<span style="text-decoration: underline;">31</span>     6.27  3.58<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 105 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 105 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">models</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Year"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -476,8 +467,7 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> powers    Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">5</span>   0.001<span style="text-decoration: underline;">96</span>     -<span style="color: #BB0000;">6.38</span> 1.76<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> revenue   Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">2</span>   0.002<span style="text-decoration: underline;">50</span>     -<span style="color: #BB0000;">4.87</span> 1.11<span style="color: #949494;">e</span><span style="color: #BB0000;">- 6</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> foreign   Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">0</span>   0.001<span style="text-decoration: underline;">91</span>     -<span style="color: #BB0000;">6.31</span> 2.73<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 105 more rows</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 105 more rows</span></span></span></code></pre>
 <p>You can show these models as a volcano plot, which compares the effect size with the significance:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -491,7 +481,7 @@
 <span>            check_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">xlab</a></span><span class="op">(</span><span class="st">"Estimated change over time"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Adjusted p-value"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidying_casting_files/figure-html/unnamed-chunk-15-1.png" width="672"></p>
+<p><img src="tidying_casting_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
 <p>We can also use the ggplot2 package to display the top 6 terms that have changed in frequency over time.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
@@ -505,7 +495,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">word</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent_format</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">ylab</a></span><span class="op">(</span><span class="st">"Frequency of word in speech"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidying_casting_files/figure-html/unnamed-chunk-16-1.png" width="672"></p>
+<p><img src="tidying_casting_files/figure-html/unnamed-chunk-17-1.png" width="672"></p>
 </div>
   </div>
 

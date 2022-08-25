@@ -124,7 +124,7 @@ and <code>unnest_tokens( token = "character_shingles" )</code>.</p>
 <dt>format</dt>
 <dd><p>Either "text", "man", "latex", "html", or "xml". When the
 format is "text", this function uses the tokenizers package. If not "text",
-this uses the hunspell tokenizer, and can tokenize only by "word"</p></dd>
+this uses the hunspell tokenizer, and can tokenize only by "word".</p></dd>
 
 
 <dt>to_lower</dt>
@@ -195,7 +195,6 @@ than or equal to <code>n</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> p    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> r    </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 536,519 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
 <span class="r-in"><span>  <span class="fu">unnest_character_shingles</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span>, n <span class="op">=</span> <span class="fl">3</span><span class="op">)</span></span></span>
@@ -213,7 +212,6 @@ than or equal to <code>n</code>.</p></dd>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span> pre  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span> rej  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># … with 517,412 more rows</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ Use `print(n = ...)` to see more rows</span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
