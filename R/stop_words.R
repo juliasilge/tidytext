@@ -34,7 +34,7 @@
 #' @return A tibble with two columns, \code{word} and \code{lexicon}. The
 #' parameter \code{lexicon} is "quanteda" in this case.
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("stopwords")
 #'
 #' library(dplyr)
 #' get_stopwords()
