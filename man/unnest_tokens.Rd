@@ -72,6 +72,7 @@ If format is anything other than "text", this uses the
 This does not yet have support for tokenizing by any unit other than words.
 }
 \examples{
+\dontshow{if (rlang::is_installed("hunspell")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 library(dplyr)
 library(janeaustenr)
@@ -104,5 +105,5 @@ h <- tibble(row = 1:2,
 
 h \%>\%
   unnest_tokens(word, text, format = "html")
-
+\dontshow{\}) # examplesIf}
 }

@@ -62,7 +62,7 @@
 #'
 #' @name unnest_tokens
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("hunspell")
 #'
 #' library(dplyr)
 #' library(janeaustenr)
