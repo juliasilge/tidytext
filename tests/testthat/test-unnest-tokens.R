@@ -211,6 +211,7 @@ test_that("unnest_tokens raises an error if custom tokenizer gives bad output", 
 
 
 test_that("tokenizing HTML works", {
+  skip_if_not_installed("hunspell")
   h <- tibble(
     row = 1:2,
     text = c("<h1>Text <b>is<b>", "<a href='example.com'>here</a>")
@@ -228,6 +229,7 @@ test_that("tokenizing HTML works", {
 
 
 test_that("tokenizing LaTeX works", {
+  skip_if_not_installed("hunspell")
   h <- tibble(
     row = 1:4,
     text = c(

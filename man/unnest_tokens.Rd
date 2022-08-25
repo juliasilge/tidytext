@@ -35,7 +35,7 @@ return a list of character vectors of the same length.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". When the
 format is "text", this function uses the tokenizers package. If not "text",
-this uses the hunspell tokenizer, and can tokenize only by "word"}
+this uses the hunspell tokenizer, and can tokenize only by "word".}
 
 \item{to_lower}{Whether to convert tokens to lowercase. If tokens include
 URLS (such as with \code{token = "tweets"}), such converted URLs may no
@@ -72,6 +72,7 @@ If format is anything other than "text", this uses the
 This does not yet have support for tokenizing by any unit other than words.
 }
 \examples{
+\dontshow{if (rlang::is_installed("hunspell")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 library(dplyr)
 library(janeaustenr)
@@ -104,5 +105,5 @@ h <- tibble(row = 1:2,
 
 h \%>\%
   unnest_tokens(word, text, format = "html")
-
+\dontshow{\}) # examplesIf}
 }

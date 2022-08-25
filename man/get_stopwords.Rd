@@ -26,11 +26,12 @@ Get a specific stop word lexicon via the \pkg{stopwords} package's
 \link[stopwords]{stopwords} function, in a tidy format with one word per row.
 }
 \examples{
+\dontshow{if (rlang::is_installed("stopwords")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 library(dplyr)
 get_stopwords()
 get_stopwords(source = "smart")
 get_stopwords("es", "snowball")
 get_stopwords("ru", "snowball")
-
+\dontshow{\}) # examplesIf}
 }

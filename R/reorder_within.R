@@ -25,7 +25,7 @@
 #' @source "Ordering categories within ggplot2 Facets" by Tyler Rinker:
 #' \url{https://trinkerrstuff.wordpress.com/2016/12/23/ordering-categories-within-ggplot2-facets/}
 #'
-#' @examples
+#' @examplesIf rlang::is_installed(c("stopwords", "tidyr"))
 #'
 #' library(tidyr)
 #' library(ggplot2)

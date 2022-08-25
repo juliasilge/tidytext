@@ -14,7 +14,7 @@
 #'
 #' @param format Either "text", "man", "latex", "html", or "xml". When the
 #' format is "text", this function uses the tokenizers package. If not "text",
-#' this uses the hunspell tokenizer, and can tokenize only by "word"
+#' this uses the hunspell tokenizer, and can tokenize only by "word".
 #'
 #' @param to_lower Whether to convert tokens to lowercase. If tokens include
 #' URLS (such as with \code{token = "tweets"}), such converted URLs may no
@@ -62,7 +62,7 @@
 #'
 #' @name unnest_tokens
 #'
-#' @examples
+#' @examplesIf rlang::is_installed("hunspell")
 #'
 #' library(dplyr)
 #' library(janeaustenr)
@@ -197,8 +197,10 @@ find_function <- function(token, format, to_lower, ...) {
     if (token != "words") {
       rlang::abort("Cannot tokenize by any unit except words when format is not text")
     }
-    tokenfunc <- function(col, ...) hunspell::hunspell_parse(col,
-                                                             format = format
+    rlang::check_installed("hunspell")
+    tokenfunc <- function(col, ...) hunspell::hunspell_parse(
+      col,
+      format = format
     )
   } else {
     tf <- get(paste0("tokenize_", token))
