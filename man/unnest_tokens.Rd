@@ -35,7 +35,7 @@ return a list of character vectors of the same length.}
 
 \item{format}{Either "text", "man", "latex", "html", or "xml". When the
 format is "text", this function uses the tokenizers package. If not "text",
-this uses the hunspell tokenizer, and can tokenize only by "word"}
+this uses the hunspell tokenizer, and can tokenize only by "word".}
 
 \item{to_lower}{Whether to convert tokens to lowercase. If tokens include
 URLS (such as with \code{token = "tweets"}), such converted URLs may no
