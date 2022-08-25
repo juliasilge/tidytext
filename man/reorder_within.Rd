@@ -50,6 +50,7 @@ This is implemented as a bit of a hack: it appends ___ and then the facet
 at the end of each string.
 }
 \examples{
+\dontshow{if (rlang::is_installed(c("stopwords", "tidyr"))) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}
 
 library(tidyr)
 library(ggplot2)
@@ -74,5 +75,5 @@ ggplot(mtcars, aes(reorder_within(carb, mpg, list(vs, am)), mpg)) +
   geom_boxplot() +
   scale_x_reordered() +
   facet_wrap(vs ~ am, scales = "free_x")
-
+\dontshow{\}) # examplesIf}
 }
