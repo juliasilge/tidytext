@@ -24,7 +24,7 @@ unnest_tokens(
 \item{input}{Input column that gets split as string or symbol.
 
 The output/input arguments are passed by expression and support
-\link[rlang]{quasiquotation}; you can unquote strings and symbols.}
+\link[rlang:topic-inject]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
 options are "words" (default), "characters", "character_shingles", "ngrams",
@@ -57,7 +57,7 @@ Grouping data specifies variables to collapse across in the same way as
 grouped data. Collapsing applies mostly to \code{token} options of "ngrams",
 "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".}
 
-\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}, such
+\item{...}{Extra arguments passed on to \link[tokenizers:tokenizers]{tokenizers}, such
 as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
 "ngrams" and "skip_ngrams", \code{strip_url} for "tweets", and
 \code{pattern} for "regex".}
@@ -68,7 +68,7 @@ This function supports non-standard evaluation through the tidyeval framework.
 }
 \details{
 If format is anything other than "text", this uses the
-\code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.
+\code{\link[hunspell:hunspell]{hunspell::hunspell_parse()}} tokenizer instead of the tokenizers package.
 This does not yet have support for tokenizing by any unit other than words.
 }
 \examples{

@@ -26,7 +26,7 @@ cast_dfm(data, document, term, value, ...)
 (default is term-frequency, effectively unweighted)}
 
 \item{...}{Extra arguments passed on to
-\code{\link{sparseMatrix}}}
+\code{\link[=sparseMatrix]{sparseMatrix()}}}
 }
 \description{
 This turns a "tidy" one-term-per-document-per-row data frame into a
@@ -36,6 +36,6 @@ evaluation through the tidyeval framework. Groups are ignored.
 }
 \details{
 The arguments \code{term}, \code{document}, and \code{value}
-are passed by expression and support \link[rlang]{quasiquotation};
+are passed by expression and support \link[rlang:topic-inject]{quasiquotation};
 you can unquote strings and symbols.
 }

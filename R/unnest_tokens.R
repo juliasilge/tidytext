@@ -17,7 +17,7 @@
 #' this uses the hunspell tokenizer, and can tokenize only by "word".
 #'
 #' @param to_lower Whether to convert tokens to lowercase. If tokens include
-#' URLS (such as with \code{token = "tweets"}), such converted URLs may no
+#' URLS (such as with `token = "tweets"`), such converted URLs may no
 #' longer be correct.
 #'
 #' @param drop Whether original input column should get dropped. Ignored
@@ -28,7 +28,7 @@
 #' @param input Input column that gets split as string or symbol.
 #'
 #'   The output/input arguments are passed by expression and support
-#'   \link[rlang]{quasiquotation}; you can unquote strings and symbols.
+#'   [quasiquotation][rlang::quasiquotation]; you can unquote strings and symbols.
 #'
 #' @param collapse A character vector of variables to collapse text across,
 #'  or `NULL`.
@@ -43,13 +43,13 @@
 #'   grouped data. Collapsing applies mostly to `token` options of "ngrams",
 #'   "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".
 #'
-#' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}, such
-#' as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
-#' "ngrams" and "skip_ngrams", \code{strip_url} for "tweets", and
-#' \code{pattern} for "regex".
+#' @param ... Extra arguments passed on to [tokenizers][tokenizers::tokenizers], such
+#' as `strip_punct` for "words" and "tweets", `n` and `k` for
+#' "ngrams" and "skip_ngrams", `strip_url` for "tweets", and
+#' `pattern` for "regex".
 #'
 #' @details If format is anything other than "text", this uses the
-#' \code{\link[hunspell]{hunspell_parse}} tokenizer instead of the tokenizers package.
+#' [hunspell::hunspell_parse()] tokenizer instead of the tokenizers package.
 #' This does not yet have support for tokenizing by any unit other than words.
 #'
 #' @import dplyr

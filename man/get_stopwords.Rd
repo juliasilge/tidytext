@@ -10,11 +10,11 @@ get_stopwords(language = "en", source = "snowball")
 \item{language}{The language of the stopword lexicon specified as a
 two-letter ISO code, such as \code{"es"}, \code{"de"}, or \code{"fr"}.
 Default is \code{"en"} for English. Use
-\link[stopwords]{stopwords_getlanguages} from \pkg{stopwords} to see available
+\link[stopwords:stopwords_getlanguages]{stopwords_getlanguages} from \pkg{stopwords} to see available
 languages.}
 
 \item{source}{The source of the stopword lexicon specified. Default is
-\code{"snowball"}. Use \link[stopwords]{stopwords_getsources} from
+\code{"snowball"}. Use \link[stopwords:stopwords_getsources]{stopwords_getsources} from
 \pkg{stopwords} to see available sources.}
 }
 \value{
@@ -23,7 +23,7 @@ parameter \code{lexicon} is "quanteda" in this case.
 }
 \description{
 Get a specific stop word lexicon via the \pkg{stopwords} package's
-\link[stopwords]{stopwords} function, in a tidy format with one word per row.
+\link[stopwords:stopwords]{stopwords} function, in a tidy format with one word per row.
 }
 \examples{
 \dontshow{if (rlang::is_installed("stopwords")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

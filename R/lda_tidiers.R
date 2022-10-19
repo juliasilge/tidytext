@@ -5,15 +5,15 @@
 #' @param x An LDA or CTM (or LDA_VEM/CTA_VEM) object from the topicmodels package
 #' @param matrix Whether to tidy the beta (per-term-per-topic, default)
 #' or gamma (per-document-per-topic) matrix
-#' @param data For \code{augment}, the data given to the LDA or CTM function, either
+#' @param data For `augment`, the data given to the LDA or CTM function, either
 #' as a DocumentTermMatrix or as a tidied table with "document" and "term"
 #' columns
 #' @param log Whether beta/gamma should be on a log scale, default FALSE
 #' @param ... Extra arguments, not used
 #'
-#' @return \code{tidy} returns a tidied version of either the beta or gamma matrix.
+#' @return `tidy` returns a tidied version of either the beta or gamma matrix.
 #'
-#' If \code{matrix == "beta"} (default), returns a table with one row per topic and term,
+#' If `matrix == "beta"` (default), returns a table with one row per topic and term,
 #' with columns
 #' \describe{
 #'   \item{topic}{Topic, as an integer}
@@ -22,7 +22,7 @@
 #'   the multinomial model}
 #' }
 #'
-#' If \code{matrix == "gamma"}, returns a table with one row per topic and document,
+#' If `matrix == "gamma"`, returns a table with one row per topic and document,
 #' with columns
 #' \describe{
 #'   \item{topic}{Topic, as an integer}
@@ -118,16 +118,16 @@ tidy_topicmodels <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
 
 #' @rdname lda_tidiers
 #'
-#' @return \code{augment} returns a table with one row per original
-#' document-term pair, such as is returned by \link{tdm_tidiers}:
+#' @return `augment` returns a table with one row per original
+#' document-term pair, such as is returned by [tdm_tidiers]:
 #' \describe{
 #'   \item{document}{Name of document (if present), or index}
 #'   \item{term}{Term}
 #'   \item{.topic}{Topic assignment}
 #' }
 #'
-#' If the \code{data} argument is provided, any columns in the original
-#' data are included, combined based on the \code{document} and \code{term}
+#' If the `data` argument is provided, any columns in the original
+#' data are included, combined based on the `document` and `term`
 #' columns.
 #'
 #' @importFrom generics augment
@@ -169,7 +169,7 @@ augment_topicmodels <- function(x, data, ...) {
 
 #' @rdname lda_tidiers
 #'
-#' @return \code{glance} always returns a one-row table, with columns
+#' @return `glance` always returns a one-row table, with columns
 #' \describe{
 #'   \item{iter}{Number of iterations used}
 #'   \item{terms}{Number of terms in the model}

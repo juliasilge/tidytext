@@ -8,7 +8,7 @@
 #' @inheritParams unnest_tokens
 #' @inheritParams tokenizers::tokenize_ptb
 #'
-#' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
+#' @param ... Extra arguments passed on to [tokenizers][tokenizers::tokenizers]
 #'
 #' @export
 #' @importFrom dplyr enquo

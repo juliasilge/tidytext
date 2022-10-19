@@ -21,7 +21,7 @@ tbl_df with one-row-per-document, with a \code{text} column containing
 the document's text, and one column for each document-level metadata.
 \code{glance} returns a one-row tbl_df with corpus-level metadata,
 such as source and created. For Corpus objects from the tm package,
-see \code{\link{tidy.Corpus}}.
+see \code{\link[=tidy.Corpus]{tidy.Corpus()}}.
 }
 \details{
 For the most part, the \code{tidy} output is equivalent to the

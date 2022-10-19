@@ -1,10 +1,10 @@
 #' Tidy a Corpus object from the tm package
 #'
 #' Tidy a Corpus object from the tm package. Returns a data frame
-#' with one-row-per-document, with a \code{text} column containing
+#' with one-row-per-document, with a `text` column containing
 #' the document's text, and one column for each local (per-document)
 #' metadata tag. For corpus objects from the quanteda package,
-#' see \code{\link{tidy.corpus}}.
+#' see [tidy.corpus()].
 #'
 #' @param x A Corpus object, such as a VCorpus or PCorpus
 #' @param collapse A string that should be used to
@@ -81,24 +81,24 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 
 #' Tidiers for a corpus object from the quanteda package
 #'
-#' Tidy a corpus object from the quanteda package. \code{tidy} returns a
-#' tbl_df with one-row-per-document, with a \code{text} column containing
+#' Tidy a corpus object from the quanteda package. `tidy` returns a
+#' tbl_df with one-row-per-document, with a `text` column containing
 #' the document's text, and one column for each document-level metadata.
-#' \code{glance} returns a one-row tbl_df with corpus-level metadata,
+#' `glance` returns a one-row tbl_df with corpus-level metadata,
 #' such as source and created. For Corpus objects from the tm package,
-#' see \code{\link{tidy.Corpus}}.
+#' see [tidy.Corpus()].
 #'
 #' @param x A Corpus object, such as a VCorpus or PCorpus
 #' @param ... Extra arguments, not used
 #'
 #' @importFrom generics glance
 #'
-#' @details For the most part, the \code{tidy} output is equivalent to the
+#' @details For the most part, the `tidy` output is equivalent to the
 #' "documents" data frame in the corpus object, except that it is converted
-#' to a tbl_df, and \code{texts} column is renamed to \code{text}
+#' to a tbl_df, and `texts` column is renamed to `text`
 #' to be consistent with other uses in tidytext.
 #'
-#' Similarly, the \code{glance} output is simply the "metadata" object,
+#' Similarly, the `glance` output is simply the "metadata" object,
 #' with NULL fields removed and turned into a one-row tbl_df.
 #'
 #' @examples

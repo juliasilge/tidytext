@@ -41,13 +41,13 @@ unnest_skip_ngrams(
 \item{input}{Input column that gets split as string or symbol.
 
 The output/input arguments are passed by expression and support
-\link[rlang]{quasiquotation}; you can unquote strings and symbols.}
+\link[rlang:topic-inject]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{n}{The number of words in the n-gram. This must be an integer greater
 than or equal to 1.}
 
-\item{n_min}{This must be an integer greater than or equal to 1, and less
-than or equal to \code{n}.}
+\item{n_min}{The minimum number of words in the n-gram. This must be an
+integer greater than or equal to 1, and less than or equal to \code{n}.}
 
 \item{ngram_delim}{The separator between words in an n-gram.}
 
@@ -75,7 +75,7 @@ Grouping data specifies variables to collapse across in the same way as
 grouped data. Collapsing applies mostly to \code{token} options of "ngrams",
 "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".}
 
-\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
+\item{...}{Extra arguments passed on to \link[tokenizers:tokenizers]{tokenizers}}
 
 \item{k}{For the skip n-gram tokenizer, the maximum skip distance between
 words. The function will compute all skip n-grams between \code{0} and

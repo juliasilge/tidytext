@@ -11,7 +11,7 @@
 #' @inheritParams tokenizers::tokenize_lines
 #' @inheritParams tokenizers::tokenize_paragraphs
 #'
-#' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
+#' @param ... Extra arguments passed on to [tokenizers][tokenizers::tokenizers]
 #'
 #' @export
 #' @rdname unnest_sentences

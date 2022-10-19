@@ -39,7 +39,7 @@ unnest_character_shingles(
 \item{input}{Input column that gets split as string or symbol.
 
 The output/input arguments are passed by expression and support
-\link[rlang]{quasiquotation}; you can unquote strings and symbols.}
+\link[rlang:topic-inject]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{strip_non_alphanum}{Should punctuation and white space be stripped?}
 
@@ -67,7 +67,7 @@ Grouping data specifies variables to collapse across in the same way as
 grouped data. Collapsing applies mostly to \code{token} options of "ngrams",
 "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".}
 
-\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
+\item{...}{Extra arguments passed on to \link[tokenizers:tokenizers]{tokenizers}}
 
 \item{n}{The number of characters in each shingle. This must be an integer
 greater than or equal to 1.}

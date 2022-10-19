@@ -18,7 +18,7 @@ column (if \code{lexicon} is not "afinn") or a numeric \code{value} column
 \description{
 Get specific sentiment lexicons in a tidy format, with one row per word,
 in a form that can be joined with a one-word-per-row dataset.
-The \code{"bing"} option comes from the included \code{\link{sentiments}}
+The \code{"bing"} option comes from the included \code{\link[=sentiments]{sentiments()}}
 data frame, and others call the relevant function in the \pkg{textdata}
 package.
 }

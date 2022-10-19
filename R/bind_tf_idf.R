@@ -11,8 +11,8 @@
 #' @param document Column containing document IDs as string or symbol
 #' @param n Column containing document-term counts as string or symbol
 #'
-#' @details The arguments \code{term}, \code{document}, and \code{n}
-#' are passed by expression and support \link[rlang]{quasiquotation};
+#' @details The arguments `term`, `document`, and `n`
+#' are passed by expression and support [quasiquotation][rlang::quasiquotation];
 #' you can unquote strings and symbols.
 #'
 #' If the dataset is grouped, the groups are ignored but are

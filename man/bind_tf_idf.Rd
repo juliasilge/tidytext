@@ -24,7 +24,7 @@ evaluation through the tidyeval framework.
 }
 \details{
 The arguments \code{term}, \code{document}, and \code{n}
-are passed by expression and support \link[rlang]{quasiquotation};
+are passed by expression and support \link[rlang:topic-inject]{quasiquotation};
 you can unquote strings and symbols.
 
 If the dataset is grouped, the groups are ignored but are

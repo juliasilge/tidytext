@@ -11,28 +11,28 @@
 #'  }
 #'
 #' @source \itemize{
-#' \item \url{http://www.lextek.com/manuals/onix/stopwords1.html}
-#' \item \url{https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf}
-#' \item \url{http://snowball.tartarus.org/algorithms/english/stop.txt}
+#' \item <http://www.lextek.com/manuals/onix/stopwords1.html>
+#' \item <https://www.jmlr.org/papers/volume5/lewis04a/lewis04a.pdf>
+#' \item <http://snowball.tartarus.org/algorithms/english/stop.txt>
 #' }
 "stop_words"
 
 #' Get a tidy data frame of a single stopword lexicon
 #'
 #' Get a specific stop word lexicon via the \pkg{stopwords} package's
-#' \link[stopwords]{stopwords} function, in a tidy format with one word per row.
+#' [stopwords][stopwords::stopwords] function, in a tidy format with one word per row.
 #'
 #' @param language The language of the stopword lexicon specified as a
-#' two-letter ISO code, such as \code{"es"}, \code{"de"}, or \code{"fr"}.
-#' Default is \code{"en"} for English. Use
-#' \link[stopwords]{stopwords_getlanguages} from \pkg{stopwords} to see available
+#' two-letter ISO code, such as `"es"`, `"de"`, or `"fr"`.
+#' Default is `"en"` for English. Use
+#' [stopwords_getlanguages][stopwords::stopwords_getlanguages] from \pkg{stopwords} to see available
 #' languages.
 #' @param source The source of the stopword lexicon specified. Default is
-#' \code{"snowball"}. Use \link[stopwords]{stopwords_getsources} from
+#' `"snowball"`. Use [stopwords_getsources][stopwords::stopwords_getsources] from
 #' \pkg{stopwords} to see available sources.
 #'
-#' @return A tibble with two columns, \code{word} and \code{lexicon}. The
-#' parameter \code{lexicon} is "quanteda" in this case.
+#' @return A tibble with two columns, `word` and `lexicon`. The
+#' parameter `lexicon` is "quanteda" in this case.
 #'
 #' @examplesIf rlang::is_installed("stopwords")
 #'

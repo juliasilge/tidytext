@@ -21,7 +21,7 @@ Tidy a Corpus object from the tm package. Returns a data frame
 with one-row-per-document, with a \code{text} column containing
 the document's text, and one column for each local (per-document)
 metadata tag. For corpus objects from the quanteda package,
-see \code{\link{tidy.corpus}}.
+see \code{\link[=tidy.corpus]{tidy.corpus()}}.
 }
 \examples{
 

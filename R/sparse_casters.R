@@ -7,15 +7,15 @@
 #' @param row Column name to use as row names in sparse matrix, as string or symbol
 #' @param column Column name to use as column names in sparse matrix, as string or symbol
 #' @param value Column name to use as sparse matrix values (default 1) as string or symbol
-#' @param ... Extra arguments to pass on to \code{\link{sparseMatrix}}
+#' @param ... Extra arguments to pass on to [sparseMatrix()]
 #'
 #' @return A sparse Matrix object, with one row for each unique value in
-#' the \code{row} column, one column for each unique value in the \code{column}
-#' column, and with as many non-zero values as there are rows in \code{data}.
+#' the `row` column, one column for each unique value in the `column`
+#' column, and with as many non-zero values as there are rows in `data`.
 #'
 #' @details Note that cast_sparse ignores groups in a grouped tbl_df. The arguments
-#' \code{row}, \code{column}, and \code{value} are passed by expression and support
-#' \link[rlang]{quasiquotation}; you can unquote strings and symbols.
+#' `row`, `column`, and `value` are passed by expression and support
+#' [quasiquotation][rlang::quasiquotation]; you can unquote strings and symbols.
 #'
 #' @examples
 #'
@@ -88,10 +88,10 @@ cast_sparse <- function(data, row, column, value, ...) {
 #' @param weighting The weighting function for the DTM/TDM
 #' (default is term-frequency, effectively unweighted)
 #' @param ... Extra arguments passed on to
-#' \code{\link{sparseMatrix}}
+#' [sparseMatrix()]
 #'
-#' @details The arguments \code{term}, \code{document}, and \code{value}
-#' are passed by expression and support \link[rlang]{quasiquotation};
+#' @details The arguments `term`, `document`, and `value`
+#' are passed by expression and support [quasiquotation][rlang::quasiquotation];
 #' you can unquote strings and symbols.
 #'
 #' @rdname document_term_casters

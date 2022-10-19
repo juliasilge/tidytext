@@ -10,7 +10,7 @@
 #' @inheritParams tokenizers::tokenize_character_shingles
 #' @inheritParams unnest_tokens
 #'
-#' @param ... Extra arguments passed on to \link[tokenizers]{tokenizers}
+#' @param ... Extra arguments passed on to [tokenizers][tokenizers::tokenizers]
 #'
 #' @export
 #' @importFrom dplyr enquo

@@ -20,7 +20,7 @@
 #' }
 #'
 #'
-#' @source \url{https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html}
+#' @source <https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html>
 "sentiments"
 
 
@@ -28,16 +28,16 @@
 #'
 #' Get specific sentiment lexicons in a tidy format, with one row per word,
 #' in a form that can be joined with a one-word-per-row dataset.
-#' The \code{"bing"} option comes from the included \code{\link{sentiments}}
+#' The `"bing"` option comes from the included [sentiments()]
 #' data frame, and others call the relevant function in the \pkg{textdata}
 #' package.
 #'
 #' @param lexicon The sentiment lexicon to retrieve;
 #' either "afinn", "bing", "nrc", or "loughran"
 #'
-#' @return A tbl_df with a \code{word} column, and either a \code{sentiment}
-#' column (if \code{lexicon} is not "afinn") or a numeric \code{value} column
-#' (if \code{lexicon} is "afinn").
+#' @return A tbl_df with a `word` column, and either a `sentiment`
+#' column (if `lexicon` is not "afinn") or a numeric `value` column
+#' (if `lexicon` is "afinn").
 #'
 #' @examples
 #'

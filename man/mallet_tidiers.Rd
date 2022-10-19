@@ -19,7 +19,7 @@
 }
 \arguments{
 \item{x}{A jobjRef object, of type RTopicModel, such as created
-by \code{\link[mallet]{MalletLDA}}.}
+by \code{\link[mallet:MalletLDA]{mallet::MalletLDA()}}.}
 
 \item{matrix}{Whether to tidy the beta (per-term-per-topic, default)
 or gamma (per-document-per-topic) matrix.}
@@ -33,7 +33,7 @@ assignments.}
 
 \item{smoothed}{If true (default), add the smoothing parameter to each
 to avoid any values being zero. This smoothing parameter is initialized
-as \code{alpha.sum} in \code{\link[mallet]{MalletLDA}}.}
+as \code{alpha.sum} in \code{\link[mallet:MalletLDA]{mallet::MalletLDA()}}.}
 
 \item{...}{Extra arguments, not used}
 
@@ -51,10 +51,10 @@ It returns that same data with an additional column
 \description{
 Tidy LDA models fit by the mallet package, which wraps the Mallet topic
 modeling package in Java. The arguments and return values
-are similar to \code{\link{lda_tidiers}}.
+are similar to \code{\link[=lda_tidiers]{lda_tidiers()}}.
 }
 \details{
-Note that the LDA models from \code{\link[mallet]{MalletLDA}}
+Note that the LDA models from \code{\link[mallet:MalletLDA]{mallet::MalletLDA()}}
 are technically a special case of S4 objects with class \code{jobjRef}.
 These are thus implemented as \code{jobjRef} tidiers, with a check for
 whether the \code{toString} output is as expected.
@@ -106,6 +106,6 @@ assignments
 
 }
 \seealso{
-\code{\link{lda_tidiers}}, \code{\link[mallet]{mallet.doc.topics}},
-\code{\link[mallet]{mallet.topic.words}}
+\code{\link[=lda_tidiers]{lda_tidiers()}}, \code{\link[mallet:mallet.doc.topics]{mallet::mallet.doc.topics()}},
+\code{\link[mallet:mallet.topic.words]{mallet::mallet.topic.words()}}
 }

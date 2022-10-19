@@ -2,13 +2,13 @@
 #'
 #' Tidy LDA models fit by the mallet package, which wraps the Mallet topic
 #' modeling package in Java. The arguments and return values
-#' are similar to \code{\link{lda_tidiers}}.
+#' are similar to [lda_tidiers()].
 #'
 #' @param x A jobjRef object, of type RTopicModel, such as created
-#' by \code{\link[mallet]{MalletLDA}}.
+#' by [mallet::MalletLDA()].
 #' @param matrix Whether to tidy the beta (per-term-per-topic, default)
 #' or gamma (per-document-per-topic) matrix.
-#' @param data For \code{augment}, the data given to the LDA function, either
+#' @param data For `augment`, the data given to the LDA function, either
 #' as a DocumentTermMatrix or as a tidied table with "document" and "term"
 #' columns.
 #' @param log Whether beta/gamma should be on a log scale, default FALSE
@@ -18,16 +18,16 @@
 #' assignments.
 #' @param smoothed If true (default), add the smoothing parameter to each
 #' to avoid any values being zero. This smoothing parameter is initialized
-#' as \code{alpha.sum} in \code{\link[mallet]{MalletLDA}}.
+#' as `alpha.sum` in [mallet::MalletLDA()].
 #' @param ... Extra arguments, not used
 #'
-#' @details Note that the LDA models from \code{\link[mallet]{MalletLDA}}
-#' are technically a special case of S4 objects with class \code{jobjRef}.
-#' These are thus implemented as \code{jobjRef} tidiers, with a check for
-#' whether the \code{toString} output is as expected.
+#' @details Note that the LDA models from [mallet::MalletLDA()]
+#' are technically a special case of S4 objects with class `jobjRef`.
+#' These are thus implemented as `jobjRef` tidiers, with a check for
+#' whether the `toString` output is as expected.
 #'
-#' @seealso \code{\link{lda_tidiers}}, \code{\link[mallet]{mallet.doc.topics}},
-#' \code{\link[mallet]{mallet.topic.words}}
+#' @seealso [lda_tidiers()], [mallet::mallet.doc.topics()],
+#' [mallet::mallet.topic.words()]
 #'
 #' @name mallet_tidiers
 #'
@@ -113,11 +113,11 @@ tidy.jobjRef <- function(x, matrix = c("beta", "gamma"), log = FALSE,
 
 #' @rdname mallet_tidiers
 #'
-#' @return \code{augment} must be provided a data argument containing
+#' @return `augment` must be provided a data argument containing
 #' one row per original document-term pair, such as is returned by
-#' \link{tdm_tidiers}, containing columns \code{document} and \code{term}.
+#' [tdm_tidiers], containing columns `document` and `term`.
 #' It returns that same data with an additional column
-#' \code{.topic} with the topic assignment for that document-term combination.
+#' `.topic` with the topic assignment for that document-term combination.
 #'
 #' @importFrom generics augment
 #'

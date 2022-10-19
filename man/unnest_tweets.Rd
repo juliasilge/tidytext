@@ -25,7 +25,7 @@ unnest_tweets(
 \item{input}{Input column that gets split as string or symbol.
 
 The output/input arguments are passed by expression and support
-\link[rlang]{quasiquotation}; you can unquote strings and symbols.}
+\link[rlang:topic-inject]{quasiquotation}; you can unquote strings and symbols.}
 
 \item{strip_punct}{Should punctuation be stripped?}
 
@@ -56,7 +56,7 @@ Grouping data specifies variables to collapse across in the same way as
 grouped data. Collapsing applies mostly to \code{token} options of "ngrams",
 "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".}
 
-\item{...}{Extra arguments passed on to \link[tokenizers]{tokenizers}}
+\item{...}{Extra arguments passed on to \link[tokenizers:tokenizers]{tokenizers}}
 }
 \description{
 This function is a wrapper around \code{unnest_tokens( token = "tweets" )}.

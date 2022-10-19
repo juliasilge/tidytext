@@ -1,9 +1,9 @@
 #' Reorder an x or y axis within facets
 #'
 #' Reorder a column before plotting with faceting, such that the values are
-#' ordered within each facet. This requires two functions: \code{reorder_within}
-#' applied to the column, then either \code{scale_x_reordered} or
-#' \code{scale_y_reordered} added to the plot.
+#' ordered within each facet. This requires two functions: `reorder_within`
+#' applied to the column, then either `scale_x_reordered` or
+#' `scale_y_reordered` added to the plot.
 #' This is implemented as a bit of a hack: it appends ___ and then the facet
 #' at the end of each string.
 #'
@@ -18,12 +18,12 @@
 #' [ggplot2::scale_x_discrete()], by default `reorder_func`.
 #' @param sep Separator to distinguish `by` and `within`. You may want to set this
 #' manually if ___ can exist within one of your labels.
-#' @param ... In \code{reorder_within} arguments passed on to
-#' \code{\link{reorder}}. In the scale functions, extra arguments passed on to
-#' \code{\link[ggplot2]{scale_x_discrete}} or \code{\link[ggplot2]{scale_y_discrete}}.
+#' @param ... In `reorder_within` arguments passed on to
+#' [reorder()]. In the scale functions, extra arguments passed on to
+#' [ggplot2::scale_x_discrete()] or [ggplot2::scale_y_discrete()].
 #'
 #' @source "Ordering categories within ggplot2 Facets" by Tyler Rinker:
-#' \url{https://trinkerrstuff.wordpress.com/2016/12/23/ordering-categories-within-ggplot2-facets/}
+#' <https://trinkerrstuff.wordpress.com/2016/12/23/ordering-categories-within-ggplot2-facets/>
 #'
 #' @examplesIf rlang::is_installed(c("stopwords", "tidyr"))
 #'

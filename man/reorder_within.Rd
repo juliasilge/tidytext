@@ -35,8 +35,8 @@ ordering. By default, mean.}
 manually if ___ can exist within one of your labels.}
 
 \item{...}{In \code{reorder_within} arguments passed on to
-\code{\link{reorder}}. In the scale functions, extra arguments passed on to
-\code{\link[ggplot2]{scale_x_discrete}} or \code{\link[ggplot2]{scale_y_discrete}}.}
+\code{\link[=reorder]{reorder()}}. In the scale functions, extra arguments passed on to
+\code{\link[ggplot2:scale_discrete]{ggplot2::scale_x_discrete()}} or \code{\link[ggplot2:scale_discrete]{ggplot2::scale_y_discrete()}}.}
 
 \item{labels}{Function to transform the labels of
 \code{\link[ggplot2:scale_discrete]{ggplot2::scale_x_discrete()}}, by default \code{reorder_func}.}

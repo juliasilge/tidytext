@@ -16,7 +16,7 @@ cast_sparse(data, row, column, value, ...)
 
 \item{value}{Column name to use as sparse matrix values (default 1) as string or symbol}
 
-\item{...}{Extra arguments to pass on to \code{\link{sparseMatrix}}}
+\item{...}{Extra arguments to pass on to \code{\link[=sparseMatrix]{sparseMatrix()}}}
 }
 \value{
 A sparse Matrix object, with one row for each unique value in
@@ -29,7 +29,7 @@ This function supports non-standard evaluation through the tidyeval framework.
 \details{
 Note that cast_sparse ignores groups in a grouped tbl_df. The arguments
 \code{row}, \code{column}, and \code{value} are passed by expression and support
-\link[rlang]{quasiquotation}; you can unquote strings and symbols.
+\link[rlang:topic-inject]{quasiquotation}; you can unquote strings and symbols.
 }
 \examples{
 
