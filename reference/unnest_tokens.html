@@ -143,7 +143,7 @@ grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams
 
 
 <dt>...</dt>
-<dd><p>Extra arguments passed on to <a href="https://lincolnmullen.com/software/tokenizers/reference/tokenizers.html" class="external-link">tokenizers</a>, such
+<dd><p>Extra arguments passed on to <a href="https://docs.ropensci.org/tokenizers/reference/tokenizers.html" class="external-link">tokenizers</a>, such
 as <code>strip_punct</code> for "words" and "tweets", <code>n</code> and <code>k</code> for
 "ngrams" and "skip_ngrams", <code>strip_url</code> for "tweets", and
 <code>pattern</code> for "regex".</p></dd>
@@ -152,7 +152,7 @@ as <code>strip_punct</code> for "words" and "tweets", <code>n</code> and <code>k
     <div id="details">
     <h2>Details</h2>
     <p>If format is anything other than "text", this uses the
-<code><a href="https://docs.ropensci.org/hunspell/reference/hunspell.html" class="external-link">hunspell_parse</a></code> tokenizer instead of the tokenizers package.
+<code><a href="https://docs.ropensci.org/hunspell/reference/hunspell.html" class="external-link">hunspell::hunspell_parse()</a></code> tokenizer instead of the tokenizers package.
 This does not yet have support for tokenizing by any unit other than words.</p>
     </div>
 
