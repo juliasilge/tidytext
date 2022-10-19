@@ -10,9 +10,12 @@ dat <- tibble(
 m <- cast_sparse(dat, document, term)
 stm_model <- stm(m, seed = 1234, K = 3, verbose = FALSE)
 
-temp <- textProcessor(documents = gadarian[1:10,]$open.ended.response, metadata = gadarian[1:10,], verbose = FALSE)
+temp <- textProcessor(documents = gadarian[1:10,]$open.ended.response,
+                      metadata = gadarian[1:10,], verbose = FALSE)
 out <- prepDocuments(temp$documents, temp$vocab, temp$meta, verbose = F)
-stm_model_cov <- stm(out$documents, out$vocab, K = 3, content = out$meta$treatment, max.em.its = 3, verbose = FALSE)
+stm_model_cov <- stm(out$documents, out$vocab, K = 3,
+                     content = out$meta$treatment,
+                     seed = 123, max.em.its = 3, verbose = FALSE)
 
 test_that("can tidy beta matrix", {
   td <- tidy(stm_model, matrix = "beta")
