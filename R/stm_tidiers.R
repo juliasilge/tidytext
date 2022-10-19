@@ -128,6 +128,7 @@ tidy_stm_lift <- function(x) {
 }
 
 pivot_stm_longer <- function(x, vocab) {
+  rlang::check_installed("tidyr")
   seq_ncol <- seq_len(ncol(x))
   tibble::as_tibble(x, .name_repair = ~ paste0("___", seq_ncol)) %>%
     tidyr::pivot_longer(
