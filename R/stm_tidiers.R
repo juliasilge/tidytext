@@ -1,131 +1,145 @@
 #' Tidiers for Structural Topic Models from the stm package
 #'
 #' Tidy topic models fit by the stm package. The arguments and return values
-#' are similar to \code{\link{lda_tidiers}}.
+#' are similar to [lda_tidiers()].
 #'
-#' @param x An STM fitted model object from either \code{stm} or \code{estimateEffect}
-#' from the stm package.
-#' @param matrix Whether to tidy the beta (per-term-per-topic, default)
-#' or gamma/theta (per-document-per-topic) matrix. The stm package calls this
-#' the theta matrix, but other topic modeling packages call this gamma.
-#' @param data For \code{augment}, the data given to the stm function, either
-#' as a \code{dfm} from quanteda or as a tidied table with "document" and
+#' @param x An STM fitted model object from either [stm::stm()] or
+#' [stm::estimateEffect()]
+#' @param matrix Which matrix to tidy:
+#'  - the beta matrix (per-term-per-topic, default)
+#'  - the gamma/theta matrix (per-document-per-topic); the stm package calls
+#'  this the theta matrix, but other topic modeling packages call this gamma
+#'  - the FREX matrix, for words with high frequency and exclusivity
+#'  - the lift matrix, for words with high lift
+#' @param data For `augment`, the data given to the stm function, either
+#' as a `dfm` from quanteda or as a tidied table with "document" and
 #' "term" columns
 #' @param log Whether beta/gamma/theta should be on a log scale, default FALSE
 #' @param document_names Optional vector of document names for use with
 #' per-document-per-topic tidying
-#' @param ... Extra arguments, not used
+#' @param ... Extra arguments for tidying, such as `w` as used in
+#' [stm::calcfrex()]
 #'
-#' @return \code{tidy} returns a tidied version of either the beta or gamma matrix if
-#' called on an object from \code{stm} or a tidied version of the estimated regressions
-#' if called on an object from \code{estimateEffect}.
+#' @seealso [lda_tidiers()], [stm::calcfrex()], [stm::calclift()]
+#' @return `tidy` returns a tidied version of either the beta, gamma, FREX, or
+#' lift matrix if called on an object from [stm::stm()], or a tidied version of
+#' the estimated regressions if called on an object from [stm::estimateEffect()].
 #'
-#' @seealso \code{\link{lda_tidiers}}
+#' @examplesIf interactive() || identical(Sys.getenv("IN_PKGDOWN"), "true")
+#' library(dplyr)
+#' library(ggplot2)
+#' library(stm)
+#' library(janeaustenr)
 #'
-#' If \code{matrix == "beta"} (default), returns a table with one row per topic and term,
-#' with columns
-#' \describe{
-#'   \item{topic}{Topic, as an integer}
-#'   \item{term}{Term}
-#'   \item{beta}{Probability of a term generated from a topic according to
-#'   the structural topic model}
-#' }
-#'
-#' If \code{matrix == "gamma"}, returns a table with one row per topic and document,
-#' with columns
-#' \describe{
-#'   \item{topic}{Topic, as an integer}
-#'   \item{document}{Document name (if given in vector of \code{document_names}) or
-#'   ID as an integer}
-#'   \item{gamma}{Probability of topic given document}
-#' }
-#'
-#' If called on an object from \code{estimateEffect}, returns a table with columns
-#' \describe{
-#'   \item{topic}{Topic, as an integer}
-#'   \item{term}{The term in the model being estimated and tested}
-#'   \item{estimate}{The estimated coefficient}
-#'   \item{std.error}{The standard error from the linear model}
-#'   \item{statistic}{t-statistic}
-#'   \item{p.value}{two-sided p-value}
-#' }
-#'
-#' @examples
-#'
-#' \dontrun{
-#' if (requireNamespace("stm", quietly = TRUE)) {
-#'   library(dplyr)
-#'   library(ggplot2)
-#'   library(stm)
-#'   library(janeaustenr)
-#'
-#'   austen_sparse <- austen_books() %>%
+#' austen_sparse <- austen_books() %>%
 #'     unnest_tokens(word, text) %>%
 #'     anti_join(stop_words) %>%
 #'     count(book, word) %>%
 #'     cast_sparse(book, word, n)
-#'   topic_model <- stm(austen_sparse, K = 12, verbose = FALSE, init.type = "Spectral")
+#' topic_model <- stm(austen_sparse, K = 12, verbose = FALSE)
 #'
-#'   # tidy the word-topic combinations
-#'   td_beta <- tidy(topic_model)
-#'   td_beta
+#' # tidy the word-topic combinations
+#' td_beta <- tidy(topic_model)
+#' td_beta
 #'
-#'   # Examine the topics
-#'   td_beta %>%
+#' # Examine the topics
+#' td_beta %>%
 #'     group_by(topic) %>%
-#'     top_n(10, beta) %>%
+#'     slice_max(beta, n = 10) %>%
 #'     ungroup() %>%
-#'     ggplot(aes(term, beta)) +
+#'     ggplot(aes(beta, term)) +
 #'     geom_col() +
-#'     facet_wrap(~ topic, scales = "free") +
-#'     coord_flip()
+#'     facet_wrap(~ topic, scales = "free")
 #'
-#'   # tidy the document-topic combinations, with optional document names
-#'   td_gamma <- tidy(topic_model, matrix = "gamma",
-#'                    document_names = rownames(austen_sparse))
-#'   td_gamma
+#' # high FREX words per topic
+#' tidy(topic_model, matrix = "frex")
 #'
-#'   # using stm's gardarianFit, we can tidy the result of a model
-#'   # estimated with covariates
-#'   effects <- estimateEffect(1:3 ~ treatment, gadarianFit, gadarian)
-#'   glance(effects)
-#'   td_estimate <- tidy(effects)
-#'   td_estimate
+#' # high lift words per topic
+#' tidy(topic_model, matrix = "lift")
 #'
-#' }
-#' }
+#' # tidy the document-topic combinations, with optional document names
+#' td_gamma <- tidy(topic_model, matrix = "gamma",
+#'                  document_names = rownames(austen_sparse))
+#' td_gamma
+#'
+#' # using stm's gardarianFit, we can tidy the result of a model
+#' # estimated with covariates
+#' effects <- estimateEffect(1:3 ~ treatment, gadarianFit, gadarian)
+#' glance(effects)
+#' td_estimate <- tidy(effects)
+#' td_estimate
 #'
 #' @name stm_tidiers
 #'
 #' @export
-tidy.STM <- function(x, matrix = c("beta", "gamma", "theta"), log = FALSE,
+tidy.STM <- function(x,
+                     matrix = c("beta", "gamma", "theta", "frex", "lift"),
+                     log = FALSE,
                      document_names = NULL, ...) {
-  matrix <- match.arg(matrix)
-  if (matrix == "beta") {
-    mat <- x$beta$logbeta
-  } else {
-    mat <- x$theta
-  }
+  matrix <- rlang::arg_match(matrix)
+  switch(matrix,
+         "beta" = tidy_stm_beta(x, log),
+         "frex" = tidy_stm_frex(x, ...),
+         "lift" = tidy_stm_lift(x),
+         tidy_stm_gamma(x, log, document_names)
+  )
+}
 
-  ret <- reshape2::melt(mat) %>%
+tidy_stm_beta <- function(x, log) {
+  logbeta <- x$beta$logbeta
+  ret <- reshape2::melt(logbeta) %>%
     tibble::as_tibble()
-
-  if (matrix == "beta") {
-    ret <- transmute(ret, topic = Var1, term = x$vocab[Var2], beta = value,
-                     y.level = x$settings$covariates$yvarlevels[as.integer(L1)])
-  } else {
-    ret <- transmute(ret, document = Var1, topic = Var2, gamma = value)
-    if (!is.null(document_names)) {
-      ret$document <- document_names[ret$document]
-    }
-  }
-
-  if (matrix == "beta" && !log) {
-    ret[[matrix]] <- exp(ret[[matrix]])
-  } else if (matrix %in% c("gamma", "theta") && log) {
-    ret[[matrix]] <- log(ret[[matrix]])
+  ret <- transmute(ret, topic = Var1, term = x$vocab[Var2], beta = value,
+                   y.level = x$settings$covariates$yvarlevels[as.integer(L1)])
+  if (!log) {
+    ret$beta <- exp(ret$beta)
   }
   ret
+}
+
+tidy_stm_gamma <- function(x, log, document_names) {
+  mat <- x$theta
+  ret <- reshape2::melt(mat) %>%
+    tibble::as_tibble()
+  ret <- transmute(ret, document = Var1, topic = Var2, gamma = value)
+  if (!is.null(document_names)) {
+    ret$document <- document_names[ret$document]
+  }
+  if (log) {
+    ret$gamma <- log(ret$gamma)
+  }
+  ret
+}
+
+tidy_stm_frex <- function(x, ...) {
+  logbeta <- x$beta$logbeta[[1]]
+  word_counts <- x$settings$dim$wcounts$x
+  vocab <- x$vocab
+  frex <- stm::calcfrex(logbeta, ..., word_counts)
+  pivot_stm_longer(frex, vocab)
+}
+
+tidy_stm_lift <- function(x) {
+  logbeta <- x$beta$logbeta[[1]]
+  word_counts <- x$settings$dim$wcounts$x
+  vocab <- x$vocab
+  lift <- stm::calclift(logbeta, word_counts)
+  pivot_stm_longer(lift, vocab)
+}
+
+pivot_stm_longer <- function(x, vocab) {
+  rlang::check_installed("tidyr")
+  seq_ncol <- seq_len(ncol(x))
+  tibble::as_tibble(x, .name_repair = ~ paste0("___", seq_ncol)) %>%
+    tidyr::pivot_longer(
+      everything(),
+      names_to = "topic",
+      values_to = "word"
+    ) %>%
+    transmute(topic = as.integer(stringr::str_remove_all(topic, "___")),
+              word = vocab[word]) %>%
+    arrange(topic)
+
 }
 
 #' @rdname stm_tidiers
@@ -144,30 +158,22 @@ tidy.estimateEffect <- function(x, ...) {
 }
 
 #' @rdname stm_tidiers
-#'
-#' @return \code{glance} always returns a one-row table, with columns
-#' \describe{
-#'   \item{k}{Number of topics in the model}
-#'   \item{docs}{Number of documents in the model}
-#'   \item{uncertainty}{Uncertainty measure}
-#' }
-#'
+#' @return `glance` returns a tibble with exactly one row of model summaries.
 #' @export
 glance.estimateEffect <- function(x, ...) {
-    ret <- tibble(k = length(x[['topics']]),
-                  docs = nrow(x[['modelframe']]),
-                  uncertainty = x[['uncertainty']])
-    ret
+  ret <- tibble(k = length(x[['topics']]),
+                docs = nrow(x[['modelframe']]),
+                uncertainty = x[['uncertainty']])
+  ret
 }
 
 #' @rdname stm_tidiers
 #'
-#' @return \code{augment} must be provided a data argument, either a
-#' \code{dfm} from quanteda or a table containing one row per original
-#' document-term pair, such as is returned by \link{tdm_tidiers}, containing
-#' columns \code{document} and \code{term}. It returns that same data as a table
-#' with an additional column \code{.topic} with the topic assignment for that
-#' document-term combination.
+#' @return `augment` must be provided a data argument, either a
+#' `dfm` from quanteda or a table containing one row per original
+#' document-term pair, such as is returned by [tdm_tidiers], containing
+#' columns `document` and `term`. It returns that same data with an additional
+#' column `.topic` with the topic assignment for that document-term combination.
 #'
 #' @importFrom generics augment
 #'
@@ -207,17 +213,6 @@ augment.STM <- function(x, data, ...) {
 }
 
 #' @rdname stm_tidiers
-#'
-#' @return \code{glance} always returns a one-row table, with columns
-#' \describe{
-#'   \item{k}{Number of topics in the model}
-#'   \item{docs}{Number of documents in the model}
-#'   \item{terms}{Number of terms in the model}
-#'   \item{iter}{Number of iterations used}
-#'   \item{alpha}{If an LDA model, the parameter of the Dirichlet distribution
-#'   for topics over documents}
-#' }
-#'
 #' @export
 
 glance.STM <- function(x, ...) {
