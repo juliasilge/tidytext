@@ -134,10 +134,10 @@ pivot_stm_longer <- function(x, vocab) {
     tidyr::pivot_longer(
       everything(),
       names_to = "topic",
-      values_to = "word"
+      values_to = "term"
     ) %>%
     transmute(topic = as.integer(stringr::str_remove_all(topic, "___")),
-              word = vocab[word]) %>%
+              term = vocab[term]) %>%
     arrange(topic)
 
 }

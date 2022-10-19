@@ -75,8 +75,8 @@ test_that("can tidy gamma matrix", {
 test_that("can tidy frex + lift matrix", {
   td <- tidy(stm_model_cov, matrix = "frex")
   expect_s3_class(td, "tbl_df")
-  expect_equal(colnames(td), c("topic", "word"))
-  expect_type(td$word, "character")
+  expect_equal(colnames(td), c("topic", "term"))
+  expect_type(td$term, "character")
   expect_equal(nrow(td), 60)
   expect_equal(unique(td$topic), 1:3)
 
@@ -89,6 +89,7 @@ test_that("can tidy frex + lift matrix", {
   expect_equal(td2, pivot_stm_longer(frex_stm, vocab))
 
   td3 <- tidy(stm_model_cov, matrix = "lift")
+  expect_equal(colnames(td3), c("topic", "term"))
   lift_stm <- stm::calclift(logbeta, word_counts)
   expect_equal(td3, pivot_stm_longer(lift_stm, vocab))
 })
