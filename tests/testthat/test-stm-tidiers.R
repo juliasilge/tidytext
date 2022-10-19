@@ -77,15 +77,20 @@ test_that("can tidy frex + lift matrix", {
   expect_s3_class(td, "tbl_df")
   expect_equal(colnames(td), c("topic", "word"))
   expect_type(td$word, "character")
-
   expect_equal(nrow(td), 60)
   expect_equal(unique(td$topic), 1:3)
-  expect_equal(td$word[1:3], c("enter", "legal", "think"))
+
+  logbeta <- stm_model_cov$beta$logbeta[[1]]
+  word_counts <- stm_model_cov$settings$dim$wcounts$x
+  vocab <- stm_model_cov$vocab
 
   td2 <- tidy(stm_model_cov, matrix = "frex", w = 1)
-  expect_equal(td2$word[1:3], c("enter", "get", "problem"))
+  frex_stm <- stm::calcfrex(logbeta, w = 1, word_counts)
+  expect_equal(td2, pivot_stm_longer(frex_stm, vocab))
+
   td3 <- tidy(stm_model_cov, matrix = "lift")
-  expect_equal(td3$word[1:3], c("enter", "think", "legal"))
+  lift_stm <- stm::calclift(logbeta, word_counts)
+  expect_equal(td3, pivot_stm_longer(lift_stm, vocab))
 })
 
 
