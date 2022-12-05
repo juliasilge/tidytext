@@ -11,8 +11,6 @@ Robinson](http://varianceexplained.org/)<br/> **License:**
 
 [![R-CMD-check](https://github.com/juliasilge/tidytext/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/juliasilge/tidytext/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/tidytext)](https://cran.r-project.org/package=tidytext)
-[![cran
-checks](https://cranchecks.info/badges/summary/tidytext)](https://cran.r-project.org/web/checks/check_results_tidytext.html)
 [![Codecov test
 coverage](https://codecov.io/gh/juliasilge/tidytext/branch/main/graph/badge.svg)](https://app.codecov.io/gh/juliasilge/tidytext?branch=main)
 [![DOI](https://zenodo.org/badge/22224/juliasilge/tidytext.svg)](https://zenodo.org/badge/latestdoi/22224/juliasilge/tidytext)
