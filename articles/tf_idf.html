@@ -94,10 +94,12 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1 data-toc-skip>Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</h1>
-                        <h4 data-toc-skip class="author">Julia Silge and David Robinson</h4>
+      <h1 data-toc-skip>Term Frequency and Inverse Document Frequency
+(tf-idf) Using Tidy Data Principles</h1>
+                        <h4 data-toc-skip class="author">Julia Silge and
+David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2022-10-19</h4>
+            <h4 data-toc-skip class="date">2022-12-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tf_idf.Rmd" class="external-link"><code>vignettes/tf_idf.Rmd</code></a></small>
       <div class="hidden name"><code>tf_idf.Rmd</code></div>
@@ -106,11 +108,40 @@
 
     
     
-<p>A central question in text mining and natural language processing is how to quantify what a document is about. Can we do this by looking at the words that make up the document? One measure of how important a word may be is its <em>term frequency</em> (tf), how frequently a word occurs in a document. There are words in a document, however, that occur many times but may not be important; in English, these are probably words like “the”, “is”, “of”, and so forth. We might take the approach of adding words like these to a list of stop words and removing them before analysis, but it is possible that some of these words might be more important in some documents than others. A list of stop words is not a sophisticated approach to adjusting term frequency for commonly used words.</p>
-<p>Another approach is to look at a term’s <em>inverse document frequency</em> (idf), which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents. This can be combined with term frequency to calculate a term’s <em>tf-idf</em>, the frequency of a term adjusted for how rarely it is used. It is intended to measure how important a word is to a document in a collection (or corpus) of documents. It is a rule-of-thumb or heuristic quantity; while it has proved useful in text mining, search engines, etc., its theoretical foundations are considered less than firm by information theory experts. The inverse document frequency for any given term is defined as</p>
-<p><span class="math display">\[idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}\]</span></p>
-<p>We can use tidy data principles, as described in <a href="tidytext.html">the main vignette</a>, to approach tf-idf analysis and use consistent, effective tools to quantify how important various terms are in a document that is part of a collection.</p>
-<p>Let’s look at the published novels of Jane Austen and examine first term frequency, then tf-idf. We can start just by using dplyr verbs such as <code>group_by</code> and <code>join</code>. What are the most commonly used words in Jane Austen’s novels? (Let’s also calculate the total words in each novel here, for later use.)</p>
+<p>A central question in text mining and natural language processing is
+how to quantify what a document is about. Can we do this by looking at
+the words that make up the document? One measure of how important a word
+may be is its <em>term frequency</em> (tf), how frequently a word occurs
+in a document. There are words in a document, however, that occur many
+times but may not be important; in English, these are probably words
+like “the”, “is”, “of”, and so forth. We might take the approach of
+adding words like these to a list of stop words and removing them before
+analysis, but it is possible that some of these words might be more
+important in some documents than others. A list of stop words is not a
+sophisticated approach to adjusting term frequency for commonly used
+words.</p>
+<p>Another approach is to look at a term’s <em>inverse document
+frequency</em> (idf), which decreases the weight for commonly used words
+and increases the weight for words that are not used very much in a
+collection of documents. This can be combined with term frequency to
+calculate a term’s <em>tf-idf</em>, the frequency of a term adjusted for
+how rarely it is used. It is intended to measure how important a word is
+to a document in a collection (or corpus) of documents. It is a
+rule-of-thumb or heuristic quantity; while it has proved useful in text
+mining, search engines, etc., its theoretical foundations are considered
+less than firm by information theory experts. The inverse document
+frequency for any given term is defined as</p>
+<p><span class="math display">\[idf(\text{term}) =
+\ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing
+term}}}\right)}\]</span></p>
+<p>We can use tidy data principles, as described in <a href="tidytext.html">the main vignette</a>, to approach tf-idf analysis
+and use consistent, effective tools to quantify how important various
+terms are in a document that is part of a collection.</p>
+<p>Let’s look at the published novels of Jane Austen and examine first
+term frequency, then tf-idf. We can start just by using dplyr verbs such
+as <code>group_by</code> and <code>join</code>. What are the most
+commonly used words in Jane Austen’s novels? (Let’s also calculate the
+total words in each novel here, for later use.)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span>
@@ -136,7 +167,10 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Emma              of     <span style="text-decoration: underline;">4</span>291 <span style="text-decoration: underline;">160</span>996</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice to     <span style="text-decoration: underline;">4</span>162 <span style="text-decoration: underline;">122</span>204</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 40,369 more rows</span></span></span></code></pre>
-<p>The usual suspects are here, “the”, “and”, “to”, and so forth. Let’s look at the distribution of <code>n/total</code> for each novel, the number of times a word appears in a novel divided by the total number of terms (words) in that novel. This is exactly what term frequency is.</p>
+<p>The usual suspects are here, “the”, “and”, “to”, and so forth. Let’s
+look at the distribution of <code>n/total</code> for each novel, the
+number of times a word appears in a novel divided by the total number of
+terms (words) in that novel. This is exactly what term frequency is.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">book_words</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">n</span><span class="op">/</span><span class="va">total</span>, fill <span class="op">=</span> <span class="va">book</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -144,7 +178,17 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/lims.html" class="external-link">xlim</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0.0009</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">book</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="tf_idf_files/figure-html/unnamed-chunk-3-1.png" width="672"></p>
-<p>There are very long tails to the right for these novels (those extremely common words!) that we have not shown in these plots. These plots exhibit similar distributions for all the novels, with many words that occur rarely and fewer words that occur frequently. The idea of tf-idf is to find the important words for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection or corpus of documents, in this case, the group of Jane Austen’s novels as a whole. Calculating tf-idf attempts to find the words that are important (i.e., common) in a text, but not <em>too</em> common. Let’s do that now.</p>
+<p>There are very long tails to the right for these novels (those
+extremely common words!) that we have not shown in these plots. These
+plots exhibit similar distributions for all the novels, with many words
+that occur rarely and fewer words that occur frequently. The idea of
+tf-idf is to find the important words for the content of each document
+by decreasing the weight for commonly used words and increasing the
+weight for words that are not used very much in a collection or corpus
+of documents, in this case, the group of Jane Austen’s novels as a
+whole. Calculating tf-idf attempts to find the words that are important
+(i.e., common) in a text, but not <em>too</em> common. Let’s do that
+now.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">book_words</span> <span class="op">&lt;-</span> <span class="va">book_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/bind_tf_idf.html">bind_tf_idf</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">book</span>, <span class="va">n</span><span class="op">)</span></span>
@@ -163,7 +207,15 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Emma              of     <span style="text-decoration: underline;">4</span>291 <span style="text-decoration: underline;">160</span>996 0.026<span style="text-decoration: underline;">7</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice to     <span style="text-decoration: underline;">4</span>162 <span style="text-decoration: underline;">122</span>204 0.034<span style="text-decoration: underline;">1</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 40,369 more rows</span></span></span></code></pre>
-<p>Notice that idf and thus tf-idf are zero for these extremely common words. These are all words that appear in all six of Jane Austen’s novels, so the idf term (which will then be the natural log of 1) is zero. The inverse document frequency (and thus tf-idf) is very low (near zero) for words that occur in many of the documents in a collection; this is how this approach decreases the weight for common words. The inverse document frequency will be a higher number for words that occur in fewer of the documents in the collection. Let’s look at terms with high tf-idf in Jane Austen’s works.</p>
+<p>Notice that idf and thus tf-idf are zero for these extremely common
+words. These are all words that appear in all six of Jane Austen’s
+novels, so the idf term (which will then be the natural log of 1) is
+zero. The inverse document frequency (and thus tf-idf) is very low (near
+zero) for words that occur in many of the documents in a collection;
+this is how this approach decreases the weight for common words. The
+inverse document frequency will be a higher number for words that occur
+in fewer of the documents in the collection. Let’s look at terms with
+high tf-idf in Jane Austen’s works.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">book_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">total</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -182,7 +234,12 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Pride &amp; Prejudice   bennet      294 0.002<span style="text-decoration: underline;">41</span>  1.79 0.004<span style="text-decoration: underline;">31</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Persuasion          wentworth   191 0.002<span style="text-decoration: underline;">28</span>  1.79 0.004<span style="text-decoration: underline;">09</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 40,369 more rows</span></span></span></code></pre>
-<p>Here we see all proper nouns, names that are in fact important in these novels. None of them occur in all of novels, and they are important, characteristic words for each text. Some of the values for idf are the same for different terms because there are 6 documents in this corpus and we are seeing the numerical value for <span class="math inline">\(\ln(6/1)\)</span>, <span class="math inline">\(\ln(6/2)\)</span>, etc. Let’s look specifically at <em>Pride and Prejudice</em>.</p>
+<p>Here we see all proper nouns, names that are in fact important in
+these novels. None of them occur in all of novels, and they are
+important, characteristic words for each text. Some of the values for
+idf are the same for different terms because there are 6 documents in
+this corpus and we are seeing the numerical value for <span class="math inline">\(\ln(6/1)\)</span>, <span class="math inline">\(\ln(6/2)\)</span>, etc. Let’s look specifically at
+<em>Pride and Prejudice</em>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">book_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">book</span> <span class="op">==</span> <span class="st">"Pride &amp; Prejudice"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -202,7 +259,8 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Pride &amp; Prejudice longbourn    88 0.000<span style="text-decoration: underline;">720</span> 1.79  0.001<span style="text-decoration: underline;">29</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice gardiner     84 0.000<span style="text-decoration: underline;">687</span> 1.79  0.001<span style="text-decoration: underline;">23</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 6,528 more rows</span></span></span></code></pre>
-<p>These words are, as measured by tf-idf, the most important to <em>Pride and Prejudice</em> and most readers would likely agree.</p>
+<p>These words are, as measured by tf-idf, the most important to
+<em>Pride and Prejudice</em> and most readers would likely agree.</p>
   </div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">

@@ -95,9 +95,10 @@
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
       <h1 data-toc-skip>Tidy Topic Modeling</h1>
-                        <h4 data-toc-skip class="author">Julia Silge and David Robinson</h4>
+                        <h4 data-toc-skip class="author">Julia Silge and
+David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2022-10-19</h4>
+            <h4 data-toc-skip class="date">2022-12-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/articles/topic_modeling.Rmd" class="external-link"><code>vignettes/articles/topic_modeling.Rmd</code></a></small>
       <div class="hidden name"><code>topic_modeling.Rmd</code></div>
@@ -106,12 +107,21 @@
 
     
     
-<p>Topic modeling is a method for unsupervised classification of documents, by modeling each document as a mixture of topics and each topic as a mixture of words. <a href="https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation" class="external-link">Latent Dirichlet allocation</a> is a particularly popular method for fitting a topic model.</p>
-<p>We can use tidy text principles, as described in <a href="tidytext.html">the main vignette</a>, to approach topic modeling using consistent and effective tools. In particular, we’ll be using tidying functions for LDA objects from the <a href="https://cran.r-project.org/package=topicmodels" class="external-link">topicmodels package</a>.</p>
+<p>Topic modeling is a method for unsupervised classification of
+documents, by modeling each document as a mixture of topics and each
+topic as a mixture of words. <a href="https://en.wikipedia.org/wiki/Latent_Dirichlet_allocation" class="external-link">Latent
+Dirichlet allocation</a> is a particularly popular method for fitting a
+topic model.</p>
+<p>We can use tidy text principles, as described in <a href="tidytext.html">the main vignette</a>, to approach topic modeling
+using consistent and effective tools. In particular, we’ll be using
+tidying functions for LDA objects from the <a href="https://cran.r-project.org/package=topicmodels" class="external-link">topicmodels
+package</a>.</p>
 <div class="section level3">
-<h3 id="can-we-tell-the-difference-between-dickens-wells-verne-and-austen">Can we tell the difference between Dickens, Wells, Verne, and Austen?<a class="anchor" aria-label="anchor" href="#can-we-tell-the-difference-between-dickens-wells-verne-and-austen"></a>
+<h3 id="can-we-tell-the-difference-between-dickens-wells-verne-and-austen">Can we tell the difference between Dickens, Wells, Verne, and
+Austen?<a class="anchor" aria-label="anchor" href="#can-we-tell-the-difference-between-dickens-wells-verne-and-austen"></a>
 </h3>
-<p>Suppose a vandal has broken into your study and torn apart four of your books:</p>
+<p>Suppose a vandal has broken into your study and torn apart four of
+your books:</p>
 <ul>
 <li>
 <em>Great Expectations</em> by Charles Dickens</li>
@@ -122,7 +132,9 @@
 <li>
 <em>Pride and Prejudice</em> by Jane Austen</li>
 </ul>
-<p>This vandal has torn the books into individual chapters, and left them in one large pile. How can we restore these disorganized chapters to their original books?</p>
+<p>This vandal has torn the books into individual chapters, and left
+them in one large pile. How can we restore these disorganized chapters
+to their original books?</p>
 <div class="section level4">
 <h4 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
 </h4>
@@ -150,7 +162,11 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>           36 <span style="color: #949494;">"</span>          KEPLER (quoted in The Anatomy of Melancholy)<span style="color: #949494;">"</span>      The War of the Worlds</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>           36 <span style="color: #949494;">""</span>                                                            The War of the Worlds</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 51,653 more rows</span></span></span></code></pre>
-<p>As pre-processing, we divide these into chapters, use tidytext’s <code>unnest_tokens</code> to separate them into words, then remove <code>stop_words</code>. We’re treating every chapter as a separate “document”, each with a name like <code>Great Expectations_1</code> or <code>Pride and Prejudice_11</code>.</p>
+<p>As pre-processing, we divide these into chapters, use tidytext’s
+<code>unnest_tokens</code> to separate them into words, then remove
+<code>stop_words</code>. We’re treating every chapter as a separate
+“document”, each with a name like <code>Great Expectations_1</code> or
+<code>Pride and Prejudice_11</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/tidytext" class="external-link">tidytext</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
@@ -190,7 +206,12 @@
 <div class="section level3">
 <h3 id="latent-dirichlet-allocation-with-the-topicmodels-package">Latent Dirichlet Allocation with the topicmodels package<a class="anchor" aria-label="anchor" href="#latent-dirichlet-allocation-with-the-topicmodels-package"></a>
 </h3>
-<p>Right now this data frame is in a tidy form, with one-term-per-document-per-row. However, the topicmodels package requires a <code>DocumentTermMatrix</code> (from the tm package). As described in <a href="tidying_casting.html">this vignette</a>, we can cast a one-token-per-row table into a <code>DocumentTermMatrix</code> with tidytext’s <code>cast_dtm</code>:</p>
+<p>Right now this data frame is in a tidy form, with
+one-term-per-document-per-row. However, the topicmodels package requires
+a <code>DocumentTermMatrix</code> (from the tm package). As described in
+<a href="tidying_casting.html">this vignette</a>, we can cast a
+one-token-per-row table into a <code>DocumentTermMatrix</code> with
+tidytext’s <code>cast_dtm</code>:</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chapters_dtm</span> <span class="op">&lt;-</span> <span class="va">word_counts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/document_term_casters.html">cast_dtm</a></span><span class="op">(</span><span class="va">title_chapter</span>, <span class="va">word</span>, <span class="va">n</span><span class="op">)</span></span>
@@ -201,14 +222,21 @@
 <span><span class="co">## Sparsity           : 97%</span></span>
 <span><span class="co">## Maximal term length: 19</span></span>
 <span><span class="co">## Weighting          : term frequency (tf)</span></span></code></pre>
-<p>Now we are ready to use the <a href="https://cran.r-project.org/package=topicmodels" class="external-link">topicmodels</a> package to create a four topic LDA model.</p>
+<p>Now we are ready to use the <a href="https://cran.r-project.org/package=topicmodels" class="external-link">topicmodels</a>
+package to create a four topic LDA model.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">topicmodels</span><span class="op">)</span></span>
 <span><span class="va">chapters_lda</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/topicmodels/man/lda.html" class="external-link">LDA</a></span><span class="op">(</span><span class="va">chapters_dtm</span>, k <span class="op">=</span> <span class="fl">4</span>, control <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>seed <span class="op">=</span> <span class="fl">1234</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">chapters_lda</span></span></code></pre></div>
 <pre><code><span><span class="co">## A LDA_VEM topic model with 4 topics.</span></span></code></pre>
-<p>(In this case we know there are four topics because there are four books; in practice we may need to try a few different values of <code>k</code>).</p>
-<p>Now tidytext gives us the option of <em>returning</em> to a tidy analysis, using the <code>tidy</code> and <code>augment</code> verbs borrowed from the <a href="https://github.com/dgrtwo/broom" class="external-link">broom package</a>. In particular, we start with the <code>tidy</code> verb.</p>
+<p>(In this case we know there are four topics because there are four
+books; in practice we may need to try a few different values of
+<code>k</code>).</p>
+<p>Now tidytext gives us the option of <em>returning</em> to a tidy
+analysis, using the <code>tidy</code> and <code>augment</code> verbs
+borrowed from the <a href="https://github.com/dgrtwo/broom" class="external-link">broom
+package</a>. In particular, we start with the <code>tidy</code>
+verb.</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chapters_lda_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">chapters_lda</span><span class="op">)</span></span>
 <span><span class="va">chapters_lda_td</span></span></code></pre></div>
@@ -226,8 +254,12 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     1 estella 3.83<span style="color: #949494;">e</span><span style="color: #BB0000;">- 6</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>     2 estella 5.32<span style="color: #949494;">e</span><span style="color: #BB0000;">-65</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 72,850 more rows</span></span></span></code></pre>
-<p>Notice that this has turned the model into a one-topic-per-term-per-row format. For each combination the model has <span class="math inline">\(\beta\)</span>, the probability of that term being generated from that topic.</p>
-<p>We could use dplyr’s <code>top_n</code> to find the top 5 terms within each topic:</p>
+<p>Notice that this has turned the model into a
+one-topic-per-term-per-row format. For each combination the model has
+<span class="math inline">\(\beta\)</span>, the probability of that term
+being generated from that topic.</p>
+<p>We could use dplyr’s <code>top_n</code> to find the top 5 terms
+within each topic:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">top_terms</span> <span class="op">&lt;-</span> <span class="va">chapters_lda_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -271,11 +303,19 @@
 <span>  <span class="fu"><a href="../reference/reorder_within.html">scale_x_reordered</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">topic</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="topic_modeling_files/figure-html/top_terms_plot-1.png" width="672"></p>
-<p>These topics are pretty clearly associated with the four books! There’s no question that the topic of “nemo”, “sea”, and “nautilus” belongs to <em>Twenty Thousand Leagues Under the Sea</em>, and that “jane”, “darcy”, and “elizabeth” belongs to <em>Pride and Prejudice</em>. We see “pip” and “joe” from <em>Great Expectations</em> and “martians”, “black”, and “night” from <em>The War of the Worlds</em>.</p>
+<p>These topics are pretty clearly associated with the four books!
+There’s no question that the topic of “nemo”, “sea”, and “nautilus”
+belongs to <em>Twenty Thousand Leagues Under the Sea</em>, and that
+“jane”, “darcy”, and “elizabeth” belongs to <em>Pride and
+Prejudice</em>. We see “pip” and “joe” from <em>Great Expectations</em>
+and “martians”, “black”, and “night” from <em>The War of the
+Worlds</em>.</p>
 <div class="section level4">
 <h4 id="per-document-classification">Per-document classification<a class="anchor" aria-label="anchor" href="#per-document-classification"></a>
 </h4>
-<p>Each chapter was a “document” in this analysis. Thus, we may want to know which topics are associated with each document. Can we put the chapters back together in the correct books?</p>
+<p>Each chapter was a “document” in this analysis. Thus, we may want to
+know which topics are associated with each document. Can we put the
+chapters back together in the correct books?</p>
 <div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chapters_lda_gamma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">chapters_lda</span>, matrix <span class="op">=</span> <span class="st">"gamma"</span><span class="op">)</span></span>
 <span><span class="va">chapters_lda_gamma</span></span></code></pre></div>
@@ -293,7 +333,11 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations_18        1 0.000<span style="text-decoration: underline;">012</span>7</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds_16     1 0.000<span style="text-decoration: underline;">010</span>8</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 762 more rows</span></span></span></code></pre>
-<p>Setting <code>matrix = "gamma"</code> returns a tidied version with one-document-per-topic-per-row. Now that we have these document classifications, we can see how well our unsupervised learning did at distinguishing the four books. First we re-separate the document name into title and chapter:</p>
+<p>Setting <code>matrix = "gamma"</code> returns a tidied version with
+one-document-per-topic-per-row. Now that we have these document
+classifications, we can see how well our unsupervised learning did at
+distinguishing the four books. First we re-separate the document name
+into title and chapter:</p>
 <div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chapters_lda_gamma</span> <span class="op">&lt;-</span> <span class="va">chapters_lda_gamma</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"chapter"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -318,7 +362,10 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">title</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <p><img src="topic_modeling_files/figure-html/chapters_lda_gamma_plot-1.png" width="672"></p>
-<p>We notice that almost all of the chapters from <em>Pride and Prejudice</em>, <em>War of the Worlds</em>, and <em>Twenty Thousand Leagues Under the Sea</em> were uniquely identified as a single topic each.</p>
+<p>We notice that almost all of the chapters from <em>Pride and
+Prejudice</em>, <em>War of the Worlds</em>, and <em>Twenty Thousand
+Leagues Under the Sea</em> were uniquely identified as a single topic
+each.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chapter_classifications</span> <span class="op">&lt;-</span> <span class="va">chapters_lda_gamma</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">chapter</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -341,7 +388,8 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations      11     4 0.669</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations      44     4 0.678</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 183 more rows</span></span></span></code></pre>
-<p>We can determine this by finding the consensus book for each, which we note is correct based on our earlier visualization:</p>
+<p>We can determine this by finding the consensus book for each, which
+we note is correct based on our earlier visualization:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">book_topics</span> <span class="op">&lt;-</span> <span class="va">chapter_classifications</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">topic</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -372,16 +420,24 @@
 <span><span class="co">## <span style="color: #BCBCBC;">4</span> Pride and Prejudice                   Pride and Prejudice                      61</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">5</span> The War of the Worlds                 The War of the Worlds                    27</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">6</span> Twenty Thousand Leagues under the Sea Twenty Thousand Leagues under the Sea    46</span></span></code></pre>
-<p>We see that only a few chapters from <em>Great Expectations</em> were misclassified. Not bad for unsupervised clustering!</p>
+<p>We see that only a few chapters from <em>Great Expectations</em> were
+misclassified. Not bad for unsupervised clustering!</p>
 </div>
 <div class="section level4">
 <h4 id="by-word-assignments-augment">By word assignments: <code>augment</code><a class="anchor" aria-label="anchor" href="#by-word-assignments-augment"></a>
 </h4>
-<p>One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight (<code>gamma</code>) will go on that document-topic classification.</p>
-<p>We may want to take the original document-word pairs and find which words in each document were assigned to which topic. This is the job of the <code>augment</code> verb.</p>
+<p>One important step in the topic modeling expectation-maximization
+algorithm is assigning each word in each document to a topic. The more
+words in a document are assigned to that topic, generally, the more
+weight (<code>gamma</code>) will go on that document-topic
+classification.</p>
+<p>We may want to take the original document-word pairs and find which
+words in each document were assigned to which topic. This is the job of
+the <code>augment</code> verb.</p>
 <div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">assignments</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/augment.html" class="external-link">augment</a></span><span class="op">(</span><span class="va">chapters_lda</span>, data <span class="op">=</span> <span class="va">chapters_dtm</span><span class="op">)</span></span></code></pre></div>
-<p>We can combine this with the consensus book titles to find which words were incorrectly classified.</p>
+<p>We can combine this with the consensus book titles to find which
+words were incorrectly classified.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">assignments</span> <span class="op">&lt;-</span> <span class="va">assignments</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"chapter"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -402,7 +458,8 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations       9 joe      44      4 Great Expectations</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations      13 joe      40      4 Great Expectations</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 104,711 more rows</span></span></span></code></pre>
-<p>We can, for example, create a “confusion matrix” using dplyr’s <code>count</code> and tidyr’s <code>spread</code>:</p>
+<p>We can, for example, create a “confusion matrix” using dplyr’s
+<code>count</code> and tidyr’s <code>spread</code>:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">assignments</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -420,7 +477,10 @@
 <span><span class="co">## <span style="color: #BCBCBC;">2</span>                       7                                       5</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span>                   <span style="text-decoration: underline;">22</span>561                                       7</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">4</span>                       0                                   <span style="text-decoration: underline;">39</span>629</span></span></code></pre>
-<p>We notice that almost all the words for <em>Pride and Prejudice</em>, <em>Twenty Thousand Leagues Under the Sea</em>, and <em>War of the Worlds</em> were correctly assigned, while <em>Great Expectations</em> had a fair amount of misassignment.</p>
+<p>We notice that almost all the words for <em>Pride and Prejudice</em>,
+<em>Twenty Thousand Leagues Under the Sea</em>, and <em>War of the
+Worlds</em> were correctly assigned, while <em>Great Expectations</em>
+had a fair amount of misassignment.</p>
 <p>What were the most commonly mistaken words?</p>
 <div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wrong_words</span> <span class="op">&lt;-</span> <span class="va">assignments</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -471,7 +531,9 @@
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations Pride and Prejudice   flopson     18</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations Pride and Prejudice   family      16</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 3,490 more rows</span></span></span></code></pre>
-<p>Notice the word “flopson” here; these wrong words do not necessarily appear in the novels they were misassigned to. Indeed, we can confirm “flopson” appears only in <em>Great Expectations</em>:</p>
+<p>Notice the word “flopson” here; these wrong words do not necessarily
+appear in the novels they were misassigned to. Indeed, we can confirm
+“flopson” appears only in <em>Great Expectations</em>:</p>
 <div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">word_counts</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">word</span> <span class="op">==</span> <span class="st">"flopson"</span><span class="op">)</span></span></code></pre></div>
@@ -481,7 +543,8 @@
 <span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations_22 flopson    10</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">2</span> Great Expectations_23 flopson     7</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span> Great Expectations_33 flopson     1</span></span></code></pre>
-<p>The algorithm is stochastic and iterative, and it can accidentally land on a topic that spans multiple books.</p>
+<p>The algorithm is stochastic and iterative, and it can accidentally
+land on a topic that spans multiple books.</p>
 </div>
 </div>
   </div>
