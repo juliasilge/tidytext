@@ -2,7 +2,7 @@
 
 * hunspell is now a suggested dependency, thanks to @MichaelChirico (#221)
 * Added `stm()` tidiers for high FREX and lift words (#223)
-* Removed tweet-specific tokenizers because of changes in upstream dependencies
+* Removed tweet-specific tokenizers because of changes in upstream dependencies (#227)
 
 # tidytext 0.3.4
 
