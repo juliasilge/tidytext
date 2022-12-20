@@ -10,6 +10,7 @@
 #' @param ... Extra arguments passed on to [tokenizers][tokenizers::tokenizers]
 #'
 #' @export
+#' @keywords internal
 #' @importFrom dplyr enquo
 #'
 unnest_tweets <- function(tbl, output, input, ...){
