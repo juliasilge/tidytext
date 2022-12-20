@@ -28,8 +28,7 @@ The output/input arguments are passed by expression and support
 
 \item{token}{Unit for tokenizing, or a custom tokenizing function. Built-in
 options are "words" (default), "characters", "character_shingles", "ngrams",
-"skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets"
-(tokenization by word that preserves usernames, hashtags, and URLS ), and
+"skip_ngrams", "sentences", "lines", "paragraphs", "regex", and
 "ptb" (Penn Treebank). If a function, should take a character vector and
 return a list of character vectors of the same length.}
 
@@ -37,9 +36,7 @@ return a list of character vectors of the same length.}
 format is "text", this function uses the tokenizers package. If not "text",
 this uses the hunspell tokenizer, and can tokenize only by "word".}
 
-\item{to_lower}{Whether to convert tokens to lowercase. If tokens include
-URLS (such as with \code{token = "tweets"}), such converted URLs may no
-longer be correct.}
+\item{to_lower}{Whether to convert tokens to lowercase.}
 
 \item{drop}{Whether original input column should get dropped. Ignored
 if the original input and new output column have the same name.}
@@ -58,9 +55,8 @@ grouped data. Collapsing applies mostly to \code{token} options of "ngrams",
 "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".}
 
 \item{...}{Extra arguments passed on to \link[tokenizers:tokenizers]{tokenizers}, such
-as \code{strip_punct} for "words" and "tweets", \code{n} and \code{k} for
-"ngrams" and "skip_ngrams", \code{strip_url} for "tweets", and
-\code{pattern} for "regex".}
+as \code{strip_punct} for "words", \code{n} and \code{k} for "ngrams" and "skip_ngrams",
+and \code{pattern} for "regex".}
 }
 \description{
 Split a column into tokens, flattening the table into one-token-per-row.
@@ -70,6 +66,9 @@ This function supports non-standard evaluation through the tidyeval framework.
 If format is anything other than "text", this uses the
 \code{\link[hunspell:hunspell]{hunspell::hunspell_parse()}} tokenizer instead of the tokenizers package.
 This does not yet have support for tokenizing by any unit other than words.
+
+Support for \code{token = "tweets"} was removed in tidytext 0.4.0 because of
+changes in upstream dependencies.
 }
 \examples{
 \dontshow{if (rlang::is_installed("hunspell")) (if (getRversion() >= "3.4") withAutoprint else force)(\{ # examplesIf}

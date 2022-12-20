@@ -32,9 +32,7 @@ The output/input arguments are passed by expression and support
 format is "text", this function uses the tokenizers package. If not "text",
 this uses the hunspell tokenizer, and can tokenize only by "word".}
 
-\item{to_lower}{Whether to convert tokens to lowercase. If tokens include
-URLS (such as with \code{token = "tweets"}), such converted URLs may no
-longer be correct.}
+\item{to_lower}{Whether to convert tokens to lowercase.}
 
 \item{drop}{Whether original input column should get dropped. Ignored
 if the original input and new output column have the same name.}

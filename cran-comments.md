@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 22nd CRAN release of tidytext. This release updates a tidy method for the upcoming release of Matrix.
+This is the 23rd CRAN release of tidytext. This release removes broken functionality from the upstream dependency tokenizers.
 
 ## R CMD check results
 

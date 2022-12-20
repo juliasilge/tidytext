@@ -4,18 +4,7 @@
 \alias{unnest_tweets}
 \title{Wrapper around unnest_tokens for tweets}
 \usage{
-unnest_tweets(
-  tbl,
-  output,
-  input,
-  strip_punct = TRUE,
-  strip_url = FALSE,
-  format = c("text", "man", "latex", "html", "xml"),
-  to_lower = TRUE,
-  drop = TRUE,
-  collapse = NULL,
-  ...
-)
+unnest_tweets(tbl, output, input, ...)
 }
 \arguments{
 \item{tbl}{A data frame}
@@ -27,53 +16,14 @@ unnest_tweets(
 The output/input arguments are passed by expression and support
 \link[rlang:topic-inject]{quasiquotation}; you can unquote strings and symbols.}
 
-\item{strip_punct}{Should punctuation be stripped?}
-
-\item{strip_url}{Should URLs (starting with \code{http(s)}) be preserved intact, or
-removed entirely?}
-
-\item{format}{Either "text", "man", "latex", "html", or "xml". When the
-format is "text", this function uses the tokenizers package. If not "text",
-this uses the hunspell tokenizer, and can tokenize only by "word".}
-
-\item{to_lower}{Whether to convert tokens to lowercase. If tokens include
-URLS (such as with \code{token = "tweets"}), such converted URLs may no
-longer be correct.}
-
-\item{drop}{Whether original input column should get dropped. Ignored
-if the original input and new output column have the same name.}
-
-\item{collapse}{A character vector of variables to collapse text across,
-or \code{NULL}.
-
-For tokens like n-grams or sentences, text can be collapsed across rows
-within variables specified by \code{collapse} before tokenization. At tidytext
-0.2.7, the default behavior for \code{collapse = NULL} changed to be more
-consistent. The new behavior is that text is \emph{not} collapsed for \code{NULL}.
-
-Grouping data specifies variables to collapse across in the same way as
-\code{collapse} but you \strong{cannot} use both the \code{collapse} argument and
-grouped data. Collapsing applies mostly to \code{token} options of "ngrams",
-"skip_ngrams", "sentences", "lines", "paragraphs", or "regex".}
-
 \item{...}{Extra arguments passed on to \link[tokenizers:tokenizers]{tokenizers}}
 }
 \description{
-This function is a wrapper around \code{unnest_tokens( token = "tweets" )}.
-}
-\examples{
-library(dplyr)
-tweets <- tibble(
-   id = 1,
-   txt = "@rOpenSci and #rstats see: https://cran.r-project.org"
-)
-
-tweets \%>\%
-   unnest_tweets(out, txt)
-
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#deprecated}{\figure{lifecycle-deprecated.svg}{options: alt='[Deprecated]'}}}{\strong{[Deprecated]}}
 }
 \seealso{
 \itemize{
 \item \code{\link[=unnest_tokens]{unnest_tokens()}}
 }
 }
+\keyword{internal}

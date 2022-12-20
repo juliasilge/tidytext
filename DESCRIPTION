@@ -1,7 +1,7 @@
 Type: Package
 Package: tidytext
 Title: Text Mining using 'dplyr', 'ggplot2', and Other Tidy Tools
-Version: 0.3.4.9000
+Version: 0.4.0
 Authors@R: c(
     person("Gabriela", "De Queiroz", , "gabidequeiroz@gmail.com", role = "ctb"),
     person("Colin", "Fay", , "contact@colinfay.me", role = "ctb",
@@ -30,6 +30,7 @@ BugReports: https://github.com/juliasilge/tidytext/issues
 Depends: 
     R (>= 2.10)
 Imports: 
+    cli,
     dplyr,
     generics,
     janeaustenr,
@@ -73,4 +74,4 @@ Config/testthat/edition: 3
 Encoding: UTF-8
 LazyData: TRUE
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.2

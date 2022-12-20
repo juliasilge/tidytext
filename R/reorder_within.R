@@ -68,7 +68,7 @@ reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
 scale_x_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
 
   if (lifecycle::is_present(sep)) {
-    lifecycle::deprecate_soft(
+    lifecycle::deprecate_warn(
       "0.3.3",
       "scale_x_reordered(sep = )",
       "reorder_func(sep = )"
@@ -84,7 +84,7 @@ scale_x_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
 scale_y_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
 
   if (lifecycle::is_present(sep)) {
-    lifecycle::deprecate_soft(
+    lifecycle::deprecate_warn(
       "0.3.3",
       "scale_y_reordered(sep = )",
       "reorder_func(sep = )"
