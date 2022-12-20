@@ -1,3 +1,5 @@
+# tidytext (development version)
+
 # tidytext 0.4.0
 
 * hunspell is now a suggested dependency, thanks to @MichaelChirico (#221)
