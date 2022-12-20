@@ -1,4 +1,4 @@
-# tidytext (development version, to be released as 0.4.0)
+# tidytext 0.4.0
 
 * hunspell is now a suggested dependency, thanks to @MichaelChirico (#221)
 * Added `stm()` tidiers for high FREX and lift words (#223)
