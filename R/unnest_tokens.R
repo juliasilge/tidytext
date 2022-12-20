@@ -7,8 +7,7 @@
 #'
 #' @param token Unit for tokenizing, or a custom tokenizing function. Built-in
 #' options are "words" (default), "characters", "character_shingles", "ngrams",
-#' "skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets"
-#' (tokenization by word that preserves usernames, hashtags, and URLS ), and
+#' "skip_ngrams", "sentences", "lines", "paragraphs", "regex", and
 #' "ptb" (Penn Treebank). If a function, should take a character vector and
 #' return a list of character vectors of the same length.
 #'
@@ -16,9 +15,7 @@
 #' format is "text", this function uses the tokenizers package. If not "text",
 #' this uses the hunspell tokenizer, and can tokenize only by "word".
 #'
-#' @param to_lower Whether to convert tokens to lowercase. If tokens include
-#' URLS (such as with `token = "tweets"`), such converted URLs may no
-#' longer be correct.
+#' @param to_lower Whether to convert tokens to lowercase.
 #'
 #' @param drop Whether original input column should get dropped. Ignored
 #' if the original input and new output column have the same name.
@@ -44,13 +41,15 @@
 #'   "skip_ngrams", "sentences", "lines", "paragraphs", or "regex".
 #'
 #' @param ... Extra arguments passed on to [tokenizers][tokenizers::tokenizers], such
-#' as `strip_punct` for "words" and "tweets", `n` and `k` for
-#' "ngrams" and "skip_ngrams", `strip_url` for "tweets", and
-#' `pattern` for "regex".
+#' as `strip_punct` for "words", `n` and `k` for "ngrams" and "skip_ngrams",
+#' and `pattern` for "regex".
 #'
 #' @details If format is anything other than "text", this uses the
 #' [hunspell::hunspell_parse()] tokenizer instead of the tokenizers package.
 #' This does not yet have support for tokenizing by any unit other than words.
+#'
+#' Support for `token = "tweets"` was removed in tidytext 0.4.0 because of
+#' changes in upstream dependencies.
 #'
 #' @import dplyr
 #' @import rlang
@@ -162,10 +161,6 @@ unnest_tokens <- function(tbl, output, input, token = "words",
   ret[[output]] <- flatten_chr(output_lst)
 
   if (to_lower) {
-    if (!is_function(token))
-      if(token == "tweets") {
-        rlang::inform("Using `to_lower = TRUE` with `token = 'tweets'` may not preserve URLs.")
-      }
     ret[[output]] <- stringr::str_to_lower(ret[[output]])
   }
 
@@ -183,17 +178,26 @@ find_function <- function(token, format, to_lower, ...) {
 
   if (is_function(token)) {
     tokenfunc <- token
-  } else if (token %in% c(
+    return(tokenfunc)
+  }
+  if (token %in% c("tweets", "tweet")) {
+    lifecycle::deprecate_stop(
+      "0.4.0",
+      I('Support for `token = "tweets"`')
+    )
+  }
+  if (token %in% c(
     "word", "character",
     "character_shingle", "ngram",
     "skip_ngram", "sentence", "line",
     "paragraph", "tweet"
   )) {
-    rlang::abort(paste0(
-      "Error: Token must be a supported type, or a function that takes a character vector as input",
-      "\nDid you mean token = ", token, "s?"
+    cli::cli_abort(c(
+      "Token must be a supported type, or a function that takes a character vector as input",
+      i = 'Did you mean `token = "{token}s"`?'
     ))
-  } else if (format != "text") {
+  }
+  if (format != "text") {
     if (token != "words") {
       rlang::abort("Cannot tokenize by any unit except words when format is not text")
     }
@@ -205,9 +209,8 @@ find_function <- function(token, format, to_lower, ...) {
   } else {
     tf <- get(paste0("tokenize_", token))
     if (token %in% c(
-      "characters", "character_shingles",
-      "words", "ngrams", "skip_ngrams",
-      "tweets", "ptb"
+      "characters", "character_shingles", "words",
+      "ngrams", "skip_ngrams", "ptb"
     )) {
       tokenfunc <- function(col, ...) tf(col, lowercase = to_lower, ...)
     } else {

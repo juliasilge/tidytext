@@ -11,7 +11,6 @@ reference:
   - unnest_ngrams
   - unnest_sentences
   - unnest_regex
-  - unnest_tweets
   - unnest_ptb
 
 - title: Term frequency and inverse document frequency
