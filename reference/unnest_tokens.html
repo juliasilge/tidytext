@@ -18,7 +18,7 @@ This function supports non-standard evaluation through the tidyeval framework.">
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.3.4.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.0</span>
       </span>
     </div>
 
@@ -106,8 +106,7 @@ This function supports non-standard evaluation through the tidyeval framework.</
 <dt>token</dt>
 <dd><p>Unit for tokenizing, or a custom tokenizing function. Built-in
 options are "words" (default), "characters", "character_shingles", "ngrams",
-"skip_ngrams", "sentences", "lines", "paragraphs", "regex", "tweets"
-(tokenization by word that preserves usernames, hashtags, and URLS ), and
+"skip_ngrams", "sentences", "lines", "paragraphs", "regex", and
 "ptb" (Penn Treebank). If a function, should take a character vector and
 return a list of character vectors of the same length.</p></dd>
 
@@ -119,9 +118,7 @@ this uses the hunspell tokenizer, and can tokenize only by "word".</p></dd>
 
 
 <dt>to_lower</dt>
-<dd><p>Whether to convert tokens to lowercase. If tokens include
-URLS (such as with <code>token = "tweets"</code>), such converted URLs may no
-longer be correct.</p></dd>
+<dd><p>Whether to convert tokens to lowercase.</p></dd>
 
 
 <dt>drop</dt>
@@ -144,9 +141,8 @@ grouped data. Collapsing applies mostly to <code>token</code> options of "ngrams
 
 <dt>...</dt>
 <dd><p>Extra arguments passed on to <a href="https://docs.ropensci.org/tokenizers/reference/tokenizers.html" class="external-link">tokenizers</a>, such
-as <code>strip_punct</code> for "words" and "tweets", <code>n</code> and <code>k</code> for
-"ngrams" and "skip_ngrams", <code>strip_url</code> for "tweets", and
-<code>pattern</code> for "regex".</p></dd>
+as <code>strip_punct</code> for "words", <code>n</code> and <code>k</code> for "ngrams" and "skip_ngrams",
+and <code>pattern</code> for "regex".</p></dd>
 
 </dl></div>
     <div id="details">
@@ -154,6 +150,8 @@ as <code>strip_punct</code> for "words" and "tweets", <code>n</code> and <code>k
     <p>If format is anything other than "text", this uses the
 <code><a href="https://docs.ropensci.org/hunspell/reference/hunspell.html" class="external-link">hunspell::hunspell_parse()</a></code> tokenizer instead of the tokenizers package.
 This does not yet have support for tokenizing by any unit other than words.</p>
+<p>Support for <code>token = "tweets"</code> was removed in tidytext 0.4.0 because of
+changes in upstream dependencies.</p>
     </div>
 
     <div id="ref-examples">
@@ -308,7 +306,7 @@ This does not yet have support for tokenizing by any unit other than words.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.6.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>
