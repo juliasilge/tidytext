@@ -115,7 +115,7 @@ tidy_stm_frex <- function(x, ...) {
   logbeta <- x$beta$logbeta[[1]]
   word_counts <- x$settings$dim$wcounts$x
   vocab <- x$vocab
-  frex <- stm::calcfrex(logbeta, ..., word_counts)
+  frex <- stm::calcfrex(logbeta, ..., wordcounts = word_counts)
   pivot_stm_longer(frex, vocab)
 }
 
