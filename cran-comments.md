@@ -1,6 +1,6 @@
 ## Release Summary
 
-This is the 23rd CRAN release of tidytext. This release removes broken functionality from the upstream dependency tokenizers.
+This is the 24th CRAN release of tidytext. This release fixes a bug for the FREX stm tidier.
 
 ## R CMD check results
 
