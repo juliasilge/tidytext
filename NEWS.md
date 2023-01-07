@@ -1,3 +1,5 @@
+# tidytext (development version)
+
 # tidytext 0.4.1
 
 * Fixed bug for FREX stm tidier (#228)
