@@ -131,7 +131,7 @@ This can be shown visually, and we can pipe straight into ggplot2 because of the
 ```{r}
 #| fig.width = 7,
 #| fig.height = 4,
-#| fig.alt = 'Bar charts for the contribution of words to sentiment scores. The words "well" and "good" contribute the most to positive sentiment, and the word "miss" contributes the most to '
+#| fig.alt = 'Bar charts for the contribution of words to sentiment scores. The words "well" and "good" contribute the most to positive sentiment, and the word "miss" contributes the most to negative sentiment'
 bing_word_counts %>%
   group_by(sentiment) %>%
   slice_max(n, n = 10) %>%
