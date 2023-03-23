@@ -9,7 +9,8 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r echo = FALSE}
+```{r}
+#| echo = FALSE
 library(knitr)
 opts_chunk$set(message = FALSE, warning = FALSE,
                eval = requireNamespace("tm", quietly = TRUE))
@@ -35,19 +36,24 @@ This vandal has torn the books into individual chapters, and left them in one la
 
 #### Setup
 
-```{r packages}
+```{r}
+#| label = "packages"
 library(dplyr)
 library(gutenbergr)
 ```
 
-```{r books_show, eval = FALSE}
+```{r}
+#| label = "books_show",
+#| eval = FALSE
 titles <- c("Twenty Thousand Leagues under the Sea", "The War of the Worlds",
             "Pride and Prejudice", "Great Expectations")
 books <- gutenberg_works(title %in% titles) %>%
   gutenberg_download(meta_fields = "title")
 ```
 
-```{r books, echo = FALSE}
+```{r}
+#| label = "books",
+#| echo = FALSE
 # Downloading from Project Gutenberg can sometimes not work on automated servers
 # such as Travis-CI: see
 # https://github.com/ropenscilabs/gutenbergr/issues/6#issuecomment-231596903
@@ -62,7 +68,8 @@ books
 
 As pre-processing, we divide these into chapters, use tidytext's `unnest_tokens` to separate them into words, then remove `stop_words`. We're treating every chapter as a separate "document", each with a name like `Great Expectations_1` or `Pride and Prejudice_11`.
 
-```{r word_counts}
+```{r}
+#| label = "word_counts"
 library(tidytext)
 library(stringr)
 library(tidyr)
@@ -88,7 +95,8 @@ word_counts
 
 Right now this data frame is in a tidy form, with one-term-per-document-per-row. However, the topicmodels package requires a `DocumentTermMatrix` (from the tm package). As described in [this vignette](tidying_casting.html), we can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext's `cast_dtm`:
 
-```{r chapters_dtm}
+```{r}
+#| label = "chapters_dtm"
 chapters_dtm <- word_counts %>%
   cast_dtm(title_chapter, word, n)
 
@@ -97,7 +105,8 @@ chapters_dtm
 
 Now we are ready to use the [topicmodels](https://cran.r-project.org/package=topicmodels) package to create a four topic LDA model.
 
-```{r chapters_lda}
+```{r}
+#| label = "chapters_lda"
 library(topicmodels)
 chapters_lda <- LDA(chapters_dtm, k = 4, control = list(seed = 1234))
 chapters_lda
@@ -107,19 +116,21 @@ chapters_lda
 
 Now tidytext gives us the option of *returning* to a tidy analysis, using the `tidy` and `augment` verbs borrowed from the [broom package](https://github.com/dgrtwo/broom). In particular, we start with the `tidy` verb.
 
-```{r chapters_lda_td}
+```{r}
+#| label = "chapters_lda_td"
 chapters_lda_td <- tidy(chapters_lda)
 chapters_lda_td
 ```
 
 Notice that this has turned the model into a one-topic-per-term-per-row format. For each combination the model has $\beta$, the probability of that term being generated from that topic.
 
-We could use dplyr's `top_n` to find the top 5 terms within each topic:
+We could use dplyr's `slice_max()` to find the top 5 terms within each topic:
 
-```{r top_terms}
+```{r}
+#| label = "top_terms"
 top_terms <- chapters_lda_td %>%
   group_by(topic) %>%
-  top_n(5, beta) %>%
+  slice_max(beta, n = 5) %>%
   ungroup() %>%
   arrange(topic, -beta)
 
@@ -128,16 +139,20 @@ top_terms
 
 This model lends itself to a visualization:
 
-```{r top_terms_plot, fig.height=7, fig.width=7}
+```{r}
+#| label = "top_terms_plot",
+#| fig.height = 7,
+#| fig.width = 7,
+#| fig.alt = "The highest probability words from each of the four topics"
 library(ggplot2)
 theme_set(theme_bw())
 
 top_terms %>%
   mutate(term = reorder_within(term, beta, topic)) %>%
   ggplot(aes(term, beta)) +
-  geom_bar(stat = "identity") +
+  geom_col() +
   scale_x_reordered() +
-  facet_wrap(~ topic, scales = "free_x")
+  facet_wrap(vars(topic), scales = "free_x")
 ```
 
 These topics are pretty clearly associated with the four books! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to *Twenty Thousand Leagues Under the Sea*, and that "jane", "darcy", and "elizabeth" belongs to *Pride and Prejudice*. We see "pip" and "joe" from *Great Expectations* and "martians", "black", and "night" from *The War of the Worlds*.
@@ -146,14 +161,16 @@ These topics are pretty clearly associated with the four books! There's no quest
 
 Each chapter was a "document" in this analysis. Thus, we may want to know which topics are associated with each document. Can we put the chapters back together in the correct books?
 
-```{r chapters_lda_gamma_raw}
+```{r}
+#| label = "chapters_lda_gamma_raw"
 chapters_lda_gamma <- tidy(chapters_lda, matrix = "gamma")
 chapters_lda_gamma
 ```
 
 Setting `matrix = "gamma"` returns a tidied version with one-document-per-topic-per-row. Now that we have these document classifications, we can see how well our unsupervised learning did at distinguishing the four books. First we re-separate the document name into title and chapter:
 
-```{r chapters_lda_gamma}
+```{r}
+#| label = "chapters_lda_gamma"
 chapters_lda_gamma <- chapters_lda_gamma %>%
   separate(document, c("title", "chapter"), sep = "_", convert = TRUE)
 chapters_lda_gamma
@@ -161,18 +178,23 @@ chapters_lda_gamma
 
 Then we examine what fraction of chapters we got right for each:
 
-```{r chapters_lda_gamma_plot, fig.width=7, fig.height=6}
+```{r}
+#| label = "chapters_lda_gamma_plot",
+#| fig.width = 8,
+#| fig.height = 6,
+#| fig.alt = "Histograms for the document-topic probabilities plotted for each book"
 ggplot(chapters_lda_gamma, aes(gamma, fill = factor(topic))) +
   geom_histogram() +
-  facet_wrap(~ title, nrow = 2)
+  facet_wrap(vars(title), nrow = 2)
 ```
 
 We notice that almost all of the chapters from *Pride and Prejudice*, *War of the Worlds*, and *Twenty Thousand Leagues Under the Sea* were uniquely identified as a single topic each.
 
-```{r chapter_classifications}
+```{r}
+#| label = "chapter_classifications"
 chapter_classifications <- chapters_lda_gamma %>%
   group_by(title, chapter) %>%
-  top_n(1, gamma) %>%
+  slice_max(gamma, n = 1) %>%
   ungroup() %>%
   arrange(gamma)
 
@@ -181,11 +203,12 @@ chapter_classifications
 
 We can determine this by finding the consensus book for each, which we note is correct based on our earlier visualization:
 
-```{r book_topics}
+```{r}
+#| label = "book_topics"
 book_topics <- chapter_classifications %>%
   count(title, topic) %>%
   group_by(topic) %>%
-  top_n(1, n) %>%
+  slice_max(n, n = 1) %>%
   ungroup() %>%
   transmute(consensus = title, topic)
 
@@ -208,7 +231,8 @@ One important step in the topic modeling expectation-maximization algorithm is a
 
 We may want to take the original document-word pairs and find which words in each document were assigned to which topic. This is the job of the `augment` verb.
 
-```{r assignments}
+```{r}
+#| label = "assignments"
 assignments <- augment(chapters_lda, data = chapters_dtm)
 ```
 
@@ -217,17 +241,17 @@ We can combine this with the consensus book titles to find which words were inco
 ```{r}
 assignments <- assignments %>%
   separate(document, c("title", "chapter"), sep = "_", convert = TRUE) %>%
-  inner_join(book_topics, by = c(".topic" = "topic"))
+  inner_join(book_topics, join_by(.topic == topic))
 
 assignments
 ```
 
-We can, for example, create a "confusion matrix" using dplyr's `count` and tidyr's `spread`:
+We can, for example, create a "confusion matrix" using dplyr's `count()` and tidyr's `pivot_wider()`:
 
 ```{r}
 assignments %>%
   count(title, consensus, wt = count) %>%
-  spread(consensus, n, fill = 0)
+  pivot_wider(names_from = consensus, values_from = n, values_fill = 0)
 ```
 
 We notice that almost all the words for *Pride and Prejudice*, *Twenty Thousand Leagues Under the Sea*, and *War of the Worlds* were correctly assigned, while *Great Expectations* had a fair amount of misassignment.
