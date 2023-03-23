@@ -94,7 +94,7 @@ library(tidyr)
 bing <- get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(bing, multiple = "all") %>%
+  inner_join(bing, relationship = "many-to-many") %>%
   count(book, index = line %/% 80, sentiment) %>%
   pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
   mutate(sentiment = positive - negative)
@@ -120,7 +120,7 @@ One advantage of having the data frame with both sentiment and word is that we c
 
 ```{r}
 bing_word_counts <- tidy_books %>%
-  inner_join(bing, multiple = "all") %>%
+  inner_join(bing, relationship = "many-to-many") %>%
   count(word, sentiment, sort = TRUE)
 
 bing_word_counts

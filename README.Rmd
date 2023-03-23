@@ -105,7 +105,7 @@ library(tidyr)
 get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(get_sentiments("bing"), by = "word", multiple = "all") %>% 
+  inner_join(get_sentiments("bing"), by = "word", relationship = "many-to-many") %>% 
   count(book, index = line %/% 80, sentiment) %>% 
   pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
   mutate(sentiment = positive - negative)
