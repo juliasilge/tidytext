@@ -31,7 +31,7 @@ Depends:
     R (>= 2.10)
 Imports: 
     cli,
-    dplyr,
+    dplyr (>= 1.1.1),
     generics,
     janeaustenr,
     lifecycle,
