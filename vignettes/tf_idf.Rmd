@@ -9,7 +9,9 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r setup, echo=FALSE}
+```{r}
+#| label = "setup",
+#| echo = FALSE
 library(knitr)
 opts_chunk$set(
   warning = FALSE, message = FALSE,
@@ -17,7 +19,8 @@ opts_chunk$set(
 )
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo = FALSE
 library(ggplot2)
 theme_set(theme_light())
 ```
@@ -47,12 +50,15 @@ book_words
 
 The usual suspects are here, "the", "and", "to", and so forth. Let's look at the distribution of `n/total` for each novel, the number of times a word appears in a novel divided by the total number of terms (words) in that novel. This is exactly what term frequency is.
 
-```{r, fig.height=7, fig.width=7}
+```{r}
+#| fig.height = 7,
+#| fig.width = 7,
+#| fig.alt = "Histograms for word counts in Jane Austen's novels"
 library(ggplot2)
 ggplot(book_words, aes(n/total, fill = book)) +
   geom_histogram(show.legend = FALSE) +
-  xlim(NA, 0.0009) +
-  facet_wrap(~book, ncol = 2, scales = "free_y")
+  scale_x_continuous(limits = c(NA, 0.0009)) +
+  facet_wrap(vars(book), ncol = 2, scales = "free_y")
 ```
 
 There are very long tails to the right for these novels (those extremely common words!) that we have not shown in these plots. These plots exhibit similar distributions for all the novels, with many words that occur rarely and fewer words that occur frequently. The idea of tf-idf is to find the important words for the content of each document by decreasing the weight for commonly used words and increasing the weight for words that are not used very much in a collection or corpus of documents, in this case, the group of Jane Austen's novels as a whole. Calculating tf-idf attempts to find the words that are important (i.e., common) in a text, but not *too* common. Let's do that now.

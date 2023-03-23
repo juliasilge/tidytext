@@ -5,7 +5,8 @@ output: github_document
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
-```{r, include = FALSE}
+```{r}
+#| include = FALSE
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -39,14 +40,16 @@ Using [tidy data principles](https://doi.org/10.18637/jss.v059.i10) can make man
 
 You can install this package from CRAN:
 
-```{r, eval=FALSE}
+```{r}
+#| eval = FALSE
 install.packages("tidytext")
 ```
 
 
 Or you can install the development version from GitHub with [remotes](https://github.com/r-lib/remotes):
 
-```{r, eval=FALSE}
+```{r}
+#| eval = FALSE
 library(remotes)
 install_github("juliasilge/tidytext")
 ```
@@ -95,14 +98,16 @@ tidy_books %>%
 
 Sentiment analysis can be implemented as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes across each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
 
-```{r, fig.width=8, fig.height=10}
+```{r}
+#| fig.width = 8,
+#| fig.height = 10
 library(tidyr)
 get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(get_sentiments("bing"), by = "word") %>% 
+  inner_join(get_sentiments("bing"), by = "word", multiple = "all") %>% 
   count(book, index = line %/% 80, sentiment) %>% 
-  spread(sentiment, n, fill = 0) %>% 
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
@@ -110,12 +115,16 @@ janeaustensentiment
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r, fig.width=7, fig.height=7, warning=FALSE}
+```{r}
+#| fig.width = 7,
+#| fig.height = 7,
+#| fig.alt = "Sentiment scores across the trajectories of Jane Austen's six published novels",
+#| warning = FALSE
 library(ggplot2)
 
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
-  geom_bar(stat = "identity", show.legend = FALSE) +
-  facet_wrap(~book, ncol = 2, scales = "free_x")
+  geom_col(show.legend = FALSE) +
+  facet_wrap(vars(book), ncol = 2, scales = "free_x")
 ```
 
 For more examples of text mining using tidy data frames, see the tidytext vignette.
@@ -142,14 +151,17 @@ We could find the most negative documents:
 ap_sentiments <- tidy(AssociatedPress) %>%
   inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
-  spread(sentiment, n, fill = 0) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(sentiment)
 ```
 
 Or we can join the Austen and AP datasets and compare the frequencies of each word:
 
-```{r, fig.height=8, fig.width=8}
+```{r}
+#| fig.height = 8,
+#| fig.width = 8,
+#| fig.alt = 'Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like "cried" are only common in Jane Austen, some words like "national" are only common in AP articles, and some word like "time" are common in both.'
 comparison <- tidy(AssociatedPress) %>%
   count(word = term) %>%
   rename(AP = n) %>%
@@ -157,6 +169,7 @@ comparison <- tidy(AssociatedPress) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))
+
 
 comparison
 

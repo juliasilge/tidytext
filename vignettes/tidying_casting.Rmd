@@ -9,15 +9,16 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-```{r echo = FALSE}
+```{r}
+#| echo = FALSE
 knitr::opts_chunk$set(
-  fig.width = 7, fig.height = 7, 
   message = FALSE, warning = FALSE,
   eval = requireNamespace("tm", quietly = TRUE) && requireNamespace("quanteda", quietly = TRUE) && requireNamespace("topicmodels", quietly = TRUE) && requireNamespace("ggplot2", quietly = TRUE)
-  )
+)
 ```
 
-```{r echo=FALSE}
+```{r}
+#| echo = FALSE
 library(ggplot2)
 theme_set(theme_bw())
 ```
@@ -45,7 +46,7 @@ Just as shown in [this vignette](tidytext.html), having the text in this format 
 
 ```{r}
 ap_sentiments <- ap_td %>%
-  inner_join(get_sentiments("bing"), by = c(term = "word"))
+  inner_join(get_sentiments("bing"), join_by(term == word))
 
 ap_sentiments
 ```
@@ -57,25 +58,28 @@ library(tidyr)
 
 ap_sentiments %>%
   count(document, sentiment, wt = count) %>%
-  spread(sentiment, n, fill = 0) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(sentiment)
 ```
 
 Or visualize which words contributed to positive and negative sentiment:
 
-```{r fig.width = 7, fig.height = 5}
+```{r}
+#| fig.width = 7,
+#| fig.height = 4,
+#| fig.alt = 'Bar charts for the contribution of words to sentiment scores. The words "like" and "work" contribute the most to positive sentiment, and the words "killed" and "death" contribute the most to negative sentiment'
 library(ggplot2)
 
 ap_sentiments %>%
   count(sentiment, term, wt = count) %>%
-  filter(n >= 150) %>%
-  mutate(n = ifelse(sentiment == "negative", -n, n)) %>%
+  group_by(sentiment) %>%
+  slice_max(n, n = 10) %>%
   mutate(term = reorder(term, n)) %>%
-  ggplot(aes(term, n, fill = sentiment)) +
-  geom_bar(stat = "identity") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1)) +
-  ylab("Contribution to sentiment")
+  ggplot(aes(n, term, fill = sentiment)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(vars(sentiment), scales = "free_y") +
+  labs(x = "Contribution to sentiment", y = NULL)
 ```
 
 Note that a tidier is also available for the `dfm` class from the quanteda package:
@@ -169,8 +173,7 @@ inaug_freq <- inaug_words %>%
   count(Year, word) %>%
   complete(Year, word, fill = list(n = 0)) %>%
   group_by(Year) %>%
-  mutate(year_total = sum(n),
-         percent = n / year_total) %>%
+  mutate(year_total = sum(n), percent = n / year_total) %>%
   ungroup()
 
 inaug_freq
@@ -183,8 +186,9 @@ library(broom)
 models <- inaug_freq %>%
   group_by(word) %>%
   filter(sum(n) > 50) %>%
-  do(tidy(glm(cbind(n, year_total - n) ~ Year, .,
-              family = "binomial"))) %>%
+  group_modify(
+    ~ tidy(glm(cbind(n, year_total - n) ~ Year, ., family = "binomial"))
+  ) %>%
   ungroup() %>%
   filter(term == "Year")
 
@@ -198,6 +202,9 @@ models %>%
 You can show these models as a volcano plot, which compares the effect size with the significance:
 
 ```{r}
+#| fig.width = 7,
+#| fig.height = 5,
+#| fig.alt = 'Volcano plot showing that words like "america" and "world" have increased over time with small p-values, while words like "public" and "institution" have decreased'
 library(ggplot2)
 
 models %>%
@@ -205,26 +212,27 @@ models %>%
   ggplot(aes(estimate, adjusted.p.value)) +
   geom_point() +
   scale_y_log10() +
-  geom_text(aes(label = word), vjust = 1, hjust = 1,
-            check_overlap = TRUE) +
-  xlab("Estimated change over time") +
-  ylab("Adjusted p-value")
+  geom_text(aes(label = word), vjust = 1, hjust = 1, check_overlap = TRUE) +
+  labs(x = "Estimated change over time", y = "Adjusted p-value")
 ```
 
 We can also use the ggplot2 package to display the top 6 terms that have changed in frequency over time.
 
 ```{r}
+#| fig.width = 7,
+#| fig.height = 6,
+#| fig.alt = 'Scatterplot with LOESS smoothing lines showing that the words "america", "americans", "century", "children", "democracy", and "god" have increased over time'
 library(scales)
 
 models %>%
-  top_n(6, abs(estimate)) %>%
+  slice_max(abs(estimate), n = 6) %>%
   inner_join(inaug_freq) %>%
   ggplot(aes(Year, percent)) +
   geom_point() +
   geom_smooth() +
-  facet_wrap(~ word) +
+  facet_wrap(vars(word)) +
   scale_y_continuous(labels = percent_format()) +
-  ylab("Frequency of word in speech")
+  labs(y = "Frequency of word in speech")
 ```
 
 

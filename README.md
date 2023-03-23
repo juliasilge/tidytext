@@ -172,15 +172,15 @@ get_sentiments("bing")
 #> # … with 6,776 more rows
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(get_sentiments("bing"), by = "word") %>% 
+  inner_join(get_sentiments("bing"), by = "word", multiple = "all") %>% 
   count(book, index = line %/% 80, sentiment) %>% 
-  spread(sentiment, n, fill = 0) %>% 
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
 #> # A tibble: 920 × 5
 #>    book                index negative positive sentiment
-#>    <fct>               <dbl>    <dbl>    <dbl>     <dbl>
+#>    <fct>               <dbl>    <int>    <int>     <int>
 #>  1 Sense & Sensibility     0       16       32        16
 #>  2 Sense & Sensibility     1       19       53        34
 #>  3 Sense & Sensibility     2       12       31        19
@@ -201,11 +201,11 @@ each novel.
 library(ggplot2)
 
 ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
-  geom_bar(stat = "identity", show.legend = FALSE) +
-  facet_wrap(~book, ncol = 2, scales = "free_x")
+  geom_col(show.legend = FALSE) +
+  facet_wrap(vars(book), ncol = 2, scales = "free_x")
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-9-1.png" alt="Sentiment scores across the trajectories of Jane Austen's six published novels" width="100%" />
 
 For more examples of text mining using tidy data frames, see the
 tidytext vignette.
@@ -257,7 +257,7 @@ We could find the most negative documents:
 ap_sentiments <- tidy(AssociatedPress) %>%
   inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
   count(document, sentiment, wt = count) %>%
-  spread(sentiment, n, fill = 0) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
   mutate(sentiment = positive - negative) %>%
   arrange(sentiment)
 ```
@@ -273,6 +273,7 @@ comparison <- tidy(AssociatedPress) %>%
   rename(Austen = n) %>%
   mutate(AP = AP / sum(AP),
          Austen = Austen / sum(Austen))
+
 
 comparison
 #> # A tibble: 4,730 × 3
@@ -300,7 +301,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" width="100%" />
+<img src="man/figures/README-unnamed-chunk-13-1.png" alt="Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like &quot;cried&quot; are only common in Jane Austen, some words like &quot;national&quot; are only common in AP articles, and some word like &quot;time&quot; are common in both." width="100%" />
 
 For more examples of working with objects from other text mining
 packages using tidy data principles, see the

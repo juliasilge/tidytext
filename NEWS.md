@@ -1,5 +1,7 @@
 # tidytext (development version)
 
+* Added alt text to figures in vignettes and README (#233)
+
 # tidytext 0.4.1
 
 * Fixed bug for FREX stm tidier (#228)
