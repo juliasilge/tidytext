@@ -98,7 +98,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2023-01-08</h4>
+            <h4 data-toc-skip class="date">2023-03-23</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/articles/topic_modeling.Rmd" class="external-link"><code>vignettes/articles/topic_modeling.Rmd</code></a></small>
       <div class="hidden name"><code>topic_modeling.Rmd</code></div>
@@ -243,27 +243,27 @@ verb.</p>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 72,860 × 3</span></span></span>
 <span><span class="co">##    topic term        beta</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 joe     5.83<span style="color: #949494;">e</span><span style="color: #BB0000;">-17</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 joe     3.19<span style="color: #949494;">e</span><span style="color: #BB0000;">-57</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 joe     4.16<span style="color: #949494;">e</span><span style="color: #BB0000;">-24</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 joe     1.45<span style="color: #949494;">e</span><span style="color: #BB0000;">- 2</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     1 biddy   7.85<span style="color: #949494;">e</span><span style="color: #BB0000;">-27</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     2 biddy   4.67<span style="color: #949494;">e</span><span style="color: #BB0000;">-69</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     3 biddy   2.26<span style="color: #949494;">e</span><span style="color: #BB0000;">-46</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     4 biddy   4.77<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     1 estella 3.83<span style="color: #949494;">e</span><span style="color: #BB0000;">- 6</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>     2 estella 5.32<span style="color: #949494;">e</span><span style="color: #BB0000;">-65</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 joe     2.48<span style="color: #949494;">e</span><span style="color: #BB0000;">-22</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     2 joe     8.74<span style="color: #949494;">e</span><span style="color: #BB0000;">-65</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     3 joe     1.12<span style="color: #949494;">e</span><span style="color: #BB0000;">-25</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     4 joe     1.42<span style="color: #949494;">e</span><span style="color: #BB0000;">- 2</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     1 biddy   3.22<span style="color: #949494;">e</span><span style="color: #BB0000;">-31</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     2 biddy   6.31<span style="color: #949494;">e</span><span style="color: #BB0000;">-77</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     3 biddy   2.76<span style="color: #949494;">e</span><span style="color: #BB0000;">-50</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     4 biddy   4.69<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     1 estella 1.85<span style="color: #949494;">e</span><span style="color: #BB0000;">- 7</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>     2 estella 3.49<span style="color: #949494;">e</span><span style="color: #BB0000;">-73</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 72,850 more rows</span></span></span></code></pre>
 <p>Notice that this has turned the model into a
 one-topic-per-term-per-row format. For each combination the model has
 <span class="math inline">\(\beta\)</span>, the probability of that term
 being generated from that topic.</p>
-<p>We could use dplyr’s <code>top_n</code> to find the top 5 terms
+<p>We could use dplyr’s <code><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max()</a></code> to find the top 5 terms
 within each topic:</p>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">top_terms</span> <span class="op">&lt;-</span> <span class="va">chapters_lda_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html" class="external-link">top_n</a></span><span class="op">(</span><span class="fl">5</span>, <span class="va">beta</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">beta</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">topic</span>, <span class="op">-</span><span class="va">beta</span><span class="op">)</span></span>
 <span></span>
@@ -271,26 +271,26 @@ within each topic:</p>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 20 × 3</span></span></span>
 <span><span class="co">##    topic term         beta</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 elizabeth 0.014<span style="text-decoration: underline;">1</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     1 darcy     0.008<span style="text-decoration: underline;">81</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     1 miss      0.008<span style="text-decoration: underline;">71</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     1 bennet    0.006<span style="text-decoration: underline;">95</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     1 jane      0.006<span style="text-decoration: underline;">50</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 elizabeth 0.014<span style="text-decoration: underline;">4</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     1 darcy     0.009<span style="text-decoration: underline;">00</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     1 miss      0.008<span style="text-decoration: underline;">74</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     1 bennet    0.007<span style="text-decoration: underline;">09</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     1 jane      0.006<span style="text-decoration: underline;">65</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     2 captain   0.015<span style="text-decoration: underline;">5</span> </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     2 nautilus  0.013<span style="text-decoration: underline;">1</span> </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     2 sea       0.008<span style="text-decoration: underline;">85</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     2 nemo      0.008<span style="text-decoration: underline;">71</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>     2 ned       0.008<span style="text-decoration: underline;">03</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">11</span>     3 people    0.006<span style="text-decoration: underline;">80</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">12</span>     3 martians  0.006<span style="text-decoration: underline;">51</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     2 nemo      0.008<span style="text-decoration: underline;">72</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>     2 ned       0.008<span style="text-decoration: underline;">04</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">11</span>     3 people    0.006<span style="text-decoration: underline;">78</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">12</span>     3 martians  0.006<span style="text-decoration: underline;">49</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">13</span>     3 time      0.005<span style="text-decoration: underline;">35</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">14</span>     3 black     0.005<span style="text-decoration: underline;">28</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">15</span>     3 night     0.004<span style="text-decoration: underline;">48</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">16</span>     4 joe       0.014<span style="text-decoration: underline;">5</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">17</span>     4 time      0.006<span style="text-decoration: underline;">85</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">18</span>     4 pip       0.006<span style="text-decoration: underline;">82</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">19</span>     4 looked    0.006<span style="text-decoration: underline;">37</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">20</span>     4 miss      0.006<span style="text-decoration: underline;">23</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #BCBCBC;">14</span>     3 black     0.005<span style="text-decoration: underline;">26</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">15</span>     3 night     0.004<span style="text-decoration: underline;">50</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">16</span>     4 joe       0.014<span style="text-decoration: underline;">2</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">17</span>     4 time      0.006<span style="text-decoration: underline;">82</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">18</span>     4 pip       0.006<span style="text-decoration: underline;">70</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">19</span>     4 looked    0.006<span style="text-decoration: underline;">32</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">20</span>     4 miss      0.006<span style="text-decoration: underline;">25</span></span></span></code></pre>
 <p>This model lends itself to a visualization:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
@@ -299,10 +299,10 @@ within each topic:</p>
 <span><span class="va">top_terms</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>term <span class="op">=</span> <span class="fu"><a href="../reference/reorder_within.html">reorder_within</a></span><span class="op">(</span><span class="va">term</span>, <span class="va">beta</span>, <span class="va">topic</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">term</span>, <span class="va">beta</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span><span class="op">)</span> <span class="op">+</span></span>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/reorder_within.html">scale_x_reordered</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">topic</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="topic_modeling_files/figure-html/top_terms_plot-1.png" width="672"></p>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></code></pre></div>
+<p><img src="topic_modeling_files/figure-html/top_terms_plot-1.png" alt="The highest probability words from each of the four topics" width="672"></p>
 <p>These topics are pretty clearly associated with the four books!
 There’s no question that the topic of “nemo”, “sea”, and “nautilus”
 belongs to <em>Twenty Thousand Leagues Under the Sea</em>, and that
@@ -320,18 +320,18 @@ chapters back together in the correct books?</p>
 <code class="sourceCode R"><span><span class="va">chapters_lda_gamma</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">chapters_lda</span>, matrix <span class="op">=</span> <span class="st">"gamma"</span><span class="op">)</span></span>
 <span><span class="va">chapters_lda_gamma</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 772 × 3</span></span></span>
-<span><span class="co">##    document                 topic     gamma</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations_57        1 0.000<span style="text-decoration: underline;">013</span>5</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations_7         1 0.000<span style="text-decoration: underline;">014</span>7</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations_17        1 0.000<span style="text-decoration: underline;">021</span>2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations_27        1 0.000<span style="text-decoration: underline;">019</span>2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations_38        1 0.354    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations_2         1 0.000<span style="text-decoration: underline;">017</span>2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations_23        1 0.551    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations_15        1 0.016<span style="text-decoration: underline;">8</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations_18        1 0.000<span style="text-decoration: underline;">012</span>7</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds_16     1 0.000<span style="text-decoration: underline;">010</span>8</span></span>
+<span><span class="co">##    document                 topic      gamma</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations_57        1 0.000<span style="text-decoration: underline;">011</span>8 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations_7         1 0.000<span style="text-decoration: underline;">012</span>9 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations_17        1 0.000<span style="text-decoration: underline;">018</span>5 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations_27        1 0.000<span style="text-decoration: underline;">016</span>8 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations_38        1 0.342     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations_2         1 0.000<span style="text-decoration: underline;">015</span>1 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations_23        1 0.533     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations_15        1 0.000<span style="text-decoration: underline;">012</span>6 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations_18        1 0.000<span style="text-decoration: underline;">011</span>1 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds_16     1 0.000<span style="text-decoration: underline;">009</span>49</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 762 more rows</span></span></span></code></pre>
 <p>Setting <code>matrix = "gamma"</code> returns a tidied version with
 one-document-per-topic-per-row. Now that we have these document
@@ -343,25 +343,25 @@ into title and chapter:</p>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"chapter"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="va">chapters_lda_gamma</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 772 × 4</span></span></span>
-<span><span class="co">##    title                 chapter topic     gamma</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations         57     1 0.000<span style="text-decoration: underline;">013</span>5</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations          7     1 0.000<span style="text-decoration: underline;">014</span>7</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations         17     1 0.000<span style="text-decoration: underline;">021</span>2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations         27     1 0.000<span style="text-decoration: underline;">019</span>2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations         38     1 0.354    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations          2     1 0.000<span style="text-decoration: underline;">017</span>2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations         23     1 0.551    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations         15     1 0.016<span style="text-decoration: underline;">8</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations         18     1 0.000<span style="text-decoration: underline;">012</span>7</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds      16     1 0.000<span style="text-decoration: underline;">010</span>8</span></span>
+<span><span class="co">##    title                 chapter topic      gamma</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations         57     1 0.000<span style="text-decoration: underline;">011</span>8 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations          7     1 0.000<span style="text-decoration: underline;">012</span>9 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations         17     1 0.000<span style="text-decoration: underline;">018</span>5 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations         27     1 0.000<span style="text-decoration: underline;">016</span>8 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations         38     1 0.342     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations          2     1 0.000<span style="text-decoration: underline;">015</span>1 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations         23     1 0.533     </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations         15     1 0.000<span style="text-decoration: underline;">012</span>6 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations         18     1 0.000<span style="text-decoration: underline;">011</span>1 </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds      16     1 0.000<span style="text-decoration: underline;">009</span>49</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 762 more rows</span></span></span></code></pre>
 <p>Then we examine what fraction of chapters we got right for each:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">chapters_lda_gamma</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">gamma</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">title</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="topic_modeling_files/figure-html/chapters_lda_gamma_plot-1.png" width="672"></p>
+<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
+<p><img src="topic_modeling_files/figure-html/chapters_lda_gamma_plot-1.png" alt="Histograms for the document-topic probabilities plotted for each book" width="768"></p>
 <p>We notice that almost all of the chapters from <em>Pride and
 Prejudice</em>, <em>War of the Worlds</em>, and <em>Twenty Thousand
 Leagues Under the Sea</em> were uniquely identified as a single topic
@@ -369,7 +369,7 @@ each.</p>
 <div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chapter_classifications</span> <span class="op">&lt;-</span> <span class="va">chapters_lda_gamma</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">chapter</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html" class="external-link">top_n</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">gamma</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">gamma</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="va">gamma</span><span class="op">)</span></span>
 <span></span>
@@ -377,16 +377,16 @@ each.</p>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 193 × 4</span></span></span>
 <span><span class="co">##    title              chapter topic gamma</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations      54     3 0.480</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations      22     4 0.536</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations      31     4 0.546</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations      23     1 0.551</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations      33     4 0.570</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations      47     4 0.580</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations      56     4 0.598</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations      38     4 0.646</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations      11     4 0.669</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations      44     4 0.678</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations      54     3 0.508</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations      23     1 0.533</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations      22     4 0.543</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations      31     4 0.549</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations      33     4 0.590</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations      56     4 0.594</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations      47     4 0.629</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations      38     4 0.658</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations      11     4 0.677</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations      44     4 0.696</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 183 more rows</span></span></span></code></pre>
 <p>We can determine this by finding the consensus book for each, which
 we note is correct based on our earlier visualization:</p>
@@ -394,18 +394,18 @@ we note is correct based on our earlier visualization:</p>
 <code class="sourceCode R"><span><span class="va">book_topics</span> <span class="op">&lt;-</span> <span class="va">chapter_classifications</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">topic</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/top_n.html" class="external-link">top_n</a></span><span class="op">(</span><span class="fl">1</span>, <span class="va">n</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_max</a></span><span class="op">(</span><span class="va">n</span>, n <span class="op">=</span> <span class="fl">1</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">transmute</a></span><span class="op">(</span>consensus <span class="op">=</span> <span class="va">title</span>, <span class="va">topic</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/transmute.html" class="external-link">transmute</a></span><span class="op">(</span>consensus <span class="op">=</span> <span class="va">title</span>, <span class="va">topic</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">book_topics</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 4 × 2</span></span></span>
 <span><span class="co">##   consensus                             topic</span></span>
 <span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations                        4</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> Pride and Prejudice                       1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Pride and Prejudice                       1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> Twenty Thousand Leagues under the Sea     2</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span> The War of the Worlds                     3</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">4</span> Twenty Thousand Leagues under the Sea     2</span></span></code></pre>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> Great Expectations                        4</span></span></code></pre>
 <p>Then we see which chapters were misidentified:</p>
 <div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">chapter_classifications</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -441,7 +441,7 @@ words were incorrectly classified.</p>
 <div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">assignments</span> <span class="op">&lt;-</span> <span class="va">assignments</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/separate.html" class="external-link">separate</a></span><span class="op">(</span><span class="va">document</span>, <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"title"</span>, <span class="st">"chapter"</span><span class="op">)</span>, sep <span class="op">=</span> <span class="st">"_"</span>, convert <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">book_topics</span>, by <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">".topic"</span> <span class="op">=</span> <span class="st">"topic"</span><span class="op">)</span><span class="op">)</span></span>
+<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">book_topics</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html" class="external-link">join_by</a></span><span class="op">(</span><span class="va">.topic</span> <span class="op">==</span> <span class="va">topic</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">assignments</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 104,721 × 6</span></span></span>
@@ -459,22 +459,22 @@ words were incorrectly classified.</p>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations      13 joe      40      4 Great Expectations</span></span>
 <span><span class="co">## <span style="color: #949494;"># … with 104,711 more rows</span></span></span></code></pre>
 <p>We can, for example, create a “confusion matrix” using dplyr’s
-<code>count</code> and tidyr’s <code>spread</code>:</p>
+<code><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count()</a></code> and tidyr’s <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code>:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">assignments</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
-<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/spread.html" class="external-link">spread</a></span><span class="op">(</span><span class="va">consensus</span>, <span class="va">n</span>, fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
+<span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">consensus</span>, values_from <span class="op">=</span> <span class="va">n</span>, values_fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 4 × 5</span></span></span>
 <span><span class="co">##   title                                 `Great Expectations` `Pride and Prejudice`</span></span>
 <span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations                                   <span style="text-decoration: underline;">49</span>770                  <span style="text-decoration: underline;">3</span>876</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> Pride and Prejudice                                      1                 <span style="text-decoration: underline;">37</span>229</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations                                   <span style="text-decoration: underline;">50</span>366                  <span style="text-decoration: underline;">3</span>222</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> Pride and Prejudice                                      0                 <span style="text-decoration: underline;">37</span>234</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span> The War of the Worlds                                    0                     0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">4</span> Twenty Thousand Leagues under the Sea                    0                     5</span></span>
 <span><span class="co">##   `The War of the Worlds` `Twenty Thousand Leagues under the Sea`</span></span>
 <span><span class="co">##                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span>                    <span style="text-decoration: underline;">1</span>845                                      77</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span>                       7                                       5</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span>                    <span style="text-decoration: underline;">1</span>926                                      54</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span>                       4                                       4</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">3</span>                   <span style="text-decoration: underline;">22</span>561                                       7</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">4</span>                       0                                   <span style="text-decoration: underline;">39</span>629</span></span></code></pre>
 <p>We notice that almost all the words for <em>Pride and Prejudice</em>,
@@ -487,19 +487,19 @@ had a fair amount of misassignment.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">title</span> <span class="op">!=</span> <span class="va">consensus</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">wrong_words</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 4,535 × 6</span></span></span>
-<span><span class="co">##    title                                 chapter term     count .topic</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations                         38 brother      2      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations                         22 brother      4      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations                         23 miss         2      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations                         22 miss        23      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Twenty Thousand Leagues under the Sea       8 miss         1      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations                         31 miss         1      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations                          5 sergeant    37      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations                         46 captain      1      2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations                         32 captain      1      2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds                      17 captain      5      2</span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 4,035 × 6</span></span></span>
+<span><span class="co">##    title                                 chapter term    count .topic</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations                         38 brother     2      1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations                         22 brother     4      1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations                         23 miss        2      1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations                         22 miss       23      1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Twenty Thousand Leagues under the Sea       8 miss        1      1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations                         31 miss        1      1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations                         46 captain     1      2</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations                         32 captain     1      2</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> The War of the Worlds                      17 captain     5      2</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride and Prejudice                         7 captain     3      2</span></span>
 <span><span class="co">##    consensus                            </span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Pride and Prejudice                  </span></span>
@@ -508,29 +508,29 @@ had a fair amount of misassignment.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Pride and Prejudice                  </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Pride and Prejudice                  </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Pride and Prejudice                  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Pride and Prejudice                  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Twenty Thousand Leagues under the Sea</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Twenty Thousand Leagues under the Sea</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Twenty Thousand Leagues under the Sea</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Twenty Thousand Leagues under the Sea</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 4,525 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># … with 4,025 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wrong_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span>, <span class="va">term</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3,500 × 4</span></span></span>
-<span><span class="co">##    title              consensus             term         n</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations Pride and Prejudice   love        44</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations Pride and Prejudice   sergeant    37</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations Pride and Prejudice   lady        32</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations Pride and Prejudice   miss        26</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations The War of the Worlds boat        25</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations Pride and Prejudice   father      19</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations The War of the Worlds water       19</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations Pride and Prejudice   baby        18</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations Pride and Prejudice   flopson     18</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations Pride and Prejudice   family      16</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 3,490 more rows</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3,197 × 4</span></span></span>
+<span><span class="co">##    title              consensus             term        n</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations Pride and Prejudice   love       42</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations Pride and Prejudice   lady       29</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations Pride and Prejudice   miss       26</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations The War of the Worlds boat       25</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations The War of the Worlds tide       20</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations Pride and Prejudice   father     19</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations The War of the Worlds water      19</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations Pride and Prejudice   flopson    18</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations The War of the Worlds galley     16</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations Pride and Prejudice   family     15</span></span>
+<span><span class="co">## <span style="color: #949494;"># … with 3,187 more rows</span></span></span></code></pre>
 <p>Notice the word “flopson” here; these wrong words do not necessarily
 appear in the novels they were misassigned to. Indeed, we can confirm
 “flopson” appears only in <em>Great Expectations</em>:</p>
