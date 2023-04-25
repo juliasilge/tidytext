@@ -99,7 +99,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2023-03-23</h4>
+            <h4 data-toc-skip class="date">2023-04-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tf_idf.Rmd" class="external-link"><code>vignettes/tf_idf.Rmd</code></a></small>
       <div class="hidden name"><code>tf_idf.Rmd</code></div>
@@ -145,7 +145,7 @@ total words in each novel here, for later use.)</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/janeaustenr" class="external-link">janeaustenr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/tidytext" class="external-link">tidytext</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://juliasilge.github.io/tidytext/" class="external-link">tidytext</a></span><span class="op">)</span></span>
 <span><span class="va">book_words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/janeaustenr/man/austen_books.html" class="external-link">austen_books</a></span><span class="op">(</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">book</span>, <span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -166,7 +166,7 @@ total words in each novel here, for later use.)</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Pride &amp; Prejudice the    <span style="text-decoration: underline;">4</span>331 <span style="text-decoration: underline;">122</span>204</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Emma              of     <span style="text-decoration: underline;">4</span>291 <span style="text-decoration: underline;">160</span>996</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice to     <span style="text-decoration: underline;">4</span>162 <span style="text-decoration: underline;">122</span>204</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 40,369 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 40,369 more rows</span></span></span></code></pre>
 <p>The usual suspects are here, “the”, “and”, “to”, and so forth. Let’s
 look at the distribution of <code>n/total</code> for each novel, the
 number of times a word appears in a novel divided by the total number of
@@ -206,7 +206,7 @@ now.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Pride &amp; Prejudice the    <span style="text-decoration: underline;">4</span>331 <span style="text-decoration: underline;">122</span>204 0.035<span style="text-decoration: underline;">4</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Emma              of     <span style="text-decoration: underline;">4</span>291 <span style="text-decoration: underline;">160</span>996 0.026<span style="text-decoration: underline;">7</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice to     <span style="text-decoration: underline;">4</span>162 <span style="text-decoration: underline;">122</span>204 0.034<span style="text-decoration: underline;">1</span>     0      0</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 40,369 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 40,369 more rows</span></span></span></code></pre>
 <p>Notice that idf and thus tf-idf are zero for these extremely common
 words. These are all words that appear in all six of Jane Austen’s
 novels, so the idf term (which will then be the natural log of 1) is
@@ -233,7 +233,7 @@ high tf-idf in Jane Austen’s works.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Emma                weston      389 0.002<span style="text-decoration: underline;">42</span>  1.79 0.004<span style="text-decoration: underline;">33</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Pride &amp; Prejudice   bennet      294 0.002<span style="text-decoration: underline;">41</span>  1.79 0.004<span style="text-decoration: underline;">31</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Persuasion          wentworth   191 0.002<span style="text-decoration: underline;">28</span>  1.79 0.004<span style="text-decoration: underline;">09</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 40,369 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 40,369 more rows</span></span></span></code></pre>
 <p>Here we see all proper nouns, names that are in fact important in
 these novels. None of them occur in all of novels, and they are
 important, characteristic words for each text. Some of the values for
@@ -258,7 +258,7 @@ this corpus and we are seeing the numerical value for <span class="math inline">
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Pride &amp; Prejudice lizzy        95 0.000<span style="text-decoration: underline;">777</span> 1.79  0.001<span style="text-decoration: underline;">39</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Pride &amp; Prejudice longbourn    88 0.000<span style="text-decoration: underline;">720</span> 1.79  0.001<span style="text-decoration: underline;">29</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice gardiner     84 0.000<span style="text-decoration: underline;">687</span> 1.79  0.001<span style="text-decoration: underline;">23</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 6,528 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 6,528 more rows</span></span></span></code></pre>
 <p>These words are, as measured by tf-idf, the most important to
 <em>Pride and Prejudice</em> and most readers would likely agree.</p>
   </div>

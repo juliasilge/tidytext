@@ -99,7 +99,7 @@ Corpus objects</h1>
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2023-03-23</h4>
+            <h4 data-toc-skip class="date">2023-04-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tidying_casting.Rmd" class="external-link"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -129,7 +129,7 @@ one-term-per-document-per-row data frame first. The <code>tidy</code>
 function does this. (For more on the tidy verb, <a href="https://github.com/dgrtwo/broom" class="external-link">see the broom package</a>).</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/tidytext" class="external-link">tidytext</a></span><span class="op">)</span></span>
+<span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://juliasilge.github.io/tidytext/" class="external-link">tidytext</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ap_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">AssociatedPress</span><span class="op">)</span></span></code></pre></div>
 <p>Just as shown in <a href="tidytext.html">this vignette</a>, having
@@ -154,7 +154,7 @@ newspaper articles.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        1 like        2 positive </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        1 liked       1 positive </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        1 miracle     1 positive </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 30,084 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 30,084 more rows</span></span></span></code></pre>
 <p>We can find the most negative documents:</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
@@ -177,7 +177,7 @@ newspaper articles.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     <span style="text-decoration: underline;">1</span>664       38        5       -<span style="color: #BB0000;">33</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     <span style="text-decoration: underline;">2</span>147       47       14       -<span style="color: #BB0000;">33</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>      516       38        6       -<span style="color: #BB0000;">32</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 2,180 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 2,180 more rows</span></span></span></code></pre>
 <p>Or visualize which words contributed to positive and negative
 sentiment:</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
@@ -202,7 +202,7 @@ from the quanteda package:</p>
 <span><span class="va">d</span> <span class="op">&lt;-</span> <span class="fu">quanteda</span><span class="fu">::</span><span class="fu"><a href="https://quanteda.io/reference/dfm.html" class="external-link">dfm</a></span><span class="op">(</span><span class="va">data_corpus_inaugural</span>, verbose <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">d</span></span></code></pre></div>
-<pre><code><span><span class="co">## Document-feature matrix of: 59 documents, 9,439 features (91.84% sparse) and 4 docvars.</span></span>
+<pre><code><span><span class="co">## Document-feature matrix of: 59 documents, 9,441 features (91.84% sparse) and 4 docvars.</span></span>
 <span><span class="co">##                  features</span></span>
 <span><span class="co">## docs              fellow-citizens  of the senate and house representatives :</span></span>
 <span><span class="co">##   1789-Washington               1  71 116      1  48     2               2 1</span></span>
@@ -219,10 +219,10 @@ from the quanteda package:</p>
 <span><span class="co">##   1801-Jefferson      1            0</span></span>
 <span><span class="co">##   1805-Jefferson      7            0</span></span>
 <span><span class="co">##   1809-Madison        0            0</span></span>
-<span><span class="co">## [ reached max_ndoc ... 53 more documents, reached max_nfeat ... 9,429 more features ]</span></span></code></pre>
+<span><span class="co">## [ reached max_ndoc ... 53 more documents, reached max_nfeat ... 9,431 more features ]</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 45,453 × 3</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 45,454 × 3</span></span></span>
 <span><span class="co">##    document        term            count</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> 1789-Washington fellow-citizens     1</span></span>
@@ -235,7 +235,7 @@ from the quanteda package:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 1841-Harrison   fellow-citizens    11</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 1845-Polk       fellow-citizens     1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> 1849-Taylor     fellow-citizens     1</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 45,443 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 45,444 more rows</span></span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="casting-tidy-text-data-into-a-documenttermmatrix">Casting tidy text data into a DocumentTermMatrix<a class="anchor" aria-label="anchor" href="#casting-tidy-text-data-into-a-documenttermmatrix"></a>
@@ -258,7 +258,7 @@ verbs for converting from a tidy form to these matrices.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>        1 appeared       1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        1 arrested       1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        1 assault        1</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 302,021 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 302,021 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># cast into a Document-Term Matrix</span></span>
 <span><span class="va">ap_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -326,32 +326,31 @@ document:</p>
 <code class="sourceCode R"><span><span class="va">reuters_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">reuters</span><span class="op">)</span></span>
 <span><span class="va">reuters_td</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 20 × 17</span></span></span>
-<span><span class="co">##    author        datetimestamp       descr…¹ heading id    langu…² origin topics</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>            1987-02-26 <span style="color: #949494;">17:00:56</span> <span style="color: #949494;">""</span>      DIAMON… 127   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> BY TED D'AFF… 1987-02-26 <span style="color: #949494;">17:34:11</span> <span style="color: #949494;">""</span>      OPEC M… 144   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #BB0000;">NA</span>            1987-02-26 <span style="color: #949494;">18:18:00</span> <span style="color: #949494;">""</span>      TEXACO… 191   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #BB0000;">NA</span>            1987-02-26 <span style="color: #949494;">18:21:01</span> <span style="color: #949494;">""</span>      MARATH… 194   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #BB0000;">NA</span>            1987-02-26 <span style="color: #949494;">19:00:57</span> <span style="color: #949494;">""</span>      HOUSTO… 211   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #BB0000;">NA</span>            1987-03-01 <span style="color: #949494;">03:25:46</span> <span style="color: #949494;">""</span>      KUWAIT… 236   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> By Jeremy Cl… 1987-03-01 <span style="color: #949494;">03:39:14</span> <span style="color: #949494;">""</span>      INDONE… 237   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #BB0000;">NA</span>            1987-03-01 <span style="color: #949494;">05:27:27</span> <span style="color: #949494;">""</span>      SAUDI … 242   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #BB0000;">NA</span>            1987-03-01 <span style="color: #949494;">08:22:30</span> <span style="color: #949494;">""</span>      QATAR … 246   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #BB0000;">NA</span>            1987-03-01 <span style="color: #949494;">18:31:44</span> <span style="color: #949494;">""</span>      SAUDI … 248   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">11</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">01:05:49</span> <span style="color: #949494;">""</span>      SAUDI … 273   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">12</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">07:39:23</span> <span style="color: #949494;">""</span>      GULF A… 349   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">13</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">07:43:22</span> <span style="color: #949494;">""</span>      SAUDI … 352   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">14</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">07:43:41</span> <span style="color: #949494;">""</span>      KUWAIT… 353   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">15</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">08:25:42</span> <span style="color: #949494;">""</span>      PHILAD… 368   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">16</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">11:20:05</span> <span style="color: #949494;">""</span>      STUDY … 489   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">17</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">11:28:26</span> <span style="color: #949494;">""</span>      STUDY … 502   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">18</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">12:13:46</span> <span style="color: #949494;">""</span>      UNOCAL… 543   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">19</span> By BERNICE N… 1987-03-02 <span style="color: #949494;">14:38:34</span> <span style="color: #949494;">""</span>      NYMEX … 704   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">20</span> <span style="color: #BB0000;">NA</span>            1987-03-02 <span style="color: #949494;">14:49:06</span> <span style="color: #949494;">""</span>      ARGENT… 708   en      Reute… YES   </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 9 more variables: lewissplit &lt;chr&gt;, cgisplit &lt;chr&gt;, oldid &lt;chr&gt;,</span></span></span>
+<span><span class="co">##    author   datetimestamp       description heading id    language origin topics</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dttm&gt;</span>              <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">17:00:56</span> <span style="color: #949494;">""</span>          DIAMON… 127   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> BY TED … 1987-02-26 <span style="color: #949494;">17:34:11</span> <span style="color: #949494;">""</span>          OPEC M… 144   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">18:18:00</span> <span style="color: #949494;">""</span>          TEXACO… 191   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">18:21:01</span> <span style="color: #949494;">""</span>          MARATH… 194   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #BB0000;">NA</span>       1987-02-26 <span style="color: #949494;">19:00:57</span> <span style="color: #949494;">""</span>          HOUSTO… 211   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">03:25:46</span> <span style="color: #949494;">""</span>          KUWAIT… 236   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> By Jere… 1987-03-01 <span style="color: #949494;">03:39:14</span> <span style="color: #949494;">""</span>          INDONE… 237   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">05:27:27</span> <span style="color: #949494;">""</span>          SAUDI … 242   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">08:22:30</span> <span style="color: #949494;">""</span>          QATAR … 246   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #BB0000;">NA</span>       1987-03-01 <span style="color: #949494;">18:31:44</span> <span style="color: #949494;">""</span>          SAUDI … 248   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">11</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">01:05:49</span> <span style="color: #949494;">""</span>          SAUDI … 273   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">12</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">07:39:23</span> <span style="color: #949494;">""</span>          GULF A… 349   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">13</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">07:43:22</span> <span style="color: #949494;">""</span>          SAUDI … 352   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">14</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">07:43:41</span> <span style="color: #949494;">""</span>          KUWAIT… 353   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">15</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">08:25:42</span> <span style="color: #949494;">""</span>          PHILAD… 368   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">16</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">11:20:05</span> <span style="color: #949494;">""</span>          STUDY … 489   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">17</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">11:28:26</span> <span style="color: #949494;">""</span>          STUDY … 502   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">18</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">12:13:46</span> <span style="color: #949494;">""</span>          UNOCAL… 543   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">19</span> By BERN… 1987-03-02 <span style="color: #949494;">14:38:34</span> <span style="color: #949494;">""</span>          NYMEX … 704   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">20</span> <span style="color: #BB0000;">NA</span>       1987-03-02 <span style="color: #949494;">14:49:06</span> <span style="color: #949494;">""</span>          ARGENT… 708   en       Reute… YES   </span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 9 more variables: lewissplit &lt;chr&gt;, cgisplit &lt;chr&gt;, oldid &lt;chr&gt;,</span></span></span>
 <span><span class="co">## <span style="color: #949494;">#   topics_cat &lt;named list&gt;, places &lt;named list&gt;, people &lt;chr&gt;, orgs &lt;chr&gt;,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   exchanges &lt;chr&gt;, text &lt;chr&gt;, and abbreviated variable names ¹​description,</span></span></span>
-<span><span class="co">## <span style="color: #949494;">#   ²​language</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;">#   exchanges &lt;chr&gt;, text &lt;chr&gt;</span></span></span></code></pre>
 <p>Similarly, you can <code>tidy</code> a <code>corpus</code> object
 from the quanteda package:</p>
 <div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
@@ -384,19 +383,19 @@ from the quanteda package:</p>
 <code class="sourceCode R"><span><span class="va">inaug_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">data_corpus_inaugural</span><span class="op">)</span></span>
 <span><span class="va">inaug_td</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 59 × 5</span></span></span>
-<span><span class="co">##    text                                               Year Presi…¹ First…² Party</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                             <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Fellow-Citizens of the Senate and of the House …  <span style="text-decoration: underline;">1</span>789 Washin… George  none </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Fellow citizens, I am again called upon by the …  <span style="text-decoration: underline;">1</span>793 Washin… George  none </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>When it was first perceived, in early times, th…  <span style="text-decoration: underline;">1</span>797 Adams   John    Fede…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Friends and Fellow Citizens:\n\nCalled upon to …  <span style="text-decoration: underline;">1</span>801 Jeffer… Thomas  Demo…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Proceeding, fellow citizens, to that qualificat…  <span style="text-decoration: underline;">1</span>805 Jeffer… Thomas  Demo…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Unwilling to depart from examples of the most r…  <span style="text-decoration: underline;">1</span>809 Madison James   Demo…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>About to add the solemnity of an oath to the ob…  <span style="text-decoration: underline;">1</span>813 Madison James   Demo…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>I should be destitute of feeling if I was not d…  <span style="text-decoration: underline;">1</span>817 Monroe  James   Demo…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>Fellow citizens, I shall not attempt to describ…  <span style="text-decoration: underline;">1</span>821 Monroe  James   Demo…</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>In compliance with an usage coeval with the exi…  <span style="text-decoration: underline;">1</span>825 Adams   John Q… Demo…</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 49 more rows, and abbreviated variable names ¹​President, ²​FirstName</span></span></span></code></pre>
+<span><span class="co">##    text                                           Year President FirstName Party</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Fellow-Citizens of the Senate and of the Ho…  <span style="text-decoration: underline;">1</span>789 Washingt… George    none </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> <span style="color: #949494;">"</span>Fellow citizens, I am again called upon by …  <span style="text-decoration: underline;">1</span>793 Washingt… George    none </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> <span style="color: #949494;">"</span>When it was first perceived, in early times…  <span style="text-decoration: underline;">1</span>797 Adams     John      Fede…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> <span style="color: #949494;">"</span>Friends and Fellow Citizens:\n\nCalled upon…  <span style="text-decoration: underline;">1</span>801 Jefferson Thomas    Demo…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> <span style="color: #949494;">"</span>Proceeding, fellow citizens, to that qualif…  <span style="text-decoration: underline;">1</span>805 Jefferson Thomas    Demo…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> <span style="color: #949494;">"</span>Unwilling to depart from examples of the mo…  <span style="text-decoration: underline;">1</span>809 Madison   James     Demo…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> <span style="color: #949494;">"</span>About to add the solemnity of an oath to th…  <span style="text-decoration: underline;">1</span>813 Madison   James     Demo…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>I should be destitute of feeling if I was n…  <span style="text-decoration: underline;">1</span>817 Monroe    James     Demo…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>Fellow citizens, I shall not attempt to des…  <span style="text-decoration: underline;">1</span>821 Monroe    James     Demo…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>In compliance with an usage coeval with the…  <span style="text-decoration: underline;">1</span>825 Adams     John Qui… Demo…</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 49 more rows</span></span></span></code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to
 analyze the text alongside the metadata.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
@@ -418,7 +417,7 @@ analyze the text alongside the metadata.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  life           </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  event          </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  filled         </span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 50,955 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 50,955 more rows</span></span></span></code></pre>
 <p>We could then, for example, see how the appearance of a word changes
 over time:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
@@ -443,7 +442,7 @@ over time:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>789 125             0        529 0      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>789 13              0        529 0      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>789 14th            1        529 0.001<span style="text-decoration: underline;">89</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 514,824 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 514,824 more rows</span></span></span></code></pre>
 <p>For example, we can use the broom package to perform logistic
 regression on each word.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
@@ -471,7 +470,7 @@ regression on each word.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> business       Year   0.002<span style="text-decoration: underline;">71</span>   0.001<span style="text-decoration: underline;">94</span>     1.40  1.63<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> called         Year  -<span style="color: #BB0000;">0.001</span><span style="color: #BB0000; text-decoration: underline;">58</span>   0.001<span style="text-decoration: underline;">98</span>    -<span style="color: #BB0000;">0.799</span> 4.24<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> century        Year   0.014<span style="text-decoration: underline;">5</span>    0.002<span style="text-decoration: underline;">31</span>     6.27  3.58<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 105 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 105 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">models</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Year"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -489,7 +488,7 @@ regression on each word.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> powers    Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">5</span>   0.001<span style="text-decoration: underline;">96</span>     -<span style="color: #BB0000;">6.38</span> 1.76<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> revenue   Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">2</span>   0.002<span style="text-decoration: underline;">50</span>     -<span style="color: #BB0000;">4.87</span> 1.11<span style="color: #949494;">e</span><span style="color: #BB0000;">- 6</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> foreign   Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">0</span>   0.001<span style="text-decoration: underline;">91</span>     -<span style="color: #BB0000;">6.31</span> 2.73<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 105 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 105 more rows</span></span></span></code></pre>
 <p>You can show these models as a volcano plot, which compares the
 effect size with the significance:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">

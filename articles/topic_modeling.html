@@ -98,7 +98,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2023-03-23</h4>
+            <h4 data-toc-skip class="date">2023-04-25</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/articles/topic_modeling.Rmd" class="external-link"><code>vignettes/articles/topic_modeling.Rmd</code></a></small>
       <div class="hidden name"><code>topic_modeling.Rmd</code></div>
@@ -161,14 +161,14 @@ to their original books?</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>           36 <span style="color: #949494;">"</span>     World? .  .  .  And how are all things made for man?--<span style="color: #949494;">"</span> The War of the Worlds</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>           36 <span style="color: #949494;">"</span>          KEPLER (quoted in The Anatomy of Melancholy)<span style="color: #949494;">"</span>      The War of the Worlds</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>           36 <span style="color: #949494;">""</span>                                                            The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 51,653 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 51,653 more rows</span></span></span></code></pre>
 <p>As pre-processing, we divide these into chapters, use tidytext’s
 <code>unnest_tokens</code> to separate them into words, then remove
 <code>stop_words</code>. We’re treating every chapter as a separate
 “document”, each with a name like <code>Great Expectations_1</code> or
 <code>Pride and Prejudice_11</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/juliasilge/tidytext" class="external-link">tidytext</a></span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://juliasilge.github.io/tidytext/" class="external-link">tidytext</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://stringr.tidyverse.org" class="external-link">stringr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span></span>
@@ -200,7 +200,7 @@ to their original books?</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations_15    joe        50</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations_18    joe        50</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds_16 brother    50</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 104,711 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 104,711 more rows</span></span></span></code></pre>
 </div>
 </div>
 <div class="section level3">
@@ -253,7 +253,7 @@ verb.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     4 biddy   4.69<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     1 estella 1.85<span style="color: #949494;">e</span><span style="color: #BB0000;">- 7</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>     2 estella 3.49<span style="color: #949494;">e</span><span style="color: #BB0000;">-73</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 72,850 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 72,850 more rows</span></span></span></code></pre>
 <p>Notice that this has turned the model into a
 one-topic-per-term-per-row format. For each combination the model has
 <span class="math inline">\(\beta\)</span>, the probability of that term
@@ -332,7 +332,7 @@ chapters back together in the correct books?</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations_15        1 0.000<span style="text-decoration: underline;">012</span>6 </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations_18        1 0.000<span style="text-decoration: underline;">011</span>1 </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds_16     1 0.000<span style="text-decoration: underline;">009</span>49</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 762 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 762 more rows</span></span></span></code></pre>
 <p>Setting <code>matrix = "gamma"</code> returns a tidied version with
 one-document-per-topic-per-row. Now that we have these document
 classifications, we can see how well our unsupervised learning did at
@@ -355,7 +355,7 @@ into title and chapter:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations         15     1 0.000<span style="text-decoration: underline;">012</span>6 </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations         18     1 0.000<span style="text-decoration: underline;">011</span>1 </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds      16     1 0.000<span style="text-decoration: underline;">009</span>49</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 762 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 762 more rows</span></span></span></code></pre>
 <p>Then we examine what fraction of chapters we got right for each:</p>
 <div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">chapters_lda_gamma</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">gamma</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
@@ -387,7 +387,7 @@ each.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations      38     4 0.658</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations      11     4 0.677</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations      44     4 0.696</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 183 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 183 more rows</span></span></span></code></pre>
 <p>We can determine this by finding the consensus book for each, which
 we note is correct based on our earlier visualization:</p>
 <div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
@@ -457,7 +457,7 @@ words were incorrectly classified.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations      18 joe      50      4 Great Expectations</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations       9 joe      44      4 Great Expectations</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations      13 joe      40      4 Great Expectations</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 104,711 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 104,711 more rows</span></span></span></code></pre>
 <p>We can, for example, create a “confusion matrix” using dplyr’s
 <code><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count()</a></code> and tidyr’s <code><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider()</a></code>:</p>
 <div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
@@ -512,7 +512,7 @@ had a fair amount of misassignment.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Twenty Thousand Leagues under the Sea</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Twenty Thousand Leagues under the Sea</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Twenty Thousand Leagues under the Sea</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 4,025 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 4,025 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wrong_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span>, <span class="va">term</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -530,7 +530,7 @@ had a fair amount of misassignment.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Great Expectations Pride and Prejudice   flopson    18</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations The War of the Worlds galley     16</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations Pride and Prejudice   family     15</span></span>
-<span><span class="co">## <span style="color: #949494;"># … with 3,187 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 3,187 more rows</span></span></span></code></pre>
 <p>Notice the word “flopson” here; these wrong words do not necessarily
 appear in the novels they were misassigned to. Indeed, we can confirm
 “flopson” appears only in <em>Great Expectations</em>:</p>
