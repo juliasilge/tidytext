@@ -158,7 +158,7 @@ unnest_tokens <- function(tbl, output, input, token = "words",
 
   tbl_indices <- vec_rep_each(seq_len(nrow(tbl)), lengths(output_lst))
   ret <- vec_slice(tbl, tbl_indices)
-  ret[[output]] <- flatten_chr(output_lst)
+  ret[[output]] <- purrr::list_c(output_lst)
 
   if (to_lower) {
     ret[[output]] <- stringr::str_to_lower(ret[[output]])
