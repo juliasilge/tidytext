@@ -14,5 +14,5 @@
 #' @importFrom dplyr enquo
 #'
 unnest_tweets <- function(tbl, output, input, ...){
-  lifecycle::deprecate_stop("0.4.0", "unnest_tokens()")
+  lifecycle::deprecate_stop("0.4.0", "unnest_tweets()")
 }
