@@ -75,7 +75,7 @@ library(stm)
 library(janeaustenr)
 
 austen_sparse <- austen_books() \%>\%
-    unnest_tokens(word, text) \%>\%
+    unnest_tokens(input = text, output = "word") \%>\%
     anti_join(stop_words) \%>\%
     count(book, word) \%>\%
     cast_sparse(book, word, n)

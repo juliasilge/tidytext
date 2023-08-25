@@ -70,13 +70,13 @@
 #' d
 #'
 #' d %>%
-#'   unnest_tokens(word, txt)
+#'   unnest_tokens(input = txt, output = "word")
 #'
 #' d %>%
-#'   unnest_tokens(sentence, txt, token = "sentences")
+#'   unnest_tokens(input = txt, output = "sentence", token = "sentences")
 #'
 #' d %>%
-#'   unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+#'   unnest_tokens(output = "ngram", input = txt, token = "ngrams", n = 2)
 #'
 #' d %>%
 #'   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\\\d]")
