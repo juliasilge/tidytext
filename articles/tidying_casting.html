@@ -99,7 +99,7 @@ Corpus objects</h1>
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2023-06-01</h4>
+            <h4 data-toc-skip class="date">2023-09-05</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tidying_casting.Rmd" class="external-link"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -108,6 +108,12 @@ David Robinson</h4>
 
     
     
+<pre><code><span><span class="co">## Warning in .recacheSubclasses(def@className, def, env): undefined subclass</span></span>
+<span><span class="co">## "pcorMatrix" of class "replValueSp"; definition not updated</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in .recacheSubclasses(def@className, def, env): undefined subclass</span></span>
+<span><span class="co">## "pcorMatrix" of class "xMatrix"; definition not updated</span></span></code></pre>
+<pre><code><span><span class="co">## Warning in .recacheSubclasses(def@className, def, env): undefined subclass</span></span>
+<span><span class="co">## "pcorMatrix" of class "mMatrix"; definition not updated</span></span></code></pre>
 <div class="section level3">
 <h3 id="tidying-document-term-matrices">Tidying document-term matrices<a class="anchor" aria-label="anchor" href="#tidying-document-term-matrices"></a>
 </h3>
@@ -115,7 +121,7 @@ David Robinson</h4>
 <code>DocumentTermMatrix</code> class (from the tm package). For
 example, consider the corpus of 2246 Associated Press articles from the
 topicmodels package:</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tm.r-forge.r-project.org/" class="external-link">tm</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"AssociatedPress"</span>, package <span class="op">=</span> <span class="st">"topicmodels"</span><span class="op">)</span></span>
 <span><span class="va">AssociatedPress</span></span></code></pre></div>
@@ -127,7 +133,7 @@ topicmodels package:</p>
 <p>If we want to analyze this with tidy tools, we need to turn it into a
 one-term-per-document-per-row data frame first. The <code>tidy</code>
 function does this. (For more on the tidy verb, <a href="https://github.com/dgrtwo/broom" class="external-link">see the broom package</a>).</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://juliasilge.github.io/tidytext/" class="external-link">tidytext</a></span><span class="op">)</span></span>
 <span></span>
@@ -136,7 +142,7 @@ function does this. (For more on the tidy verb, <a href="https://github.com/dgrt
 the text in this format is convenient for analysis with the tidytext
 package. For example, you can perform sentiment analysis on these
 newspaper articles.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ap_sentiments</span> <span class="op">&lt;-</span> <span class="va">ap_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="fu"><a href="../reference/get_sentiments.html">get_sentiments</a></span><span class="op">(</span><span class="st">"bing"</span><span class="op">)</span>, <span class="fu"><a href="https://dplyr.tidyverse.org/reference/join_by.html" class="external-link">join_by</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="va">word</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
@@ -156,7 +162,7 @@ newspaper articles.</p>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        1 miracle     1 positive </span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 30,084 more rows</span></span></span></code></pre>
 <p>We can find the most negative documents:</p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ap_sentiments</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -180,7 +186,7 @@ newspaper articles.</p>
 <span><span class="co">## <span style="color: #949494;"># ℹ 2,180 more rows</span></span></span></code></pre>
 <p>Or visualize which words contributed to positive and negative
 sentiment:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">ap_sentiments</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -195,7 +201,7 @@ sentiment:</p>
 <p><img src="tidying_casting_files/figure-html/unnamed-chunk-7-1.png" alt='Bar charts for the contribution of words to sentiment scores. The words "like" and "work" contribute the most to positive sentiment, and the words "killed" and "death" contribute the most to negative sentiment' width="672"></p>
 <p>Note that a tidier is also available for the <code>dfm</code> class
 from the quanteda package:</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">methods</span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"data_corpus_inaugural"</span>, package <span class="op">=</span> <span class="st">"quanteda"</span><span class="op">)</span></span>
@@ -220,7 +226,7 @@ from the quanteda package:</p>
 <span><span class="co">##   1805-Jefferson      7            0</span></span>
 <span><span class="co">##   1809-Madison        0            0</span></span>
 <span><span class="co">## [ reached max_ndoc ... 53 more documents, reached max_nfeat ... 9,431 more features ]</span></span></code></pre>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 45,454 × 3</span></span></span>
 <span><span class="co">##    document        term            count</span></span>
@@ -243,7 +249,7 @@ from the quanteda package:</p>
 <p>Some existing text mining tools or algorithms work only on sparse
 document-term matrices. Therefore, tidytext provides <code>cast_</code>
 verbs for converting from a tidy form to these matrices.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">ap_td</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 302,031 × 3</span></span></span>
 <span><span class="co">##    document term       count</span></span>
@@ -259,7 +265,7 @@ verbs for converting from a tidy form to these matrices.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>        1 arrested       1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>        1 assault        1</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 302,021 more rows</span></span></span></code></pre>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># cast into a Document-Term Matrix</span></span>
 <span><span class="va">ap_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/document_term_casters.html">cast_dtm</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">term</span>, <span class="va">count</span><span class="op">)</span></span></code></pre></div>
@@ -268,7 +274,7 @@ verbs for converting from a tidy form to these matrices.</p>
 <span><span class="co">## Sparsity           : 99%</span></span>
 <span><span class="co">## Maximal term length: 18</span></span>
 <span><span class="co">## Weighting          : term frequency (tf)</span></span></code></pre>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb20"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># cast into a Term-Document Matrix</span></span>
 <span><span class="va">ap_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/document_term_casters.html">cast_tdm</a></span><span class="op">(</span><span class="va">term</span>, <span class="va">document</span>, <span class="va">count</span><span class="op">)</span></span></code></pre></div>
@@ -277,7 +283,7 @@ verbs for converting from a tidy form to these matrices.</p>
 <span><span class="co">## Sparsity           : 99%</span></span>
 <span><span class="co">## Maximal term length: 18</span></span>
 <span><span class="co">## Weighting          : term frequency (tf)</span></span></code></pre>
-<div class="sourceCode" id="cb19"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb22"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># cast into quanteda's dfm</span></span>
 <span><span class="va">ap_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/document_term_casters.html">cast_dfm</a></span><span class="op">(</span><span class="va">term</span>, <span class="va">document</span>, <span class="va">count</span><span class="op">)</span></span></code></pre></div>
@@ -291,7 +297,7 @@ verbs for converting from a tidy form to these matrices.</p>
 <span><span class="co">##   allegedly 1 0 0 0 0 0 0 0 0  0</span></span>
 <span><span class="co">##   allen     1 0 0 0 0 0 0 0 0  0</span></span>
 <span><span class="co">## [ reached max_ndoc ... 10,467 more documents, reached max_nfeat ... 2,236 more features ]</span></span></code></pre>
-<div class="sourceCode" id="cb21"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># cast into a Matrix object</span></span>
 <span><span class="va">m</span> <span class="op">&lt;-</span> <span class="va">ap_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/cast_sparse.html">cast_sparse</a></span><span class="op">(</span><span class="va">document</span>, <span class="va">term</span>, <span class="va">count</span><span class="op">)</span></span>
@@ -299,7 +305,7 @@ verbs for converting from a tidy form to these matrices.</p>
 <pre><code><span><span class="co">## [1] "dgCMatrix"</span></span>
 <span><span class="co">## attr(,"package")</span></span>
 <span><span class="co">## [1] "Matrix"</span></span></code></pre>
-<div class="sourceCode" id="cb23"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb26"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/dim.html" class="external-link">dim</a></span><span class="op">(</span><span class="va">m</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## [1]  2246 10473</span></span></code></pre>
 <p>This allows for easy reading, filtering, and processing to be done
@@ -311,7 +317,7 @@ into a document-term matrix for machine learning applications.</p>
 </h3>
 <p>You can also tidy Corpus objects from the tm package. For example,
 consider a Corpus containing 20 documents, one for each</p>
-<div class="sourceCode" id="cb25"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb28"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reut21578</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.file.html" class="external-link">system.file</a></span><span class="op">(</span><span class="st">"texts"</span>, <span class="st">"crude"</span>, package <span class="op">=</span> <span class="st">"tm"</span><span class="op">)</span></span>
 <span><span class="va">reuters</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/pkg/tm/man/VCorpus.html" class="external-link">VCorpus</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/tm/man/DirSource.html" class="external-link">DirSource</a></span><span class="op">(</span><span class="va">reut21578</span><span class="op">)</span>,</span>
 <span>                   readerControl <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>reader <span class="op">=</span> <span class="va">readReut21578XMLasPlain</span><span class="op">)</span><span class="op">)</span></span>
@@ -322,7 +328,7 @@ consider a Corpus containing 20 documents, one for each</p>
 <span><span class="co">## Content:  documents: 20</span></span></code></pre>
 <p>The <code>tidy</code> verb creates a table with one row per
 document:</p>
-<div class="sourceCode" id="cb27"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb30"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">reuters_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">reuters</span><span class="op">)</span></span>
 <span><span class="va">reuters_td</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 20 × 17</span></span></span>
@@ -353,7 +359,7 @@ document:</p>
 <span><span class="co">## <span style="color: #949494;">#   exchanges &lt;chr&gt;, text &lt;chr&gt;</span></span></span></code></pre>
 <p>Similarly, you can <code>tidy</code> a <code>corpus</code> object
 from the quanteda package:</p>
-<div class="sourceCode" id="cb29"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb32"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://quanteda.io" class="external-link">quanteda</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"data_corpus_inaugural"</span><span class="op">)</span></span>
@@ -379,7 +385,7 @@ from the quanteda package:</p>
 <span><span class="co">## "Unwilling to depart from examples of the most revered author..."</span></span>
 <span><span class="co">## </span></span>
 <span><span class="co">## [ reached max_ndoc ... 53 more documents ]</span></span></code></pre>
-<div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inaug_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">data_corpus_inaugural</span><span class="op">)</span></span>
 <span><span class="va">inaug_td</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 59 × 5</span></span></span>
@@ -398,7 +404,7 @@ from the quanteda package:</p>
 <span><span class="co">## <span style="color: #949494;"># ℹ 49 more rows</span></span></span></code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to
 analyze the text alongside the metadata.</p>
-<div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inaug_words</span> <span class="op">&lt;-</span> <span class="va">inaug_td</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join</a></span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span></span>
@@ -420,7 +426,7 @@ analyze the text alongside the metadata.</p>
 <span><span class="co">## <span style="color: #949494;"># ℹ 50,955 more rows</span></span></span></code></pre>
 <p>We could then, for example, see how the appearance of a word changes
 over time:</p>
-<div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inaug_freq</span> <span class="op">&lt;-</span> <span class="va">inaug_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">word</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/complete.html" class="external-link">complete</a></span><span class="op">(</span><span class="va">Year</span>, <span class="va">word</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>n <span class="op">=</span> <span class="fl">0</span><span class="op">)</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -445,7 +451,7 @@ over time:</p>
 <span><span class="co">## <span style="color: #949494;"># ℹ 514,824 more rows</span></span></span></code></pre>
 <p>For example, we can use the broom package to perform logistic
 regression on each word.</p>
-<div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://broom.tidymodels.org/" class="external-link">broom</a></span><span class="op">)</span></span>
 <span><span class="va">models</span> <span class="op">&lt;-</span> <span class="va">inaug_freq</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">word</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -471,7 +477,7 @@ regression on each word.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> called         Year  -<span style="color: #BB0000;">0.001</span><span style="color: #BB0000; text-decoration: underline;">58</span>   0.001<span style="text-decoration: underline;">98</span>    -<span style="color: #BB0000;">0.799</span> 4.24<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> century        Year   0.014<span style="text-decoration: underline;">5</span>    0.002<span style="text-decoration: underline;">31</span>     6.27  3.58<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 105 more rows</span></span></span></code></pre>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">models</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Year"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
@@ -491,7 +497,7 @@ regression on each word.</p>
 <span><span class="co">## <span style="color: #949494;"># ℹ 105 more rows</span></span></span></code></pre>
 <p>You can show these models as a volcano plot, which compares the
 effect size with the significance:</p>
-<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">models</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
@@ -504,7 +510,7 @@ effect size with the significance:</p>
 <p><img src="tidying_casting_files/figure-html/unnamed-chunk-16-1.png" alt='Volcano plot showing that words like "america" and "world" have increased over time with small p-values, while words like "public" and "institution" have decreased' width="672"></p>
 <p>We can also use the ggplot2 package to display the top 6 terms that
 have changed in frequency over time.</p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://scales.r-lib.org" class="external-link">scales</a></span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">models</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
