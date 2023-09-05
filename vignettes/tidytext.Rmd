@@ -49,12 +49,12 @@ original_books <- austen_books() %>%
 original_books
 ```
 
-To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row:
+To work with this as a tidy dataset, we need to restructure it as **one-token-per-row** format. The `unnest_tokens` function is a way to convert a dataframe with a text column to be one-token-per-row. Here let's tokenize to a new `word` column from the existing `text` column:
 
 ```{r}
 library(tidytext)
 tidy_books <- original_books %>%
-  unnest_tokens(word, text)
+  unnest_tokens(output = word, input = text)
 
 tidy_books
 ```
@@ -188,7 +188,7 @@ is a sad sentence, not a happy one, because of negation. The [Stanford CoreNLP](
 
 ```{r}
 PandP_sentences <- tibble(text = prideprejudice) %>% 
-  unnest_tokens(sentence, text, token = "sentences")
+  unnest_tokens(output = sentence, input = text, token = "sentences")
 ```
 
 Let's look at just one.

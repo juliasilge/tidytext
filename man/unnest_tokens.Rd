@@ -80,13 +80,13 @@ d <- tibble(txt = prideprejudice)
 d
 
 d \%>\%
-  unnest_tokens(word, txt)
+  unnest_tokens(output = word, input = txt)
 
 d \%>\%
-  unnest_tokens(sentence, txt, token = "sentences")
+  unnest_tokens(output = sentence, input = txt, token = "sentences")
 
 d \%>\%
-  unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+  unnest_tokens(output = ngram, input = txt, token = "ngrams", n = 2)
 
 d \%>\%
   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\\\\\\\d]")
