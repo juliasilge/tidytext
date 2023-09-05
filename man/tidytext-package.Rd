@@ -13,6 +13,7 @@ Using tidy data principles can make many text mining tasks easier, more effectiv
 \seealso{
 Useful links:
 \itemize{
+  \item \url{https://juliasilge.github.io/tidytext/}
   \item \url{https://github.com/juliasilge/tidytext}
   \item Report bugs at \url{https://github.com/juliasilge/tidytext/issues}
 }
