@@ -178,7 +178,7 @@ changes in upstream dependencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 13,020 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">word</span>, <span class="va">txt</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="va">word</span>, input <span class="op">=</span> <span class="va">txt</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 122,204 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    word     </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span>
@@ -195,7 +195,7 @@ changes in upstream dependencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 122,194 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">sentence</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"sentences"</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="va">sentence</span>, input <span class="op">=</span> <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"sentences"</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 15,545 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    sentence                                                                  </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                                     </span>
@@ -212,7 +212,7 @@ changes in upstream dependencies.</p>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 15,535 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="va">d</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span></span>
-<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span><span class="va">ngram</span>, <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"ngrams"</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="fu">unnest_tokens</span><span class="op">(</span>output <span class="op">=</span> <span class="va">ngram</span>, input <span class="op">=</span> <span class="va">txt</span>, token <span class="op">=</span> <span class="st">"ngrams"</span>, n <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 114,045 × 1</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    ngram        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>        </span>
