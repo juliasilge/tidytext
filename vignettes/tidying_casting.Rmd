@@ -4,7 +4,7 @@ author: "Julia Silge and David Robinson"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Converting to and from Document-Term Matrices and Corpus objects}
+  %\VignetteIndexEntry{Converting to and from Document-Term Matrix and Corpus objects}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -88,7 +88,8 @@ Note that a tidier is also available for the `dfm` class from the quanteda packa
 library(methods)
 
 data("data_corpus_inaugural", package = "quanteda")
-d <- quanteda::dfm(data_corpus_inaugural, verbose = FALSE)
+d <- quanteda::tokens(data_corpus_inaugural) |>
+  quanteda::dfm()
 
 d
 
