@@ -98,7 +98,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2023-09-05</h4>
+            <h4 data-toc-skip class="date">2024-04-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tidytext.Rmd" class="external-link"><code>vignettes/tidytext.Rmd</code></a></small>
       <div class="hidden name"><code>tidytext.Rmd</code></div>
@@ -165,7 +165,7 @@ a text column to be one-token-per-row. Here let’s tokenize to a new
 <span>  <span class="fu"><a href="../reference/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span>output <span class="op">=</span> <span class="va">word</span>, input <span class="op">=</span> <span class="va">text</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tidy_books</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 725,055 × 4</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 725,064 × 4</span></span></span>
 <span><span class="co">##    book                 line chapter word       </span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Sense &amp; Sensibility     1       0 sense      </span></span>
@@ -178,7 +178,7 @@ a text column to be one-token-per-row. Here let’s tokenize to a new
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Sense &amp; Sensibility    10       1 chapter    </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Sense &amp; Sensibility    10       1 1          </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Sense &amp; Sensibility    13       1 the        </span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 725,045 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 725,054 more rows</span></span></span></code></pre>
 <p>This function uses the <a href="https://github.com/ropensci/tokenizers" class="external-link">tokenizers package</a> to
 separate each line into words. The default tokenizing is for words, but
 other options include characters, ngrams, sentences, lines, paragraphs,
@@ -195,7 +195,7 @@ all the books as a whole.</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cleaned_books</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> </span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 14,375 × 2</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 14,371 × 2</span></span></span>
 <span><span class="co">##    word      n</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> mr     <span style="text-decoration: underline;">3</span>015</span></span>
@@ -208,7 +208,7 @@ all the books as a whole.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> well   <span style="text-decoration: underline;">1</span>523</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> every  <span style="text-decoration: underline;">1</span>456</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> think  <span style="text-decoration: underline;">1</span>440</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 14,365 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 14,361 more rows</span></span></span></code></pre>
 <p>Sentiment analysis can be done as an inner join. Sentiment lexicons
 are available via the <code><a href="../reference/get_sentiments.html">get_sentiments()</a></code> function. Let’s look
 at the words with a positive score from the lexicon of Bing Liu and

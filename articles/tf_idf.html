@@ -99,7 +99,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2023-09-05</h4>
+            <h4 data-toc-skip class="date">2024-04-10</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tf_idf.Rmd" class="external-link"><code>vignettes/tf_idf.Rmd</code></a></small>
       <div class="hidden name"><code>tf_idf.Rmd</code></div>
@@ -153,20 +153,20 @@ total words in each novel here, for later use.)</p>
 <span><span class="va">total_words</span> <span class="op">&lt;-</span> <span class="va">book_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">group_by</a></span><span class="op">(</span><span class="va">book</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/summarise.html" class="external-link">summarize</a></span><span class="op">(</span>total <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">n</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">book_words</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">left_join</a></span><span class="op">(</span><span class="va">book_words</span>, <span class="va">total_words</span><span class="op">)</span></span>
 <span><span class="va">book_words</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 40,379 × 4</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 40,378 × 4</span></span></span>
 <span><span class="co">##    book              word      n  total</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Mansfield Park    the    <span style="text-decoration: underline;">6</span>206 <span style="text-decoration: underline;">160</span>460</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Mansfield Park    to     <span style="text-decoration: underline;">5</span>475 <span style="text-decoration: underline;">160</span>460</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Mansfield Park    and    <span style="text-decoration: underline;">5</span>438 <span style="text-decoration: underline;">160</span>460</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Mansfield Park    the    <span style="text-decoration: underline;">6</span>206 <span style="text-decoration: underline;">160</span>465</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Mansfield Park    to     <span style="text-decoration: underline;">5</span>475 <span style="text-decoration: underline;">160</span>465</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Mansfield Park    and    <span style="text-decoration: underline;">5</span>438 <span style="text-decoration: underline;">160</span>465</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Emma              to     <span style="text-decoration: underline;">5</span>239 <span style="text-decoration: underline;">160</span>996</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Emma              the    <span style="text-decoration: underline;">5</span>201 <span style="text-decoration: underline;">160</span>996</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Emma              and    <span style="text-decoration: underline;">4</span>896 <span style="text-decoration: underline;">160</span>996</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Mansfield Park    of     <span style="text-decoration: underline;">4</span>778 <span style="text-decoration: underline;">160</span>460</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Mansfield Park    of     <span style="text-decoration: underline;">4</span>778 <span style="text-decoration: underline;">160</span>465</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Pride &amp; Prejudice the    <span style="text-decoration: underline;">4</span>331 <span style="text-decoration: underline;">122</span>204</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Emma              of     <span style="text-decoration: underline;">4</span>291 <span style="text-decoration: underline;">160</span>996</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice to     <span style="text-decoration: underline;">4</span>162 <span style="text-decoration: underline;">122</span>204</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 40,369 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 40,368 more rows</span></span></span></code></pre>
 <p>The usual suspects are here, “the”, “and”, “to”, and so forth. Let’s
 look at the distribution of <code>n/total</code> for each novel, the
 number of times a word appears in a novel divided by the total number of
@@ -193,20 +193,20 @@ now.</p>
 <code class="sourceCode R"><span><span class="va">book_words</span> <span class="op">&lt;-</span> <span class="va">book_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="../reference/bind_tf_idf.html">bind_tf_idf</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">book</span>, <span class="va">n</span><span class="op">)</span></span>
 <span><span class="va">book_words</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 40,379 × 7</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 40,378 × 7</span></span></span>
 <span><span class="co">##    book              word      n  total     tf   idf tf_idf</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>             <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Mansfield Park    the    <span style="text-decoration: underline;">6</span>206 <span style="text-decoration: underline;">160</span>460 0.038<span style="text-decoration: underline;">7</span>     0      0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Mansfield Park    to     <span style="text-decoration: underline;">5</span>475 <span style="text-decoration: underline;">160</span>460 0.034<span style="text-decoration: underline;">1</span>     0      0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Mansfield Park    and    <span style="text-decoration: underline;">5</span>438 <span style="text-decoration: underline;">160</span>460 0.033<span style="text-decoration: underline;">9</span>     0      0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Mansfield Park    the    <span style="text-decoration: underline;">6</span>206 <span style="text-decoration: underline;">160</span>465 0.038<span style="text-decoration: underline;">7</span>     0      0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Mansfield Park    to     <span style="text-decoration: underline;">5</span>475 <span style="text-decoration: underline;">160</span>465 0.034<span style="text-decoration: underline;">1</span>     0      0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Mansfield Park    and    <span style="text-decoration: underline;">5</span>438 <span style="text-decoration: underline;">160</span>465 0.033<span style="text-decoration: underline;">9</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Emma              to     <span style="text-decoration: underline;">5</span>239 <span style="text-decoration: underline;">160</span>996 0.032<span style="text-decoration: underline;">5</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Emma              the    <span style="text-decoration: underline;">5</span>201 <span style="text-decoration: underline;">160</span>996 0.032<span style="text-decoration: underline;">3</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Emma              and    <span style="text-decoration: underline;">4</span>896 <span style="text-decoration: underline;">160</span>996 0.030<span style="text-decoration: underline;">4</span>     0      0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Mansfield Park    of     <span style="text-decoration: underline;">4</span>778 <span style="text-decoration: underline;">160</span>460 0.029<span style="text-decoration: underline;">8</span>     0      0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Mansfield Park    of     <span style="text-decoration: underline;">4</span>778 <span style="text-decoration: underline;">160</span>465 0.029<span style="text-decoration: underline;">8</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Pride &amp; Prejudice the    <span style="text-decoration: underline;">4</span>331 <span style="text-decoration: underline;">122</span>204 0.035<span style="text-decoration: underline;">4</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Emma              of     <span style="text-decoration: underline;">4</span>291 <span style="text-decoration: underline;">160</span>996 0.026<span style="text-decoration: underline;">7</span>     0      0</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Pride &amp; Prejudice to     <span style="text-decoration: underline;">4</span>162 <span style="text-decoration: underline;">122</span>204 0.034<span style="text-decoration: underline;">1</span>     0      0</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 40,369 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 40,368 more rows</span></span></span></code></pre>
 <p>Notice that idf and thus tf-idf are zero for these extremely common
 words. These are all words that appear in all six of Jane Austen’s
 novels, so the idf term (which will then be the natural log of 1) is
@@ -220,12 +220,12 @@ high tf-idf in Jane Austen’s works.</p>
 <code class="sourceCode R"><span><span class="va">book_words</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">total</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="va">tf_idf</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 40,379 × 6</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 40,378 × 6</span></span></span>
 <span><span class="co">##    book                word          n      tf   idf  tf_idf</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>               <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Sense &amp; Sensibility elinor      623 0.005<span style="text-decoration: underline;">19</span>  1.79 0.009<span style="text-decoration: underline;">31</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Sense &amp; Sensibility marianne    492 0.004<span style="text-decoration: underline;">10</span>  1.79 0.007<span style="text-decoration: underline;">35</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Mansfield Park      crawford    493 0.003<span style="text-decoration: underline;">07</span>  1.79 0.005<span style="text-decoration: underline;">51</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Mansfield Park      crawford    493 0.003<span style="text-decoration: underline;">07</span>  1.79 0.005<span style="text-decoration: underline;">50</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Pride &amp; Prejudice   darcy       373 0.003<span style="text-decoration: underline;">05</span>  1.79 0.005<span style="text-decoration: underline;">47</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Persuasion          elliot      254 0.003<span style="text-decoration: underline;">04</span>  1.79 0.005<span style="text-decoration: underline;">44</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Emma                emma        786 0.004<span style="text-decoration: underline;">88</span>  1.10 0.005<span style="text-decoration: underline;">36</span></span></span>
@@ -233,7 +233,7 @@ high tf-idf in Jane Austen’s works.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Emma                weston      389 0.002<span style="text-decoration: underline;">42</span>  1.79 0.004<span style="text-decoration: underline;">33</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Pride &amp; Prejudice   bennet      294 0.002<span style="text-decoration: underline;">41</span>  1.79 0.004<span style="text-decoration: underline;">31</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Persuasion          wentworth   191 0.002<span style="text-decoration: underline;">28</span>  1.79 0.004<span style="text-decoration: underline;">09</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 40,369 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 40,368 more rows</span></span></span></code></pre>
 <p>Here we see all proper nouns, names that are in fact important in
 these novels. None of them occur in all of novels, and they are
 important, characteristic words for each text. Some of the values for
