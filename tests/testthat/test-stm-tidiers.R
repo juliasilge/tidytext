@@ -86,12 +86,12 @@ test_that("can tidy frex + lift matrix", {
 
   td2 <- tidy(stm_model_cov, matrix = "frex", w = 1)
   frex_stm <- stm::calcfrex(logbeta, w = 1, word_counts)
-  expect_equal(td2, pivot_stm_longer(frex_stm, vocab))
+  expect_equal(td2, tidytext:::pivot_stm_longer(frex_stm, vocab))
 
   td3 <- tidy(stm_model_cov, matrix = "lift")
   expect_equal(colnames(td3), c("topic", "term"))
   lift_stm <- stm::calclift(logbeta, word_counts)
-  expect_equal(td3, pivot_stm_longer(lift_stm, vocab))
+  expect_equal(td3, tidytext:::pivot_stm_longer(lift_stm, vocab))
 })
 
 
@@ -182,3 +182,4 @@ test_that("can tidy estimateEffect object with three topics and an interaction t
                     "treatment:s(pid_rep)3", "treatment:s(pid_rep)4", "treatment:s(pid_rep)5", "treatment:s(pid_rep)6")
                   %in% td$term))
 })
+

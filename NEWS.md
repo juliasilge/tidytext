@@ -2,6 +2,8 @@
 
 * Added alt text to figures in vignettes and README (#233)
 
+* Update vignette for quanteda::dfm() v4 (#242)
+
 # tidytext 0.4.1
 
 * Fixed bug for FREX stm tidier (#228)
