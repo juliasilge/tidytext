@@ -18,20 +18,26 @@ test_that("tokenizing by character shingles works", {
 
 test_that("tokenizing by character shingles can include whitespace/punctuation", {
   d <- tibble(txt = "tidytext is the best!")
-  d <- d %>% unnest_tokens(char_ngram, txt,
-                           token = "character_shingles",
-                           strip_non_alphanum = FALSE
-  )
+  d <- d %>%
+    unnest_tokens(
+      char_ngram,
+      txt,
+      token = "character_shingles",
+      strip_non_alphanum = FALSE
+    )
   expect_equal(nrow(d), 19)
   expect_equal(ncol(d), 1)
   expect_equal(d$char_ngram[1], "tid")
 })
 
 test_that("tokenizing by word works", {
-  d <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"),
-    line = 1:2)
+  d <- tibble(
+    txt = c(
+      "Because I could not stop for Death -",
+      "He kindly stopped for me -"
+    ),
+    line = 1:2
+  )
   d1 <- d %>% unnest_tokens(word, txt)
   expect_equal(nrow(d1), 12)
   expect_equal(ncol(d1), 2)
@@ -42,26 +48,29 @@ test_that("tokenizing by word works", {
 
   d3 <- d %>% group_by(line) %>% unnest_tokens(word, txt)
   expect_equal(d1, ungroup(d3))
-
 })
 
 test_that("tokenizing errors with appropriate error message", {
-  d <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"
-  ))
+  d <- tibble(
+    txt = c(
+      "Because I could not stop for Death -",
+      "He kindly stopped for me -"
+    )
+  )
   expect_snapshot_error(
     d %>% unnest_tokens(word, txt, token = "word")
   )
 })
 
 test_that("tokenizing by sentence works", {
-  orig <- tibble(txt = c(
-    "I'm Nobody! Who are you?",
-    "Are you - Nobody - too?",
-    "Then there’s a pair of us!",
-    "Don’t tell! they’d advertise - you know!"
-  ))
+  orig <- tibble(
+    txt = c(
+      "I'm Nobody! Who are you?",
+      "Are you - Nobody - too?",
+      "Then there’s a pair of us!",
+      "Don’t tell! they’d advertise - you know!"
+    )
+  )
   d <- orig %>% unnest_tokens(sentence, txt, token = "sentences")
   expect_equal(nrow(d), 6)
   expect_equal(ncol(d), 1)
@@ -75,22 +84,22 @@ test_that("tokenizing by sentence works", {
   expect_equal(d$sentence[1], "i'm nobody!")
 })
 
-
-
 test_that("tokenizing by ngram and skip ngram works", {
-  d <- tibble(txt = c(
-    "Hope is the thing with feathers",
-    "That perches in the soul",
-    "And sings the tune without the words",
-    "And never stops at all ",
-    "And sweetest in the Gale is heard ",
-    "And sore must be the storm ",
-    "That could abash the little Bird",
-    "That kept so many warm ",
-    "I’ve heard it in the chillest land ",
-    "And on the strangest Sea ",
-    "Yet never in Extremity,",
-    "It asked a crumb of me."),
+  d <- tibble(
+    txt = c(
+      "Hope is the thing with feathers",
+      "That perches in the soul",
+      "And sings the tune without the words",
+      "And never stops at all ",
+      "And sweetest in the Gale is heard ",
+      "And sore must be the storm ",
+      "That could abash the little Bird",
+      "That kept so many warm ",
+      "I’ve heard it in the chillest land ",
+      "And on the strangest Sea ",
+      "Yet never in Extremity,",
+      "It asked a crumb of me."
+    ),
     line = c(rep(1, 6), rep(2, 6))
   )
 
@@ -101,8 +110,11 @@ test_that("tokenizing by ngram and skip ngram works", {
   expect_equal(d1$ngram[1], "hope is")
   expect_equal(d1$ngram[10], "and sings")
 
-  d2 <- d %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2, collapse = "line")
-  d3 <- d %>% group_by(line) %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+  d2 <- d %>%
+    unnest_tokens(ngram, txt, token = "ngrams", n = 2, collapse = "line")
+  d3 <- d %>%
+    group_by(line) %>%
+    unnest_tokens(ngram, txt, token = "ngrams", n = 2)
   expect_equal(d2, ungroup(d3))
   expect_equal(ncol(d2), 2)
   expect_equal(d2$ngram[4], "thing with")
@@ -124,12 +136,15 @@ test_that("tokenizing by ngram and skip ngram works", {
 })
 
 test_that("tokenizing with a custom function works", {
-  orig <- tibble(txt = c(
-    "I'm Nobody! Who are you?",
-    "Are you - Nobody - too?",
-    "Then there’s a pair of us!",
-    "Don’t tell! they’d advertise - you know!"
-  ), group = "all")
+  orig <- tibble(
+    txt = c(
+      "I'm Nobody! Who are you?",
+      "Are you - Nobody - too?",
+      "Then there’s a pair of us!",
+      "Don’t tell! they’d advertise - you know!"
+    ),
+    group = "all"
+  )
   d <- orig %>%
     unnest_tokens(unit, txt, token = stringr::str_split, pattern = " - ")
   expect_equal(nrow(d), 7)
@@ -138,9 +153,11 @@ test_that("tokenizing with a custom function works", {
 
   d2 <- orig %>%
     unnest_tokens(
-      unit, txt,
+      unit,
+      txt,
       token = stringr::str_split,
-      pattern = " - ", collapse = "group"
+      pattern = " - ",
+      collapse = "group"
     )
   expect_equal(nrow(d2), 4)
   expect_equal(d2$unit[2], "nobody")
@@ -148,10 +165,12 @@ test_that("tokenizing with a custom function works", {
 })
 
 test_that("tokenizing with standard evaluation works", {
-  d <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"
-  ))
+  d <- tibble(
+    txt = c(
+      "Because I could not stop for Death -",
+      "He kindly stopped for me -"
+    )
+  )
   d <- d %>% unnest_tokens("word", "txt")
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
@@ -159,10 +178,12 @@ test_that("tokenizing with standard evaluation works", {
 })
 
 test_that("tokenizing with tidyeval works", {
-  d <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"
-  ))
+  d <- tibble(
+    txt = c(
+      "Because I could not stop for Death -",
+      "He kindly stopped for me -"
+    )
+  )
   outputvar <- quo(word)
   inputvar <- quo(txt)
   d <- d %>% unnest_tokens(!!outputvar, !!inputvar)
@@ -172,31 +193,35 @@ test_that("tokenizing with tidyeval works", {
 })
 
 test_that("tokenizing with to_lower = FALSE works", {
-  orig <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"
-  ))
+  orig <- tibble(
+    txt = c(
+      "Because I could not stop for Death -",
+      "He kindly stopped for me -"
+    )
+  )
   d <- orig %>% unnest_tokens(word, txt, to_lower = FALSE)
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
   expect_equal(d$word[1], "Because")
-  d2 <- orig %>% unnest_tokens(ngram, txt,
-                               token = "ngrams",
-                               n = 2, to_lower = FALSE
-  )
+  d2 <- orig %>%
+    unnest_tokens(ngram, txt, token = "ngrams", n = 2, to_lower = FALSE)
   expect_equal(nrow(d2), 10)
   expect_equal(ncol(d2), 1)
   expect_equal(d2$ngram[1], "Because I")
 
   d <- tibble(txt = "Emily Dickinson")
-  d <- unnest_tokens(d, char_ngram, txt,
-                     token = "character_shingles",
-                     to_lower = FALSE, n = 5)
+  d <- unnest_tokens(
+    d,
+    char_ngram,
+    txt,
+    token = "character_shingles",
+    to_lower = FALSE,
+    n = 5
+  )
   expect_equal(nrow(d), 10)
   expect_equal(ncol(d), 1)
   expect_equal(d$char_ngram[1], "Emily")
 })
-
 
 test_that("unnest_tokens raises an error if custom tokenizer gives bad output", {
   d <- tibble(txt = "Emily Dickinson")
@@ -207,7 +232,6 @@ test_that("unnest_tokens raises an error if custom tokenizer gives bad output", 
     unnest_tokens(d, word, txt, token = function(e) list("a", "b"))
   )
 })
-
 
 test_that("tokenizing HTML works", {
   skip_if_not_installed("hunspell")
@@ -226,14 +250,15 @@ test_that("tokenizing HTML works", {
   expect_equal(res2$row, c(1, 1, 2))
 })
 
-
 test_that("tokenizing LaTeX works", {
   skip_if_not_installed("hunspell")
   h <- tibble(
     row = 1:4,
     text = c(
-      "\\textbf{text} \\emph{is}", "\\begin{itemize}",
-      "\\item here", "\\end{itemize}"
+      "\\textbf{text} \\emph{is}",
+      "\\begin{itemize}",
+      "\\item here",
+      "\\end{itemize}"
     )
   )
 
@@ -281,7 +306,6 @@ test_that("Tokenizing a two-column data.frame with one non-text column works", {
   expect_equal(d$line[1], 1)
 })
 
-
 test_that("Tokenizing with NA values in columns behaves as expected", {
   text <- tibble(
     line = c(1:2, NA),
@@ -302,15 +326,10 @@ test_that("Tokenizing with NA values in columns behaves as expected", {
   expect_true(is.na(d$word[1]))
 })
 
-
-
 test_that("Trying to tokenize a non-text format with words raises an error", {
   d <- tibble(txt = "Emily Dickinson")
   expect_error(
-    unnest_tokens(d, word, txt,
-                  token = "sentences",
-                  format = "latex"
-    ),
+    unnest_tokens(d, word, txt, token = "sentences", format = "latex"),
     "except words"
   )
 })
@@ -335,7 +354,6 @@ test_that("unnest_tokens keeps top-level attributes", {
   expect_equal(attr(result, "custom"), lst)
 })
 
-
 test_that("Trying to tokenize a data.table works", {
   skip_if_not_installed("data.table")
   text <- data.table::data.table(
@@ -351,7 +369,9 @@ test_that("Trying to tokenize a data.table works", {
 
 test_that("Can tokenize a data.table work when the input has only one column", {
   skip_if_not_installed("data.table")
-  text <- data.table::data.table(txt = "You gotta bring yourself your flowers now in showbiz")
+  text <- data.table::data.table(
+    txt = "You gotta bring yourself your flowers now in showbiz"
+  )
   output <- unnest_tokens(text, word, txt)
   expect_equal(ncol(output), 1)
   expect_equal(nrow(output), 9)
@@ -360,7 +380,9 @@ test_that("Can tokenize a data.table work when the input has only one column", {
 
 test_that("custom attributes are preserved for a data.table", {
   skip_if_not_installed("data.table")
-  text <- data.table::data.table(txt = "You gotta bring yourself your flowers now in showbiz")
+  text <- data.table::data.table(
+    txt = "You gotta bring yourself your flowers now in showbiz"
+  )
   attr(text, "testattr") <- list(1, 2, 3, 4)
 
   output <- unnest_tokens(text, word, txt)
@@ -435,11 +457,12 @@ test_that("Can't tokenize with list columns with collapse = TRUE", {
 })
 
 test_that("tokenizing tweets is deprecated", {
-  d <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"),
-    line = 1:2)
+  d <- tibble(
+    txt = c(
+      "Because I could not stop for Death -",
+      "He kindly stopped for me -"
+    ),
+    line = 1:2
+  )
   expect_snapshot_error(d1 <- d %>% unnest_tokens(word, txt, token = "tweets"))
 })
-
-

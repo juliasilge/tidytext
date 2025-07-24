@@ -32,17 +32,18 @@ unnest_regex <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- arg_match(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                token = "regex",
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                pattern = pattern,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    token = "regex",
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    pattern = pattern,
+    ...
   )
 }

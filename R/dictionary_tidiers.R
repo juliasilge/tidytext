@@ -12,9 +12,7 @@
 #'
 #' @export
 tidy.dictionary2 <- function(x, regex = FALSE, ...) {
-  ret <- purrr::map_df(x, function(e) tibble(word = e),
-                       .id = "category"
-  ) %>%
+  ret <- purrr::map_df(x, function(e) tibble(word = e), .id = "category") %>%
     mutate(category = as.character(category))
 
   if (regex) {

@@ -1,9 +1,9 @@
-expect_nrow <- function(tbl, n){
+expect_nrow <- function(tbl, n) {
   expect_s3_class(tbl, "data.frame")
   expect_equal(nrow(tbl), n)
 }
 
-expect_first_row <- function(tbl, col, text){
+expect_first_row <- function(tbl, col, text) {
   ct <- tbl %>%
     pull(!!enquo(col)) %>%
     purrr::pluck(1)
@@ -23,14 +23,15 @@ skspr <- data.frame(
 
 song_df <- data.frame(
   id = 1:8,
-  txt = c("How many roads must a man walk down",
-          "Before you call him a man?",
-          "How many seas must a white dove sail",
-          "Before she sleeps in the sand?",
-          "How many times must the cannonballs fly",
-          "Before they're forever banned?",
-          "The answer, my friend, is blowin' in the wind.",
-          "The answer is blowin' in the wind."),
+  txt = c(
+    "How many roads must a man walk down",
+    "Before you call him a man?",
+    "How many seas must a white dove sail",
+    "Before she sleeps in the sand?",
+    "How many times must the cannonballs fly",
+    "Before they're forever banned?",
+    "The answer, my friend, is blowin' in the wind.",
+    "The answer is blowin' in the wind."
+  ),
   stringsAsFactors = FALSE
 )
-

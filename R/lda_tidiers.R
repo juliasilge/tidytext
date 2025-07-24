@@ -115,7 +115,6 @@ tidy_topicmodels <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
   ret
 }
 
-
 #' @rdname lda_tidiers
 #'
 #' @return `augment` returns a table with one row per original
@@ -154,8 +153,10 @@ augment_topicmodels <- function(x, data, ...) {
   if (!missing(data)) {
     if (inherits(data, "simple_triplet_matrix")) {
       data <- tidy(data)
-    } else if (!inherits(data, "data.frame") &&
-               !(all(c("document", "term") %in% colnames(data)))) {
+    } else if (
+      !inherits(data, "data.frame") &&
+        !(all(c("document", "term") %in% colnames(data)))
+    ) {
       stop(
         "data argument must either be a simple_triplet_matrix (such as ",
         "a DocumentTermMatrix) or a table with document and term columns"
@@ -192,7 +193,6 @@ glance.LDA <- function(x, ...) {
 #' @export
 glance.CTM <- function(x, ...) {
   tibble(iter = x@iter, terms = x@n)
-
 }
 
 #' @export

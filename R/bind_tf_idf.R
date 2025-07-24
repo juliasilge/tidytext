@@ -54,10 +54,13 @@ bind_tf_idf <- function(tbl, term, document, n) {
   tbl$idf <- as.numeric(idf[terms])
   tbl$tf_idf <- tbl$tf * tbl$idf
 
-  if(any(tbl$idf < 0, na.rm = TRUE)) {
-    rlang::warn(paste("A value for tf_idf is negative:\n",
-                      "Input should have exactly one row per document-term combination."))
+  if (any(tbl$idf < 0, na.rm = TRUE)) {
+    rlang::warn(
+      paste(
+        "A value for tf_idf is negative:\n",
+        "Input should have exactly one row per document-term combination."
+      )
+    )
   }
   tbl
 }
-

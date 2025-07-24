@@ -1,9 +1,9 @@
-
 test_that("Can tidy DocumentTermMatrices and TermDocumentMatrices", {
   if (require("tm", quietly = TRUE)) {
     txt <- system.file("texts", "txt", package = "tm")
-    ovid <- VCorpus(DirSource(txt, encoding = "UTF-8"),
-                    readerControl = list(language = "lat")
+    ovid <- VCorpus(
+      DirSource(txt, encoding = "UTF-8"),
+      readerControl = list(language = "lat")
     )
 
     ovid_dtm <- DocumentTermMatrix(ovid)
@@ -21,7 +21,6 @@ test_that("Can tidy DocumentTermMatrices and TermDocumentMatrices", {
     expect_equal(sort(unique(ovid_tdm_td$term)), sort(rownames(ovid_tdm)))
   }
 })
-
 
 test_that("Can tidy dfm from quanteda", {
   if (requireNamespace("quanteda", quietly = TRUE)) {

@@ -40,20 +40,21 @@ unnest_ngrams <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- arg_match(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                token = "ngrams",
-                n = n,
-                n_min = n_min,
-                ngram_delim = ngram_delim,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    token = "ngrams",
+    n = n,
+    n_min = n_min,
+    ngram_delim = ngram_delim,
+    ...
   )
 }
 
@@ -72,19 +73,20 @@ unnest_skip_ngrams <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- arg_match(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                token = "skip_ngrams",
-                n = n,
-                n_min = n_min,
-                k = k,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    token = "skip_ngrams",
+    n = n,
+    n_min = n_min,
+    k = k,
+    ...
   )
 }

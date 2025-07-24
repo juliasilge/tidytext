@@ -10,12 +10,21 @@ dat <- tibble(
 m <- cast_sparse(dat, document, term)
 stm_model <- stm(m, seed = 1234, K = 3, verbose = FALSE)
 
-temp <- textProcessor(documents = gadarian[1:10,]$open.ended.response,
-                      metadata = gadarian[1:10,], verbose = FALSE)
+temp <- textProcessor(
+  documents = gadarian[1:10, ]$open.ended.response,
+  metadata = gadarian[1:10, ],
+  verbose = FALSE
+)
 out <- prepDocuments(temp$documents, temp$vocab, temp$meta, verbose = F)
-stm_model_cov <- stm(out$documents, out$vocab, K = 3,
-                     content = out$meta$treatment,
-                     seed = 123, max.em.its = 3, verbose = FALSE)
+stm_model_cov <- stm(
+  out$documents,
+  out$vocab,
+  K = 3,
+  content = out$meta$treatment,
+  seed = 123,
+  max.em.its = 3,
+  verbose = FALSE
+)
 
 test_that("can tidy beta matrix", {
   td <- tidy(stm_model, matrix = "beta")
@@ -94,7 +103,6 @@ test_that("can tidy frex + lift matrix", {
   expect_equal(td3, tidytext:::pivot_stm_longer(lift_stm, vocab))
 })
 
-
 test_that("can augment an stm output", {
   skip_if_not_installed("quanteda")
   au <- augment(stm_model, dat)
@@ -126,13 +134,20 @@ test_that("can glance an stm output", {
   expect_equal(g$terms, 4)
 })
 
-stm_estimate_one_topic <- estimateEffect(c(1) ~ treatment, gadarianFit, gadarian)
+stm_estimate_one_topic <- estimateEffect(
+  c(1) ~ treatment,
+  gadarianFit,
+  gadarian
+)
 
 test_that("can tidy estimateEffect object with one topic", {
   td <- tidy(stm_estimate_one_topic)
   expect_s3_class(td, "tbl_df")
 
-  expect_equal(colnames(td), c("topic", "term", "estimate", "std.error", "statistic", "p.value"))
+  expect_equal(
+    colnames(td),
+    c("topic", "term", "estimate", "std.error", "statistic", "p.value")
+  )
 
   expect_type(td$topic, "integer")
   expect_type(td$term, "character")
@@ -158,13 +173,19 @@ test_that("can glance estimateEffect object with one topic", {
   expect_equal(nrow(gla), 1)
 })
 
-
-stm_estimate_three_topic_interaction <- estimateEffect(c(1:3) ~ treatment*s(pid_rep), gadarianFit, gadarian)
+stm_estimate_three_topic_interaction <- estimateEffect(
+  c(1:3) ~ treatment * s(pid_rep),
+  gadarianFit,
+  gadarian
+)
 test_that("can tidy estimateEffect object with three topics and an interaction term", {
   td <- tidy(stm_estimate_three_topic_interaction)
   expect_s3_class(td, "tbl_df")
 
-  expect_equal(colnames(td), c("topic", "term", "estimate", "std.error", "statistic", "p.value"))
+  expect_equal(
+    colnames(td),
+    c("topic", "term", "estimate", "std.error", "statistic", "p.value")
+  )
 
   expect_type(td$topic, "integer")
   expect_type(td$term, "character")
@@ -175,11 +196,27 @@ test_that("can tidy estimateEffect object with three topics and an interaction t
 
   expect_equal(unique(td$topic), c(1:3))
 
-  expect_equal(nrow(td), 42)  # 14 term combinations for 3 topics
+  expect_equal(nrow(td), 42) # 14 term combinations for 3 topics
 
-  expect_true(all(c("(Intercept)", "treatment", "s(pid_rep)1", "s(pid_rep)2", "s(pid_rep)3", "s(pid_rep)4",
-                    "s(pid_rep)5", "s(pid_rep)6", "treatment:s(pid_rep)1", "treatment:s(pid_rep)2",
-                    "treatment:s(pid_rep)3", "treatment:s(pid_rep)4", "treatment:s(pid_rep)5", "treatment:s(pid_rep)6")
-                  %in% td$term))
+  expect_true(
+    all(
+      c(
+        "(Intercept)",
+        "treatment",
+        "s(pid_rep)1",
+        "s(pid_rep)2",
+        "s(pid_rep)3",
+        "s(pid_rep)4",
+        "s(pid_rep)5",
+        "s(pid_rep)6",
+        "treatment:s(pid_rep)1",
+        "treatment:s(pid_rep)2",
+        "treatment:s(pid_rep)3",
+        "treatment:s(pid_rep)4",
+        "treatment:s(pid_rep)5",
+        "treatment:s(pid_rep)6"
+      ) %in%
+        td$term
+    )
+  )
 })
-

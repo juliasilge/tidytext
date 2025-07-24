@@ -1,4 +1,3 @@
-
 suppressPackageStartupMessages(library(dplyr))
 
 if (require("topicmodels", quietly = TRUE)) {

@@ -62,11 +62,9 @@ reorder_within <- function(x, by, within, fun = mean, sep = "___", ...) {
   stats::reorder(new_x, by, FUN = fun)
 }
 
-
 #' @rdname reorder_within
 #' @export
 scale_x_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
-
   if (lifecycle::is_present(sep)) {
     lifecycle::deprecate_warn(
       "0.3.3",
@@ -78,11 +76,9 @@ scale_x_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
   ggplot2::scale_x_discrete(labels = labels, ...)
 }
 
-
 #' @rdname reorder_within
 #' @export
 scale_y_reordered <- function(..., labels = reorder_func, sep = deprecated()) {
-
   if (lifecycle::is_present(sep)) {
     lifecycle::deprecate_warn(
       "0.3.3",
@@ -100,4 +96,3 @@ reorder_func <- function(x, sep = "___") {
   reg <- paste0(sep, ".+$")
   gsub(reg, "", x)
 }
-

@@ -31,7 +31,6 @@ tidy.DocumentTermMatrix <- function(x, ...) {
   ret
 }
 
-
 #' @rdname tdm_tidiers
 #' @export
 tidy.TermDocumentMatrix <- function(x, ...) {
@@ -39,7 +38,6 @@ tidy.TermDocumentMatrix <- function(x, ...) {
   colnames(ret) <- c("term", "document", "count")
   ret
 }
-
 
 #' @rdname tdm_tidiers
 #' @export
@@ -54,12 +52,14 @@ tidy.dfm <- tidy.dfmSparse <- function(x, ...) {
 #' @export
 tidy.dfmSparse <- tidy.dfm
 
-
 #' @rdname tdm_tidiers
 #' @export
-tidy.simple_triplet_matrix <- function(x,
-                                       row_names = NULL,
-                                       col_names = NULL, ...) {
+tidy.simple_triplet_matrix <- function(
+  x,
+  row_names = NULL,
+  col_names = NULL,
+  ...
+) {
   triplets <- unclass(x)[c("i", "j", "v")]
   names(triplets) <- c("i", "j", "x")
   tidy_triplet(x, triplets, row_names, col_names)

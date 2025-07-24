@@ -7,7 +7,7 @@
 #' @param row Column name to use as row names in sparse matrix, as string or symbol
 #' @param column Column name to use as column names in sparse matrix, as string or symbol
 #' @param value Column name to use as sparse matrix values (default 1) as string or symbol
-#' @param ... Extra arguments to pass on to [sparseMatrix()]
+#' @param ... Extra arguments to pass on to [Matrix::sparseMatrix()]
 #'
 #' @return A sparse Matrix object, with one row for each unique value in
 #' the `row` column, one column for each unique value in the `column`
@@ -66,8 +66,11 @@ cast_sparse <- function(data, row, column, value, ...) {
   }
 
   ret <- Matrix::sparseMatrix(
-    i = i, j = j, x = values,
-    dimnames = list(row_u, col_u), ...
+    i = i,
+    j = j,
+    x = values,
+    dimnames = list(row_u, col_u),
+    ...
   )
 
   ret
@@ -88,7 +91,7 @@ cast_sparse <- function(data, row, column, value, ...) {
 #' @param weighting The weighting function for the DTM/TDM
 #' (default is term-frequency, effectively unweighted)
 #' @param ... Extra arguments passed on to
-#' [sparseMatrix()]
+#' [Matrix::sparseMatrix()]
 #'
 #' @details The arguments `term`, `document`, and `value`
 #' are passed by expression and support [quasiquotation][rlang::quasiquotation];
@@ -96,8 +99,14 @@ cast_sparse <- function(data, row, column, value, ...) {
 #'
 #' @rdname document_term_casters
 #' @export
-cast_tdm <- function(data, term, document, value,
-                     weighting = tm::weightTf, ...) {
+cast_tdm <- function(
+  data,
+  term,
+  document,
+  value,
+  weighting = tm::weightTf,
+  ...
+) {
   term <- quo_name(enquo(term))
   document <- quo_name(enquo(document))
   value <- quo_name(enquo(value))
@@ -107,8 +116,14 @@ cast_tdm <- function(data, term, document, value,
 
 #' @rdname document_term_casters
 #' @export
-cast_dtm <- function(data, document, term, value,
-                     weighting = tm::weightTf, ...) {
+cast_dtm <- function(
+  data,
+  document,
+  term,
+  value,
+  weighting = tm::weightTf,
+  ...
+) {
   document <- quo_name(enquo(document))
   term <- quo_name(enquo(term))
   value <- quo_name(enquo(value))
