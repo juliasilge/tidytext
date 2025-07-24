@@ -26,7 +26,7 @@ cast_dfm(data, document, term, value, ...)
 (default is term-frequency, effectively unweighted)}
 
 \item{...}{Extra arguments passed on to
-\code{\link[=sparseMatrix]{sparseMatrix()}}}
+\code{\link[Matrix:sparseMatrix]{Matrix::sparseMatrix()}}}
 }
 \description{
 This turns a "tidy" one-term-per-document-per-row data frame into a

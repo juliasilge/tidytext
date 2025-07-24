@@ -16,7 +16,7 @@ cast_sparse(data, row, column, value, ...)
 
 \item{value}{Column name to use as sparse matrix values (default 1) as string or symbol}
 
-\item{...}{Extra arguments to pass on to \code{\link[=sparseMatrix]{sparseMatrix()}}}
+\item{...}{Extra arguments to pass on to \code{\link[Matrix:sparseMatrix]{Matrix::sparseMatrix()}}}
 }
 \value{
 A sparse Matrix object, with one row for each unique value in
