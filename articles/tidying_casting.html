@@ -6,27 +6,24 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Converting to and from Document-Term Matrix and Corpus objects • tidytext</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
-<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+<!-- favicons --><link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
+<!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script><!-- Bootstrap --><link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/cosmo/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script><!-- bootstrap-toc --><link rel="stylesheet" href="../bootstrap-toc.css">
 <script src="../bootstrap-toc.js"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/v4-shims.min.css" integrity="sha256-wZjR52fzng1pJHwx4aV2AO3yyTOXrcDW7jBpJtTwVxw=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.6/clipboard.min.js" integrity="sha256-inc5kl9MA1hkeYUt+EC3BhlIgyp/2jDIyBLS6k3UxPI=" crossorigin="anonymous"></script><!-- headroom.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/headroom.min.js" integrity="sha256-AsUX4SJE1+yuDu5+mAVzJbuYNPHj/WroHuZ8Ir/CkE0=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/headroom/0.11.0/jQuery.headroom.min.js" integrity="sha256-ZX/yNShbjqsohH1k95liqY9Gd8uOiE1S4vZc+9KQ1K4=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
 <script src="../pkgdown.js"></script><meta property="og:title" content="Converting to and from Document-Term Matrix and Corpus objects">
-<meta property="og:description" content="tidytext">
-<meta property="og:image" content="/logo.png">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
 <body data-spy="scroll" data-target="#toc">
-    
+
 
     <div class="container template-article">
       <header><div class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -40,7 +37,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">tidytext</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.2.9000</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">0.4.3</span>
       </span>
     </div>
 
@@ -55,18 +52,18 @@
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
     Articles
-     
+
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
-      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
-    </li>
-    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
       <a href="../articles/tidying_casting.html">Converting to and from Document-Term Matrix and Corpus objects</a>
+    </li>
+    <li>
+      <a href="../articles/topic_modeling.html">Tidy Topic Modeling</a>
     </li>
   </ul>
 </li>
@@ -78,7 +75,7 @@
 <li>
   <a href="https://github.com/juliasilge/tidytext/" class="external-link">
     <span class="fab fa-github fa-lg"></span>
-     
+
   </a>
 </li>
       </ul>
@@ -89,7 +86,7 @@
 </div>
 <!--/.navbar -->
 
-      
+
 
       </header><div class="row">
   <div class="col-md-9 contents">
@@ -99,9 +96,9 @@ Corpus objects</h1>
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2024-04-10</h4>
+            <h4 data-toc-skip class="date">2025-07-25</h4>
       
-      <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/HEAD/vignettes/tidying_casting.Rmd" class="external-link"><code>vignettes/tidying_casting.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/main/vignettes/tidying_casting.Rmd" class="external-link"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
 
     </div>
@@ -192,7 +189,12 @@ sentiment:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">sentiment</span><span class="op">)</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Contribution to sentiment"</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidying_casting_files/figure-html/unnamed-chunk-7-1.png" alt='Bar charts for the contribution of words to sentiment scores. The words "like" and "work" contribute the most to positive sentiment, and the words "killed" and "death" contribute the most to negative sentiment' width="672"></p>
+<p>&lt;img
+src=“/home/runner/work/tidytext/tidytext/docs/articles/tidying_casting_files/figure-html/unnamed-chunk-7-1.png”
+alt=“Bar charts for the contribution of words to sentiment scores. The
+words”like” and “work” contribute the most to positive sentiment, and
+the words “killed” and “death” contribute the most to negative
+sentiment” width=“672” /&gt;</p>
 <p>Note that a tidier is also available for the <code>dfm</code> class
 from the quanteda package:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -203,7 +205,7 @@ from the quanteda package:</p>
 <span>  <span class="fu">quanteda</span><span class="fu">::</span><span class="fu"><a href="https://quanteda.io/reference/dfm.html" class="external-link">dfm</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">d</span></span></code></pre></div>
-<pre><code><span><span class="co">## Document-feature matrix of: 59 documents, 9,437 features (91.84% sparse) and 4 docvars.</span></span>
+<pre><code><span><span class="co">## Document-feature matrix of: 60 documents, 9,591 features (91.94% sparse) and 4 docvars.</span></span>
 <span><span class="co">##                  features</span></span>
 <span><span class="co">## docs              fellow-citizens  of the senate and house representatives :</span></span>
 <span><span class="co">##   1789-Washington               1  71 116      1  48     2               2 1</span></span>
@@ -220,10 +222,10 @@ from the quanteda package:</p>
 <span><span class="co">##   1801-Jefferson      1            0</span></span>
 <span><span class="co">##   1805-Jefferson      7            0</span></span>
 <span><span class="co">##   1809-Madison        0            0</span></span>
-<span><span class="co">## [ reached max_ndoc ... 53 more documents, reached max_nfeat ... 9,427 more features ]</span></span></code></pre>
+<span><span class="co">## [ reached max_ndoc ... 54 more documents, reached max_nfeat ... 9,581 more features ]</span></span></code></pre>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">d</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 45,452 × 3</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 46,402 × 3</span></span></span>
 <span><span class="co">##    document        term            count</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>           <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> 1789-Washington fellow-citizens     1</span></span>
@@ -236,7 +238,7 @@ from the quanteda package:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> 1841-Harrison   fellow-citizens    11</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> 1845-Polk       fellow-citizens     1</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> 1849-Taylor     fellow-citizens     1</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 45,442 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 46,392 more rows</span></span></span></code></pre>
 </div>
 <div class="section level3">
 <h3 id="casting-tidy-text-data-into-a-documenttermmatrix">Casting tidy text data into a DocumentTermMatrix<a class="anchor" aria-label="anchor" href="#casting-tidy-text-data-into-a-documenttermmatrix"></a>
@@ -360,7 +362,7 @@ from the quanteda package:</p>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/data.html" class="external-link">data</a></span><span class="op">(</span><span class="st">"data_corpus_inaugural"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">data_corpus_inaugural</span></span></code></pre></div>
-<pre><code><span><span class="co">## Corpus consisting of 59 documents and 4 docvars.</span></span>
+<pre><code><span><span class="co">## Corpus consisting of 60 documents and 4 docvars.</span></span>
 <span><span class="co">## 1789-Washington :</span></span>
 <span><span class="co">## "Fellow-Citizens of the Senate and of the House of Representa..."</span></span>
 <span><span class="co">## </span></span>
@@ -379,11 +381,11 @@ from the quanteda package:</p>
 <span><span class="co">## 1809-Madison :</span></span>
 <span><span class="co">## "Unwilling to depart from examples of the most revered author..."</span></span>
 <span><span class="co">## </span></span>
-<span><span class="co">## [ reached max_ndoc ... 53 more documents ]</span></span></code></pre>
+<span><span class="co">## [ reached max_ndoc ... 54 more documents ]</span></span></code></pre>
 <div class="sourceCode" id="cb31"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">inaug_td</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">data_corpus_inaugural</span><span class="op">)</span></span>
 <span><span class="va">inaug_td</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 59 × 5</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 60 × 5</span></span></span>
 <span><span class="co">##    text                                           Year President FirstName Party</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span> <span style="color: #949494;">"</span>Fellow-Citizens of the Senate and of the Ho…  <span style="text-decoration: underline;">1</span>789 Washingt… George    none </span></span>
@@ -396,7 +398,7 @@ from the quanteda package:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span> <span style="color: #949494;">"</span>I should be destitute of feeling if I was n…  <span style="text-decoration: underline;">1</span>817 Monroe    James     Demo…</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> <span style="color: #949494;">"</span>Fellow citizens, I shall not attempt to des…  <span style="text-decoration: underline;">1</span>821 Monroe    James     Demo…</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> <span style="color: #949494;">"</span>In compliance with an usage coeval with the…  <span style="text-decoration: underline;">1</span>825 Adams     John Qui… Demo…</span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 49 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 50 more rows</span></span></span></code></pre>
 <p>This lets us work with tidy tools like <code>unnest_tokens</code> to
 analyze the text alongside the metadata.</p>
 <div class="sourceCode" id="cb33"><pre class="downlit sourceCode r">
@@ -405,7 +407,7 @@ analyze the text alongside the metadata.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join</a></span><span class="op">(</span><span class="va">stop_words</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">inaug_words</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 50,965 × 5</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 52,091 × 5</span></span></span>
 <span><span class="co">##     Year President  FirstName Party word           </span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  fellow         </span></span>
@@ -418,7 +420,7 @@ analyze the text alongside the metadata.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  life           </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  event          </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>789 Washington George    none  filled         </span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 50,955 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 52,081 more rows</span></span></span></code></pre>
 <p>We could then, for example, see how the appearance of a word changes
 over time:</p>
 <div class="sourceCode" id="cb35"><pre class="downlit sourceCode r">
@@ -430,7 +432,7 @@ over time:</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/group_by.html" class="external-link">ungroup</a></span><span class="op">(</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">inaug_freq</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 514,834 × 5</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 532,440 × 5</span></span></span>
 <span><span class="co">##     Year word            n year_total percent</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>       <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span>  <span style="text-decoration: underline;">1</span>789 1               0        529 0      </span></span>
@@ -443,7 +445,7 @@ over time:</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 8</span>  <span style="text-decoration: underline;">1</span>789 125             0        529 0      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span>  <span style="text-decoration: underline;">1</span>789 13              0        529 0      </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>  <span style="text-decoration: underline;">1</span>789 14th            1        529 0.001<span style="text-decoration: underline;">89</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 514,824 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #949494;"># ℹ 532,430 more rows</span></span></span></code></pre>
 <p>For example, we can use the broom package to perform logistic
 regression on each word.</p>
 <div class="sourceCode" id="cb37"><pre class="downlit sourceCode r">
@@ -458,38 +460,38 @@ regression on each word.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Year"</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">models</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 115 × 6</span></span></span>
-<span><span class="co">##    word           term  estimate std.error statistic  p.value</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> act            Year   0.006<span style="text-decoration: underline;">45</span>   0.002<span style="text-decoration: underline;">07</span>     3.11  1.85<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> action         Year   0.001<span style="text-decoration: underline;">54</span>   0.001<span style="text-decoration: underline;">86</span>     0.825 4.09<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> administration Year  -<span style="color: #BB0000;">0.006</span><span style="color: #BB0000; text-decoration: underline;">96</span>   0.001<span style="text-decoration: underline;">82</span>    -<span style="color: #BB0000;">3.83</span>  1.29<span style="color: #949494;">e</span><span style="color: #BB0000;">- 4</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> america        Year   0.020<span style="text-decoration: underline;">2</span>    0.001<span style="text-decoration: underline;">47</span>    13.7   6.29<span style="color: #949494;">e</span><span style="color: #BB0000;">-43</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> american       Year   0.008<span style="text-decoration: underline;">54</span>   0.001<span style="text-decoration: underline;">22</span>     6.99  2.71<span style="color: #949494;">e</span><span style="color: #BB0000;">-12</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> americans      Year   0.031<span style="text-decoration: underline;">0</span>    0.003<span style="text-decoration: underline;">21</span>     9.65  5.01<span style="color: #949494;">e</span><span style="color: #BB0000;">-22</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> authority      Year  -<span style="color: #BB0000;">0.006</span><span style="color: #BB0000; text-decoration: underline;">16</span>   0.002<span style="text-decoration: underline;">29</span>    -<span style="color: #BB0000;">2.69</span>  7.11<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> business       Year   0.002<span style="text-decoration: underline;">71</span>   0.001<span style="text-decoration: underline;">94</span>     1.40  1.63<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> called         Year  -<span style="color: #BB0000;">0.001</span><span style="color: #BB0000; text-decoration: underline;">58</span>   0.001<span style="text-decoration: underline;">98</span>    -<span style="color: #BB0000;">0.799</span> 4.24<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> century        Year   0.014<span style="text-decoration: underline;">5</span>    0.002<span style="text-decoration: underline;">31</span>     6.27  3.58<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 105 more rows</span></span></span></code></pre>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 121 × 6</span></span></span>
+<span><span class="co">##    word           term   estimate std.error statistic  p.value</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> act            Year   0.006<span style="text-decoration: underline;">23</span>    0.001<span style="text-decoration: underline;">98</span>     3.15  1.63<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> action         Year   0.000<span style="text-decoration: underline;">838</span>   0.001<span style="text-decoration: underline;">81</span>     0.462 6.44<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> administration Year  -<span style="color: #BB0000;">0.005</span><span style="color: #BB0000; text-decoration: underline;">53</span>    0.001<span style="text-decoration: underline;">69</span>    -<span style="color: #BB0000;">3.28</span>  1.04<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> america        Year   0.019<span style="text-decoration: underline;">5</span>     0.001<span style="text-decoration: underline;">37</span>    14.2   5.03<span style="color: #949494;">e</span><span style="color: #BB0000;">-46</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> american       Year   0.008<span style="text-decoration: underline;">94</span>    0.001<span style="text-decoration: underline;">16</span>     7.73  1.04<span style="color: #949494;">e</span><span style="color: #BB0000;">-14</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> americans      Year   0.028<span style="text-decoration: underline;">5</span>     0.002<span style="text-decoration: underline;">87</span>     9.93  3.12<span style="color: #949494;">e</span><span style="color: #BB0000;">-23</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> authority      Year  -<span style="color: #BB0000;">0.006</span><span style="color: #BB0000; text-decoration: underline;">54</span>    0.002<span style="text-decoration: underline;">25</span>    -<span style="color: #BB0000;">2.91</span>  3.64<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> business       Year   0.001<span style="text-decoration: underline;">95</span>    0.001<span style="text-decoration: underline;">89</span>     1.03  3.02<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> called         Year  -<span style="color: #BB0000;">0.002</span><span style="color: #BB0000; text-decoration: underline;">14</span>    0.001<span style="text-decoration: underline;">94</span>    -<span style="color: #BB0000;">1.10</span>  2.70<span style="color: #949494;">e</span><span style="color: #BB0000;">- 1</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> century        Year   0.012<span style="text-decoration: underline;">8</span>     0.002<span style="text-decoration: underline;">18</span>     5.87  4.35<span style="color: #949494;">e</span><span style="color: #BB0000;">- 9</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 111 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">models</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">term</span> <span class="op">==</span> <span class="st">"Year"</span><span class="op">)</span> <span class="op"><a href="https://magrittr.tidyverse.org/reference/pipe.html" class="external-link">%&gt;%</a></span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/arrange.html" class="external-link">arrange</a></span><span class="op">(</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/desc.html" class="external-link">desc</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/MathFun.html" class="external-link">abs</a></span><span class="op">(</span><span class="va">estimate</span><span class="op">)</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 115 × 6</span></span></span>
+<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 121 × 6</span></span></span>
 <span><span class="co">##    word      term  estimate std.error statistic  p.value</span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> americans Year    0.031<span style="text-decoration: underline;">0</span>   0.003<span style="text-decoration: underline;">21</span>      9.65 5.01<span style="color: #949494;">e</span><span style="color: #BB0000;">-22</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> america   Year    0.020<span style="text-decoration: underline;">2</span>   0.001<span style="text-decoration: underline;">47</span>     13.7  6.29<span style="color: #949494;">e</span><span style="color: #BB0000;">-43</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> democracy Year    0.015<span style="text-decoration: underline;">6</span>   0.002<span style="text-decoration: underline;">23</span>      6.99 2.70<span style="color: #949494;">e</span><span style="color: #BB0000;">-12</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> children  Year    0.014<span style="text-decoration: underline;">9</span>   0.002<span style="text-decoration: underline;">46</span>      6.06 1.36<span style="color: #949494;">e</span><span style="color: #BB0000;">- 9</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> century   Year    0.014<span style="text-decoration: underline;">5</span>   0.002<span style="text-decoration: underline;">31</span>      6.27 3.58<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> god       Year    0.013<span style="text-decoration: underline;">5</span>   0.001<span style="text-decoration: underline;">79</span>      7.58 3.36<span style="color: #949494;">e</span><span style="color: #BB0000;">-14</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> live      Year    0.012<span style="text-decoration: underline;">8</span>   0.002<span style="text-decoration: underline;">32</span>      5.50 3.70<span style="color: #949494;">e</span><span style="color: #BB0000;">- 8</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> powers    Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">5</span>   0.001<span style="text-decoration: underline;">96</span>     -<span style="color: #BB0000;">6.38</span> 1.76<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> revenue   Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">2</span>   0.002<span style="text-decoration: underline;">50</span>     -<span style="color: #BB0000;">4.87</span> 1.11<span style="color: #949494;">e</span><span style="color: #BB0000;">- 6</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> foreign   Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">0</span>   0.001<span style="text-decoration: underline;">91</span>     -<span style="color: #BB0000;">6.31</span> 2.73<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
-<span><span class="co">## <span style="color: #949494;"># ℹ 105 more rows</span></span></span></code></pre>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> americans Year    0.028<span style="text-decoration: underline;">5</span>   0.002<span style="text-decoration: underline;">87</span>      9.93 3.12<span style="color: #949494;">e</span><span style="color: #BB0000;">-23</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> america   Year    0.019<span style="text-decoration: underline;">5</span>   0.001<span style="text-decoration: underline;">37</span>     14.2  5.03<span style="color: #949494;">e</span><span style="color: #BB0000;">-46</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> promise   Year    0.015<span style="text-decoration: underline;">3</span>   0.002<span style="text-decoration: underline;">52</span>      6.08 1.18<span style="color: #949494;">e</span><span style="color: #BB0000;">- 9</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> democracy Year    0.014<span style="text-decoration: underline;">1</span>   0.002<span style="text-decoration: underline;">10</span>      6.71 1.91<span style="color: #949494;">e</span><span style="color: #BB0000;">-11</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> children  Year    0.013<span style="text-decoration: underline;">9</span>   0.002<span style="text-decoration: underline;">32</span>      6.00 2.02<span style="color: #949494;">e</span><span style="color: #BB0000;">- 9</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> lives     Year    0.013<span style="text-decoration: underline;">8</span>   0.002<span style="text-decoration: underline;">42</span>      5.71 1.16<span style="color: #949494;">e</span><span style="color: #BB0000;">- 8</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> century   Year    0.012<span style="text-decoration: underline;">8</span>   0.002<span style="text-decoration: underline;">18</span>      5.87 4.35<span style="color: #949494;">e</span><span style="color: #BB0000;">- 9</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> god       Year    0.012<span style="text-decoration: underline;">8</span>   0.001<span style="text-decoration: underline;">69</span>      7.57 3.82<span style="color: #949494;">e</span><span style="color: #BB0000;">-14</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> powers    Year   -<span style="color: #BB0000;">0.012</span><span style="color: #BB0000; text-decoration: underline;">1</span>   0.001<span style="text-decoration: underline;">89</span>     -<span style="color: #BB0000;">6.38</span> 1.73<span style="color: #949494;">e</span><span style="color: #BB0000;">-10</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> live      Year    0.011<span style="text-decoration: underline;">6</span>   0.002<span style="text-decoration: underline;">20</span>      5.29 1.25<span style="color: #949494;">e</span><span style="color: #BB0000;">- 7</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 111 more rows</span></span></span></code></pre>
 <p>You can show these models as a volcano plot, which compares the
 effect size with the significance:</p>
 <div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
@@ -502,7 +504,11 @@ effect size with the significance:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_log10</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_text.html" class="external-link">geom_text</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span>label <span class="op">=</span> <span class="va">word</span><span class="op">)</span>, vjust <span class="op">=</span> <span class="fl">1</span>, hjust <span class="op">=</span> <span class="fl">1</span>, check_overlap <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Estimated change over time"</span>, y <span class="op">=</span> <span class="st">"Adjusted p-value"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidying_casting_files/figure-html/unnamed-chunk-16-1.png" alt='Volcano plot showing that words like "america" and "world" have increased over time with small p-values, while words like "public" and "institution" have decreased' width="672"></p>
+<p>&lt;img
+src=“/home/runner/work/tidytext/tidytext/docs/articles/tidying_casting_files/figure-html/unnamed-chunk-16-1.png”
+alt=“Volcano plot showing that words like”america” and “world” have
+increased over time with small p-values, while words like “public” and
+“institution” have decreased” width=“672” /&gt;</p>
 <p>We can also use the ggplot2 package to display the top 6 terms that
 have changed in frequency over time.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
@@ -517,7 +523,11 @@ have changed in frequency over time.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">word</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_continuous</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent_format</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Frequency of word in speech"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidying_casting_files/figure-html/unnamed-chunk-17-1.png" alt='Scatterplot with LOESS smoothing lines showing that the words "america", "americans", "century", "children", "democracy", and "god" have increased over time' width="672"></p>
+<p>&lt;img
+src=“/home/runner/work/tidytext/tidytext/docs/articles/tidying_casting_files/figure-html/unnamed-chunk-17-1.png”
+alt=“Scatterplot with LOESS smoothing lines showing that the
+words”america”, “americans”, “century”, “children”, “democracy”, and
+“god” have increased over time” width=“672” /&gt;</p>
 </div>
   </div>
 
@@ -536,16 +546,16 @@ have changed in frequency over time.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
       </footer>
 </div>
 
-  
 
 
-  
+
+
 
   </body>
 </html>
