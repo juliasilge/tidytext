@@ -74,10 +74,10 @@ library(ggplot2)
 library(stm)
 library(janeaustenr)
 
-austen_sparse <- austen_books() \%>\%
-    unnest_tokens(word, text) \%>\%
-    anti_join(stop_words) \%>\%
-    count(book, word) \%>\%
+austen_sparse <- austen_books() |>
+    unnest_tokens(word, text) |>
+    anti_join(stop_words) |>
+    count(book, word) |>
     cast_sparse(book, word, n)
 topic_model <- stm(austen_sparse, K = 12, verbose = FALSE)
 
@@ -86,10 +86,10 @@ td_beta <- tidy(topic_model)
 td_beta
 
 # Examine the topics
-td_beta \%>\%
-    group_by(topic) \%>\%
-    slice_max(beta, n = 10) \%>\%
-    ungroup() \%>\%
+td_beta |>
+    group_by(topic) |>
+    slice_max(beta, n = 10) |>
+    ungroup() |>
     ggplot(aes(beta, term)) +
     geom_col() +
     facet_wrap(~ topic, scales = "free")

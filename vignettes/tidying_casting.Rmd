@@ -12,8 +12,12 @@ vignette: >
 ```{r}
 #| echo = FALSE
 knitr::opts_chunk$set(
-  message = FALSE, warning = FALSE,
-  eval = requireNamespace("tm", quietly = TRUE) && requireNamespace("quanteda", quietly = TRUE) && requireNamespace("topicmodels", quietly = TRUE) && requireNamespace("ggplot2", quietly = TRUE)
+  message = FALSE,
+  warning = FALSE,
+  eval = requireNamespace("tm", quietly = TRUE) &&
+    requireNamespace("quanteda", quietly = TRUE) &&
+    requireNamespace("topicmodels", quietly = TRUE) &&
+    requireNamespace("ggplot2", quietly = TRUE)
 )
 ```
 
@@ -45,7 +49,7 @@ ap_td <- tidy(AssociatedPress)
 Just as shown in [this vignette](tidytext.html), having the text in this format is convenient for analysis with the tidytext package. For example, you can perform sentiment analysis on these newspaper articles.
 
 ```{r}
-ap_sentiments <- ap_td %>%
+ap_sentiments <- ap_td |>
   inner_join(get_sentiments("bing"), join_by(term == word))
 
 ap_sentiments
@@ -56,10 +60,10 @@ We can find the most negative documents:
 ```{r}
 library(tidyr)
 
-ap_sentiments %>%
-  count(document, sentiment, wt = count) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
-  mutate(sentiment = positive - negative) %>%
+ap_sentiments |>
+  count(document, sentiment, wt = count) |>
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |>
+  mutate(sentiment = positive - negative) |>
   arrange(sentiment)
 ```
 
@@ -71,11 +75,11 @@ Or visualize which words contributed to positive and negative sentiment:
 #| fig.alt = 'Bar charts for the contribution of words to sentiment scores. The words "like" and "work" contribute the most to positive sentiment, and the words "killed" and "death" contribute the most to negative sentiment'
 library(ggplot2)
 
-ap_sentiments %>%
-  count(sentiment, term, wt = count) %>%
-  group_by(sentiment) %>%
-  slice_max(n, n = 10) %>%
-  mutate(term = reorder(term, n)) %>%
+ap_sentiments |>
+  count(sentiment, term, wt = count) |>
+  group_by(sentiment) |>
+  slice_max(n, n = 10) |>
+  mutate(term = reorder(term, n)) |>
   ggplot(aes(n, term, fill = sentiment)) +
   geom_col(show.legend = FALSE) +
   facet_wrap(vars(sentiment), scales = "free_y") +
@@ -88,7 +92,7 @@ Note that a tidier is also available for the `dfm` class from the quanteda packa
 library(methods)
 
 data("data_corpus_inaugural", package = "quanteda")
-d <- quanteda::tokens(data_corpus_inaugural) %>%
+d <- quanteda::tokens(data_corpus_inaugural) |>
   quanteda::dfm()
 
 d
@@ -104,20 +108,20 @@ Some existing text mining tools or algorithms work only on sparse document-term 
 ap_td
 
 # cast into a Document-Term Matrix
-ap_td %>%
+ap_td |>
   cast_dtm(document, term, count)
 
 # cast into a Term-Document Matrix
-ap_td %>%
+ap_td |>
   cast_tdm(term, document, count)
 
 # cast into quanteda's dfm
-ap_td %>%
+ap_td |>
   cast_dfm(term, document, count)
 
 
 # cast into a Matrix object
-m <- ap_td %>%
+m <- ap_td |>
   cast_sparse(document, term, count)
 class(m)
 dim(m)
@@ -131,8 +135,10 @@ You can also tidy Corpus objects from the tm package. For example, consider a Co
 
 ```{r}
 reut21578 <- system.file("texts", "crude", package = "tm")
-reuters <- VCorpus(DirSource(reut21578),
-                   readerControl = list(reader = readReut21578XMLasPlain))
+reuters <- VCorpus(
+  DirSource(reut21578),
+  readerControl = list(reader = readReut21578XMLasPlain)
+)
 
 reuters
 ```
@@ -160,8 +166,8 @@ inaug_td
 This lets us work with tidy tools like `unnest_tokens` to analyze the text alongside the metadata.
 
 ```{r}
-inaug_words <- inaug_td %>%
-  unnest_tokens(word, text) %>%
+inaug_words <- inaug_td |>
+  unnest_tokens(word, text) |>
   anti_join(stop_words)
 
 inaug_words
@@ -170,11 +176,11 @@ inaug_words
 We could then, for example, see how the appearance of a word changes over time:
 
 ```{r}
-inaug_freq <- inaug_words %>%
-  count(Year, word) %>%
-  complete(Year, word, fill = list(n = 0)) %>%
-  group_by(Year) %>%
-  mutate(year_total = sum(n), percent = n / year_total) %>%
+inaug_freq <- inaug_words |>
+  count(Year, word) |>
+  complete(Year, word, fill = list(n = 0)) |>
+  group_by(Year) |>
+  mutate(year_total = sum(n), percent = n / year_total) |>
   ungroup()
 
 inaug_freq
@@ -184,19 +190,19 @@ For example, we can use the broom package to perform logistic regression on each
 
 ```{r}
 library(broom)
-models <- inaug_freq %>%
-  group_by(word) %>%
-  filter(sum(n) > 50) %>%
+models <- inaug_freq |>
+  group_by(word) |>
+  filter(sum(n) > 50) |>
   group_modify(
     ~ tidy(glm(cbind(n, year_total - n) ~ Year, ., family = "binomial"))
-  ) %>%
-  ungroup() %>%
+  ) |>
+  ungroup() |>
   filter(term == "Year")
 
 models
 
-models %>%
-  filter(term == "Year") %>%
+models |>
+  filter(term == "Year") |>
   arrange(desc(abs(estimate)))
 ```
 
@@ -208,8 +214,8 @@ You can show these models as a volcano plot, which compares the effect size with
 #| fig.alt = 'Volcano plot showing that words like "america" and "world" have increased over time with small p-values, while words like "public" and "institution" have decreased'
 library(ggplot2)
 
-models %>%
-  mutate(adjusted.p.value = p.adjust(p.value)) %>%
+models |>
+  mutate(adjusted.p.value = p.adjust(p.value)) |>
   ggplot(aes(estimate, adjusted.p.value)) +
   geom_point() +
   scale_y_log10() +
@@ -225,9 +231,9 @@ We can also use the ggplot2 package to display the top 6 terms that have changed
 #| fig.alt = 'Scatterplot with LOESS smoothing lines showing that the words "america", "americans", "century", "children", "democracy", and "god" have increased over time'
 library(scales)
 
-models %>%
-  slice_max(abs(estimate), n = 6) %>%
-  inner_join(inaug_freq) %>%
+models |>
+  slice_max(abs(estimate), n = 6) |>
+  inner_join(inaug_freq) |>
   ggplot(aes(Year, percent)) +
   geom_point() +
   geom_smooth() +

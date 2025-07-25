@@ -20,7 +20,7 @@
 #'
 #' parts_of_speech
 #'
-#' parts_of_speech %>%
+#' parts_of_speech |>
 #'   count(pos, sort = TRUE)
 #'
 #' @source <https://archive.org/details/mobypartofspeech03203gut>

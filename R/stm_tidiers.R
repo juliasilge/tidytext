@@ -31,10 +31,10 @@
 #' library(stm)
 #' library(janeaustenr)
 #'
-#' austen_sparse <- austen_books() %>%
-#'     unnest_tokens(word, text) %>%
-#'     anti_join(stop_words) %>%
-#'     count(book, word) %>%
+#' austen_sparse <- austen_books() |>
+#'     unnest_tokens(word, text) |>
+#'     anti_join(stop_words) |>
+#'     count(book, word) |>
 #'     cast_sparse(book, word, n)
 #' topic_model <- stm(austen_sparse, K = 12, verbose = FALSE)
 #'
@@ -43,10 +43,10 @@
 #' td_beta
 #'
 #' # Examine the topics
-#' td_beta %>%
-#'     group_by(topic) %>%
-#'     slice_max(beta, n = 10) %>%
-#'     ungroup() %>%
+#' td_beta |>
+#'     group_by(topic) |>
+#'     slice_max(beta, n = 10) |>
+#'     ungroup() |>
 #'     ggplot(aes(beta, term)) +
 #'     geom_col() +
 #'     facet_wrap(~ topic, scales = "free")
@@ -91,7 +91,7 @@ tidy.STM <- function(
 
 tidy_stm_beta <- function(x, log) {
   logbeta <- x$beta$logbeta
-  ret <- reshape2::melt(logbeta) %>%
+  ret <- reshape2::melt(logbeta) |>
     tibble::as_tibble()
   ret <- transmute(
     ret,
@@ -108,7 +108,7 @@ tidy_stm_beta <- function(x, log) {
 
 tidy_stm_gamma <- function(x, log, document_names) {
   mat <- x$theta
-  ret <- reshape2::melt(mat) %>%
+  ret <- reshape2::melt(mat) |>
     tibble::as_tibble()
   ret <- transmute(ret, document = Var1, topic = Var2, gamma = value)
   if (!is.null(document_names)) {
@@ -139,16 +139,16 @@ tidy_stm_lift <- function(x) {
 pivot_stm_longer <- function(x, vocab) {
   rlang::check_installed("tidyr")
   seq_ncol <- seq_len(ncol(x))
-  tibble::as_tibble(x, .name_repair = ~ paste0("___", seq_ncol)) %>%
+  tibble::as_tibble(x, .name_repair = ~ paste0("___", seq_ncol)) |>
     tidyr::pivot_longer(
       everything(),
       names_to = "topic",
       values_to = "term"
-    ) %>%
+    ) |>
     transmute(
       topic = as.integer(stringr::str_remove_all(topic, "___")),
       term = vocab[term]
-    ) %>%
+    ) |>
     arrange(topic)
 }
 

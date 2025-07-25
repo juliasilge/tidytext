@@ -27,9 +27,9 @@ w <- tibble(
 )
 
 test_that("Can calculate TF-IDF", {
-  result <- w %>%
+  result <- w |>
     bind_tf_idf(word, document, frequency)
-  result2 <- w %>%
+  result2 <- w |>
     bind_tf_idf("word", "document", "frequency")
   expect_equal(result, result2)
 
@@ -48,8 +48,8 @@ test_that("Can calculate TF-IDF", {
   expect_equal(result$tf_idf, result$tf * result$idf)
 
   # preserves but ignores groups
-  result2 <- w %>%
-    group_by(document) %>%
+  result2 <- w |>
+    group_by(document) |>
     bind_tf_idf(word, document, frequency)
 
   expect_equal(length(groups(result2)), 1)
@@ -80,7 +80,7 @@ test_that("tf-idf with tidyeval works", {
   documentvar <- quo("document")
   countvar <- quo("frequency")
 
-  result <- w %>%
+  result <- w |>
     bind_tf_idf(!!termvar, !!documentvar, !!countvar)
 
   expect_equal(
@@ -97,8 +97,8 @@ test_that("tf-idf with tidyeval works", {
   expect_equal(result$idf[1:4], c(0, log(2), 0, log(2)))
   expect_equal(result$tf_idf, result$tf * result$idf)
 
-  result2 <- w %>%
-    group_by(document) %>%
+  result2 <- w |>
+    group_by(document) |>
     bind_tf_idf(!!termvar, !!documentvar, !!countvar)
 
   expect_equal(length(groups(result2)), 1)

@@ -62,9 +62,9 @@ The novels of Jane Austen can be so tidy! Let's use the text of Jane Austen's 6 
 library(janeaustenr)
 library(dplyr)
 
-original_books <- austen_books() %>%
-  group_by(book) %>%
-  mutate(line = row_number()) %>%
+original_books <- austen_books() |>
+  group_by(book) |>
+  mutate(line = row_number()) |>
   ungroup()
 
 original_books
@@ -74,7 +74,7 @@ To work with this as a tidy dataset, we need to restructure it as **one-token-pe
 
 ```{r}
 library(tidytext)
-tidy_books <- original_books %>%
+tidy_books <- original_books |>
   unnest_tokens(word, text)
 
 tidy_books
@@ -85,14 +85,14 @@ This function uses the [tokenizers](https://docs.ropensci.org/tokenizers/) packa
 Now that the data is in a one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function `get_stopwords()`) with an `anti_join()`.
 
 ```{r}
-tidy_books <- tidy_books %>%
+tidy_books <- tidy_books |>
   anti_join(get_stopwords())
 ```
 
 We can also use `count()` to find the most common words in all the books as a whole.
 
 ```{r}
-tidy_books %>%
+tidy_books |>
   count(word, sort = TRUE)
 ```
 
@@ -104,14 +104,14 @@ Sentiment analysis can be implemented as an inner join. Three sentiment lexicons
 library(tidyr)
 get_sentiments("bing")
 
-janeaustensentiment <- tidy_books %>%
+janeaustensentiment <- tidy_books |>
   inner_join(
     get_sentiments("bing"),
     by = "word",
     relationship = "many-to-many"
-  ) %>%
-  count(book, index = line %/% 80, sentiment) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
+  ) |>
+  count(book, index = line %/% 80, sentiment) |>
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |>
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
@@ -152,11 +152,11 @@ tidy(AssociatedPress)
 We could find the most negative documents:
 
 ```{r}
-ap_sentiments <- tidy(AssociatedPress) %>%
-  inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
-  count(document, sentiment, wt = count) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
-  mutate(sentiment = positive - negative) %>%
+ap_sentiments <- tidy(AssociatedPress) |>
+  inner_join(get_sentiments("bing"), by = c(term = "word")) |>
+  count(document, sentiment, wt = count) |>
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |>
+  mutate(sentiment = positive - negative) |>
   arrange(sentiment)
 ```
 
@@ -166,11 +166,11 @@ Or we can join the Austen and AP datasets and compare the frequencies of each wo
 #| fig.height = 8,
 #| fig.width = 8,
 #| fig.alt = 'Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like "cried" are only common in Jane Austen, some words like "national" are only common in AP articles, and some word like "time" are common in both.'
-comparison <- tidy(AssociatedPress) %>%
-  count(word = term) %>%
-  rename(AP = n) %>%
-  inner_join(count(tidy_books, word)) %>%
-  rename(Austen = n) %>%
+comparison <- tidy(AssociatedPress) |>
+  count(word = term) |>
+  rename(AP = n) |>
+  inner_join(count(tidy_books, word)) |>
+  rename(Austen = n) |>
   mutate(
     AP = AP / sum(AP),
     Austen = Austen / sum(Austen)

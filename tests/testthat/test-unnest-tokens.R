@@ -2,7 +2,7 @@ suppressPackageStartupMessages(library(dplyr))
 
 test_that("tokenizing by character works", {
   d <- tibble(txt = "Emily Dickinson")
-  d <- d %>% unnest_tokens(char, txt, token = "characters")
+  d <- d |> unnest_tokens(char, txt, token = "characters")
   expect_equal(nrow(d), 14)
   expect_equal(ncol(d), 1)
   expect_equal(d$char[1], "e")
@@ -10,7 +10,7 @@ test_that("tokenizing by character works", {
 
 test_that("tokenizing by character shingles works", {
   d <- tibble(txt = "tidytext is the best")
-  d <- d %>% unnest_tokens(char_ngram, txt, token = "character_shingles", n = 4)
+  d <- d |> unnest_tokens(char_ngram, txt, token = "character_shingles", n = 4)
   expect_equal(nrow(d), 14)
   expect_equal(ncol(d), 1)
   expect_equal(d$char_ngram[1], "tidy")
@@ -18,7 +18,7 @@ test_that("tokenizing by character shingles works", {
 
 test_that("tokenizing by character shingles can include whitespace/punctuation", {
   d <- tibble(txt = "tidytext is the best!")
-  d <- d %>%
+  d <- d |>
     unnest_tokens(
       char_ngram,
       txt,
@@ -38,15 +38,15 @@ test_that("tokenizing by word works", {
     ),
     line = 1:2
   )
-  d1 <- d %>% unnest_tokens(word, txt)
+  d1 <- d |> unnest_tokens(word, txt)
   expect_equal(nrow(d1), 12)
   expect_equal(ncol(d1), 2)
   expect_equal(d1$word[1], "because")
 
-  d2 <- d %>% unnest_tokens(.data$word, .data$txt)
+  d2 <- d |> unnest_tokens(.data$word, .data$txt)
   expect_equal(d1, d2)
 
-  d3 <- d %>% group_by(line) %>% unnest_tokens(word, txt)
+  d3 <- d |> group_by(line) |> unnest_tokens(word, txt)
   expect_equal(d1, ungroup(d3))
 })
 
@@ -58,7 +58,7 @@ test_that("tokenizing errors with appropriate error message", {
     )
   )
   expect_snapshot_error(
-    d %>% unnest_tokens(word, txt, token = "word")
+    d |> unnest_tokens(word, txt, token = "word")
   )
 })
 
@@ -71,7 +71,7 @@ test_that("tokenizing by sentence works", {
       "Don’t tell! they’d advertise - you know!"
     )
   )
-  d <- orig %>% unnest_tokens(sentence, txt, token = "sentences")
+  d <- orig |> unnest_tokens(sentence, txt, token = "sentences")
   expect_equal(nrow(d), 6)
   expect_equal(ncol(d), 1)
   expect_equal(d$sentence[1], "i'm nobody!")
@@ -79,7 +79,7 @@ test_that("tokenizing by sentence works", {
   # check it works when there are multiple columns
   orig$line <- c(1, 1, 2, 2)
   orig$other_line <- c("a", "a", "b", "b")
-  d <- orig %>% unnest_tokens(sentence, txt, token = "sentences")
+  d <- orig |> unnest_tokens(sentence, txt, token = "sentences")
   expect_type(d$sentence, "character")
   expect_equal(d$sentence[1], "i'm nobody!")
 })
@@ -104,16 +104,16 @@ test_that("tokenizing by ngram and skip ngram works", {
   )
 
   # tokenize by ngram
-  d1 <- d %>% unnest_tokens(ngram, txt, token = "ngrams", n = 2)
+  d1 <- d |> unnest_tokens(ngram, txt, token = "ngrams", n = 2)
   # expect_equal(nrow(d), 68) does not pass on appveyor
   expect_equal(ncol(d1), 2)
   expect_equal(d1$ngram[1], "hope is")
   expect_equal(d1$ngram[10], "and sings")
 
-  d2 <- d %>%
+  d2 <- d |>
     unnest_tokens(ngram, txt, token = "ngrams", n = 2, collapse = "line")
-  d3 <- d %>%
-    group_by(line) %>%
+  d3 <- d |>
+    group_by(line) |>
     unnest_tokens(ngram, txt, token = "ngrams", n = 2)
   expect_equal(d2, ungroup(d3))
   expect_equal(ncol(d2), 2)
@@ -121,14 +121,14 @@ test_that("tokenizing by ngram and skip ngram works", {
   expect_equal(d2$ngram[40], "little bird")
 
   expect_error(
-    d %>%
-      group_by(line) %>%
+    d |>
+      group_by(line) |>
       unnest_tokens(ngram, txt, token = "ngrams", n = 2, collapse = "line"),
     "Use the `collapse` argument"
   )
 
   # tokenize by skip_ngram
-  d2 <- d %>% unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
+  d2 <- d |> unnest_tokens(ngram, txt, token = "skip_ngrams", n = 4, k = 2)
   # expect_equal(nrow(d), 189) does not pass on appveyor
   expect_equal(ncol(d2), 2)
   expect_equal(d2$ngram[30], "is thing with")
@@ -145,13 +145,13 @@ test_that("tokenizing with a custom function works", {
     ),
     group = "all"
   )
-  d <- orig %>%
+  d <- orig |>
     unnest_tokens(unit, txt, token = stringr::str_split, pattern = " - ")
   expect_equal(nrow(d), 7)
   expect_equal(d$unit[3], "nobody")
   expect_equal(d$unit[4], "too?")
 
-  d2 <- orig %>%
+  d2 <- orig |>
     unnest_tokens(
       unit,
       txt,
@@ -171,7 +171,7 @@ test_that("tokenizing with standard evaluation works", {
       "He kindly stopped for me -"
     )
   )
-  d <- d %>% unnest_tokens("word", "txt")
+  d <- d |> unnest_tokens("word", "txt")
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
   expect_equal(d$word[1], "because")
@@ -186,7 +186,7 @@ test_that("tokenizing with tidyeval works", {
   )
   outputvar <- quo(word)
   inputvar <- quo(txt)
-  d <- d %>% unnest_tokens(!!outputvar, !!inputvar)
+  d <- d |> unnest_tokens(!!outputvar, !!inputvar)
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
   expect_equal(d$word[1], "because")
@@ -199,11 +199,11 @@ test_that("tokenizing with to_lower = FALSE works", {
       "He kindly stopped for me -"
     )
   )
-  d <- orig %>% unnest_tokens(word, txt, to_lower = FALSE)
+  d <- orig |> unnest_tokens(word, txt, to_lower = FALSE)
   expect_equal(nrow(d), 12)
   expect_equal(ncol(d), 1)
   expect_equal(d$word[1], "Because")
-  d2 <- orig %>%
+  d2 <- orig |>
     unnest_tokens(ngram, txt, token = "ngrams", n = 2, to_lower = FALSE)
   expect_equal(nrow(d2), 10)
   expect_equal(ncol(d2), 1)
@@ -464,5 +464,5 @@ test_that("tokenizing tweets is deprecated", {
     ),
     line = 1:2
   )
-  expect_snapshot_error(d1 <- d %>% unnest_tokens(word, txt, token = "tweets"))
+  expect_snapshot_error(d1 <- d |> unnest_tokens(word, txt, token = "tweets"))
 })

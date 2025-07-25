@@ -62,9 +62,9 @@ one-row-per-line format:
 library(janeaustenr)
 library(dplyr)
 
-original_books <- austen_books() %>%
-  group_by(book) %>%
-  mutate(line = row_number()) %>%
+original_books <- austen_books() |>
+  group_by(book) |>
+  mutate(line = row_number()) |>
   ungroup()
 
 original_books
@@ -90,7 +90,7 @@ convert a dataframe with a text column to be one-token-per-row:
 
 ``` r
 library(tidytext)
-tidy_books <- original_books %>%
+tidy_books <- original_books |>
   unnest_tokens(word, text)
 
 tidy_books
@@ -121,7 +121,7 @@ with tidy tools like dplyr. We can remove stop words (available via the
 function `get_stopwords()`) with an `anti_join()`.
 
 ``` r
-tidy_books <- tidy_books %>%
+tidy_books <- tidy_books |>
   anti_join(get_stopwords())
 ```
 
@@ -129,7 +129,7 @@ We can also use `count()` to find the most common words in all the books
 as a whole.
 
 ``` r
-tidy_books %>%
+tidy_books |>
   count(word, sort = TRUE)
 #> # A tibble: 14,375 × 2
 #>    word      n
@@ -171,14 +171,14 @@ get_sentiments("bing")
 #> 10 aborts      negative 
 #> # ℹ 6,776 more rows
 
-janeaustensentiment <- tidy_books %>%
+janeaustensentiment <- tidy_books |>
   inner_join(
     get_sentiments("bing"),
     by = "word",
     relationship = "many-to-many"
-  ) %>%
-  count(book, index = line %/% 80, sentiment) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
+  ) |>
+  count(book, index = line %/% 80, sentiment) |>
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |>
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
@@ -258,11 +258,11 @@ tidy(AssociatedPress)
 We could find the most negative documents:
 
 ``` r
-ap_sentiments <- tidy(AssociatedPress) %>%
-  inner_join(get_sentiments("bing"), by = c(term = "word")) %>%
-  count(document, sentiment, wt = count) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
-  mutate(sentiment = positive - negative) %>%
+ap_sentiments <- tidy(AssociatedPress) |>
+  inner_join(get_sentiments("bing"), by = c(term = "word")) |>
+  count(document, sentiment, wt = count) |>
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |>
+  mutate(sentiment = positive - negative) |>
   arrange(sentiment)
 ```
 
@@ -270,11 +270,11 @@ Or we can join the Austen and AP datasets and compare the frequencies of
 each word:
 
 ``` r
-comparison <- tidy(AssociatedPress) %>%
-  count(word = term) %>%
-  rename(AP = n) %>%
-  inner_join(count(tidy_books, word)) %>%
-  rename(Austen = n) %>%
+comparison <- tidy(AssociatedPress) |>
+  count(word = term) |>
+  rename(AP = n) |>
+  inner_join(count(tidy_books, word)) |>
+  rename(Austen = n) |>
   mutate(
     AP = AP / sum(AP),
     Austen = Austen / sum(Austen)

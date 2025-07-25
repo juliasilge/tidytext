@@ -33,8 +33,8 @@ test_that("Can tidy corpus from quanteda using accessor functions", {
   x <- quanteda::data_corpus_inaugural
 
   ## similar to old method
-  ret_old <- as_tibble(quanteda::docvars(x)) %>%
-    mutate(text = unname(as.character(x))) %>%
+  ret_old <- as_tibble(quanteda::docvars(x)) |>
+    mutate(text = unname(as.character(x))) |>
     select(text, everything())
 
   ## new method

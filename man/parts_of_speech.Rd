@@ -33,7 +33,7 @@ library(dplyr)
 
 parts_of_speech
 
-parts_of_speech \%>\%
+parts_of_speech |>
   count(pos, sort = TRUE)
 
 }

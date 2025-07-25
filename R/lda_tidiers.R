@@ -48,8 +48,8 @@
 #'   library(ggplot2)
 #'
 #'   # visualize the top terms within each topic
-#'   td_lda_filtered <- td_lda %>%
-#'     filter(beta > .004) %>%
+#'   td_lda_filtered <- td_lda |>
+#'     filter(beta > .004) |>
 #'     mutate(term = reorder(term, beta))
 #'
 #'   ggplot(td_lda_filtered, aes(term, beta)) +
@@ -61,15 +61,15 @@
 #'   td_lda_docs <- tidy(lda, matrix = "gamma")
 #'   td_lda_docs
 #'
-#'   doc_classes <- td_lda_docs %>%
-#'     group_by(document) %>%
-#'     top_n(1) %>%
+#'   doc_classes <- td_lda_docs |>
+#'     group_by(document) |>
+#'     top_n(1) |>
 #'     ungroup()
 #'
 #'   doc_classes
 #'
 #'   # which were we most uncertain about?
-#'   doc_classes %>%
+#'   doc_classes |>
 #'     arrange(gamma)
 #' }
 #'
@@ -95,7 +95,7 @@ tidy_topicmodels <- function(x, matrix = c("beta", "gamma"), log = FALSE, ...) {
     mat <- x@beta
   }
 
-  ret <- reshape2::melt(mat) %>%
+  ret <- reshape2::melt(mat) |>
     tibble::as_tibble()
 
   if (matrix == "beta") {

@@ -11,7 +11,7 @@ test_data <- tibble(
 test_tokens <- unnest_tokens(test_data, word, text)
 
 test_that("get_sentiments works for bing data", {
-  bing_joined <- test_tokens %>%
+  bing_joined <- test_tokens |>
     inner_join(get_sentiments("bing"), by = "word")
 
   expect_equal(bing_joined$word, c("happy", "joyful", "sad", "annoyed"))

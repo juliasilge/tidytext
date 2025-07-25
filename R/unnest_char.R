@@ -22,10 +22,10 @@
 #'
 #' d <- tibble(txt = prideprejudice)
 #'
-#' d %>%
+#' d |>
 #'   unnest_characters(word, txt)
 #'
-#' d %>%
+#' d |>
 #'   unnest_character_shingles(word, txt, n = 3)
 #'
 unnest_characters <- function(
