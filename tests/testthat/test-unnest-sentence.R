@@ -7,12 +7,12 @@ test_that("unnest_sentences works", {
       "Don’t tell! they’d advertise - you know!"
     )
   )
-  d <- orig %>% unnest_tokens(sentence, txt, token = "sentences")
-  r <- orig %>% unnest_sentences(sentence, txt)
+  d <- orig |> unnest_tokens(sentence, txt, token = "sentences")
+  r <- orig |> unnest_sentences(sentence, txt)
   expect_equal(d, r)
-  d <- orig %>%
+  d <- orig |>
     unnest_tokens(sentence, txt, token = "sentences", strip_punct = TRUE)
-  r <- orig %>% unnest_sentences(sentence, txt, strip_punct = TRUE)
+  r <- orig |> unnest_sentences(sentence, txt, strip_punct = TRUE)
   expect_equal(d, r)
 })
 
@@ -25,8 +25,8 @@ test_that("unnest_lines works", {
       "Don’t tell! they’d advertise - you know!"
     )
   )
-  d <- orig %>% unnest_tokens(sentence, txt, token = "lines")
-  r <- orig %>% unnest_lines(sentence, txt)
+  d <- orig |> unnest_tokens(sentence, txt, token = "lines")
+  r <- orig |> unnest_lines(sentence, txt)
   expect_equal(d, r)
 })
 
@@ -39,7 +39,7 @@ test_that("unnest_paragraphs works", {
       "Don’t tell! \n\nthey’d advertise - you know!"
     )
   )
-  d <- orig %>% unnest_tokens(sentence, txt, token = "paragraphs")
-  r <- orig %>% unnest_paragraphs(sentence, txt)
+  d <- orig |> unnest_tokens(sentence, txt, token = "paragraphs")
+  r <- orig |> unnest_paragraphs(sentence, txt)
   expect_equal(d, r)
 })

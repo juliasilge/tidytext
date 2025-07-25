@@ -23,7 +23,7 @@
 #'
 #' d <- tibble(txt = prideprejudice)
 #'
-#' d %>%
+#' d |>
 #'   unnest_sentences(word, txt)
 #'
 unnest_sentences <- function(

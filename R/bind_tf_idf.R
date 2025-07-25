@@ -26,15 +26,15 @@
 #' library(dplyr)
 #' library(janeaustenr)
 #'
-#' book_words <- austen_books() %>%
-#'   unnest_tokens(word, text) %>%
+#' book_words <- austen_books() |>
+#'   unnest_tokens(word, text) |>
 #'   count(book, word, sort = TRUE)
 #'
 #' book_words
 #'
 #' # find the words most distinctive to each document
-#' book_words %>%
-#'   bind_tf_idf(word, book, n) %>%
+#' book_words |>
+#'   bind_tf_idf(word, book, n) |>
 #'   arrange(desc(tf_idf))
 #'
 #' @export

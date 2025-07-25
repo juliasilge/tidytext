@@ -43,7 +43,7 @@
 #'
 #' @export
 tidy.Corpus <- function(x, collapse = "\n", ...) {
-  local_meta <- NLP::meta(x, type = "local") %>%
+  local_meta <- NLP::meta(x, type = "local") |>
     purrr::transpose()
 
   columns <- purrr::map(local_meta, function(m) {

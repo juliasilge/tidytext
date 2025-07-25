@@ -4,8 +4,8 @@ expect_nrow <- function(tbl, n) {
 }
 
 expect_first_row <- function(tbl, col, text) {
-  ct <- tbl %>%
-    pull(!!enquo(col)) %>%
+  ct <- tbl |>
+    pull(!!enquo(col)) |>
     purrr::pluck(1)
   expect_match(ct, text)
 }

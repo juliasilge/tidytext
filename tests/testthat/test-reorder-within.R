@@ -31,8 +31,8 @@ test_that("Can make a plot", {
 
 test_that("Can make a plot with custom labels", {
   custom_labeler <- function(x) {
-    x %>%
-      stringr::str_replace("___[0-9]+$", "") %>%
+    x |>
+      stringr::str_replace("___[0-9]+$", "") |>
       stringr::str_replace("0", "ZERO")
   }
 

@@ -69,30 +69,30 @@
 #' d <- tibble(txt = prideprejudice)
 #' d
 #'
-#' d %>%
+#' d |>
 #'   unnest_tokens(output = word, input = txt)
 #'
-#' d %>%
+#' d |>
 #'   unnest_tokens(output = sentence, input = txt, token = "sentences")
 #'
-#' d %>%
+#' d |>
 #'   unnest_tokens(output = ngram, input = txt, token = "ngrams", n = 2)
 #'
-#' d %>%
+#' d |>
 #'   unnest_tokens(chapter, txt, token = "regex", pattern = "Chapter [\\\\d]")
 #'
-#' d %>%
+#' d |>
 #'   unnest_tokens(shingle, txt, token = "character_shingles", n = 4)
 #'
 #' # custom function
-#' d %>%
+#' d |>
 #'   unnest_tokens(word, txt, token = stringr::str_split, pattern = " ")
 #'
 #' # tokenize HTML
 #' h <- tibble(row = 1:2,
 #'                 text = c("<h1>Text <b>is</b>", "<a href='example.com'>here</a>"))
 #'
-#' h %>%
+#' h |>
 #'   unnest_tokens(word, text, format = "html")
 #'
 unnest_tokens <- function(
@@ -138,12 +138,12 @@ unnest_tokens <- function(
   }
 
   if (is_grouped_df(tbl)) {
-    tbl <- tbl %>%
-      ungroup() %>%
-      mutate(new_groups = cumsum(c(1, diff(group_indices(tbl)) != 0))) %>%
-      group_by(new_groups, !!!groups(tbl)) %>%
-      summarise(!!input := stringr::str_c(!!input, collapse = "\n")) %>%
-      group_by(!!!groups(tbl)) %>%
+    tbl <- tbl |>
+      ungroup() |>
+      mutate(new_groups = cumsum(c(1, diff(group_indices(tbl)) != 0))) |>
+      group_by(new_groups, !!!groups(tbl)) |>
+      summarise(!!input := stringr::str_c(!!input, collapse = "\n")) |>
+      group_by(!!!groups(tbl)) |>
       dplyr::select(-new_groups)
 
     if (!is_null(collapse)) {

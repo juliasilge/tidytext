@@ -12,8 +12,11 @@ vignette: >
 ```{r}
 #| echo = FALSE
 library(knitr)
-opts_chunk$set(message = FALSE, warning = FALSE,
-               eval = requireNamespace("tm", quietly = TRUE))
+opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  eval = requireNamespace("tm", quietly = TRUE)
+)
 options(width = 100, dplyr.width = 150)
 library(ggplot2)
 theme_set(theme_bw())
@@ -45,9 +48,13 @@ library(gutenbergr)
 ```{r}
 #| label = "books_show",
 #| eval = FALSE
-titles <- c("Twenty Thousand Leagues under the Sea", "The War of the Worlds",
-            "Pride and Prejudice", "Great Expectations")
-books <- gutenberg_works(title %in% titles) %>%
+titles <- c(
+  "Twenty Thousand Leagues under the Sea",
+  "The War of the Worlds",
+  "Pride and Prejudice",
+  "Great Expectations"
+)
+books <- gutenberg_works(title %in% titles) |>
   gutenberg_download(meta_fields = "title")
 ```
 
@@ -74,18 +81,20 @@ library(tidytext)
 library(stringr)
 library(tidyr)
 
-by_chapter <- books %>%
-  group_by(title) %>%
-  mutate(chapter = cumsum(str_detect(text, regex("^chapter ", ignore_case = TRUE)))) %>%
-  ungroup() %>%
+by_chapter <- books |>
+  group_by(title) |>
+  mutate(
+    chapter = cumsum(str_detect(text, regex("^chapter ", ignore_case = TRUE)))
+  ) |>
+  ungroup() |>
   filter(chapter > 0)
 
-by_chapter_word <- by_chapter %>%
-  unite(title_chapter, title, chapter) %>%
+by_chapter_word <- by_chapter |>
+  unite(title_chapter, title, chapter) |>
   unnest_tokens(word, text)
 
-word_counts <- by_chapter_word %>%
-  anti_join(stop_words) %>%
+word_counts <- by_chapter_word |>
+  anti_join(stop_words) |>
   count(title_chapter, word, sort = TRUE)
 
 word_counts
@@ -97,7 +106,7 @@ Right now this data frame is in a tidy form, with one-term-per-document-per-row.
 
 ```{r}
 #| label = "chapters_dtm"
-chapters_dtm <- word_counts %>%
+chapters_dtm <- word_counts |>
   cast_dtm(title_chapter, word, n)
 
 chapters_dtm
@@ -128,10 +137,10 @@ We could use dplyr's `slice_max()` to find the top 5 terms within each topic:
 
 ```{r}
 #| label = "top_terms"
-top_terms <- chapters_lda_td %>%
-  group_by(topic) %>%
-  slice_max(beta, n = 5) %>%
-  ungroup() %>%
+top_terms <- chapters_lda_td |>
+  group_by(topic) |>
+  slice_max(beta, n = 5) |>
+  ungroup() |>
   arrange(topic, -beta)
 
 top_terms
@@ -147,8 +156,8 @@ This model lends itself to a visualization:
 library(ggplot2)
 theme_set(theme_bw())
 
-top_terms %>%
-  mutate(term = reorder_within(term, beta, topic)) %>%
+top_terms |>
+  mutate(term = reorder_within(term, beta, topic)) |>
   ggplot(aes(term, beta)) +
   geom_col() +
   scale_x_reordered() +
@@ -171,7 +180,7 @@ Setting `matrix = "gamma"` returns a tidied version with one-document-per-topic-
 
 ```{r}
 #| label = "chapters_lda_gamma"
-chapters_lda_gamma <- chapters_lda_gamma %>%
+chapters_lda_gamma <- chapters_lda_gamma |>
   separate(document, c("title", "chapter"), sep = "_", convert = TRUE)
 chapters_lda_gamma
 ```
@@ -192,10 +201,10 @@ We notice that almost all of the chapters from *Pride and Prejudice*, *War of th
 
 ```{r}
 #| label = "chapter_classifications"
-chapter_classifications <- chapters_lda_gamma %>%
-  group_by(title, chapter) %>%
-  slice_max(gamma, n = 1) %>%
-  ungroup() %>%
+chapter_classifications <- chapters_lda_gamma |>
+  group_by(title, chapter) |>
+  slice_max(gamma, n = 1) |>
+  ungroup() |>
   arrange(gamma)
 
 chapter_classifications
@@ -205,11 +214,11 @@ We can determine this by finding the consensus book for each, which we note is c
 
 ```{r}
 #| label = "book_topics"
-book_topics <- chapter_classifications %>%
-  count(title, topic) %>%
-  group_by(topic) %>%
-  slice_max(n, n = 1) %>%
-  ungroup() %>%
+book_topics <- chapter_classifications |>
+  count(title, topic) |>
+  group_by(topic) |>
+  slice_max(n, n = 1) |>
+  ungroup() |>
   transmute(consensus = title, topic)
 
 book_topics
@@ -218,8 +227,8 @@ book_topics
 Then we see which chapters were misidentified:
 
 ```{r}
-chapter_classifications %>%
-  inner_join(book_topics, by = "topic") %>%
+chapter_classifications |>
+  inner_join(book_topics, by = "topic") |>
   count(title, consensus)
 ```
 
@@ -239,8 +248,8 @@ assignments <- augment(chapters_lda, data = chapters_dtm)
 We can combine this with the consensus book titles to find which words were incorrectly classified.
 
 ```{r}
-assignments <- assignments %>%
-  separate(document, c("title", "chapter"), sep = "_", convert = TRUE) %>%
+assignments <- assignments |>
+  separate(document, c("title", "chapter"), sep = "_", convert = TRUE) |>
   inner_join(book_topics, join_by(.topic == topic))
 
 assignments
@@ -249,8 +258,8 @@ assignments
 We can, for example, create a "confusion matrix" using dplyr's `count()` and tidyr's `pivot_wider()`:
 
 ```{r}
-assignments %>%
-  count(title, consensus, wt = count) %>%
+assignments |>
+  count(title, consensus, wt = count) |>
   pivot_wider(names_from = consensus, values_from = n, values_fill = 0)
 ```
 
@@ -259,20 +268,20 @@ We notice that almost all the words for *Pride and Prejudice*, *Twenty Thousand 
 What were the most commonly mistaken words?
 
 ```{r}
-wrong_words <- assignments %>%
+wrong_words <- assignments |>
   filter(title != consensus)
 
 wrong_words
 
-wrong_words %>%
-  count(title, consensus, term, wt = count) %>%
+wrong_words |>
+  count(title, consensus, term, wt = count) |>
   arrange(desc(n))
 ```
 
 Notice the word "flopson" here; these wrong words do not necessarily appear in the novels they were misassigned to. Indeed, we can confirm "flopson" appears only in *Great Expectations*:
 
 ```{r}
-word_counts %>%
+word_counts |>
   filter(word == "flopson")
 ```
 

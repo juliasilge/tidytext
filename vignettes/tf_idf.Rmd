@@ -14,8 +14,9 @@ vignette: >
 #| echo = FALSE
 library(knitr)
 opts_chunk$set(
-  warning = FALSE, message = FALSE,
-  eval = requireNamespace("ggplot2", quietly = TRUE)             
+  warning = FALSE,
+  message = FALSE,
+  eval = requireNamespace("ggplot2", quietly = TRUE)
 )
 ```
 
@@ -39,11 +40,11 @@ Let's look at the published novels of Jane Austen and examine first term frequen
 library(dplyr)
 library(janeaustenr)
 library(tidytext)
-book_words <- austen_books() %>%
-  unnest_tokens(word, text) %>%
+book_words <- austen_books() |>
+  unnest_tokens(word, text) |>
   count(book, word, sort = TRUE)
 
-total_words <- book_words %>% group_by(book) %>% summarize(total = sum(n))
+total_words <- book_words |> group_by(book) |> summarize(total = sum(n))
 book_words <- left_join(book_words, total_words)
 book_words
 ```
@@ -55,7 +56,7 @@ The usual suspects are here, "the", "and", "to", and so forth. Let's look at the
 #| fig.width = 7,
 #| fig.alt = "Histograms for word counts in Jane Austen's novels"
 library(ggplot2)
-ggplot(book_words, aes(n/total, fill = book)) +
+ggplot(book_words, aes(n / total, fill = book)) +
   geom_histogram(show.legend = FALSE) +
   scale_x_continuous(limits = c(NA, 0.0009)) +
   facet_wrap(vars(book), ncol = 2, scales = "free_y")
@@ -65,7 +66,7 @@ There are very long tails to the right for these novels (those extremely common 
 
 
 ```{r}
-book_words <- book_words %>%
+book_words <- book_words |>
   bind_tf_idf(word, book, n)
 book_words
 ```
@@ -73,17 +74,17 @@ book_words
 Notice that idf and thus tf-idf are zero for these extremely common words. These are all words that appear in all six of Jane Austen's novels, so the idf term (which will then be the natural log of 1) is zero. The inverse document frequency (and thus tf-idf) is very low (near zero) for words that occur in many of the documents in a collection; this is how this approach decreases the weight for common words. The inverse document frequency will be a higher number for words that occur in fewer of the documents in the collection. Let's look at terms with high tf-idf in Jane Austen's works.
 
 ```{r}
-book_words %>%
-  select(-total) %>%
+book_words |>
+  select(-total) |>
   arrange(desc(tf_idf))
 ```
 
 Here we see all proper nouns, names that are in fact important in these novels. None of them occur in all of novels, and they are important, characteristic words for each text. Some of the values for idf are the same for different terms because there are 6 documents in this corpus and we are seeing the numerical value for $\ln(6/1)$, $\ln(6/2)$, etc. Let's look specifically at *Pride and Prejudice*.
 
 ```{r}
-book_words %>%
-  filter(book == "Pride & Prejudice") %>%
-  select(-total) %>%
+book_words |>
+  filter(book == "Pride & Prejudice") |>
+  select(-total) |>
   arrange(desc(tf_idf))
 ```
 

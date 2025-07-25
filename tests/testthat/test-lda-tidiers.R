@@ -28,7 +28,7 @@ if (require("topicmodels", quietly = TRUE)) {
     expect_true(all(c("united", "states", "president") %in% td$term))
 
     # all betas sum to 1
-    summ <- td %>%
+    summ <- td |>
       count(topic, wt = beta)
     expect_lt(max(abs(summ$n - 1)), .000001)
 
@@ -60,7 +60,7 @@ if (require("topicmodels", quietly = TRUE)) {
     expect_equal(unique(td2$document), 1:100)
 
     # all gammas sum to 1
-    summ <- td %>%
+    summ <- td |>
       count(document, wt = gamma)
     expect_lt(max(abs(summ$n - 1)), 1e-6)
 
@@ -80,13 +80,13 @@ if (require("topicmodels", quietly = TRUE)) {
     ap_tidied <- tidy(ap)
 
     s <- arrange(au, document, term)
-    s2 <- ap_tidied %>%
+    s2 <- ap_tidied |>
       arrange(document, term)
     expect_equal(s$term, s2$term)
     expect_equal(s$document, s2$document)
 
     # can include extra columns
-    ap_tidied2 <- ap_tidied %>%
+    ap_tidied2 <- ap_tidied |>
       mutate(starts_a = stringr::str_detect(term, "^a"))
     au2 <- augment.LDA(lda, data = ap_tidied2)
     expect_equal(au$document, au2$document)

@@ -45,8 +45,8 @@
 #' writeLines(stop_words$word, tmp)
 #'
 #' # two vectors: one with document IDs, one with text
-#' docs <- td %>%
-#'   group_by(document = as.character(document)) %>%
+#' docs <- td |>
+#'   group_by(document = as.character(document)) |>
 #'   summarize(text = paste(rep(term, count), collapse = " "))
 #'
 #' docs <- mallet.import(docs$document, docs$text, tmp)
@@ -61,11 +61,11 @@
 #' td_beta
 #'
 #' # Examine the four topics
-#' td_beta %>%
-#'   group_by(topic) %>%
-#'   top_n(8, beta) %>%
-#'   ungroup() %>%
-#'   mutate(term = reorder(term, beta)) %>%
+#' td_beta |>
+#'   group_by(topic) |>
+#'   top_n(8, beta) |>
+#'   ungroup() |>
+#'   mutate(term = reorder(term, beta)) |>
 #'   ggplot(aes(term, beta)) +
 #'   geom_col() +
 #'   facet_wrap(~ topic, scales = "free") +

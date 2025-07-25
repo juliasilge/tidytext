@@ -46,10 +46,10 @@ test_that("can tidy beta matrix", {
   expect_true(all(c("col1", "col2", "col3") %in% td$term))
 
   # all betas sum to 1
-  summ <- td %>%
+  summ <- td |>
     count(topic, wt = beta)
   expect_lt(max(abs(summ$n - 1)), .000001)
-  summ_cov <- td_cov %>%
+  summ_cov <- td_cov |>
     count(topic, y.level, wt = beta)
   expect_lt(max(abs(summ_cov$n - 1)), .000001)
 
@@ -73,7 +73,7 @@ test_that("can tidy gamma matrix", {
   expect_equal(unique(td$document), 1:2)
 
   # all gammas sum to 1
-  summ <- td %>%
+  summ <- td |>
     count(document, wt = gamma)
   expect_lt(max(abs(summ$n - 1)), 1e-6)
 
@@ -112,13 +112,13 @@ test_that("can augment an stm output", {
 
   # augment output should have same document-term combinations
   s <- arrange(au, document, term)
-  s2 <- dat %>%
+  s2 <- dat |>
     arrange(document, term)
   expect_equal(s$term, s2$term)
   expect_equal(s$document, s2$document)
 
   # can include extra columns
-  inaug_tidied2 <- dat %>%
+  inaug_tidied2 <- dat |>
     mutate(starts_c = stringr::str_detect(term, "^c"))
   au2 <- augment(stm_model, data = inaug_tidied2)
   expect_equal(au$document, au2$document)

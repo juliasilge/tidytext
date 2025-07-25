@@ -14,9 +14,11 @@ vignette: >
 #| echo = FALSE
 library(knitr)
 opts_chunk$set(
-  warning = FALSE, message = FALSE,
-  eval = requireNamespace("wordcloud", quietly = TRUE) && requireNamespace("ggplot2", quietly = TRUE)
-  )
+  warning = FALSE,
+  message = FALSE,
+  eval = requireNamespace("wordcloud", quietly = TRUE) &&
+    requireNamespace("ggplot2", quietly = TRUE)
+)
 ```
 
 ```{r}
@@ -39,11 +41,15 @@ library(janeaustenr)
 library(dplyr)
 library(stringr)
 
-original_books <- austen_books() %>%
-  group_by(book) %>%
-  mutate(line = row_number(),
-         chapter = cumsum(str_detect(text, regex("^chapter [\\divxlc]",
-                                                 ignore_case = TRUE)))) %>%
+original_books <- austen_books() |>
+  group_by(book) |>
+  mutate(
+    line = row_number(),
+    chapter = cumsum(str_detect(
+      text,
+      regex("^chapter [\\divxlc]", ignore_case = TRUE)
+    ))
+  ) |>
   ungroup()
 
 original_books
@@ -53,7 +59,7 @@ To work with this as a tidy dataset, we need to restructure it as **one-token-pe
 
 ```{r}
 library(tidytext)
-tidy_books <- original_books %>%
+tidy_books <- original_books |>
   unnest_tokens(output = word, input = text)
 
 tidy_books
@@ -64,26 +70,26 @@ This function uses the [tokenizers package](https://github.com/ropensci/tokenize
 Now that the data is in one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (accessible in a tidy form with the function `get_stopwords()`) with an `anti_join`.
 
 ```{r}
-cleaned_books <- tidy_books %>%
+cleaned_books <- tidy_books |>
   anti_join(get_stopwords())
 ```
 
 We can also use `count` to find the most common words in all the books as a whole.
 
 ```{r}
-cleaned_books %>%
-  count(word, sort = TRUE) 
+cleaned_books |>
+  count(word, sort = TRUE)
 ```
 
 Sentiment analysis can be done as an inner join. Sentiment lexicons are available via the `get_sentiments()` function. Let's look at the words with a positive score from the lexicon of Bing Liu and collaborators. What are the most common positive words in *Emma*?
 
 ```{r}
-positive <- get_sentiments("bing") %>%
+positive <- get_sentiments("bing") |>
   filter(sentiment == "positive")
 
-tidy_books %>%
-  filter(book == "Emma") %>%
-  semi_join(positive) %>%
+tidy_books |>
+  filter(book == "Emma") |>
+  semi_join(positive) |>
   count(word, sort = TRUE)
 ```
 
@@ -93,10 +99,10 @@ Or instead we could examine how sentiment changes during each novel. Let's find 
 library(tidyr)
 bing <- get_sentiments("bing")
 
-janeaustensentiment <- tidy_books %>%
-  inner_join(bing, relationship = "many-to-many") %>%
-  count(book, index = line %/% 80, sentiment) %>%
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
+janeaustensentiment <- tidy_books |>
+  inner_join(bing, relationship = "many-to-many") |>
+  count(book, index = line %/% 80, sentiment) |>
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) |>
   mutate(sentiment = positive - negative)
 ```
 
@@ -119,8 +125,8 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
 One advantage of having the data frame with both sentiment and word is that we can analyze word counts that contribute to each sentiment.
 
 ```{r}
-bing_word_counts <- tidy_books %>%
-  inner_join(bing, relationship = "many-to-many") %>%
+bing_word_counts <- tidy_books |>
+  inner_join(bing, relationship = "many-to-many") |>
   count(word, sentiment, sort = TRUE)
 
 bing_word_counts
@@ -132,10 +138,10 @@ This can be shown visually, and we can pipe straight into ggplot2 because of the
 #| fig.width = 7,
 #| fig.height = 4,
 #| fig.alt = 'Bar charts for the contribution of words to sentiment scores. The words "well" and "good" contribute the most to positive sentiment, and the word "miss" contributes the most to negative sentiment'
-bing_word_counts %>%
-  group_by(sentiment) %>%
-  slice_max(n, n = 10) %>%
-  mutate(word = reorder(word, n)) %>%
+bing_word_counts |>
+  group_by(sentiment) |>
+  slice_max(n, n = 10) |>
+  mutate(word = reorder(word, n)) |>
   ggplot(aes(n, word, fill = sentiment)) +
   geom_col(show.legend = FALSE) +
   facet_wrap(vars(sentiment), scales = "free_y") +
@@ -156,8 +162,8 @@ For example, consider the wordcloud package. Let's look at the most common words
 #| fig.alt = 'Wordcloud showing that words like "mr", "miss", and "one" are most common in the works of Jane Austen'
 library(wordcloud)
 
-cleaned_books %>%
-  count(word) %>%
+cleaned_books |>
+  count(word) |>
   with(wordcloud(word, n, max.words = 100))
 ```
 
@@ -170,12 +176,11 @@ In other functions, such as `comparison.cloud`, you may need to turn it into a m
 #| fig.alt = 'Wordcloud showing that "well" and "good" are the most common positive sentiment words while "miss" is the most common negative sentiment word'
 library(reshape2)
 
-tidy_books %>%
-  inner_join(bing) %>%
-  count(word, sentiment, sort = TRUE) %>%
-  acast(word ~ sentiment, value.var = "n", fill = 0) %>%
-  comparison.cloud(colors = c("#F8766D", "#00BFC4"),
-                   max.words = 100)
+tidy_books |>
+  inner_join(bing) |>
+  count(word, sentiment, sort = TRUE) |>
+  acast(word ~ sentiment, value.var = "n", fill = 0) |>
+  comparison.cloud(colors = c("#F8766D", "#00BFC4"), max.words = 100)
 ```
 
 ### Looking at units beyond just words
@@ -187,7 +192,7 @@ Lots of useful work can be done by tokenizing at the word level, but sometimes i
 is a sad sentence, not a happy one, because of negation. The [Stanford CoreNLP](https://stanfordnlp.github.io/CoreNLP/) tools and the [sentimentr R package](https://cran.r-project.org/package=sentimentr) are examples of such sentiment analysis algorithms. For these, we may want to tokenize text into sentences.
 
 ```{r}
-PandP_sentences <- tibble(text = prideprejudice) %>% 
+PandP_sentences <- tibble(text = prideprejudice) |>
   unnest_tokens(output = sentence, input = text, token = "sentences")
 ```
 
@@ -202,13 +207,18 @@ The sentence tokenizing does seem to have a bit of trouble with UTF-8 encoded te
 Another option in `unnest_tokens` is to split into tokens using a regex pattern. We could use this, for example, to split the text of Jane Austen's novels into a data frame by chapter.
 
 ```{r}
-austen_chapters <- austen_books() %>%
-  group_by(book) %>%
-  unnest_tokens(chapter, text, token = "regex", pattern = "Chapter|CHAPTER [\\dIVXLC]") %>%
+austen_chapters <- austen_books() |>
+  group_by(book) |>
+  unnest_tokens(
+    chapter,
+    text,
+    token = "regex",
+    pattern = "Chapter|CHAPTER [\\dIVXLC]"
+  ) |>
   ungroup()
 
-austen_chapters %>% 
-  group_by(book) %>% 
+austen_chapters |>
+  group_by(book) |>
   summarise(chapters = n())
 ```
 
@@ -217,20 +227,20 @@ We have recovered the correct number of chapters in each novel (plus an "extra" 
 Near the beginning of this vignette, we used a similar regex to find where all the chapters were in Austen's novels for a tidy data frame organized by one-word-per-row. We can use tidy text analysis to ask questions such as what are the most negative chapters in each of Jane Austen's novels? First, let's get the list of negative words from the Bing lexicon. Second, let's make a dataframe of how many words are in each chapter so we can normalize for the length of chapters. Then, let's find the number of negative words in each chapter and divide by the total words in each chapter. Which chapter has the highest proportion of negative words?
 
 ```{r}
-bingnegative <- get_sentiments("bing") %>%
+bingnegative <- get_sentiments("bing") |>
   filter(sentiment == "negative")
 
-wordcounts <- tidy_books %>%
-  group_by(book, chapter) %>%
+wordcounts <- tidy_books |>
+  group_by(book, chapter) |>
   summarize(words = n())
 
-tidy_books %>%
-  semi_join(bingnegative) %>%
-  group_by(book, chapter) %>%
-  summarize(negativewords = n()) %>%
-  left_join(wordcounts, by = c("book", "chapter")) %>%
-  mutate(ratio = negativewords/words) %>%
-  filter(chapter != 0) %>%
+tidy_books |>
+  semi_join(bingnegative) |>
+  group_by(book, chapter) |>
+  summarize(negativewords = n()) |>
+  left_join(wordcounts, by = c("book", "chapter")) |>
+  mutate(ratio = negativewords / words) |>
+  filter(chapter != 0) |>
   slice_max(ratio, n = 1)
 ```
 
