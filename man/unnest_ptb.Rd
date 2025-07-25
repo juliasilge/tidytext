@@ -58,7 +58,7 @@ library(janeaustenr)
 
 d <- tibble(txt = prideprejudice)
 
-d \%>\%
+d |>
   unnest_ptb(word, txt)
 
 }
