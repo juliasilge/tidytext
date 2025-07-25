@@ -52,7 +52,7 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
       # keep as a list column
       return(m)
     }
-    m <- purrr::map_at(m, which(lengths == 0), ~ NA)
+    m <- purrr::map_at(m, which(lengths == 0), ~NA)
 
     ret <- unname(do.call(c, m))
     ## tbl_df() doesn't support POSIXlt format
@@ -77,7 +77,6 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 
   ret
 }
-
 
 #' Tidiers for a corpus object from the quanteda package
 #'
@@ -115,13 +114,14 @@ tidy.Corpus <- function(x, collapse = "\n", ...) {
 #'
 #' @export
 tidy.corpus <- function(x, ...) {
-  tibble::as_tibble(data.frame(
-    text = as.character(x),
-    quanteda::docvars(x),
-    stringsAsFactors = FALSE
-  ))
+  tibble::as_tibble(
+    data.frame(
+      text = as.character(x),
+      quanteda::docvars(x),
+      stringsAsFactors = FALSE
+    )
+  )
 }
-
 
 #' @rdname corpus_tidiers
 #' @export

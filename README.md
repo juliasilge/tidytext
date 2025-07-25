@@ -130,7 +130,7 @@ as a whole.
 
 ``` r
 tidy_books %>%
-  count(word, sort = TRUE) 
+  count(word, sort = TRUE)
 #> # A tibble: 14,375 × 2
 #>    word      n
 #>    <chr> <int>
@@ -172,9 +172,13 @@ get_sentiments("bing")
 #> # ℹ 6,776 more rows
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(get_sentiments("bing"), by = "word", relationship = "many-to-many") %>% 
-  count(book, index = line %/% 80, sentiment) %>% 
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
+  inner_join(
+    get_sentiments("bing"),
+    by = "word",
+    relationship = "many-to-many"
+  ) %>%
+  count(book, index = line %/% 80, sentiment) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
@@ -271,8 +275,10 @@ comparison <- tidy(AssociatedPress) %>%
   rename(AP = n) %>%
   inner_join(count(tidy_books, word)) %>%
   rename(Austen = n) %>%
-  mutate(AP = AP / sum(AP),
-         Austen = Austen / sum(Austen))
+  mutate(
+    AP = AP / sum(AP),
+    Austen = Austen / sum(Austen)
+  )
 
 
 comparison
@@ -294,14 +300,17 @@ comparison
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
   geom_point(alpha = 0.5) +
-  geom_text(aes(label = word), check_overlap = TRUE,
-            vjust = 1, hjust = 1) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1, hjust = 1) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")
 ```
 
-<img src="man/figures/README-unnamed-chunk-13-1.png" alt="Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like &quot;cried&quot; are only common in Jane Austen, some words like &quot;national&quot; are only common in AP articles, and some word like &quot;time&quot; are common in both." width="100%" />
+\<img src=“man/figures/README-unnamed-chunk-13-1.png” alt=“Scatterplot
+for word frequencies in Jane Austen vs. AP news articles. Some words
+like”cried” are only common in Jane Austen, some words like “national”
+are only common in AP articles, and some word like “time” are common in
+both.” width=“100%” /\>
 
 For more examples of working with objects from other text mining
 packages using tidy data principles, see the

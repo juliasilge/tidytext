@@ -30,7 +30,7 @@ jobs:
       R_KEEP_PKG_SOURCE: yes
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - uses: r-lib/actions/setup-pandoc@v2
 
@@ -43,8 +43,7 @@ jobs:
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
           extra-packages: 
-            any::rcmdcheck,
-            vdiffr@1.0.5
+            any::rcmdcheck
           needs: check
 
       - uses: r-lib/actions/check-r-package@v2

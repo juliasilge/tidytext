@@ -1,12 +1,28 @@
 w <- tibble(
   document = rep(1:2, each = 5),
   word = c(
-    "the", "quick", "brown", "fox", "jumped",
-    "over", "the", "lazy", "brown", "dog"
+    "the",
+    "quick",
+    "brown",
+    "fox",
+    "jumped",
+    "over",
+    "the",
+    "lazy",
+    "brown",
+    "dog"
   ),
   frequency = c(
-    1, 1, 1, 1, 2,
-    1, 1, 1, 1, 2
+    1,
+    1,
+    1,
+    1,
+    2,
+    1,
+    1,
+    1,
+    1,
+    2
   )
 )
 
@@ -40,7 +56,6 @@ test_that("Can calculate TF-IDF", {
   expect_equal(as.character(groups(result2)[[1]]), "document")
 })
 
-
 test_that("TF-IDF works when the document ID is a number", {
   # example thanks to https://github.com/juliasilge/tidytext/issues/31
   my_corpus <- dplyr::tibble(
@@ -54,12 +69,13 @@ test_that("TF-IDF works when the document ID is a number", {
   expect_equal(tf_idf$tf_idf[c(3, 6)], c(0, 0))
 })
 
-
 test_that("tf-idf with tidyeval works", {
-  d <- tibble(txt = c(
-    "Because I could not stop for Death -",
-    "He kindly stopped for me -"
-  ))
+  d <- tibble(
+    txt = c(
+      "Because I could not stop for Death -",
+      "He kindly stopped for me -"
+    )
+  )
   termvar <- quo("word")
   documentvar <- quo("document")
   countvar <- quo("frequency")

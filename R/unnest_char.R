@@ -38,18 +38,19 @@ unnest_characters <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- arg_match(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                token = "characters",
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                strip_non_alphanum = strip_non_alphanum,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    token = "characters",
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    strip_non_alphanum = strip_non_alphanum,
+    ...
   )
 }
 
@@ -69,19 +70,20 @@ unnest_character_shingles <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- arg_match(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                token = "character_shingles",
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                n = n,
-                n_min = n_min,
-                strip_non_alphanum = strip_non_alphanum,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    token = "character_shingles",
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    n = n,
+    n_min = n_min,
+    strip_non_alphanum = strip_non_alphanum,
+    ...
   )
 }

@@ -72,16 +72,20 @@
 #' @name stm_tidiers
 #'
 #' @export
-tidy.STM <- function(x,
-                     matrix = c("beta", "gamma", "theta", "frex", "lift"),
-                     log = FALSE,
-                     document_names = NULL, ...) {
+tidy.STM <- function(
+  x,
+  matrix = c("beta", "gamma", "theta", "frex", "lift"),
+  log = FALSE,
+  document_names = NULL,
+  ...
+) {
   matrix <- rlang::arg_match(matrix)
-  switch(matrix,
-         "beta" = tidy_stm_beta(x, log),
-         "frex" = tidy_stm_frex(x, ...),
-         "lift" = tidy_stm_lift(x),
-         tidy_stm_gamma(x, log, document_names)
+  switch(
+    matrix,
+    "beta" = tidy_stm_beta(x, log),
+    "frex" = tidy_stm_frex(x, ...),
+    "lift" = tidy_stm_lift(x),
+    tidy_stm_gamma(x, log, document_names)
   )
 }
 
@@ -89,8 +93,13 @@ tidy_stm_beta <- function(x, log) {
   logbeta <- x$beta$logbeta
   ret <- reshape2::melt(logbeta) %>%
     tibble::as_tibble()
-  ret <- transmute(ret, topic = Var1, term = x$vocab[Var2], beta = value,
-                   y.level = x$settings$covariates$yvarlevels[as.integer(L1)])
+  ret <- transmute(
+    ret,
+    topic = Var1,
+    term = x$vocab[Var2],
+    beta = value,
+    y.level = x$settings$covariates$yvarlevels[as.integer(L1)]
+  )
   if (!log) {
     ret$beta <- exp(ret$beta)
   }
@@ -136,10 +145,11 @@ pivot_stm_longer <- function(x, vocab) {
       names_to = "topic",
       values_to = "term"
     ) %>%
-    transmute(topic = as.integer(stringr::str_remove_all(topic, "___")),
-              term = vocab[term]) %>%
+    transmute(
+      topic = as.integer(stringr::str_remove_all(topic, "___")),
+      term = vocab[term]
+    ) %>%
     arrange(topic)
-
 }
 
 #' @rdname stm_tidiers
@@ -149,11 +159,21 @@ tidy.estimateEffect <- function(x, ...) {
   s <- summary(x)
   topics <- s$topics
   names(s$tables) <- s$topics
-  ret <- purrr::map_dfr(s$tables, dplyr::as_tibble,
-                        rownames = "term", .id = "topic")
+  ret <- purrr::map_dfr(
+    s$tables,
+    dplyr::as_tibble,
+    rownames = "term",
+    .id = "topic"
+  )
   ret$topic <- as.integer(ret$topic)
-  colnames(ret) <- c("topic", "term", "estimate", "std.error",
-                     "statistic", "p.value")
+  colnames(ret) <- c(
+    "topic",
+    "term",
+    "estimate",
+    "std.error",
+    "statistic",
+    "p.value"
+  )
   ret
 }
 
@@ -161,9 +181,11 @@ tidy.estimateEffect <- function(x, ...) {
 #' @return `glance` returns a tibble with exactly one row of model summaries.
 #' @export
 glance.estimateEffect <- function(x, ...) {
-  ret <- tibble(k = length(x[['topics']]),
-                docs = nrow(x[['modelframe']]),
-                uncertainty = x[['uncertainty']])
+  ret <- tibble(
+    k = length(x[['topics']]),
+    docs = nrow(x[['modelframe']]),
+    uncertainty = x[['uncertainty']]
+  )
   ret
 }
 
@@ -183,8 +205,10 @@ augment.STM <- function(x, data, ...) {
     stop("data argument must be provided in order to augment a stm model")
   }
 
-  if (inherits(data, "data.frame") &&
-      (all(c("document", "term") %in% colnames(data)))) {
+  if (
+    inherits(data, "data.frame") &&
+      (all(c("document", "term") %in% colnames(data)))
+  ) {
     data$value <- 1
     mat <- cast_dfm(data, document, term, value)
     data$value <- NULL

@@ -38,7 +38,6 @@ test_that("Can cast_sparse with tidyeval", {
   expect_identical(m, m2)
 })
 
-
 test_that("Can cast tables into a sparse DocumentTermMatrix", {
   skip_if_not_installed("tm")
   d <- cast_dtm(dat, a, b, val)
@@ -75,4 +74,3 @@ test_that("Can cast tables into a sparse dfm", {
   expect_equal(as.numeric(d[1, 1]), 1)
   expect_equal(as.numeric(d[2, 3]), 4)
 })
-

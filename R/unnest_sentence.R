@@ -36,18 +36,19 @@ unnest_sentences <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- match.arg(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                token = "sentences",
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                strip_punct = strip_punct,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    token = "sentences",
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    strip_punct = strip_punct,
+    ...
   )
 }
 
@@ -63,17 +64,18 @@ unnest_lines <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- match.arg(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                token = "lines",
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    token = "lines",
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    ...
   )
 }
 
@@ -90,18 +92,18 @@ unnest_paragraphs <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- match.arg(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                token = "paragraphs",
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                paragraph_break = paragraph_break,
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    token = "paragraphs",
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    paragraph_break = paragraph_break,
+    ...
   )
 }
-

@@ -1,4 +1,3 @@
-
 test_that("Can tidy corpus from tm package", {
   skip_if_not_installed("tm")
   # tm package examples
@@ -11,11 +10,11 @@ test_that("Can tidy corpus from tm package", {
   td <- tidy(ovid, collapse = " ")
 
   expect_equal(length(ovid), nrow(td))
-  expect_equal(paste(as.character(ovid[[1]]), collapse = " "),
-               unname(td$text[1]))
-
+  expect_equal(
+    paste(as.character(ovid[[1]]), collapse = " "),
+    unname(td$text[1])
+  )
 })
-
 
 test_that("Can tidy corpus from quanteda package", {
   skip_if_not_installed("quanteda")

@@ -31,16 +31,17 @@ unnest_ptb <- function(
   drop = TRUE,
   collapse = NULL,
   ...
-){
+) {
   format <- arg_match(format)
-  unnest_tokens(tbl,
-                !! enquo(output),
-                !! enquo(input),
-                format = format,
-                to_lower = to_lower,
-                drop = drop,
-                collapse = collapse,
-                token = "ptb",
-                ...
+  unnest_tokens(
+    tbl,
+    !!enquo(output),
+    !!enquo(input),
+    format = format,
+    to_lower = to_lower,
+    drop = drop,
+    collapse = collapse,
+    token = "ptb",
+    ...
   )
 }

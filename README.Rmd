@@ -93,7 +93,7 @@ We can also use `count()` to find the most common words in all the books as a wh
 
 ```{r}
 tidy_books %>%
-  count(word, sort = TRUE) 
+  count(word, sort = TRUE)
 ```
 
 Sentiment analysis can be implemented as an inner join. Three sentiment lexicons are available via the `get_sentiments()` function. Let's examine how sentiment changes across each novel. Let's find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.
@@ -105,9 +105,13 @@ library(tidyr)
 get_sentiments("bing")
 
 janeaustensentiment <- tidy_books %>%
-  inner_join(get_sentiments("bing"), by = "word", relationship = "many-to-many") %>% 
-  count(book, index = line %/% 80, sentiment) %>% 
-  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>% 
+  inner_join(
+    get_sentiments("bing"),
+    by = "word",
+    relationship = "many-to-many"
+  ) %>%
+  count(book, index = line %/% 80, sentiment) %>%
+  pivot_wider(names_from = sentiment, values_from = n, values_fill = 0) %>%
   mutate(sentiment = positive - negative)
 
 janeaustensentiment
@@ -167,8 +171,10 @@ comparison <- tidy(AssociatedPress) %>%
   rename(AP = n) %>%
   inner_join(count(tidy_books, word)) %>%
   rename(Austen = n) %>%
-  mutate(AP = AP / sum(AP),
-         Austen = Austen / sum(Austen))
+  mutate(
+    AP = AP / sum(AP),
+    Austen = Austen / sum(Austen)
+  )
 
 
 comparison
@@ -176,8 +182,7 @@ comparison
 library(scales)
 ggplot(comparison, aes(AP, Austen)) +
   geom_point(alpha = 0.5) +
-  geom_text(aes(label = word), check_overlap = TRUE,
-            vjust = 1, hjust = 1) +
+  geom_text(aes(label = word), check_overlap = TRUE, vjust = 1, hjust = 1) +
   scale_x_log10(labels = percent_format()) +
   scale_y_log10(labels = percent_format()) +
   geom_abline(color = "red")

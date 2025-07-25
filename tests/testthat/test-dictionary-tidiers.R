@@ -1,4 +1,3 @@
-
 if (requireNamespace("quanteda", quietly = TRUE)) {
   test_that("can tidy a quanteda dictionary", {
     lst <- list(

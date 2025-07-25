@@ -95,13 +95,23 @@
 #' h %>%
 #'   unnest_tokens(word, text, format = "html")
 #'
-unnest_tokens <- function(tbl, output, input, token = "words",
-                          format = c(
-                            "text", "man", "latex",
-                            "html", "xml"
-                          ),
-                          to_lower = TRUE, drop = TRUE,
-                          collapse = NULL, ...) {
+unnest_tokens <- function(
+  tbl,
+  output,
+  input,
+  token = "words",
+  format = c(
+    "text",
+    "man",
+    "latex",
+    "html",
+    "xml"
+  ),
+  to_lower = TRUE,
+  drop = TRUE,
+  collapse = NULL,
+  ...
+) {
   output <- enquo(output)
   input <- enquo(input)
   format <- arg_match(format)
@@ -109,7 +119,6 @@ unnest_tokens <- function(tbl, output, input, token = "words",
   tokenfunc <- find_function(token, format, to_lower, ...)
 
   if (!is_null(collapse)) {
-
     if (is_logical(collapse)) {
       rlang::abort("`collapse` must be `NULL` or a character vector")
     }
@@ -118,17 +127,17 @@ unnest_tokens <- function(tbl, output, input, token = "words",
     }
     if (any(!purrr::map_lgl(tbl, is_atomic))) {
       rlang::abort(
-        paste0("If collapse != NULL (such as for unnesting by sentence or paragraph),\n",
-               "unnest_tokens needs all input columns to be atomic vectors (not lists)")
+        paste0(
+          "If collapse != NULL (such as for unnesting by sentence or paragraph),\n",
+          "unnest_tokens needs all input columns to be atomic vectors (not lists)"
+        )
       )
     }
 
     tbl <- group_by(tbl, !!!syms(collapse))
   }
 
-
   if (is_grouped_df(tbl)) {
-
     tbl <- tbl %>%
       ungroup() %>%
       mutate(new_groups = cumsum(c(1, diff(group_indices(tbl)) != 0))) %>%
@@ -137,20 +146,21 @@ unnest_tokens <- function(tbl, output, input, token = "words",
       group_by(!!!groups(tbl)) %>%
       dplyr::select(-new_groups)
 
-    if(!is_null(collapse)) {
+    if (!is_null(collapse)) {
       tbl <- ungroup(tbl)
     }
-
   }
 
   col <- pull(tbl, !!input)
   output_lst <- tokenfunc(col, ...)
 
   if (!(is.list(output_lst) && length(output_lst) == nrow(tbl))) {
-    rlang::abort(sprintf(
-      "Expected output of tokenizing function to be a list of length %d",
-      nrow(tbl)
-    ))
+    rlang::abort(
+      sprintf(
+        "Expected output of tokenizing function to be a list of length %d",
+        nrow(tbl)
+      )
+    )
   }
 
   output <- quo_name(output)
@@ -175,7 +185,6 @@ unnest_tokens <- function(tbl, output, input, token = "words",
 }
 
 find_function <- function(token, format, to_lower, ...) {
-
   if (is_function(token)) {
     tokenfunc <- token
     return(tokenfunc)
@@ -186,32 +195,53 @@ find_function <- function(token, format, to_lower, ...) {
       I('Support for `token = "tweets"`')
     )
   }
-  if (token %in% c(
-    "word", "character",
-    "character_shingle", "ngram",
-    "skip_ngram", "sentence", "line",
-    "paragraph", "tweet"
-  )) {
-    cli::cli_abort(c(
-      "Token must be a supported type, or a function that takes a character vector as input",
-      i = 'Did you mean `token = "{token}s"`?'
-    ))
+  if (
+    token %in%
+      c(
+        "word",
+        "character",
+        "character_shingle",
+        "ngram",
+        "skip_ngram",
+        "sentence",
+        "line",
+        "paragraph",
+        "tweet"
+      )
+  ) {
+    cli::cli_abort(
+      c(
+        "Token must be a supported type, or a function that takes a character vector as input",
+        i = 'Did you mean `token = "{token}s"`?'
+      )
+    )
   }
   if (format != "text") {
     if (token != "words") {
-      rlang::abort("Cannot tokenize by any unit except words when format is not text")
+      rlang::abort(
+        "Cannot tokenize by any unit except words when format is not text"
+      )
     }
     rlang::check_installed("hunspell")
-    tokenfunc <- function(col, ...) hunspell::hunspell_parse(
-      col,
-      format = format
-    )
+    tokenfunc <- function(col, ...) {
+      hunspell::hunspell_parse(
+        col,
+        format = format
+      )
+    }
   } else {
     tf <- get(paste0("tokenize_", token))
-    if (token %in% c(
-      "characters", "character_shingles", "words",
-      "ngrams", "skip_ngrams", "ptb"
-    )) {
+    if (
+      token %in%
+        c(
+          "characters",
+          "character_shingles",
+          "words",
+          "ngrams",
+          "skip_ngrams",
+          "ptb"
+        )
+    ) {
       tokenfunc <- function(col, ...) tf(col, lowercase = to_lower, ...)
     } else {
       tokenfunc <- tf
@@ -220,4 +250,3 @@ find_function <- function(token, format, to_lower, ...) {
 
   tokenfunc
 }
-

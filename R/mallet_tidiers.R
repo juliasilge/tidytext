@@ -77,8 +77,14 @@
 #' }
 #'
 #' @export
-tidy.jobjRef <- function(x, matrix = c("beta", "gamma"), log = FALSE,
-                         normalized = TRUE, smoothed = TRUE, ...) {
+tidy.jobjRef <- function(
+  x,
+  matrix = c("beta", "gamma"),
+  log = FALSE,
+  normalized = TRUE,
+  smoothed = TRUE,
+  ...
+) {
   s <- x$toString()
   if (!stringr::str_detect(s, "TopicModel")) {
     stop("Don't know how to tidy jobjRef ", s)

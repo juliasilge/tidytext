@@ -23,7 +23,6 @@
 #' @source <https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html>
 "sentiments"
 
-
 #' Get a tidy data frame of a single sentiment lexicon
 #'
 #' Get specific sentiment lexicons in a tidy format, with one row per word,
@@ -54,9 +53,11 @@
 get_sentiments <- function(lexicon = c("bing", "afinn", "loughran", "nrc")) {
   lexicon <- match.arg(lexicon)
 
-  lexicon_names <- list(afinn    = "AFINN",
-                        loughran = "Loughran-McDonald",
-                        nrc      = "NRC word-emotion association")
+  lexicon_names <- list(
+    afinn = "AFINN",
+    loughran = "Loughran-McDonald",
+    nrc = "NRC word-emotion association"
+  )
 
   if (lexicon != "bing" && !requireNamespace("textdata", quietly = TRUE)) {
     msg <- "The textdata package is required to download the {lexicon_names[[lexicon]]} lexicon.\nInstall the textdata package to access this dataset."
@@ -65,10 +66,10 @@ get_sentiments <- function(lexicon = c("bing", "afinn", "loughran", "nrc")) {
 
   switch(
     lexicon,
-    afinn    = textdata::lexicon_afinn(),
-    nrc      = textdata::lexicon_nrc(),
+    afinn = textdata::lexicon_afinn(),
+    nrc = textdata::lexicon_nrc(),
     loughran = textdata::lexicon_loughran(),
-    bing     = tidytext::sentiments,
+    bing = tidytext::sentiments,
     stop("Unexpected lexicon", call. = FALSE)
   )
 }
