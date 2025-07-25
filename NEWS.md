@@ -1,5 +1,7 @@
 # tidytext (development version)
 
+* Switched package examples, documentation, etc to use R's native pipe (#249)
+
 # tidytext 0.4.3
 
 * Updated package anchors in roxygen comments
