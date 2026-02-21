@@ -17,7 +17,6 @@ opts_chunk$set(
   warning = FALSE,
   eval = requireNamespace("tm", quietly = TRUE)
 )
-options(width = 100, dplyr.width = 150)
 library(ggplot2)
 theme_set(theme_bw())
 ```
@@ -26,7 +25,7 @@ Topic modeling is a method for unsupervised classification of documents, by mode
 
 We can use tidy text principles, as described in [the main vignette](tidytext.html), to approach topic modeling using consistent and effective tools. In particular, we'll be using tidying functions for LDA objects from the [topicmodels package](https://cran.r-project.org/package=topicmodels).
 
-### Can we tell the difference between Dickens, Wells, Verne, and Austen?
+## Can we tell the difference between Dickens, Wells, Verne, and Austen?
 
 Suppose a vandal has broken into your study and torn apart four of your books:
 
@@ -37,7 +36,7 @@ Suppose a vandal has broken into your study and torn apart four of your books:
 
 This vandal has torn the books into individual chapters, and left them in one large pile. How can we restore these disorganized chapters to their original books?
 
-#### Setup
+## Setup
 
 ```{r}
 #| label = "packages"
@@ -73,7 +72,7 @@ load(system.file("extdata", "books.rda", package = "tidytext"))
 books
 ```
 
-As pre-processing, we divide these into chapters, use tidytext's `unnest_tokens` to separate them into words, then remove `stop_words`. We're treating every chapter as a separate "document", each with a name like `Great Expectations_1` or `Pride and Prejudice_11`.
+As pre-processing, we divide these into chapters, use tidytext's `unnest_tokens` to separate them into words, then remove `stop_words`.^[Note that you [typically don't want to remove stop words before building topic models](http://dx.doi.org/10.1162/tacl_a_00099).] We're treating every chapter as a separate "document", each with a name like `Great Expectations_1` or `Pride and Prejudice_11`.
 
 ```{r}
 #| label = "word_counts"
@@ -100,7 +99,7 @@ word_counts <- by_chapter_word |>
 word_counts
 ```
 
-### Latent Dirichlet Allocation with the topicmodels package
+## Latent Dirichlet Allocation with the topicmodels package
 
 Right now this data frame is in a tidy form, with one-term-per-document-per-row. However, the topicmodels package requires a `DocumentTermMatrix` (from the tm package). As described in [this vignette](tidying_casting.html), we can cast a one-token-per-row table into a `DocumentTermMatrix` with tidytext's `cast_dtm`:
 
@@ -166,7 +165,7 @@ top_terms |>
 
 These topics are pretty clearly associated with the four books! There's no question that the topic of "nemo", "sea", and "nautilus" belongs to *Twenty Thousand Leagues Under the Sea*, and that "jane", "darcy", and "elizabeth" belongs to *Pride and Prejudice*. We see "pip" and "joe" from *Great Expectations* and "martians", "black", and "night" from *The War of the Worlds*.
 
-#### Per-document classification
+## Per-document classification
 
 Each chapter was a "document" in this analysis. Thus, we may want to know which topics are associated with each document. Can we put the chapters back together in the correct books?
 
@@ -234,7 +233,7 @@ chapter_classifications |>
 
 We see that only a few chapters from *Great Expectations* were misclassified. Not bad for unsupervised clustering!
 
-#### By word assignments: `augment`
+## By word assignments: `augment`
 
 One important step in the topic modeling expectation-maximization algorithm is assigning each word in each document to a topic. The more words in a document are assigned to that topic, generally, the more weight (`gamma`) will go on that document-topic classification.
 
@@ -278,11 +277,4 @@ wrong_words |>
   arrange(desc(n))
 ```
 
-Notice the word "flopson" here; these wrong words do not necessarily appear in the novels they were misassigned to. Indeed, we can confirm "flopson" appears only in *Great Expectations*:
-
-```{r}
-word_counts |>
-  filter(word == "flopson")
-```
-
-The algorithm is stochastic and iterative, and it can accidentally land on a topic that spans multiple books.
+It seems like it is especially difficult to distinguish *Great Expectations* from *The War of the Worlds*.
