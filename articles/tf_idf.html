@@ -57,6 +57,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/structual-topic-model.html">Structural Topic Model with Tidy Tools</a>
+    </li>
+    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
@@ -96,7 +99,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2025-07-25</h4>
+            <h4 data-toc-skip class="date">2026-02-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/main/vignettes/tf_idf.Rmd" class="external-link"><code>vignettes/tf_idf.Rmd</code></a></small>
       <div class="hidden name"><code>tf_idf.Rmd</code></div>
@@ -172,7 +175,7 @@ terms (words) in that novel. This is exactly what term frequency is.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_continuous</a></span><span class="op">(</span>limits <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="cn">NA</span>, <span class="fl">0.0009</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">book</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_y"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tf_idf_files/figure-html/unnamed-chunk-3-1.png" alt="Histograms for word counts in Jane Austen's novels" width="672"></p>
+<p><img src="tf_idf_files/figure-html/unnamed-chunk-3-1.png" class="r-plt" alt="Histograms for word counts in Jane Austen's novels" width="672"></p>
 <p>There are very long tails to the right for these novels (those
 extremely common words!) that we have not shown in these plots. These
 plots exhibit similar distributions for all the novels, with many words
@@ -275,7 +278,7 @@ etc. Let’s look specifically at <em>Pride and Prejudice</em>.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

@@ -57,6 +57,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/structual-topic-model.html">Structural Topic Model with Tidy Tools</a>
+    </li>
+    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
@@ -96,7 +99,7 @@ Corpus objects</h1>
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2025-07-25</h4>
+            <h4 data-toc-skip class="date">2026-02-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/main/vignettes/tidying_casting.Rmd" class="external-link"><code>vignettes/tidying_casting.Rmd</code></a></small>
       <div class="hidden name"><code>tidying_casting.Rmd</code></div>
@@ -191,10 +194,10 @@ sentiment:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Contribution to sentiment"</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>&lt;img
 src=“/home/runner/work/tidytext/tidytext/docs/articles/tidying_casting_files/figure-html/unnamed-chunk-7-1.png”
-alt=“Bar charts for the contribution of words to sentiment scores. The
-words”like” and “work” contribute the most to positive sentiment, and
-the words “killed” and “death” contribute the most to negative
-sentiment” width=“672” /&gt;</p>
+class=“r-plt” alt=“Bar charts for the contribution of words to sentiment
+scores. The words”like” and “work” contribute the most to positive
+sentiment, and the words “killed” and “death” contribute the most to
+negative sentiment” width=“672” /&gt;</p>
 <p>Note that a tidier is also available for the <code>dfm</code> class
 from the quanteda package:</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
@@ -508,9 +511,9 @@ effect size with the significance:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Estimated change over time"</span>, y <span class="op">=</span> <span class="st">"Adjusted p-value"</span><span class="op">)</span></span></code></pre></div>
 <p>&lt;img
 src=“/home/runner/work/tidytext/tidytext/docs/articles/tidying_casting_files/figure-html/unnamed-chunk-16-1.png”
-alt=“Volcano plot showing that words like”america” and “world” have
-increased over time with small p-values, while words like “public” and
-“institution” have decreased” width=“672” /&gt;</p>
+class=“r-plt” alt=“Volcano plot showing that words like”america” and
+“world” have increased over time with small p-values, while words like
+“public” and “institution” have decreased” width=“672” /&gt;</p>
 <p>We can also use the ggplot2 package to display the top 6 terms that
 have changed in frequency over time.</p>
 <div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
@@ -527,8 +530,8 @@ have changed in frequency over time.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>y <span class="op">=</span> <span class="st">"Frequency of word in speech"</span><span class="op">)</span></span></code></pre></div>
 <p>&lt;img
 src=“/home/runner/work/tidytext/tidytext/docs/articles/tidying_casting_files/figure-html/unnamed-chunk-17-1.png”
-alt=“Scatterplot with LOESS smoothing lines showing that the
-words”america”, “americans”, “century”, “children”, “democracy”, and
+class=“r-plt” alt=“Scatterplot with LOESS smoothing lines showing that
+the words”america”, “americans”, “century”, “children”, “democracy”, and
 “god” have increased over time” width=“672” /&gt;</p>
 </div>
   </div>
@@ -548,7 +551,7 @@ words”america”, “americans”, “century”, “children”, “democracy
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

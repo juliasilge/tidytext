@@ -57,6 +57,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/structual-topic-model.html">Structural Topic Model with Tidy Tools</a>
+    </li>
+    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
@@ -95,7 +98,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2025-07-25</h4>
+            <h4 data-toc-skip class="date">2026-02-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/main/vignettes/articles/topic_modeling.Rmd" class="external-link"><code>vignettes/articles/topic_modeling.Rmd</code></a></small>
       <div class="hidden name"><code>topic_modeling.Rmd</code></div>
@@ -113,10 +116,10 @@ topic model.</p>
 using consistent and effective tools. In particular, we’ll be using
 tidying functions for LDA objects from the <a href="https://cran.r-project.org/package=topicmodels" class="external-link">topicmodels
 package</a>.</p>
-<div class="section level3">
-<h3 id="can-we-tell-the-difference-between-dickens-wells-verne-and-austen">Can we tell the difference between Dickens, Wells, Verne, and
+<div class="section level2">
+<h2 id="can-we-tell-the-difference-between-dickens-wells-verne-and-austen">Can we tell the difference between Dickens, Wells, Verne, and
 Austen?<a class="anchor" aria-label="anchor" href="#can-we-tell-the-difference-between-dickens-wells-verne-and-austen"></a>
-</h3>
+</h2>
 <p>Suppose a vandal has broken into your study and torn apart four of
 your books:</p>
 <ul>
@@ -132,9 +135,10 @@ your books:</p>
 <p>This vandal has torn the books into individual chapters, and left
 them in one large pile. How can we restore these disorganized chapters
 to their original books?</p>
-<div class="section level4">
-<h4 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
-</h4>
+</div>
+<div class="section level2">
+<h2 id="setup">Setup<a class="anchor" aria-label="anchor" href="#setup"></a>
+</h2>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://dplyr.tidyverse.org" class="external-link">dplyr</a></span><span class="op">)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://docs.ropensci.org/gutenbergr/" class="external-link">gutenbergr</a></span><span class="op">)</span></span></code></pre></div>
@@ -150,22 +154,22 @@ to their original books?</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">books</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 51,663 × 3</span></span></span>
-<span><span class="co">##    gutenberg_id text                                                          title                </span></span>
-<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                         <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>           36 <span style="color: #949494;">"</span>The War of the Worlds<span style="color: #949494;">"</span>                                       The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>           36 <span style="color: #949494;">""</span>                                                            The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>           36 <span style="color: #949494;">"</span>by H. G. Wells [1898]<span style="color: #949494;">"</span>                                       The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>           36 <span style="color: #949494;">""</span>                                                            The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>           36 <span style="color: #949494;">""</span>                                                            The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>           36 <span style="color: #949494;">"</span>     But who shall dwell in these worlds if they be<span style="color: #949494;">"</span>         The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>           36 <span style="color: #949494;">"</span>     inhabited? .  .  .  Are we or they Lords of the<span style="color: #949494;">"</span>        The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>           36 <span style="color: #949494;">"</span>     World? .  .  .  And how are all things made for man?--<span style="color: #949494;">"</span> The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>           36 <span style="color: #949494;">"</span>          KEPLER (quoted in The Anatomy of Melancholy)<span style="color: #949494;">"</span>      The War of the Worlds</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>           36 <span style="color: #949494;">""</span>                                                            The War of the Worlds</span></span>
+<span><span class="co">##    gutenberg_id text                                                       title</span></span>
+<span><span class="co">##           <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                      <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>           36 <span style="color: #949494;">"</span>The War of the Worlds<span style="color: #949494;">"</span>                                    The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>           36 <span style="color: #949494;">""</span>                                                         The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>           36 <span style="color: #949494;">"</span>by H. G. Wells [1898]<span style="color: #949494;">"</span>                                    The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>           36 <span style="color: #949494;">""</span>                                                         The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>           36 <span style="color: #949494;">""</span>                                                         The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>           36 <span style="color: #949494;">"</span>     But who shall dwell in these worlds if they be<span style="color: #949494;">"</span>      The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>           36 <span style="color: #949494;">"</span>     inhabited? .  .  .  Are we or they Lords of the<span style="color: #949494;">"</span>     The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>           36 <span style="color: #949494;">"</span>     World? .  .  .  And how are all things made for man… The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>           36 <span style="color: #949494;">"</span>          KEPLER (quoted in The Anatomy of Melancholy)<span style="color: #949494;">"</span>   The …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>           36 <span style="color: #949494;">""</span>                                                         The …</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 51,653 more rows</span></span></span></code></pre>
 <p>As pre-processing, we divide these into chapters, use tidytext’s
 <code>unnest_tokens</code> to separate them into words, then remove
-<code>stop_words</code>. We’re treating every chapter as a separate
+<code>stop_words</code>.<a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> We’re treating every chapter as a separate
 “document”, each with a name like <code>Great Expectations_1</code> or
 <code>Pride and Prejudice_11</code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -205,10 +209,9 @@ to their original books?</p>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds_16 brother    50</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 104,694 more rows</span></span></span></code></pre>
 </div>
-</div>
-<div class="section level3">
-<h3 id="latent-dirichlet-allocation-with-the-topicmodels-package">Latent Dirichlet Allocation with the topicmodels package<a class="anchor" aria-label="anchor" href="#latent-dirichlet-allocation-with-the-topicmodels-package"></a>
-</h3>
+<div class="section level2">
+<h2 id="latent-dirichlet-allocation-with-the-topicmodels-package">Latent Dirichlet Allocation with the topicmodels package<a class="anchor" aria-label="anchor" href="#latent-dirichlet-allocation-with-the-topicmodels-package"></a>
+</h2>
 <p>Right now this data frame is in a tidy form, with
 one-term-per-document-per-row. However, the topicmodels package requires
 a <code>DocumentTermMatrix</code> (from the tm package). As described in
@@ -297,7 +300,7 @@ within each topic:</p>
 <p>This model lends itself to a visualization:</p>
 <div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">top_terms</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate.html" class="external-link">mutate</a></span><span class="op">(</span>term <span class="op">=</span> <span class="fu"><a href="../reference/reorder_within.html">reorder_within</a></span><span class="op">(</span><span class="va">term</span>, <span class="va">beta</span>, <span class="va">topic</span><span class="op">)</span><span class="op">)</span> <span class="op">|&gt;</span></span>
@@ -305,7 +308,7 @@ within each topic:</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="../reference/reorder_within.html">scale_x_reordered</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="topic_modeling_files/figure-html/top_terms_plot-1.png" alt="The highest probability words from each of the four topics" width="672"></p>
+<p><img src="topic_modeling_files/figure-html/top_terms_plot-1.png" class="r-plt" alt="The highest probability words from each of the four topics" width="672"></p>
 <p>These topics are pretty clearly associated with the four books!
 There’s no question that the topic of “nemo”, “sea”, and “nautilus”
 belongs to <em>Twenty Thousand Leagues Under the Sea</em>, and that
@@ -313,9 +316,10 @@ belongs to <em>Twenty Thousand Leagues Under the Sea</em>, and that
 Prejudice</em>. We see “pip” and “joe” from <em>Great Expectations</em>
 and “martians”, “black”, and “night” from <em>The War of the
 Worlds</em>.</p>
-<div class="section level4">
-<h4 id="per-document-classification">Per-document classification<a class="anchor" aria-label="anchor" href="#per-document-classification"></a>
-</h4>
+</div>
+<div class="section level2">
+<h2 id="per-document-classification">Per-document classification<a class="anchor" aria-label="anchor" href="#per-document-classification"></a>
+</h2>
 <p>Each chapter was a “document” in this analysis. Thus, we may want to
 know which topics are associated with each document. Can we put the
 chapters back together in the correct books?</p>
@@ -364,7 +368,7 @@ into title and chapter:</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">chapters_lda_gamma</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">gamma</span>, fill <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">topic</span><span class="op">)</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_histogram.html" class="external-link">geom_histogram</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">title</span><span class="op">)</span>, nrow <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
-<p><img src="topic_modeling_files/figure-html/chapters_lda_gamma_plot-1.png" alt="Histograms for the document-topic probabilities plotted for each book" width="768"></p>
+<p><img src="topic_modeling_files/figure-html/chapters_lda_gamma_plot-1.png" class="r-plt" alt="Histograms for the document-topic probabilities plotted for each book" width="768"></p>
 <p>We notice that almost all of the chapters from <em>Pride and
 Prejudice</em>, <em>War of the Worlds</em>, and <em>Twenty Thousand
 Leagues Under the Sea</em> were uniquely identified as a single topic
@@ -415,19 +419,19 @@ we note is correct based on our earlier visualization:</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/mutate-joins.html" class="external-link">inner_join</a></span><span class="op">(</span><span class="va">book_topics</span>, by <span class="op">=</span> <span class="st">"topic"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 5 × 3</span></span></span>
-<span><span class="co">##   title                                 consensus                                 n</span></span>
-<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations                    Great Expectations                       58</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> Great Expectations                    The War of the Worlds                     1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">3</span> Pride and Prejudice                   Pride and Prejudice                      61</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">4</span> The War of the Worlds                 The War of the Worlds                    27</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">5</span> Twenty Thousand Leagues under the Sea Twenty Thousand Leagues under the Sea    46</span></span></code></pre>
+<span><span class="co">##   title                                 consensus                              n</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                              <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations                    Great Expectations                    58</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> Great Expectations                    The War of the Worlds                  1</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> Pride and Prejudice                   Pride and Prejudice                   61</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> The War of the Worlds                 The War of the Worlds                 27</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">5</span> Twenty Thousand Leagues under the Sea Twenty Thousand Leagues under the…    46</span></span></code></pre>
 <p>We see that only a few chapters from <em>Great Expectations</em> were
 misclassified. Not bad for unsupervised clustering!</p>
 </div>
-<div class="section level4">
-<h4 id="by-word-assignments-augment">By word assignments: <code>augment</code><a class="anchor" aria-label="anchor" href="#by-word-assignments-augment"></a>
-</h4>
+<div class="section level2">
+<h2 id="by-word-assignments-augment">By word assignments: <code>augment</code><a class="anchor" aria-label="anchor" href="#by-word-assignments-augment"></a>
+</h2>
 <p>One important step in the topic modeling expectation-maximization
 algorithm is assigning each word in each document to a topic. The more
 words in a document are assigned to that topic, generally, the more
@@ -467,18 +471,14 @@ words were incorrectly classified.</p>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">title</span>, <span class="va">consensus</span>, wt <span class="op">=</span> <span class="va">count</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://tidyr.tidyverse.org/reference/pivot_wider.html" class="external-link">pivot_wider</a></span><span class="op">(</span>names_from <span class="op">=</span> <span class="va">consensus</span>, values_from <span class="op">=</span> <span class="va">n</span>, values_fill <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 4 × 5</span></span></span>
-<span><span class="co">##   title                                 `Great Expectations` `Pride and Prejudice`</span></span>
-<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                                <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations                                   <span style="text-decoration: underline;">50</span>635                   733</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> Pride and Prejudice                                      0                 <span style="text-decoration: underline;">37</span>242</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">3</span> The War of the Worlds                                    0                     0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">4</span> Twenty Thousand Leagues under the Sea                    3                     1</span></span>
-<span><span class="co">##   `The War of the Worlds` `Twenty Thousand Leagues under the Sea`</span></span>
-<span><span class="co">##                     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span>                    <span style="text-decoration: underline;">4</span>193                                       3</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span>                       0                                       0</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">3</span>                   <span style="text-decoration: underline;">22</span>559                                       9</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">4</span>                       0                                   <span style="text-decoration: underline;">39</span>615</span></span></code></pre>
+<span><span class="co">##   title        `Great Expectations` `Pride and Prejudice` The War of the World…¹</span></span>
+<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                       <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>                  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expec…                <span style="text-decoration: underline;">50</span>635                   733                   <span style="text-decoration: underline;">4</span>193</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">2</span> Pride and P…                    0                 <span style="text-decoration: underline;">37</span>242                      0</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">3</span> The War of …                    0                     0                  <span style="text-decoration: underline;">22</span>559</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">4</span> Twenty Thou…                    3                     1                      0</span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ abbreviated name: ¹​`The War of the Worlds`</span></span></span>
+<span><span class="co">## <span style="color: #949494;"># ℹ 1 more variable: `Twenty Thousand Leagues under the Sea` &lt;dbl&gt;</span></span></span></code></pre>
 <p>We notice that almost all the words for <em>Pride and Prejudice</em>,
 <em>Twenty Thousand Leagues Under the Sea</em>, and <em>War of the
 Worlds</em> were correctly assigned, while <em>Great Expectations</em>
@@ -490,30 +490,18 @@ had a fair amount of misassignment.</p>
 <span></span>
 <span><span class="va">wrong_words</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3,641 × 6</span></span></span>
-<span><span class="co">##    title                                 chapter term     count .topic</span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations                         20 brother      1      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations                         37 brother      2      4</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations                         22 brother      4      4</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Twenty Thousand Leagues under the Sea       8 miss         1      3</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations                          5 sergeant    37      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations                         46 captain      1      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations                         32 captain      1      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> The War of the Worlds                      17 captain      5      2</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations                         54 sea          2      1</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations                          1 sea          2      1</span></span>
-<span><span class="co">##    consensus                            </span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> The War of the Worlds                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Pride and Prejudice                  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Pride and Prejudice                  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Great Expectations                   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> The War of the Worlds                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> The War of the Worlds                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> The War of the Worlds                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> Twenty Thousand Leagues under the Sea</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> The War of the Worlds                </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span> The War of the Worlds                </span></span>
+<span><span class="co">##    title                                 chapter term     count .topic consensus</span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                                   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span> Great Expectations                         20 brother      1      1 The War …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span> Great Expectations                         37 brother      2      4 Pride an…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span> Great Expectations                         22 brother      4      4 Pride an…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span> Twenty Thousand Leagues under the Sea       8 miss         1      3 Great Ex…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span> Great Expectations                          5 sergeant    37      1 The War …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span> Great Expectations                         46 captain      1      1 The War …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span> Great Expectations                         32 captain      1      1 The War …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span> The War of the Worlds                      17 captain      5      2 Twenty T…</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations                         54 sea          2      1 The War …</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations                          1 sea          2      1 The War …</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 3,631 more rows</span></span></span></code></pre>
 <div class="sourceCode" id="cb34"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">wrong_words</span> <span class="op">|&gt;</span></span>
@@ -533,21 +521,15 @@ had a fair amount of misassignment.</p>
 <span><span class="co">## <span style="color: #BCBCBC;"> 9</span> Great Expectations The War of the Worlds london      18</span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span> Great Expectations The War of the Worlds people      18</span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 2,810 more rows</span></span></span></code></pre>
-<p>Notice the word “flopson” here; these wrong words do not necessarily
-appear in the novels they were misassigned to. Indeed, we can confirm
-“flopson” appears only in <em>Great Expectations</em>:</p>
-<div class="sourceCode" id="cb36"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">word_counts</span> <span class="op">|&gt;</span></span>
-<span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">word</span> <span class="op">==</span> <span class="st">"flopson"</span><span class="op">)</span></span></code></pre></div>
-<pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 3 × 3</span></span></span>
-<span><span class="co">##   title_chapter         word        n</span></span>
-<span><span class="co">##   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>                 <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">1</span> Great Expectations_22 flopson    10</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">2</span> Great Expectations_23 flopson     7</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">3</span> Great Expectations_33 flopson     1</span></span></code></pre>
-<p>The algorithm is stochastic and iterative, and it can accidentally
-land on a topic that spans multiple books.</p>
+<p>It seems like it is especially difficult to distinguish <em>Great
+Expectations</em> from <em>The War of the Worlds</em>.</p>
 </div>
+<div class="footnotes footnotes-end-of-document">
+<hr>
+<ol>
+<li id="fn1"><p>Note that you <a href="http://dx.doi.org/10.1162/tacl_a_00099" class="external-link">typically don’t want to
+remove stop words before building topic models</a>.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
   </div>
 
@@ -566,7 +548,7 @@ land on a topic that spans multiple books.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>

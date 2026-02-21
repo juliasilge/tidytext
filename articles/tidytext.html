@@ -57,6 +57,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/structual-topic-model.html">Structural Topic Model with Tidy Tools</a>
+    </li>
+    <li>
       <a href="../articles/tf_idf.html">Term Frequency and Inverse Document Frequency (tf-idf) Using Tidy Data Principles</a>
     </li>
     <li>
@@ -95,7 +98,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2025-07-25</h4>
+            <h4 data-toc-skip class="date">2026-02-21</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/main/vignettes/tidytext.Rmd" class="external-link"><code>vignettes/tidytext.Rmd</code></a></small>
       <div class="hidden name"><code>tidytext.Rmd</code></div>
@@ -258,7 +261,7 @@ each novel.</p>
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">janeaustensentiment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">index</span>, <span class="va">sentiment</span>, fill <span class="op">=</span> <span class="va">book</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_bar</a></span><span class="op">(</span>stat <span class="op">=</span> <span class="st">"identity"</span>, show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">book</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="tidytext_files/figure-html/unnamed-chunk-8-1.png" alt="Sentiment scores across the trajectories of Jane Austen's six published novels" width="672"></p>
+<p><img src="tidytext_files/figure-html/unnamed-chunk-8-1.png" class="r-plt" alt="Sentiment scores across the trajectories of Jane Austen's six published novels" width="672"></p>
 </div>
 <div class="section level3">
 <h3 id="most-common-positive-and-negative-words">Most common positive and negative words<a class="anchor" aria-label="anchor" href="#most-common-positive-and-negative-words"></a>
@@ -300,10 +303,10 @@ tidy data frames.</p>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/labs.html" class="external-link">labs</a></span><span class="op">(</span>x <span class="op">=</span> <span class="st">"Contribution to sentiment"</span>, y <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span></span></code></pre></div>
 <p>&lt;img
 src=“/home/runner/work/tidytext/tidytext/docs/articles/tidytext_files/figure-html/unnamed-chunk-10-1.png”
-alt=“Bar charts for the contribution of words to sentiment scores. The
-words”well” and “good” contribute the most to positive sentiment, and
-the word “miss” contributes the most to negative sentiment” width=“672”
-/&gt;</p>
+class=“r-plt” alt=“Bar charts for the contribution of words to sentiment
+scores. The words”well” and “good” contribute the most to positive
+sentiment, and the word “miss” contributes the most to negative
+sentiment” width=“672” /&gt;</p>
 <p>This lets us spot an anomaly in the sentiment analysis; the word
 “miss” is coded as negative but it is used as a title for young,
 unmarried women in Jane Austen’s works. If it were appropriate for our
@@ -326,8 +329,8 @@ common words in Jane Austen’s works as a whole again.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/r/base/with.html" class="external-link">with</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/wordcloud.html" class="external-link">wordcloud</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">n</span>, max.words <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p>&lt;img
 src=“/home/runner/work/tidytext/tidytext/docs/articles/tidytext_files/figure-html/unnamed-chunk-11-1.png”
-alt=“Wordcloud showing that words like”mr”, “miss”, and “one” are most
-common in the works of Jane Austen” width=“576” /&gt;</p>
+class=“r-plt” alt=“Wordcloud showing that words like”mr”, “miss”, and
+“one” are most common in the works of Jane Austen” width=“576” /&gt;</p>
 <p>In other functions, such as <code>comparison.cloud</code>, you may
 need to turn it into a matrix with reshape2’s <code>acast</code>. Let’s
 do the sentiment analysis to tag positive and negative words using an
@@ -345,8 +348,8 @@ and dplyr because our data is in tidy format.</p>
 <span>  <span class="fu"><a href="https://rdrr.io/pkg/wordcloud/man/comparison.cloud.html" class="external-link">comparison.cloud</a></span><span class="op">(</span>colors <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#F8766D"</span>, <span class="st">"#00BFC4"</span><span class="op">)</span>, max.words <span class="op">=</span> <span class="fl">100</span><span class="op">)</span></span></code></pre></div>
 <p>&lt;img
 src=“/home/runner/work/tidytext/tidytext/docs/articles/tidytext_files/figure-html/wordcloud-1.png”
-alt=“Wordcloud showing that”well” and “good” are the most common
-positive sentiment words while “miss” is the most common negative
+class=“r-plt” alt=“Wordcloud showing that”well” and “good” are the most
+common positive sentiment words while “miss” is the most common negative
 sentiment word” width=“480” /&gt;</p>
 </div>
 <div class="section level3">
@@ -469,7 +472,7 @@ what a terrible mistake she realized it to be.</p>
 
 <div class="pkgdown">
   <p></p>
-<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+<p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
       </footer>
