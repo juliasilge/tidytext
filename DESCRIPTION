@@ -69,7 +69,7 @@ Suggests:
 VignetteBuilder: 
     knitr
 Config/Needs/website: 
-    ropensci/gutenbergr
+    ropensci/gutenbergr,
     taylor
 Config/testthat/edition: 3
 Encoding: UTF-8
