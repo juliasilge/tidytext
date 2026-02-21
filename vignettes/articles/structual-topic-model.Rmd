@@ -1,0 +1,143 @@
+---
+title: "Structural Topic Model with Tidy Tools"
+author: "Julia Silge and David Robinson"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Structural Topic Model with Tidy Tools}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r}
+#| echo = FALSE
+library(knitr)
+opts_chunk$set(
+  message = FALSE,
+  warning = FALSE,
+  eval = requireNamespace("tm", quietly = TRUE)
+)
+options(width = 100, dplyr.width = 150)
+library(ggplot2)
+theme_set(theme_bw())
+```
+
+Topic modeling is a method for unsupervised classification of documents, as introduced in [the previous vignette](articles/topic_modeling.html). The [Structural Topic Model (STM)](https://www.structuraltopicmodel.com/) is an extension of topic modeling that allows you to include document-level covariates that can affect topic prevalence or content. In this vignette, we'll show how to use tidy tools to fit an STM and interpret the results.
+
+## Taylor Swift lyrics
+
+Our modeling goal is to “discover” topics in the lyrics of Taylor Swift songs. Instead of a supervised or predictive model where our observations have labels, this is an unsupervised approach.
+
+```{r}
+library(tidyverse)
+library(taylor)
+glimpse(taylor_album_songs)
+```
+
+Notice that the lyrics variable contains nested tibbles with the texts of the songs; we’ll need to unnest these:
+
+```{r}
+library(tidytext)
+
+tidy_taylor <-
+  taylor_album_songs |>
+  filter(!str_detect(album_name, "Taylor's Version")) |> # remove Taylor's Version songs to avoid duplicates
+  unnest(lyrics) |>
+  unnest_tokens(word, lyric)
+
+tidy_taylor
+```
+
+
+## Train a topic model
+
+To train a topic model with the stm package, we need to create a sparse matrix from our tidy tibble of tokens. Let’s treat each Taylor Swift song as a document, and throw out words used three or fewer times in a song.
+
+```{r}
+lyrics_sparse <-
+  tidy_taylor |>
+  count(track_name, word) |>
+  filter(n > 3) |>
+  cast_sparse(track_name, word, n)
+
+dim(lyrics_sparse)
+```
+
+This means there are `r nrow(lyrics_sparse)` songs (i.e. documents) and `r ncol(lyrics_sparse)` different tokens (i.e. terms or words) in our dataset for modeling. Notice that I did _not_ remove stop words here. You [typically don't want to remove stop words before building topic models](http://dx.doi.org/10.1162/tacl_a_00099) but we will need to keep in mind that the highest probability words will look mostly the same from each topic.
+
+A topic model like this one models:
+
+- each **document** as a mixture of topics
+- each **topic** as a mixture of words
+
+The most important parameter when training a topic modeling is `K`, the number of topics. This is like `k` in k-means in that it is a hyperparamter of the model and we must choose this value ahead of time. We could [try multiple different values](https://juliasilge.com/blog/evaluating-stm/) to find the best value for `K`, but since this is Taylor Swift, let's use `K = 13`.
+
+One of the benefits of using the stm package is that we can include document-level covariates, for example in the prior for topic prevalence. To do this, we use the `prevalence` argument to specify a formula for how topic prevalence should be modeled as a function of our covariates. In this case, we'll use `album_name` as a covariate.
+
+```{r}
+library(stm)
+set.seed(123)
+topic_model <- stm(
+  lyrics_sparse,
+  K = 13,
+  prevalence = ~album_name,
+  data = tidy_taylor |> distinct(track_name, album_name),
+  verbose = FALSE
+)
+```
+
+To get a quick view of the results, we can use `summary()`.
+
+```{r}
+summary(topic_model)
+```
+
+Notice that we do in fact have fairly uninteresting and common words as the most common for _all_ the topics. This is because we did not remove stopwords.
+
+If you do find that for your analysis it is important to remove stopwords, you will need to make sure that the number of documents in your sparse matrix matches the number of rows in your covariate data. When you remove stopwords, some documents may become empty and get dropped from your document-term matrix, causing a mismatch with your covariate data. In such a case, you can create a covariate dataframe that only includes documents present in the sparse matrix.
+
+
+## Explore topic model results
+
+To explore more deeply, we can `tidy()` the topic model results to get a dataframe that we can compute on. If we did `tidy(topic_model)` that would give us the matrix of topic-word probabilities, i.e. the highest probability words from each topic. This is the boring one that is mostly common words like "you" and "me".
+
+We can alternatively use other metrics for identifying important words, like FREX (high frequency _and_ high exclusivity) or lift:
+
+```{r}
+tidy(topic_model, matrix = "lift")
+```
+
+This returns a ranked set of words (not the underlying metrics themselves) and gives us a much clearer idea of what makes each topic unique! What are the highest lift words for topic 10?
+
+```{r}
+tidy(topic_model, matrix = "lift") |>
+  filter(topic == 10)
+```
+
+We also can use `tidy()` to get the matrix of document-topic probabilities. For this, we need to pass in the `document_names`:
+
+```{r}
+lyrics_gamma <- tidy(
+  topic_model,
+  matrix = "gamma",
+  document_names = rownames(lyrics_sparse)
+)
+```
+
+How are these topics related to Taylor Swift's eras (i.e. albums)?
+
+```{r}
+#| fig-width: 10
+#| fig-height: 10
+lyrics_gamma |>
+  left_join(
+    taylor_album_songs |>
+      select(album_name, document = track_name) |>
+      mutate(album_name = fct_inorder(album_name))
+  ) |>
+  mutate(topic = factor(topic)) |>
+  ggplot(aes(gamma, topic, fill = topic)) +
+  geom_boxplot(alpha = 0.7, show.legend = FALSE) +
+  facet_wrap(vars(album_name)) +
+  labs(x = expression(gamma))
+```
