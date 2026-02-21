@@ -17,7 +17,6 @@ opts_chunk$set(
   warning = FALSE,
   eval = requireNamespace("tm", quietly = TRUE)
 )
-options(width = 100, dplyr.width = 150)
 library(ggplot2)
 theme_set(theme_bw())
 ```

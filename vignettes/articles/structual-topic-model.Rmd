@@ -15,9 +15,8 @@ library(knitr)
 opts_chunk$set(
   message = FALSE,
   warning = FALSE,
-  eval = requireNamespace("tm", quietly = TRUE)
+  eval = requireNamespace("stm", quietly = TRUE)
 )
-options(width = 100, dplyr.width = 150)
 library(ggplot2)
 theme_set(theme_bw())
 ```
@@ -41,7 +40,8 @@ library(tidytext)
 
 tidy_taylor <-
   taylor_album_songs |>
-  filter(!str_detect(album_name, "Taylor's Version")) |> # remove Taylor's Version songs to avoid duplicates
+  # remove Taylor's Version songs to avoid duplicates:
+  filter(!str_detect(album_name, "Taylor's Version")) |>
   unnest(lyrics) |>
   unnest_tokens(word, lyric)
 
