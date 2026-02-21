@@ -28,7 +28,11 @@ Topic modeling is a method for unsupervised classification of documents, as intr
 Our modeling goal is to “discover” topics in the lyrics of Taylor Swift songs. Instead of a supervised or predictive model where our observations have labels, this is an unsupervised approach.
 
 ```{r}
-library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(stringr)
+library(forcats)
+library(ggplot2)
 library(taylor)
 glimpse(taylor_album_songs)
 ```

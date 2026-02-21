@@ -70,6 +70,7 @@ VignetteBuilder:
     knitr
 Config/Needs/website: 
     ropensci/gutenbergr,
+    forcats,
     taylor
 Config/testthat/edition: 3
 Encoding: UTF-8
