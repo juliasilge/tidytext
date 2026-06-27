@@ -99,7 +99,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2026-02-21</h4>
+            <h4 data-toc-skip class="date">2026-06-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/main/vignettes/tf_idf.Rmd" class="external-link"><code>vignettes/tf_idf.Rmd</code></a></small>
       <div class="hidden name"><code>tf_idf.Rmd</code></div>
@@ -131,7 +131,7 @@ rule-of-thumb or heuristic quantity; while it has proved useful in text
 mining, search engines, etc., its theoretical foundations are considered
 less than firm by information theory experts. The inverse document
 frequency for any given term is defined as</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>d</mi><mi>f</mi><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">term</mtext><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>n</mi><mtext mathvariant="normal">documents</mtext></msub><msub><mi>n</mi><mtext mathvariant="normal">documents containing term</mtext></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}</annotation></semantics></math></p>
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>i</mi><mi>d</mi><mi>f</mi><mo stretchy="false" form="prefix">(</mo><mtext mathvariant="normal">term</mtext><mo stretchy="false" form="postfix">)</mo><mo>=</mo><mrow><mi mathvariant="normal">ln</mi><mo>⁡</mo></mrow><mrow><mo stretchy="true" form="prefix">(</mo><mfrac><msub><mi>n</mi><mtext mathvariant="normal">documents</mtext></msub><msub><mi>n</mi><mtext mathvariant="normal">documents containing term</mtext></msub></mfrac><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}</annotation></semantics></math></p>
 <p>We can use tidy data principles, as described in <a href="tidytext.html">the main vignette</a>, to approach tf-idf analysis
 and use consistent, effective tools to quantify how important various
 terms are in a document that is part of a collection.</p>
@@ -237,8 +237,8 @@ these novels. None of them occur in all of novels, and they are
 important, characteristic words for each text. Some of the values for
 idf are the same for different terms because there are 6 documents in
 this corpus and we are seeing the numerical value for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>6</mn><mi>/</mi><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\ln(6/1)</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>6</mn><mi>/</mi><mn>2</mn><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\ln(6/2)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ln</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mi>/</mi><mn>1</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\ln(6/1)</annotation></semantics></math>,
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mrow><mi mathvariant="normal">ln</mi><mo>⁡</mo></mrow><mo stretchy="false" form="prefix">(</mo><mn>6</mn><mi>/</mi><mn>2</mn><mo stretchy="false" form="postfix">)</mo></mrow><annotation encoding="application/x-tex">\ln(6/2)</annotation></semantics></math>,
 etc. Let’s look specifically at <em>Pride and Prejudice</em>.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">book_words</span> <span class="op">|&gt;</span></span>

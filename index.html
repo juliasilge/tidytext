@@ -141,14 +141,14 @@
 <span><span class="co">#&gt;  9 ""                      Sense &amp; Sensibility     9</span></span>
 <span><span class="co">#&gt; 10 "CHAPTER 1"             Sense &amp; Sensibility    10</span></span>
 <span><span class="co">#&gt; # ℹ 73,412 more rows</span></span></code></pre></div>
-<p>To work with this as a tidy dataset, we need to restructure it as <strong>one-token-per-row</strong> format. The <code><a href="reference/unnest_tokens.html">unnest_tokens()</a></code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
+<p>To work with this as a tidy dataset, we need to restructure it into a <strong>one-token-per-row</strong> format. The <code><a href="reference/unnest_tokens.html">unnest_tokens()</a></code> function is a way to convert a dataframe with a text column to be one-token-per-row:</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://juliasilge.github.io/tidytext/" class="external-link">tidytext</a></span><span class="op">)</span></span>
 <span><span class="va">tidy_books</span> <span class="op">&lt;-</span> <span class="va">original_books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="reference/unnest_tokens.html">unnest_tokens</a></span><span class="op">(</span><span class="va">word</span>, <span class="va">text</span><span class="op">)</span></span>
 <span></span>
 <span><span class="va">tidy_books</span></span>
-<span><span class="co">#&gt; # A tibble: 725,055 × 3</span></span>
+<span><span class="co">#&gt; # A tibble: 725,064 × 3</span></span>
 <span><span class="co">#&gt;    book                 line word       </span></span>
 <span><span class="co">#&gt;    &lt;fct&gt;               &lt;int&gt; &lt;chr&gt;      </span></span>
 <span><span class="co">#&gt;  1 Sense &amp; Sensibility     1 sense      </span></span>
@@ -161,7 +161,7 @@
 <span><span class="co">#&gt;  8 Sense &amp; Sensibility    10 chapter    </span></span>
 <span><span class="co">#&gt;  9 Sense &amp; Sensibility    10 1          </span></span>
 <span><span class="co">#&gt; 10 Sense &amp; Sensibility    13 the        </span></span>
-<span><span class="co">#&gt; # ℹ 725,045 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 725,054 more rows</span></span></code></pre></div>
 <p>This function uses the <a href="https://docs.ropensci.org/tokenizers/" class="external-link">tokenizers</a> package to separate each line into words. The default tokenizing is for words, but other options include characters, n-grams, sentences, lines, paragraphs, or separation around a regex pattern.</p>
 <p>Now that the data is in a one-word-per-row format, we can manipulate it with tidy tools like dplyr. We can remove stop words (available via the function <code><a href="reference/get_stopwords.html">get_stopwords()</a></code>) with an <code><a href="https://dplyr.tidyverse.org/reference/filter-joins.html" class="external-link">anti_join()</a></code>.</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
@@ -171,7 +171,7 @@
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">tidy_books</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/count.html" class="external-link">count</a></span><span class="op">(</span><span class="va">word</span>, sort <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
-<span><span class="co">#&gt; # A tibble: 14,375 × 2</span></span>
+<span><span class="co">#&gt; # A tibble: 14,371 × 2</span></span>
 <span><span class="co">#&gt;    word      n</span></span>
 <span><span class="co">#&gt;    &lt;chr&gt; &lt;int&gt;</span></span>
 <span><span class="co">#&gt;  1 mr     3015</span></span>
@@ -184,7 +184,7 @@
 <span><span class="co">#&gt;  8 well   1523</span></span>
 <span><span class="co">#&gt;  9 every  1456</span></span>
 <span><span class="co">#&gt; 10 think  1440</span></span>
-<span><span class="co">#&gt; # ℹ 14,365 more rows</span></span></code></pre></div>
+<span><span class="co">#&gt; # ℹ 14,361 more rows</span></span></code></pre></div>
 <p>Sentiment analysis can be implemented as an inner join. Three sentiment lexicons are available via the <code><a href="reference/get_sentiments.html">get_sentiments()</a></code> function. Let’s examine how sentiment changes across each novel. Let’s find a sentiment score for each word using the Bing lexicon, then count the number of positive and negative words in defined sections of each novel.</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyr.tidyverse.org" class="external-link">tidyr</a></span><span class="op">)</span></span>
@@ -236,7 +236,7 @@
 <span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="va">janeaustensentiment</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html" class="external-link">aes</a></span><span class="op">(</span><span class="va">index</span>, <span class="va">sentiment</span>, fill <span class="op">=</span> <span class="va">book</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_bar.html" class="external-link">geom_col</a></span><span class="op">(</span>show.legend <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/vars.html" class="external-link">vars</a></span><span class="op">(</span><span class="va">book</span><span class="op">)</span>, ncol <span class="op">=</span> <span class="fl">2</span>, scales <span class="op">=</span> <span class="st">"free_x"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-unnamed-chunk-9-1.png" alt="Sentiment scores across the trajectories of Jane Austen's six published novels" width="100%"></p>
+<p><img src="reference/figures/README-sentiment-plot-1.png" alt="Sentiment scores across the trajectories of Jane Austen's six published novels" width="100%"></p>
 <p>For more examples of text mining using tidy data frames, see the tidytext vignette.</p>
 </div>
 <div class="section level3">
@@ -299,7 +299,7 @@
 <span><span class="co">#&gt;  3 abilities 0.0000291 0.000143  </span></span>
 <span><span class="co">#&gt;  4 ability   0.000238  0.0000148 </span></span>
 <span><span class="co">#&gt;  5 able      0.000664  0.00151   </span></span>
-<span><span class="co">#&gt;  6 abroad    0.000194  0.000178  </span></span>
+<span><span class="co">#&gt;  6 abroad    0.000194  0.000177  </span></span>
 <span><span class="co">#&gt;  7 abrupt    0.0000291 0.0000247 </span></span>
 <span><span class="co">#&gt;  8 absence   0.0000776 0.000547  </span></span>
 <span><span class="co">#&gt;  9 absent    0.0000436 0.000247  </span></span>
@@ -313,7 +313,7 @@
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_x_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent_format</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_continuous.html" class="external-link">scale_y_log10</a></span><span class="op">(</span>labels <span class="op">=</span> <span class="fu"><a href="https://scales.r-lib.org/reference/percent_format.html" class="external-link">percent_format</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_abline</a></span><span class="op">(</span>color <span class="op">=</span> <span class="st">"red"</span><span class="op">)</span></span></code></pre></div>
-<p>&lt;img src=“man/figures/README-unnamed-chunk-13-1.png” alt=“Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like”cried” are only common in Jane Austen, some words like “national” are only common in AP articles, and some word like “time” are common in both.” width=“100%” /&gt;</p>
+<p><img src="reference/figures/README-frequency-comparison-1.png" alt="Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like 'cried' are only common in Jane Austen, some words like 'national' are only common in AP articles, and some words like 'time' are common in both." width="100%"></p>
 <p>For more examples of working with objects from other text mining packages using tidy data principles, see the <a href="https://juliasilge.github.io/tidytext/articles/tidying_casting.html" class="external-link">vignette</a> on converting to and from document term matrices.</p>
 </div>
 <div class="section level3">

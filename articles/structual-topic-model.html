@@ -98,7 +98,7 @@
                         <h4 data-toc-skip class="author">Julia Silge and
 David Robinson</h4>
             
-            <h4 data-toc-skip class="date">2026-02-21</h4>
+            <h4 data-toc-skip class="date">2026-06-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/juliasilge/tidytext/blob/main/vignettes/articles/structual-topic-model.Rmd" class="external-link"><code>vignettes/articles/structual-topic-model.Rmd</code></a></small>
       <div class="hidden name"><code>structual-topic-model.Rmd</code></div>
@@ -247,7 +247,7 @@ function of our covariates. In this case, we’ll use
 <pre><code><span><span class="co">## Topic 1 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: oh, you, my, i, the, me, no </span></span>
 <span><span class="co">##       FREX: oh, no, finally, usin, clean, rest, come </span></span>
-<span><span class="co">##       Lift: faces, lovin, am, finally, cuts, death, thousand </span></span>
+<span><span class="co">##       Lift: faces, am, finally, cuts, death, thousand, blame </span></span>
 <span><span class="co">##       Score: oh, no, finally, come, breaks, clean, usin </span></span>
 <span><span class="co">## Topic 2 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: was, you, like, the, a, it, all </span></span>
@@ -257,7 +257,7 @@ function of our covariates. In this case, we’ll use
 <span><span class="co">## Topic 3 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: i, you, and, the, my, to, me </span></span>
 <span><span class="co">##       FREX: trouble, places, london, wish, knew, losing, bless </span></span>
-<span><span class="co">##       Lift: december, shoulda, fancy, slope, start, under, tolerate </span></span>
+<span><span class="co">##       Lift: december, shoulda, til, flew, places, shame, heartbeat </span></span>
 <span><span class="co">##       Score: wish, places, trouble, almost, knew, losing, follow </span></span>
 <span><span class="co">## Topic 4 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: the, we, in, of, and, a, were </span></span>
@@ -267,33 +267,33 @@ function of our covariates. In this case, we’ll use
 <span><span class="co">## Topic 5 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: ooh, you, i, and, the, me, ah </span></span>
 <span><span class="co">##       FREX: ooh, you'll, ah, ha, once, whoa, 22 </span></span>
-<span><span class="co">##       Lift: 22, bought, count, infidelity, keeping, everyone's, humming </span></span>
+<span><span class="co">##       Lift: bought, count, keeping, everyone's, humming, kitchen, push </span></span>
 <span><span class="co">##       Score: ooh, dorothea, you'll, ha, getting, ah, once </span></span>
 <span><span class="co">## Topic 6 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: love, a, and, i, you, be, the </span></span>
 <span><span class="co">##       FREX: beautiful, love, we've, florida, man, fallin, hands </span></span>
-<span><span class="co">##       Lift: cut, em, we've, worship, goin, how'd, plane </span></span>
+<span><span class="co">##       Lift: cut, em, we've, town, worship, goin, how'd </span></span>
 <span><span class="co">##       Score: we've, love, affair, beautiful, man, florida, blood </span></span>
 <span><span class="co">## Topic 7 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: you, and, the, i, a, me, to </span></span>
 <span><span class="co">##       FREX: karma, smile, jump, karma's, take, belong, la </span></span>
 <span><span class="co">##       Lift: boyfriend, okay, ours, ba, lately, ex, insane </span></span>
-<span><span class="co">##       Score: karma, la, everybody, smile, times, knows, karma's </span></span>
+<span><span class="co">##       Score: karma, la, everybody, smile, knows, times, karma's </span></span>
 <span><span class="co">## Topic 8 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: you, and, i, oh, it, the, eh </span></span>
 <span><span class="co">##       FREX: eh, rains, forever, how, wonderland, girl, anyway </span></span>
-<span><span class="co">##       Lift: invitation, crashing, works, shouldn't, lucky, wonderland, alive </span></span>
+<span><span class="co">##       Lift: invitation, crashing, bedroom, rains, works, worse, anyway </span></span>
 <span><span class="co">##       Score: eh, rains, wonderland, forever, how, works, anyway </span></span>
 <span><span class="co">## Topic 9 Top Words:</span></span>
-<span><span class="co">##       Highest Prob: to, you, the, i, been, me, and </span></span>
+<span><span class="co">##       Highest Prob: you, to, the, i, been, me, and </span></span>
 <span><span class="co">##       FREX: york, welcome, been, new, have, nice, will </span></span>
 <span><span class="co">##       Lift: without, sing, both, quite, alchemy, honestly, reserved </span></span>
 <span><span class="co">##       Score: york, welcome, new, nice, soundtrack, stay, hold </span></span>
 <span><span class="co">## Topic 10 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: i, the, you, and, your, in, my </span></span>
 <span><span class="co">##       FREX: daylight, now, happiness, he's, reputation, fate, ophelia </span></span>
-<span><span class="co">##       Lift: shimmer, daylight, team, told, betty, party, showed </span></span>
-<span><span class="co">##       Score: daylight, he's, people's, game, wanna, drew, happiness </span></span>
+<span><span class="co">##       Lift: shimmer, told, betty, party, showed, sun, after </span></span>
+<span><span class="co">##       Score: daylight, he's, people's, game, wanna, happiness, drew </span></span>
 <span><span class="co">## Topic 11 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: you, i, it, the, me, what, want </span></span>
 <span><span class="co">##       FREX: call, isn't, different, hits, gorgeous, delicate, want </span></span>
@@ -307,7 +307,7 @@ function of our covariates. In this case, we’ll use
 <span><span class="co">## Topic 13 Top Words:</span></span>
 <span><span class="co">##       Highest Prob: i, it, di, shake, can't, and, off </span></span>
 <span><span class="co">##       FREX: di, shake, da, off, can't, play, fake </span></span>
-<span><span class="co">##       Lift: stephen, felt, crime, lettin, until, why's, play </span></span>
+<span><span class="co">##       Lift: stephen, felt, why's, crime, lettin, until, da </span></span>
 <span><span class="co">##       Score: di, shake, off, da, fake, mmm, help</span></span></code></pre>
 <p>Notice that we do in fact have fairly uninteresting and common words
 as the most common for <em>all</em> the topics. This is because we did
@@ -338,14 +338,14 @@ lift:</p>
 <span><span class="co">##    topic term    </span></span>
 <span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;"> 1</span>     1 faces   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     1 lovin   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     1 am      </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     1 finally </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     1 cuts    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     1 death   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     1 thousand</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     1 blame   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     1 doesn't </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>     1 am      </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>     1 finally </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>     1 cuts    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>     1 death   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>     1 thousand</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>     1 blame   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>     1 doesn't </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>     1 lovin   </span></span>
 <span><span class="co">## <span style="color: #BCBCBC;">10</span>     1 rest    </span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 12,158 more rows</span></span></span></code></pre>
 <p>This returns a ranked set of words (not the underlying metrics
@@ -355,18 +355,18 @@ unique! What are the highest lift words for topic 10?</p>
 <code class="sourceCode R"><span><span class="fu"><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy</a></span><span class="op">(</span><span class="va">topic_model</span>, matrix <span class="op">=</span> <span class="st">"lift"</span><span class="op">)</span> <span class="op">|&gt;</span></span>
 <span>  <span class="fu"><a href="https://dplyr.tidyverse.org/reference/filter.html" class="external-link">filter</a></span><span class="op">(</span><span class="va">topic</span> <span class="op">==</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <pre><code><span><span class="co">## <span style="color: #949494;"># A tibble: 936 × 2</span></span></span>
-<span><span class="co">##    topic term    </span></span>
-<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>    10 shimmer </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>    10 daylight</span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>    10 team    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>    10 told    </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>    10 betty   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>    10 party   </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>    10 showed  </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>    10 closure </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>    10 sun     </span></span>
-<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10 after   </span></span>
+<span><span class="co">##    topic term   </span></span>
+<span><span class="co">##    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 1</span>    10 shimmer</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 2</span>    10 told   </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 3</span>    10 betty  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 4</span>    10 party  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 5</span>    10 showed </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 6</span>    10 sun    </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 7</span>    10 after  </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 8</span>    10 behind </span></span>
+<span><span class="co">## <span style="color: #BCBCBC;"> 9</span>    10 goddamn</span></span>
+<span><span class="co">## <span style="color: #BCBCBC;">10</span>    10 house  </span></span>
 <span><span class="co">## <span style="color: #949494;"># ℹ 926 more rows</span></span></span></code></pre>
 <p>We also can use <code><a href="https://generics.r-lib.org/reference/tidy.html" class="external-link">tidy()</a></code> to get the matrix of
 document-topic probabilities. For this, we need to pass in the

@@ -223,14 +223,14 @@ column <code>.topic</code> with the topic assignment for that document-term comb
 <span class="r-out co"><span class="r-pr">#&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 1</span>     1 acknowledgement</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 2</span>     1 lyme           </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1 musgrove       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1 walter         </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1 benwick        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1 henrietta      </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1 kellynch       </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1 russell        </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1 uppercross     </span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1 croft          </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 3</span>     1 walter         </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 4</span>     1 benwick        </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 5</span>     1 henrietta      </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 6</span>     1 kellynch       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 7</span>     1 musgrove       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 8</span>     1 uppercross     </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;"> 9</span>     1 harville       </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">10</span>     1 russell        </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># ℹ 166,958 more rows</span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># tidy the document-topic combinations, with optional document names</span></span></span>
@@ -265,12 +265,12 @@ column <code>.topic</code> with the topic assignment for that document-term comb
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 6 × 6</span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   topic term        estimate std.error statistic  p.value</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   <span style="color: #949494; font-style: italic;">&lt;int&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>          <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 (Intercept)   0.441     0.021<span style="text-decoration: underline;">2</span>     20.8  2.57<span style="color: #949494;">e</span><span style="color: #BB0000;">-62</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     1 treatment    -<span style="color: #BB0000;">0.154</span>     0.030<span style="text-decoration: underline;">9</span>     -<span style="color: #BB0000;">4.98</span> 1.04<span style="color: #949494;">e</span><span style="color: #BB0000;">- 6</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     2 (Intercept)   0.210     0.020<span style="text-decoration: underline;">5</span>     10.3  1.11<span style="color: #949494;">e</span><span style="color: #BB0000;">-21</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     2 treatment     0.240     0.031<span style="text-decoration: underline;">1</span>      7.70 1.56<span style="color: #949494;">e</span><span style="color: #BB0000;">-13</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     3 (Intercept)   0.349     0.020<span style="text-decoration: underline;">3</span>     17.1  6.64<span style="color: #949494;">e</span><span style="color: #BB0000;">-48</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     3 treatment    -<span style="color: #BB0000;">0.085</span><span style="color: #BB0000; text-decoration: underline;">8</span>    0.027<span style="text-decoration: underline;">6</span>     -<span style="color: #BB0000;">3.11</span> 2.04<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">1</span>     1 (Intercept)   0.437     0.024<span style="text-decoration: underline;">1</span>     18.1  1.13<span style="color: #949494;">e</span><span style="color: #BB0000;">-51</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">2</span>     1 treatment    -<span style="color: #BB0000;">0.153</span>     0.032<span style="text-decoration: underline;">2</span>     -<span style="color: #BB0000;">4.75</span> 3.00<span style="color: #949494;">e</span><span style="color: #BB0000;">- 6</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">3</span>     2 (Intercept)   0.212     0.022<span style="text-decoration: underline;">4</span>      9.44 6.18<span style="color: #949494;">e</span><span style="color: #BB0000;">-19</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">4</span>     2 treatment     0.242     0.033<span style="text-decoration: underline;">1</span>      7.31 1.93<span style="color: #949494;">e</span><span style="color: #BB0000;">-12</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">5</span>     3 (Intercept)   0.351     0.023<span style="text-decoration: underline;">1</span>     15.2  2.57<span style="color: #949494;">e</span><span style="color: #BB0000;">-40</span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #BCBCBC;">6</span>     3 treatment    -<span style="color: #BB0000;">0.089</span><span style="color: #BB0000; text-decoration: underline;">2</span>    0.032<span style="text-decoration: underline;">0</span>     -<span style="color: #BB0000;">2.79</span> 5.58<span style="color: #949494;">e</span><span style="color: #BB0000;">- 3</span></span>
 </code></pre></div>
     </div>
   </div>
