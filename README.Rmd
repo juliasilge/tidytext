@@ -119,7 +119,7 @@ janeaustensentiment
 
 Now we can plot these sentiment scores across the plot trajectory of each novel.
 
-```{r}
+```{r sentiment-plot}
 #| fig.width = 7,
 #| fig.height = 7,
 #| fig.alt = "Sentiment scores across the trajectories of Jane Austen's six published novels",
@@ -162,10 +162,10 @@ ap_sentiments <- tidy(AssociatedPress) |>
 
 Or we can join the Austen and AP datasets and compare the frequencies of each word:
 
-```{r}
+```{r frequency-comparison}
 #| fig.height = 8,
 #| fig.width = 8,
-#| fig.alt = 'Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like "cried" are only common in Jane Austen, some words like "national" are only common in AP articles, and some word like "time" are common in both.'
+#| fig.alt = "Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like 'cried' are only common in Jane Austen, some words like 'national' are only common in AP articles, and some words like 'time' are common in both."
 comparison <- tidy(AssociatedPress) |>
   count(word = term) |>
   rename(AP = n) |>

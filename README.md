@@ -84,7 +84,7 @@ original_books
 #> # ℹ 73,412 more rows
 ```
 
-To work with this as a tidy dataset, we need to restructure it as
+To work with this as a tidy dataset, we need to restructure it into a
 **one-token-per-row** format. The `unnest_tokens()` function is a way to
 convert a dataframe with a text column to be one-token-per-row:
 
@@ -94,7 +94,7 @@ tidy_books <- original_books |>
   unnest_tokens(word, text)
 
 tidy_books
-#> # A tibble: 725,055 × 3
+#> # A tibble: 725,064 × 3
 #>    book                 line word       
 #>    <fct>               <int> <chr>      
 #>  1 Sense & Sensibility     1 sense      
@@ -107,7 +107,7 @@ tidy_books
 #>  8 Sense & Sensibility    10 chapter    
 #>  9 Sense & Sensibility    10 1          
 #> 10 Sense & Sensibility    13 the        
-#> # ℹ 725,045 more rows
+#> # ℹ 725,054 more rows
 ```
 
 This function uses the
@@ -131,7 +131,7 @@ as a whole.
 ``` r
 tidy_books |>
   count(word, sort = TRUE)
-#> # A tibble: 14,375 × 2
+#> # A tibble: 14,371 × 2
 #>    word      n
 #>    <chr> <int>
 #>  1 mr     3015
@@ -144,7 +144,7 @@ tidy_books |>
 #>  8 well   1523
 #>  9 every  1456
 #> 10 think  1440
-#> # ℹ 14,365 more rows
+#> # ℹ 14,361 more rows
 ```
 
 Sentiment analysis can be implemented as an inner join. Three sentiment
@@ -209,7 +209,7 @@ ggplot(janeaustensentiment, aes(index, sentiment, fill = book)) +
   facet_wrap(vars(book), ncol = 2, scales = "free_x")
 ```
 
-<img src="man/figures/README-unnamed-chunk-9-1.png" alt="Sentiment scores across the trajectories of Jane Austen's six published novels" width="100%" />
+<img src="man/figures/README-sentiment-plot-1.png" alt="Sentiment scores across the trajectories of Jane Austen's six published novels" width="100%" />
 
 For more examples of text mining using tidy data frames, see the
 tidytext vignette.
@@ -290,7 +290,7 @@ comparison
 #>  3 abilities 0.0000291 0.000143  
 #>  4 ability   0.000238  0.0000148 
 #>  5 able      0.000664  0.00151   
-#>  6 abroad    0.000194  0.000178  
+#>  6 abroad    0.000194  0.000177  
 #>  7 abrupt    0.0000291 0.0000247 
 #>  8 absence   0.0000776 0.000547  
 #>  9 absent    0.0000436 0.000247  
@@ -306,11 +306,7 @@ ggplot(comparison, aes(AP, Austen)) +
   geom_abline(color = "red")
 ```
 
-\<img src=“man/figures/README-unnamed-chunk-13-1.png” alt=“Scatterplot
-for word frequencies in Jane Austen vs. AP news articles. Some words
-like”cried” are only common in Jane Austen, some words like “national”
-are only common in AP articles, and some word like “time” are common in
-both.” width=“100%” /\>
+<img src="man/figures/README-frequency-comparison-1.png" alt="Scatterplot for word frequencies in Jane Austen vs. AP news articles. Some words like 'cried' are only common in Jane Austen, some words like 'national' are only common in AP articles, and some words like 'time' are common in both." width="100%" />
 
 For more examples of working with objects from other text mining
 packages using tidy data principles, see the
