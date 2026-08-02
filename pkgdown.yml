@@ -1,5 +1,5 @@
 pandoc: 3.8.3
-pkgdown: 2.2.0
+pkgdown: 2.2.1
 pkgdown_sha: ~
 articles:
   articles/structual-topic-model: structual-topic-model.html
@@ -7,4 +7,4 @@ articles:
   tidying_casting: tidying_casting.html
   tidytext: tidytext.html
   articles/topic_modeling: topic_modeling.html
-last_built: 2026-06-27T21:27Z
+last_built: 2026-08-02T19:35Z
